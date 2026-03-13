@@ -1,7 +1,7 @@
 "use client";
 
-import { useState } from "react";
-import { Menu } from "lucide-react";
+import { useState, useEffect } from "react";
+import { Menu, MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { buttonVariants } from "@/components/ui/button";
 import {
@@ -22,35 +22,58 @@ const navLinks = [
 
 export function Header() {
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 10);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
-    <header className="sticky top-0 z-40 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="container mx-auto flex h-16 items-center justify-between px-4">
+    <header
+      className={`fixed top-0 left-0 right-0 z-[200] border-b border-[#312783]/10 backdrop-blur-[14px] transition-shadow duration-300 ${
+        scrolled ? "shadow-[0_4px_24px_rgba(8,15,20,0.08)]" : ""
+      }`}
+      style={{ background: "rgba(243,248,250,0.95)" }}
+    >
+      <div className="container mx-auto flex h-16 items-center justify-between px-6 lg:px-12">
         <a href="#inicio" className="flex items-center gap-2">
-          <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary text-lg font-bold text-primary-foreground">
-            IC
-          </div>
-          <span className="text-lg font-bold text-foreground">INDECAP</span>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="https://indecap.edu.co/wp-content/uploads/2019/12/LOGO-AI.png"
+            alt="INDECAP"
+            className="h-11"
+          />
         </a>
 
-        <nav className="hidden items-center gap-6 md:flex">
+        <nav className="hidden items-center gap-6 lg:flex">
           {navLinks.map((link) => (
             <a
               key={link.href}
               href={link.href}
-              className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
+              className="font-[family-name:var(--font-dm-sans)] text-sm font-medium text-[#374151] transition-colors hover:text-[#312783]"
             >
               {link.label}
             </a>
           ))}
-          <a href="#inicio" className={buttonVariants()}>
-            Inscríbete
+          <a
+            href="https://api.whatsapp.com/send?phone=573174342783"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={buttonVariants({
+              className:
+                "rounded-full bg-[#312783] px-6 py-2 text-sm font-semibold text-white hover:bg-[#312783]/90",
+            })}
+          >
+            <MessageCircle className="mr-1 h-4 w-4" />
+            Inscribirme ahora
           </a>
         </nav>
 
         <Sheet open={open} onOpenChange={setOpen}>
           <SheetTrigger
-            className="md:hidden"
+            className="lg:hidden"
             render={<Button variant="ghost" size="icon" />}
           >
             <Menu className="h-5 w-5" />
@@ -64,17 +87,23 @@ export function Header() {
                   key={link.href}
                   href={link.href}
                   onClick={() => setOpen(false)}
-                  className="text-lg font-medium text-foreground transition-colors hover:text-primary"
+                  className="font-[family-name:var(--font-dm-sans)] text-lg font-medium text-[#080F14] transition-colors hover:text-[#312783]"
                 >
                   {link.label}
                 </a>
               ))}
               <a
-                href="#inicio"
+                href="https://api.whatsapp.com/send?phone=573174342783"
+                target="_blank"
+                rel="noopener noreferrer"
                 onClick={() => setOpen(false)}
-                className={buttonVariants({ className: "mt-4" })}
+                className={buttonVariants({
+                  className:
+                    "mt-4 rounded-full bg-[#312783] px-6 py-2 font-semibold text-white",
+                })}
               >
-                Inscríbete
+                <MessageCircle className="mr-1 h-4 w-4" />
+                Inscribirme ahora
               </a>
             </nav>
           </SheetContent>

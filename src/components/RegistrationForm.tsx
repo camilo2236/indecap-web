@@ -46,7 +46,9 @@ export function RegistrationForm({ className }: RegistrationFormProps) {
 
   function onSubmit(data: RegistrationData) {
     console.log("Formulario enviado:", data);
-    alert("¡Gracias por tu inscripción! Nos pondremos en contacto contigo pronto.");
+    alert(
+      "¡Gracias por tu inscripción! Nos pondremos en contacto contigo pronto."
+    );
   }
 
   return (
@@ -55,61 +57,112 @@ export function RegistrationForm({ className }: RegistrationFormProps) {
       className={className}
     >
       <div className="grid gap-4 sm:grid-cols-2">
-        <div className="space-y-2">
-          <Label htmlFor="nombre">Nombre</Label>
-          <Input id="nombre" placeholder="Tu nombre" {...register("nombre")} />
+        <div className="space-y-1.5">
+          <Label
+            htmlFor="nombre"
+            className="font-[family-name:var(--font-dm-sans)] text-xs font-semibold text-[#374151]"
+          >
+            Nombre
+          </Label>
+          <Input
+            id="nombre"
+            placeholder="Tu nombre"
+            className="rounded-[4px] border-[#E4F1F6] bg-[#F3F8FA] font-[family-name:var(--font-dm-sans)] text-sm"
+            {...register("nombre")}
+          />
           {errors.nombre && (
-            <p className="text-sm text-destructive">{errors.nombre.message}</p>
+            <p className="text-xs text-red-600">{errors.nombre.message}</p>
           )}
         </div>
 
-        <div className="space-y-2">
-          <Label htmlFor="apellido">Apellido</Label>
-          <Input id="apellido" placeholder="Tu apellido" {...register("apellido")} />
+        <div className="space-y-1.5">
+          <Label
+            htmlFor="apellido"
+            className="font-[family-name:var(--font-dm-sans)] text-xs font-semibold text-[#374151]"
+          >
+            Apellido
+          </Label>
+          <Input
+            id="apellido"
+            placeholder="Tu apellido"
+            className="rounded-[4px] border-[#E4F1F6] bg-[#F3F8FA] font-[family-name:var(--font-dm-sans)] text-sm"
+            {...register("apellido")}
+          />
           {errors.apellido && (
-            <p className="text-sm text-destructive">{errors.apellido.message}</p>
+            <p className="text-xs text-red-600">{errors.apellido.message}</p>
           )}
         </div>
 
-        <div className="space-y-2">
-          <Label htmlFor="email">Correo electrónico</Label>
-          <Input id="email" type="email" placeholder="tu@correo.com" {...register("email")} />
+        <div className="space-y-1.5">
+          <Label
+            htmlFor="email"
+            className="font-[family-name:var(--font-dm-sans)] text-xs font-semibold text-[#374151]"
+          >
+            Correo electrónico
+          </Label>
+          <Input
+            id="email"
+            type="email"
+            placeholder="tu@correo.com"
+            className="rounded-[4px] border-[#E4F1F6] bg-[#F3F8FA] font-[family-name:var(--font-dm-sans)] text-sm"
+            {...register("email")}
+          />
           {errors.email && (
-            <p className="text-sm text-destructive">{errors.email.message}</p>
+            <p className="text-xs text-red-600">{errors.email.message}</p>
           )}
         </div>
 
-        <div className="space-y-2">
-          <Label htmlFor="telefono">Teléfono</Label>
-          <Input id="telefono" placeholder="300 123 4567" {...register("telefono")} />
+        <div className="space-y-1.5">
+          <Label
+            htmlFor="telefono"
+            className="font-[family-name:var(--font-dm-sans)] text-xs font-semibold text-[#374151]"
+          >
+            Teléfono
+          </Label>
+          <Input
+            id="telefono"
+            placeholder="300 123 4567"
+            className="rounded-[4px] border-[#E4F1F6] bg-[#F3F8FA] font-[family-name:var(--font-dm-sans)] text-sm"
+            {...register("telefono")}
+          />
           {errors.telefono && (
-            <p className="text-sm text-destructive">{errors.telefono.message}</p>
+            <p className="text-xs text-red-600">{errors.telefono.message}</p>
           )}
         </div>
 
-        <div className="space-y-2">
-          <Label>Programa de interés</Label>
-          <Select onValueChange={(value) => setValue("programa", value as string)}>
-            <SelectTrigger>
+        <div className="space-y-1.5">
+          <Label className="font-[family-name:var(--font-dm-sans)] text-xs font-semibold text-[#374151]">
+            Programa de interés
+          </Label>
+          <Select
+            onValueChange={(value) =>
+              setValue("programa", value as string)
+            }
+          >
+            <SelectTrigger className="w-full rounded-[4px] border-[#E4F1F6] bg-[#F3F8FA] font-[family-name:var(--font-dm-sans)] text-sm">
               <SelectValue placeholder="Selecciona un programa" />
             </SelectTrigger>
             <SelectContent>
               {programs.map((program) => (
                 <SelectItem key={program.id} value={program.id}>
-                  {program.name}
+                  {program.icon} {program.name}
                 </SelectItem>
               ))}
             </SelectContent>
           </Select>
           {errors.programa && (
-            <p className="text-sm text-destructive">{errors.programa.message}</p>
+            <p className="text-xs text-red-600">{errors.programa.message}</p>
           )}
         </div>
 
-        <div className="space-y-2">
-          <Label>Sede</Label>
-          <Select onValueChange={(value) => setValue("sede", value as string)}>
-            <SelectTrigger>
+        <div className="space-y-1.5">
+          <Label className="font-[family-name:var(--font-dm-sans)] text-xs font-semibold text-[#374151]">
+            Sede
+          </Label>
+          <Select
+            onValueChange={(value) => setValue("sede", value as string)}
+          >
+            <SelectTrigger className="w-full rounded-[4px] border-[#E4F1F6] bg-[#F3F8FA] font-[family-name:var(--font-dm-sans)] text-sm">
               <SelectValue placeholder="Selecciona una sede" />
             </SelectTrigger>
             <SelectContent>
@@ -121,12 +174,16 @@ export function RegistrationForm({ className }: RegistrationFormProps) {
             </SelectContent>
           </Select>
           {errors.sede && (
-            <p className="text-sm text-destructive">{errors.sede.message}</p>
+            <p className="text-xs text-red-600">{errors.sede.message}</p>
           )}
         </div>
       </div>
 
-      <Button type="submit" size="lg" className="mt-6 w-full">
+      <Button
+        type="submit"
+        size="lg"
+        className="mt-6 w-full rounded-full bg-[#F0A500] px-8 py-3 font-[family-name:var(--font-dm-sans)] text-base font-bold text-[#080F14] hover:bg-[#F0A500]/90"
+      >
         Inscribirme ahora
       </Button>
     </form>

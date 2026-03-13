@@ -3,56 +3,71 @@ export interface Program {
   name: string;
   description: string;
   icon: string;
+  color: string;
+  colorDark: string;
+  badge: string;
+  whatsappUrl: string;
 }
 
 export const programs: Program[] = [
   {
-    id: "aux-enfermeria",
+    id: "enfermeria",
     name: "Auxiliar en Enfermería",
     description:
       "Formación integral en el cuidado de la salud, asistencia hospitalaria y atención primaria al paciente.",
     icon: "🏥",
+    color: "#1A5CA8",
+    colorDark: "#0D3A6E",
+    badge: "Escuela de Salud · INDECAP",
+    whatsappUrl:
+      "https://api.whatsapp.com/send?phone=+573022389760&text=Hola%20INDECAP%20estoy%20interesado%20en%20Enfermer%C3%ADa,%20mi%20nombre%20es%20",
   },
   {
-    id: "aux-salud-oral",
-    name: "Auxiliar en Salud Oral",
+    id: "cosmetologia",
+    name: "Cosmetología y Estética",
     description:
-      "Capacitación en higiene oral, prevención de enfermedades bucodentales y asistencia odontológica.",
-    icon: "🦷",
+      "Técnicas profesionales de belleza, cuidado de la piel, maquillaje y tratamientos estéticos.",
+    icon: "💄",
+    color: "#C0305A",
+    colorDark: "#8B1A3A",
+    badge: "Escuela de Estética · INDECAP",
+    whatsappUrl:
+      "https://api.whatsapp.com/send?phone=+573022389760&text=Hola%20INDECAP%20estoy%20interesado%20en%20Cosmetolog%C3%ADa,%20mi%20nombre%20es%20",
   },
   {
-    id: "aux-servicios-farmaceuticos",
+    id: "veterinaria",
+    name: "Auxiliar en Veterinaria",
+    description:
+      "Cuidado animal, asistencia en procedimientos veterinarios y manejo de clínicas veterinarias.",
+    icon: "🐾",
+    color: "#2A7A4B",
+    colorDark: "#1A5A35",
+    badge: "Escuela Veterinaria · INDECAP",
+    whatsappUrl:
+      "https://api.whatsapp.com/send?phone=+573022389760&text=Hola%20INDECAP%20estoy%20interesado%20en%20Auxiliar%20en%20Veterinaria,%20mi%20nombre%20es%20",
+  },
+  {
+    id: "farmaceuticos",
     name: "Auxiliar en Servicios Farmacéuticos",
     description:
-      "Preparación para la dispensación, almacenamiento y manejo de medicamentos en farmacias y droguerías.",
+      "Dispensación, almacenamiento y manejo de medicamentos en farmacias y droguerías.",
     icon: "💊",
+    color: "#0E7C7B",
+    colorDark: "#085C5B",
+    badge: "Escuela de Salud · INDECAP",
+    whatsappUrl:
+      "https://api.whatsapp.com/send?phone=+573022389760&text=Hola%20INDECAP%20estoy%20interesado%20en%20Servicios%20Farmac%C3%A9uticos,%20mi%20nombre%20es%20",
   },
   {
-    id: "aux-primera-infancia",
-    name: "Atención Integral a la Primera Infancia",
+    id: "salud-oral",
+    name: "Auxiliar en Salud Oral",
     description:
-      "Desarrollo de competencias para el cuidado y educación de niños de 0 a 6 años.",
-    icon: "👶",
-  },
-  {
-    id: "aux-administrativo",
-    name: "Auxiliar Administrativo",
-    description:
-      "Formación en gestión documental, atención al cliente y procesos administrativos empresariales.",
-    icon: "📋",
-  },
-  {
-    id: "aux-contable",
-    name: "Auxiliar Contable y Financiero",
-    description:
-      "Competencias en contabilidad, manejo de software contable y análisis financiero básico.",
-    icon: "📊",
-  },
-  {
-    id: "aux-seguridad-salud",
-    name: "Seguridad y Salud en el Trabajo",
-    description:
-      "Identificación, evaluación y control de riesgos laborales para entornos de trabajo seguros.",
-    icon: "⛑️",
+      "Higiene oral, prevención de enfermedades bucodentales y asistencia en consultorio odontológico.",
+    icon: "🦷",
+    color: "#0E6B8A",
+    colorDark: "#084F68",
+    badge: "Escuela de Salud Oral · INDECAP",
+    whatsappUrl:
+      "https://api.whatsapp.com/send?phone=+573022389760&text=Hola%20INDECAP%20estoy%20interesado%20en%20Salud%20Oral,%20mi%20nombre%20es%20",
   },
 ];

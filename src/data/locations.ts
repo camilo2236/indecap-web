@@ -5,31 +5,35 @@ export interface Location {
   city: string;
   phone: string;
   email: string;
+  resolution?: string;
 }
 
 export const locations: Location[] = [
   {
-    id: "bogota",
-    name: "Sede Bogotá",
-    address: "Calle 53 No. 14-39",
-    city: "Bogotá D.C.",
-    phone: "+57 317 434 2783",
-    email: "info@indecap.edu.co",
+    id: "medellin",
+    name: "Sede Medellín",
+    address: "Cl. 56 # 45-26",
+    city: "Medellín, Antioquia",
+    phone: "(604) 448 4794",
+    email: "indecap@indecap.edu.co",
+    resolution: "Res. N° 016022",
   },
   {
-    id: "soacha",
-    name: "Sede Soacha",
-    address: "Carrera 7 No. 12-50 Centro",
-    city: "Soacha, Cundinamarca",
-    phone: "+57 317 434 2783",
-    email: "soacha@indecap.edu.co",
+    id: "envigado",
+    name: "Sede Envigado",
+    address: "Cl 37 Sur #43A-84",
+    city: "Envigado, Antioquia",
+    phone: "(604) 448 4794",
+    email: "indecap@indecap.edu.co",
+    resolution: "Res. N° 3534",
   },
   {
-    id: "girardot",
-    name: "Sede Girardot",
-    address: "Calle 19 No. 10-45",
-    city: "Girardot, Cundinamarca",
-    phone: "+57 317 434 2783",
-    email: "girardot@indecap.edu.co",
+    id: "caldas",
+    name: "Sede Caldas",
+    address: "Calle 130 sur # 51-65",
+    city: "Caldas, Antioquia",
+    phone: "(604) 448 4794",
+    email: "indecap@indecap.edu.co",
+    resolution: "Res. N° 2016060054726",
   },
 ];
