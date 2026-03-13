@@ -9,7 +9,7 @@ export function Footer() {
           <div>
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src="https://indecap.edu.co/wp-content/uploads/2019/12/LOGO-AI.png"
+              src="/images/logo.png"
               alt="INDECAP"
               className="h-14 brightness-0 invert"
             />

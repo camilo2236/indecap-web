@@ -3,6 +3,7 @@ export interface Program {
   name: string;
   description: string;
   icon: string;
+  image: string;
   color: string;
   colorDark: string;
   badge: string;
@@ -16,6 +17,7 @@ export const programs: Program[] = [
     description:
       "Formación integral en el cuidado de la salud, asistencia hospitalaria y atención primaria al paciente.",
     icon: "🏥",
+    image: "/images/programs/enfermeria.png",
     color: "#1A5CA8",
     colorDark: "#0D3A6E",
     badge: "Escuela de Salud · INDECAP",
@@ -28,6 +30,7 @@ export const programs: Program[] = [
     description:
       "Técnicas profesionales de belleza, cuidado de la piel, maquillaje y tratamientos estéticos.",
     icon: "💄",
+    image: "/images/programs/cosmetologia.png",
     color: "#C0305A",
     colorDark: "#8B1A3A",
     badge: "Escuela de Estética · INDECAP",
@@ -40,6 +43,7 @@ export const programs: Program[] = [
     description:
       "Cuidado animal, asistencia en procedimientos veterinarios y manejo de clínicas veterinarias.",
     icon: "🐾",
+    image: "/images/programs/veterinaria.png",
     color: "#2A7A4B",
     colorDark: "#1A5A35",
     badge: "Escuela Veterinaria · INDECAP",
@@ -52,6 +56,7 @@ export const programs: Program[] = [
     description:
       "Dispensación, almacenamiento y manejo de medicamentos en farmacias y droguerías.",
     icon: "💊",
+    image: "/images/programs/farmaceuticos.png",
     color: "#0E7C7B",
     colorDark: "#085C5B",
     badge: "Escuela de Salud · INDECAP",
@@ -64,6 +69,7 @@ export const programs: Program[] = [
     description:
       "Higiene oral, prevención de enfermedades bucodentales y asistencia en consultorio odontológico.",
     icon: "🦷",
+    image: "/images/programs/salud-oral.png",
     color: "#0E6B8A",
     colorDark: "#084F68",
     badge: "Escuela de Salud Oral · INDECAP",

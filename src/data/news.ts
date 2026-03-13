@@ -13,23 +13,23 @@ export const news: NewsItem[] = [
     excerpt:
       "Inicia tu formación técnica laboral con nosotros. Contamos con programas avalados por la Secretaría de Educación.",
     date: "2026-02-15",
-    image: "/images/placeholder-news-1.jpg",
+    image: "/images/news/news-1.jpeg",
   },
   {
     id: "graduacion-2025",
     title: "Ceremonia de graduación promoción 2025",
     excerpt:
-      "Más de 200 nuevos técnicos laborales se graduaron en nuestras tres sedes. ¡Felicitaciones a todos!",
+      "Más de 200 nuevos técnicos laborales se graduaron en nuestras sedes. ¡Felicitaciones a todos!",
     date: "2025-12-10",
-    image: "/images/placeholder-news-2.jpg",
+    image: "/images/news/news-2.jpeg",
   },
   {
     id: "convenio-hospitalario",
     title: "Nuevo convenio con red hospitalaria",
     excerpt:
-      "INDECAP firma convenio de prácticas con importantes centros hospitalarios de Bogotá y Cundinamarca.",
+      "INDECAP firma convenio de prácticas con importantes centros hospitalarios de Medellín y Antioquia.",
     date: "2025-11-20",
-    image: "/images/placeholder-news-3.jpg",
+    image: "/images/news/news-3.jpeg",
   },
   {
     id: "cursos-cortos",
@@ -37,6 +37,6 @@ export const news: NewsItem[] = [
     excerpt:
       "Ampliamos nuestra oferta con cursos de inyectología, primeros auxilios y cuidado del adulto mayor.",
     date: "2025-10-05",
-    image: "/images/placeholder-news-4.jpg",
+    image: "/images/news/news-4.jpeg",
   },
 ];

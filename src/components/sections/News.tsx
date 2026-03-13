@@ -20,7 +20,14 @@ export function News() {
               key={item.id}
               className="reveal group overflow-hidden rounded-[16px] border border-[#E4F1F6] bg-white transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
             >
-              <div className="aspect-video bg-[#E4F1F6]" />
+              <div className="aspect-video overflow-hidden bg-[#E4F1F6]">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={item.image}
+                  alt={item.title}
+                  className="h-full w-full object-cover transition-transform duration-400 group-hover:scale-[1.07]"
+                />
+              </div>
               <div className="p-5">
                 <p className="font-[family-name:var(--font-dm-sans)] text-xs font-medium text-[#F0A500]">
                   {new Date(item.date).toLocaleDateString("es-CO", {

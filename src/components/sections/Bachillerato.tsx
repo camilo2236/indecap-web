@@ -49,18 +49,13 @@ export function Bachillerato() {
             </a>
           </div>
 
-          <div className="reveal flex items-center justify-center rounded-[20px] bg-[#312783]/10 p-14">
-            <div className="text-center">
-              <div className="font-[family-name:var(--font-playfair)] text-7xl font-black text-[#312783]">
-                11°
-              </div>
-              <p className="mt-3 font-[family-name:var(--font-playfair)] text-xl font-bold text-[#080F14]">
-                Completa tu bachillerato
-              </p>
-              <p className="mt-1 font-[family-name:var(--font-dm-sans)] text-sm text-[#6B7280]">
-                en ciclos acelerados
-              </p>
-            </div>
+          <div className="reveal overflow-hidden rounded-[20px]">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/images/bachillerato/bachillerato.png"
+              alt="Bachillerato Semi Escolarizado INDECAP"
+              className="h-full w-full object-cover"
+            />
           </div>
         </div>
       </div>

@@ -22,27 +22,29 @@ export function Programs() {
               href={program.whatsappUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="reveal group rounded-[16px] border border-[#E4F1F6] bg-white p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
+              className="reveal group overflow-hidden rounded-[16px] border border-[#E4F1F6] bg-white transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
             >
-              <div
-                className="mb-3 flex h-12 w-12 items-center justify-center rounded-[14px] text-2xl"
-                style={{
-                  background: `linear-gradient(135deg, ${program.colorDark}, ${program.color})`,
-                }}
-              >
-                <span className="drop-shadow-sm">{program.icon}</span>
+              <div className="relative aspect-[4/3] overflow-hidden bg-[#E4F1F6]">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={program.image}
+                  alt={program.name}
+                  className="h-full w-full object-cover transition-transform duration-400 group-hover:scale-[1.07]"
+                />
               </div>
-              <h3
-                className="font-[family-name:var(--font-playfair)] text-lg font-bold"
-                style={{ color: program.color }}
-              >
-                {program.name}
-              </h3>
-              <p className="mt-2 font-[family-name:var(--font-dm-sans)] text-sm font-light leading-relaxed text-[#374151]">
-                {program.description}
-              </p>
-              <div className="mt-3 font-[family-name:var(--font-dm-sans)] text-xs font-medium text-[#6B7280]">
-                {program.badge}
+              <div className="p-6">
+                <h3
+                  className="font-[family-name:var(--font-playfair)] text-lg font-bold"
+                  style={{ color: program.color }}
+                >
+                  {program.name}
+                </h3>
+                <p className="mt-2 font-[family-name:var(--font-dm-sans)] text-sm font-light leading-relaxed text-[#374151]">
+                  {program.description}
+                </p>
+                <div className="mt-3 font-[family-name:var(--font-dm-sans)] text-xs font-medium text-[#6B7280]">
+                  {program.badge}
+                </div>
               </div>
             </a>
           ))}

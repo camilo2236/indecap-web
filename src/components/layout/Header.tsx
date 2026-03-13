@@ -41,7 +41,7 @@ export function Header() {
         <a href="#inicio" className="flex items-center gap-2">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src="https://indecap.edu.co/wp-content/uploads/2019/12/LOGO-AI.png"
+            src="/images/logo.png"
             alt="INDECAP"
             className="h-11"
           />
