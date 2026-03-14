@@ -29,7 +29,7 @@ export function Hero() {
               </div>
               <div className="text-center">
                 <div className="font-[family-name:var(--font-playfair)] text-[2rem] font-bold text-[#080F14]">
-                  6
+                  3
                 </div>
                 <div className="font-[family-name:var(--font-dm-sans)] text-xs font-medium text-[#6B7280]">
                   Sedes
@@ -37,7 +37,7 @@ export function Hero() {
               </div>
               <div className="text-center">
                 <div className="font-[family-name:var(--font-playfair)] text-[2rem] font-bold text-[#080F14]">
-                  5
+                  7
                 </div>
                 <div className="font-[family-name:var(--font-dm-sans)] text-xs font-medium text-[#6B7280]">
                   Programas Técnicos
