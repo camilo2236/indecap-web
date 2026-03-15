@@ -1,4 +1,3 @@
-
 export interface ProgramPageProps {
   titulo: string;
   subtitulo: string;
@@ -35,23 +34,6 @@ export function ProgramPage({
 
   return (
     <main className="min-h-screen" style={{ fontFamily: "var(--font-dm-sans, sans-serif)" }}>
-
-      {/* NAV */}
-      <nav className="fixed top-0 left-0 right-0 z-[200] flex items-center justify-between px-6 py-3 lg:px-12"
-        style={{ background: "rgba(240,245,252,0.95)", backdropFilter: "blur(14px)", borderBottom: "1px solid rgba(26,92,168,0.1)" }}>
-        <a href="/">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/images/logo.png" alt="INDECAP" className="h-10" />
-        </a>
-        <a href="/#programas" className="text-sm font-medium text-gray-500 hover:text-gray-800">
-          ← Todos los programas
-        </a>
-        <a href={waUrl} target="_blank" rel="noopener noreferrer"
-          className="rounded-full px-5 py-2 text-sm font-semibold text-white transition-all hover:opacity-90"
-          style={{ backgroundColor: accent }}>
-          💬 Inscribirme ahora
-        </a>
-      </nav>
 
       {/* HERO */}
       <div className="grid min-h-screen pt-16 lg:grid-cols-[55%_45%]">
@@ -241,38 +223,6 @@ export function ProgramPage({
         </div>
       </section>
 
-      {/* FOOTER */}
-      <footer className="px-10 py-14 lg:px-20" style={{ background: "#0D1B2A", color: "rgba(255,255,255,0.55)" }}>
-        <div className="grid gap-10 lg:grid-cols-3">
-          <div>
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/images/logo.png" alt="INDECAP" className="mb-4 h-10 brightness-0 invert" />
-            <p className="text-sm leading-relaxed" style={{ maxWidth: 280 }}>
-              Instituto de Ciencias Aplicadas. Más de 15 años formando técnicos con vocación y excelencia en Antioquia.
-            </p>
-          </div>
-          <div>
-            <div className="mb-4 text-xs font-bold uppercase tracking-widest text-white">Programas</div>
-            <div className="flex flex-col gap-2 text-sm">
-              {["Auxiliar en Enfermería","Cosmetología y Estética","Servicios Farmacéuticos","Auxiliar en Veterinaria","Salud Oral","Peluquería Canina","Excel + IA"].map((p) => (
-                <a key={p} href="/#programas" className="transition-colors hover:text-yellow-400">{p}</a>
-              ))}
-            </div>
-          </div>
-          <div>
-            <div className="mb-4 text-xs font-bold uppercase tracking-widest text-white">Contacto</div>
-            <div className="flex flex-col gap-2 text-sm">
-              <span>📧 indecap@indecap.edu.co</span>
-              <span>📞 (604) 448 4794</span>
-              <span>💬 +57 302 238 9760</span>
-              <span>📍 Medellín · Envigado · Caldas</span>
-            </div>
-          </div>
-        </div>
-        <div className="mt-10 border-t border-white/10 pt-6 text-center text-xs">
-          © 2026 Corporación Educativa INDECAP — Instituto de Ciencias Aplicadas ®
-        </div>
-      </footer>
     </main>
   );
 }
