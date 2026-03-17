@@ -21,7 +21,7 @@ export function Hero() {
             <div className="mt-8 flex flex-wrap gap-6">
               <div className="text-center">
                 <div className="font-[family-name:var(--font-playfair)] text-[2rem] font-bold text-[#080F14]">
-                  5.000+
+                  30.000+
                 </div>
                 <div className="font-[family-name:var(--font-dm-sans)] text-xs font-medium text-[#6B7280]">
                   Egresados
@@ -37,7 +37,7 @@ export function Hero() {
               </div>
               <div className="text-center">
                 <div className="font-[family-name:var(--font-playfair)] text-[2rem] font-bold text-[#080F14]">
-                  7
+                  14
                 </div>
                 <div className="font-[family-name:var(--font-dm-sans)] text-xs font-medium text-[#6B7280]">
                   Programas Técnicos
