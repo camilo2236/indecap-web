@@ -14,10 +14,9 @@ import {
 const navLinks = [
   { label: "Inicio", href: "/#inicio" },
   { label: "Programas", href: "/#programas" },
-  { label: "Bachillerato", href: "/#bachillerato" },
-  { label: "Cursos", href: "/#cursos" },
-  { label: "Noticias", href: "/#noticias" },
+  { label: "Educación Continua", href: "/#cursos" },
   { label: "Nosotros", href: "/#nosotros" },
+  { label: "Bachillerato", href: "/#bachillerato" },
 ];
 
 export function Header() {
