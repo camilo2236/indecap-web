@@ -1,21 +1,10 @@
-import { GraduationCap, Users, Award } from "lucide-react";
+import { GraduationCap, MapPin, Award, CalendarDays } from "lucide-react";
 
 const stats = [
-  {
-    icon: GraduationCap,
-    value: "5.000+",
-    label: "Egresados",
-  },
-  {
-    icon: Users,
-    value: "6",
-    label: "Sedes",
-  },
-  {
-    icon: Award,
-    value: "5",
-    label: "Programas Técnicos",
-  },
+  { icon: GraduationCap, value: "25.000+", label: "Egresados" },
+  { icon: CalendarDays, value: "40", label: "Años de experiencia" },
+  { icon: MapPin, value: "6", label: "Sedes en Antioquia" },
+  { icon: Award, value: "16", label: "Programas técnicos" },
 ];
 
 export function About() {
@@ -28,35 +17,49 @@ export function About() {
       }}
     >
       <div className="container mx-auto px-6 lg:px-12">
-        <div className="reveal mx-auto max-w-3xl text-center">
-          <div className="mb-3 font-[family-name:var(--font-dm-sans)] text-[0.73rem] font-bold uppercase tracking-widest text-[#FFD166]">
-            Sobre Nosotros
-          </div>
-          <h2 className="font-[family-name:var(--font-playfair)] text-[clamp(1.8rem,2.6vw,2.5rem)] font-bold !text-white">
-            Una institución para ti
-          </h2>
-          <p className="mt-5 font-[family-name:var(--font-dm-sans)] text-base font-light leading-relaxed text-white/75">
-            Corporación Educativa INDECAP — Instituto de Ciencias Aplicadas ® es
-            una institución de educación para el trabajo y el desarrollo humano,
-            comprometida con la formación integral de técnicos laborales
-            competentes, éticos y con vocación de servicio. Nuestra misión es
-            transformar vidas a través de la educación accesible y de calidad en
-            Antioquia.
-          </p>
-        </div>
-
-        <div className="reveal mx-auto mt-14 grid max-w-3xl grid-cols-3 gap-8">
-          {stats.map((stat) => (
-            <div key={stat.label} className="text-center">
-              <stat.icon className="mx-auto h-8 w-8 text-white/60" />
-              <div className="mt-3 font-[family-name:var(--font-playfair)] text-[2.2rem] font-bold text-[#FFD166]">
-                {stat.value}
-              </div>
-              <div className="font-[family-name:var(--font-dm-sans)] text-sm font-medium text-white/60">
-                {stat.label}
-              </div>
+        <div className="grid items-center gap-16 lg:grid-cols-2">
+          <div className="reveal">
+            <div className="mb-3 font-[family-name:var(--font-dm-sans)] text-[0.73rem] font-bold uppercase tracking-widest text-[#FFD166]">
+              Sobre Nosotros
             </div>
-          ))}
+            <h2 className="font-[family-name:var(--font-playfair)] text-[clamp(1.8rem,2.6vw,2.5rem)] font-bold !text-white">
+              Una institución que transforma vidas desde 1986
+            </h2>
+            <p className="mt-5 font-[family-name:var(--font-dm-sans)] text-base font-light leading-relaxed text-white/70">
+              Corporación Educativa INDECAP — Instituto de Ciencias Aplicadas es
+              una institución de educación para el trabajo y el desarrollo humano,
+              comprometida con la formación integral de técnicos laborales
+              competentes, éticos y con vocación de servicio.
+            </p>
+            <p className="mt-4 font-[family-name:var(--font-dm-sans)] text-base font-light leading-relaxed text-white/70">
+              Nuestra misión es transformar vidas a través de la educación accesible
+              y de calidad en Antioquia. Contamos con sedes en Medellín, Envigado,
+              Caldas, Segovia, Amalfi y Betulia.
+            </p>
+            <div className="mt-6 rounded-[12px] border-l-[3px] border-[#F0A500] bg-white/5 px-5 py-4">
+              <p className="font-[family-name:var(--font-dm-sans)] text-sm italic text-white/80">
+                &ldquo;Calidad Educativa Certificada — Formación real, no simulación.
+                Cuando llegues al trabajo, ya sabes.&rdquo;
+              </p>
+            </div>
+          </div>
+
+          <div className="reveal grid grid-cols-2 gap-4">
+            {stats.map((stat) => (
+              <div
+                key={stat.label}
+                className="rounded-[16px] border border-white/8 bg-white/5 p-7 text-center transition-all duration-300 hover:bg-white/8"
+              >
+                <stat.icon className="mx-auto h-7 w-7 text-white/50" />
+                <div className="mt-3 font-[family-name:var(--font-playfair)] text-[2.2rem] font-bold leading-none text-[#FFD166]">
+                  {stat.value}
+                </div>
+                <div className="mt-2 font-[family-name:var(--font-dm-sans)] text-xs font-medium text-white/50">
+                  {stat.label}
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>

@@ -25,7 +25,8 @@ export function Bachillerato() {
             <p className="mt-4 font-[family-name:var(--font-dm-sans)] font-light leading-relaxed text-[#374151]">
               Termina tu bachillerato con horarios flexibles diseñados para
               adultos que trabajan. Obtén tu título de Bachiller Académico
-              avalado por el Ministerio de Educación Nacional.
+              avalado por el Ministerio de Educación Nacional. Disponible
+              en nuestra Sede Caldas.
             </p>
             <ul className="mt-6 space-y-3">
               {features.map((feature) => (
@@ -37,12 +38,17 @@ export function Bachillerato() {
                 </li>
               ))}
             </ul>
+            <div className="mt-3 inline-flex items-center gap-2 rounded-full bg-[#F0A500]/10 px-4 py-2 font-[family-name:var(--font-dm-sans)] text-xs font-semibold text-[#92400E]">
+              &#x1F4CD; Disponible en Sede Caldas — Calle 130 sur # 51-65
+            </div>
             <a
-              href="#inicio"
+              href="https://api.whatsapp.com/send?phone=+573022389760&text=Hola%20INDECAP%20estoy%20interesado%20en%20el%20Bachillerato%20Semi%20Escolarizado%2C%20mi%20nombre%20es%20"
+              target="_blank"
+              rel="noopener noreferrer"
               className={buttonVariants({
                 size: "lg",
                 className:
-                  "mt-8 rounded-full bg-[#312783] px-8 py-3 font-[family-name:var(--font-dm-sans)] font-semibold text-white hover:bg-[#312783]/90",
+                  "mt-6 rounded-full bg-[#312783] px-8 py-3 font-[family-name:var(--font-dm-sans)] font-semibold text-white hover:bg-[#312783]/90",
               })}
             >
               Más información

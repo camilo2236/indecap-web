@@ -20,15 +20,31 @@ const dmSans = DM_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "INDECAP — Instituto de Ciencias Aplicadas",
+  title: {
+    default: "INDECAP — Instituto de Ciencias Aplicadas | 40 Años Formando Antioquia",
+    template: "%s | INDECAP — Instituto de Ciencias Aplicadas",
+  },
   description:
-    "Formación técnica laboral avalada por la Secretaría de Educación. Programas en enfermería, cosmetología, veterinaria, farmacéuticos y salud oral. Sedes en Medellín, Envigado y Caldas.",
+    "Corporación Educativa INDECAP — 40 años formando técnicos laborales en Antioquia. 25.000+ egresados. Programas en enfermería, cosmetología, veterinaria, farmacia, salud oral y más. Sedes en Medellín, Envigado, Caldas, Segovia, Amalfi y Betulia.",
+  keywords: [
+    "INDECAP", "técnico laboral Medellín", "auxiliar enfermería Medellín",
+    "cosmetología Medellín", "veterinaria Medellín", "farmacia Medellín",
+    "salud oral Medellín", "educación técnica Antioquia", "programas técnicos Envigado",
+    "programas técnicos Caldas", "bachillerato adultos Medellín",
+    "cursos enfermería", "instituto ciencias aplicadas",
+  ],
+  authors: [{ name: "Corporación Educativa INDECAP" }],
   openGraph: {
-    title: "INDECAP — Instituto de Ciencias Aplicadas",
+    title: "INDECAP — 40 Años Formando el Talento de Antioquia",
     description:
-      "Certifícate como Técnico Laboral en INDECAP. Formación real desde el primer día. Sedes en Medellín, Envigado y Caldas.",
+      "25.000+ egresados. 16 programas técnicos laborales avalados por la Secretaría de Educación. Sedes en Medellín, Envigado y Caldas.",
     locale: "es_CO",
     type: "website",
+    siteName: "INDECAP — Instituto de Ciencias Aplicadas",
+  },
+  robots: {
+    index: true,
+    follow: true,
   },
 };
 

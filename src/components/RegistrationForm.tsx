@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
@@ -35,19 +36,78 @@ interface RegistrationFormProps {
 }
 
 export function RegistrationForm({ className }: RegistrationFormProps) {
+  const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
+
   const {
     register,
     handleSubmit,
     setValue,
+    reset,
     formState: { errors },
   } = useForm<RegistrationData>({
     resolver: zodResolver(registrationSchema),
   });
 
-  function onSubmit(data: RegistrationData) {
-    console.log("Formulario enviado:", data);
-    alert(
-      "¡Gracias por tu inscripción! Nos pondremos en contacto contigo pronto."
+  async function onSubmit(data: RegistrationData) {
+    setStatus("sending");
+
+    // Encontrar nombres legibles
+    const programName = programs.find(p => p.id === data.programa)?.name || data.programa;
+    const sedeName = locations.find(l => l.id === data.sede)?.name || data.sede;
+
+    try {
+      // Enviar a Google Sheets via Apps Script
+      // NOTA: Necesitas crear el Apps Script y reemplazar esta URL
+      const GOOGLE_SCRIPT_URL = process.env.NEXT_PUBLIC_GOOGLE_SCRIPT_URL || "";
+
+      if (GOOGLE_SCRIPT_URL) {
+        await fetch(GOOGLE_SCRIPT_URL, {
+          method: "POST",
+          mode: "no-cors",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            nombre: data.nombre,
+            apellido: data.apellido,
+            email: data.email,
+            telefono: data.telefono,
+            programa: programName,
+            sede: sedeName,
+            fecha: new Date().toISOString(),
+            fuente: "Página Web INDECAP",
+          }),
+        });
+      }
+
+      // También abrir WhatsApp con los datos
+      const waText = encodeURIComponent(
+        `Hola INDECAP, me inscribí por la página web.\n` +
+        `Nombre: ${data.nombre} ${data.apellido}\n` +
+        `Programa: ${programName}\n` +
+        `Sede: ${sedeName}\n` +
+        `Tel: ${data.telefono}`
+      );
+      window.open(`https://api.whatsapp.com/send?phone=573022389760&text=${waText}`, "_blank");
+
+      setStatus("success");
+      reset();
+      setTimeout(() => setStatus("idle"), 5000);
+    } catch {
+      setStatus("error");
+      setTimeout(() => setStatus("idle"), 4000);
+    }
+  }
+
+  if (status === "success") {
+    return (
+      <div className="py-8 text-center">
+        <div className="text-4xl">&#x2705;</div>
+        <p className="mt-3 font-[family-name:var(--font-playfair)] text-lg font-bold text-[#080F14]">
+          ¡Inscripción recibida!
+        </p>
+        <p className="mt-2 font-[family-name:var(--font-dm-sans)] text-sm text-[#6B7280]">
+          Te contactaremos en minutos por WhatsApp.
+        </p>
+      </div>
     );
   }
 
@@ -182,10 +242,19 @@ export function RegistrationForm({ className }: RegistrationFormProps) {
       <Button
         type="submit"
         size="lg"
-        className="mt-6 w-full rounded-full bg-[#F0A500] px-8 py-3 font-[family-name:var(--font-dm-sans)] text-base font-bold text-[#080F14] hover:bg-[#F0A500]/90"
+        disabled={status === "sending"}
+        className="mt-6 w-full rounded-full bg-[#F0A500] px-8 py-3 font-[family-name:var(--font-dm-sans)] text-base font-bold text-[#080F14] hover:bg-[#F0A500]/90 disabled:opacity-60"
       >
-        Inscribirme ahora
+        {status === "sending" ? "Enviando..." : "Inscribirme ahora"}
       </Button>
+      {status === "error" && (
+        <p className="mt-2 text-center text-xs text-red-600">
+          Hubo un error. Intenta de nuevo o escríbenos por WhatsApp.
+        </p>
+      )}
+      <p className="mt-3 text-center font-[family-name:var(--font-dm-sans)] text-[0.7rem] text-[#6B7280]">
+        &#x1F6E1;&#xFE0F; Tus datos están protegidos. Respondemos en menos de 30 minutos.
+      </p>
     </form>
   );
 }
