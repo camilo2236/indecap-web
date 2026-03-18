@@ -17,7 +17,7 @@ export default function SaludOralPage() {
       horas="1.540"
       semestres="2"
       sedesNum="3"
-      fotoSrc="/images/programs/salud-oral.png"
+      fotoSrc="/images/programs/salud-oral/salud-oral-hero.jpg"
       fotoAlt="Estudiante de Salud Oral INDECAP"
       descripcion="Forma parte del equipo de salud que transforma sonrisas. Aprende higiene oral, prevención de enfermedades bucodentales y asistencia odontológica con práctica clínica real."
       capacidades={[

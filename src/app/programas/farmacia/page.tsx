@@ -17,7 +17,7 @@ export default function FarmaciaPage() {
       horas="1.540"
       semestres="2"
       sedesNum="3"
-      fotoSrc="/images/programs/farmaceuticos.png"
+      fotoSrc="/images/programs/farmacia/farmacia-hero.jpg"
       fotoAlt="Estudiantes de Farmacia INDECAP en práctica"
       descripcion="Conviértete en el profesional que garantiza el uso correcto y seguro de los medicamentos. Aprende dispensación, almacenamiento y buenas prácticas farmacéuticas con práctica real."
       capacidades={[
