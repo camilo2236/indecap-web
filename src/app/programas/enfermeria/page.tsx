@@ -17,7 +17,7 @@ export default function EnfermeriaPage() {
       horas="1.650"
       semestres="2"
       sedesNum="3"
-      fotoSrc="/images/programs/enfermeria-hero.png"
+      fotoSrc="/images/programs/enfermeria/enfermeria-hero.jpg"
       fotoAlt="Estudiante de Enfermería INDECAP"
       descripcion="Transforma tu vocación de servicio en una carrera sólida en el sector salud. Aprende cuidado de pacientes, procedimientos clínicos y trabajo en equipo hospitalario — con práctica real desde el primer semestre."
       capacidades={[

@@ -17,7 +17,7 @@ export default function CosmetologiaPage() {
       horas="1.190"
       semestres="2"
       sedesNum="2"
-      fotoSrc="/images/programs/cosmetologia.png"
+      fotoSrc="/images/programs/cosmetologia/cosmetologia-hero.jpg"
       fotoAlt="Estudiante de Cosmetología INDECAP aplicando tratamiento facial"
       descripcion="Transforma tu pasión por la belleza en una carrera profesional sólida. Aprende tratamientos faciales, corporales, maquillaje, SPA y más — con aparatología real y práctica desde el primer día."
       capacidades={[

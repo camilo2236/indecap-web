@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Menu, MessageCircle } from "lucide-react";
+import { Menu, MessageCircle, ChevronLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { buttonVariants } from "@/components/ui/button";
 import {
@@ -12,21 +12,23 @@ import {
 } from "@/components/ui/sheet";
 
 const navLinks = [
-  { label: "Inicio", href: "#inicio" },
-  { label: "Programas", href: "#programas" },
-  { label: "Bachillerato", href: "#bachillerato" },
-  { label: "Cursos", href: "#cursos" },
-  { label: "Noticias", href: "#noticias" },
-  { label: "Nosotros", href: "#nosotros" },
+  { label: "Inicio", href: "/#inicio" },
+  { label: "Programas", href: "/#programas" },
+  { label: "Bachillerato", href: "/#bachillerato" },
+  { label: "Cursos", href: "/#cursos" },
+  { label: "Noticias", href: "/#noticias" },
+  { label: "Nosotros", href: "/#nosotros" },
 ];
 
 export function Header() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [isProgram, setIsProgram] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 10);
     window.addEventListener("scroll", handleScroll);
+    setIsProgram(window.location.pathname.startsWith("/programas/"));
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
@@ -38,14 +40,25 @@ export function Header() {
       style={{ background: "rgba(243,248,250,0.95)" }}
     >
       <div className="container mx-auto flex h-16 items-center justify-between px-6 lg:px-12">
-        <a href="#inicio" className="flex items-center gap-2">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src="/images/logo.png"
-            alt="INDECAP"
-            className="h-11"
-          />
-        </a>
+        <div className="flex items-center gap-4">
+          {isProgram && (
+            <a
+              href="/#programas"
+              className="flex items-center gap-1 rounded-full border border-[#E4F1F6] bg-white px-3 py-1.5 font-[family-name:var(--font-dm-sans)] text-xs font-semibold text-[#374151] transition-all hover:border-[#312783] hover:text-[#312783]"
+            >
+              <ChevronLeft className="h-3.5 w-3.5" />
+              Programas
+            </a>
+          )}
+          <a href="/" className="flex items-center gap-2">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/images/logo.png"
+              alt="INDECAP"
+              className="h-11"
+            />
+          </a>
+        </div>
 
         <nav className="hidden items-center gap-6 lg:flex">
           {navLinks.map((link) => (
@@ -82,6 +95,16 @@ export function Header() {
           <SheetContent side="right">
             <SheetTitle className="sr-only">Menú de navegación</SheetTitle>
             <nav className="mt-8 flex flex-col gap-4">
+              {isProgram && (
+                <a
+                  href="/#programas"
+                  onClick={() => setOpen(false)}
+                  className="flex items-center gap-2 font-[family-name:var(--font-dm-sans)] text-lg font-bold text-[#312783]"
+                >
+                  <ChevronLeft className="h-5 w-5" />
+                  Ver todos los programas
+                </a>
+              )}
               {navLinks.map((link) => (
                 <a
                   key={link.href}

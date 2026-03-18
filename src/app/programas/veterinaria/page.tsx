@@ -17,7 +17,7 @@ export default function VeterinariaPage() {
       horas="1.650"
       semestres="2"
       sedesNum="3"
-      fotoSrc="/images/programs/veterinaria.png"
+      fotoSrc="/images/programs/veterinaria/veterinaria-hero.jpg"
       fotoAlt="Estudiante de Veterinaria INDECAP"
       descripcion="Conviértete en el profesional que cuida y protege la vida animal. Aprende asistencia clínica, manejo de animales, apoyo en cirugías y administración de medicamentos con práctica real."
       capacidades={[
