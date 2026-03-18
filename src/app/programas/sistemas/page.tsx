@@ -8,7 +8,7 @@ export default function Page() {
       emWord="Sistemas"
       accent="#312783" accentDark="#1a1650"
       escuela="Escuela de Sistemas" horas="700" semestres="1" sedesNum="3"
-      fotoSrc="/images/programs/enfermeria-hero.png" fotoAlt="Auxiliar en Sistemas INDECAP"
+      fotoSrc="/images/programs/sistemas/sala-medellin-clase.jpg" fotoAlt="Auxiliar en Sistemas INDECAP"
       descripcion="Domina las tecnologías que mueven el mundo digital. Soporte técnico, mantenimiento de equipos, redes básicas y herramientas de productividad digital para el mercado laboral actual."
       capacidades={["Instalar, configurar y dar mantenimiento a equipos de cómputo","Brindar soporte técnico de primer nivel a usuarios","Administrar redes locales básicas y conectividad a internet","Manejar herramientas de ofimática avanzada: Excel, Word, PowerPoint","Configurar sistemas operativos Windows y software empresarial","Apoyar en la gestión de bases de datos básicas"]}
       salidas={[{icon:"💻",name:"Soporte Técnico"},{icon:"🏢",name:"Empresas de Tecnología"},{icon:"🏛️",name:"Entidades Públicas"},{icon:"🏥",name:"Sector Salud"},{icon:"🔧",name:"Mantenimiento de Equipos"},{icon:"🚀",name:"Trabajo Independiente"}]}

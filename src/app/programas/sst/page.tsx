@@ -8,7 +8,7 @@ export default function Page() {
       emWord="Salud en el Trabajo"
       accent="#8A6A1A" accentDark="#5C4510"
       escuela="Escuela de Seguridad" horas="1.000" semestres="2" sedesNum="2"
-      fotoSrc="/images/programs/enfermeria.png" fotoAlt="SST INDECAP"
+      fotoSrc="/images/programs/sst.jpg" fotoAlt="SST INDECAP"
       descripcion="Protege la vida y la salud de los trabajadores. Aprende a identificar riesgos, prevenir accidentes y gestionar el Sistema de Gestión de SST en empresas de todos los sectores."
       capacidades={["Identificar peligros y evaluar riesgos en ambientes laborales","Diseñar e implementar programas de prevención de accidentes","Gestionar el COPASST y los comités paritarios de seguridad","Investigar accidentes de trabajo e incidentes laborales","Aplicar la normatividad colombiana en SST: Decreto 1072 y resoluciones","Realizar inspecciones de seguridad y auditorías internas de SST"]}
       salidas={[{icon:"🏭",name:"Industria y Manufactura"},{icon:"🏗️",name:"Construcción"},{icon:"🏢",name:"Empresas de Servicios"},{icon:"🏥",name:"Sector Salud"},{icon:"🏛️",name:"Entidades Públicas"},{icon:"🚀",name:"Consultoría en SST"}]}
