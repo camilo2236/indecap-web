@@ -8,7 +8,7 @@ export default function Page() {
       emWord="Contable"
       accent="#2A6B3A" accentDark="#1A4A28"
       escuela="Escuela de Administración" horas="1.000" semestres="2" sedesNum="3"
-      fotoSrc="/images/programs/enfermeria.png" fotoAlt="Auxiliar Contable INDECAP"
+      fotoSrc="/images/programs/contable.jpg" fotoAlt="Auxiliar Contable INDECAP"
       descripcion="Domina los números que mueven las empresas. Aprende registros contables, declaraciones tributarias, manejo de software contable y gestión financiera con aplicación real desde el primer semestre."
       capacidades={["Realizar registros contables en libros diario, mayor y balances","Liquidar impuestos básicos: IVA, retenciones, ICA","Manejar software contable como Siigo, World Office o Contapyme","Elaborar estados financieros básicos y conciliaciones bancarias","Apoyar en auditorías internas y revisión de cuentas","Gestionar cartera, cuentas por pagar y por cobrar"]}
       salidas={[{icon:"🏢",name:"Empresas Privadas"},{icon:"🏛️",name:"Entidades Públicas"},{icon:"💼",name:"Firmas de Contabilidad"},{icon:"🏥",name:"Sector Salud"},{icon:"📊",name:"Análisis Financiero"},{icon:"🚀",name:"Negocio Propio"}]}

@@ -8,7 +8,7 @@ export default function Page() {
       emWord="Talento Humano"
       accent="#6B4A1A" accentDark="#4A3210"
       escuela="Escuela de Administración" horas="1.000" semestres="2" sedesNum="3"
-      fotoSrc="/images/programs/enfermeria.png" fotoAlt="Talento Humano INDECAP"
+      fotoSrc="/images/programs/talento-humano.jpg" fotoAlt="Talento Humano INDECAP"
       descripcion="Gestiona el activo más valioso de cualquier empresa: su gente. Aprende selección de personal, nómina, bienestar laboral y desarrollo organizacional con enfoque práctico y actual."
       capacidades={["Apoyar procesos de selección, contratación e inducción de personal","Liquidar nómina, prestaciones sociales y seguridad social","Gestionar procesos de bienestar, capacitación y clima organizacional","Mantener actualizadas las hojas de vida y carpetas de empleados","Aplicar la normatividad laboral colombiana vigente","Usar software de gestión de recursos humanos"]}
       salidas={[{icon:"🏢",name:"Empresas de todos los sectores"},{icon:"🏥",name:"Sector Salud"},{icon:"🏛️",name:"Entidades Públicas"},{icon:"📋",name:"Temporales de Personal"},{icon:"💼",name:"Consultoría de RRHH"},{icon:"🚀",name:"Emprendimiento"}]}

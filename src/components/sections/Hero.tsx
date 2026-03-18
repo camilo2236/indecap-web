@@ -1,26 +1,91 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { MessageCircle, Phone, CheckCircle, ChevronDown } from "lucide-react";
 
+const CAROUSEL_SLIDES = [
+  {
+    src: "/images/hero/hero-banner.jpg",
+    alt: "Estudiantes INDECAP en práctica hospitalaria",
+    label: "Escuela de Salud",
+  },
+  {
+    src: "/images/hero/feature-1.png",
+    alt: "Formación técnica laboral INDECAP",
+    label: "40 años de experiencia",
+  },
+  {
+    src: "/images/hero/feature-2.png",
+    alt: "Egresados INDECAP trabajando",
+    label: "25.000+ egresados",
+  },
+  {
+    src: "/images/hero/feature-3.png",
+    alt: "Prácticas reales en INDECAP",
+    label: "Prácticas reales desde el día 1",
+  },
+  {
+    src: "/images/hero/feature-4.png",
+    alt: "Sedes INDECAP en Antioquia",
+    label: "6 sedes en Antioquia",
+  },
+];
+
+const INTERVAL_MS = 4500;
+
 export function Hero() {
-  const [showForm, setShowForm] = useState(false);
+  const [current, setCurrent] = useState(0);
+  const [isTransitioning, setIsTransitioning] = useState(false);
+
+  const goTo = useCallback(
+    (index: number) => {
+      if (isTransitioning || index === current) return;
+      setIsTransitioning(true);
+      setTimeout(() => {
+        setCurrent(index);
+        setIsTransitioning(false);
+      }, 600);
+    },
+    [current, isTransitioning]
+  );
+
+  const next = useCallback(() => {
+    goTo((current + 1) % CAROUSEL_SLIDES.length);
+  }, [current, goTo]);
+
+  useEffect(() => {
+    const timer = setInterval(next, INTERVAL_MS);
+    return () => clearInterval(timer);
+  }, [next]);
 
   return (
     <>
-      {/* HERO PRINCIPAL — Imagen + overlay */}
-      <section id="inicio" className="relative min-h-[92vh] flex items-center overflow-hidden">
-        {/* Imagen de fondo */}
+      {/* HERO PRINCIPAL */}
+      <section
+        id="inicio"
+        className="relative min-h-[92vh] flex items-center overflow-hidden"
+      >
+        {/* CARRUSEL DE IMÁGENES */}
         <div className="absolute inset-0">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src="/images/programs/enfermeria/enfermeria-hero.jpg"
-            alt="Estudiante de INDECAP"
-            className="h-full w-full object-cover object-top"
-          />
+          {CAROUSEL_SLIDES.map((slide, i) => (
+            <div
+              key={slide.src}
+              className="absolute inset-0 transition-opacity duration-700 ease-in-out"
+              style={{ opacity: i === current ? 1 : 0 }}
+              aria-hidden={i !== current}
+            >
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={slide.src}
+                alt={slide.alt}
+                className="h-full w-full object-cover object-top"
+              />
+            </div>
+          ))}
+
           {/* Overlay gradiente */}
           <div
-            className="absolute inset-0"
+            className="absolute inset-0 z-10"
             style={{
               background:
                 "linear-gradient(135deg, rgba(17,22,39,0.92) 0%, rgba(49,39,131,0.75) 50%, rgba(17,22,39,0.6) 100%)",
@@ -28,8 +93,8 @@ export function Hero() {
           />
         </div>
 
-        {/* Contenido */}
-        <div className="relative z-10 container mx-auto px-6 pt-28 pb-16 lg:px-12 lg:pt-32 lg:pb-24">
+        {/* CONTENIDO */}
+        <div className="relative z-20 container mx-auto px-6 pt-28 pb-16 lg:px-12 lg:pt-32 lg:pb-24">
           <div className="max-w-3xl">
             {/* Badge */}
             <div className="reveal inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/8 px-4 py-2 font-[family-name:var(--font-dm-sans)] text-[0.78rem] font-semibold text-white/90 backdrop-blur-sm">
@@ -95,7 +160,7 @@ export function Hero() {
             </div>
           </div>
 
-          {/* Stats flotantes — lado derecho en desktop */}
+          {/* Stats flotantes — desktop derecha */}
           <div className="reveal mt-12 lg:absolute lg:right-12 lg:bottom-24 lg:mt-0">
             <div
               className="inline-flex gap-8 rounded-[20px] px-8 py-6 sm:gap-10"
@@ -106,38 +171,39 @@ export function Hero() {
               }}
             >
               <div className="text-center">
-                <div className="font-[family-name:var(--font-playfair)] text-[2rem] font-bold leading-none text-[#FFD166]">
-                  25.000+
-                </div>
-                <div className="mt-1 font-[family-name:var(--font-dm-sans)] text-[0.7rem] font-medium text-white/50">
-                  Egresados
-                </div>
+                <div className="font-[family-name:var(--font-playfair)] text-[2rem] font-bold leading-none text-[#FFD166]">25.000+</div>
+                <div className="mt-1 font-[family-name:var(--font-dm-sans)] text-[0.7rem] font-medium text-white/50">Egresados</div>
               </div>
               <div className="text-center">
-                <div className="font-[family-name:var(--font-playfair)] text-[2rem] font-bold leading-none text-white">
-                  40
-                </div>
-                <div className="mt-1 font-[family-name:var(--font-dm-sans)] text-[0.7rem] font-medium text-white/50">
-                  Años
-                </div>
+                <div className="font-[family-name:var(--font-playfair)] text-[2rem] font-bold leading-none text-white">40</div>
+                <div className="mt-1 font-[family-name:var(--font-dm-sans)] text-[0.7rem] font-medium text-white/50">Años</div>
               </div>
               <div className="text-center">
-                <div className="font-[family-name:var(--font-playfair)] text-[2rem] font-bold leading-none text-white">
-                  16
-                </div>
-                <div className="mt-1 font-[family-name:var(--font-dm-sans)] text-[0.7rem] font-medium text-white/50">
-                  Programas
-                </div>
+                <div className="font-[family-name:var(--font-playfair)] text-[2rem] font-bold leading-none text-white">16</div>
+                <div className="mt-1 font-[family-name:var(--font-dm-sans)] text-[0.7rem] font-medium text-white/50">Programas</div>
               </div>
               <div className="text-center">
-                <div className="font-[family-name:var(--font-playfair)] text-[2rem] font-bold leading-none text-white">
-                  6
-                </div>
-                <div className="mt-1 font-[family-name:var(--font-dm-sans)] text-[0.7rem] font-medium text-white/50">
-                  Sedes
-                </div>
+                <div className="font-[family-name:var(--font-playfair)] text-[2rem] font-bold leading-none text-white">6</div>
+                <div className="mt-1 font-[family-name:var(--font-dm-sans)] text-[0.7rem] font-medium text-white/50">Sedes</div>
               </div>
             </div>
+          </div>
+
+          {/* INDICADORES DEL CARRUSEL */}
+          <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-30 flex items-center gap-2">
+            {CAROUSEL_SLIDES.map((slide, i) => (
+              <button
+                key={i}
+                onClick={() => goTo(i)}
+                aria-label={`Ir a imagen ${i + 1}: ${slide.label}`}
+                className="transition-all duration-300 rounded-full focus:outline-none focus-visible:ring-2 focus-visible:ring-white/60"
+                style={{
+                  width: i === current ? "28px" : "8px",
+                  height: "8px",
+                  background: i === current ? "#F0A500" : "rgba(255,255,255,0.35)",
+                }}
+              />
+            ))}
           </div>
         </div>
       </section>

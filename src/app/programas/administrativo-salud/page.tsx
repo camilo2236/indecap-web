@@ -8,7 +8,7 @@ export default function Page() {
       emWord="en Salud"
       accent="#2A5C8A" accentDark="#1A3A5C"
       escuela="Escuela de Salud" horas="1.650" semestres="2" sedesNum="3"
-      fotoSrc="/images/programs/enfermeria.png" fotoAlt="Administrativo en Salud INDECAP"
+      fotoSrc="/images/programs/administrativo-salud/administrativo-hero.jpg" fotoAlt="Administrativo en Salud INDECAP"
       descripcion="Gestiona eficientemente los procesos administrativos del sector salud. Aprende facturación médica, atención al usuario, manejo de historias clínicas y normatividad del sistema de salud colombiano."
       capacidades={["Gestionar procesos de admisión, egreso y referencia de pacientes","Realizar facturación de servicios de salud y manejo de cuentas médicas","Atender y orientar a usuarios en entornos hospitalarios y clínicos","Manejar sistemas de información en salud y software especializado","Aplicar la normatividad del SGSSS en procesos administrativos","Apoyar la gestión documental y archivo de historias clínicas"]}
       salidas={[{icon:"🏥",name:"Hospitales y Clínicas"},{icon:"🏢",name:"EPS e IPS"},{icon:"💊",name:"Droguerías y Farmacias"},{icon:"📋",name:"Gestión Documental"},{icon:"💳",name:"Facturación en Salud"},{icon:"🚀",name:"Trabajo Independiente"}]}

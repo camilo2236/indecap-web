@@ -8,7 +8,7 @@ export default function Page() {
       emWord="Deportivo"
       accent="#1A6B2A" accentDark="#0F4A1C"
       escuela="Escuela de Deporte" horas="1.000" semestres="2" sedesNum="2"
-      fotoSrc="/images/programs/enfermeria.png" fotoAlt="Entrenamiento Deportivo INDECAP"
+      fotoSrc="/images/programs/enfermeria/enfermeria-estudiantes.jpg" fotoAlt="Entrenamiento Deportivo INDECAP"
       descripcion="Convierte tu pasión por el deporte en una carrera profesional. Aprende a diseñar entrenamientos, preparar físicamente a deportistas y gestionar grupos en gimnasios y centros deportivos."
       capacidades={["Planificar y periodizar entrenamientos para diferentes poblaciones","Evaluar capacidades físicas y diseñar programas personalizados","Aplicar principios de nutrición deportiva básica","Instruir técnicas correctas de ejercicio y prevenir lesiones","Gestionar grupos en gimnasios, clubes y centros deportivos","Trabajar con poblaciones especiales: adultos mayores, niños y rehabilitación"]}
       salidas={[{icon:"🏋️",name:"Gimnasios y Centros Fitness"},{icon:"⚽",name:"Clubes Deportivos"},{icon:"🏫",name:"Colegios e Instituciones"},{icon:"🏛️",name:"Cajas de Compensación"},{icon:"🏥",name:"Rehabilitación Física"},{icon:"🚀",name:"Entrenador Personal"}]}

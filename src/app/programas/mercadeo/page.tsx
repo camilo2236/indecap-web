@@ -8,7 +8,7 @@ export default function Page() {
       emWord="Mercadeo"
       accent="#8A2A6B" accentDark="#5C1A47"
       escuela="Escuela de Administración" horas="1.000" semestres="2" sedesNum="3"
-      fotoSrc="/images/programs/enfermeria.png" fotoAlt="Auxiliar en Mercadeo INDECAP"
+      fotoSrc="/images/programs/mercadeo.jpg" fotoAlt="Auxiliar en Mercadeo INDECAP"
       descripcion="Aprende a conectar productos con personas. Estrategias de ventas, marketing digital, atención al cliente y gestión comercial para empresas de todos los sectores y emprendimientos."
       capacidades={["Diseñar y ejecutar estrategias básicas de marketing y ventas","Gestionar redes sociales y marketing digital para empresas","Analizar el mercado y la competencia con herramientas prácticas","Aplicar técnicas de atención y fidelización de clientes","Apoyar en la elaboración de planes comerciales y presupuestos de ventas","Crear contenido básico para medios digitales y material POP"]}
       salidas={[{icon:"🏢",name:"Empresas Comerciales"},{icon:"📱",name:"Marketing Digital"},{icon:"🛒",name:"Retail y Comercio"},{icon:"📣",name:"Agencias de Publicidad"},{icon:"💼",name:"Ventas Corporativas"},{icon:"🚀",name:"Emprendimiento Digital"}]}

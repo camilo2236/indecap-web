@@ -8,7 +8,7 @@ export default function Page() {
       emWord="Adulto Mayor"
       accent="#5C3A8A" accentDark="#3D2460"
       escuela="Escuela de Salud" horas="700" semestres="1" sedesNum="1"
-      fotoSrc="/images/programs/enfermeria.png" fotoAlt="Atención al Adulto Mayor INDECAP"
+      fotoSrc="/images/programs/enfermeria/enfermeria-practica.jpg" fotoAlt="Atención al Adulto Mayor INDECAP"
       descripcion="Una carrera con vocación y propósito. Aprende a brindar atención integral, acompañamiento terapéutico y cuidado gerontológico a personas de la tercera edad con dignidad y calidad."
       capacidades={["Brindar cuidado integral y acompañamiento a personas mayores","Aplicar técnicas de estimulación cognitiva y activación física","Identificar y reportar cambios en el estado de salud del adulto mayor","Gestionar medicamentos y cuidados básicos de enfermería","Trabajar con familias en el cuidado domiciliario","Aplicar protocolos de atención en centros gerontológicos"]}
       salidas={[{icon:"🏠",name:"Cuidado Domiciliario"},{icon:"🏡",name:"Hogares Geriátricos"},{icon:"🏥",name:"Hospitales y Clínicas"},{icon:"👨‍👩‍👧",name:"Atención Familiar"},{icon:"🧠",name:"Centros de Estimulación"},{icon:"🚀",name:"Trabajo Independiente"}]}

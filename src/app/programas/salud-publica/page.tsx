@@ -8,7 +8,7 @@ export default function Page() {
       emWord="Salud Pública"
       accent="#1A4F6E" accentDark="#0F3450"
       escuela="Escuela de Salud" horas="1.650" semestres="2" sedesNum="2"
-      fotoSrc="/images/programs/enfermeria.png" fotoAlt="Salud Pública INDECAP"
+      fotoSrc="/images/programs/enfermeria/enfermeria-clase.jpg" fotoAlt="Salud Pública INDECAP"
       descripcion="Trabaja directamente con las comunidades en programas de promoción de la salud y prevención de enfermedades. Una carrera con alto impacto social y creciente demanda en el sector público y privado."
       capacidades={["Ejecutar programas de promoción y prevención en salud comunitaria","Realizar visitas domiciliarias y seguimiento a poblaciones vulnerables","Apoyar la vigilancia epidemiológica y reporte de eventos de salud pública","Participar en campañas de vacunación y jornadas de salud","Gestionar bases de datos de indicadores de salud poblacional","Trabajar articuladamente con alcaldías, ESE y secretarías de salud"]}
       salidas={[{icon:"🏛️",name:"Secretarías de Salud"},{icon:"🏥",name:"ESE Hospitales"},{icon:"🌍",name:"Programas Comunitarios"},{icon:"💉",name:"Campañas de Vacunación"},{icon:"📊",name:"Vigilancia Epidemiológica"},{icon:"🚀",name:"ONG y Fundaciones"}]}
