@@ -1,24 +1,69 @@
 import { ProgramPage } from "@/components/ProgramPage";
-export const metadata = { title: "Asistente en Talento Humano | INDECAP", description: "Técnico en Talento Humano en INDECAP. 1.000 horas. Medellín, Envigado, Caldas." };
-export default function Page() {
+
+export const metadata = {
+  title: "Asistente en Talento Humano | INDECAP – Medellín, Envigado, Caldas",
+  description: "Certifícate en Gestión de Talento Humano en INDECAP. Domina nómina, contratación, bienestar laboral y legislación con formación práctica.",
+};
+
+export default function TalentoHumanoPage() {
   return (
     <ProgramPage
-      titulo="Asistente en Talento Humano"
+      titulo="Técnico Laboral Asistente en Talento Humano"
       subtitulo="Asistente en"
       emWord="Talento Humano"
-      accent="#6B4A1A" accentDark="#4A3210"
-      escuela="Escuela de Administración" horas="1.000" semestres="2" sedesNum="3"
-      fotoSrc="/images/programs/talento-humano.jpg" fotoAlt="Talento Humano INDECAP"
-      descripcion="Gestiona el activo más valioso de cualquier empresa: su gente. Aprende selección de personal, nómina, bienestar laboral y desarrollo organizacional con enfoque práctico y actual."
-      capacidades={["Apoyar procesos de selección, contratación e inducción de personal","Liquidar nómina, prestaciones sociales y seguridad social","Gestionar procesos de bienestar, capacitación y clima organizacional","Mantener actualizadas las hojas de vida y carpetas de empleados","Aplicar la normatividad laboral colombiana vigente","Usar software de gestión de recursos humanos"]}
-      salidas={[{icon:"🏢",name:"Empresas de todos los sectores"},{icon:"🏥",name:"Sector Salud"},{icon:"🏛️",name:"Entidades Públicas"},{icon:"📋",name:"Temporales de Personal"},{icon:"💼",name:"Consultoría de RRHH"},{icon:"🚀",name:"Emprendimiento"}]}
-      pensum1={["Inducción Institucional","TICs","Ética Empresarial","Emprendimiento","Legislación Laboral","Selección y Contratación","Nómina y Seguridad Social","Bienestar Organizacional","Comunicación Empresarial","Excel Aplicado a RRHH"]}
-      pensum2={["Desarrollo Organizacional","Gestión del Desempeño","Práctica Formativa","Fortalecimiento de Competencias"]}
-      mercadoTexto="Toda empresa con más de 5 empleados necesita un asistente de talento humano. Es uno de los perfiles más transversales del mercado laboral colombiano con alta demanda en todos los sectores."
-      waNum="+573022389760" waText="Hola%20INDECAP%20estoy%20interesado%20en%20Talento%20Humano%2C%20mi%20nombre%20es%20"
-      sedes={[{icon:"🏙️",name:"Sede Medellín",address:"Cl. 56 # 45-26, Medellín",tag:"Tel: (604) 448 4794"},{icon:"🏘️",name:"Sede Envigado",address:"Cl 37 Sur #43A-84, Envigado",tag:"Tel: (604) 448 4794"},{icon:"🌿",name:"Sede Caldas",address:"Calle 130 sur # 51-65, Caldas",tag:"Tel: (604) 448 4794"}]}
-      ctaTitulo="Gestiona el talento que mueve las empresas"
-      ctaDesc="Cupos limitados. Inscríbete hoy y en menos de un año estarás listo para el mercado laboral."
+      accent="#6B4A1A" 
+      accentDark="#4A3210"
+      escuela="Escuela de Administración" 
+      horas="1.000" 
+      semestres="2" 
+      sedesNum="3"
+      fotoSrc="/images/programs/talento-humano/talento-humano-hero-ia.webp" // 🔥 Ruta para tu nueva foto con IA
+      fotoAlt="Estudiante de Talento Humano INDECAP gestionando procesos de selección"
+      descripcion="Conviértete en el puente entre las empresas y su activo más valioso: las personas. Aprende a liderar procesos de selección, liquidar nóminas complejas y crear entornos de bienestar organizacional con herramientas digitales de vanguardia."
+      capacidades={[
+        "Liderar procesos de reclutamiento, selección e inducción de personal",
+        "Liquidar nómina, prestaciones sociales y seguridad social bajo ley vigente",
+        "Diseñar programas de bienestar, capacitación y clima organizacional",
+        "Gestionar la contratación y el ciclo de vida del empleado en la empresa",
+        "Aplicar la legislación laboral colombiana y normas de SST",
+        "Dominar software de gestión humana y herramientas de productividad",
+      ]}
+      salidas={[
+        { icon: "🏢", name: "Departamentos de RR.HH." },
+        { icon: "💼", name: "Empresas de Reclutamiento" },
+        { icon: "📊", name: "Consultorías de Personal" },
+        { icon: "🏦", name: "Sector Público y Privado" },
+        { icon: "🤝", name: "Agencias de Empleo" },
+        { icon: "🚀", name: "Emprendimiento en Consultoría" },
+      ]}
+      // 🔥 Pensum Premium - Semestre 1: Fundamentos y Contratación
+      pensum1={[
+        "Introducción a la Gestión del Talento Humano",
+        "Legislación Laboral y Tipos de Contratación en Colombia",
+        "Estrategias de Reclutamiento y Selección de Personal",
+        "Procesos de Inducción, Entrenamiento y Capacitación",
+        "Comunicación Asertiva y Cultura Organizacional",
+        "Herramientas Digitales y Ofimática para RR.HH.",
+      ]}
+      // 🔥 Pensum Premium - Semestre 2: Nómina y Desarrollo
+      pensum2={[
+        "Nómina Electrónica, Seguridad Social y Prestaciones",
+        "Gestión del Desempeño y Evaluación por Competencias",
+        "Bienestar Laboral y Experiencia del Empleado (EX)",
+        "Salud y Seguridad en el Trabajo (SST) para Administrativos",
+        "Ética Empresarial y Relaciones Laborales",
+        "Práctica Formativa en Departamentos de Gestión Humana",
+      ]}
+      mercadoTexto="En la era de la transformación digital, las empresas compiten por el mejor talento. Un asistente que no solo sepa de leyes, sino que entienda el bienestar y la productividad, es uno de los perfiles más buscados y transversales en todos los sectores económicos de Antioquia."
+      waNum="573022389760"
+      waText="Hola INDECAP, estoy interesado en el programa de Talento Humano. Mi nombre es "
+      sedes={[
+        { icon: "🏙️", name: "Sede Medellín", address: "Cl. 56 # 45-26, Medellín", tag: "Tel: (604) 448 4794" },
+        { icon: "🏘️", name: "Sede Envigado", address: "Cl 37 Sur #43A-84, Envigado", tag: "Tel: (604) 448 4794" },
+        { icon: "🌿", name: "Sede Caldas", address: "Calle 130 sur # 51-65, Caldas", tag: "Tel: (604) 448 4794" },
+      ]}
+      ctaTitulo="Lidera el futuro del trabajo desde hoy"
+      ctaDesc="Las empresas buscan expertos en personas. Inscríbete ahora y prepárate para ser el profesional que impulsa el crecimiento organizacional."
     />
   );
 }

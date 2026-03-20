@@ -1,24 +1,69 @@
 import { ProgramPage } from "@/components/ProgramPage";
-export const metadata = { title: "Auxiliar en Mercadeo | INDECAP", description: "Técnico en Mercadeo en INDECAP. Medellín, Envigado, Caldas." };
-export default function Page() {
+
+export const metadata = {
+  title: "Auxiliar en Mercadeo y Ventas | INDECAP – Medellín, Envigado, Caldas",
+  description: "Certifícate en Mercadeo en INDECAP. Domina el marketing digital, estrategias de ventas, e-commerce y gestión comercial con enfoque práctico.",
+};
+
+export default function MercadeoPage() {
   return (
     <ProgramPage
-      titulo="Auxiliar en Mercadeo"
+      titulo="Técnico Laboral Auxiliar en Mercadeo"
       subtitulo="Auxiliar en"
       emWord="Mercadeo"
-      accent="#8A2A6B" accentDark="#5C1A47"
-      escuela="Escuela de Administración" horas="1.000" semestres="2" sedesNum="3"
-      fotoSrc="/images/programs/mercadeo.jpg" fotoAlt="Auxiliar en Mercadeo INDECAP"
-      descripcion="Aprende a conectar productos con personas. Estrategias de ventas, marketing digital, atención al cliente y gestión comercial para empresas de todos los sectores y emprendimientos."
-      capacidades={["Diseñar y ejecutar estrategias básicas de marketing y ventas","Gestionar redes sociales y marketing digital para empresas","Analizar el mercado y la competencia con herramientas prácticas","Aplicar técnicas de atención y fidelización de clientes","Apoyar en la elaboración de planes comerciales y presupuestos de ventas","Crear contenido básico para medios digitales y material POP"]}
-      salidas={[{icon:"🏢",name:"Empresas Comerciales"},{icon:"📱",name:"Marketing Digital"},{icon:"🛒",name:"Retail y Comercio"},{icon:"📣",name:"Agencias de Publicidad"},{icon:"💼",name:"Ventas Corporativas"},{icon:"🚀",name:"Emprendimiento Digital"}]}
-      pensum1={["Inducción Institucional","TICs","Ética Empresarial","Emprendimiento","Fundamentos de Mercadeo","Comportamiento del Consumidor","Ventas y Negociación","Marketing Digital","Atención al Cliente","Comunicación Comercial"]}
-      pensum2={["Investigación de Mercados","Estrategia Comercial","Gestión de Marca","Práctica Formativa","Fortalecimiento de Competencias"]}
-      mercadoTexto="En la era digital, todas las empresas necesitan profesionales que entiendan el mercado y sepan vender. El mercadeo es una de las carreras con mayor movilidad laboral y posibilidades de emprendimiento en Colombia."
-      waNum="+573022389760" waText="Hola%20INDECAP%20estoy%20interesado%20en%20Mercadeo%2C%20mi%20nombre%20es%20"
-      sedes={[{icon:"🏙️",name:"Sede Medellín",address:"Cl. 56 # 45-26, Medellín",tag:"Tel: (604) 448 4794"},{icon:"🏘️",name:"Sede Envigado",address:"Cl 37 Sur #43A-84, Envigado",tag:"Tel: (604) 448 4794"},{icon:"🌿",name:"Sede Caldas",address:"Calle 130 sur # 51-65, Caldas",tag:"Tel: (604) 448 4794"}]}
-      ctaTitulo="El mercado te espera con oportunidades reales"
-      ctaDesc="Cupos limitados. Inscríbete hoy y en menos de un año estarás creando estrategias que generan resultados."
+      accent="#8A2A6B" 
+      accentDark="#5C1A47"
+      escuela="Escuela de Administración" 
+      horas="1.000" 
+      semestres="2" 
+      sedesNum="3"
+      fotoSrc="/images/programs/mercadeo/mercadeo-hero-ia.webp" // 🔥 Ruta para tu nueva foto con IA
+      fotoAlt="Estudiante de Mercadeo INDECAP analizando métricas digitales"
+      descripcion="Aprende a conectar marcas con personas en la era de la transformación digital. Domina las estrategias de ventas, el marketing de contenidos, la pauta digital y la gestión comercial para impulsar empresas y emprendimientos hacia el éxito."
+      capacidades={[
+        "Diseñar y ejecutar embudos de venta y estrategias de marketing digital",
+        "Gestionar redes sociales corporativas y creación de contenido estratégico",
+        "Analizar el comportamiento del consumidor y tendencias del mercado real",
+        "Aplicar técnicas de neuroventas y negociación comercial de alto impacto",
+        "Liderar procesos de atención, servicio y fidelización de clientes (CRM)",
+        "Gestionar canales de E-commerce y plataformas de venta en línea",
+      ]}
+      salidas={[
+        { icon: "📱", name: "Agencias de Marketing Digital" },
+        { icon: "🛒", name: "Empresas de Retail y Consumo" },
+        { icon: "📣", name: "Departamentos de Publicidad" },
+        { icon: "💼", name: "Equipos de Ventas Corporativas" },
+        { icon: "🚀", name: "Gestión de Emprendimientos" },
+        { icon: "📊", name: "Analista de Mercado" },
+      ]}
+      // 🔥 Pensum Premium - Semestre 1: Fundamentos y Estrategia Digital
+      pensum1={[
+        "Introducción al Mercadeo y Comportamiento del Consumidor",
+        "Marketing Digital: Redes Sociales y Estrategia de Contenidos",
+        "Fundamentos de Ventas y Técnicas de Negociación",
+        "Comunicación Comercial y Publicidad Creativa",
+        "Investigación de Mercados y Análisis de Oportunidades",
+        "Herramientas Digitales y Diseño Básico para Mercadeo",
+      ]}
+      // 🔥 Pensum Premium - Semestre 2: Gestión Comercial y Cierre
+      pensum2={[
+        "E-commerce: Gestión de Tiendas Virtuales y Canales Digitales",
+        "Growth Marketing: Estrategias de Crecimiento y Fidelización",
+        "Gestión de Marca (Branding) y Posicionamiento",
+        "Ética Profesional, Emprendimiento y Plan de Negocio",
+        "Legislación Comercial y Normas de Protección al Consumidor",
+        "Práctica Formativa en Departamentos Comerciales",
+      ]}
+      mercadoTexto="El mundo se mueve a través de las ventas. En la actualidad, todas las empresas, desde la más pequeña hasta la multinacional, necesitan expertos que sepan leer el mercado y ejecutar estrategias digitales efectivas. El mercadeo es la carrera con mayor capacidad de generar ingresos rápidos a través de incentivos y comisiones."
+      waNum="573022389760"
+      waText="Hola INDECAP, estoy interesado en el programa de Mercadeo. Mi nombre es "
+      sedes={[
+        { icon: "🏙️", name: "Sede Medellín", address: "Cl. 56 # 45-26, Medellín", tag: "Tel: (604) 448 4794" },
+        { icon: "🏘️", name: "Sede Envigado", address: "Cl 37 Sur #43A-84, Envigado", tag: "Tel: (604) 448 4794" },
+        { icon: "🌿", name: "Sede Caldas", address: "Calle 130 sur # 51-65, Caldas", tag: "Tel: (604) 448 4794" },
+      ]}
+      ctaTitulo="Domina el arte de vender y liderar el mercado"
+      ctaDesc="No solo aprendas a vender, aprende a crear marcas que la gente ame. Inscríbete ahora y conviértete en el profesional que toda empresa necesita para crecer."
     />
   );
 }
