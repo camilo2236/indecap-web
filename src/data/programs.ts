@@ -27,7 +27,7 @@ export const programs: Program[] = [
     badge: "Escuela de Salud",
     horas: "1.650h",
     escuela: "Escuela de Salud",
-    whatsappUrl: "https://api.whatsapp.com/send?phone=+573022389760&text=Hola%20INDECAP%20estoy%20interesado%20en%20Enfermer%C3%ADa,%20mi%20nombre%20es%20",
+    whatsappUrl: "https://api.whatsapp.com/send?phone=573022389760&text=Hola%20INDECAP%20estoy%20interesado%20en%20Enfermer%C3%ADa,%20mi%20nombre%20es%20",
     pageUrl: "/programas/enfermeria",
   },
 
@@ -37,13 +37,13 @@ export const programs: Program[] = [
     name: "Cosmetología y Estética Integral",
     description: "Técnicas profesionales de belleza, tratamientos faciales y corporales, maquillaje y servicios de SPA.",
     icon: "💄",
-    image: "/images/programs/cosmetologia/cosmetologia-facial.jpg",
+    image: "/images/programs/cosmetologia/cosmetologia-vapor.jpg", // 🔥 IMAGEN ACTUALIZADA
     color: "#C0394B",
     colorDark: "#880E2F",
     badge: "Escuela de Belleza",
     horas: "1.190h",
     escuela: "Escuela de Belleza",
-    whatsappUrl: "https://api.whatsapp.com/send?phone=+573022389760&text=Hola%20INDECAP%20estoy%20interesado%20en%20Cosmetolog%C3%ADa,%20mi%20nombre%20es%20",
+    whatsappUrl: "https://api.whatsapp.com/send?phone=573022389760&text=Hola%20INDECAP%20estoy%20interesado%20en%20Cosmetolog%C3%ADa,%20mi%20nombre%20es%20",
     pageUrl: "/programas/cosmetologia",
   },
 
@@ -59,7 +59,7 @@ export const programs: Program[] = [
     badge: "Escuela Veterinaria",
     horas: "1.200h",
     escuela: "Escuela Veterinaria",
-    whatsappUrl: "https://api.whatsapp.com/send?phone=+573022389760&text=Hola%20INDECAP%20estoy%20interesado%20en%20Auxiliar%20en%20Veterinaria,%20mi%20nombre%20es%20",
+    whatsappUrl: "https://api.whatsapp.com/send?phone=573022389760&text=Hola%20INDECAP%20estoy%20interesado%20en%20Auxiliar%20en%20Veterinaria,%20mi%20nombre%20es%20",
     pageUrl: "/programas/veterinaria",
   },
 
@@ -75,7 +75,7 @@ export const programs: Program[] = [
     badge: "Escuela de Salud",
     horas: "1.650h",
     escuela: "Escuela de Salud",
-    whatsappUrl: "https://api.whatsapp.com/send?phone=+573022389760&text=Hola%20INDECAP%20estoy%20interesado%20en%20Administrativo%20en%20Salud,%20mi%20nombre%20es%20",
+    whatsappUrl: "https://api.whatsapp.com/send?phone=573022389760&text=Hola%20INDECAP%20estoy%20interesado%20en%20Administrativo%20en%20Salud,%20mi%20nombre%20es%20",
     pageUrl: "/programas/administrativo-salud",
   },
   {
@@ -89,7 +89,7 @@ export const programs: Program[] = [
     badge: "Escuela de Salud",
     horas: "1.650h",
     escuela: "Escuela de Salud",
-    whatsappUrl: "https://api.whatsapp.com/send?phone=+573022389760&text=Hola%20INDECAP%20estoy%20interesado%20en%20Servicios%20Farmac%C3%A9uticos,%20mi%20nombre%20es%20",
+    whatsappUrl: "https://api.whatsapp.com/send?phone=573022389760&text=Hola%20INDECAP%20estoy%20interesado%20en%20Servicios%20Farmac%C3%A9uticos,%20mi%20nombre%20es%20",
     pageUrl: "/programas/farmacia",
   },
   {
@@ -103,7 +103,7 @@ export const programs: Program[] = [
     badge: "Escuela de Salud",
     horas: "1.650h",
     escuela: "Escuela de Salud",
-    whatsappUrl: "https://api.whatsapp.com/send?phone=+573022389760&text=Hola%20INDECAP%20estoy%20interesado%20en%20Salud%20Oral,%20mi%20nombre%20es%20",
+    whatsappUrl: "https://api.whatsapp.com/send?phone=573022389760&text=Hola%20INDECAP%20estoy%20interesado%20en%20Salud%20Oral,%20mi%20nombre%20es%20",
     pageUrl: "/programas/salud-oral",
   },
   {
@@ -117,7 +117,7 @@ export const programs: Program[] = [
     badge: "Escuela de Salud",
     horas: "1.650h",
     escuela: "Escuela de Salud",
-    whatsappUrl: "https://api.whatsapp.com/send?phone=+573022389760&text=Hola%20INDECAP%20estoy%20interesado%20en%20Salud%20P%C3%BAblica,%20mi%20nombre%20es%20",
+    whatsappUrl: "https://api.whatsapp.com/send?phone=573022389760&text=Hola%20INDECAP%20estoy%20interesado%20en%20Salud%20P%C3%BAblica,%20mi%20nombre%20es%20",
     pageUrl: "/programas/salud-publica",
   },
   {
@@ -131,7 +131,7 @@ export const programs: Program[] = [
     badge: "Escuela de Salud",
     horas: "700h",
     escuela: "Escuela de Salud",
-    whatsappUrl: "https://api.whatsapp.com/send?phone=+573022389760&text=Hola%20INDECAP%20estoy%20interesado%20en%20Atenci%C3%B3n%20al%20Adulto%20Mayor,%20mi%20nombre%20es%20",
+    whatsappUrl: "https://api.whatsapp.com/send?phone=573022389760&text=Hola%20INDECAP%20estoy%20interesado%20en%20Atenci%C3%B3n%20al%20Adulto%20Mayor,%20mi%20nombre%20es%20",
     pageUrl: "/programas/adulto-mayor",
   },
 
@@ -147,7 +147,7 @@ export const programs: Program[] = [
     badge: "Escuela de Administración",
     horas: "1.000h",
     escuela: "Escuela de Administración",
-    whatsappUrl: "https://api.whatsapp.com/send?phone=+573022389760&text=Hola%20INDECAP%20estoy%20interesado%20en%20Talento%20Humano,%20mi%20nombre%20es%20",
+    whatsappUrl: "https://api.whatsapp.com/send?phone=573022389760&text=Hola%20INDECAP%20estoy%20interesado%20en%20Talento%20Humano,%20mi%20nombre%20es%20",
     pageUrl: "/programas/talento-humano",
   },
   {
@@ -161,7 +161,7 @@ export const programs: Program[] = [
     badge: "Escuela de Administración",
     horas: "1.000h",
     escuela: "Escuela de Administración",
-    whatsappUrl: "https://api.whatsapp.com/send?phone=+573022389760&text=Hola%20INDECAP%20estoy%20interesado%20en%20Auxiliar%20Contable,%20mi%20nombre%20es%20",
+    whatsappUrl: "https://api.whatsapp.com/send?phone=573022389760&text=Hola%20INDECAP%20estoy%20interesado%20en%20Auxiliar%20Contable,%20mi%20nombre%20es%20",
     pageUrl: "/programas/contable",
   },
   {
@@ -175,7 +175,7 @@ export const programs: Program[] = [
     badge: "Escuela de Administración",
     horas: "1.000h",
     escuela: "Escuela de Administración",
-    whatsappUrl: "https://api.whatsapp.com/send?phone=+573022389760&text=Hola%20INDECAP%20estoy%20interesado%20en%20Mercadeo,%20mi%20nombre%20es%20",
+    whatsappUrl: "https://api.whatsapp.com/send?phone=573022389760&text=Hola%20INDECAP%20estoy%20interesado%20en%20Mercadeo,%20mi%20nombre%20es%20",
     pageUrl: "/programas/mercadeo",
   },
 
@@ -191,7 +191,7 @@ export const programs: Program[] = [
     badge: "Escuela de Seguridad",
     horas: "1.000h",
     escuela: "Escuela de Seguridad",
-    whatsappUrl: "https://api.whatsapp.com/send?phone=+573022389760&text=Hola%20INDECAP%20estoy%20interesado%20en%20SST,%20mi%20nombre%20es%20",
+    whatsappUrl: "https://api.whatsapp.com/send?phone=573022389760&text=Hola%20INDECAP%20estoy%20interesado%20en%20SST,%20mi%20nombre%20es%20",
     pageUrl: "/programas/sst",
   },
 
@@ -207,7 +207,7 @@ export const programs: Program[] = [
     badge: "Escuela de Deporte",
     horas: "1.000h",
     escuela: "Escuela de Deporte",
-    whatsappUrl: "https://api.whatsapp.com/send?phone=+573022389760&text=Hola%20INDECAP%20estoy%20interesado%20en%20Entrenamiento%20Deportivo,%20mi%20nombre%20es%20",
+    whatsappUrl: "https://api.whatsapp.com/send?phone=573022389760&text=Hola%20INDECAP%20estoy%20interesado%20en%20Entrenamiento%20Deportivo,%20mi%20nombre%20es%20",
     pageUrl: "/programas/entrenamiento-deportivo",
   },
 
@@ -223,7 +223,7 @@ export const programs: Program[] = [
     badge: "Escuela de Sistemas",
     horas: "700h",
     escuela: "Escuela de Sistemas",
-    whatsappUrl: "https://api.whatsapp.com/send?phone=+573022389760&text=Hola%20INDECAP%20estoy%20interesado%20en%20Auxiliar%20en%20Sistemas,%20mi%20nombre%20es%20",
+    whatsappUrl: "https://api.whatsapp.com/send?phone=573022389760&text=Hola%20INDECAP%20estoy%20interesado%20en%20Auxiliar%20en%20Sistemas,%20mi%20nombre%20es%20",
     pageUrl: "/programas/sistemas",
   },
 ];

@@ -1,53 +1,65 @@
 import { ProgramPage } from "@/components/ProgramPage";
 
 export const metadata = {
-  title: "Peluquería y Estética Canina | INDECAP – Medellín, Envigado, Caldas",
-  description: "Certifícate en Peluquería y Estética Canina en INDECAP. Grooming profesional con práctica real.",
+  title: "Diplomado en Peluquería y Estética Canina | INDECAP – Medellín, Envigado, Caldas",
+  description: "Certifícate como Groomer Profesional en el Diplomado de Peluquería Canina de INDECAP. Práctica real con mascotas desde el primer día.",
 };
 
-export default function PeluqueriaCaninePage() {
+export default function PeluqueriaCaninaPage() {
   return (
     <ProgramPage
-      titulo="Peluquería y Estética Canina"
-      subtitulo="Peluquería"
-      emWord="y Estética Canina"
-      accent="#E07B39"
+      titulo="Diplomado en Peluquería y Estética Canina"
+      subtitulo="Grooming"
+      emWord="Profesional"
+      accent="#E07B39" 
       accentDark="#B85A1A"
-      escuela="Escuela Veterinaria"
-      horas="400"
-      semestres="1"
+      escuela="Escuela Veterinaria" 
+      horas="400" 
+      semestres="1" 
       sedesNum="3"
-      fotoSrc="/images/programs/veterinaria.png"
-      fotoAlt="Estudiante de Peluquería Canina INDECAP"
-      descripcion="Conviértete en groomer profesional certificado. Aprende cortes, baños, estética y cuidado animal con mascotas reales desde el primer día de clases."
+      fotoSrc="/images/programs/peluqueria-canina/peluqueria-hero-ia.webp" 
+      fotoAlt="Estudiante de Peluquería Canina INDECAP realizando grooming profesional"
+      descripcion="Conviértete en Groomer Profesional Certificado. Aprende las técnicas más avanzadas de estética animal, cortes de raza, baños especializados y manejo conductual con práctica real en modelos vivos desde el primer día."
       capacidades={[
-        "Realizar baños y secados profesionales con técnica y protocolo de bioseguridad",
-        "Aplicar cortes de pelo según estándar de raza y deseo del cliente",
-        "Identificar y manejar condiciones de piel y pelo en diferentes razas",
-        "Atender y calmar mascotas con técnicas de manejo no traumáticas",
-        "Asesorar a los dueños sobre el cuidado y mantenimiento de su mascota",
-        "Emprender tu propio espacio de grooming o trabajar en centros especializados",
+        "Dominar técnicas de corte con tijera, máquina y stripping profesional",
+        "Realizar baños cosméticos y terapéuticos según el tipo de manto y piel",
+        "Identificar y manejar la psicología canina para un grooming sin estrés",
+        "Aplicar protocolos de bioseguridad e higiene en centros de estética",
+        "Gestionar y administrar tu propio emprendimiento de Peluquería Canina",
+        "Asesorar a propietarios sobre nutrición y mantenimiento del pelaje",
       ]}
       salidas={[
-        { icon: "✂️", name: "Peluquerías Caninas" },
-        { icon: "🏥", name: "Clínicas Veterinarias" },
-        { icon: "🛁", name: "Pet Shops" },
-        { icon: "🏠", name: "Servicio a Domicilio" },
-        { icon: "🐕", name: "Hoteles para Mascotas" },
-        { icon: "🚀", name: "Negocio Propio" },
+        { icon: "🐩", name: "Spas y Peluquerías Caninas" },
+        { icon: "🏥", name: "Clínicas y Hospitales Veterinarios" },
+        { icon: "🛁", name: "Pet Shops de Alta Gama" },
+        { icon: "🏠", name: "Servicios de Grooming a Domicilio" },
+        { icon: "🚀", name: "Emprendimiento Propio" },
+        { icon: "🏆", name: "Exhibiciones y Competencias" },
       ]}
-      pensum1={["Inducción y Bioseguridad","Anatomía y Fisiología Canina","Razas y Estándares","Manejo y Sujeción de Mascotas","Técnicas de Baño Profesional","Secado y Cepillado","Cortes por Raza","Estética y Accesorios","Práctica con Mascotas Reales"]}
-      pensum2={["Práctica Formativa Intensiva","Emprendimiento en Pet Services","Fortalecimiento de Competencias"]}
-      mercadoTexto="El mercado de mascotas en Colombia crece más del 10% anual. Los groomers certificados son escasos y muy demandados. Puedes trabajar de manera independiente con inversión mínima desde que te gradúas."
-      waNum="+573022389760"
-      waText="Hola%20INDECAP%20estoy%20interesado%20en%20Peluquer%C3%ADa%20Canina%2C%20mi%20nombre%20es%20"
+      pensum1={[
+        "Introducción al Grooming y Bioseguridad Aplicada",
+        "Anatomía, Dermatología y Fisiología Canina para Estilistas",
+        "Manejo Conductual y Sujeción No Traumática",
+        "Cosmetología Veterinaria: Champús, Acondicionadores y Tratamientos",
+        "Técnicas de Baño, Secado Pro y Cepillado de Alta Eficiencia",
+        "Manejo Maestro de Herramientas (Tijeras, Máquinas y Cuchillas)",
+        "Estilismo Comercial y Cortes Estándar por Raza",
+        "Higiene Complementaria (Oídos, Uñas y Glándulas)",
+        "Emprendimiento y Marketing para Peluqueros Caninos",
+        "Práctica Intensiva con Mascotas Reales",
+      ]}
+      pensum2={[]} // 🔥 Obligatorio para TypeScript aunque esté vacío
+      pensum3={[]} // 🔥 Obligatorio para TypeScript aunque esté vacío
+      mercadoTexto="El mercado de las mascotas es uno de los más resilientes en Colombia. Los dueños de mascotas consideran la estética como un servicio esencial de salud y bienestar. Un peluquero canino certificado genera ingresos rápidos gracias a la alta demanda."
+      waNum="573022389760"
+      waText="Hola INDECAP, estoy interesado en el Diplomado de Peluquería Canina. Mi nombre es "
       sedes={[
         { icon: "🏙️", name: "Sede Medellín", address: "Cl. 56 # 45-26, Medellín", tag: "Tel: (604) 448 4794" },
         { icon: "🏘️", name: "Sede Envigado", address: "Cl 37 Sur #43A-84, Envigado", tag: "Tel: (604) 448 4794" },
         { icon: "🌿", name: "Sede Caldas", address: "Calle 130 sur # 51-65, Caldas", tag: "Tel: (604) 448 4794" },
       ]}
-      ctaTitulo="Tu carrera en estética animal comienza en INDECAP"
-      ctaDesc="Cupos muy limitados por grupo. Reserva el tuyo hoy y en pocos meses estarás trabajando con mascotas."
+      ctaTitulo="Transforma tu pasión por los animales en un negocio rentable"
+      ctaDesc="Cupos limitados por sesión para garantizar práctica personalizada. Inicia tu camino como Groomer Profesional hoy mismo."
     />
   );
 }

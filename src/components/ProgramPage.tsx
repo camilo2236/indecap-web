@@ -1,3 +1,5 @@
+import { MessageCircle, Clock, MapPin, Briefcase, GraduationCap, CheckCircle, Phone } from "lucide-react";
+
 export interface ProgramPageProps {
   titulo: string;
   subtitulo: string;
@@ -15,6 +17,7 @@ export interface ProgramPageProps {
   salidas: { icon: string; name: string }[];
   pensum1: string[];
   pensum2: string[];
+  pensum3?: string[]; // 🔥 NUEVO: Tercer semestre opcional
   mercadoTexto: string;
   waNum: string;
   waText: string;
@@ -27,93 +30,101 @@ export function ProgramPage({
   titulo, subtitulo, emWord, accent, accentDark,
   escuela, horas, semestres, sedesNum,
   fotoAlt, fotoSrc, descripcion, capacidades, salidas,
-  pensum1, pensum2, mercadoTexto, waNum, waText,
+  pensum1, pensum2, pensum3, mercadoTexto, waNum, waText,
   sedes, ctaTitulo, ctaDesc
 }: ProgramPageProps) {
-  const waUrl = `https://api.whatsapp.com/send?phone=${waNum}&text=${waText}`;
+  const waUrl = `https://api.whatsapp.com/send?phone=${waNum}&text=${encodeURIComponent(waText)}`;
 
   return (
-    <main className="min-h-screen" style={{ fontFamily: "var(--font-dm-sans, sans-serif)" }}>
+    <main className="min-h-screen pb-20 lg:pb-0" style={{ fontFamily: "var(--font-dm-sans, sans-serif)" }}>
 
       {/* HERO */}
       <div className="grid min-h-screen pt-16 lg:grid-cols-[55%_45%]">
-        {/* Foto */}
-        <div className="relative overflow-hidden" style={{ minHeight: 400 }}>
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={fotoSrc} alt={fotoAlt}
-            className="h-full w-full object-cover object-top" style={{ minHeight: 400 }} />
+        <div className="relative overflow-hidden" style={{ minHeight: "50vh" }}>
+          <img src={fotoSrc} alt={fotoAlt} className="h-full w-full object-cover object-top" />
           <div className="absolute inset-0"
-            style={{ background: "linear-gradient(to right, rgba(13,26,42,0.15), transparent 60%), linear-gradient(to top, rgba(13,26,42,0.55), transparent 50%)" }} />
-          <div className="absolute bottom-8 left-8 rounded-2xl bg-white p-5 shadow-2xl">
-            <div className="text-xs font-bold uppercase tracking-widest text-gray-400">Título obtenido</div>
-            <div className="mt-1 font-bold text-gray-900" style={{ fontFamily: "var(--font-playfair, serif)" }}>{titulo}</div>
-            <div className="mt-1 text-xs font-semibold" style={{ color: accent }}>Calidad Educativa Certificada ✓</div>
+            style={{ background: "linear-gradient(to right, rgba(13,26,42,0.2), transparent 70%), linear-gradient(to top, rgba(13,26,42,0.8), transparent 60%)" }} />
+          
+          <div className="absolute bottom-8 left-6 right-6 rounded-[24px] bg-white/95 p-6 shadow-2xl backdrop-blur-md lg:left-12 lg:right-auto">
+            <div className="text-[0.65rem] font-bold uppercase tracking-widest text-gray-500">Título obtenido</div>
+            <div className="mt-1 text-xl font-bold text-gray-900" style={{ fontFamily: "var(--font-playfair, serif)" }}>{titulo}</div>
+            <div className="mt-3 flex items-center gap-2 text-xs font-semibold" style={{ color: accent }}>
+              <CheckCircle className="h-4 w-4" />
+              Calidad Educativa Certificada
+            </div>
           </div>
         </div>
 
-        {/* Texto */}
-        <div className="flex flex-col justify-center px-10 py-16 lg:px-14" style={{ background: "#F0F5FC" }}>
-          <div className="mb-6 w-fit rounded-full border px-4 py-2 text-xs font-bold uppercase tracking-widest"
-            style={{ background: `${accent}15`, color: accent, borderColor: `${accent}30` }}>
+        <div className="flex flex-col justify-center bg-[#F8FAFC] px-8 py-16 lg:px-16">
+          <div className="mb-6 w-fit rounded-full border px-4 py-2 text-[0.7rem] font-bold uppercase tracking-widest shadow-sm"
+            style={{ background: `${accent}10`, color: accent, borderColor: `${accent}20` }}>
             ✦ {escuela} · INDECAP
           </div>
-          <h1 style={{ fontFamily: "var(--font-playfair, serif)", fontSize: "clamp(2.2rem,3.5vw,3.4rem)", fontWeight: 900, lineHeight: 1.08, color: "#0D1B2A" }}>
-            {subtitulo}<br />y <em style={{ color: accent, fontStyle: "italic" }}>{emWord}</em>
+          <h1 style={{ fontFamily: "var(--font-playfair, serif)", fontSize: "clamp(2.5rem,4vw,4rem)", fontWeight: 900, lineHeight: 1.05, color: "#080F14" }}>
+            {subtitulo} <br />
+            <em className="font-style: italic" style={{ color: accent }}>{emWord}</em>
           </h1>
-          <p className="mt-5 text-base font-light leading-relaxed text-gray-500" style={{ maxWidth: 440 }}>
+          <p className="mt-6 max-w-[480px] text-lg font-light leading-relaxed text-gray-500">
             {descripcion}
           </p>
-          <div className="mt-8 flex gap-6">
-            {[{ num: horas, label: "Horas de formación" }, { num: semestres, label: "Semestres" }, { num: sedesNum, label: "Sedes" }].map((s) => (
-              <div key={s.label} className="border-l-4 pl-4" style={{ borderColor: "#F0A500" }}>
-                <div style={{ fontFamily: "var(--font-playfair, serif)", fontSize: "1.9rem", fontWeight: 700, lineHeight: 1 }}>{s.num}</div>
+          
+          <div className="mt-10 grid grid-cols-3 gap-4 border-t border-gray-200 pt-8">
+            {[
+              { num: horas, label: "Horas totales", icon: <Clock className="mb-2 h-5 w-5" style={{ color: accent }} /> },
+              { num: semestres, label: "Semestres", icon: <GraduationCap className="mb-2 h-5 w-5" style={{ color: accent }} /> },
+              { num: sedesNum, label: "Sedes", icon: <MapPin className="mb-2 h-5 w-5" style={{ color: accent }} /> }
+            ].map((s) => (
+              <div key={s.label} className="flex flex-col">
+                {s.icon}
+                <div style={{ fontFamily: "var(--font-playfair, serif)", fontSize: "1.7rem", fontWeight: 700, lineHeight: 1, color: "#080F14" }}>{s.num}</div>
                 <div className="mt-1 text-xs font-medium text-gray-400">{s.label}</div>
               </div>
             ))}
           </div>
-          <div className="mt-10 flex flex-wrap gap-4">
+
+          <div className="mt-12 flex flex-wrap gap-4">
             <a href={waUrl} target="_blank" rel="noopener noreferrer"
-              className="rounded-full px-8 py-4 text-base font-bold text-white transition-all hover:opacity-90 hover:-translate-y-1"
-              style={{ backgroundColor: accent, boxShadow: `0 8px 24px ${accent}40` }}>
-              💬 Consultar por WhatsApp
+              className="flex items-center gap-2 rounded-full px-8 py-4 text-sm font-bold text-white transition-all hover:-translate-y-1 hover:shadow-lg"
+              style={{ backgroundColor: accent, boxShadow: `0 10px 25px ${accent}40` }}>
+              <MessageCircle className="h-5 w-5" />
+              Consultar programa
             </a>
-            <a href="#pensum" className="rounded-full border-2 px-8 py-4 text-base font-semibold transition-all hover:opacity-70"
-              style={{ borderColor: accent, color: accent }}>
-              Ver plan de estudios ↓
+            <a href="#pensum" className="flex items-center gap-2 rounded-full border-2 px-8 py-4 text-sm font-semibold transition-all hover:bg-gray-50"
+              style={{ borderColor: `${accent}30`, color: accent }}>
+              Ver plan de estudios
             </a>
           </div>
         </div>
       </div>
 
       {/* PERFIL OCUPACIONAL */}
-      <section className="grid gap-20 px-10 py-20 lg:grid-cols-2 lg:px-20"
-        style={{ background: "linear-gradient(135deg, #0D1B2A 55%, #0a1520 100%)" }}>
+      <section className="grid gap-16 px-8 py-24 lg:grid-cols-[1.2fr_1fr] lg:gap-24 lg:px-24"
+        style={{ background: "linear-gradient(135deg, #080F14 0%, #111827 100%)" }}>
         <div>
-          <div className="mb-3 text-xs font-bold uppercase tracking-widest" style={{ color: "#F0A500" }}>¿Qué vas a aprender?</div>
-          <h2 style={{ fontFamily: "var(--font-playfair, serif)", fontSize: "clamp(1.8rem,2.6vw,2.5rem)", fontWeight: 700, color: "white", lineHeight: 1.2 }}>
-            Un perfil completo para el sector
+          <div className="mb-4 text-xs font-bold uppercase tracking-widest text-[#F0A500]">¿Qué vas a aprender?</div>
+          <h2 style={{ fontFamily: "var(--font-playfair, serif)", fontSize: "clamp(2rem,3vw,3rem)", fontWeight: 700, color: "white", lineHeight: 1.1 }}>
+            Un perfil completo y <br className="hidden lg:block"/> enfocado al sector
           </h2>
-          <p className="mt-4 text-base font-light leading-relaxed" style={{ color: "rgba(255,255,255,0.62)", maxWidth: 540 }}>
-            {descripcion}
-          </p>
-          <div className="mt-8 flex flex-col gap-3">
+          <div className="mt-10 flex flex-col gap-4">
             {capacidades.map((c, i) => (
-              <div key={i} className="flex items-start gap-3 text-sm leading-relaxed" style={{ color: "rgba(255,255,255,0.72)" }}>
-                <div className="mt-0.5 flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full border text-xs font-bold"
-                  style={{ borderColor: accent, color: accent, background: `${accent}20` }}>✓</div>
+              <div key={i} className="flex items-start gap-4 rounded-2xl border border-white/5 bg-white/5 p-4 text-sm leading-relaxed text-white/80 transition-colors hover:bg-white/10">
+                <CheckCircle className="mt-0.5 h-5 w-5 flex-shrink-0" style={{ color: accent }} />
                 {c}
               </div>
             ))}
           </div>
         </div>
-        <div>
-          <div className="mb-4 text-xs font-bold uppercase tracking-widest" style={{ color: "rgba(255,255,255,0.48)" }}>¿Dónde puedes trabajar?</div>
-          <div className="grid grid-cols-2 gap-3">
+
+        <div className="flex flex-col justify-center">
+          <div className="mb-6 flex items-center gap-3 text-xs font-bold uppercase tracking-widest text-white/50">
+            <Briefcase className="h-4 w-4" />
+            ¿Dónde puedes trabajar?
+          </div>
+          <div className="grid gap-4 sm:grid-cols-2">
             {salidas.map((s, i) => (
-              <div key={i} className="rounded-2xl border p-5 transition-all hover:-translate-y-1"
-                style={{ background: "rgba(255,255,255,0.05)", borderColor: "rgba(255,255,255,0.09)" }}>
-                <div className="mb-2 text-2xl">{s.icon}</div>
-                <div className="text-sm font-semibold text-white">{s.name}</div>
+              <div key={i} className="group rounded-[20px] border border-white/10 bg-white/5 p-6 transition-all hover:-translate-y-1 hover:border-white/20 hover:bg-white/10">
+                <div className="mb-4 text-3xl opacity-80 transition-transform group-hover:scale-110 group-hover:opacity-100">{s.icon}</div>
+                <div className="text-sm font-semibold text-white/90">{s.name}</div>
               </div>
             ))}
           </div>
@@ -121,107 +132,106 @@ export function ProgramPage({
       </section>
 
       {/* PENSUM */}
-      <section id="pensum" className="bg-white px-10 py-20 lg:px-20">
-        <div className="grid gap-16 lg:grid-cols-2">
-          <div>
-            <div className="mb-3 text-xs font-bold uppercase tracking-widest" style={{ color: "#F0A500" }}>Plan de Estudios</div>
-            <h2 style={{ fontFamily: "var(--font-playfair, serif)", fontSize: "clamp(1.8rem,2.6vw,2.5rem)", fontWeight: 700, color: "#0D1B2A", lineHeight: 1.2 }}>
-              {semestres} semestres para convertirte en profesional
-            </h2>
-            <p className="mt-4 text-base font-light leading-relaxed text-gray-500">
-              {mercadoTexto}
-            </p>
-            <div className="mt-8">
-              <div className="mb-2 text-sm font-bold text-gray-700">Semestre 1</div>
-              <div className="flex flex-col gap-2">
-                {pensum1.map((p, i) => (
-                  <div key={i} className="flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-medium text-gray-800 transition-all hover:translate-x-1"
-                    style={{ background: "#F0F5FC" }}>
-                    <div className="h-2 w-2 flex-shrink-0 rounded-full" style={{ backgroundColor: accent }} />
-                    {p}
-                  </div>
-                ))}
-              </div>
-              <div className="mb-2 mt-6 text-sm font-bold text-gray-700">Semestre 2</div>
-              <div className="flex flex-col gap-2">
-                {pensum2.map((p, i) => (
-                  <div key={i} className="flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-medium text-gray-800 transition-all hover:translate-x-1"
-                    style={{ background: "#F0F5FC" }}>
-                    <div className="h-2 w-2 flex-shrink-0 rounded-full" style={{ backgroundColor: accent }} />
-                    {p}
-                  </div>
-                ))}
-              </div>
+      <section id="pensum" className="bg-[#F8FAFC] px-8 py-24 lg:px-24">
+        <div className="mx-auto max-w-4xl text-center">
+          <div className="mb-3 text-xs font-bold uppercase tracking-widest text-[#F0A500]">Plan de Estudios</div>
+          <h2 style={{ fontFamily: "var(--font-playfair, serif)", fontSize: "clamp(2rem,3vw,3rem)", fontWeight: 700, color: "#080F14", lineHeight: 1.2 }}>
+            {semestres} semestres para convertirte en profesional
+          </h2>
+          <p className="mx-auto mt-5 max-w-2xl text-base font-light leading-relaxed text-gray-500">
+            {mercadoTexto}
+          </p>
+        </div>
+
+        {/* 🔥 Magia dinámica: Si hay pensum3 usamos 3 columnas, si no, 2 columnas */}
+        <div className={`mx-auto mt-16 grid max-w-6xl gap-8 ${pensum3 && pensum3.length > 0 ? "lg:grid-cols-3" : "lg:grid-cols-2"}`}>
+          
+          {/* Semestre 1 */}
+          <div className="rounded-[24px] border border-gray-100 bg-white p-8 shadow-sm">
+            <div className="mb-6 flex items-center gap-3 border-b border-gray-100 pb-4">
+              <div className="flex h-10 w-10 items-center justify-center rounded-full font-bold text-white" style={{ backgroundColor: accent }}>1</div>
+              <h3 className="text-xl font-bold text-gray-900">Primer Semestre</h3>
             </div>
+            <ul className="flex flex-col gap-3">
+              {pensum1.map((p, i) => (
+                <li key={i} className="flex items-center gap-3 rounded-xl bg-gray-50 px-5 py-3.5 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-100">
+                  <div className="h-1.5 w-1.5 flex-shrink-0 rounded-full" style={{ backgroundColor: accent }} />
+                  {p}
+                </li>
+              ))}
+            </ul>
           </div>
-          <div className="flex flex-col gap-4">
-            <div className="flex gap-4">
-              <div className="flex-1 rounded-2xl p-6 text-center" style={{ background: "#0D3A6E" }}>
-                <div style={{ fontFamily: "var(--font-playfair, serif)", fontSize: "2rem", fontWeight: 700, color: "#FFD166", lineHeight: 1 }}>{horas}</div>
-                <div className="mt-2 text-xs" style={{ color: "rgba(255,255,255,0.7)" }}>Horas totales</div>
-              </div>
-              <div className="flex-1 rounded-2xl p-6 text-center" style={{ background: `linear-gradient(135deg, ${accentDark}, ${accent})` }}>
-                <div style={{ fontFamily: "var(--font-playfair, serif)", fontSize: "2rem", fontWeight: 700, color: "#FFD166", lineHeight: 1 }}>{semestres}</div>
-                <div className="mt-2 text-xs" style={{ color: "rgba(255,255,255,0.7)" }}>Semestres</div>
-              </div>
+
+          {/* Semestre 2 */}
+          <div className="rounded-[24px] border border-gray-100 bg-white p-8 shadow-sm">
+            <div className="mb-6 flex items-center gap-3 border-b border-gray-100 pb-4">
+              <div className="flex h-10 w-10 items-center justify-center rounded-full font-bold text-white" style={{ backgroundColor: accentDark }}>2</div>
+              <h3 className="text-xl font-bold text-gray-900">Segundo Semestre</h3>
             </div>
+            <ul className="flex flex-col gap-3">
+              {pensum2.map((p, i) => (
+                <li key={i} className="flex items-center gap-3 rounded-xl bg-gray-50 px-5 py-3.5 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-100">
+                  <div className="h-1.5 w-1.5 flex-shrink-0 rounded-full" style={{ backgroundColor: accentDark }} />
+                  {p}
+                </li>
+              ))}
+            </ul>
           </div>
+
+          {/* Semestre 3 (Condicional) */}
+          {pensum3 && pensum3.length > 0 && (
+            <div className="rounded-[24px] border border-gray-100 bg-white p-8 shadow-sm">
+              <div className="mb-6 flex items-center gap-3 border-b border-gray-100 pb-4">
+                <div className="flex h-10 w-10 items-center justify-center rounded-full font-bold text-white" style={{ backgroundColor: accent }}>3</div>
+                <h3 className="text-xl font-bold text-gray-900">Tercer Semestre</h3>
+              </div>
+              <ul className="flex flex-col gap-3">
+                {pensum3.map((p, i) => (
+                  <li key={i} className="flex items-center gap-3 rounded-xl bg-gray-50 px-5 py-3.5 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-100">
+                    <div className="h-1.5 w-1.5 flex-shrink-0 rounded-full" style={{ backgroundColor: accent }} />
+                    {p}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+
         </div>
       </section>
 
-      {/* SEDES */}
-      <section className="px-10 py-20 lg:px-20" style={{ background: "#F0F5FC" }}>
-        <div className="mb-3 text-xs font-bold uppercase tracking-widest" style={{ color: "#F0A500" }}>Nuestras Sedes</div>
-        <h2 className="mb-10" style={{ fontFamily: "var(--font-playfair, serif)", fontSize: "clamp(1.8rem,2.6vw,2.5rem)", fontWeight: 700, color: "#0D1B2A" }}>
-          Medellín, Envigado y Caldas te esperan
-        </h2>
-        <div className="flex flex-col gap-4 lg:max-w-xl">
-          {sedes.map((s, i) => (
-            <div key={i} className="flex items-center gap-5 rounded-2xl bg-white px-6 py-5 transition-all hover:translate-x-1 hover:shadow-md"
-              style={{ borderLeft: `4px solid ${accent}` }}>
-              <div className="text-2xl">{s.icon}</div>
-              <div>
-                <div className="font-bold text-gray-900">{s.name}</div>
-                <div className="text-sm text-gray-500">{s.address}</div>
-                <div className="mt-1 text-xs font-semibold" style={{ color: accent }}>{s.tag}</div>
-              </div>
-            </div>
-          ))}
-          <div className="flex items-center gap-5 rounded-2xl bg-white px-6 py-5" style={{ borderLeft: "4px solid #F0A500" }}>
-            <div className="text-2xl">📱</div>
-            <div>
-              <div className="font-bold text-gray-900">WhatsApp Directo</div>
-              <div className="text-sm text-gray-500">Resuelve tus dudas en minutos</div>
-              <div className="mt-1 text-xs font-semibold text-[#F0A500]">+57 302 238 9760</div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* CTA FINAL */}
-      <section className="px-10 py-24 text-center lg:px-20"
+      {/* CTA FINAL DE PÁGINA */}
+      <section className="px-8 py-24 text-center lg:px-24"
         style={{ background: `linear-gradient(135deg, ${accentDark} 0%, ${accent} 100%)` }}>
-        <div className="mb-3 text-xs font-bold uppercase tracking-widest" style={{ color: "#FFD166" }}>
-          ¿Listo para transformar tu vida?
-        </div>
-        <h2 className="mx-auto mb-4" style={{ fontFamily: "var(--font-playfair, serif)", fontSize: "clamp(1.8rem,2.6vw,2.5rem)", fontWeight: 700, color: "white", maxWidth: 640 }}>
+        <h2 className="mx-auto mb-6 max-w-[700px] font-[family-name:var(--font-playfair)] text-[clamp(2.2rem,3vw,3.5rem)] font-bold leading-[1.1] text-white">
           {ctaTitulo}
         </h2>
-        <p className="mx-auto mb-12 text-base font-light" style={{ color: "rgba(255,255,255,0.72)", maxWidth: 480 }}>
+        <p className="mx-auto mb-12 max-w-[540px] text-lg font-light text-white/80">
           {ctaDesc}
         </p>
         <div className="flex flex-wrap justify-center gap-4">
           <a href={waUrl} target="_blank" rel="noopener noreferrer"
-            className="rounded-full px-10 py-5 text-base font-bold text-gray-900 transition-all hover:-translate-y-1"
-            style={{ backgroundColor: "#F0A500", boxShadow: "0 8px 24px rgba(240,165,0,0.35)" }}>
-            💬 Escribir por WhatsApp ahora
+            className="flex items-center gap-2 rounded-full px-10 py-4 text-sm font-bold text-gray-900 transition-all hover:-translate-y-1 hover:shadow-xl"
+            style={{ backgroundColor: "#F0A500", boxShadow: "0 10px 30px rgba(240,165,0,0.3)" }}>
+            <MessageCircle className="h-5 w-5" />
+            Hablar con un asesor
           </a>
           <a href="tel:6044484794"
-            className="rounded-full border-2 border-white/40 px-10 py-5 text-base font-semibold text-white transition-all hover:bg-white/10">
-            📞 Llamar: (604) 448 4794
+            className="flex items-center gap-2 rounded-full border border-white/30 px-10 py-4 text-sm font-semibold text-white transition-all hover:bg-white/10">
+            <Phone className="h-4 w-4" />
+            Llamar: (604) 448 4794
           </a>
         </div>
       </section>
+
+      {/* STICKY CTA MÓVIL (Magia CRO) */}
+      <div className="fixed bottom-0 left-0 z-50 w-full border-t border-gray-200 bg-white/95 p-4 shadow-[0_-8px_20px_-5px_rgba(0,0,0,0.08)] backdrop-blur-md lg:hidden">
+        <a href={waUrl} target="_blank" rel="noopener noreferrer"
+          className="flex w-full items-center justify-center gap-2 rounded-full px-6 py-3.5 text-sm font-bold text-white transition-transform active:scale-95"
+          style={{ backgroundColor: accent }}>
+          <MessageCircle className="h-5 w-5" />
+          Hablar con un asesor
+        </a>
+      </div>
 
     </main>
   );
