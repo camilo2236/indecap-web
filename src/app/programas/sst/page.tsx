@@ -17,7 +17,7 @@ export default function SSTPage() {
       horas="1.000" 
       semestres="2" 
       sedesNum="2"
-      fotoSrc="/images/programs/sst/sst-hero-ia.webp" // 🔥 Ruta para tu nueva foto con IA (Ej: estudiante con casco y chaleco técnico)
+      fotoSrc="/images/programs/sst/sst-hero.jpg" // 🔥 Ruta para tu nueva foto con IA (Ej: estudiante con casco y chaleco técnico)
       fotoAlt="Estudiante de SST INDECAP realizando inspección de seguridad industrial"
       descripcion="Conviértete en el guardián de la integridad laboral. Aprende a diseñar, implementar y administrar el Sistema de Gestión de Seguridad y Salud en el Trabajo (SG-SST) bajo los estándares legales vigentes en Colombia."
       capacidades={[

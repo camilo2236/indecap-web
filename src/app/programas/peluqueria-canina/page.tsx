@@ -17,7 +17,7 @@ export default function PeluqueriaCaninaPage() {
       horas="400" 
       semestres="1" 
       sedesNum="3"
-      fotoSrc="/images/programs/peluqueria-canina/peluqueria-hero-ia.webp" 
+      fotoSrc="/images/programs/peluqueria-canina/peluqueria-hero.jpg" 
       fotoAlt="Estudiante de Peluquería Canina INDECAP realizando grooming profesional"
       descripcion="Conviértete en Groomer Profesional Certificado. Aprende las técnicas más avanzadas de estética animal, cortes de raza, baños especializados y manejo conductual con práctica real en modelos vivos desde el primer día."
       capacidades={[

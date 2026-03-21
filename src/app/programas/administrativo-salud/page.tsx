@@ -17,7 +17,7 @@ export default function AdministrativoSaludPage() {
       horas="1.650" 
       semestres="3" // 🔥 Corregido a 3 semestres según tu lineamiento
       sedesNum="3"
-      fotoSrc="/images/programs/administrativo-salud/administrativo-hero-ia.webp" // 🔥 Ruta lista para tu nueva foto con IA
+      fotoSrc="/images/programs/administrativo-salud/administrativo-hero.jpg" // 🔥 Ruta lista para tu nueva foto con IA
       fotoAlt="Estudiante Administrativo en Salud INDECAP gestionando facturación"
       descripcion="Conviértete en el motor de clínicas, hospitales y EPS. Domina la facturación médica, auditoría de cuentas, manejo de historias clínicas y toda la normatividad del sistema de salud colombiano para garantizar operaciones eficientes."
       capacidades={[

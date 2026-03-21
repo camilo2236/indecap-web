@@ -17,7 +17,7 @@ export default function MercadeoPage() {
       horas="1.000" 
       semestres="2" 
       sedesNum="3"
-      fotoSrc="/images/programs/mercadeo/mercadeo-hero-ia.webp" // 🔥 Ruta para tu nueva foto con IA
+      fotoSrc="/images/programs/mercadeo/mercadeo-hero.jpg" // 🔥 Ruta para tu nueva foto con IA
       fotoAlt="Estudiante de Mercadeo INDECAP analizando métricas digitales"
       descripcion="Aprende a conectar marcas con personas en la era de la transformación digital. Domina las estrategias de ventas, el marketing de contenidos, la pauta digital y la gestión comercial para impulsar empresas y emprendimientos hacia el éxito."
       capacidades={[

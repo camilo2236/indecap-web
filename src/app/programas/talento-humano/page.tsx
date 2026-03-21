@@ -17,7 +17,7 @@ export default function TalentoHumanoPage() {
       horas="1.000" 
       semestres="2" 
       sedesNum="3"
-      fotoSrc="/images/programs/talento-humano/talento-humano-hero-ia.webp" // 🔥 Ruta para tu nueva foto con IA
+      fotoSrc="/images/programs/talento-humano/talento-humano-hero.jpg" // 🔥 Ruta para tu nueva foto con IA
       fotoAlt="Estudiante de Talento Humano INDECAP gestionando procesos de selección"
       descripcion="Conviértete en el puente entre las empresas y su activo más valioso: las personas. Aprende a liderar procesos de selección, liquidar nóminas complejas y crear entornos de bienestar organizacional con herramientas digitales de vanguardia."
       capacidades={[

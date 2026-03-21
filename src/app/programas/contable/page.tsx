@@ -17,7 +17,7 @@ export default function ContablePage() {
       horas="1.000" 
       semestres="2" 
       sedesNum="3"
-      fotoSrc="/images/programs/contable/contable-hero-ia.webp" // 🔥 Ruta lista para tu nueva foto con IA
+      fotoSrc="/images/programs/contable/contable-hero.jpg" // 🔥 Ruta lista para tu nueva foto con IA
       fotoAlt="Estudiante de Contabilidad INDECAP analizando estados financieros digitales"
       descripcion="Conviértete en la mano derecha financiera de las empresas. Domina los registros contables, la liquidación de impuestos, la nómina electrónica y el manejo de software especializado para tomar decisiones basadas en datos reales."
       capacidades={[

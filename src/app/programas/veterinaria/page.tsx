@@ -17,7 +17,7 @@ export default function VeterinariaPage() {
       horas="1.200" // Ajustado al estándar de 2 semestres
       semestres="2" 
       sedesNum="3"
-      fotoSrc="/images/programs/veterinaria/veterinaria-hero-ia.webp" // 🔥 Ruta lista para tu nueva foto con IA
+      fotoSrc="/images/programs/veterinaria/veterinaria-hero.jpg" // 🔥 Ruta lista para tu nueva foto con IA
       fotoAlt="Estudiante de Veterinaria INDECAP asistiendo en consulta clínica animal"
       descripcion="Convierte tu amor por los animales en una profesión altamente demandada. Domina la asistencia clínica, el manejo en quirófano, la toma de muestras y el cuidado intensivo veterinario con práctica real desde el inicio."
       capacidades={[
@@ -66,4 +66,4 @@ export default function VeterinariaPage() {
       ctaDesc="Los cupos son estrictamente limitados para garantizar la calidad de las prácticas. Asegura tu lugar hoy y transforma tu pasión en tu profesión."
     />
   );
-}
+} 

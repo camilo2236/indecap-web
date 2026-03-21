@@ -89,8 +89,9 @@ export function Courses() {
 
             const link = matchedKey ? courseLinks[matchedKey] : null;
 
-            const cardContent = (
-              <div className="rounded-[16px] border border-[#E4F1F6] bg-white p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
+            // Contenido superior de la tarjeta (navega al detalle del curso)
+            const cardTop = (
+              <>
                 <div className="mb-3 flex items-center justify-between">
                   <span
                     className="rounded-full px-3 py-1 text-[0.68rem] font-bold uppercase"
@@ -135,19 +136,35 @@ export function Courses() {
                   </div>
                 )}
 
-                <div className="mt-4 flex flex-col gap-2">
-                  {link && (
-                    <div className="w-full rounded-full border border-[#312783] py-2 text-center text-xs font-bold text-[#312783] transition hover:bg-[#312783] hover:text-white">
-                      Ver curso
-                    </div>
-                  )}
+                {link && (
+                  <div className="mt-4 w-full rounded-full border border-[#312783] py-2 text-center text-xs font-bold text-[#312783] transition hover:bg-[#312783] hover:text-white">
+                    Ver curso
+                  </div>
+                )}
+              </>
+            );
 
+            return (
+              <div
+                key={course.id}
+                className="flex flex-col rounded-[16px] border border-[#E4F1F6] bg-white transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
+              >
+                {/* Parte superior: navega al detalle si tiene página propia */}
+                {link ? (
+                  <Link href={link} className="block p-6 pb-3">
+                    {cardTop}
+                  </Link>
+                ) : (
+                  <div className="p-6 pb-3">{cardTop}</div>
+                )}
+
+                {/* Botón WhatsApp: siempre fuera del Link, nunca <a> dentro de <a> */}
+                <div className="px-6 pb-6 pt-2">
                   <a
                     href={course.whatsappUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    onClick={(e) => e.stopPropagation()}
-                    className="flex w-full items-center justify-center gap-2 rounded-full py-2.5 text-xs font-bold text-white transition-all duration-250 hover:opacity-90"
+                    className="flex w-full items-center justify-center gap-2 rounded-full py-2.5 text-xs font-bold text-white transition-all duration-200 hover:opacity-90"
                     style={{ backgroundColor: color }}
                   >
                     <MessageCircle className="h-3.5 w-3.5" />
@@ -156,16 +173,6 @@ export function Courses() {
                 </div>
               </div>
             );
-
-            if (link) {
-              return (
-                <Link key={course.id} href={link} className="block">
-                  {cardContent}
-                </Link>
-              );
-            }
-
-            return <div key={course.id}>{cardContent}</div>;
           })}
         </div>
 

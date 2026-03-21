@@ -17,7 +17,7 @@ export default function SistemasPage() {
       horas="700" 
       semestres="1" 
       sedesNum="3"
-      fotoSrc="/images/programs/sistemas/sistemas-hero-ia.webp" 
+      fotoSrc="/images/programs/sistemas/sala-medellin.jpg" 
       fotoAlt="Estudiante de Sistemas INDECAP realizando mantenimiento técnico avanzado"
       descripcion="Domina la tecnología que impulsa el mundo moderno. Aprende soporte técnico de alto nivel, arquitectura de hardware, configuración de redes y administración de herramientas digitales esenciales para la productividad empresarial."
       capacidades={[

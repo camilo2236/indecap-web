@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 import type { ShortCourse } from "@/data/shortCourses";
 
@@ -17,7 +19,8 @@ export function ShortCoursePage({ course }: Props) {
             Curso no encontrado
           </h1>
           <p className="mt-4 text-[#4B5563]">
-            No encontramos la información de este curso. Puedes volver al catálogo y revisar los cursos disponibles.
+            No encontramos la información de este curso. Puedes volver al
+            catálogo y revisar los cursos disponibles.
           </p>
           <div className="mt-8">
             <Link
@@ -32,28 +35,45 @@ export function ShortCoursePage({ course }: Props) {
     );
   }
 
-  const whatsappUrl = `https://wa.me/573008948517?text=${encodeURIComponent(course.ctaMessage)}`;
+  const whatsappUrl = `https://wa.me/573167405680?text=${encodeURIComponent(course.ctaMessage)}`;
 
   return (
     <main className="bg-white">
-      <section className="bg-[#0E1B63] text-white">
-        <div className="mx-auto max-w-7xl px-6 py-16 lg:px-12 lg:py-20">
+      {/* HERO con imagen */}
+      <section className="relative min-h-[480px] overflow-hidden bg-[#0E1B63]">
+        {/* Imagen de fondo */}
+        {course.image && (
+          <div className="absolute inset-0">
+            <img
+              src={course.image}
+              alt={course.title}
+              className="h-full w-full object-cover object-center"
+              onError={(e) => {
+                (e.target as HTMLImageElement).style.display = "none";
+              }}
+            />
+            <div className="absolute inset-0 bg-gradient-to-r from-[#0E1B63]/95 via-[#0E1B63]/80 to-[#0E1B63]/30" />
+          </div>
+        )}
+
+        {/* Contenido */}
+        <div className="relative z-10 mx-auto max-w-7xl px-6 py-20 lg:px-12 lg:py-28">
           <p className="mb-4 text-sm font-bold uppercase tracking-[0.2em] text-[#F0B323]">
             Educación continua INDECAP
           </p>
-          <h1 className="max-w-3xl font-[family-name:var(--font-playfair)] text-4xl font-bold leading-tight md:text-6xl">
+          <h1 className="max-w-3xl font-[family-name:var(--font-playfair)] text-4xl font-bold leading-tight text-white md:text-5xl lg:text-6xl">
             {course.title}
           </h1>
           <p className="mt-5 max-w-2xl text-lg text-white/90">{course.subtitle}</p>
 
           <div className="mt-6 flex flex-wrap gap-3">
-            <span className="rounded-full border border-white/20 bg-white/10 px-4 py-2 text-sm">
+            <span className="rounded-full border border-white/20 bg-white/10 px-4 py-2 text-sm text-white backdrop-blur-sm">
               {course.modality}
             </span>
-            <span className="rounded-full border border-white/20 bg-white/10 px-4 py-2 text-sm">
+            <span className="rounded-full border border-white/20 bg-white/10 px-4 py-2 text-sm text-white backdrop-blur-sm">
               {course.duration}
             </span>
-            <span className="rounded-full border border-white/20 bg-white/10 px-4 py-2 text-sm">
+            <span className="rounded-full border border-white/20 bg-white/10 px-4 py-2 text-sm text-white backdrop-blur-sm">
               Validez {course.validity}
             </span>
           </div>
@@ -69,7 +89,7 @@ export function ShortCoursePage({ course }: Props) {
             </a>
             <Link
               href="/#cursos"
-              className="rounded-full border border-white/20 px-6 py-3 font-semibold text-white transition hover:bg-white/10"
+              className="rounded-full border border-white/30 px-6 py-3 font-semibold text-white transition hover:bg-white/10"
             >
               Ver todos los cursos
             </Link>
@@ -77,6 +97,7 @@ export function ShortCoursePage({ course }: Props) {
         </div>
       </section>
 
+      {/* CONTENIDO */}
       <section className="mx-auto grid max-w-7xl gap-10 px-6 py-14 lg:grid-cols-[1.3fr_0.9fr] lg:px-12">
         <div>
           <h2 className="font-[family-name:var(--font-playfair)] text-4xl font-bold text-[#0E1B63]">
@@ -112,6 +133,7 @@ export function ShortCoursePage({ course }: Props) {
           </div>
         </div>
 
+        {/* Sidebar */}
         <aside className="h-fit rounded-3xl border border-[#E5E7EB] bg-[#F8FAFC] p-6">
           <h3 className="font-[family-name:var(--font-playfair)] text-3xl font-bold text-[#0E1B63]">
             Información general
