@@ -1,5 +1,5 @@
 "use client";
- 
+
 import { useState, useEffect } from "react";
 import { Menu, MessageCircle, ChevronLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -10,31 +10,27 @@ import {
   SheetTrigger,
   SheetTitle,
 } from "@/components/ui/sheet";
- 
+
 const navLinks = [
   { label: "Inicio", href: "/#inicio" },
   { label: "Programas", href: "/#programas" },
   { label: "Educación Continua", href: "/#cursos" },
   { label: "Nosotros", href: "/#nosotros" },
   { label: "Bachillerato", href: "/#bachillerato" },
-  { label: "Contacto", href: "/contacto" },
 ];
- 
+
 export function Header() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [isProgram, setIsProgram] = useState(false);
-  const [isCurso, setIsCurso] = useState(false);
- 
+
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 10);
     window.addEventListener("scroll", handleScroll);
-    const path = window.location.pathname;
-    setIsProgram(path.startsWith("/programas/") || path.startsWith("/cursos/"));
-    setIsCurso(path.startsWith("/cursos/"));
+    setIsProgram(window.location.pathname.startsWith("/programas/"));
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
- 
+
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-[200] border-b border-[#312783]/10 backdrop-blur-[14px] transition-shadow duration-300 ${
@@ -46,11 +42,11 @@ export function Header() {
         <div className="flex items-center gap-4">
           {isProgram && (
             <a
-              href={isCurso ? "/#cursos" : "/#programas"}
+              href="/#programas"
               className="flex items-center gap-1 rounded-full border border-[#E4F1F6] bg-white px-3 py-1.5 font-[family-name:var(--font-dm-sans)] text-xs font-semibold text-[#374151] transition-all hover:border-[#312783] hover:text-[#312783]"
             >
               <ChevronLeft className="h-3.5 w-3.5" />
-              {isCurso ? "Cursos" : "Programas"}
+              Programas
             </a>
           )}
           <a href="/" className="flex items-center gap-2">
@@ -62,7 +58,7 @@ export function Header() {
             />
           </a>
         </div>
- 
+
         <nav className="hidden items-center gap-6 lg:flex">
           {navLinks.map((link) => (
             <a
@@ -74,19 +70,17 @@ export function Header() {
             </a>
           ))}
           <a
-            href="https://api.whatsapp.com/send?phone=573174342783"
-            target="_blank"
-            rel="noopener noreferrer"
+            href="/admision"
             className={buttonVariants({
               className:
                 "rounded-full bg-[#312783] px-6 py-2 text-sm font-semibold text-white hover:bg-[#312783]/90",
             })}
           >
             <MessageCircle className="mr-1 h-4 w-4" />
-            Inscribirme ahora
+            Formulario de admisión
           </a>
         </nav>
- 
+
         <Sheet open={open} onOpenChange={setOpen}>
           <SheetTrigger
             className="lg:hidden"
@@ -100,12 +94,12 @@ export function Header() {
             <nav className="mt-8 flex flex-col gap-4">
               {isProgram && (
                 <a
-                  href={isCurso ? "/#cursos" : "/#programas"}
+                  href="/#programas"
                   onClick={() => setOpen(false)}
                   className="flex items-center gap-2 font-[family-name:var(--font-dm-sans)] text-lg font-bold text-[#312783]"
                 >
                   <ChevronLeft className="h-5 w-5" />
-                  {isCurso ? "Ver todos los cursos" : "Ver todos los programas"}
+                  Ver todos los programas
                 </a>
               )}
               {navLinks.map((link) => (
@@ -119,9 +113,7 @@ export function Header() {
                 </a>
               ))}
               <a
-                href="https://api.whatsapp.com/send?phone=573174342783"
-                target="_blank"
-                rel="noopener noreferrer"
+                href="/admision"
                 onClick={() => setOpen(false)}
                 className={buttonVariants({
                   className:
@@ -129,7 +121,7 @@ export function Header() {
                 })}
               >
                 <MessageCircle className="mr-1 h-4 w-4" />
-                Inscribirme ahora
+                Formulario de admisión
               </a>
             </nav>
           </SheetContent>
@@ -138,4 +130,3 @@ export function Header() {
     </header>
   );
 }
- 
