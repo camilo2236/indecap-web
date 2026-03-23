@@ -8,6 +8,7 @@ export const metadata = {
 export default function CosmetologiaPage() {
   return (
     <ProgramPage
+      programaId="cosmetologia"
       titulo="Técnico en Cosmetología y Estética"
       subtitulo="Cosmetología"
       emWord="Estética Integral"

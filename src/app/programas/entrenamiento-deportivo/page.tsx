@@ -3,6 +3,7 @@ export const metadata = { title: "Entrenamiento Deportivo | INDECAP", descriptio
 export default function Page() {
   return (
     <ProgramPage
+      programaId="entrenamiento-deportivo"
       titulo="Técnico en Entrenamiento Deportivo"
       subtitulo="Entrenamiento"
       emWord="Deportivo"

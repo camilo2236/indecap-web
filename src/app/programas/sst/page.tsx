@@ -8,6 +8,7 @@ export const metadata = {
 export default function SSTPage() {
   return (
     <ProgramPage
+      programaId="sst"
       titulo="Técnico Laboral en Seguridad y Salud en el Trabajo"
       subtitulo="Seguridad y"
       emWord="Salud en el Trabajo"

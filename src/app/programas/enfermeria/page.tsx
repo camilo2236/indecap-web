@@ -8,6 +8,7 @@ export const metadata = {
 export default function EnfermeriaPage() {
   return (
     <ProgramPage
+      programaId="enfermeria"
       titulo="Auxiliar en Enfermería"
       subtitulo="Auxiliar en"
       emWord="Enfermería"

@@ -8,6 +8,7 @@ export const metadata = {
 export default function VeterinariaPage() {
   return (
     <ProgramPage
+      programaId="veterinaria"
       titulo="Técnico Laboral Auxiliar en Veterinaria"
       subtitulo="Auxiliar en"
       emWord="Veterinaria"

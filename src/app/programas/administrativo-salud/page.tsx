@@ -8,6 +8,7 @@ export const metadata = {
 export default function AdministrativoSaludPage() {
   return (
     <ProgramPage
+      programaId="administrativo-salud"
       titulo="Técnico Laboral Administrativo en Salud"
       subtitulo="Administrativo"
       emWord="en Salud"

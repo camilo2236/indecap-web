@@ -8,6 +8,7 @@ export const metadata = {
 export default function SistemasPage() {
   return (
     <ProgramPage
+      programaId="sistemas"
       titulo="Técnico Laboral Auxiliar en Sistemas"
       subtitulo="Auxiliar en"
       emWord="Sistemas"

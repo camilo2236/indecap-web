@@ -3,6 +3,7 @@ export const metadata = { title: "Atención al Adulto Mayor | INDECAP", descript
 export default function Page() {
   return (
     <ProgramPage
+      programaId="adulto-mayor"
       titulo="Atención Integral al Adulto Mayor"
       subtitulo="Atención Integral al"
       emWord="Adulto Mayor"

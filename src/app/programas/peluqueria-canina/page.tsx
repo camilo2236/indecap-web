@@ -8,6 +8,7 @@ export const metadata = {
 export default function PeluqueriaCaninaPage() {
   return (
     <ProgramPage
+      programaId="peluqueria-canina"
       titulo="Diplomado en Peluquería y Estética Canina"
       subtitulo="Grooming"
       emWord="Profesional"

@@ -8,6 +8,7 @@ export const metadata = {
 export default function ExcelIAPage() {
   return (
     <ProgramPage
+      programaId="excel-ia"
       titulo="Excel + Inteligencia Artificial"
       subtitulo="Excel con"
       emWord="Inteligencia Artificial"

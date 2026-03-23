@@ -8,6 +8,7 @@ export const metadata = {
 export default function TalentoHumanoPage() {
   return (
     <ProgramPage
+      programaId="talento-humano"
       titulo="Técnico Laboral Asistente en Talento Humano"
       subtitulo="Asistente en"
       emWord="Talento Humano"

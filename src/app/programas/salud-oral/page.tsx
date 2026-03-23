@@ -8,6 +8,7 @@ export const metadata = {
 export default function SaludOralPage() {
   return (
     <ProgramPage
+      programaId="salud-oral"
       titulo="Auxiliar en Salud Oral"
       subtitulo="Auxiliar en"
       emWord="Salud Oral"

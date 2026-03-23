@@ -3,6 +3,7 @@ export const metadata = { title: "Auxiliar en Salud Pública | INDECAP", descrip
 export default function Page() {
   return (
     <ProgramPage
+      programaId="salud-publica"
       titulo="Auxiliar en Salud Pública"
       subtitulo="Auxiliar en"
       emWord="Salud Pública"

@@ -2,11 +2,12 @@
 import React, { useState } from 'react';
 import { MessageCircle, CheckCircle, Zap, Clock, BookOpen, MapPin } from "lucide-react";
 import { WhatsAppSelector } from './WhatsAppSelector';
+import { MiniTestimonio } from './MiniTestimonio';
 
 export function ProgramPage({
   titulo, subtitulo, emWord, accent, escuela, horas, semestres, sedesNum,
   fotoAlt, fotoSrc, descripcion, capacidades, salidas, ctaTitulo, ctaDesc,
-  pensum1, pensum2, mercadoTexto, waNum, waText, sedes
+  pensum1, pensum2, mercadoTexto, waNum, waText, sedes, programaId
 }: any) {
   
   const [isSelectorOpen, setIsSelectorOpen] = useState(false);
@@ -118,6 +119,9 @@ export function ProgramPage({
           </div>
         </div>
       </section>
+
+      {/* MINI TESTIMONIO */}
+      {programaId && <MiniTestimonio programaId={programaId} accent={accent} />}
 
       {/* SEDES */}
       {sedes && sedes.length > 0 && (

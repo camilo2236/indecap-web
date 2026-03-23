@@ -108,7 +108,7 @@ export function Hero() {
       <div className="relative z-20 container mx-auto px-6 lg:px-12 pt-28 pb-16 lg:pt-32 lg:pb-20">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
 
-          {/* IZQUIERDA — Texto */}
+          {/* DERECHA — Formulario */}
           <div>
             <div className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-xs font-bold uppercase tracking-widest text-white/80 backdrop-blur-md mb-6">
               <span className="relative flex h-2.5 w-2.5">
@@ -162,7 +162,7 @@ export function Hero() {
           </div>
 
           {/* DERECHA — Formulario */}
-          <div className="rounded-[24px] border border-white/10 bg-white/5 p-7 backdrop-blur-xl">
+          <div className="rounded-[24px] border border-white/10 bg-white/5 p-7 backdrop-blur-xl order-first lg:order-last">
             {estado === "success" ? (
               <div className="text-center py-8">
                 <div className="flex items-center justify-center h-16 w-16 rounded-full bg-[#FFD166]/20 mx-auto mb-4">

@@ -8,6 +8,7 @@ export const metadata = {
 export default function ContablePage() {
   return (
     <ProgramPage
+      programaId="contable"
       titulo="Técnico Laboral Auxiliar Contable"
       subtitulo="Auxiliar"
       emWord="Contable"
