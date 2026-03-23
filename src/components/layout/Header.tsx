@@ -17,6 +17,8 @@ const navLinks = [
   { label: "Educación Continua", href: "/#cursos" },
   { label: "Nosotros", href: "/#nosotros" },
   { label: "Bachillerato", href: "/#bachillerato" },
+  { label: "Pagos", href: "/pagos" },
+  { label: "Contacto", href: "/contacto" },
 ];
 
 export function Header() {

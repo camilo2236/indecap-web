@@ -253,6 +253,16 @@ export default function ContactoPage() {
               indecap@indecap.edu.co
             </a>
             <p className="text-white/40 text-xs mt-2">PBX: (604) 448 4794</p>
+
+            {/* Pagos */}
+            <div className="mt-8">
+              <a
+                href="/pagos"
+                className="inline-flex items-center gap-2 rounded-full border border-[#F0A500]/40 bg-[#F0A500]/10 px-6 py-3 text-sm font-semibold text-[#FFD166] transition-all hover:bg-[#F0A500]/20"
+              >
+                💳 Pagar en línea
+              </a>
+            </div>
           </div>
         </div>
       </section>
