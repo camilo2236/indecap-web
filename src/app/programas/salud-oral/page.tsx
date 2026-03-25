@@ -15,7 +15,7 @@ export default function SaludOralPage() {
       accentDark="#074F4F"
       escuela="Escuela de Salud"
       horas="1.650" // Unificado con programs.ts
-      semestres="3" // 🔥 Actualizado a 3 semestres
+      semestres="3"
       sedesNum="3"
       fotoSrc="/images/programs/salud-oral/salud-oral-hero.jpg"
       fotoAlt="Estudiante de Salud Oral INDECAP asistiendo en consultorio"
@@ -36,7 +36,7 @@ export default function SaludOralPage() {
         { icon: "🛡️", name: "Promoción y Prevención" },
         { icon: "📋", name: "Centrales de Esterilización" },
       ]}
-      // 🔥 Pensum Premium - Semestre 1: Fundamentos
+     
       pensum1={[
         "Inducción y Perfil Ocupacional en Salud Oral",
         "Anatomía y Morfofisiología del Sistema Estomatognático",
@@ -45,7 +45,7 @@ export default function SaludOralPage() {
         "Sistemas de Información y TICs en Salud",
         "Ética, Bioética y Humanización del Servicio",
       ]}
-      // 🔥 Pensum Premium - Semestre 2: Clínica y Asistencia
+     
       pensum2={[
         "Asistencia en Procedimientos Clínicos y Quirúrgicos",
         "Técnicas de Higiene Oral y Odontología Preventiva",
@@ -53,7 +53,7 @@ export default function SaludOralPage() {
         "Materiales Dentales y Asistencia en Estética",
         "Atención al Usuario y Orientación al Paciente",
       ]}
-      // 🔥 Pensum Premium - Semestre 3: Práctica y Empleabilidad
+     
       pensum3={[
         "Práctica Clínica y Asistencial en Consultorio",
         "Gestión Administrativa y Facturación Odontológica",

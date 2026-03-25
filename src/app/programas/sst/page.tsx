@@ -17,7 +17,7 @@ export default function SSTPage() {
       horas="1.000" 
       semestres="2" 
       sedesNum="2"
-      fotoSrc="/images/programs/sst/sst-hero-ia.webp" // 🔥 Ruta para tu nueva foto con IA (Ej: estudiante con casco y chaleco técnico)
+      fotoSrc="/images/programs/sst.jpg"
       fotoAlt="Estudiante de SST INDECAP realizando inspección de seguridad industrial"
       descripcion="Conviértete en el guardián de la integridad laboral. Aprende a diseñar, implementar y administrar el Sistema de Gestión de Seguridad y Salud en el Trabajo (SG-SST) bajo los estándares legales vigentes en Colombia."
       capacidades={[
@@ -36,7 +36,7 @@ export default function SSTPage() {
         { icon: "🏛️", name: "Entidades Gubernamentales" },
         { icon: "🚀", name: "Consultoría y Asesoría Independiente" },
       ]}
-      // 🔥 Pensum Premium - Semestre 1: Fundamentos y Prevención
+     
       pensum1={[
         "Introducción a la Seguridad y Salud en el Trabajo",
         "Marco Legal y Normatividad (Decreto 1072 y Estándares Mínimos)",
@@ -45,7 +45,7 @@ export default function SSTPage() {
         "Primeros Auxilios y Brigadas de Emergencia Empresariales",
         "Ética Profesional y Humanización del Trabajo",
       ]}
-      // 🔥 Pensum Premium - Semestre 2: Gestión y Auditoría
+     
       pensum2={[
         "Higiene Industrial y Control de Factores Ambientales",
         "Seguridad Industrial y Prevención de Accidentes",

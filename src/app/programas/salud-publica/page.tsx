@@ -15,7 +15,7 @@ export default function Page() {
       pensum1={["Inducción Institucional","TICs","Ética en Salud","Emprendimiento","Fundamentos de Salud Pública","Epidemiología Básica","Promoción y Prevención","Atención Primaria en Salud","Nutrición Comunitaria","Saneamiento Ambiental"]}
       pensum2={["Salud Mental Comunitaria","Vigilancia Epidemiológica","Estadísticas en Salud","Práctica Formativa","Fortalecimiento de Competencias"]}
       mercadoTexto="Las alcaldías, gobernaciones y secretarías de salud de los 125 municipios de Antioquia demandan permanentemente auxiliares en salud pública para sus programas comunitarios."
-      waNum="+573022389760" waText="Hola%20INDECAP%20estoy%20interesado%20en%20Salud%20P%C3%BAblica%2C%20mi%20nombre%20es%20"
+      waNum="573022389760" waText="Hola INDECAP, estoy interesado en Salud Pública. Mi nombre es "
       sedes={[{icon:"🏙️",name:"Sede Medellín",address:"Cl. 56 # 45-26, Medellín",tag:"Tel: (604) 448 4794"},{icon:"🌿",name:"Sede Caldas",address:"Calle 130 sur # 51-65, Caldas",tag:"Tel: (604) 448 4794"}]}
       ctaTitulo="Transforma tu comunidad desde adentro"
       ctaDesc="Cupos limitados por grupo. Inscríbete hoy y en menos de un año estarás haciendo la diferencia."

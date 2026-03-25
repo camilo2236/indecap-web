@@ -15,7 +15,7 @@ export default function Page() {
       pensum1={["Inducción Institucional","TICs","Ética y Valores","Emprendimiento","Gerontología Básica","Cuidados de Enfermería","Estimulación Cognitiva","Actividad Física para Adulto Mayor","Nutrición Geriátrica","Farmacología Básica"]}
       pensum2={["Práctica Formativa","Fortalecimiento de Competencias"]}
       mercadoTexto="Colombia envejece rápidamente. Para 2050, el 25% de la población tendrá más de 60 años. Los cuidadores certificados son hoy uno de los perfiles más demandados y mejor remunerados del sector salud."
-      waNum="+573022389760" waText="Hola%20INDECAP%20estoy%20interesado%20en%20Atenci%C3%B3n%20al%20Adulto%20Mayor%2C%20mi%20nombre%20es%20"
+      waNum="573022389760" waText="Hola INDECAP, estoy interesado en Atención al Adulto Mayor. Mi nombre es "
       sedes={[{icon:"🏘️",name:"Sede Envigado",address:"Cl 37 Sur #43A-84, Envigado",tag:"Tel: (604) 448 4794"}]}
       ctaTitulo="Una carrera con propósito real"
       ctaDesc="Cupos muy limitados. Inscríbete hoy y en menos de un año estarás transformando vidas."

@@ -15,9 +15,9 @@ export default function AdministrativoSaludPage() {
       accentDark="#1A3A5C"
       escuela="Escuela de Salud" 
       horas="1.650" 
-      semestres="3" // 🔥 Corregido a 3 semestres según tu lineamiento
+      semestres="3"
       sedesNum="3"
-      fotoSrc="/images/programs/administrativo-salud/administrativo-hero-ia.webp" // 🔥 Ruta lista para tu nueva foto con IA
+      fotoSrc="/images/programs/administrativo-salud/administrativo-hero.jpg"
       fotoAlt="Estudiante Administrativo en Salud INDECAP gestionando facturación"
       descripcion="Conviértete en el motor de clínicas, hospitales y EPS. Domina la facturación médica, auditoría de cuentas, manejo de historias clínicas y toda la normatividad del sistema de salud colombiano para garantizar operaciones eficientes."
       capacidades={[
@@ -36,7 +36,7 @@ export default function AdministrativoSaludPage() {
         { icon: "🚑", name: "Centros de Atención Prehospitalaria" },
         { icon: "🦷", name: "Consultorios Especializados" }
       ]}
-      // 🔥 Pensum Premium - Semestre 1: Fundamentos y Sistema de Salud
+     
       pensum1={[
         "Inducción y Perfil Ocupacional en el Sector Salud",
         "Normatividad y Estructura del SGSSS en Colombia",
@@ -44,7 +44,7 @@ export default function AdministrativoSaludPage() {
         "Atención Integral y Experiencia del Usuario (PQRS)",
         "Sistemas de Información y Herramientas Digitales en Salud",
       ]}
-      // 🔥 Pensum Premium - Semestre 2: Gestión Clínica y Documental
+     
       pensum2={[
         "Gestión Estratégica de Admisiones, Egresos y Referencia",
         "Manejo Técnico de Historias Clínicas y Gestión Documental",
@@ -52,7 +52,7 @@ export default function AdministrativoSaludPage() {
         "Procesos de Auditoría Básica y Calidad en Salud",
         "Manejo de Software Especializado para Clínicas y EPS",
       ]}
-      // 🔥 Pensum Premium - Semestre 3: Finanzas en Salud y Práctica
+     
       pensum3={[
         "Manejo Avanzado de Cuentas Médicas, Glosas y Devoluciones",
         "Emprendimiento y Gestión Administrativa de Consultorios",
@@ -60,7 +60,7 @@ export default function AdministrativoSaludPage() {
         "Fortalecimiento de Competencias Laborales",
       ]}
       mercadoTexto="El sector salud colombiano es uno de los mayores empleadores del país. Las clínicas y EPS pierden millones por mala facturación y glosas, por lo que un Administrativo en Salud bien capacitado es un perfil indispensable y altamente valorado."
-      waNum="573022389760" // 🔥 Limpio para la API
+      waNum="573022389760"
       waText="Hola INDECAP, estoy interesado en el programa Administrativo en Salud. Mi nombre es "
       sedes={[
         { icon: "🏙️", name: "Sede Medellín", address: "Cl. 56 # 45-26, Medellín", tag: "Tel: (604) 448 4794" },

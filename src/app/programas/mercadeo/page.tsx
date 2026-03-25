@@ -17,7 +17,7 @@ export default function MercadeoPage() {
       horas="1.000" 
       semestres="2" 
       sedesNum="3"
-      fotoSrc="/images/programs/mercadeo/mercadeo-hero-ia.webp" // 🔥 Ruta para tu nueva foto con IA
+      fotoSrc="/images/programs/mercadeo.jpg"
       fotoAlt="Estudiante de Mercadeo INDECAP analizando métricas digitales"
       descripcion="Aprende a conectar marcas con personas en la era de la transformación digital. Domina las estrategias de ventas, el marketing de contenidos, la pauta digital y la gestión comercial para impulsar empresas y emprendimientos hacia el éxito."
       capacidades={[
@@ -36,7 +36,7 @@ export default function MercadeoPage() {
         { icon: "🚀", name: "Gestión de Emprendimientos" },
         { icon: "📊", name: "Analista de Mercado" },
       ]}
-      // 🔥 Pensum Premium - Semestre 1: Fundamentos y Estrategia Digital
+     
       pensum1={[
         "Introducción al Mercadeo y Comportamiento del Consumidor",
         "Marketing Digital: Redes Sociales y Estrategia de Contenidos",
@@ -45,7 +45,7 @@ export default function MercadeoPage() {
         "Investigación de Mercados y Análisis de Oportunidades",
         "Herramientas Digitales y Diseño Básico para Mercadeo",
       ]}
-      // 🔥 Pensum Premium - Semestre 2: Gestión Comercial y Cierre
+     
       pensum2={[
         "E-commerce: Gestión de Tiendas Virtuales y Canales Digitales",
         "Growth Marketing: Estrategias de Crecimiento y Fidelización",

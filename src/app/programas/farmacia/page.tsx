@@ -15,7 +15,7 @@ export default function FarmaciaPage() {
       accentDark="#0F4A32"
       escuela="Escuela de Salud"
       horas="1.650" // Unificado con tu catálogo base
-      semestres="3" // 🔥 Actualizado a 3 semestres
+      semestres="3"
       sedesNum="3"
       fotoSrc="/images/programs/farmacia/farmacia-hero.jpg"
       fotoAlt="Estudiantes de Farmacia INDECAP en práctica"
@@ -36,7 +36,7 @@ export default function FarmaciaPage() {
         { icon: "🔬", name: "Laboratorios Farmacéuticos" },
         { icon: "🚀", name: "Negocio Propio" },
       ]}
-      // 🔥 Pensum Premium - Semestre 1: Fundamentos y Recepción
+     
       pensum1={[
         "Morfofisiología y Anatomía Humana Básica",
         "Protocolos de Bioseguridad en Servicios de Salud",
@@ -45,7 +45,7 @@ export default function FarmaciaPage() {
         "Sistemas de Información y Herramientas Digitales (TICs)",
         "Ética, Bioética y Normatividad Farmacéutica",
       ]}
-      // 🔥 Pensum Premium - Semestre 2: Dispensación y Control
+     
       pensum2={[
         "Técnicas de Dispensación de Medicamentos y Dispositivos Médicos",
         "Farmacovigilancia y Reporte de Eventos Adversos",
@@ -53,7 +53,7 @@ export default function FarmaciaPage() {
         "Atención y Orientación al Usuario en Servicios de Salud",
         "Emprendimiento y Administración de Establecimientos Farmacéuticos",
       ]}
-      // 🔥 Pensum Premium - Semestre 3: Práctica y Especialización
+     
       pensum3={[
         "Práctica Clínica y Comercial en Servicios Farmacéuticos",
         "Buenas Prácticas de Manufactura (BPM) Básicas",

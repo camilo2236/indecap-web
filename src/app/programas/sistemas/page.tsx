@@ -17,7 +17,7 @@ export default function SistemasPage() {
       horas="700" 
       semestres="1" 
       sedesNum="3"
-      fotoSrc="/images/programs/sistemas/sistemas-hero-ia.webp" 
+      fotoSrc="/images/programs/sistemas/sala-medellin-clase.jpg"
       fotoAlt="Estudiante de Sistemas INDECAP realizando mantenimiento técnico avanzado"
       descripcion="Domina la tecnología que impulsa el mundo moderno. Aprende soporte técnico de alto nivel, arquitectura de hardware, configuración de redes y administración de herramientas digitales esenciales para la productividad empresarial."
       capacidades={[
@@ -47,8 +47,8 @@ export default function SistemasPage() {
         "Ética Digital, Emprendimiento y Teletrabajo",
         "Práctica Formativa en Laboratorios de Sistemas",
       ]}
-      pensum2={[]} // 🔥 Corrección para TypeScript
-      pensum3={[]} // 🔥 Corrección para TypeScript
+      pensum2={[]}
+      pensum3={[]}
       mercadoTexto="La digitalización es irreversible. Hoy, desde una tienda de barrio hasta una multinacional, dependen de su infraestructura tecnológica. Un técnico en sistemas actualizado no solo encuentra empleo rápido, sino que es el pilar que garantiza que la operación de cualquier empresa no se detenga."
       waNum="573022389760"
       waText="Hola INDECAP, estoy interesado en el programa de Sistemas. Mi nombre es "

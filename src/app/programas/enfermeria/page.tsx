@@ -15,7 +15,7 @@ export default function EnfermeriaPage() {
       accentDark="#0D2347"
       escuela="Escuela de Salud"
       horas="1.650"
-      semestres="3" // 🔥 Actualizado a 3 semestres
+      semestres="3"
       sedesNum="3"
       fotoSrc="/images/programs/enfermeria/enfermeria-hero.jpg"
       fotoAlt="Estudiante de Enfermería INDECAP"
@@ -36,7 +36,7 @@ export default function EnfermeriaPage() {
         { icon: "📋", name: "Gestión Administrativa en Salud" },
         { icon: "🩺", name: "Asistencia en Consultorios" },
       ]}
-      // 🔥 Pensum Premium - Semestre 1: Fundamentos
+     
       pensum1={[
         "Inducción y Perfil Ocupacional en Salud",
         "Morfofisiología y Anatomía Aplicada",
@@ -46,7 +46,7 @@ export default function EnfermeriaPage() {
         "Monitorización de Signos Vitales y Triage Básicos",
         "Ética, Bioética y Humanización del Cuidado",
       ]}
-      // 🔥 Pensum Premium - Semestre 2: Cuidado Específico
+     
       pensum2={[
         "Atención y Cuidado Integral del Paciente Hospitalizado",
         "Farmacología Básica y Administración de Medicamentos",
@@ -55,7 +55,7 @@ export default function EnfermeriaPage() {
         "Cuidado Especializado del Adulto Mayor (Gerontología)",
         "Sistemas de Información y TICs en Entornos de Salud",
       ]}
-      // 🔥 Pensum Premium - Semestre 3: Práctica y Empleabilidad
+     
       pensum3={[
         "Práctica Formativa Clínica e Institucional",
         "Asistencia en Procedimientos Médico-Quirúrgicos",

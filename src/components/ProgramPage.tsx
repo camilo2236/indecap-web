@@ -1,12 +1,50 @@
 "use client";
 import React, { useState } from 'react';
-import { MessageCircle, CheckCircle, Phone, Zap, ShieldCheck } from "lucide-react";
+import { MessageCircle, CheckCircle, Zap } from "lucide-react";
 import { WhatsAppSelector } from './WhatsAppSelector';
 
+interface Salida {
+  icon: string;
+  name: string;
+}
+
+interface Sede {
+  icon: string;
+  name: string;
+  address: string;
+  tag: string;
+}
+
+interface ProgramPageProps {
+  titulo: string;
+  subtitulo: string;
+  emWord: string;
+  accent: string;
+  accentDark?: string;
+  escuela: string;
+  horas: string;
+  semestres: string;
+  sedesNum: string;
+  fotoAlt: string;
+  fotoSrc: string;
+  descripcion: string;
+  capacidades: string[];
+  salidas: Salida[];
+  ctaTitulo: string;
+  ctaDesc?: string;
+  pensum1?: string[];
+  pensum2?: string[];
+  pensum3?: string[];
+  mercadoTexto?: string;
+  waNum?: string;
+  waText?: string;
+  sedes?: Sede[];
+}
+
 export function ProgramPage({
-  titulo, subtitulo, emWord, accent, escuela, horas, semestres, sedesNum,
-  fotoAlt, fotoSrc, descripcion, capacidades, salidas, ctaTitulo, ctaDesc
-}: any) {
+  titulo, subtitulo, emWord, accent, escuela,
+  fotoAlt, fotoSrc, descripcion, capacidades, salidas, ctaTitulo,
+}: ProgramPageProps) {
   
   const [isSelectorOpen, setIsSelectorOpen] = useState(false);
 
@@ -46,7 +84,7 @@ export function ProgramPage({
           <div>
             <h2 className="text-3xl font-black mb-12">Lo que aprenderás</h2>
             <div className="grid gap-4">
-              {capacidades.map((cap: any, i: number) => (
+              {capacidades.map((cap, i) => (
                 <div key={i} className="flex gap-4 p-5 rounded-2xl bg-zinc-900/50 border border-zinc-800">
                   <CheckCircle style={{ color: accent }} size={20} className="shrink-0" />
                   <p className="text-sm text-zinc-300 font-medium">{cap}</p>
@@ -57,7 +95,7 @@ export function ProgramPage({
           <div>
             <h2 className="text-3xl font-black mb-12">Campo Laboral</h2>
             <div className="grid grid-cols-2 gap-4">
-              {salidas.map((salida: any, i: number) => (
+              {salidas.map((salida, i) => (
                 <div key={i} className="p-6 rounded-3xl bg-zinc-900/50 border border-zinc-800 text-center">
                   <span className="text-3xl mb-3 block">{salida.icon}</span>
                   <p className="text-[10px] font-black uppercase tracking-widest text-zinc-500">{salida.name}</p>

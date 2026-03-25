@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { Menu, MessageCircle, ChevronLeft } from "lucide-react";
+import { CONTACTS } from "@/config/contacts";
 import { Button } from "@/components/ui/button";
 import { buttonVariants } from "@/components/ui/button";
 import {
@@ -70,7 +71,7 @@ export function Header() {
             </a>
           ))}
           <a
-            href="https://api.whatsapp.com/send?phone=573174342783"
+            href={`https://api.whatsapp.com/send?phone=${CONTACTS.PRINCIPAL}`}
             target="_blank"
             rel="noopener noreferrer"
             className={buttonVariants({
@@ -115,7 +116,7 @@ export function Header() {
                 </a>
               ))}
               <a
-                href="https://api.whatsapp.com/send?phone=573174342783"
+                href={`https://api.whatsapp.com/send?phone=${CONTACTS.PRINCIPAL}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => setOpen(false)}

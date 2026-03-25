@@ -17,7 +17,7 @@ export default function VeterinariaPage() {
       horas="1.200" // Ajustado al estándar de 2 semestres
       semestres="2" 
       sedesNum="3"
-      fotoSrc="/images/programs/veterinaria/veterinaria-hero-ia.webp" // 🔥 Ruta lista para tu nueva foto con IA
+      fotoSrc="/images/programs/veterinaria/veterinaria-hero.jpg"
       fotoAlt="Estudiante de Veterinaria INDECAP asistiendo en consulta clínica animal"
       descripcion="Convierte tu amor por los animales en una profesión altamente demandada. Domina la asistencia clínica, el manejo en quirófano, la toma de muestras y el cuidado intensivo veterinario con práctica real desde el inicio."
       capacidades={[
@@ -36,7 +36,7 @@ export default function VeterinariaPage() {
         { icon: "🐄", name: "Fincas y Producción Pecuaria" },
         { icon: "🚿", name: "Peluquería y Estética Canina" },
       ]}
-      // 🔥 Pensum Premium - Semestre 1: Fundamentos y Consulta
+     
       pensum1={[
         "Morfofisiología Animal y Bioseguridad Clínica",
         "Fundamentos de Farmacología y Toxicología Veterinaria",
@@ -45,7 +45,7 @@ export default function VeterinariaPage() {
         "Sistemas de Información y Atención al Cliente en Clínicas",
         "Ética Profesional y Humanización del Cuidado Animal",
       ]}
-      // 🔥 Pensum Premium - Semestre 2: Clínica y Quirófano
+     
       pensum2={[
         "Asistencia en Cirugía y Manejo de Quirófano Veterinario",
         "Laboratorio Clínico, Toma y Análisis de Muestras",
@@ -55,7 +55,7 @@ export default function VeterinariaPage() {
         "Práctica Formativa en Clínicas Veterinarias Reales",
       ]}
       mercadoTexto="El cuidado de mascotas (pet care) es uno de los sectores de mayor crecimiento económico en Colombia. Las familias invierten cada vez más en la salud de sus animales, por lo que las clínicas veterinarias buscan desesperadamente auxiliares bien formados y con gran vocación."
-      waNum="573022389760" // 🔥 Formato limpio
+      waNum="573022389760"
       waText="Hola INDECAP, estoy interesado en el programa de Auxiliar en Veterinaria. Mi nombre es "
       sedes={[
         { icon: "🏙️", name: "Sede Medellín", address: "Cl. 56 # 45-26, Medellín", tag: "Tel: (604) 448 4794" },

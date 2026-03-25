@@ -17,7 +17,7 @@ export default function ContablePage() {
       horas="1.000" 
       semestres="2" 
       sedesNum="3"
-      fotoSrc="/images/programs/contable/contable-hero-ia.webp" // 🔥 Ruta lista para tu nueva foto con IA
+      fotoSrc="/images/programs/contable.jpg"
       fotoAlt="Estudiante de Contabilidad INDECAP analizando estados financieros digitales"
       descripcion="Conviértete en la mano derecha financiera de las empresas. Domina los registros contables, la liquidación de impuestos, la nómina electrónica y el manejo de software especializado para tomar decisiones basadas en datos reales."
       capacidades={[
@@ -36,7 +36,7 @@ export default function ContablePage() {
         { icon: "🏥", name: "Sector Salud y Administrativo" },
         { icon: "🚀", name: "Asesoría Contable Independiente" },
       ]}
-      // 🔥 Pensum Premium - Semestre 1: Bases Contables y Tributarias
+     
       pensum1={[
         "Principios de Contabilidad y Normas NIIF",
         "Registros Contables y Documentación Mercantil",
@@ -45,7 +45,7 @@ export default function ContablePage() {
         "Comunicación Empresarial y Ética Profesional",
         "Herramientas Digitales para la Gestión Financiera",
       ]}
-      // 🔥 Pensum Premium - Semestre 2: Gestión Avanzada y Práctica
+     
       pensum2={[
         "Manejo Integral de Software Contable y ERP",
         "Nómina Electrónica y Prestaciones Sociales",

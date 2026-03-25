@@ -17,7 +17,7 @@ export default function TalentoHumanoPage() {
       horas="1.000" 
       semestres="2" 
       sedesNum="3"
-      fotoSrc="/images/programs/talento-humano/talento-humano-hero-ia.webp" // 🔥 Ruta para tu nueva foto con IA
+      fotoSrc="/images/programs/talento-humano.jpg"
       fotoAlt="Estudiante de Talento Humano INDECAP gestionando procesos de selección"
       descripcion="Conviértete en el puente entre las empresas y su activo más valioso: las personas. Aprende a liderar procesos de selección, liquidar nóminas complejas y crear entornos de bienestar organizacional con herramientas digitales de vanguardia."
       capacidades={[
@@ -36,7 +36,7 @@ export default function TalentoHumanoPage() {
         { icon: "🤝", name: "Agencias de Empleo" },
         { icon: "🚀", name: "Emprendimiento en Consultoría" },
       ]}
-      // 🔥 Pensum Premium - Semestre 1: Fundamentos y Contratación
+     
       pensum1={[
         "Introducción a la Gestión del Talento Humano",
         "Legislación Laboral y Tipos de Contratación en Colombia",
@@ -45,7 +45,7 @@ export default function TalentoHumanoPage() {
         "Comunicación Asertiva y Cultura Organizacional",
         "Herramientas Digitales y Ofimática para RR.HH.",
       ]}
-      // 🔥 Pensum Premium - Semestre 2: Nómina y Desarrollo
+     
       pensum2={[
         "Nómina Electrónica, Seguridad Social y Prestaciones",
         "Gestión del Desempeño y Evaluación por Competencias",

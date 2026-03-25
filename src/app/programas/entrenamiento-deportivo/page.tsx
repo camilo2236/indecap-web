@@ -15,7 +15,7 @@ export default function Page() {
       pensum1={["Inducción Institucional","TICs","Ética Deportiva","Emprendimiento","Anatomía y Fisiología del Ejercicio","Teoría del Entrenamiento","Evaluación Física","Planificación Deportiva","Nutrición Deportiva Básica","Primeros Auxilios Deportivos"]}
       pensum2={["Entrenamiento de Fuerza","Poblaciones Especiales","Gestión de Centros Deportivos","Práctica Formativa","Fortalecimiento de Competencias"]}
       mercadoTexto="El mercado del fitness y el deporte en Colombia crece más del 15% anual. Gimnasios, clubes, cajas de compensación y colegios buscan permanentemente entrenadores certificados y comprometidos."
-      waNum="+573022389760" waText="Hola%20INDECAP%20estoy%20interesado%20en%20Entrenamiento%20Deportivo%2C%20mi%20nombre%20es%20"
+      waNum="573022389760" waText="Hola INDECAP, estoy interesado en Entrenamiento Deportivo. Mi nombre es "
       sedes={[{icon:"🏙️",name:"Sede Medellín",address:"Cl. 56 # 45-26, Medellín",tag:"Tel: (604) 448 4794"},{icon:"🏘️",name:"Sede Envigado",address:"Cl 37 Sur #43A-84, Envigado",tag:"Tel: (604) 448 4794"}]}
       ctaTitulo="Haz del deporte tu profesión"
       ctaDesc="Cupos limitados. Inscríbete hoy y convierte tu pasión en una carrera con futuro."

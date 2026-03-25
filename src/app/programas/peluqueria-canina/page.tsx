@@ -17,7 +17,7 @@ export default function PeluqueriaCaninaPage() {
       horas="400" 
       semestres="1" 
       sedesNum="3"
-      fotoSrc="/images/programs/peluqueria-canina/peluqueria-hero-ia.webp" 
+      fotoSrc="/images/programs/peluqueria-canina/peluqueria-hero.jpg"
       fotoAlt="Estudiante de Peluquería Canina INDECAP realizando grooming profesional"
       descripcion="Conviértete en Groomer Profesional Certificado. Aprende las técnicas más avanzadas de estética animal, cortes de raza, baños especializados y manejo conductual con práctica real en modelos vivos desde el primer día."
       capacidades={[
@@ -48,8 +48,8 @@ export default function PeluqueriaCaninaPage() {
         "Emprendimiento y Marketing para Peluqueros Caninos",
         "Práctica Intensiva con Mascotas Reales",
       ]}
-      pensum2={[]} // 🔥 Obligatorio para TypeScript aunque esté vacío
-      pensum3={[]} // 🔥 Obligatorio para TypeScript aunque esté vacío
+      pensum2={[]}
+      pensum3={[]}
       mercadoTexto="El mercado de las mascotas es uno de los más resilientes en Colombia. Los dueños de mascotas consideran la estética como un servicio esencial de salud y bienestar. Un peluquero canino certificado genera ingresos rápidos gracias a la alta demanda."
       waNum="573022389760"
       waText="Hola INDECAP, estoy interesado en el Diplomado de Peluquería Canina. Mi nombre es "
