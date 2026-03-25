@@ -244,7 +244,7 @@ export function Header() {
               {mobileExpanded === "programas" && (
                 <div className="pl-4 flex flex-col gap-1">
                   <button
-                    onClick={() => setMobileExpanded(mobileExpanded === "tecnicos" ? "programas" : "tecnicos")}
+                    onClick={() => setMobileExpanded(prev => prev === "tecnicos" ? "programas" : "tecnicos")}
                     className="flex items-center justify-between w-full text-sm font-bold text-[#312783] py-2"
                   >
                     Técnicos Laborales
@@ -261,7 +261,7 @@ export function Header() {
                   )}
 
                   <button
-                    onClick={() => setMobileExpanded(mobileExpanded === "continuos" ? "programas" : "continuos")}
+                    onClick={() => setMobileExpanded(prev => prev === "continuos" ? "programas" : "continuos")}
                     className="flex items-center justify-between w-full text-sm font-bold text-[#312783] py-2"
                   >
                     Educación Continua
