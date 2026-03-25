@@ -242,14 +242,14 @@ export function Header() {
               </button>
 
               {mobileExpanded === "programas" && (
-                <div className="pl-4 flex flex-col gap-1">
-                  <button
-                    onClick={() => setMobileExpanded(prev => prev === "tecnicos" ? "programas" : "tecnicos")}
-                    className="flex items-center justify-between w-full text-sm font-bold text-[#312783] py-2"
-                  >
-                    Técnicos Laborales
-                    <ChevronDown className={`h-4 w-4 transition-transform ${mobileExpanded === "tecnicos" ? "rotate-180" : ""}`} />
-                  </button>
+  <div className="pl-4 flex flex-col gap-1">
+    <button
+      onClick={() => setMobileExpanded("tecnicos")}
+      className="flex items-center justify-between w-full text-sm font-bold text-[#312783] py-2"
+    >
+      Técnicos Laborales
+      <ChevronDown className="h-4 w-4" />
+    </button>
                   {mobileExpanded === "tecnicos" && (
                     <div className="pl-4 flex flex-col gap-1 mb-2">
                       {tecnicos.map((item) => (
