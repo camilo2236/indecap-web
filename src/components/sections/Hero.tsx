@@ -120,17 +120,22 @@ export function Hero() {
 
             <h1 className="font-[family-name:var(--font-playfair)] text-[clamp(2.8rem,4.5vw,4rem)] font-black leading-tight text-white mb-6">
               40 años formando el<br />
-              talento de{" "}
+              talento humano de{" "}
               <em className="italic text-[#FFD166]">Antioquia</em>
             </h1>
 
             <p className="text-white/75 text-lg font-[family-name:var(--font-dm-sans)] font-light leading-relaxed max-w-md mb-8">
-              Formación técnica laboral con enfoque 100% práctico. Más de 25.000 egresados ya están trabajando.
+              Formación técnica laboral con enfoque práctico. Más de 35.000 egresados ya están trabajando.
             </p>
 
             {/* Checks */}
             <div className="flex flex-col gap-3 mb-10">
-              {["Prácticas reales desde el primer día", "Alta empleabilidad certificada", "Financiación directa con INDECAP"].map((item) => (
+              {[
+                "Amplia vinculación laboral de nuestros egresados",
+                "Prácticas reales en entornos laborales",
+                "Más de 120 convenios de práctica",
+                "Financiación directa con INDECAP",
+              ].map((item) => (
                 <div key={item} className="flex items-center gap-3">
                   <CheckCircle className="h-5 w-5 text-[#FFD166] shrink-0" />
                   <span className="text-white/80 text-sm font-[family-name:var(--font-dm-sans)]">{item}</span>
@@ -141,7 +146,7 @@ export function Hero() {
             {/* Stats */}
             <div className="flex flex-wrap gap-8">
               {[
-                { num: "25.000+", label: "Egresados", color: "#FFD166" },
+                { num: "35.000+", label: "Egresados", color: "#FFD166" },
                 { num: "40", label: "Años", color: "white" },
                 { num: "16", label: "Programas", color: "white" },
                 { num: "3", label: "Sedes", color: "white" },

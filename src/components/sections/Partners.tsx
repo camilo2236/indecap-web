@@ -24,7 +24,7 @@ const differentiators = [
   },
   {
     icon: Users,
-    title: "25.000+ egresados",
+    title: "35.000+ egresados",
     description:
       "40 años formando técnicos que hoy trabajan en el sector salud, belleza, veterinaria y administración en todo Antioquia.",
     color: "#F0A500",

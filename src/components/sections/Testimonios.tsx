@@ -68,7 +68,7 @@ export function Testimonios() {
             <em className="italic text-[#FFD166]">egresados</em>
           </h2>
           <p className="mt-4 text-white/50 font-[family-name:var(--font-dm-sans)] font-light max-w-lg mx-auto">
-            25.000+ egresados respaldan la calidad de INDECAP. Aquí algunos de ellos.
+            35.000+ egresados respaldan la calidad de INDECAP. Aquí algunos de ellos.
           </p>
         </div>
 

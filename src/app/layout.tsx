@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     template: "%s | INDECAP — Instituto de Ciencias Aplicadas",
   },
   description:
-    "Corporación Educativa INDECAP — 40 años formando técnicos laborales en Antioquia. 25.000+ egresados. Programas en enfermería, cosmetología, veterinaria, farmacia, salud oral y más. Sedes en Medellín, Envigado y Caldas.",
+    "Corporación Educativa INDECAP — 40 años formando técnicos laborales en Antioquia. 35.000+ egresados. Programas en enfermería, cosmetología, veterinaria, farmacia, salud oral y más. Sedes en Medellín, Envigado y Caldas.",
   keywords: [
     "INDECAP", "técnico laboral Medellín", "auxiliar enfermería Medellín",
     "cosmetología Medellín", "veterinaria Medellín", "farmacia Medellín",
@@ -40,7 +40,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "INDECAP — 40 Años Formando el Talento de Antioquia",
     description:
-      "25.000+ egresados. 16 programas técnicos laborales avalados por la Secretaría de Educación. Sedes en Medellín, Envigado y Caldas.",
+      "35.000+ egresados. 16 programas técnicos laborales avalados por la Secretaría de Educación. Sedes en Medellín, Envigado y Caldas.",
     locale: "es_CO",
     type: "website",
     siteName: "INDECAP — Instituto de Ciencias Aplicadas",
@@ -57,7 +57,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "INDECAP — 40 Años Formando el Talento de Antioquia",
-    description: "25.000+ egresados. 16 programas técnicos. Sedes en Medellín, Envigado y Caldas.",
+    description: "35.000+ egresados. 16 programas técnicos. Sedes en Medellín, Envigado y Caldas.",
     images: ["/images/og-image.jpg"],
   },
   robots: {
@@ -83,7 +83,7 @@ const schemaOrg = {
       "url": BASE_URL,
       "logo": `${BASE_URL}/images/logo.png`,
       "image": `${BASE_URL}/images/og-image.jpg`,
-      "description": "Institución de educación para el trabajo y el desarrollo humano con 40 años de experiencia en Antioquia. 25.000+ egresados formados en programas técnicos laborales.",
+      "description": "Institución de educación para el trabajo y el desarrollo humano con 40 años de experiencia en Antioquia. 35.000+ egresados formados en programas técnicos laborales.",
       "foundingDate": "1986",
       "telephone": "+576044484794",
       "email": "indecap@indecap.edu.co",

@@ -101,7 +101,7 @@ export default function ContactoPage() {
             {[
               { num: "3", label: "Sedes" },
               { num: "40", label: "Años" },
-              { num: "25.000+", label: "Egresados" },
+              { num: "35.000+", label: "Egresados" },
               { num: "16", label: "Programas" },
             ].map((s) => (
               <div key={s.label} className="text-center">

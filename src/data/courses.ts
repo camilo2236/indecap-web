@@ -1,5 +1,6 @@
 export interface Course {
   id: string;
+  image?: string;
   name: string;
   description: string;
   duration: string;
@@ -11,7 +12,6 @@ export interface Course {
   tipo: "curso" | "diplomado" | "paquete";
   whatsappUrl: string;
   badge?: string;
-  image?: string;
 }
 
 export const courses: Course[] = [
@@ -103,6 +103,7 @@ export const courses: Course[] = [
   },
   {
     id: "calidad-humanizacion",
+    image: "/images/cursos/calidad-humanizacion.jpg",
     name: "Calidad + Humanización en los Servicios",
     description: "Paquete especial: dos cursos complementarios para fortalecer la calidad del servicio y la humanización en entornos de salud y atención al cliente.",
     duration: "20 horas certificadas por curso",
@@ -118,6 +119,7 @@ export const courses: Course[] = [
 
   {
     id: "excel",
+    image: "/images/cursos/excel.jpg",
     name: "Excel Básico, Intermedio y Avanzado",
     description: "Domina Excel en 3 niveles progresivos. Desde fundamentos hasta tablas dinámicas, macros y análisis de datos. Disponible presencial y virtual.",
     duration: "4 clases por nivel · 20 horas certificadas",
@@ -130,6 +132,7 @@ export const courses: Course[] = [
   },
   {
     id: "word",
+    image: "/images/cursos/word.jpg",
     name: "Word Básico y Avanzado",
     description: "Crea y edita documentos profesionales desde cero. Estilos, tablas, combinación de correspondencia e informes formales.",
     duration: "20 horas certificadas",
