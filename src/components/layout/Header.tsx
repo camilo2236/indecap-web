@@ -58,7 +58,7 @@ export function Header() {
   const [showProgramas, setShowProgramas] = useState(false);
   const [showTecnicos, setShowTecnicos] = useState(false);
   const [showContinuos, setShowContinuos] = useState(false);
-  const [mobileExpanded, setMobileExpanded] = useState<string | null>(null);
+  const [mobileExpanded, setMobileExpanded] = useState<"programas" | "tecnicos" | "continuos" | null>(null);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
