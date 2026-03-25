@@ -59,6 +59,7 @@ export function Header() {
   const [showTecnicos, setShowTecnicos] = useState(false);
   const [showContinuos, setShowContinuos] = useState(false);
   const [mobileExpanded, setMobileExpanded] = useState<"programas" | "tecnicos" | "continuos" | null>(null);
+  const [mobileSubExpanded, setMobileSubExpanded] = useState<"tecnicos" | "continuos" | null>(null);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -242,15 +243,15 @@ export function Header() {
               </button>
 
               {mobileExpanded === "programas" && (
-  <div className="pl-4 flex flex-col gap-1">
-    <button
-      onClick={() => setMobileExpanded("tecnicos")}
-      className="flex items-center justify-between w-full text-sm font-bold text-[#312783] py-2"
-    >
-      Técnicos Laborales
-      <ChevronDown className="h-4 w-4" />
-    </button>
-                  {mobileExpanded === "tecnicos" && (
+                <div className="pl-4 flex flex-col gap-1">
+                  <button
+                    onClick={() => setMobileSubExpanded(mobileSubExpanded === "tecnicos" ? null : "tecnicos")}
+                    className="flex items-center justify-between w-full text-sm font-bold text-[#312783] py-2"
+                  >
+                    Técnicos Laborales
+                    <ChevronDown className={`h-4 w-4 transition-transform ${mobileSubExpanded === "tecnicos" ? "rotate-180" : ""}`} />
+                  </button>
+                  {mobileSubExpanded === "tecnicos" && (
                     <div className="pl-4 flex flex-col gap-1 mb-2">
                       {tecnicos.map((item) => (
                         <a key={item.href} href={item.href} onClick={() => setOpen(false)} className="text-sm text-[#374151] py-1.5 hover:text-[#312783]">
@@ -261,13 +262,13 @@ export function Header() {
                   )}
 
                   <button
-                    onClick={() => setMobileExpanded(prev => prev === "continuos" ? "programas" : "continuos")}
+                    onClick={() => setMobileSubExpanded(mobileSubExpanded === "continuos" ? null : "continuos")}
                     className="flex items-center justify-between w-full text-sm font-bold text-[#312783] py-2"
                   >
                     Educación Continua
-                    <ChevronDown className={`h-4 w-4 transition-transform ${mobileExpanded === "continuos" ? "rotate-180" : ""}`} />
+                    <ChevronDown className={`h-4 w-4 transition-transform ${mobileSubExpanded === "continuos" ? "rotate-180" : ""}`} />
                   </button>
-                  {mobileExpanded === "continuos" && (
+                  {mobileSubExpanded === "continuos" && (
                     <div className="pl-4 flex flex-col gap-1 mb-2">
                       {continuos.map((item, i) => (
                         <a key={i} href={item.href} onClick={() => setOpen(false)} className="text-sm text-[#374151] py-1.5 hover:text-[#312783]">
