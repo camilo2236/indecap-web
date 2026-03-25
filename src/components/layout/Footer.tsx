@@ -11,7 +11,7 @@ export function Footer() {
             <img
               src="/images/logo.png"
               alt="INDECAP"
-              className="h-14 brightness-0 invert"
+              className="h-20 brightness-0 invert"
             />
             <p className="mt-4 font-[family-name:var(--font-dm-sans)] text-sm font-light text-white/70">
               Corporación Educativa INDECAP — Instituto de Ciencias Aplicadas ®

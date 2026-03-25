@@ -94,7 +94,7 @@ export function Header() {
       }`}
       style={{ background: "rgba(243,248,250,0.95)" }}
     >
-      <div className="container mx-auto flex h-20 items-center justify-between px-6 lg:px-12">
+      <div className="container mx-auto flex h-24 items-center justify-between px-6 lg:px-12">
 
         {/* LOGO */}
         <div className="flex items-center gap-4">
@@ -109,7 +109,7 @@ export function Header() {
           )}
           <a href="/" className="flex items-center gap-2">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/images/logo.png" alt="INDECAP" className="h-14" />
+            <img src="/images/logo.png" alt="INDECAP" className="h-20" />
           </a>
         </div>
 
@@ -229,7 +229,7 @@ export function Header() {
             <Menu className="h-5 w-5" />
             <span className="sr-only">Menú</span>
           </SheetTrigger>
-          <SheetContent side="right">
+          <SheetContent side="right" className="overflow-y-auto">
             <SheetTitle className="sr-only">Menú de navegación</SheetTitle>
             <nav className="mt-8 flex flex-col gap-2">
 
