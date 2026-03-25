@@ -45,10 +45,10 @@ const continuos = [
 ];
 
 const simpleLinks = [
-  { label: "Nosotros", href: "/#nosotros" },
-  { label: "Bachillerato", href: "/#bachillerato" },
-  { label: "Pagos", href: "/pagos" },
   { label: "Contacto", href: "/contacto" },
+  { label: "Pagos", href: "/pagos" },
+  { label: "Bachillerato", href: "/#bachillerato" },
+  { label: "Nosotros", href: "/#nosotros" },
 ];
 
 export function Header() {
