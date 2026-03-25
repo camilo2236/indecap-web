@@ -231,7 +231,7 @@ export function Header() {
           </SheetTrigger>
           <SheetContent side="right" className="overflow-y-auto">
             <SheetTitle className="sr-only">Menú de navegación</SheetTitle>
-            <nav className="mt-8 flex flex-col gap-2">
+            <nav className="mt-8 flex flex-col gap-2 pb-10">
 
               {/* Programas móvil */}
               <button
