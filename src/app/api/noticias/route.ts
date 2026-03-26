@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { noticiasIndecap } from "@/data/noticiasIndecap";
 
-const GNEWS_API_KEY = process.env.GNEWS_API_KEY;
+const NEWSDATA_API_KEY = process.env.NEWSDATA_API_KEY;
 
 export interface NoticiaUnificada {
   id: string;
@@ -68,18 +68,18 @@ export async function GET(req: NextRequest) {
     // Noticias externas de GNews
     let externas: NoticiaUnificada[] = [];
 
-    if (GNEWS_API_KEY) {
-      const query = "educación técnica Colombia OR formación técnica Antioquia";
-      const gNewsUrl = `https://gnews.io/api/v4/search?q=${encodeURIComponent(query)}&lang=es&max=10&apikey=${GNEWS_API_KEY}`;
+    if (NEWSDATA_API_KEY) {
+      const query = "educación técnica Colombia formación laboral";
+      const newsUrl = `https://newsdata.io/api/1/news?apikey=${NEWSDATA_API_KEY}&q=${encodeURIComponent(query)}&language=es&country=co,mx,ar&category=education`;
 
-      console.log("Fetching GNews:", gNewsUrl.replace(GNEWS_API_KEY, "***"));
-      const gRes = await fetch(gNewsUrl, { cache: "no-store" });
-      console.log("GNews status:", gRes.status);
+      console.log("Fetching NewsData.io...");
+      const nRes = await fetch(newsUrl, { cache: "no-store" });
+      console.log("NewsData status:", nRes.status);
 
-      if (gRes.ok) {
-        const gData = await gRes.json();
-        console.log("GNews articles:", gData.articles?.length || 0);
-        const articulos = gData.articles || [];
+      if (nRes.ok) {
+        const nData = await nRes.json();
+        console.log("NewsData articles:", nData.results?.length || 0);
+        const articulos = nData.results || [];
 
         externas = await Promise.all(
           articulos.slice(0, 8).map(async (art: any, i: number) => {
@@ -89,15 +89,20 @@ export async function GET(req: NextRequest) {
               id: `externa-${i}-${Date.now()}`,
               titulo,
               resumen,
-              fecha: art.publishedAt?.split("T")[0] || new Date().toISOString().split("T")[0],
+              fecha: art.pubDate?.split(" ")[0] || new Date().toISOString().split("T")[0],
               categoria: "educacion",
-              imagen: art.image,
-              url: art.url,
+              imagen: art.image_url,
+              url: art.link,
               fuente: "externa" as const,
             };
           })
         );
+      } else {
+        const errText = await nRes.text();
+        console.error("NewsData error:", errText);
       }
+    } else {
+      console.log("No NEWSDATA_API_KEY found");
     }
 
     // Mezclar: primero las propias destacadas, luego externas, luego resto propias
