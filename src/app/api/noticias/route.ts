@@ -69,13 +69,16 @@ export async function GET(req: NextRequest) {
     let externas: NoticiaUnificada[] = [];
 
     if (GNEWS_API_KEY) {
-      const query = "educación técnica Colombia OR educación laboral Colombia OR formación técnica";
-      const gNewsUrl = `https://gnews.io/api/v4/search?q=${encodeURIComponent(query)}&lang=es&country=co&max=10&apikey=${GNEWS_API_KEY}`;
+      const query = "educación técnica Colombia OR formación técnica Antioquia";
+      const gNewsUrl = `https://gnews.io/api/v4/search?q=${encodeURIComponent(query)}&lang=es&max=10&apikey=${GNEWS_API_KEY}`;
 
-      const gRes = await fetch(gNewsUrl, { next: { revalidate: 3600 } });
+      console.log("Fetching GNews:", gNewsUrl.replace(GNEWS_API_KEY, "***"));
+      const gRes = await fetch(gNewsUrl, { cache: "no-store" });
+      console.log("GNews status:", gRes.status);
 
       if (gRes.ok) {
         const gData = await gRes.json();
+        console.log("GNews articles:", gData.articles?.length || 0);
         const articulos = gData.articles || [];
 
         externas = await Promise.all(
