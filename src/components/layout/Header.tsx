@@ -25,16 +25,16 @@ const tecnicos = [
 
 const continuos = [
   { label: "Ver todos los cursos", href: "/educacion-continua" },
-  { label: "RCP — Reanimación Cardiopulmonar", href: "/educacion-continua" },
-  { label: "Inyectología", href: "/educacion-continua" },
-  { label: "Vacunación", href: "/educacion-continua" },
-  { label: "Toma de Muestras de Laboratorio", href: "/educacion-continua" },
-  { label: "Primeros Auxilios", href: "/educacion-continua" },
-  { label: "Código Fucsia", href: "/educacion-continua" },
-  { label: "Peluquería y Estética Canina", href: "/educacion-continua" },
-  { label: "Excel Básico, Intermedio y Avanzado", href: "/educacion-continua" },
-  { label: "Word Básico y Avanzado", href: "/educacion-continua" },
-  { label: "Calidad + Humanización", href: "/educacion-continua" },
+  { label: "RCP — Reanimación Cardiopulmonar", href: "/cursos/rcp" },
+  { label: "Inyectología", href: "/cursos/inyectologia" },
+  { label: "Vacunación", href: "/cursos/vacunacion" },
+  { label: "Toma de Muestras de Laboratorio", href: "/cursos/toma-muestras" },
+  { label: "Primeros Auxilios", href: "/cursos/primeros-auxilios" },
+  { label: "Código Fucsia", href: "/cursos/codigo-fucsia" },
+  { label: "Peluquería y Estética Canina", href: "/cursos/peluqueria-canina" },
+  { label: "Excel Básico, Intermedio y Avanzado", href: "/cursos/excel" },
+  { label: "Word Básico y Avanzado", href: "/cursos/word" },
+  { label: "Calidad + Humanización", href: "/cursos/calidad-humanizacion" },
 ];
 
 const simpleLinks = [
