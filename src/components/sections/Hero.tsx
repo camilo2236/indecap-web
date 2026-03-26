@@ -110,11 +110,6 @@ export function Hero() {
 
           {/* DERECHA — Formulario */}
           <div>
-            {/* Logo en hero */}
-            <div className="mb-6">
-              <img src="/images/logo.png" alt="INDECAP" className="h-16 lg:h-20" />
-            </div>
-
             <div className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-xs font-bold uppercase tracking-widest text-white/80 backdrop-blur-md mb-6">
               <span className="relative flex h-2.5 w-2.5">
                 <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#F0A500] opacity-75" />
@@ -130,14 +125,14 @@ export function Hero() {
             </h1>
 
             <p className="text-white/75 text-lg font-[family-name:var(--font-dm-sans)] font-light leading-relaxed max-w-md mb-8">
-              Formación técnica laboral con enfoque práctico. Más de 25.000 egresados ya están trabajando.
+              Formación técnica laboral con enfoque práctico. Más de 35.000 egresados ya están trabajando.
             </p>
 
             {/* Checks */}
             <div className="flex flex-col gap-3 mb-10">
               {[
                 "Amplia vinculación laboral de nuestros egresados",
-                "Prácticas reales en entornos laborales",
+                "Aprendizaje en entornos laborales reales",
                 "Más de 120 convenios de práctica",
                 "Financiación directa con INDECAP",
               ].map((item) => (
@@ -151,10 +146,10 @@ export function Hero() {
             {/* Stats */}
             <div className="flex flex-wrap gap-8">
               {[
-                { num: "25.000+", label: "Egresados", color: "#FFD166" },
+                { num: "35.000+", label: "Egresados", color: "#FFD166" },
                 { num: "40", label: "Años", color: "white" },
                 { num: "16", label: "Programas", color: "white" },
-                { num: "3", label: "Sedes", color: "white" },
+                { num: "25", label: "Municipios", color: "white" },
               ].map((stat) => (
                 <div key={stat.label} className="text-center">
                   <div
@@ -194,7 +189,7 @@ export function Hero() {
             ) : (
               <form onSubmit={handleSubmit} className="space-y-3">
                 <h3 className="font-[family-name:var(--font-playfair)] text-xl font-bold text-white mb-5">
-                  Solicitar información gratis
+                  ¡Da el primer paso hoy!
                 </h3>
 
                 <div className="grid grid-cols-2 gap-3">
