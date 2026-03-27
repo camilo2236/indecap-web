@@ -54,7 +54,6 @@
 }
 
 :root {
-  /* INDECAP Brand Colors */
   --indecap-blue: #312783;
   --indecap-yellow: #FACC15;
   --indecap-blue-dark: #111627;
@@ -64,23 +63,22 @@
   --cream: #F3F8FA;
   --soft: #E4F1F6;
 
-  /* shadcn semantic tokens mapped to INDECAP brand */
-  --background: #F3F8FA;
-  --foreground: #080F14;
+  --background: #f5fafc;
+  --foreground: #171c1e;
   --card: #FFFFFF;
-  --card-foreground: #080F14;
+  --card-foreground: #171c1e;
   --popover: #FFFFFF;
-  --popover-foreground: #080F14;
-  --primary: #312783;
+  --popover-foreground: #171c1e;
+  --primary: #1a086e;
   --primary-foreground: #FFFFFF;
   --secondary: #FACC15;
   --secondary-foreground: #080F14;
-  --muted: #E4F1F6;
-  --muted-foreground: #6B7280;
+  --muted: #eaeff1;
+  --muted-foreground: #474551;
   --accent: #F0A500;
   --accent-foreground: #080F14;
   --destructive: #DC2626;
-  --border: #E4F1F6;
+  --border: #c8c4d3;
   --input: #E4F1F6;
   --ring: #312783;
   --chart-1: #312783;
@@ -89,13 +87,13 @@
   --chart-4: #2A7A4B;
   --chart-5: #0E7C7B;
   --radius: 1rem;
-  --sidebar: #F3F8FA;
-  --sidebar-foreground: #080F14;
-  --sidebar-primary: #312783;
+  --sidebar: #f5fafc;
+  --sidebar-foreground: #171c1e;
+  --sidebar-primary: #1a086e;
   --sidebar-primary-foreground: #FFFFFF;
-  --sidebar-accent: #E4F1F6;
-  --sidebar-accent-foreground: #080F14;
-  --sidebar-border: #E4F1F6;
+  --sidebar-accent: #eaeff1;
+  --sidebar-accent-foreground: #171c1e;
+  --sidebar-border: #c8c4d3;
   --sidebar-ring: #312783;
 }
 
@@ -104,8 +102,6 @@
   --foreground: #F3F8FA;
   --card: #111627;
   --card-foreground: #F3F8FA;
-  --popover: #111627;
-  --popover-foreground: #F3F8FA;
   --primary: #FACC15;
   --primary-foreground: #080F14;
   --secondary: #312783;
@@ -118,19 +114,6 @@
   --border: rgba(255,255,255,0.1);
   --input: rgba(255,255,255,0.15);
   --ring: #FACC15;
-  --chart-1: #FACC15;
-  --chart-2: #1A5CA8;
-  --chart-3: #F0A500;
-  --chart-4: #2A7A4B;
-  --chart-5: #0E7C7B;
-  --sidebar: #111627;
-  --sidebar-foreground: #F3F8FA;
-  --sidebar-primary: #FACC15;
-  --sidebar-primary-foreground: #080F14;
-  --sidebar-accent: #1a2332;
-  --sidebar-accent-foreground: #F3F8FA;
-  --sidebar-border: rgba(255,255,255,0.1);
-  --sidebar-ring: #FACC15;
 }
 
 @layer base {
@@ -139,25 +122,32 @@
   }
   body {
     @apply bg-background text-foreground;
-    font-family: var(--font-dm-sans), 'DM Sans', sans-serif;
-    color: #374151;
+    font-family: var(--font-dm-sans), 'Inter', sans-serif;
+    color: #474551;
+    letter-spacing: -0.01em;
   }
   html {
     @apply scroll-smooth;
   }
   h1, h2, h3, h4, h5, h6 {
-    font-family: var(--font-playfair), 'Playfair Display', serif;
-    color: #080F14;
+    font-family: var(--font-playfair), 'Newsreader', serif;
+    color: #171c1e;
+    letter-spacing: -0.02em;
+  }
+  /* Italic headlines — estilo del nuevo diseño */
+  h1 em, h2 em {
+    font-style: italic;
+    font-weight: 800;
   }
 }
 
-/* Section label style (gold uppercase) */
+/* Section label style */
 .section-label {
-  font-family: var(--font-dm-sans), 'DM Sans', sans-serif;
+  font-family: var(--font-dm-sans), 'Inter', sans-serif;
   font-size: 0.73rem;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.12em;
   color: var(--gold);
 }
 
