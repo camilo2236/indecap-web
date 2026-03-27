@@ -8,11 +8,11 @@ export type ShortCourse = {
   validity: string;
   schedule: string;
   modality: string;
-  image: string;
   benefits: string[];
   learn: string[];
   info: { label: string; value: string }[];
   ctaMessage: string;
+  image?: string;
 };
 
 export const shortCourses: ShortCourse[] = [
@@ -32,21 +32,21 @@ export const shortCourses: ShortCourse[] = [
     benefits: [
       "Casos de estudio reales",
       "Práctica guiada paso a paso",
-      "Formación útil para entornos clínicos y comunitarios",
+      "Formación útil para entornos clínicos y comunitarios"
     ],
     learn: [
       "Compresiones torácicas efectivas",
       "Ventilaciones de apoyo",
       "Desobstrucción de vía aérea",
-      "Uso básico del DEA",
+      "Uso básico del DEA"
     ],
     info: [
       { label: "Horario", value: "8:00 a.m. a 4:00 p.m." },
       { label: "Certificación", value: "20 horas certificadas, entrega el mismo día" },
       { label: "Modalidad", value: "Presencial" },
-      { label: "Validez", value: "2 años" },
+      { label: "Validez", value: "2 años" }
     ],
-    ctaMessage: "Hola, quiero información sobre el curso de RCP en INDECAP",
+    ctaMessage: "Hola, quiero información sobre el curso de RCP en INDECAP"
   },
   {
     slug: "inyectologia",
@@ -64,21 +64,21 @@ export const shortCourses: ShortCourse[] = [
     benefits: [
       "Formación práctica desde el primer momento",
       "Certificación el mismo día",
-      "Fortalece tu perfil en el sector salud",
+      "Fortalece tu perfil en el sector salud"
     ],
     learn: [
       "Aplicación intramuscular",
       "Aplicación subcutánea",
       "Aplicación intravenosa",
-      "Protocolos de bioseguridad",
+      "Protocolos de bioseguridad"
     ],
     info: [
       { label: "Horario", value: "8:00 a.m. a 4:00 p.m." },
       { label: "Certificación", value: "20 horas certificadas, entrega el mismo día" },
       { label: "Modalidad", value: "Presencial" },
-      { label: "Validez", value: "2 años" },
+      { label: "Validez", value: "2 años" }
     ],
-    ctaMessage: "Hola, quiero información sobre el curso de Inyectología en INDECAP",
+    ctaMessage: "Hola, quiero información sobre el curso de Inyectología en INDECAP"
   },
   {
     slug: "primeros-auxilios",
@@ -96,21 +96,21 @@ export const shortCourses: ShortCourse[] = [
     benefits: [
       "Capacitación útil para la vida diaria y el entorno laboral",
       "Aprendizaje práctico y directo",
-      "Certificación de rápida obtención",
+      "Certificación de rápida obtención"
     ],
     learn: [
       "Atención inicial en emergencias",
       "Evaluación básica de la situación",
       "Manejo inicial de lesiones comunes",
-      "Respuesta oportuna ante eventos inesperados",
+      "Respuesta oportuna ante eventos inesperados"
     ],
     info: [
       { label: "Horario", value: "8:00 a.m. a 4:00 p.m." },
       { label: "Certificación", value: "20 horas certificadas, entrega el mismo día" },
       { label: "Modalidad", value: "Presencial" },
-      { label: "Validez", value: "2 años" },
+      { label: "Validez", value: "2 años" }
     ],
-    ctaMessage: "Hola, quiero información sobre el curso de Primeros Auxilios en INDECAP",
+    ctaMessage: "Hola, quiero información sobre el curso de Primeros Auxilios en INDECAP"
   },
   {
     slug: "codigo-fucsia",
@@ -128,21 +128,21 @@ export const shortCourses: ShortCourse[] = [
     benefits: [
       "Aplicación práctica con estudios de caso",
       "Enfoque actualizado y ético",
-      "Fortalece el perfil profesional y el impacto social",
+      "Fortalece el perfil profesional y el impacto social"
     ],
     learn: [
       "Atención integral a víctimas",
       "Protocolos básicos de respuesta",
       "Perspectiva de género aplicada",
-      "Actuación oportuna en contextos sensibles",
+      "Actuación oportuna en contextos sensibles"
     ],
     info: [
       { label: "Horario", value: "8:00 a.m. a 4:00 p.m." },
       { label: "Certificación", value: "20 horas certificadas, entrega al finalizar" },
       { label: "Modalidad", value: "Presencial" },
-      { label: "Dirigido a", value: "Salud, seguridad y atención comunitaria" },
+      { label: "Dirigido a", value: "Salud, seguridad y atención comunitaria" }
     ],
-    ctaMessage: "Hola, quiero información sobre el curso Código Fucsia en INDECAP",
+    ctaMessage: "Hola, quiero información sobre el curso Código Fucsia en INDECAP"
   },
   {
     slug: "vacunacion",
@@ -160,21 +160,21 @@ export const shortCourses: ShortCourse[] = [
     benefits: [
       "Formación práctica en una sola jornada",
       "Certificación el mismo día",
-      "Conocimiento útil para fortalecer tu perfil profesional",
+      "Conocimiento útil para fortalecer tu perfil profesional"
     ],
     learn: [
       "Administración segura de vacunas",
       "Cadena de frío y conservación",
       "Protocolos básicos de aplicación",
-      "Buenas prácticas en procesos de inmunización",
+      "Buenas prácticas en procesos de inmunización"
     ],
     info: [
       { label: "Horario", value: "8:00 a.m. a 4:00 p.m." },
       { label: "Certificación", value: "20 horas certificadas, entrega el mismo día" },
       { label: "Modalidad", value: "Presencial" },
-      { label: "Validez", value: "2 años" },
+      { label: "Validez", value: "2 años" }
     ],
-    ctaMessage: "Hola, quiero información sobre el curso de Vacunación en INDECAP",
+    ctaMessage: "Hola, quiero información sobre el curso de Vacunación en INDECAP"
   },
   {
     slug: "toma-muestras",
@@ -192,22 +192,21 @@ export const shortCourses: ShortCourse[] = [
     benefits: [
       "Capacitación intensiva y aplicada",
       "Entrega de certificación el mismo día",
-      "Formación útil para contextos clínicos y de laboratorio",
+      "Formación útil para contextos clínicos y de laboratorio"
     ],
     learn: [
       "Técnicas básicas de toma de muestras",
       "Manejo y procesamiento inicial",
       "Buenas prácticas en bioseguridad",
-      "Preparación adecuada del procedimiento",
+      "Preparación adecuada del procedimiento"
     ],
     info: [
       { label: "Horario", value: "8:00 a.m. a 4:00 p.m." },
       { label: "Certificación", value: "20 horas certificadas, entrega el mismo día" },
       { label: "Modalidad", value: "Presencial" },
-      { label: "Validez", value: "2 años" },
+      { label: "Validez", value: "2 años" }
     ],
-    ctaMessage:
-      "Hola, quiero información sobre el curso de Toma de Muestras de Laboratorio Clínico en INDECAP",
+    ctaMessage: "Hola, quiero información sobre el curso de Toma de Muestras de Laboratorio Clínico en INDECAP"
   },
   {
     slug: "peluqueria-estetica-canina",
@@ -225,26 +224,142 @@ export const shortCourses: ShortCourse[] = [
     benefits: [
       "Formación especializada con enfoque práctico",
       "Ideal para emprender o ampliar tu perfil laboral",
-      "Disponible en Medellín y Caldas",
+      "Disponible en Medellín y Caldas"
     ],
     learn: [
       "Cuidado estético básico de mascotas",
       "Técnicas de peluquería canina",
       "Manejo adecuado del procedimiento",
-      "Buenas prácticas en atención al cliente",
+      "Buenas prácticas en atención al cliente"
     ],
     info: [
       { label: "Duración", value: "45 días / 120 horas" },
-      {
-        label: "Horario",
-        value: "Lunes a viernes de 8:00 a.m. a 12:30 p.m. o sábados según grupo",
-      },
+      { label: "Horario", value: "Lunes a viernes de 8:00 a.m. a 12:30 p.m. o sábados según grupo" },
       { label: "Modalidad", value: "Presencial" },
-      { label: "Sedes", value: "Medellín / Caldas" },
+      { label: "Sedes", value: "Medellín / Caldas" }
     ],
-    ctaMessage:
-      "Hola, quiero información sobre el diplomado en Peluquería y Estética Canina en INDECAP",
+    ctaMessage: "Hola, quiero información sobre el diplomado en Peluquería y Estética Canina en INDECAP"
   },
+  {
+    slug: "peluqueria-canina",
+    image: "/images/cursos/peluqueria-canina.jpg",
+    title: "Diplomado en Peluquería y Estética Canina",
+    subtitle: "Fórmate como groomer profesional en 45 días intensivos con mascotas reales desde el primer día.",
+    description: "Una propuesta formativa pensada para quienes quieren desarrollar habilidades reales en el cuidado estético de mascotas y fortalecer su perfil en un sector con alta proyección. Disponible en Medellín y Caldas con financiación directa INDECAP.",
+    duration: "45 días",
+    certification: "120 horas",
+    validity: "Certificación de diplomado",
+    schedule: "Lunes a viernes de 8:00 a.m. a 12:30 p.m. o sábados según conformación de grupo",
+    modality: "Presencial",
+    benefits: [
+      "Formación especializada con enfoque práctico",
+      "Ideal para emprender o ampliar tu perfil laboral",
+      "Financiación directa con INDECAP"
+    ],
+    learn: [
+      "Cuidado estético básico de mascotas",
+      "Técnicas de peluquería canina",
+      "Manejo adecuado del procedimiento",
+      "Buenas prácticas en atención al cliente"
+    ],
+    info: [
+      { label: "Duración", value: "45 días / 120 horas" },
+      { label: "Horario", value: "Lunes a viernes 8:00 a.m. – 12:30 p.m. o sábados" },
+      { label: "Modalidad", value: "Presencial" },
+      { label: "Sedes", value: "Medellín / Caldas" }
+    ],
+    ctaMessage: "Hola, quiero información sobre el diplomado en Peluquería y Estética Canina en INDECAP"
+  },
+  {
+    slug: "calidad-humanizacion",
+    image: "/images/cursos/calidad-humanizacion.jpg",
+    title: "Calidad + Humanización en los Servicios",
+    subtitle: "Paquete especial de dos cursos complementarios para fortalecer la calidad del servicio y la humanización en entornos de salud.",
+    description: "Un paquete formativo diseñado para profesionales y estudiantes del sector salud que quieren mejorar la calidad de su atención y desarrollar habilidades de humanización en el trato con pacientes y familias. Dos cursos certificados por el precio de uno.",
+    duration: "2 jornadas intensivas",
+    certification: "20 horas certificadas por curso",
+    validity: "2 años",
+    schedule: "8:00 a.m. – 4:00 p.m.",
+    modality: "Presencial",
+    benefits: [
+      "Paquete especial con dos cursos complementarios",
+      "Certificación el mismo día",
+      "Ideal para personal del sector salud"
+    ],
+    learn: [
+      "Estándares de calidad en servicios de salud",
+      "Humanización en la atención al paciente",
+      "Comunicación efectiva con familias",
+      "Protocolos de servicio al cliente en salud"
+    ],
+    info: [
+      { label: "Duración", value: "2 jornadas / 20 horas cada curso" },
+      { label: "Horario", value: "8:00 a.m. – 4:00 p.m." },
+      { label: "Modalidad", value: "Presencial" },
+      { label: "Sedes", value: "Medellín · Envigado · Caldas" }
+    ],
+    ctaMessage: "Hola, quiero información sobre el curso de Calidad y Humanización en INDECAP"
+  },
+  {
+    slug: "excel",
+    image: "/images/cursos/excel.jpg",
+    title: "Excel Básico, Intermedio y Avanzado",
+    subtitle: "Domina Excel en 3 niveles progresivos. Desde fundamentos hasta tablas dinámicas, macros y análisis de datos.",
+    description: "Programa progresivo en tres niveles que te llevará desde los conceptos básicos hasta el manejo avanzado de Excel. Aprende a crear informes profesionales, automatizar tareas con macros y analizar datos con tablas dinámicas. Disponible presencial y virtual.",
+    duration: "4 clases por nivel",
+    certification: "20 horas certificadas por nivel",
+    validity: "2 años",
+    schedule: "Sábados 8am–12pm · Sábados 1pm–4pm · Semana 6pm–10pm virtual",
+    modality: "Presencial y Virtual",
+    benefits: [
+      "Paquete 3 niveles con descuento especial",
+      "Disponible presencial y en modalidad virtual",
+      "Certificación por cada nivel completado"
+    ],
+    learn: [
+      "Fórmulas y funciones esenciales",
+      "Tablas dinámicas y gráficos",
+      "Macros y automatización",
+      "Análisis de datos avanzado"
+    ],
+    info: [
+      { label: "Duración", value: "4 clases por nivel · 20 horas" },
+      { label: "Horario", value: "Sábados o entre semana virtual" },
+      { label: "Modalidad", value: "Presencial y Virtual" },
+      { label: "Sedes", value: "Medellín · Envigado · Caldas" }
+    ],
+    ctaMessage: "Hola, quiero información sobre el curso de Excel en INDECAP"
+  },
+  {
+    slug: "word",
+    image: "/images/cursos/word.jpg",
+    title: "Word Básico y Avanzado",
+    subtitle: "Crea y edita documentos profesionales desde cero. Estilos, tablas, combinación de correspondencia e informes formales.",
+    description: "Aprende a usar Microsoft Word de forma profesional. Desde la creación de documentos básicos hasta el manejo de estilos, tablas, índices automáticos y combinación de correspondencia para informes y cartas empresariales.",
+    duration: "1 jornada intensiva",
+    certification: "20 horas certificadas",
+    validity: "2 años",
+    schedule: "8:00 a.m. – 4:00 p.m.",
+    modality: "Presencial",
+    benefits: [
+      "Certificación el mismo día",
+      "Aplicación inmediata en entorno laboral",
+      "Fortalece tu perfil profesional"
+    ],
+    learn: [
+      "Formato y estilos de documento",
+      "Tablas e índices automáticos",
+      "Combinación de correspondencia",
+      "Informes y documentos formales"
+    ],
+    info: [
+      { label: "Duración", value: "1 jornada / 20 horas" },
+      { label: "Horario", value: "8:00 a.m. – 4:00 p.m." },
+      { label: "Modalidad", value: "Presencial" },
+      { label: "Sedes", value: "Medellín · Envigado · Caldas" }
+    ],
+    ctaMessage: "Hola, quiero información sobre el curso de Word en INDECAP"
+  }
 ];
 
 export function getShortCourseBySlug(slug: string) {

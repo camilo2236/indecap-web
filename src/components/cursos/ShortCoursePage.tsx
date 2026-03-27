@@ -47,8 +47,12 @@ export function ShortCoursePage({ course }: Props) {
           </div>
 
           <div className="mt-16 lg:mt-0 relative">
-            <div className="aspect-[4/5] rounded-2xl overflow-hidden shadow-2xl relative bg-[#eaeff1] flex items-center justify-center text-9xl">
-              📚
+            <div className="aspect-[4/5] rounded-2xl overflow-hidden shadow-2xl relative bg-[#eaeff1]">
+              {course.image ? (
+                <img src={course.image} alt={course.title} className="w-full h-full object-cover" />
+              ) : (
+                <div className="w-full h-full bg-gradient-to-br from-[#1a086e]/10 to-[#312783]/20" />
+              )}
               <div className="absolute inset-0 bg-gradient-to-t from-[#1a086e]/40 to-transparent" />
             </div>
             <div className="absolute -bottom-6 -left-6 p-6 rounded-full w-32 h-32 flex flex-col items-center justify-center text-center shadow-xl border-4 border-[#f5fafc] bg-[#ffb21d]">
