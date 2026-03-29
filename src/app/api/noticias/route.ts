@@ -75,7 +75,6 @@ function parseRSS(xml: string, fuente: typeof RSS_FEEDS[0], maxItems = 5): Notic
 
       if (!titulo) continue;
 
-      // Filtrar por educación (excepto Ministerio que ya es todo educación)
       if (fuente.nombre !== "Ministerio de Educación") {
         const texto = `${titulo} ${descripcion}`.toLowerCase();
         const esEducacion = KEYWORDS_EDUCACION.some((kw) => texto.includes(kw));
@@ -108,7 +107,11 @@ function parseRSS(xml: string, fuente: typeof RSS_FEEDS[0], maxItems = 5): Notic
 
 export async function GET(req: NextRequest) {
   const { searchParams } = new URL(req.url);
-  const limite = parseInt(searchParams.get("limite") || "6");
+
+  // ── Límite máximo — previene abuso ───────────────────────────────────────────
+  const limiteRaw = parseInt(searchParams.get("limite") || "6");
+  const limite = Math.min(Math.max(1, limiteRaw), 24); // entre 1 y 24
+
   const categoria = searchParams.get("categoria") || "todas";
 
   // Noticias propias
@@ -131,7 +134,7 @@ export async function GET(req: NextRequest) {
       const parsed = parseRSS(xml, feed, 5);
       console.log(`RSS ${feed.nombre}: ${parsed.length} noticias`);
       return parsed;
-    } catch (e) {
+    } catch {
       console.log(`RSS ${feed.nombre}: falló`);
       return [];
     }
@@ -142,7 +145,6 @@ export async function GET(req: NextRequest) {
     .filter((r): r is PromiseFulfilledResult<NoticiaUnificada[]> => r.status === "fulfilled")
     .flatMap((r) => r.value);
 
-  // Mezclar y deduplicar
   const destacadas = propias.filter((n) => n.destacada);
   const noDestacadas = propias.filter((n) => !n.destacada);
   let todas = [...destacadas, ...externas, ...noDestacadas];
