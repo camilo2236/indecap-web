@@ -1,53 +1,47 @@
 "use client";
 import React, { useState } from 'react';
-import { MessageCircle, CheckCircle, ArrowRight, Clock, MapPin, Award } from "lucide-react";
+import { MessageCircle, CheckCircle, ArrowRight, Clock, MapPin, ChevronDown } from "lucide-react";
 import { WhatsAppSelector } from './WhatsAppSelector';
 import { MiniTestimonio } from './MiniTestimonio';
 
 export function ProgramPage({
   titulo, subtitulo, emWord, accent, escuela,
   fotoAlt, fotoSrc, descripcion, capacidades, salidas, ctaDesc,
-  waNum, waText, sedes, programaId, horas, semestres, mercadoTexto,
+  waNum, waText, sedes, programaId, semestres, mercadoTexto,
   pensum1, pensum2, pensum3,
 }: any) {
 
   const [isSelectorOpen, setIsSelectorOpen] = useState(false);
+  const [cicloAbierto, setCicloAbierto] = useState<number | null>(null);
   const handleOpenSelector = (e: React.MouseEvent) => { e.preventDefault(); setIsSelectorOpen(true); };
+
+  const ciclos = [
+    pensum1 && { label: "Ciclo 1 — Fundamentos", items: pensum1 },
+    pensum2 && { label: "Ciclo 2 — Profundización", items: pensum2 },
+    pensum3 && { label: "Ciclo 3 — Práctica Real", items: pensum3 },
+  ].filter(Boolean) as { label: string; items: string[] }[];
 
   return (
     <main className="min-h-screen bg-[#f5fafc] text-[#171c1e]">
 
-      {/* ── HERO — gradiente al 75% para que respire la foto ── */}
+      {/* ── HERO ─────────────────────────────────────────── */}
       <section className="relative min-h-[700px] flex items-center overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img src={fotoSrc} alt={fotoAlt} className="w-full h-full object-cover" />
-          {/* Gradiente más ligero: 80% izq → 40% centro → transparente */}
-          <div
-            className="absolute inset-0"
-            style={{ background: `linear-gradient(105deg, ${accent}cc 0%, ${accent}88 45%, ${accent}22 75%, transparent 100%)` }}
-          />
-          {/* Capa oscura sutil para legibilidad sin matar la foto */}
+          <div className="absolute inset-0" style={{ background: `linear-gradient(105deg, ${accent}cc 0%, ${accent}88 45%, ${accent}22 75%, transparent 100%)` }} />
           <div className="absolute inset-0 bg-black/20" />
         </div>
 
         <div className="relative z-10 max-w-7xl mx-auto px-8 w-full pt-32 pb-16">
           <div className="max-w-xl">
-            {/* Badge */}
             <span className="inline-block px-5 py-2 mb-6 rounded-full text-xs font-bold uppercase tracking-widest" style={{ backgroundColor: "#ffb21d", color: "#281800" }}>
               ✦ {escuela}
             </span>
-
-            {/* Título */}
             <h1 className="font-[family-name:var(--font-playfair)] text-6xl md:text-7xl font-black text-white mb-5 leading-[0.95] tracking-tight">
               {subtitulo}<br />
               <em className="italic" style={{ color: "#ffb21d" }}>{emWord}</em>
             </h1>
-
-            <p className="text-lg text-white/85 mb-8 leading-relaxed">
-              {descripcion}
-            </p>
-
-            {/* Pills campo laboral */}
+            <p className="text-lg text-white/85 mb-8 leading-relaxed">{descripcion}</p>
             <div className="flex flex-wrap gap-2 mb-10">
               {salidas.slice(0, 4).map((s: any, i: number) => (
                 <span key={i} className="flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold bg-white/15 backdrop-blur-sm border border-white/25 text-white">
@@ -55,25 +49,19 @@ export function ProgramPage({
                 </span>
               ))}
             </div>
-
-            <button
-              onClick={handleOpenSelector}
-              className="flex items-center gap-3 px-8 py-4 rounded-2xl font-black text-base hover:scale-105 transition-transform shadow-xl"
-              style={{ backgroundColor: "#ffb21d", color: "#281800" }}
-            >
+            <button onClick={handleOpenSelector} className="flex items-center gap-3 px-8 py-4 rounded-2xl font-black text-base hover:scale-105 transition-transform shadow-xl" style={{ backgroundColor: "#ffb21d", color: "#281800" }}>
               Iniciar mi proceso <ArrowRight size={18} />
             </button>
           </div>
         </div>
       </section>
 
-      {/* ── QUICK INFO BAR — igual que cursos ──────────────── */}
+      {/* ── QUICK INFO BAR — sin horas ──────────────────── */}
       <section className="max-w-7xl mx-auto px-8 -mt-6 relative z-20 mb-4">
-        <div className="bg-white grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-[#c8c4d3]/20 rounded-2xl shadow-xl border border-[#c8c4d3]/20">
+        <div className="bg-white grid grid-cols-1 md:grid-cols-2 divide-y md:divide-y-0 md:divide-x divide-[#c8c4d3]/20 rounded-2xl shadow-xl border border-[#c8c4d3]/20">
           {[
-            { icon: Clock,  label: "Duración",    value: semestres ? `${semestres} ciclos` : "2 ciclos" },
-            { icon: MapPin, label: "Modalidad",   value: "Presencial" },
-            { icon: Award,  label: "Intensidad",  value: horas ? `${horas} horas` : "1.000 horas" },
+            { icon: Clock,  label: "Duración",   value: semestres ? `${semestres} ciclos` : "2 ciclos" },
+            { icon: MapPin, label: "Modalidad",  value: "Presencial" },
           ].map(({ icon: Icon, label, value }) => (
             <div key={label} className="p-7 flex items-center gap-5">
               <div className="w-11 h-11 rounded-full flex items-center justify-center" style={{ backgroundColor: `${accent}15` }}>
@@ -88,29 +76,22 @@ export function ProgramPage({
         </div>
       </section>
 
-      {/* ── CAMPO LABORAL — Bento Grid mejorado ────────────── */}
+      {/* ── CAMPO LABORAL — Bento Grid ──────────────────── */}
       <section className="py-20 px-8 max-w-7xl mx-auto">
         <div className="mb-12">
           <span className="text-xs font-bold uppercase tracking-widest block mb-3" style={{ color: "#805600" }}>¿Dónde vas a trabajar?</span>
-          <h2 className="font-[family-name:var(--font-playfair)] text-5xl font-black tracking-tight" style={{ color: accent }}>
-            Campo Laboral
-          </h2>
+          <h2 className="font-[family-name:var(--font-playfair)] text-5xl font-black tracking-tight" style={{ color: accent }}>Campo Laboral</h2>
           <p className="text-[#474551] text-lg mt-3 max-w-xl">{mercadoTexto || "Tu formación te abre puertas en los entornos más demandados de Antioquia."}</p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          {/* Tarjeta grande — primera salida */}
-          <div
-            className="md:row-span-2 rounded-2xl p-8 flex flex-col justify-between hover:scale-[1.02] transition-all shadow-sm border border-black/5 bg-white min-h-[220px]"
-          >
+          <div className="md:row-span-2 rounded-2xl p-8 flex flex-col justify-between hover:scale-[1.02] transition-all shadow-sm border border-black/5 bg-white min-h-[220px]">
             <span className="text-5xl">{salidas[0]?.icon}</span>
             <div>
               <h3 className="font-[family-name:var(--font-playfair)] text-2xl font-black mb-2 tracking-tight" style={{ color: accent }}>{salidas[0]?.name}</h3>
               <p className="text-[#474551] text-sm leading-relaxed">{salidas[0]?.desc || "Entorno de alta demanda para técnicos especializados."}</p>
             </div>
           </div>
-
-          {/* Tarjetas medianas */}
           {salidas.slice(1, 3).map((s: any, i: number) => (
             <div key={i} className="rounded-2xl p-7 flex flex-col justify-between hover:scale-[1.02] transition-all" style={{ backgroundColor: "#eff4f6" }}>
               <span className="text-3xl">{s.icon}</span>
@@ -120,8 +101,6 @@ export function ProgramPage({
               </div>
             </div>
           ))}
-
-          {/* Tarjeta ancha con color — 4ta salida */}
           {salidas[3] && (
             <div className="md:col-span-2 rounded-2xl p-8 flex flex-col md:flex-row items-center gap-8 hover:scale-[1.01] transition-all" style={{ backgroundColor: accent }}>
               <div className="flex-1">
@@ -141,11 +120,9 @@ export function ProgramPage({
         </div>
       </section>
 
-      {/* ── LO QUE APRENDERÁS + PLAN DE ESTUDIOS + EGRESADOS ── */}
+      {/* ── LO QUE APRENDERÁS + PLAN DESPLEGABLE + EGRESADOS ── */}
       <section className="py-20 bg-[#eff4f6]">
         <div className="max-w-7xl mx-auto px-8">
-
-          {/* Header de sección con jerarquía clara */}
           <div className="mb-12">
             <span className="text-xs font-bold uppercase tracking-widest block mb-3" style={{ color: "#805600" }}>Formación de calidad</span>
             <h2 className="font-[family-name:var(--font-playfair)] text-5xl font-black tracking-tight" style={{ color: accent }}>
@@ -154,10 +131,11 @@ export function ProgramPage({
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+
             {/* Izquierda — Capacidades */}
             <div>
               <p className="text-[#474551] text-lg mb-8 leading-relaxed">Formación diseñada con estándares reales de la industria, combinando teoría rigurosa con práctica intensiva en entornos laborales auténticos.</p>
-              <div className="space-y-3">
+              <div className="space-y-3 mb-10">
                 {capacidades.map((cap: string, i: number) => (
                   <div key={i} className="bg-white p-5 rounded-2xl border-l-4 shadow-sm flex items-start gap-4" style={{ borderColor: i === 0 ? accent : "#e4e9eb" }}>
                     <CheckCircle size={18} className="shrink-0 mt-0.5" style={{ color: accent }} />
@@ -165,64 +143,52 @@ export function ProgramPage({
                   </div>
                 ))}
               </div>
-            </div>
 
-            {/* Derecha — Plan de estudios + Egresados */}
-            <div className="space-y-8">
-              {/* Plan de estudios si existe */}
-              {(pensum1 || pensum2 || pensum3) && (
-                <div className="bg-white rounded-2xl p-8 shadow-sm border border-[#c8c4d3]/20">
-                  <h3 className="font-[family-name:var(--font-playfair)] text-2xl font-black mb-6 tracking-tight" style={{ color: accent }}>Plan de estudios</h3>
-                  {pensum1 && (
-                    <div className="mb-5">
-                      <p className="text-xs font-black uppercase tracking-widest mb-3" style={{ color: accent }}>Ciclo 1 — Fundamentos</p>
-                      <ul className="space-y-2">
-                        {pensum1.map((item: string, i: number) => (
-                          <li key={i} className="flex items-start gap-2 text-sm text-[#474551]">
-                            <span className="w-1.5 h-1.5 rounded-full mt-1.5 shrink-0" style={{ backgroundColor: "#ffb21d" }} />
-                            {item}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  )}
-                  {pensum2 && (
-                    <div className="mb-5 pt-5 border-t border-[#eaeff1]">
-                      <p className="text-xs font-black uppercase tracking-widest mb-3" style={{ color: accent }}>Ciclo 2 — Profundización</p>
-                      <ul className="space-y-2">
-                        {pensum2.map((item: string, i: number) => (
-                          <li key={i} className="flex items-start gap-2 text-sm text-[#474551]">
-                            <span className="w-1.5 h-1.5 rounded-full mt-1.5 shrink-0" style={{ backgroundColor: "#ffb21d" }} />
-                            {item}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  )}
-                  {pensum3 && (
-                    <div className="pt-5 border-t border-[#eaeff1]">
-                      <p className="text-xs font-black uppercase tracking-widest mb-3" style={{ color: accent }}>Ciclo 3 — Práctica Real</p>
-                      <ul className="space-y-2">
-                        {pensum3.map((item: string, i: number) => (
-                          <li key={i} className="flex items-start gap-2 text-sm text-[#474551]">
-                            <span className="w-1.5 h-1.5 rounded-full mt-1.5 shrink-0" style={{ backgroundColor: "#ffb21d" }} />
-                            {item}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  )}
+              {/* Plan de estudios — acordeón */}
+              {ciclos.length > 0 && (
+                <div>
+                  <p className="text-xs font-bold uppercase tracking-widest mb-4" style={{ color: "#805600" }}>Plan de estudios</p>
+                  <div className="space-y-3">
+                    {ciclos.map((ciclo, i) => (
+                      <div key={i} className="bg-white rounded-2xl overflow-hidden border border-[#c8c4d3]/20 shadow-sm">
+                        <button
+                          onClick={() => setCicloAbierto(cicloAbierto === i ? null : i)}
+                          className="w-full flex items-center justify-between p-5 text-left font-black text-sm"
+                          style={{ color: accent }}
+                        >
+                          <span>{ciclo.label}</span>
+                          <ChevronDown
+                            size={18}
+                            className="transition-transform duration-300 shrink-0"
+                            style={{ transform: cicloAbierto === i ? "rotate(180deg)" : "rotate(0deg)", color: accent }}
+                          />
+                        </button>
+                        {cicloAbierto === i && (
+                          <div className="px-5 pb-5 border-t border-[#eaeff1]">
+                            <ul className="space-y-2 pt-4">
+                              {ciclo.items.map((item: string, j: number) => (
+                                <li key={j} className="flex items-start gap-2 text-sm text-[#474551]">
+                                  <span className="w-1.5 h-1.5 rounded-full mt-1.5 shrink-0" style={{ backgroundColor: "#ffb21d" }} />
+                                  {item}
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+                        )}
+                      </div>
+                    ))}
+                  </div>
                 </div>
               )}
-
-              {/* Egresados */}
-              {programaId && <MiniTestimonio programaId={programaId} accent={accent} />}
             </div>
+
+            {/* Derecha — Egresados */}
+            {programaId && <MiniTestimonio programaId={programaId} accent={accent} />}
           </div>
         </div>
       </section>
 
-      {/* ── SEDES ─────────────────────────────────────────── */}
+      {/* ── SEDES ────────────────────────────────────────── */}
       {sedes && sedes.length > 0 && (
         <section className="py-20 px-8 max-w-7xl mx-auto">
           <div className="mb-12">
@@ -232,26 +198,33 @@ export function ProgramPage({
             </h2>
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-            {sedes.map((sede: any, i: number) => (
-              <div key={i} className="bg-[#eff4f6] p-8 rounded-2xl border border-[#c8c4d3]/30 hover:border-[#ffb21d] hover:shadow-md transition-all group">
-                <div className="text-3xl mb-5">{sede.icon}</div>
-                <h3 className="font-[family-name:var(--font-playfair)] text-2xl font-black mb-2 tracking-tight" style={{ color: accent }}>{sede.name}</h3>
-                <p className="text-[#474551] text-sm mb-1">{sede.address}</p>
-                <p className="text-[#787583] text-xs mb-6">{sede.tag}</p>
-                <div className="flex items-center gap-2 font-bold text-sm group-hover:gap-4 transition-all" style={{ color: accent }}>
-                  <span>Ver ubicación</span>
-                  <ArrowRight size={14} />
-                </div>
-                <div className="mt-4 pt-4 border-t border-[#c8c4d3]/30">
-                  <p className="text-xs font-black uppercase tracking-wider" style={{ color: "#805600" }}>Admisiones Abiertas</p>
-                </div>
-              </div>
-            ))}
+            {sedes.map((sede: any, i: number) => {
+              const slug = sede.name.toLowerCase().includes("medellín") || sede.name.toLowerCase().includes("medellin")
+                ? "medellin"
+                : sede.name.toLowerCase().includes("envigado")
+                ? "envigado"
+                : "caldas";
+              return (
+                <a key={i} href={`/sedes/${slug}`} className="bg-[#eff4f6] p-8 rounded-2xl border border-[#c8c4d3]/30 hover:border-[#ffb21d] hover:shadow-md transition-all group block">
+                  <div className="text-3xl mb-5">{sede.icon}</div>
+                  <h3 className="font-[family-name:var(--font-playfair)] text-2xl font-black mb-2 tracking-tight" style={{ color: accent }}>{sede.name}</h3>
+                  <p className="text-[#474551] text-sm mb-1">{sede.address}</p>
+                  <p className="text-[#787583] text-xs mb-6">{sede.tag}</p>
+                  <div className="flex items-center gap-2 font-bold text-sm group-hover:gap-4 transition-all" style={{ color: accent }}>
+                    <span>Ver sede completa</span>
+                    <ArrowRight size={14} />
+                  </div>
+                  <div className="mt-4 pt-4 border-t border-[#c8c4d3]/30">
+                    <p className="text-xs font-black uppercase tracking-wider" style={{ color: "#805600" }}>Admisiones Abiertas</p>
+                  </div>
+                </a>
+              );
+            })}
           </div>
         </section>
       )}
 
-      {/* ── CTA FINAL ─────────────────────────────────────── */}
+      {/* ── CTA FINAL ────────────────────────────────────── */}
       <section className="py-20 px-8 max-w-7xl mx-auto">
         <div className="rounded-3xl p-12 md:p-20 text-center relative overflow-hidden" style={{ backgroundColor: accent }}>
           <div className="absolute inset-0 opacity-10">
@@ -261,7 +234,7 @@ export function ProgramPage({
             <h2 className="font-[family-name:var(--font-playfair)] text-5xl md:text-6xl font-black text-white mb-6 tracking-tight leading-tight">
               Comienza tu <em className="italic">futuro hoy</em>
             </h2>
-            <p className="text-white/80 text-xl mb-12">{ctaDesc || "Estamos listos para acompañarte. Inscríbete y forma parte de los más de 35.000 egresados INDECAP que trabajan en Antioquia."}</p>
+            <p className="text-white/80 text-xl mb-12">{ctaDesc || "Inscríbete y forma parte de los más de 35.000 egresados INDECAP que trabajan en Antioquia."}</p>
             <div className="flex flex-col md:flex-row gap-4 justify-center">
               <button onClick={handleOpenSelector} className="flex items-center justify-center gap-3 px-10 py-5 rounded-full font-black text-lg hover:scale-105 transition-transform shadow-xl" style={{ backgroundColor: "#ffb21d", color: "#281800" }}>
                 Solicitar información
