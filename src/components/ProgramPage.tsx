@@ -1,68 +1,64 @@
 "use client";
 import React, { useState } from 'react';
-import { MessageCircle, CheckCircle, ArrowRight } from "lucide-react";
+import { MessageCircle, CheckCircle, ArrowRight, Clock, MapPin, Award } from "lucide-react";
 import { WhatsAppSelector } from './WhatsAppSelector';
 import { MiniTestimonio } from './MiniTestimonio';
 
 export function ProgramPage({
   titulo, subtitulo, emWord, accent, escuela,
-  fotoAlt, fotoSrc, descripcion, capacidades, salidas, ctaTitulo, ctaDesc,
-  waNum, waText, sedes, programaId
+  fotoAlt, fotoSrc, descripcion, capacidades, salidas, ctaDesc,
+  waNum, waText, sedes, programaId, horas, semestres, mercadoTexto,
+  pensum1, pensum2, pensum3,
 }: any) {
 
   const [isSelectorOpen, setIsSelectorOpen] = useState(false);
   const handleOpenSelector = (e: React.MouseEvent) => { e.preventDefault(); setIsSelectorOpen(true); };
 
-  // Color tokens basados en accent
-  const accentLight = `${accent}18`;
-  const accentMid = `${accent}30`;
-
   return (
     <main className="min-h-screen bg-[#f5fafc] text-[#171c1e]">
 
-      {/* ── HERO ─────────────────────────────────────────── */}
-      <section className="relative min-h-[780px] flex items-center overflow-hidden">
+      {/* ── HERO — gradiente al 75% para que respire la foto ── */}
+      <section className="relative min-h-[700px] flex items-center overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img src={fotoSrc} alt={fotoAlt} className="w-full h-full object-cover" />
-          <div className="absolute inset-0" style={{ background: `linear-gradient(to right, ${accent}f0 0%, ${accent}99 50%, transparent 100%)` }} />
+          {/* Gradiente más ligero: 80% izq → 40% centro → transparente */}
+          <div
+            className="absolute inset-0"
+            style={{ background: `linear-gradient(105deg, ${accent}cc 0%, ${accent}88 45%, ${accent}22 75%, transparent 100%)` }}
+          />
+          {/* Capa oscura sutil para legibilidad sin matar la foto */}
+          <div className="absolute inset-0 bg-black/20" />
         </div>
 
-        <div className="relative z-10 max-w-7xl mx-auto px-8 w-full pt-32 pb-20">
-          <div className="max-w-2xl">
-            {/* Badge escuela */}
-            <span
-              className="inline-block px-5 py-2 mb-8 rounded-full text-xs font-bold uppercase tracking-widest"
-              style={{ backgroundColor: "#ffb21d", color: "#281800" }}
-            >
+        <div className="relative z-10 max-w-7xl mx-auto px-8 w-full pt-32 pb-16">
+          <div className="max-w-xl">
+            {/* Badge */}
+            <span className="inline-block px-5 py-2 mb-6 rounded-full text-xs font-bold uppercase tracking-widest" style={{ backgroundColor: "#ffb21d", color: "#281800" }}>
               ✦ {escuela}
             </span>
 
-            {/* Título grande */}
-            <h1 className="text-6xl md:text-8xl font-black text-white mb-6 leading-[0.9] tracking-tight">
+            {/* Título */}
+            <h1 className="font-[family-name:var(--font-playfair)] text-6xl md:text-7xl font-black text-white mb-5 leading-[0.95] tracking-tight">
               {subtitulo}<br />
               <em className="italic" style={{ color: "#ffb21d" }}>{emWord}</em>
             </h1>
 
-            <p className="text-xl text-white/80 mb-10 leading-relaxed max-w-xl">
+            <p className="text-lg text-white/85 mb-8 leading-relaxed">
               {descripcion}
             </p>
 
-            {/* Campo laboral mini — sube al hero */}
-            <div className="mb-10">
-              <p className="text-xs font-bold uppercase tracking-[0.2em] text-white/50 mb-4">Campo laboral</p>
-              <div className="flex flex-wrap gap-3">
-                {salidas.slice(0, 4).map((salida: any, i: number) => (
-                  <div key={i} className="flex items-center gap-2 px-4 py-2.5 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-white text-sm font-medium">
-                    <span className="text-lg">{salida.icon}</span>
-                    {salida.name}
-                  </div>
-                ))}
-              </div>
+            {/* Pills campo laboral */}
+            <div className="flex flex-wrap gap-2 mb-10">
+              {salidas.slice(0, 4).map((s: any, i: number) => (
+                <span key={i} className="flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold bg-white/15 backdrop-blur-sm border border-white/25 text-white">
+                  {s.icon} {s.name}
+                </span>
+              ))}
             </div>
 
             <button
               onClick={handleOpenSelector}
-              className="flex items-center gap-3 px-8 py-4 rounded-2xl font-black text-base transition-all hover:scale-105"
+              className="flex items-center gap-3 px-8 py-4 rounded-2xl font-black text-base hover:scale-105 transition-transform shadow-xl"
               style={{ backgroundColor: "#ffb21d", color: "#281800" }}
             >
               Iniciar mi proceso <ArrowRight size={18} />
@@ -71,98 +67,183 @@ export function ProgramPage({
         </div>
       </section>
 
-      {/* ── CAMPO LABORAL — Bento Grid ───────────────────── */}
-      <section className="py-24 px-8 max-w-7xl mx-auto">
-        <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
-          <div className="max-w-xl">
-            <h2 className="font-[family-name:var(--font-playfair)] text-5xl font-black mb-4 tracking-tight" style={{ color: accent }}>
-              Campo Laboral
-            </h2>
-            <p className="text-[#474551] text-lg">Tu formación te permitirá desempeñarte con excelencia en múltiples entornos profesionales.</p>
-          </div>
-          <div className="hidden md:block h-px flex-grow ml-12 mb-4" style={{ backgroundColor: `${accent}20` }} />
+      {/* ── QUICK INFO BAR — igual que cursos ──────────────── */}
+      <section className="max-w-7xl mx-auto px-8 -mt-6 relative z-20 mb-4">
+        <div className="bg-white grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-[#c8c4d3]/20 rounded-2xl shadow-xl border border-[#c8c4d3]/20">
+          {[
+            { icon: Clock,  label: "Duración",    value: semestres ? `${semestres} ciclos` : "2 ciclos" },
+            { icon: MapPin, label: "Modalidad",   value: "Presencial" },
+            { icon: Award,  label: "Intensidad",  value: horas ? `${horas} horas` : "1.000 horas" },
+          ].map(({ icon: Icon, label, value }) => (
+            <div key={label} className="p-7 flex items-center gap-5">
+              <div className="w-11 h-11 rounded-full flex items-center justify-center" style={{ backgroundColor: `${accent}15` }}>
+                <Icon size={20} style={{ color: accent }} />
+              </div>
+              <div>
+                <span className="block text-[10px] font-bold uppercase tracking-widest text-[#787583] mb-0.5">{label}</span>
+                <span className="block font-black text-xl tracking-tight" style={{ color: accent }}>{value}</span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* ── CAMPO LABORAL — Bento Grid mejorado ────────────── */}
+      <section className="py-20 px-8 max-w-7xl mx-auto">
+        <div className="mb-12">
+          <span className="text-xs font-bold uppercase tracking-widest block mb-3" style={{ color: "#805600" }}>¿Dónde vas a trabajar?</span>
+          <h2 className="font-[family-name:var(--font-playfair)] text-5xl font-black tracking-tight" style={{ color: accent }}>
+            Campo Laboral
+          </h2>
+          <p className="text-[#474551] text-lg mt-3 max-w-xl">{mercadoTexto || "Tu formación te abre puertas en los entornos más demandados de Antioquia."}</p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 md:h-[480px]">
-          {/* Primera tarjeta grande */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          {/* Tarjeta grande — primera salida */}
           <div
-            className="md:row-span-2 group relative overflow-hidden rounded-2xl p-8 flex flex-col justify-end hover:scale-[1.02] transition-all shadow-sm border border-black/5"
-            style={{ backgroundColor: "#ffffff" }}
+            className="md:row-span-2 rounded-2xl p-8 flex flex-col justify-between hover:scale-[1.02] transition-all shadow-sm border border-black/5 bg-white min-h-[220px]"
           >
-            <div className="absolute top-8 left-8 text-4xl">{salidas[0]?.icon}</div>
-            <h3 className="font-[family-name:var(--font-playfair)] text-3xl font-black mb-2 tracking-tight" style={{ color: accent }}>{salidas[0]?.name}</h3>
-            <p className="text-[#474551] leading-relaxed text-sm">Entorno profesional de alta demanda para técnicos especializados.</p>
+            <span className="text-5xl">{salidas[0]?.icon}</span>
+            <div>
+              <h3 className="font-[family-name:var(--font-playfair)] text-2xl font-black mb-2 tracking-tight" style={{ color: accent }}>{salidas[0]?.name}</h3>
+              <p className="text-[#474551] text-sm leading-relaxed">{salidas[0]?.desc || "Entorno de alta demanda para técnicos especializados."}</p>
+            </div>
           </div>
 
           {/* Tarjetas medianas */}
-          {salidas.slice(1, 3).map((salida: any, i: number) => (
-            <div key={i} className="group relative overflow-hidden rounded-2xl p-8 flex flex-col justify-between hover:scale-[1.02] transition-all" style={{ backgroundColor: "#eff4f6" }}>
-              <span className="text-3xl">{salida.icon}</span>
+          {salidas.slice(1, 3).map((s: any, i: number) => (
+            <div key={i} className="rounded-2xl p-7 flex flex-col justify-between hover:scale-[1.02] transition-all" style={{ backgroundColor: "#eff4f6" }}>
+              <span className="text-3xl">{s.icon}</span>
               <div>
-                <h3 className="font-[family-name:var(--font-playfair)] text-2xl font-black mb-1 tracking-tight" style={{ color: accent }}>{salida.name}</h3>
-                <p className="text-sm text-[#474551]">Oportunidades laborales con alta proyección profesional.</p>
+                <h3 className="font-[family-name:var(--font-playfair)] text-xl font-black mb-1 tracking-tight" style={{ color: accent }}>{s.name}</h3>
+                <p className="text-sm text-[#474551] leading-relaxed">{s.desc || "Oportunidades laborales con alta proyección."}</p>
               </div>
             </div>
           ))}
 
-          {/* Tarjeta ancha con color */}
+          {/* Tarjeta ancha con color — 4ta salida */}
           {salidas[3] && (
-            <div className="md:col-span-2 group relative overflow-hidden rounded-2xl p-8 flex flex-col md:flex-row items-center gap-8 hover:scale-[1.01] transition-all" style={{ backgroundColor: accent }}>
+            <div className="md:col-span-2 rounded-2xl p-8 flex flex-col md:flex-row items-center gap-8 hover:scale-[1.01] transition-all" style={{ backgroundColor: accent }}>
               <div className="flex-1">
-                <h3 className="font-[family-name:var(--font-playfair)] text-3xl font-black text-white mb-3 tracking-tight">{salidas[3]?.name}</h3>
-                <p className="text-white/70 text-sm">Sector en expansión con alta demanda de profesionales técnicos.</p>
+                <span className="text-4xl mb-3 block">{salidas[3].icon}</span>
+                <h3 className="font-[family-name:var(--font-playfair)] text-2xl font-black text-white mb-2 tracking-tight">{salidas[3].name}</h3>
+                <p className="text-white/70 text-sm leading-relaxed">{salidas[3].desc || "Sector con alta demanda de profesionales técnicos."}</p>
               </div>
-              <div className="w-full md:w-48 h-32 rounded-xl overflow-hidden opacity-60">
-                <img src={fotoSrc} alt="" className="w-full h-full object-cover" />
-              </div>
+              {salidas[4] && (
+                <div className="w-full md:w-56 rounded-xl p-6 bg-white/10 border border-white/20">
+                  <span className="text-3xl mb-2 block">{salidas[4].icon}</span>
+                  <h4 className="font-[family-name:var(--font-playfair)] text-lg font-black text-white mb-1">{salidas[4].name}</h4>
+                  <p className="text-white/60 text-xs">{salidas[4].desc || ""}</p>
+                </div>
+              )}
             </div>
           )}
         </div>
       </section>
 
-      {/* ── LO QUE APRENDERÁS + EGRESADOS ───────────────── */}
-      <section className="py-24 bg-[#eff4f6]">
-        <div className="max-w-7xl mx-auto px-8 grid grid-cols-1 lg:grid-cols-2 gap-20 items-start">
+      {/* ── LO QUE APRENDERÁS + PLAN DE ESTUDIOS + EGRESADOS ── */}
+      <section className="py-20 bg-[#eff4f6]">
+        <div className="max-w-7xl mx-auto px-8">
 
-          {/* Izquierda — Currículo */}
-          <div>
-            <h2 className="font-[family-name:var(--font-playfair)] text-5xl font-black mb-4 leading-tight tracking-tight" style={{ color: accent }}>
-              Lo que <br /><em className="italic">aprenderás</em>
+          {/* Header de sección con jerarquía clara */}
+          <div className="mb-12">
+            <span className="text-xs font-bold uppercase tracking-widest block mb-3" style={{ color: "#805600" }}>Formación de calidad</span>
+            <h2 className="font-[family-name:var(--font-playfair)] text-5xl font-black tracking-tight" style={{ color: accent }}>
+              Lo que <em className="italic">aprenderás</em>
             </h2>
-            <p className="text-[#474551] text-lg mb-10">Formación diseñada con estándares de alta calidad, combinando teoría rigurosa con práctica intensiva.</p>
-            <div className="space-y-4">
-              {capacidades.map((cap: string, i: number) => (
-                <div key={i} className="bg-white p-5 rounded-2xl border-l-4 shadow-sm flex items-start gap-4" style={{ borderColor: i === 0 ? accent : "#e4e9eb" }}>
-                  <CheckCircle size={20} className="shrink-0 mt-0.5" style={{ color: accent }} />
-                  <p className="text-[#171c1e] font-medium leading-relaxed">{cap}</p>
-                </div>
-              ))}
-            </div>
           </div>
 
-          {/* Derecha — Egresados */}
-          {programaId && <MiniTestimonio programaId={programaId} accent={accent} />}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+            {/* Izquierda — Capacidades */}
+            <div>
+              <p className="text-[#474551] text-lg mb-8 leading-relaxed">Formación diseñada con estándares reales de la industria, combinando teoría rigurosa con práctica intensiva en entornos laborales auténticos.</p>
+              <div className="space-y-3">
+                {capacidades.map((cap: string, i: number) => (
+                  <div key={i} className="bg-white p-5 rounded-2xl border-l-4 shadow-sm flex items-start gap-4" style={{ borderColor: i === 0 ? accent : "#e4e9eb" }}>
+                    <CheckCircle size={18} className="shrink-0 mt-0.5" style={{ color: accent }} />
+                    <p className="text-[#171c1e] font-medium leading-relaxed text-sm">{cap}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Derecha — Plan de estudios + Egresados */}
+            <div className="space-y-8">
+              {/* Plan de estudios si existe */}
+              {(pensum1 || pensum2 || pensum3) && (
+                <div className="bg-white rounded-2xl p-8 shadow-sm border border-[#c8c4d3]/20">
+                  <h3 className="font-[family-name:var(--font-playfair)] text-2xl font-black mb-6 tracking-tight" style={{ color: accent }}>Plan de estudios</h3>
+                  {pensum1 && (
+                    <div className="mb-5">
+                      <p className="text-xs font-black uppercase tracking-widest mb-3" style={{ color: accent }}>Ciclo 1 — Fundamentos</p>
+                      <ul className="space-y-2">
+                        {pensum1.map((item: string, i: number) => (
+                          <li key={i} className="flex items-start gap-2 text-sm text-[#474551]">
+                            <span className="w-1.5 h-1.5 rounded-full mt-1.5 shrink-0" style={{ backgroundColor: "#ffb21d" }} />
+                            {item}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+                  {pensum2 && (
+                    <div className="mb-5 pt-5 border-t border-[#eaeff1]">
+                      <p className="text-xs font-black uppercase tracking-widest mb-3" style={{ color: accent }}>Ciclo 2 — Profundización</p>
+                      <ul className="space-y-2">
+                        {pensum2.map((item: string, i: number) => (
+                          <li key={i} className="flex items-start gap-2 text-sm text-[#474551]">
+                            <span className="w-1.5 h-1.5 rounded-full mt-1.5 shrink-0" style={{ backgroundColor: "#ffb21d" }} />
+                            {item}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+                  {pensum3 && (
+                    <div className="pt-5 border-t border-[#eaeff1]">
+                      <p className="text-xs font-black uppercase tracking-widest mb-3" style={{ color: accent }}>Ciclo 3 — Práctica Real</p>
+                      <ul className="space-y-2">
+                        {pensum3.map((item: string, i: number) => (
+                          <li key={i} className="flex items-start gap-2 text-sm text-[#474551]">
+                            <span className="w-1.5 h-1.5 rounded-full mt-1.5 shrink-0" style={{ backgroundColor: "#ffb21d" }} />
+                            {item}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+                </div>
+              )}
+
+              {/* Egresados */}
+              {programaId && <MiniTestimonio programaId={programaId} accent={accent} />}
+            </div>
+          </div>
         </div>
       </section>
 
-      {/* ── SEDES ────────────────────────────────────────── */}
+      {/* ── SEDES ─────────────────────────────────────────── */}
       {sedes && sedes.length > 0 && (
-        <section className="py-24 px-8 max-w-7xl mx-auto">
-          <h2 className="font-[family-name:var(--font-playfair)] text-5xl font-black text-center mb-16 tracking-tight" style={{ color: accent }}>
-            Dónde <em className="italic">estudiar</em>
-          </h2>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <section className="py-20 px-8 max-w-7xl mx-auto">
+          <div className="mb-12">
+            <span className="text-xs font-bold uppercase tracking-widest block mb-3" style={{ color: "#805600" }}>Disponible en</span>
+            <h2 className="font-[family-name:var(--font-playfair)] text-5xl font-black tracking-tight" style={{ color: accent }}>
+              Dónde <em className="italic">estudiar</em>
+            </h2>
+          </div>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {sedes.map((sede: any, i: number) => (
-              <div key={i} className="bg-[#eff4f6] p-8 rounded-2xl border border-[#c8c4d3]/30 hover:border-[#ffb21d] transition-colors group">
-                <div className="text-3xl mb-4">{sede.icon}</div>
+              <div key={i} className="bg-[#eff4f6] p-8 rounded-2xl border border-[#c8c4d3]/30 hover:border-[#ffb21d] hover:shadow-md transition-all group">
+                <div className="text-3xl mb-5">{sede.icon}</div>
                 <h3 className="font-[family-name:var(--font-playfair)] text-2xl font-black mb-2 tracking-tight" style={{ color: accent }}>{sede.name}</h3>
-                <p className="text-[#474551] text-sm mb-6">{sede.address}</p>
+                <p className="text-[#474551] text-sm mb-1">{sede.address}</p>
+                <p className="text-[#787583] text-xs mb-6">{sede.tag}</p>
                 <div className="flex items-center gap-2 font-bold text-sm group-hover:gap-4 transition-all" style={{ color: accent }}>
                   <span>Ver ubicación</span>
                   <ArrowRight size={14} />
                 </div>
                 <div className="mt-4 pt-4 border-t border-[#c8c4d3]/30">
-                  <p className="text-xs font-bold uppercase tracking-wider" style={{ color: "#805600" }}>Admisiones Abiertas</p>
+                  <p className="text-xs font-black uppercase tracking-wider" style={{ color: "#805600" }}>Admisiones Abiertas</p>
                 </div>
               </div>
             ))}
@@ -170,8 +251,8 @@ export function ProgramPage({
         </section>
       )}
 
-      {/* ── CTA FINAL ────────────────────────────────────── */}
-      <section className="py-24 px-8 max-w-7xl mx-auto">
+      {/* ── CTA FINAL ─────────────────────────────────────── */}
+      <section className="py-20 px-8 max-w-7xl mx-auto">
         <div className="rounded-3xl p-12 md:p-20 text-center relative overflow-hidden" style={{ backgroundColor: accent }}>
           <div className="absolute inset-0 opacity-10">
             <img src={fotoSrc} alt="" className="w-full h-full object-cover mix-blend-overlay grayscale" />
@@ -180,19 +261,12 @@ export function ProgramPage({
             <h2 className="font-[family-name:var(--font-playfair)] text-5xl md:text-6xl font-black text-white mb-6 tracking-tight leading-tight">
               Comienza tu <em className="italic">futuro hoy</em>
             </h2>
-            <p className="text-white/80 text-xl mb-12">{ctaDesc || "Estamos listos para acompañarte en tu formación. Inscríbete y forma parte de la nueva generación INDECAP."}</p>
+            <p className="text-white/80 text-xl mb-12">{ctaDesc || "Estamos listos para acompañarte. Inscríbete y forma parte de los más de 35.000 egresados INDECAP que trabajan en Antioquia."}</p>
             <div className="flex flex-col md:flex-row gap-4 justify-center">
-              <button
-                onClick={handleOpenSelector}
-                className="flex items-center justify-center gap-3 px-10 py-5 rounded-full font-black text-lg hover:scale-105 transition-transform shadow-xl"
-                style={{ backgroundColor: "#ffb21d", color: "#281800" }}
-              >
+              <button onClick={handleOpenSelector} className="flex items-center justify-center gap-3 px-10 py-5 rounded-full font-black text-lg hover:scale-105 transition-transform shadow-xl" style={{ backgroundColor: "#ffb21d", color: "#281800" }}>
                 Solicitar información
               </button>
-              <button
-                onClick={handleOpenSelector}
-                className="flex items-center justify-center gap-3 px-10 py-5 rounded-full font-black text-lg border-2 border-white text-white hover:bg-white/10 transition-colors"
-              >
+              <button onClick={handleOpenSelector} className="flex items-center justify-center gap-3 px-10 py-5 rounded-full font-black text-lg border-2 border-white text-white hover:bg-white/10 transition-colors">
                 <MessageCircle size={20} /> Hablar con un asesor
               </button>
             </div>
@@ -202,20 +276,12 @@ export function ProgramPage({
 
       {/* STICKY MÓVIL */}
       <div className="fixed bottom-0 left-0 z-[60] w-full border-t border-white/10 bg-black/95 p-4 lg:hidden backdrop-blur-sm">
-        <button
-          onClick={handleOpenSelector}
-          className="flex w-full items-center justify-center gap-3 rounded-2xl py-4 text-base font-black uppercase text-black"
-          style={{ backgroundColor: "#ffb21d" }}
-        >
+        <button onClick={handleOpenSelector} className="flex w-full items-center justify-center gap-3 rounded-2xl py-4 text-base font-black uppercase text-black" style={{ backgroundColor: "#ffb21d" }}>
           <MessageCircle size={20} fill="currentColor" /> Hablar con un asesor
         </button>
       </div>
 
-      <WhatsAppSelector
-        isOpen={isSelectorOpen}
-        onClose={() => setIsSelectorOpen(false)}
-        programaName={titulo}
-      />
+      <WhatsAppSelector isOpen={isSelectorOpen} onClose={() => setIsSelectorOpen(false)} programaName={titulo} />
     </main>
   );
 }
