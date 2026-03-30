@@ -219,13 +219,18 @@ export default function ContactoPage() {
                     <div className="flex items-center gap-3"><Phone size={16} className="shrink-0 text-[#805600]" /><span>{sede.phone}</span></div>
                     <div className="flex items-center gap-3"><Mail size={16} className="shrink-0 text-[#805600]" /><span>{sede.email}</span></div>
                   </div>
-                  <div className="flex gap-3 pt-2">
-                    <a href={sede.mapUrl} target="_blank" rel="noopener noreferrer" className="flex-1 flex items-center justify-center gap-2 py-3 rounded-xl text-sm font-bold border-2 border-[#1a086e] text-[#1a086e] hover:bg-[#1a086e] hover:text-white transition-colors">
-                      Ver mapa <ArrowRight size={14} />
+                  <div className="flex flex-col gap-2 pt-2">
+                    <a href={`/sedes/${sede.id}`} className="flex items-center justify-center gap-2 py-3 rounded-xl text-sm font-black text-white transition-colors bg-[#1a086e] hover:bg-[#312783]">
+                      Ver página de la sede <ArrowRight size={14} />
                     </a>
-                    <a href={`https://wa.me/${sede.whatsapp}`} target="_blank" rel="noopener noreferrer" className="flex-1 flex items-center justify-center gap-2 py-3 rounded-xl text-sm font-bold text-white bg-[#25D366]">
-                      WhatsApp
-                    </a>
+                    <div className="flex gap-2">
+                      <a href={sede.mapUrl} target="_blank" rel="noopener noreferrer" className="flex-1 flex items-center justify-center gap-2 py-3 rounded-xl text-sm font-bold border-2 border-[#1a086e] text-[#1a086e] hover:bg-[#1a086e] hover:text-white transition-colors">
+                        Ver mapa
+                      </a>
+                      <a href={`https://wa.me/${sede.whatsapp}`} target="_blank" rel="noopener noreferrer" className="flex-1 flex items-center justify-center gap-2 py-3 rounded-xl text-sm font-bold text-white bg-[#25D366]">
+                        WhatsApp
+                      </a>
+                    </div>
                   </div>
                 </div>
               </div>
