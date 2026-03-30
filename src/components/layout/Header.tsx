@@ -64,10 +64,10 @@ const categoriaColors: Record<string, string> = {
 };
 
 const navLinks = [
+  { label: "Contacto",     href: "/contacto" },
+  { label: "Pagos",        href: "/pagos" },
   { label: "Nosotros",     href: "/#nosotros" },
   { label: "Bachillerato", href: "/#bachillerato" },
-  { label: "Pagos",        href: "/pagos" },
-  { label: "Contacto",     href: "/contacto" },
 ];
 
 export function Header() {
