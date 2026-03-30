@@ -1,60 +1,31 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
-import { Menu, MessageCircle, ChevronLeft, ChevronDown, ChevronRight, X } from "lucide-react";
+import { useState, useEffect } from "react";
+import Image from "next/image";
+import { Menu, MessageCircle, ChevronLeft } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import { buttonVariants } from "@/components/ui/button";
+import {
+  Sheet,
+  SheetContent,
+  SheetTrigger,
+  SheetTitle,
+} from "@/components/ui/sheet";
 
-const tecnicos = [
-  { label: "Ver todos los programas técnicos", href: "/programas" },
-  { label: "Auxiliar en Enfermería", href: "/programas/enfermeria" },
-  { label: "Cosmetología y Estética Integral", href: "/programas/cosmetologia" },
-  { label: "Auxiliar en Veterinaria", href: "/programas/veterinaria" },
-  { label: "Administrativo en Salud", href: "/programas/administrativo-salud" },
-  { label: "Servicios Farmacéuticos", href: "/programas/farmacia" },
-  { label: "Auxiliar en Salud Oral", href: "/programas/salud-oral" },
-  { label: "Auxiliar en Salud Pública", href: "/programas/salud-publica" },
-  { label: "Atención al Adulto Mayor", href: "/programas/adulto-mayor" },
-  { label: "Asistente en Talento Humano", href: "/programas/talento-humano" },
-  { label: "Auxiliar Contable", href: "/programas/contable" },
-  { label: "Auxiliar en Mercadeo", href: "/programas/mercadeo" },
-  { label: "Seguridad y Salud en el Trabajo", href: "/programas/sst" },
-  { label: "Entrenamiento Deportivo", href: "/programas/entrenamiento-deportivo" },
-  { label: "Auxiliar en Sistemas", href: "/programas/sistemas" },
-  { label: "Peluquería Canina", href: "/programas/peluqueria-canina" },
-];
-
-const continuos = [
-  { label: "Ver todos los cursos", href: "/educacion-continua" },
-  { label: "RCP — Reanimación Cardiopulmonar", href: "/cursos/rcp" },
-  { label: "Inyectología", href: "/cursos/inyectologia" },
-  { label: "Vacunación", href: "/cursos/vacunacion" },
-  { label: "Toma de Muestras de Laboratorio", href: "/cursos/toma-muestras" },
-  { label: "Primeros Auxilios", href: "/cursos/primeros-auxilios" },
-  { label: "Código Fucsia", href: "/cursos/codigo-fucsia" },
-  { label: "Peluquería y Estética Canina", href: "/cursos/peluqueria-canina" },
-  { label: "Excel Básico, Intermedio y Avanzado", href: "/cursos/excel" },
-  { label: "Word Básico y Avanzado", href: "/cursos/word" },
-  { label: "Calidad + Humanización", href: "/cursos/calidad-humanizacion" },
-];
-
-const simpleLinks = [
-  { label: "Contacto", href: "/contacto" },
-  { label: "Pagos", href: "/pagos" },
-  { label: "Bachillerato", href: "/#bachillerato" },
+const navLinks = [
+  { label: "Inicio", href: "/#inicio" },
+  { label: "Programas", href: "/#programas" },
+  { label: "Educación Continua", href: "/#cursos" },
   { label: "Nosotros", href: "/#nosotros" },
+  { label: "Bachillerato", href: "/#bachillerato" },
+  { label: "Pagos", href: "/pagos" },
+  { label: "Contacto", href: "/contacto" },
 ];
 
 export function Header() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [isProgram, setIsProgram] = useState(false);
-  const [showProgramas, setShowProgramas] = useState(false);
-  const [showTecnicos, setShowTecnicos] = useState(false);
-  const [showContinuos, setShowContinuos] = useState(false);
-  const [mobileProgramas, setMobileProgramas] = useState(false);
-  const [mobileTecnicos, setMobileTecnicos] = useState(false);
-  const [mobileContinuos, setMobileContinuos] = useState(false);
-  const dropdownRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 10);
@@ -63,247 +34,104 @@ export function Header() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  useEffect(() => {
-    if (open) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "";
-    }
-    return () => { document.body.style.overflow = ""; };
-  }, [open]);
-
-  useEffect(() => {
-    function handleClickOutside(e: MouseEvent) {
-      if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
-        setShowProgramas(false);
-        setShowTecnicos(false);
-        setShowContinuos(false);
-      }
-    }
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
-  }, []);
-
-  const closeMenu = () => {
-    setOpen(false);
-    setMobileProgramas(false);
-    setMobileTecnicos(false);
-    setMobileContinuos(false);
-  };
-
   return (
-    <>
-      <header
-        className={`fixed top-0 left-0 right-0 z-[200] border-b border-[#312783]/10 backdrop-blur-[14px] transition-shadow duration-300 ${
-          scrolled ? "shadow-[0_4px_24px_rgba(8,15,20,0.08)]" : ""
-        }`}
-        style={{ background: "rgba(243,248,250,0.95)" }}
-      >
-        <div className="container mx-auto flex h-24 items-center justify-between px-6 lg:px-12">
-
-          {/* LOGO */}
-          <div className="flex items-center gap-4">
-            {isProgram && (
-              <a
-                href="/#programas"
-                className="flex items-center gap-1 rounded-full border border-[#E4F1F6] bg-white px-3 py-1.5 font-[family-name:var(--font-dm-sans)] text-xs font-semibold text-[#374151] transition-all hover:border-[#312783] hover:text-[#312783]"
-              >
-                <ChevronLeft className="h-3.5 w-3.5" />
-                Programas
-              </a>
-            )}
-            <a href="/" className="flex items-center gap-2">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/images/logo.png" alt="INDECAP" className="h-20" />
-            </a>
-          </div>
-
-          {/* DESKTOP NAV */}
-          <nav className="hidden items-center gap-1 lg:flex" ref={dropdownRef}>
-            <div className="relative">
-              <button
-                onMouseEnter={() => setShowProgramas(true)}
-                onMouseLeave={() => { if (!showTecnicos && !showContinuos) setShowProgramas(false); }}
-                onClick={() => setShowProgramas(!showProgramas)}
-                className="flex items-center gap-1.5 rounded-full px-4 py-2 font-[family-name:var(--font-dm-sans)] text-xl font-semibold text-[#374151] transition-all hover:bg-[#312783]/8 hover:text-[#312783]"
-              >
-                Programas
-                <ChevronDown className={`h-4 w-4 transition-transform ${showProgramas ? "rotate-180" : ""}`} />
-              </button>
-
-              {showProgramas && (
-                <div
-                  className="absolute left-0 top-full pt-2 z-50"
-                  onMouseEnter={() => setShowProgramas(true)}
-                  onMouseLeave={() => { setShowProgramas(false); setShowTecnicos(false); setShowContinuos(false); }}
-                >
-                  <div className="rounded-2xl border border-gray-100 bg-white shadow-xl p-2 min-w-[220px]">
-                    <div
-                      className="relative"
-                      onMouseEnter={() => { setShowTecnicos(true); setShowContinuos(false); }}
-                      onMouseLeave={() => setShowTecnicos(false)}
-                    >
-                      <button className="flex w-full items-center justify-between gap-2 rounded-xl px-4 py-3 text-sm font-semibold text-[#374151] hover:bg-[#312783]/8 hover:text-[#312783] transition-all">
-                        Técnicos Laborales
-                        <ChevronRight className="h-3.5 w-3.5" />
-                      </button>
-                      {showTecnicos && (
-                        <div className="absolute left-full top-0 pl-2 z-50">
-                          <div className="rounded-2xl border border-gray-100 bg-white shadow-xl p-2 min-w-[260px] max-h-[70vh] overflow-y-auto">
-                            {tecnicos.map((item) => (
-                              <a key={item.href} href={item.href} onClick={() => { setShowProgramas(false); setShowTecnicos(false); }} className="block rounded-xl px-4 py-2.5 text-sm text-[#374151] hover:bg-[#312783]/8 hover:text-[#312783] transition-all font-medium">
-                                {item.label}
-                              </a>
-                            ))}
-                          </div>
-                        </div>
-                      )}
-                    </div>
-
-                    <div
-                      className="relative"
-                      onMouseEnter={() => { setShowContinuos(true); setShowTecnicos(false); }}
-                      onMouseLeave={() => setShowContinuos(false)}
-                    >
-                      <button className="flex w-full items-center justify-between gap-2 rounded-xl px-4 py-3 text-sm font-semibold text-[#374151] hover:bg-[#312783]/8 hover:text-[#312783] transition-all">
-                        Educación Continua
-                        <ChevronRight className="h-3.5 w-3.5" />
-                      </button>
-                      {showContinuos && (
-                        <div className="absolute left-full top-0 pl-2 z-50">
-                          <div className="rounded-2xl border border-gray-100 bg-white shadow-xl p-2 min-w-[260px]">
-                            {continuos.map((item, i) => (
-                              <a key={i} href={item.href} onClick={() => { setShowProgramas(false); setShowContinuos(false); }} className="block rounded-xl px-4 py-2.5 text-sm text-[#374151] hover:bg-[#312783]/8 hover:text-[#312783] transition-all font-medium">
-                                {item.label}
-                              </a>
-                            ))}
-                          </div>
-                        </div>
-                      )}
-                    </div>
-                  </div>
-                </div>
-              )}
-            </div>
-
-            {simpleLinks.map((link) => (
-              <a key={link.href} href={link.href} className="rounded-full px-4 py-2 font-[family-name:var(--font-dm-sans)] text-xl font-medium text-[#374151] transition-all hover:bg-[#312783]/8 hover:text-[#312783]">
-                {link.label}
-              </a>
-            ))}
-
+    <header
+      className={`fixed top-0 left-0 right-0 z-[200] border-b border-[#312783]/10 backdrop-blur-[14px] transition-shadow duration-300 ${
+        scrolled ? "shadow-[0_4px_24px_rgba(8,15,20,0.08)]" : ""
+      }`}
+      style={{ background: "rgba(243,248,250,0.95)" }}
+    >
+      <div className="container mx-auto flex h-20 items-center justify-between px-6 lg:px-12">
+        <div className="flex items-center gap-4">
+          {isProgram && (
             <a
-              href="/admision"
-              className={buttonVariants({
-                className: "ml-2 rounded-full bg-[#F0A500] px-7 py-3 text-xl font-black text-[#080F14] hover:bg-[#FFD166] shadow-[0_4px_20px_rgba(240,165,0,0.4)] hover:shadow-[0_4px_28px_rgba(240,165,0,0.6)] transition-all",
-              })}
+              href="/#programas"
+              className="flex items-center gap-1 rounded-full border border-[#E4F1F6] bg-white px-3 py-1.5 font-[family-name:var(--font-dm-sans)] text-xs font-semibold text-[#374151] transition-all hover:border-[#312783] hover:text-[#312783]"
             >
-              <MessageCircle className="mr-1 h-4 w-4" />
-              Formulario de admisión
+              <ChevronLeft className="h-3.5 w-3.5" />
+              Programas
             </a>
-          </nav>
-
-          {/* HAMBURGUESA MÓVIL */}
-          <button
-            className="lg:hidden p-2 rounded-xl hover:bg-gray-100 transition-all"
-            onClick={() => setOpen(!open)}
-          >
-            {open ? <X className="h-6 w-6 text-[#080F14]" /> : <Menu className="h-6 w-6 text-[#080F14]" />}
-          </button>
+          )}
+          <a href="/" className="flex items-center gap-2">
+            <Image
+              src="/images/logo.png"
+              alt="INDECAP — Instituto de Ciencias Aplicadas"
+              width={160}
+              height={56}
+              className="h-14 w-auto"
+              priority
+            />
+          </a>
         </div>
-      </header>
 
-      {/* MENÚ MÓVIL — panel propio con scroll */}
-      {open && (
-        <div className="fixed inset-0 z-[199] lg:hidden">
-          {/* Overlay */}
-          <div className="absolute inset-0 bg-black/40" onClick={closeMenu} />
-          
-          {/* Panel */}
-          <div className="absolute top-0 right-0 h-full w-4/5 max-w-sm bg-white shadow-2xl overflow-y-auto">
-            <div className="flex items-center justify-between p-6 border-b border-gray-100">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/images/logo.png" alt="INDECAP" className="h-12" />
-              <button onClick={closeMenu} className="p-2 rounded-xl hover:bg-gray-100">
-                <X className="h-5 w-5 text-[#080F14]" />
-              </button>
-            </div>
+        <nav className="hidden items-center gap-6 lg:flex">
+          {navLinks.map((link) => (
+            <a
+              key={link.href}
+              href={link.href}
+              className="font-[family-name:var(--font-dm-sans)] text-sm font-medium text-[#374151] transition-colors hover:text-[#312783]"
+            >
+              {link.label}
+            </a>
+          ))}
+          <a
+            href="/admision"
+            className={buttonVariants({
+              className:
+                "rounded-full bg-[#F0A500] px-7 py-3 text-sm font-black text-[#080F14] hover:bg-[#FFD166] shadow-[0_4px_20px_rgba(240,165,0,0.4)] hover:shadow-[0_4px_28px_rgba(240,165,0,0.6)] transition-all",
+            })}
+          >
+            <MessageCircle className="mr-1 h-4 w-4" />
+            Formulario de admisión
+          </a>
+        </nav>
 
-            <nav className="p-6 flex flex-col gap-1">
-
-              {/* Programas */}
-              <button
-                onClick={() => setMobileProgramas(!mobileProgramas)}
-                className="flex items-center justify-between w-full text-lg font-bold text-[#080F14] py-3 border-b border-gray-100"
-              >
-                Programas
-                <ChevronDown className={`h-5 w-5 transition-transform ${mobileProgramas ? "rotate-180" : ""}`} />
-              </button>
-
-              {mobileProgramas && (
-                <div className="pl-4 py-2 flex flex-col gap-1">
-                  {/* Técnicos */}
-                  <button
-                    onClick={() => setMobileTecnicos(!mobileTecnicos)}
-                    className="flex items-center justify-between w-full text-base font-bold text-[#312783] py-2"
-                  >
-                    Técnicos Laborales
-                    <ChevronDown className={`h-4 w-4 transition-transform ${mobileTecnicos ? "rotate-180" : ""}`} />
-                  </button>
-                  {mobileTecnicos && (
-                    <div className="pl-4 flex flex-col gap-1 mb-2">
-                      {tecnicos.map((item) => (
-                        <a key={item.href} href={item.href} onClick={closeMenu} className="text-sm text-[#374151] py-1.5 hover:text-[#312783] font-medium">
-                          {item.label}
-                        </a>
-                      ))}
-                    </div>
-                  )}
-
-                  {/* Educación Continua */}
-                  <button
-                    onClick={() => setMobileContinuos(!mobileContinuos)}
-                    className="flex items-center justify-between w-full text-base font-bold text-[#312783] py-2"
-                  >
-                    Educación Continua
-                    <ChevronDown className={`h-4 w-4 transition-transform ${mobileContinuos ? "rotate-180" : ""}`} />
-                  </button>
-                  {mobileContinuos && (
-                    <div className="pl-4 flex flex-col gap-1 mb-2">
-                      {continuos.map((item, i) => (
-                        <a key={i} href={item.href} onClick={closeMenu} className="text-sm text-[#374151] py-1.5 hover:text-[#312783] font-medium">
-                          {item.label}
-                        </a>
-                      ))}
-                    </div>
-                  )}
-                </div>
+        <Sheet open={open} onOpenChange={setOpen}>
+          <SheetTrigger
+            className="lg:hidden"
+            render={<Button variant="ghost" size="icon" />}
+          >
+            <Menu className="h-5 w-5" />
+            <span className="sr-only">Menú</span>
+          </SheetTrigger>
+          <SheetContent side="right">
+            <SheetTitle className="sr-only">Menú de navegación</SheetTitle>
+            <nav className="mt-8 flex flex-col gap-4">
+              {isProgram && (
+                <a
+                  href="/#programas"
+                  onClick={() => setOpen(false)}
+                  className="flex items-center gap-2 font-[family-name:var(--font-dm-sans)] text-lg font-bold text-[#312783]"
+                >
+                  <ChevronLeft className="h-5 w-5" />
+                  Ver todos los programas
+                </a>
               )}
-
-              {/* Links simples */}
-              {simpleLinks.map((link) => (
+              {navLinks.map((link) => (
                 <a
                   key={link.href}
                   href={link.href}
-                  onClick={closeMenu}
-                  className="text-lg font-medium text-[#080F14] py-3 border-b border-gray-100 hover:text-[#312783]"
+                  onClick={() => setOpen(false)}
+                  className="font-[family-name:var(--font-dm-sans)] text-lg font-medium text-[#080F14] transition-colors hover:text-[#312783]"
                 >
                   {link.label}
                 </a>
               ))}
-
               <a
                 href="/admision"
-                onClick={closeMenu}
-                className="mt-4 flex items-center justify-center gap-2 rounded-full bg-[#F0A500] px-6 py-4 font-black text-[#080F14] text-base"
+                onClick={() => setOpen(false)}
+                className={buttonVariants({
+                  className:
+                    "mt-4 rounded-full bg-[#312783] px-6 py-2 font-semibold text-white",
+                })}
               >
-                <MessageCircle className="h-4 w-4" />
+                <MessageCircle className="mr-1 h-4 w-4" />
                 Formulario de admisión
               </a>
             </nav>
-          </div>
-        </div>
-      )}
-    </>
+          </SheetContent>
+        </Sheet>
+      </div>
+    </header>
   );
 }

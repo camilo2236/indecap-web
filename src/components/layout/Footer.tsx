@@ -1,4 +1,5 @@
 import { MapPin, Phone, Mail, CreditCard } from "lucide-react";
+import Image from "next/image";
 import { locations } from "@/data/locations";
 
 export function Footer() {
@@ -7,11 +8,12 @@ export function Footer() {
       <div className="container mx-auto px-6 py-16 lg:px-12">
         <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-5">
           <div className="lg:col-span-1">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
+            <Image
               src="/images/logo.png"
-              alt="INDECAP"
-              className="h-20 brightness-0 invert"
+              alt="INDECAP — Instituto de Ciencias Aplicadas"
+              width={160}
+              height={80}
+              className="h-20 w-auto brightness-0 invert"
             />
             <p className="mt-4 font-[family-name:var(--font-dm-sans)] text-sm font-light text-white/70">
               Corporación Educativa INDECAP — Instituto de Ciencias Aplicadas ®

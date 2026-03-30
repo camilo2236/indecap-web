@@ -1,5 +1,7 @@
 "use client";
 import React, { useState } from 'react';
+import Image from 'next/image';
+import Image from 'next/image';
 import { MessageCircle, CheckCircle, ArrowRight, Clock, MapPin, ChevronDown } from "lucide-react";
 import { WhatsAppSelector } from './WhatsAppSelector';
 import { MiniTestimonio } from './MiniTestimonio';
@@ -27,7 +29,7 @@ export function ProgramPage({
       {/* ── HERO ─────────────────────────────────────────── */}
       <section className="relative min-h-[700px] flex items-center overflow-hidden">
         <div className="absolute inset-0 z-0">
-          <img src={fotoSrc} alt={fotoAlt} className="w-full h-full object-cover" />
+          <Image src={fotoSrc} alt={fotoAlt} fill className="object-cover" priority sizes="100vw" />
           <div className="absolute inset-0" style={{ background: `linear-gradient(105deg, ${accent}cc 0%, ${accent}88 45%, ${accent}22 75%, transparent 100%)` }} />
           <div className="absolute inset-0 bg-black/20" />
         </div>
@@ -49,7 +51,8 @@ export function ProgramPage({
                 </span>
               ))}
             </div>
-            <button onClick={handleOpenSelector} className="flex items-center gap-3 px-8 py-4 rounded-2xl font-black text-base hover:scale-105 transition-transform shadow-xl" style={{ backgroundColor: "#ffb21d", color: "#281800" }}>
+            <button onClick={handleOpenSelector} aria-label={`Iniciar proceso de inscripción en ${titulo}`}
+              className="flex items-center gap-3 px-8 py-4 rounded-2xl font-black text-base hover:scale-105 transition-transform shadow-xl" style={{ backgroundColor: "#ffb21d", color: "#281800" }}>
               Iniciar mi proceso <ArrowRight size={18} />
             </button>
           </div>
@@ -153,6 +156,7 @@ export function ProgramPage({
                       <div key={i} className="bg-white rounded-2xl overflow-hidden border border-[#c8c4d3]/20 shadow-sm">
                         <button
                           onClick={() => setCicloAbierto(cicloAbierto === i ? null : i)}
+                          aria-expanded={cicloAbierto === i}
                           className="w-full flex items-center justify-between p-5 text-left font-black text-sm"
                           style={{ color: accent }}
                         >
@@ -228,7 +232,7 @@ export function ProgramPage({
       <section className="py-20 px-8 max-w-7xl mx-auto">
         <div className="rounded-3xl p-12 md:p-20 text-center relative overflow-hidden" style={{ backgroundColor: accent }}>
           <div className="absolute inset-0 opacity-10">
-            <img src={fotoSrc} alt="" className="w-full h-full object-cover mix-blend-overlay grayscale" />
+            <Image src={fotoSrc} alt="" fill className="object-cover mix-blend-overlay grayscale" sizes="100vw" />
           </div>
           <div className="relative z-10 max-w-2xl mx-auto">
             <h2 className="font-[family-name:var(--font-playfair)] text-5xl md:text-6xl font-black text-white mb-6 tracking-tight leading-tight">
@@ -250,7 +254,7 @@ export function ProgramPage({
       {/* STICKY MÓVIL */}
       <div className="fixed bottom-0 left-0 z-[60] w-full border-t border-white/10 bg-black/95 p-4 lg:hidden backdrop-blur-sm">
         <button onClick={handleOpenSelector} className="flex w-full items-center justify-center gap-3 rounded-2xl py-4 text-base font-black uppercase text-black" style={{ backgroundColor: "#ffb21d" }}>
-          <MessageCircle size={20} fill="currentColor" /> Hablar con un asesor
+          <MessageCircle size={20} fill="currentColor" aria-hidden="true" /> Hablar con un asesor
         </button>
       </div>
 

@@ -1,4 +1,5 @@
 "use client";
+import Image from 'next/image';
 
 import { useState } from "react";
 import { MapPin, Phone, Mail, MessageCircle, ArrowRight, ChevronDown } from "lucide-react";
@@ -72,7 +73,7 @@ export default function ContactoPage() {
       {/* HERO */}
       <section className="relative min-h-[400px] flex items-center overflow-hidden" style={{ background: "linear-gradient(135deg, #1a086e 0%, #312783 100%)" }}>
         <div className="absolute inset-0 opacity-10">
-          <img src="/images/sedes/medellin.jpg" alt="" className="w-full h-full object-cover" />
+          <Image src="/images/sedes/medellin.jpg" alt="" fill className="object-cover" sizes="100vw" />
         </div>
         <div className="relative z-10 max-w-7xl mx-auto px-8 py-32">
           <span className="font-bold text-xs uppercase tracking-[0.3em] mb-4 block" style={{ color: "#ffb21d" }}>Contacto Institucional</span>
@@ -108,30 +109,30 @@ export default function ContactoPage() {
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
-                      <label className="block text-xs font-bold uppercase tracking-widest text-[#787583] mb-2">Nombre Completo</label>
-                      <input type="text" value={form.nombre} onChange={e => setForm({ ...form, nombre: e.target.value })} placeholder="Ej. Juan Pérez" required className="w-full bg-[#eff4f6] rounded-xl p-4 text-[#171c1e] placeholder:text-[#787583] outline-none focus:ring-2 focus:ring-[#1a086e]/20" />
+                      <label htmlFor="nombre" className="block text-xs font-bold uppercase tracking-widest text-[#787583] mb-2">Nombre Completo</label>
+                      <input id="nombre" type="text" value={form.nombre} onChange={e => setForm({ ...form, nombre: e.target.value })} placeholder="Ej. Juan Pérez" required className="w-full bg-[#eff4f6] rounded-xl p-4 text-[#171c1e] placeholder:text-[#787583] outline-none focus:ring-2 focus:ring-[#1a086e]/20" />
                     </div>
                     <div>
-                      <label className="block text-xs font-bold uppercase tracking-widest text-[#787583] mb-2">Correo Electrónico</label>
-                      <input type="email" value={form.correo} onChange={e => setForm({ ...form, correo: e.target.value })} placeholder="nombre@ejemplo.com" className="w-full bg-[#eff4f6] rounded-xl p-4 text-[#171c1e] placeholder:text-[#787583] outline-none focus:ring-2 focus:ring-[#1a086e]/20" />
+                      <label htmlFor="correo" className="block text-xs font-bold uppercase tracking-widest text-[#787583] mb-2">Correo Electrónico</label>
+                      <input id="correo" type="email" value={form.correo} onChange={e => setForm({ ...form, correo: e.target.value })} placeholder="nombre@ejemplo.com" className="w-full bg-[#eff4f6] rounded-xl p-4 text-[#171c1e] placeholder:text-[#787583] outline-none focus:ring-2 focus:ring-[#1a086e]/20" />
                     </div>
                   </div>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
-                      <label className="block text-xs font-bold uppercase tracking-widest text-[#787583] mb-2">Teléfono / WhatsApp</label>
-                      <input type="tel" value={form.telefono} onChange={e => setForm({ ...form, telefono: e.target.value })} placeholder="+57 300 000 0000" required className="w-full bg-[#eff4f6] rounded-xl p-4 text-[#171c1e] placeholder:text-[#787583] outline-none focus:ring-2 focus:ring-[#1a086e]/20" />
+                      <label htmlFor="telefono" className="block text-xs font-bold uppercase tracking-widest text-[#787583] mb-2">Teléfono / WhatsApp</label>
+                      <input id="telefono" type="tel" value={form.telefono} onChange={e => setForm({ ...form, telefono: e.target.value })} placeholder="+57 300 000 0000" required className="w-full bg-[#eff4f6] rounded-xl p-4 text-[#171c1e] placeholder:text-[#787583] outline-none focus:ring-2 focus:ring-[#1a086e]/20" />
                     </div>
                     <div>
-                      <label className="block text-xs font-bold uppercase tracking-widest text-[#787583] mb-2">Programa de Interés</label>
-                      <select value={form.programa} onChange={e => setForm({ ...form, programa: e.target.value })} className="w-full bg-[#eff4f6] rounded-xl p-4 text-[#171c1e] outline-none appearance-none focus:ring-2 focus:ring-[#1a086e]/20">
+                      <label htmlFor="programa" className="block text-xs font-bold uppercase tracking-widest text-[#787583] mb-2">Programa de Interés</label>
+                      <select id="programa" value={form.programa} onChange={e => setForm({ ...form, programa: e.target.value })} className="w-full bg-[#eff4f6] rounded-xl p-4 text-[#171c1e] outline-none appearance-none focus:ring-2 focus:ring-[#1a086e]/20">
                         <option value="">Selecciona una opción</option>
                         {programas.map(p => <option key={p} value={p}>{p}</option>)}
                       </select>
                     </div>
                   </div>
                   <div>
-                    <label className="block text-xs font-bold uppercase tracking-widest text-[#787583] mb-2">Mensaje</label>
-                    <textarea value={form.mensaje} onChange={e => setForm({ ...form, mensaje: e.target.value })} placeholder="¿En qué podemos ayudarte?" rows={4} className="w-full bg-[#eff4f6] rounded-xl p-4 text-[#171c1e] placeholder:text-[#787583] resize-none outline-none focus:ring-2 focus:ring-[#1a086e]/20" />
+                    <label htmlFor="mensaje" className="block text-xs font-bold uppercase tracking-widest text-[#787583] mb-2">Mensaje</label>
+                    <textarea id="mensaje" value={form.mensaje} onChange={e => setForm({ ...form, mensaje: e.target.value })} placeholder="¿En qué podemos ayudarte?" rows={4} className="w-full bg-[#eff4f6] rounded-xl p-4 text-[#171c1e] placeholder:text-[#787583] resize-none outline-none focus:ring-2 focus:ring-[#1a086e]/20" />
                   </div>
                   {estado === "error" && <p className="text-red-500 text-sm text-center">Hubo un error. Por favor intenta de nuevo.</p>}
                   <button type="submit" disabled={estado === "loading"} className="w-full py-4 rounded-xl font-black uppercase tracking-widest text-sm text-white hover:opacity-90 transition-all shadow-xl disabled:opacity-60 flex items-center justify-center gap-2" style={{ background: "linear-gradient(135deg, #1a086e 0%, #312783 100%)" }}>
@@ -179,7 +180,7 @@ export default function ContactoPage() {
               <div className="space-y-3">
                 {faqs.map((faq, i) => (
                   <div key={i} className="bg-[#eff4f6] rounded-xl overflow-hidden">
-                    <button onClick={() => setFaqAbierta(faqAbierta === i ? null : i)} className="w-full p-4 flex justify-between items-center text-left font-semibold text-sm text-[#171c1e]">
+                    <button onClick={() => setFaqAbierta(faqAbierta === i ? null : i)} aria-expanded={faqAbierta === i} className="w-full p-4 flex justify-between items-center text-left font-semibold text-sm text-[#171c1e]">
                       {faq.q}
                       <ChevronDown size={16} className={`text-[#787583] transition-transform shrink-0 ml-2 ${faqAbierta === i ? "rotate-180" : ""}`} />
                     </button>
@@ -208,7 +209,7 @@ export default function ContactoPage() {
             {sedes.map((sede) => (
               <div key={sede.id} className="bg-white rounded-2xl overflow-hidden flex flex-col hover:-translate-y-2 transition-transform group shadow-sm">
                 <div className="h-56 relative bg-[#eaeff1] overflow-hidden">
-                  <img src={sede.image} alt={sede.ciudad} className="w-full h-full object-cover grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500" />
+                  <Image src={sede.image} alt={sede.ciudad} fill className="object-cover grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500" sizes="(max-width: 768px) 100vw, 33vw" />
                   <div className="absolute inset-0 bg-[#1a086e]/10" />
                   <div className="absolute top-4 left-4 bg-[#1a086e] text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase">{sede.tagline}</div>
                 </div>
