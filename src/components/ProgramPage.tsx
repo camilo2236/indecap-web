@@ -1,7 +1,6 @@
 "use client";
 import React, { useState } from 'react';
 import Image from 'next/image';
-import Image from 'next/image';
 import { MessageCircle, CheckCircle, ArrowRight, Clock, MapPin, ChevronDown } from "lucide-react";
 import { WhatsAppSelector } from './WhatsAppSelector';
 import { MiniTestimonio } from './MiniTestimonio';
