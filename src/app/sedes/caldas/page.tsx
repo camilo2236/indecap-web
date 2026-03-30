@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { MapPin, Phone, Mail, MessageCircle, ArrowRight, Clock, Building2, GraduationCap, Users } from "lucide-react";
 
 export const metadata: Metadata = {
@@ -13,7 +14,7 @@ export default function SedesCaldasPage() {
       {/* HERO */}
       <section className="relative min-h-[500px] flex items-center overflow-hidden" style={{ background: "linear-gradient(135deg, #0F4C35 0%, #1a086e 100%)" }}>
         <div className="absolute inset-0 opacity-10">
-          <img src="/images/sedes/caldas.jpg" alt="Sede Caldas INDECAP" className="w-full h-full object-cover" />
+          <Image src={`/images/sedes/${ciudad.lower().replace("é","e")}.jpg`} alt={`Sede ${ciudad} INDECAP`} fill className="object-cover" priority sizes="100vw" />
         </div>
         <div className="relative z-10 max-w-7xl mx-auto px-8 py-32">
           <div className="flex items-center gap-3 mb-6">
@@ -37,7 +38,7 @@ export default function SedesCaldasPage() {
           {[
             { icon: GraduationCap, label: "Aulas",      value: "10 aulas" },
             { icon: Building2,    label: "Niveles",     value: "4 niveles" },
-            { icon: Users,        label: "Egresados",   value: "420+" },
+            { icon: Users,        label: "Egresados",   value: "5.000+" },
             { icon: Building2,    label: "Convenios",   value: "COMFAMA y más" },
           ].map(({ icon: Icon, label, value }) => (
             <div key={label} className="p-6 flex items-center gap-4">
@@ -185,7 +186,7 @@ export default function SedesCaldasPage() {
             </div>
 
             <div className="rounded-2xl overflow-hidden shadow-sm border border-[#c8c4d3]/20 h-64">
-              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3972.0!2d-75.641!3d6.094!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNsKwMDUnMzkuNiJOIDc1wrAzOCczNC42Ilc!5e0!3m2!1ses!2sco!4v1"
+              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3967.2917608599473!2d-75.63738873784544!3d6.091342944564197!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e46868ee0555555%3A0x66963b66dfbc06b9!2sIndecap!5e1!3m2!1sen!2sco!4v1774831314418!5m2!1sen!2sco"
                 width="100%" height="100%" style={{ border: 0 }} allowFullScreen loading="lazy" title="INDECAP Caldas" />
             </div>
           </div>
@@ -199,7 +200,7 @@ export default function SedesCaldasPage() {
             <h2 className="font-[family-name:var(--font-playfair)] text-5xl font-black text-white mb-4 tracking-tight">
               Estudia en <em className="italic">Caldas</em>
             </h2>
-            <p className="text-white/70 text-xl mb-10 max-w-xl mx-auto">Sé parte de los más de 420 egresados que transformaron su vida estudiando en INDECAP Caldas.</p>
+            <p className="text-white/70 text-xl mb-10 max-w-xl mx-auto">Sé parte de los más de 5.000 egresados que transformaron su vida estudiando en INDECAP Caldas.</p>
             <div className="flex flex-col md:flex-row gap-4 justify-center">
               <a href="/admision" className="flex items-center justify-center gap-3 px-10 py-5 rounded-full font-black text-lg hover:scale-105 transition-transform shadow-xl bg-[#ffb21d] text-[#281800]">
                 Formulario de admisión <ArrowRight size={18} />

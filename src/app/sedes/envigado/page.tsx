@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { MapPin, Phone, Mail, MessageCircle, ArrowRight, Train, Clock, Building2, GraduationCap } from "lucide-react";
+import Image from "next/image";
+import { MapPin, Phone, Mail, MessageCircle, ArrowRight, Train, Clock, Building2, GraduationCap, Users } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Sede Envigado | INDECAP – Cerca al Parque Principal de Envigado",
@@ -13,7 +14,7 @@ export default function SedesEnvigadoPage() {
       {/* HERO */}
       <section className="relative min-h-[500px] flex items-center overflow-hidden" style={{ background: "linear-gradient(135deg, #1A3A6B 0%, #1a086e 100%)" }}>
         <div className="absolute inset-0 opacity-10">
-          <img src="/images/sedes/envigado.jpg" alt="Sede Envigado INDECAP" className="w-full h-full object-cover" />
+          <Image src={`/images/sedes/${ciudad.lower().replace("é","e")}.jpg`} alt={`Sede ${ciudad} INDECAP`} fill className="object-cover" priority sizes="100vw" />
         </div>
         <div className="relative z-10 max-w-7xl mx-auto px-8 py-32">
           <div className="flex items-center gap-3 mb-6">
@@ -37,7 +38,7 @@ export default function SedesEnvigadoPage() {
           {[
             { icon: Building2,    label: "Área",          value: "1.446 m²" },
             { icon: GraduationCap, label: "Aulas",        value: "8 aulas" },
-            { icon: Building2,    label: "Ubicación",     value: "Zona comercial" },
+            { icon: Users,        label: "Egresados",     value: "10.000+" },
             { icon: Train,        label: "Acceso",        value: "Metro + bus" },
           ].map(({ icon: Icon, label, value }) => (
             <div key={label} className="p-6 flex items-center gap-4">
@@ -180,7 +181,7 @@ export default function SedesEnvigadoPage() {
             </div>
 
             <div className="rounded-2xl overflow-hidden shadow-sm border border-[#c8c4d3]/20 h-64">
-              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.0!2d-75.594!3d6.169!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNsKwMTAnMDkuMiJOIDc1wrAzNSczOC40Ilc!5e0!3m2!1ses!2sco!4v1"
+              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.6944440921548!2d-75.59156622428259!3d6.171651093815698!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e46824dfe6f017b%3A0x19ac0f58cf3397cb!2sINDECAP%20ENVIGADO%20Instituto%20de%20Ciencias%20Aplicadas!5e1!3m2!1sen!2sco!4v1774831242450!5m2!1sen!2sco"
                 width="100%" height="100%" style={{ border: 0 }} allowFullScreen loading="lazy" title="INDECAP Envigado" />
             </div>
           </div>
