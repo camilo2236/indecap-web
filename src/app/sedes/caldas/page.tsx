@@ -173,7 +173,7 @@ export default function SedesCaldasPage() {
                 ))}
               </div>
               <div className="space-y-3">
-                <a href="https://wa.me/573008948517?text=Hola%20INDECAP%20Caldas%2C%20quiero%20informaci%C3%B3n%20sobre%20los%20programas"
+                <a href="https://wa.me/573008948517?text=Hola%20INDECAP%20Caldas%2C%20quiero%20informaci%C3%B3n%20sobre%20los%20programas%20disponibles%20en%20la%20sede%20de%20Caldas.%20%C2%BFMe%20pueden%20orientar%3F"
                   target="_blank" rel="noopener noreferrer"
                   className="flex items-center justify-center gap-3 w-full py-4 rounded-xl font-black text-white bg-[#25D366] hover:scale-105 transition-transform">
                   <MessageCircle size={18} /> WhatsApp: 300 894 8517
@@ -205,7 +205,7 @@ export default function SedesCaldasPage() {
               <a href="/admision" className="flex items-center justify-center gap-3 px-10 py-5 rounded-full font-black text-lg hover:scale-105 transition-transform shadow-xl bg-[#ffb21d] text-[#281800]">
                 Formulario de admisión <ArrowRight size={18} />
               </a>
-              <a href="https://wa.me/573008948517" target="_blank" rel="noopener noreferrer"
+              <a href="https://wa.me/573008948517?text=Hola%20INDECAP%20Caldas%2C%20quiero%20informaci%C3%B3n%20sobre%20los%20programas%20disponibles%20en%20la%20sede%20de%20Caldas.%20%C2%BFMe%20pueden%20orientar%3F" target="_blank" rel="noopener noreferrer"
                 className="flex items-center justify-center gap-3 px-10 py-5 rounded-full font-black text-lg border-2 border-white text-white hover:bg-white/10 transition-colors">
                 <MessageCircle size={20} /> Hablar por WhatsApp
               </a>

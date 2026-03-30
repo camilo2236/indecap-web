@@ -149,7 +149,7 @@ export default function ContactoPage() {
               <h3 className="font-[family-name:var(--font-playfair)] text-2xl text-[#1a086e] mb-6 tracking-tight">Canales Directos</h3>
               <div className="space-y-3">
                 {[
-                  { href: "https://wa.me/573022389760", label: "WhatsApp Medellín", value: "+57 302 238 9760", icon: <MessageCircle size={20} className="text-green-600" />, bg: "bg-green-100" },
+                  { href: "https://wa.me/573022389760?text=Hola%20INDECAP%2C%20me%20comunico%20desde%20la%20p%C3%A1gina%20de%20contacto%20y%20quiero%20informaci%C3%B3n%20sobre%20sus%20programas.%20%C2%BFMe%20pueden%20orientar%3F", label: "WhatsApp Medellín", value: "+57 302 238 9760", icon: <MessageCircle size={20} className="text-green-600" />, bg: "bg-green-100" },
                   { href: "mailto:indecap@indecap.edu.co", label: "Correo", value: "indecap@indecap.edu.co", icon: <Mail size={20} style={{ color: "#1a086e" }} />, bg: "bg-[#1a086e]/10" },
                   { href: "tel:6044484794", label: "Teléfono", value: "(604) 448 4794", icon: <Phone size={20} style={{ color: "#1a086e" }} />, bg: "bg-[#1a086e]/10" },
                 ].map(({ href, label, value, icon, bg }) => (
@@ -228,7 +228,7 @@ export default function ContactoPage() {
                       <a href={sede.mapUrl} target="_blank" rel="noopener noreferrer" className="flex-1 flex items-center justify-center gap-2 py-3 rounded-xl text-sm font-bold border-2 border-[#1a086e] text-[#1a086e] hover:bg-[#1a086e] hover:text-white transition-colors">
                         Ver mapa
                       </a>
-                      <a href={`https://wa.me/${sede.whatsapp}`} target="_blank" rel="noopener noreferrer" className="flex-1 flex items-center justify-center gap-2 py-3 rounded-xl text-sm font-bold text-white bg-[#25D366]">
+                      <a href={`https://wa.me/${sede.whatsapp}?text=${encodeURIComponent(`Hola INDECAP ${sede.ciudad}, quiero información sobre los programas disponibles. ¿Me pueden orientar?`)}`} target="_blank" rel="noopener noreferrer" className="flex-1 flex items-center justify-center gap-2 py-3 rounded-xl text-sm font-bold text-white bg-[#25D366]">
                         WhatsApp
                       </a>
                     </div>

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { MapPin, Phone, Mail, MessageCircle, ArrowRight, Train, Clock, Building2, Users, GraduationCap } from "lucide-react";
 
 export const metadata: Metadata = {
@@ -13,7 +14,7 @@ export default function SedesMedellinPage() {
       {/* HERO */}
       <section className="relative min-h-[500px] flex items-center overflow-hidden" style={{ background: "linear-gradient(135deg, #1a086e 0%, #312783 100%)" }}>
         <div className="absolute inset-0 opacity-10">
-          <img src="/images/sedes/medellin.jpg" alt="Sede Medellín INDECAP" className="w-full h-full object-cover" />
+          <Image src="/images/sedes/medellin.jpg" alt="Sede Medellín INDECAP" fill className="object-cover" priority sizes="100vw" />
         </div>
         <div className="relative z-10 max-w-7xl mx-auto px-8 py-32">
           <div className="flex items-center gap-3 mb-6">
@@ -36,7 +37,7 @@ export default function SedesMedellinPage() {
         <div className="bg-white grid grid-cols-2 md:grid-cols-4 divide-x divide-[#c8c4d3]/20 rounded-2xl shadow-xl border border-[#c8c4d3]/20">
           {[
             { icon: Building2, label: "Área",        value: "1.500 m²" },
-            { icon: Building2, label: "Pisos",       value: "5 pisos" },
+            { icon: Users,     label: "Egresados",   value: "15.000+" },
             { icon: GraduationCap, label: "Aulas",   value: "20 aulas" },
             { icon: Train,     label: "Metro",       value: "1 cuadra" },
           ].map(({ icon: Icon, label, value }) => (
@@ -188,7 +189,7 @@ export default function SedesMedellinPage() {
               </div>
 
               <div className="space-y-3">
-                <a href="https://wa.me/573022389760?text=Hola%20INDECAP%20Medellin%2C%20quiero%20informaci%C3%B3n%20sobre%20los%20programas"
+                <a href="https://wa.me/573022389760?text=Hola%20INDECAP%20Medell%C3%ADn%2C%20quiero%20informaci%C3%B3n%20sobre%20los%20programas%20disponibles%20en%20la%20sede%20del%20centro.%20%C2%BFMe%20pueden%20orientar%3F"
                   target="_blank" rel="noopener noreferrer"
                   className="flex items-center justify-center gap-3 w-full py-4 rounded-xl font-black text-white bg-[#25D366] hover:scale-105 transition-transform">
                   <MessageCircle size={18} /> WhatsApp: 302 238 9760
@@ -204,7 +205,7 @@ export default function SedesMedellinPage() {
             {/* Mapa embed */}
             <div className="rounded-2xl overflow-hidden shadow-sm border border-[#c8c4d3]/20 h-64">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.0!2d-75.568!3d6.257!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNsKwMTUnMjUuMiJOIDc1wrAzNCcwNC44Ilc!5e0!3m2!1ses!2sco!4v1"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.0882055587904!2d-75.56423852428196!3d6.252108093736369!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e4428f769c8da39%3A0xdab00e96cee9b0cb!2sINDECAP!5e1!3m2!1sen!2sco!4v1774831217383!5m2!1sen!2sco"
                 width="100%" height="100%" style={{ border: 0 }} allowFullScreen loading="lazy"
                 title="Ubicación INDECAP Medellín"
               />
@@ -225,7 +226,7 @@ export default function SedesMedellinPage() {
               <a href="/admision" className="flex items-center justify-center gap-3 px-10 py-5 rounded-full font-black text-lg hover:scale-105 transition-transform shadow-xl bg-[#ffb21d] text-[#281800]">
                 Formulario de admisión <ArrowRight size={18} />
               </a>
-              <a href="https://wa.me/573022389760" target="_blank" rel="noopener noreferrer"
+              <a href="https://wa.me/573022389760?text=Hola%20INDECAP%20Medell%C3%ADn%2C%20quiero%20informaci%C3%B3n%20sobre%20los%20programas%20disponibles%20en%20la%20sede%20del%20centro.%20%C2%BFMe%20pueden%20orientar%3F" target="_blank" rel="noopener noreferrer"
                 className="flex items-center justify-center gap-3 px-10 py-5 rounded-full font-black text-lg border-2 border-white text-white hover:bg-white/10 transition-colors">
                 <MessageCircle size={20} /> Hablar por WhatsApp
               </a>

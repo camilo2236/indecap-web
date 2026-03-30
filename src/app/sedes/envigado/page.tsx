@@ -14,7 +14,7 @@ export default function SedesEnvigadoPage() {
       {/* HERO */}
       <section className="relative min-h-[500px] flex items-center overflow-hidden" style={{ background: "linear-gradient(135deg, #1A3A6B 0%, #1a086e 100%)" }}>
         <div className="absolute inset-0 opacity-10">
-          <Image src="/images/sedes/envigado.jpg" alt="Sede Envigado INDECAP" fill className="object-cover" priority sizes="100vw" />
+          <Image src={`/images/sedes/${ciudad.lower().replace("é","e")}.jpg`} alt={`Sede ${ciudad} INDECAP`} fill className="object-cover" priority sizes="100vw" />
         </div>
         <div className="relative z-10 max-w-7xl mx-auto px-8 py-32">
           <div className="flex items-center gap-3 mb-6">
@@ -168,7 +168,7 @@ export default function SedesEnvigadoPage() {
                 ))}
               </div>
               <div className="space-y-3">
-                <a href="https://wa.me/573174342783?text=Hola%20INDECAP%20Envigado%2C%20quiero%20informaci%C3%B3n%20sobre%20los%20programas"
+                <a href="https://wa.me/573174342783?text=Hola%20INDECAP%20Envigado%2C%20quiero%20informaci%C3%B3n%20sobre%20los%20programas%20disponibles%20en%20la%20sede%20de%20Envigado.%20%C2%BFMe%20pueden%20orientar%3F"
                   target="_blank" rel="noopener noreferrer"
                   className="flex items-center justify-center gap-3 w-full py-4 rounded-xl font-black text-white bg-[#25D366] hover:scale-105 transition-transform">
                   <MessageCircle size={18} /> WhatsApp: 317 434 2783
@@ -200,7 +200,7 @@ export default function SedesEnvigadoPage() {
               <a href="/admision" className="flex items-center justify-center gap-3 px-10 py-5 rounded-full font-black text-lg hover:scale-105 transition-transform shadow-xl bg-[#ffb21d] text-[#281800]">
                 Formulario de admisión <ArrowRight size={18} />
               </a>
-              <a href="https://wa.me/573174342783" target="_blank" rel="noopener noreferrer"
+              <a href="https://wa.me/573174342783?text=Hola%20INDECAP%20Envigado%2C%20quiero%20informaci%C3%B3n%20sobre%20los%20programas%20disponibles%20en%20la%20sede%20de%20Envigado.%20%C2%BFMe%20pueden%20orientar%3F" target="_blank" rel="noopener noreferrer"
                 className="flex items-center justify-center gap-3 px-10 py-5 rounded-full font-black text-lg border-2 border-white text-white hover:bg-white/10 transition-colors">
                 <MessageCircle size={20} /> Hablar por WhatsApp
               </a>
