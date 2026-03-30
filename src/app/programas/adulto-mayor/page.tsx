@@ -16,7 +16,7 @@ export default function AdultoMayorPage() {
       horas="700"
       semestres="2"
       sedesNum="1"
-      fotoSrc="/images/programs/administrativo-salud/administrativo-retrato.jpg"
+      fotoSrc="/images/programs/adulto-mayor/adulto-mayor-hero.jpg"
       fotoAlt="Estudiante de Atención al Adulto Mayor INDECAP"
       descripcion="Colombia está envejeciendo: la demanda de cuidadores capacitados crece cada año. En el Valle de Aburrá hay centros geriátricos, hogares y familias que necesitan personas formadas para esta labor tan importante. Cuidar a un adulto mayor no se aprende solo con libros — se aprende acompañando, observando, escuchando."
       capacidades={[

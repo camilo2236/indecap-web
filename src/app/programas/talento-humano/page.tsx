@@ -16,7 +16,7 @@ export default function TalentoHumanoPage() {
       horas="1.000"
       semestres="2"
       sedesNum="3"
-      fotoSrc="/images/programs/talento-humano.jpg"
+      fotoSrc="/images/programs/talento-humano/talento-humano-hero.jpg"
       fotoAlt="Estudiante de Talento Humano INDECAP"
       descripcion="Toda empresa con más de un puñado de trabajadores necesita a alguien que gestione su talento humano. Es un perfil que combina lo administrativo con lo relacional, y que tiene espacio en empresas de todos los tamaños — desde pymes hasta grandes corporaciones del Valle de Aburrá."
       capacidades={[

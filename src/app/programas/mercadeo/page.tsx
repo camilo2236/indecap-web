@@ -16,7 +16,7 @@ export default function MercadeoPage() {
       horas="1.000"
       semestres="2"
       sedesNum="3"
-      fotoSrc="/images/programs/mercadeo.jpg"
+      fotoSrc="/images/programs/mercadeo/mercadeo-hero.jpg"
       fotoAlt="Estudiante de Mercadeo INDECAP"
       descripcion="Toda empresa necesita vender. Y para vender, necesita personas que sepan comunicar, conectar y posicionar. El auxiliar en mercadeo es el perfil que las empresas del Valle de Aburrá necesitan para sus equipos comerciales, sus redes sociales y sus estrategias de crecimiento."
       capacidades={[
