@@ -116,7 +116,7 @@ export async function POST(req: NextRequest) {
     // ── CORREO A INDECAP ──────────────────────────────────────────────────────
     await resend.emails.send({
       from: "INDECAP Admisiones <onboarding@resend.dev>",
-      to: ["usuarioindecap15@gmail.com"],
+      to: ["camilo2236@gmail.com"],
       subject: `📋 Nueva Solicitud de Admisión — ${s.nombres} ${s.apellidos} | ${s.programa}`,
       html: `
         <!DOCTYPE html><html><head><meta charset="utf-8"></head>

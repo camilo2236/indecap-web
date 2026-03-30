@@ -79,7 +79,7 @@ export async function POST(req: NextRequest) {
 
     const { data, error } = await resend.emails.send({
       from: "INDECAP Web <onboarding@resend.dev>",
-      to: ["usuarioindecap15@gmail.com"],
+      to: ["camilo2236@gmail.com"],
       subject: `🎓 Nueva inscripción — ${sNombres} ${sApellidos} | ${sPrograma || "Sin programa"}`,
       html: `
         <!DOCTYPE html><html><head><meta charset="utf-8"></head>
