@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import { MapPin, Phone, Mail, MessageCircle, ArrowRight, Train, Clock, Building2, GraduationCap, Users } from "lucide-react";
+import { MapPin, Phone, Mail, MessageCircle, ArrowRight, Clock, Building2, GraduationCap, Users } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Sede Envigado | INDECAP – Cerca al Parque Principal de Envigado",
@@ -14,7 +14,7 @@ export default function SedesEnvigadoPage() {
       {/* HERO */}
       <section className="relative min-h-[500px] flex items-center overflow-hidden" style={{ background: "linear-gradient(135deg, #1A3A6B 0%, #1a086e 100%)" }}>
         <div className="absolute inset-0 opacity-10">
-          <Image src={`/images/sedes/${ciudad.lower().replace("é","e")}.jpg`} alt={`Sede ${ciudad} INDECAP`} fill className="object-cover" priority sizes="100vw" />
+          <Image src="/images/sedes/envigado.jpg" alt="Sede Envigado INDECAP" fill className="object-cover" priority sizes="100vw" />
         </div>
         <div className="relative z-10 max-w-7xl mx-auto px-8 py-32">
           <div className="flex items-center gap-3 mb-6">
@@ -36,10 +36,10 @@ export default function SedesEnvigadoPage() {
       <section className="max-w-7xl mx-auto px-8 -mt-6 relative z-20 mb-16">
         <div className="bg-white grid grid-cols-2 md:grid-cols-4 divide-x divide-[#c8c4d3]/20 rounded-2xl shadow-xl border border-[#c8c4d3]/20">
           {[
-            { icon: Building2,    label: "Área",          value: "1.446 m²" },
-            { icon: GraduationCap, label: "Aulas",        value: "8 aulas" },
-            { icon: Users,        label: "Egresados",     value: "10.000+" },
-            { icon: Train,        label: "Acceso",        value: "Metro + bus" },
+            { icon: Building2,     label: "Área",       value: "1.446 m²" },
+            { icon: GraduationCap, label: "Aulas",      value: "8 aulas" },
+            { icon: Users,         label: "Egresados",  value: "10.000+" },
+            { icon: Building2,     label: "Acceso",     value: "Metro + bus" },
           ].map(({ icon: Icon, label, value }) => (
             <div key={label} className="p-6 flex items-center gap-4">
               <div className="w-10 h-10 rounded-full bg-[#1A3A6B10] flex items-center justify-center shrink-0">
@@ -119,7 +119,7 @@ export default function SedesEnvigadoPage() {
               </a>
             </div>
 
-            {/* Puntos de referencia */}
+            {/* Cómo llegar */}
             <div className="bg-[#eff4f6] rounded-2xl p-8 border border-[#c8c4d3]/20">
               <span className="text-xs font-bold uppercase tracking-widest block mb-3 text-[#805600]">Entorno y referencia</span>
               <h3 className="font-[family-name:var(--font-playfair)] text-2xl font-black text-[#1A3A6B] mb-5 tracking-tight">Puntos de referencia cercanos</h3>
@@ -140,16 +140,16 @@ export default function SedesEnvigadoPage() {
             </div>
           </div>
 
-          {/* Columna derecha */}
+          {/* Columna derecha — contacto */}
           <div className="space-y-6">
             <div className="bg-white rounded-2xl p-8 border border-[#c8c4d3]/20 shadow-sm sticky top-24">
               <h3 className="font-[family-name:var(--font-playfair)] text-2xl font-black text-[#1A3A6B] mb-6 tracking-tight">Información de contacto</h3>
               <div className="space-y-5 mb-8">
                 {[
-                  { icon: MapPin, label: "Dirección", value: "Cl 37 Sur #43A-84", sub: "Cerca al Parque Principal de Envigado" },
-                  { icon: Phone,  label: "Teléfono",  value: "(604) 448 4794", sub: "317 434 2783", href: "tel:6044484794" },
-                  { icon: Clock,  label: "Horario",   value: "Lunes a viernes", sub: "7:00 a.m. – 6:00 p.m." },
-                  { icon: Mail,   label: "Correo",    value: "sedeenvigado@indecap.edu.co", href: "mailto:sedeenvigado@indecap.edu.co" },
+                  { icon: MapPin, label: "Dirección",  value: "Cl 37 Sur #43A-84",               sub: "Cerca al Parque Principal de Envigado" },
+                  { icon: Phone,  label: "Teléfono",   value: "(604) 448 4794",                   sub: "317 434 2783", href: "tel:6044484794" },
+                  { icon: Clock,  label: "Horario",    value: "Lunes a viernes",                  sub: "7:00 a.m. – 6:00 p.m." },
+                  { icon: Mail,   label: "Correo",     value: "sedeenvigado@indecap.edu.co",      href: "mailto:sedeenvigado@indecap.edu.co" },
                 ].map(({ icon: Icon, label, value, sub, href }) => (
                   <div key={label} className="flex items-start gap-4">
                     <div className="w-10 h-10 rounded-full bg-[#1A3A6B10] flex items-center justify-center shrink-0 mt-0.5">
@@ -168,21 +168,30 @@ export default function SedesEnvigadoPage() {
                 ))}
               </div>
               <div className="space-y-3">
-                <a href="https://wa.me/573174342783?text=Hola%20INDECAP%20Envigado%2C%20quiero%20informaci%C3%B3n%20sobre%20los%20programas%20disponibles%20en%20la%20sede%20de%20Envigado.%20%C2%BFMe%20pueden%20orientar%3F"
+                <a
+                  href="https://wa.me/573174342783?text=Hola%20INDECAP%20Envigado%2C%20quiero%20informaci%C3%B3n%20sobre%20los%20programas%20disponibles%20en%20la%20sede%20de%20Envigado.%20%C2%BFMe%20pueden%20orientar%3F"
                   target="_blank" rel="noopener noreferrer"
-                  className="flex items-center justify-center gap-3 w-full py-4 rounded-xl font-black text-white bg-[#25D366] hover:scale-105 transition-transform">
+                  className="flex items-center justify-center gap-3 w-full py-4 rounded-xl font-black text-white bg-[#25D366] hover:scale-105 transition-transform"
+                >
                   <MessageCircle size={18} /> WhatsApp: 317 434 2783
                 </a>
-                <a href="https://maps.app.goo.gl/3YL91ZWChN7YyRad6" target="_blank" rel="noopener noreferrer"
-                  className="flex items-center justify-center gap-2 w-full py-4 rounded-xl font-bold text-[#1A3A6B] border-2 border-[#1A3A6B] hover:bg-[#1A3A6B] hover:text-white transition-colors">
+                <a
+                  href="https://maps.app.goo.gl/3YL91ZWChN7YyRad6"
+                  target="_blank" rel="noopener noreferrer"
+                  className="flex items-center justify-center gap-2 w-full py-4 rounded-xl font-bold text-[#1A3A6B] border-2 border-[#1A3A6B] hover:bg-[#1A3A6B] hover:text-white transition-colors"
+                >
                   <MapPin size={16} /> Ver en Google Maps
                 </a>
               </div>
             </div>
 
+            {/* Mapa */}
             <div className="rounded-2xl overflow-hidden shadow-sm border border-[#c8c4d3]/20 h-64">
-              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.6944440921548!2d-75.59156622428259!3d6.171651093815698!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e46824dfe6f017b%3A0x19ac0f58cf3397cb!2sINDECAP%20ENVIGADO%20Instituto%20de%20Ciencias%20Aplicadas!5e1!3m2!1sen!2sco!4v1774831242450!5m2!1sen!2sco"
-                width="100%" height="100%" style={{ border: 0 }} allowFullScreen loading="lazy" title="INDECAP Envigado" />
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.6944440921548!2d-75.59156622428259!3d6.171651093815698!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e46824dfe6f017b%3A0x19ac0f58cf3397cb!2sINDECAP%20ENVIGADO%20Instituto%20de%20Ciencias%20Aplicadas!5e1!3m2!1sen!2sco!4v1774831242450!5m2!1sen!2sco"
+                width="100%" height="100%" style={{ border: 0 }} allowFullScreen loading="lazy"
+                title="Ubicación INDECAP Envigado"
+              />
             </div>
           </div>
         </div>
@@ -200,8 +209,11 @@ export default function SedesEnvigadoPage() {
               <a href="/admision" className="flex items-center justify-center gap-3 px-10 py-5 rounded-full font-black text-lg hover:scale-105 transition-transform shadow-xl bg-[#ffb21d] text-[#281800]">
                 Formulario de admisión <ArrowRight size={18} />
               </a>
-              <a href="https://wa.me/573174342783?text=Hola%20INDECAP%20Envigado%2C%20quiero%20informaci%C3%B3n%20sobre%20los%20programas%20disponibles%20en%20la%20sede%20de%20Envigado.%20%C2%BFMe%20pueden%20orientar%3F" target="_blank" rel="noopener noreferrer"
-                className="flex items-center justify-center gap-3 px-10 py-5 rounded-full font-black text-lg border-2 border-white text-white hover:bg-white/10 transition-colors">
+              <a
+                href="https://wa.me/573174342783?text=Hola%20INDECAP%20Envigado%2C%20quiero%20informaci%C3%B3n%20sobre%20los%20programas%20disponibles%20en%20la%20sede%20de%20Envigado.%20%C2%BFMe%20pueden%20orientar%3F"
+                target="_blank" rel="noopener noreferrer"
+                className="flex items-center justify-center gap-3 px-10 py-5 rounded-full font-black text-lg border-2 border-white text-white hover:bg-white/10 transition-colors"
+              >
                 <MessageCircle size={20} /> Hablar por WhatsApp
               </a>
             </div>
