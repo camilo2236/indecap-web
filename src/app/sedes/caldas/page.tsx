@@ -4,7 +4,7 @@ import { MapPin, Phone, Mail, MessageCircle, ArrowRight, Clock, Building2, Gradu
 
 export const metadata: Metadata = {
   title: "Sede Caldas | INDECAP – Cerca al Parque Principal de Caldas",
-  description: "INDECAP Sede Caldas. Calle 130 sur N° 51-65. 10 aulas, laboratorio de química y física, biblioteca. 420+ egresados. Programas técnicos y bachillerato.",
+  description: "INDECAP Sede Caldas. Calle 130 sur N° 51-65. 10 aulas, laboratorio de química y física, biblioteca. 5.000+ egresados. Programas técnicos y bachillerato.",
 };
 
 export default function SedesCaldasPage() {
@@ -14,7 +14,7 @@ export default function SedesCaldasPage() {
       {/* HERO */}
       <section className="relative min-h-[500px] flex items-center overflow-hidden" style={{ background: "linear-gradient(135deg, #0F4C35 0%, #1a086e 100%)" }}>
         <div className="absolute inset-0 opacity-10">
-          <Image src={`/images/sedes/${ciudad.lower().replace("é","e")}.jpg`} alt={`Sede ${ciudad} INDECAP`} fill className="object-cover" priority sizes="100vw" />
+          <Image src="/images/sedes/caldas.jpg" alt="Sede Caldas INDECAP" fill className="object-cover" priority sizes="100vw" />
         </div>
         <div className="relative z-10 max-w-7xl mx-auto px-8 py-32">
           <div className="flex items-center gap-3 mb-6">
