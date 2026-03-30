@@ -234,37 +234,7 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
 
-      // ── SEDES CON ESTRUCTURA /sedes/ciudad/ ───────────────────
-      {
-        source: "/sedes/medellin",
-        destination: "/contacto",
-        permanent: true,
-      },
-      {
-        source: "/sedes/medellin/",
-        destination: "/contacto",
-        permanent: true,
-      },
-      {
-        source: "/sedes/envigado",
-        destination: "/contacto",
-        permanent: true,
-      },
-      {
-        source: "/sedes/envigado/",
-        destination: "/contacto",
-        permanent: true,
-      },
-      {
-        source: "/sedes/caldas",
-        destination: "/contacto",
-        permanent: true,
-      },
-      {
-        source: "/sedes/caldas/",
-        destination: "/contacto",
-        permanent: true,
-      },
+      // ── /sedes/ciudad/ — páginas propias, sin redirect ─────────────────
 
       // ── OTRAS PÁGINAS ──────────────────────────────────────────
       {
