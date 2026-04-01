@@ -1,6 +1,9 @@
 import { Hero } from "@/components/sections/Hero";
 import { Programs } from "@/components/sections/Programs";
+<<<<<<< HEAD
 import { Testimonios } from "@/components/sections/Testimonios";
+=======
+>>>>>>> 8c340632f1d786cf278dc34e50140825b9db181b
 import { Courses } from "@/components/sections/Courses";
 import { Partners } from "@/components/sections/Partners";
 import { News } from "@/components/sections/News";
@@ -13,7 +16,10 @@ export default function Home() {
     <main>
       <Hero />
       <Programs />
+<<<<<<< HEAD
       <Testimonios />
+=======
+>>>>>>> 8c340632f1d786cf278dc34e50140825b9db181b
       <Courses />
       <Partners />
       <News />

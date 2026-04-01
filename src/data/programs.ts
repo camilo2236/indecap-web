@@ -111,7 +111,11 @@ export const programs: Program[] = [
     name: "Auxiliar en Salud Pública",
     description: "Programas de promoción y prevención, vigilancia epidemiológica y trabajo comunitario en el sector salud.",
     icon: "🌐",
+<<<<<<< HEAD
     image: "/images/programs/salud-publica/salud-publica-hero.jpg",
+=======
+    image: "/images/programs/enfermeria/enfermeria-clase.jpg",
+>>>>>>> 8c340632f1d786cf278dc34e50140825b9db181b
     color: "#1A4F6E",
     colorDark: "#0F3450",
     badge: "Escuela de Salud",
@@ -125,7 +129,11 @@ export const programs: Program[] = [
     name: "Atención Integral al Adulto Mayor",
     description: "Cuidado gerontológico, acompañamiento terapéutico y atención integral a personas de la tercera edad.",
     icon: "👴",
+<<<<<<< HEAD
     image: "/images/programs/adulto-mayor/adulto-mayor-hero.jpg",
+=======
+    image: "/images/programs/enfermeria/enfermeria-practica.jpg",
+>>>>>>> 8c340632f1d786cf278dc34e50140825b9db181b
     color: "#5C3A8A",
     colorDark: "#3D2460",
     badge: "Escuela de Salud",
@@ -141,7 +149,11 @@ export const programs: Program[] = [
     name: "Asistente en Talento Humano",
     description: "Gestión de nómina, selección de personal, bienestar laboral y procesos de recursos humanos en empresas.",
     icon: "👥",
+<<<<<<< HEAD
     image: "/images/programs/talento-humano/talento-humano-hero.jpg",
+=======
+    image: "/images/programs/talento-humano.jpg",
+>>>>>>> 8c340632f1d786cf278dc34e50140825b9db181b
     color: "#6B4A1A",
     colorDark: "#4A3210",
     badge: "Escuela de Administración",
@@ -155,7 +167,11 @@ export const programs: Program[] = [
     name: "Auxiliar Contable",
     description: "Registros contables, manejo de software, declaraciones tributarias y gestión financiera básica de empresas.",
     icon: "📊",
+<<<<<<< HEAD
     image: "/images/programs/contable/contable-hero.jpg",
+=======
+    image: "/images/programs/contable.jpg",
+>>>>>>> 8c340632f1d786cf278dc34e50140825b9db181b
     color: "#2A6B3A",
     colorDark: "#1A4A28",
     badge: "Escuela de Administración",
@@ -169,7 +185,11 @@ export const programs: Program[] = [
     name: "Auxiliar en Mercadeo",
     description: "Estrategias de ventas, marketing digital, atención al cliente y gestión comercial para empresas y emprendimientos.",
     icon: "📣",
+<<<<<<< HEAD
     image: "/images/programs/mercadeo/mercadeo-hero.jpg",
+=======
+    image: "/images/programs/mercadeo.jpg",
+>>>>>>> 8c340632f1d786cf278dc34e50140825b9db181b
     color: "#8A2A6B",
     colorDark: "#5C1A47",
     badge: "Escuela de Administración",
@@ -185,7 +205,11 @@ export const programs: Program[] = [
     name: "Seguridad y Salud en el Trabajo",
     description: "Identificación de riesgos, prevención de accidentes, normas COPASST y gestión del sistema de SST en empresas.",
     icon: "🦺",
+<<<<<<< HEAD
     image: "/images/programs/sst/sst-hero.jpg",
+=======
+    image: "/images/programs/sst.jpg",
+>>>>>>> 8c340632f1d786cf278dc34e50140825b9db181b
     color: "#8A6A1A",
     colorDark: "#5C4510",
     badge: "Escuela de Seguridad",
@@ -201,7 +225,11 @@ export const programs: Program[] = [
     name: "Entrenamiento Deportivo",
     description: "Planificación de entrenamientos, preparación física, nutrición deportiva y gestión de grupos en centros deportivos.",
     icon: "⚽",
+<<<<<<< HEAD
     image: "/images/programs/entrenamiento-deportivo/entrenamiento-deportivo-hero.jpg",
+=======
+    image: "/images/programs/enfermeria/enfermeria-estudiantes.jpg",
+>>>>>>> 8c340632f1d786cf278dc34e50140825b9db181b
     color: "#1A6B2A",
     colorDark: "#0F4A1C",
     badge: "Escuela de Deporte",
@@ -226,6 +254,7 @@ export const programs: Program[] = [
     whatsappUrl: "https://api.whatsapp.com/send?phone=573022389760&text=Hola%20INDECAP%20estoy%20interesado%20en%20Auxiliar%20en%20Sistemas,%20mi%20nombre%20es%20",
     pageUrl: "/programas/sistemas",
   },
+<<<<<<< HEAD
   // ── ESCUELA VETERINARIA ───────────────────────────────
   {
     id: "peluqueria-canina",
@@ -274,3 +303,6 @@ export const programs: Program[] = [
     pageUrl: "/programas/excel-ia",
   },
 ];
+=======
+];
+>>>>>>> 8c340632f1d786cf278dc34e50140825b9db181b

@@ -2,7 +2,11 @@ import { ProgramPage } from "@/components/ProgramPage";
 
 export const metadata = {
   title: "Auxiliar en Enfermería | INDECAP – Medellín, Envigado, Caldas",
+<<<<<<< HEAD
   description: "Certifícate como Auxiliar en Enfermería en INDECAP. 1.650 horas de formación clínica y práctica real en hospitales y clínicas del Valle de Aburrá. Sedes en Medellín, Envigado y Caldas.",
+=======
+  description: "Certifícate como Auxiliar en Enfermería en INDECAP. 1.650 horas de formación clínica y práctica. Sedes en Medellín, Envigado y Caldas.",
+>>>>>>> 8c340632f1d786cf278dc34e50140825b9db181b
 };
 
 export default function EnfermeriaPage() {
@@ -18,6 +22,7 @@ export default function EnfermeriaPage() {
       sedesNum="3"
       fotoSrc="/images/programs/enfermeria/enfermeria-hero.jpg"
       fotoAlt="Estudiante de Enfermería INDECAP"
+<<<<<<< HEAD
       descripcion="Quieres trabajar cuidando personas. No en abstracto — en las clínicas, hospitales y centros de salud de Medellín y el Valle de Aburrá que llevan años recibiendo egresados de INDECAP. Auxiliar en enfermería es uno de los perfiles con mayor demanda en Antioquia. Puedes estar trabajando en 24 meses con un título reconocido."
       capacidades={[
         "Tomar signos vitales, preparar pacientes y asistir al equipo médico en procedimientos clínicos",
@@ -52,14 +57,67 @@ export default function EnfermeriaPage() {
       ]}
       mercadoTexto="Nuestros egresados de enfermería ya están en los hospitales y clínicas de Medellín. No es una promesa: es una realidad de 40 años. Las instituciones de salud de Antioquia conocen la formación de INDECAP porque han visto trabajar a nuestros egresados. Esa confianza no se construye con publicidad — se construye con resultados."
       waNum="573022389760"
+=======
+      descripcion="Transforma tu vocación de servicio en una carrera sólida en el sector salud. Domina el cuidado integral de pacientes, procedimientos clínicos y atención hospitalaria con prácticas reales garantizadas."
+      capacidades={[
+        "Brindar cuidados clínicos y asistenciales bajo supervisión médica profesional",
+        "Dominar técnicas de inyectología, venopunción y toma de signos vitales",
+        "Administrar medicamentos aplicando los protocolos de bioseguridad y dosis exacta",
+        "Asistir en procedimientos de urgencias, trauma y atención prehospitalaria",
+        "Manejar protocolos de higiene, movilización y confort del paciente hospitalizado",
+        "Gestionar historias clínicas y reportes médicos en sistemas de salud",
+      ]}
+      salidas={[
+        { icon: "🏥", name: "Hospitales y Clínicas" },
+        { icon: "🚑", name: "Urgencias y UCI" },
+        { icon: "🏠", name: "Atención Domiciliaria" },
+        { icon: "💊", name: "Dispensación Clínica" },
+        { icon: "📋", name: "Gestión Administrativa en Salud" },
+        { icon: "🩺", name: "Asistencia en Consultorios" },
+      ]}
+     
+      pensum1={[
+        "Inducción y Perfil Ocupacional en Salud",
+        "Morfofisiología y Anatomía Aplicada",
+        "Protocolos de Bioseguridad y Control de Infecciones",
+        "Fundamentos Clínicos de Enfermería",
+        "Técnicas de Inyectología y Venopunción",
+        "Monitorización de Signos Vitales y Triage Básicos",
+        "Ética, Bioética y Humanización del Cuidado",
+      ]}
+     
+      pensum2={[
+        "Atención y Cuidado Integral del Paciente Hospitalizado",
+        "Farmacología Básica y Administración de Medicamentos",
+        "Soporte Vital y Atención Prehospitalaria (APH)",
+        "Salud Mental y Abordaje Psicosocial",
+        "Cuidado Especializado del Adulto Mayor (Gerontología)",
+        "Sistemas de Información y TICs en Entornos de Salud",
+      ]}
+     
+      pensum3={[
+        "Práctica Formativa Clínica e Institucional",
+        "Asistencia en Procedimientos Médico-Quirúrgicos",
+        "Manejo Avanzado de Urgencias y Primeros Auxilios",
+        "Emprendimiento y Desarrollo Profesional en Salud",
+        "Fortalecimiento de Competencias Laborales",
+      ]}
+      mercadoTexto="El sector salud en Antioquia presenta una alta demanda constante de auxiliares de enfermería certificados. Las oportunidades laborales son inmediatas en hospitales, clínicas, IPS, EPS y empresas de cuidado domiciliario."
+      waNum="573022389760" // Validado para el enlace (sin el + inicial para mayor compatibilidad)
+>>>>>>> 8c340632f1d786cf278dc34e50140825b9db181b
       waText="Hola INDECAP, estoy interesado en el Técnico en Enfermería. Mi nombre es "
       sedes={[
         { icon: "🏙️", name: "Sede Medellín", address: "Cl. 56 # 45-26, Medellín", tag: "Tel: (604) 448 4794" },
         { icon: "🏘️", name: "Sede Envigado", address: "Cl 37 Sur #43A-84, Envigado", tag: "Tel: (604) 448 4794" },
         { icon: "🌿", name: "Sede Caldas", address: "Calle 130 sur # 51-65, Caldas", tag: "Tel: (604) 448 4794" },
       ]}
+<<<<<<< HEAD
       ctaDesc="Los cupos son limitados. Asegura tu lugar hoy y prepárate para ser parte del talento humano más solicitado en las clínicas y hospitales de Antioquia."
       programaId="enfermeria"
+=======
+      ctaTitulo="Tu carrera en el sector salud comienza en INDECAP"
+      ctaDesc="Los cupos son limitados. Asegura tu lugar hoy y prepárate para ser parte del talento humano más solicitado en las clínicas y hospitales de Antioquia."
+>>>>>>> 8c340632f1d786cf278dc34e50140825b9db181b
     />
   );
 }

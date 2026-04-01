@@ -1,7 +1,11 @@
 import { GraduationCap, MapPin, Award, CalendarDays } from "lucide-react";
 
 const stats = [
+<<<<<<< HEAD
   { icon: GraduationCap, value: "35.000+", label: "Egresados" },
+=======
+  { icon: GraduationCap, value: "25.000+", label: "Egresados" },
+>>>>>>> 8c340632f1d786cf278dc34e50140825b9db181b
   { icon: CalendarDays, value: "40", label: "Años de experiencia" },
   { icon: MapPin, value: "6", label: "Sedes en Antioquia" },
   { icon: Award, value: "16", label: "Programas técnicos" },

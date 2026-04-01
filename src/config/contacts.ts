@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 // ─────────────────────────────────────────────────────────────────────────────
 // INDECAP — Configuración central de WhatsApp
 // Todos los números y mensajes del sitio se manejan desde aquí.
@@ -79,4 +80,12 @@ export const WA_URLS = {
   principal: (msg?: string) => waUrl(CONTACTS.PRINCIPAL, msg ?? WA_MESSAGES.general()),
   bachillerato: () => waUrl(CONTACTS.MEDELLIN, WA_MESSAGES.bachillerato()),
   general:   () => waUrl(CONTACTS.PRINCIPAL,  WA_MESSAGES.inscripcionGeneral()),
+=======
+export const CONTACTS = {
+  CURSOS: "573167405680",   // Vanesa (Cursos Cortos)
+  ENVIGADO: "573174342783", // Sede Envigado
+  MEDELLIN: "573022389760", // Sede Medellín
+  CALDAS: "573008948517",   // Sede Caldas
+  PRINCIPAL: "573174342783" 
+>>>>>>> 8c340632f1d786cf278dc34e50140825b9db181b
 };

@@ -12,13 +12,19 @@ export type ShortCourse = {
   learn: string[];
   info: { label: string; value: string }[];
   ctaMessage: string;
+<<<<<<< HEAD
   image?: string;
+=======
+>>>>>>> 8c340632f1d786cf278dc34e50140825b9db181b
 };
 
 export const shortCourses: ShortCourse[] = [
   {
     slug: "rcp",
+<<<<<<< HEAD
     image: "/images/cursos/rcp.jpg",
+=======
+>>>>>>> 8c340632f1d786cf278dc34e50140825b9db181b
     title: "Curso de Reanimación Cardiopulmonar (RCP)",
     subtitle:
       "Entrena paso a paso cómo actuar en una emergencia con un enfoque 100% práctico.",
@@ -50,7 +56,10 @@ export const shortCourses: ShortCourse[] = [
   },
   {
     slug: "inyectologia",
+<<<<<<< HEAD
     image: "/images/cursos/inyectologia.jpg",
+=======
+>>>>>>> 8c340632f1d786cf278dc34e50140825b9db181b
     title: "Curso de Inyectología",
     subtitle:
       "Aprende técnicas necesarias para aplicar inyecciones con seguridad y confianza en una jornada intensiva.",
@@ -82,7 +91,10 @@ export const shortCourses: ShortCourse[] = [
   },
   {
     slug: "primeros-auxilios",
+<<<<<<< HEAD
     image: "/images/cursos/primeros-auxilios.jpg",
+=======
+>>>>>>> 8c340632f1d786cf278dc34e50140825b9db181b
     title: "Curso de Primeros Auxilios",
     subtitle:
       "Prepárate para actuar con seguridad y hacer la diferencia cuando más se necesita.",
@@ -114,7 +126,10 @@ export const shortCourses: ShortCourse[] = [
   },
   {
     slug: "codigo-fucsia",
+<<<<<<< HEAD
     image: "/images/cursos/codigo-fucsia.jpg",
+=======
+>>>>>>> 8c340632f1d786cf278dc34e50140825b9db181b
     title: "Curso Código Fucsia",
     subtitle:
       "Formación de alto impacto para una atención oportuna, ética y con perspectiva de género.",
@@ -146,7 +161,10 @@ export const shortCourses: ShortCourse[] = [
   },
   {
     slug: "vacunacion",
+<<<<<<< HEAD
     image: "/images/cursos/vacunacion.jpg",
+=======
+>>>>>>> 8c340632f1d786cf278dc34e50140825b9db181b
     title: "Curso de Vacunación",
     subtitle:
       "Fortalece tus competencias en administración segura de vacunas con una formación práctica y certificada.",
@@ -178,7 +196,10 @@ export const shortCourses: ShortCourse[] = [
   },
   {
     slug: "toma-muestras",
+<<<<<<< HEAD
     image: "/images/cursos/toma-muestras.jpg",
+=======
+>>>>>>> 8c340632f1d786cf278dc34e50140825b9db181b
     title: "Curso de Toma de Muestras de Laboratorio Clínico",
     subtitle:
       "Aprende técnicas clave para recolección, manejo y procesamiento de muestras en una jornada intensiva.",
@@ -210,7 +231,10 @@ export const shortCourses: ShortCourse[] = [
   },
   {
     slug: "peluqueria-estetica-canina",
+<<<<<<< HEAD
     image: "/images/cursos/peluqueria-canina.jpg",
+=======
+>>>>>>> 8c340632f1d786cf278dc34e50140825b9db181b
     title: "Diplomado en Peluquería y Estética Canina",
     subtitle:
       "Profesionalízate en el cuidado y embellecimiento de mascotas con una formación intensiva y práctica.",
@@ -239,6 +263,7 @@ export const shortCourses: ShortCourse[] = [
       { label: "Sedes", value: "Medellín / Caldas" }
     ],
     ctaMessage: "Hola, quiero información sobre el diplomado en Peluquería y Estética Canina en INDECAP"
+<<<<<<< HEAD
   },
   {
     slug: "peluqueria-canina",
@@ -359,6 +384,8 @@ export const shortCourses: ShortCourse[] = [
       { label: "Sedes", value: "Medellín · Envigado · Caldas" }
     ],
     ctaMessage: "Hola, quiero información sobre el curso de Word en INDECAP"
+=======
+>>>>>>> 8c340632f1d786cf278dc34e50140825b9db181b
   }
 ];
 
