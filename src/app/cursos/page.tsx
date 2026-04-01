@@ -96,4 +96,8 @@ export default function CursosPage() {
       </div>
     </main>
   );
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 8c340632f1d786cf278dc34e50140825b9db181b

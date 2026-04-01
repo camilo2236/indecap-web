@@ -12,11 +12,19 @@ export type ShortCourse = {
   learn: string[];
   info: { label: string; value: string }[];
   ctaMessage: string;
+<<<<<<< HEAD
+  image?: string;
+=======
+>>>>>>> 8c340632f1d786cf278dc34e50140825b9db181b
 };
 
 export const shortCourses: ShortCourse[] = [
   {
     slug: "rcp",
+<<<<<<< HEAD
+    image: "/images/cursos/rcp.jpg",
+=======
+>>>>>>> 8c340632f1d786cf278dc34e50140825b9db181b
     title: "Curso de Reanimación Cardiopulmonar (RCP)",
     subtitle:
       "Entrena paso a paso cómo actuar en una emergencia con un enfoque 100% práctico.",
@@ -48,6 +56,10 @@ export const shortCourses: ShortCourse[] = [
   },
   {
     slug: "inyectologia",
+<<<<<<< HEAD
+    image: "/images/cursos/inyectologia.jpg",
+=======
+>>>>>>> 8c340632f1d786cf278dc34e50140825b9db181b
     title: "Curso de Inyectología",
     subtitle:
       "Aprende técnicas necesarias para aplicar inyecciones con seguridad y confianza en una jornada intensiva.",
@@ -79,6 +91,10 @@ export const shortCourses: ShortCourse[] = [
   },
   {
     slug: "primeros-auxilios",
+<<<<<<< HEAD
+    image: "/images/cursos/primeros-auxilios.jpg",
+=======
+>>>>>>> 8c340632f1d786cf278dc34e50140825b9db181b
     title: "Curso de Primeros Auxilios",
     subtitle:
       "Prepárate para actuar con seguridad y hacer la diferencia cuando más se necesita.",
@@ -110,6 +126,10 @@ export const shortCourses: ShortCourse[] = [
   },
   {
     slug: "codigo-fucsia",
+<<<<<<< HEAD
+    image: "/images/cursos/codigo-fucsia.jpg",
+=======
+>>>>>>> 8c340632f1d786cf278dc34e50140825b9db181b
     title: "Curso Código Fucsia",
     subtitle:
       "Formación de alto impacto para una atención oportuna, ética y con perspectiva de género.",
@@ -141,6 +161,10 @@ export const shortCourses: ShortCourse[] = [
   },
   {
     slug: "vacunacion",
+<<<<<<< HEAD
+    image: "/images/cursos/vacunacion.jpg",
+=======
+>>>>>>> 8c340632f1d786cf278dc34e50140825b9db181b
     title: "Curso de Vacunación",
     subtitle:
       "Fortalece tus competencias en administración segura de vacunas con una formación práctica y certificada.",
@@ -172,6 +196,10 @@ export const shortCourses: ShortCourse[] = [
   },
   {
     slug: "toma-muestras",
+<<<<<<< HEAD
+    image: "/images/cursos/toma-muestras.jpg",
+=======
+>>>>>>> 8c340632f1d786cf278dc34e50140825b9db181b
     title: "Curso de Toma de Muestras de Laboratorio Clínico",
     subtitle:
       "Aprende técnicas clave para recolección, manejo y procesamiento de muestras en una jornada intensiva.",
@@ -203,6 +231,10 @@ export const shortCourses: ShortCourse[] = [
   },
   {
     slug: "peluqueria-estetica-canina",
+<<<<<<< HEAD
+    image: "/images/cursos/peluqueria-canina.jpg",
+=======
+>>>>>>> 8c340632f1d786cf278dc34e50140825b9db181b
     title: "Diplomado en Peluquería y Estética Canina",
     subtitle:
       "Profesionalízate en el cuidado y embellecimiento de mascotas con una formación intensiva y práctica.",
@@ -231,6 +263,129 @@ export const shortCourses: ShortCourse[] = [
       { label: "Sedes", value: "Medellín / Caldas" }
     ],
     ctaMessage: "Hola, quiero información sobre el diplomado en Peluquería y Estética Canina en INDECAP"
+<<<<<<< HEAD
+  },
+  {
+    slug: "peluqueria-canina",
+    image: "/images/cursos/peluqueria-canina.jpg",
+    title: "Diplomado en Peluquería y Estética Canina",
+    subtitle: "Fórmate como groomer profesional en 45 días intensivos con mascotas reales desde el primer día.",
+    description: "Una propuesta formativa pensada para quienes quieren desarrollar habilidades reales en el cuidado estético de mascotas y fortalecer su perfil en un sector con alta proyección. Disponible en Medellín y Caldas con financiación directa INDECAP.",
+    duration: "45 días",
+    certification: "120 horas",
+    validity: "Certificación de diplomado",
+    schedule: "Lunes a viernes de 8:00 a.m. a 12:30 p.m. o sábados según conformación de grupo",
+    modality: "Presencial",
+    benefits: [
+      "Formación especializada con enfoque práctico",
+      "Ideal para emprender o ampliar tu perfil laboral",
+      "Financiación directa con INDECAP"
+    ],
+    learn: [
+      "Cuidado estético básico de mascotas",
+      "Técnicas de peluquería canina",
+      "Manejo adecuado del procedimiento",
+      "Buenas prácticas en atención al cliente"
+    ],
+    info: [
+      { label: "Duración", value: "45 días / 120 horas" },
+      { label: "Horario", value: "Lunes a viernes 8:00 a.m. – 12:30 p.m. o sábados" },
+      { label: "Modalidad", value: "Presencial" },
+      { label: "Sedes", value: "Medellín / Caldas" }
+    ],
+    ctaMessage: "Hola, quiero información sobre el diplomado en Peluquería y Estética Canina en INDECAP"
+  },
+  {
+    slug: "calidad-humanizacion",
+    image: "/images/cursos/calidad-humanizacion.jpg",
+    title: "Calidad + Humanización en los Servicios",
+    subtitle: "Paquete especial de dos cursos complementarios para fortalecer la calidad del servicio y la humanización en entornos de salud.",
+    description: "Un paquete formativo diseñado para profesionales y estudiantes del sector salud que quieren mejorar la calidad de su atención y desarrollar habilidades de humanización en el trato con pacientes y familias. Dos cursos certificados por el precio de uno.",
+    duration: "2 jornadas intensivas",
+    certification: "20 horas certificadas por curso",
+    validity: "2 años",
+    schedule: "8:00 a.m. – 4:00 p.m.",
+    modality: "Presencial",
+    benefits: [
+      "Paquete especial con dos cursos complementarios",
+      "Certificación el mismo día",
+      "Ideal para personal del sector salud"
+    ],
+    learn: [
+      "Estándares de calidad en servicios de salud",
+      "Humanización en la atención al paciente",
+      "Comunicación efectiva con familias",
+      "Protocolos de servicio al cliente en salud"
+    ],
+    info: [
+      { label: "Duración", value: "2 jornadas / 20 horas cada curso" },
+      { label: "Horario", value: "8:00 a.m. – 4:00 p.m." },
+      { label: "Modalidad", value: "Presencial" },
+      { label: "Sedes", value: "Medellín · Envigado · Caldas" }
+    ],
+    ctaMessage: "Hola, quiero información sobre el curso de Calidad y Humanización en INDECAP"
+  },
+  {
+    slug: "excel",
+    image: "/images/cursos/excel.jpg",
+    title: "Excel Básico, Intermedio y Avanzado",
+    subtitle: "Domina Excel en 3 niveles progresivos. Desde fundamentos hasta tablas dinámicas, macros y análisis de datos.",
+    description: "Programa progresivo en tres niveles que te llevará desde los conceptos básicos hasta el manejo avanzado de Excel. Aprende a crear informes profesionales, automatizar tareas con macros y analizar datos con tablas dinámicas. Disponible presencial y virtual.",
+    duration: "4 clases por nivel",
+    certification: "20 horas certificadas por nivel",
+    validity: "2 años",
+    schedule: "Sábados 8am–12pm · Sábados 1pm–4pm · Semana 6pm–10pm virtual",
+    modality: "Presencial y Virtual",
+    benefits: [
+      "Paquete 3 niveles con descuento especial",
+      "Disponible presencial y en modalidad virtual",
+      "Certificación por cada nivel completado"
+    ],
+    learn: [
+      "Fórmulas y funciones esenciales",
+      "Tablas dinámicas y gráficos",
+      "Macros y automatización",
+      "Análisis de datos avanzado"
+    ],
+    info: [
+      { label: "Duración", value: "4 clases por nivel · 20 horas" },
+      { label: "Horario", value: "Sábados o entre semana virtual" },
+      { label: "Modalidad", value: "Presencial y Virtual" },
+      { label: "Sedes", value: "Medellín · Envigado · Caldas" }
+    ],
+    ctaMessage: "Hola, quiero información sobre el curso de Excel en INDECAP"
+  },
+  {
+    slug: "word",
+    image: "/images/cursos/word.jpg",
+    title: "Word Básico y Avanzado",
+    subtitle: "Crea y edita documentos profesionales desde cero. Estilos, tablas, combinación de correspondencia e informes formales.",
+    description: "Aprende a usar Microsoft Word de forma profesional. Desde la creación de documentos básicos hasta el manejo de estilos, tablas, índices automáticos y combinación de correspondencia para informes y cartas empresariales.",
+    duration: "1 jornada intensiva",
+    certification: "20 horas certificadas",
+    validity: "2 años",
+    schedule: "8:00 a.m. – 4:00 p.m.",
+    modality: "Presencial",
+    benefits: [
+      "Certificación el mismo día",
+      "Aplicación inmediata en entorno laboral",
+      "Fortalece tu perfil profesional"
+    ],
+    learn: [
+      "Formato y estilos de documento",
+      "Tablas e índices automáticos",
+      "Combinación de correspondencia",
+      "Informes y documentos formales"
+    ],
+    info: [
+      { label: "Duración", value: "1 jornada / 20 horas" },
+      { label: "Horario", value: "8:00 a.m. – 4:00 p.m." },
+      { label: "Modalidad", value: "Presencial" },
+      { label: "Sedes", value: "Medellín · Envigado · Caldas" }
+    ],
+    ctaMessage: "Hola, quiero información sobre el curso de Word en INDECAP"
+=======
+>>>>>>> 8c340632f1d786cf278dc34e50140825b9db181b
   }
 ];
 

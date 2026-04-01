@@ -1,5 +1,6 @@
 export interface Course {
   id: string;
+  image?: string;
   name: string;
   description: string;
   duration: string;
@@ -19,6 +20,7 @@ export const courses: Course[] = [
 
   {
     id: "rcp",
+    image: "/images/cursos/rcp.jpg",
     name: "RCP — Reanimación Cardiopulmonar",
     description: "Aprende compresiones, ventilaciones, desobstrucción de vía aérea y uso del DEA. Aprendizaje 100% práctico con casos de estudio reales.",
     duration: "20 horas certificadas",
@@ -32,6 +34,7 @@ export const courses: Course[] = [
   },
   {
     id: "inyectologia",
+    image: "/images/cursos/inyectologia.jpg",
     name: "Inyectología",
     description: "Técnicas de aplicación de inyecciones intramusculares, subcutáneas, intravenosas y más. Formación práctica certificada.",
     duration: "20 horas certificadas",
@@ -45,6 +48,7 @@ export const courses: Course[] = [
   },
   {
     id: "vacunacion",
+    image: "/images/cursos/vacunacion.jpg",
     name: "Vacunación",
     description: "Habilidades clave en administración de vacunas, cadena de frío y protocolos nacionales. Certificación inmediata.",
     duration: "20 horas certificadas",
@@ -58,6 +62,7 @@ export const courses: Course[] = [
   },
   {
     id: "toma-muestras",
+    image: "/images/cursos/toma-muestras.jpg",
     name: "Toma de Muestras de Laboratorio Clínico",
     description: "Técnicas prácticas para toma, manejo y procesamiento de muestras de laboratorio clínico. Cupos limitados.",
     duration: "20 horas certificadas",
@@ -71,6 +76,7 @@ export const courses: Course[] = [
   },
   {
     id: "primeros-auxilios",
+    image: "/images/cursos/primeros-auxilios.jpg",
     name: "Primeros Auxilios — Primer Respondiente",
     description: "Atención inmediata de lesiones y emergencias médicas. Asegura tu cupo con solo el 50% del valor.",
     duration: "20 horas certificadas",
@@ -84,6 +90,7 @@ export const courses: Course[] = [
   },
   {
     id: "codigo-fucsia",
+    image: "/images/cursos/codigo-fucsia.jpg",
     name: "Código Fucsia — Atención a Víctimas de Violencia Sexual",
     description: "Herramientas prácticas para respuesta oportuna, ética y con perspectiva de género. Dirigido a profesionales de salud, seguridad y atención comunitaria.",
     duration: "20 horas certificadas",
@@ -96,6 +103,7 @@ export const courses: Course[] = [
   },
   {
     id: "calidad-humanizacion",
+    image: "/images/cursos/calidad-humanizacion.jpg",
     name: "Calidad + Humanización en los Servicios",
     description: "Paquete especial: dos cursos complementarios para fortalecer la calidad del servicio y la humanización en entornos de salud y atención al cliente.",
     duration: "20 horas certificadas por curso",
@@ -111,6 +119,7 @@ export const courses: Course[] = [
 
   {
     id: "excel",
+    image: "/images/cursos/excel.jpg",
     name: "Excel Básico, Intermedio y Avanzado",
     description: "Domina Excel en 3 niveles progresivos. Desde fundamentos hasta tablas dinámicas, macros y análisis de datos. Disponible presencial y virtual.",
     duration: "4 clases por nivel · 20 horas certificadas",
@@ -123,6 +132,7 @@ export const courses: Course[] = [
   },
   {
     id: "word",
+    image: "/images/cursos/word.jpg",
     name: "Word Básico y Avanzado",
     description: "Crea y edita documentos profesionales desde cero. Estilos, tablas, combinación de correspondencia e informes formales.",
     duration: "20 horas certificadas",
@@ -137,6 +147,7 @@ export const courses: Course[] = [
 
   {
     id: "peluqueria-canina",
+    image: "/images/cursos/peluqueria-canina.jpg",
     name: "Diplomado en Peluquería y Estética Canina",
     description: "Fórmate como groomer profesional en 45 días intensivos. Baño, corte, estética y cuidado animal con mascotas reales desde el primer día. Financiación directa con INDECAP.",
     duration: "120 horas · 45 días",

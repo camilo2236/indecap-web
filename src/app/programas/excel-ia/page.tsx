@@ -8,6 +8,7 @@ export const metadata = {
 export default function ExcelIAPage() {
   return (
     <ProgramPage
+      programaId="excel-ia"
       titulo="Excel + Inteligencia Artificial"
       subtitulo="Excel con"
       emWord="Inteligencia Artificial"
@@ -17,7 +18,11 @@ export default function ExcelIAPage() {
       horas="40"
       semestres="1"
       sedesNum="3"
+<<<<<<< HEAD
+      fotoSrc="/images/programs/excel-ia/excel-ia-hero.jpg"
+=======
       fotoSrc="/images/programs/excel-ia.jpg"
+>>>>>>> 8c340632f1d786cf278dc34e50140825b9db181b
       fotoAlt="Curso Excel + IA INDECAP 2026"
       descripcion="Aprende todo lo que aprenderías en un curso de Excel tradicional, pero 3 veces más rápido y eficiente usando Inteligencia Artificial. Tablas dinámicas, fórmulas, automatización y análisis de datos — con Claude como tu asistente."
       capacidades={[
