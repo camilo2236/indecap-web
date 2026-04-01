@@ -226,4 +226,51 @@ export const programs: Program[] = [
     whatsappUrl: "https://api.whatsapp.com/send?phone=573022389760&text=Hola%20INDECAP%20estoy%20interesado%20en%20Auxiliar%20en%20Sistemas,%20mi%20nombre%20es%20",
     pageUrl: "/programas/sistemas",
   },
+  // ── ESCUELA VETERINARIA ───────────────────────────────
+  {
+    id: "peluqueria-canina",
+    name: "Peluquería y Estética Canina",
+    description: "Formación profesional en grooming canino y felino. Baño, corte por raza, acicalamiento y atención a propietarios.",
+    icon: "✂️",
+    image: "/images/programs/peluqueria-canina/peluqueria-hero.jpg",
+    color: "#0F6E56",
+    colorDark: "#0A4F3E",
+    badge: "Escuela Veterinaria",
+    horas: "1.000h",
+    escuela: "Escuela Veterinaria",
+    whatsappUrl: "https://wa.me/573022389760?text=Hola%20INDECAP%2C%20estoy%20interesado%20en%20Peluquer%C3%ADa%20Canina.%20%C2%BFMe%20pueden%20orientar%3F",
+    pageUrl: "/programas/peluqueria-canina",
+  },
+
+  // ── ESCUELA DE TECNOLOGÍA ─────────────────────────────
+  {
+    id: "software",
+    name: "Auxiliar en Desarrollo de Software",
+    description: "Programación, desarrollo de aplicaciones e inteligencia artificial aplicada. Fórmate para el ecosistema tech de Medellín.",
+    icon: "💻",
+    image: "/images/programs/sistemas/sala-medellin-clase.jpg",
+    color: "#0F4C80",
+    colorDark: "#0A3560",
+    badge: "Escuela de Tecnología",
+    horas: "700h",
+    escuela: "Escuela de Tecnología",
+    whatsappUrl: "https://wa.me/573174342783?text=Hola%20INDECAP%2C%20estoy%20interesado%20en%20Desarrollo%20de%20Software.%20%C2%BFMe%20pueden%20orientar%3F",
+    pageUrl: "/programas/software",
+  },
+
+  // ── ESCUELA ADMINISTRATIVA ────────────────────────────
+  {
+    id: "excel-ia",
+    name: "Excel + Inteligencia Artificial",
+    description: "Domina Excel desde cero hasta nivel avanzado e integra herramientas de IA para automatizar y analizar datos.",
+    icon: "📊",
+    image: "/images/programs/excel-ia/excel-ia-hero.jpg",
+    color: "#1a086e",
+    colorDark: "#0f0550",
+    badge: "Escuela Administrativa",
+    horas: "80h",
+    escuela: "Escuela Administrativa",
+    whatsappUrl: "https://wa.me/573022389760?text=Hola%20INDECAP%2C%20estoy%20interesado%20en%20Excel%20%2B%20IA.%20%C2%BFMe%20pueden%20orientar%3F",
+    pageUrl: "/programas/excel-ia",
+  },
 ];
