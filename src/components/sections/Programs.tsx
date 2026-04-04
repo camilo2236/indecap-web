@@ -1,113 +1,255 @@
 "use client";
 
-import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { programs } from "@/data/programs";
-import { ArrowRight, Clock } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 
-const escuelas = ["Todas", "Escuela de Salud", "Escuela de Belleza", "Escuela Veterinaria", "Escuela de Administración", "Escuela de Seguridad", "Escuela de Deporte", "Escuela de Sistemas"];
+const TOP_SLUGS = ["enfermeria", "cosmetologia", "veterinaria", "salud-oral", "farmaceuticos", "mercadeo"];
 
 export function Programs() {
-  const [escuelaActiva, setEscuelaActiva] = useState("Todas");
+  const topPrograms = TOP_SLUGS
+    .map(slug => programs.find(p => p.id === slug))
+    .filter(Boolean) as typeof programs;
 
-  const filtrados = escuelaActiva === "Todas"
-    ? programs
-    : programs.filter((p) => p.escuela === escuelaActiva);
+  const restPrograms = programs.filter(p => !TOP_SLUGS.includes(p.id));
 
   return (
-    <section id="programas" className="bg-[#F8FAFC] py-20 lg:py-32">
-      <div className="container mx-auto px-6 lg:px-12">
+    <section id="programas" className="bg-white py-16 lg:py-24">
+      <div className="max-w-7xl mx-auto px-6 lg:px-8">
 
-        <div className="mx-auto max-w-2xl text-center">
-          <div className="mb-3 text-xs font-bold uppercase tracking-[0.2em] text-[#F0A500]">
-            Oferta Académica INDECAP
+        {/* Header */}
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-8 gap-4">
+          <div>
+            <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#ffb21d] mb-3">
+              Oferta académica INDECAP
+            </p>
+            <h2 className="font-[family-name:var(--font-playfair)] text-4xl md:text-5xl font-black text-[#1a086e] leading-[0.9] tracking-tight">
+              Programas<br />
+              <em className="italic" style={{ color: "#ffb21d" }}>Técnicos</em>
+            </h2>
           </div>
-          <h2 className="font-[family-name:var(--font-playfair)] text-[clamp(2rem,3vw,3rem)] font-bold text-[#080F14] leading-tight">
-            Programas Técnicos Laborales
-          </h2>
-          <p className="mt-4 font-[family-name:var(--font-dm-sans)] text-base font-light text-[#4B5563]">
-            Programas avalados por la Secretaría de Educación con enfoque práctico y alta empleabilidad. Construye tu futuro laboral en corto tiempo.
-          </p>
+          <Link
+            href="/programas"
+            className="inline-flex items-center gap-2 text-sm font-black text-[#1a086e] border-b-2 border-[#ffb21d] pb-0.5 hover:gap-4 transition-all self-start sm:self-end"
+          >
+            Ver todos <ArrowUpRight size={14} />
+          </Link>
         </div>
 
-        <div className="mt-10 flex flex-wrap justify-center gap-2">
-          {escuelas.map((e) => (
-            <button
-              key={e}
-              onClick={() => setEscuelaActiva(e)}
-              className={`rounded-full px-5 py-2.5 text-xs font-semibold transition-all duration-300 ${
-                escuelaActiva === e
-                  ? "bg-[#080F14] text-white shadow-md"
-                  : "border border-gray-200 bg-white text-gray-500 hover:border-gray-300 hover:text-gray-900"
-              }`}
+        {/* BENTO GRID — mismo en móvil y desktop */}
+        <div className="grid grid-cols-2 lg:grid-cols-3 gap-2 lg:gap-3">
+
+          {/* 01 Enfermería — grande, 2 cols en móvil, 2 cols en desktop */}
+          {topPrograms[0] && (
+            <Link
+              href={topPrograms[0].pageUrl || `/programas/${topPrograms[0].id}`}
+              className="col-span-2 lg:col-span-2 relative rounded-2xl overflow-hidden group"
+              style={{ aspectRatio: "16/9" }}
             >
-              {e}
-            </button>
-          ))}
+              <Image
+                src={topPrograms[0].image}
+                alt={topPrograms[0].name}
+                fill
+                className="object-cover group-hover:scale-105 transition-transform duration-700"
+                sizes="(max-width: 1024px) 100vw, 66vw"
+                priority
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#1a086e]/90 via-[#1a086e]/30 to-transparent" />
+              <div className="absolute inset-0 p-6 flex flex-col justify-end">
+                <span className="text-[10px] font-black uppercase tracking-widest text-[#ffb21d] mb-2">01</span>
+                <p className="font-[family-name:var(--font-playfair)] italic text-2xl lg:text-3xl font-black text-white leading-tight mb-1">
+                  {topPrograms[0].name}
+                </p>
+                <p className="text-white/50 text-xs">{topPrograms[0].horas} · Aval Sec. Educación</p>
+              </div>
+              <div className="absolute top-4 right-4 w-9 h-9 rounded-full bg-[#ffb21d] flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                <ArrowUpRight size={16} className="text-[#281800]" />
+              </div>
+            </Link>
+          )}
+
+          {/* 02 Cosmetología — 1 col, tall */}
+          {topPrograms[1] && (
+            <Link
+              href={topPrograms[1].pageUrl || `/programas/${topPrograms[1].id}`}
+              className="col-span-1 relative rounded-2xl overflow-hidden group"
+              style={{ aspectRatio: "3/4" }}
+            >
+              <Image
+                src={topPrograms[1].image}
+                alt={topPrograms[1].name}
+                fill
+                className="object-cover group-hover:scale-105 transition-transform duration-700"
+                sizes="33vw"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#1a086e]/90 via-[#1a086e]/20 to-transparent" />
+              <div className="absolute bottom-0 left-0 right-0 p-4">
+                <span className="text-[9px] font-black text-[#ffb21d] block mb-1">02</span>
+                <p className="font-[family-name:var(--font-playfair)] italic text-base font-black text-white leading-tight">
+                  {topPrograms[1].name}
+                </p>
+                <p className="text-white/40 text-[10px] mt-0.5">{topPrograms[1].horas}</p>
+              </div>
+            </Link>
+          )}
+
+          {/* 03 Veterinaria — 1 col */}
+          {topPrograms[2] && (
+            <Link
+              href={topPrograms[2].pageUrl || `/programas/${topPrograms[2].id}`}
+              className="col-span-1 relative rounded-2xl overflow-hidden group"
+              style={{ aspectRatio: "3/4" }}
+            >
+              <Image
+                src={topPrograms[2].image}
+                alt={topPrograms[2].name}
+                fill
+                className="object-cover group-hover:scale-105 transition-transform duration-700"
+                sizes="33vw"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#1a086e]/90 via-[#1a086e]/20 to-transparent" />
+              <div className="absolute bottom-0 left-0 right-0 p-4">
+                <span className="text-[9px] font-black text-[#ffb21d] block mb-1">03</span>
+                <p className="font-[family-name:var(--font-playfair)] italic text-base font-black text-white leading-tight">
+                  {topPrograms[2].name}
+                </p>
+                <p className="text-white/40 text-[10px] mt-0.5">{topPrograms[2].horas}</p>
+              </div>
+            </Link>
+          )}
+
+          {/* 04 Salud Oral — 1 col */}
+          {topPrograms[3] && (
+            <Link
+              href={topPrograms[3].pageUrl || `/programas/${topPrograms[3].id}`}
+              className="col-span-1 relative rounded-2xl overflow-hidden group"
+              style={{ aspectRatio: "3/4" }}
+            >
+              <Image
+                src={topPrograms[3].image}
+                alt={topPrograms[3].name}
+                fill
+                className="object-cover group-hover:scale-105 transition-transform duration-700"
+                sizes="33vw"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#1a086e]/90 via-[#1a086e]/20 to-transparent" />
+              <div className="absolute bottom-0 left-0 right-0 p-4">
+                <span className="text-[9px] font-black text-[#ffb21d] block mb-1">04</span>
+                <p className="font-[family-name:var(--font-playfair)] italic text-base font-black text-white leading-tight">
+                  {topPrograms[3].name}
+                </p>
+                <p className="text-white/40 text-[10px] mt-0.5">{topPrograms[3].horas}</p>
+              </div>
+            </Link>
+          )}
+
+          {/* 05 Farmacia + 06 Marketing — fila final */}
+          {topPrograms[4] && (
+            <Link
+              href={topPrograms[4].pageUrl || `/programas/${topPrograms[4].id}`}
+              className="col-span-1 relative rounded-2xl overflow-hidden group"
+              style={{ aspectRatio: "4/3" }}
+            >
+              <Image
+                src={topPrograms[4].image}
+                alt={topPrograms[4].name}
+                fill
+                className="object-cover group-hover:scale-105 transition-transform duration-700"
+                sizes="33vw"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#1a086e]/90 via-[#1a086e]/20 to-transparent" />
+              <div className="absolute bottom-0 left-0 right-0 p-4">
+                <span className="text-[9px] font-black text-[#ffb21d] block mb-1">05</span>
+                <p className="font-[family-name:var(--font-playfair)] italic text-sm font-black text-white leading-tight">
+                  {topPrograms[4].name}
+                </p>
+                <p className="text-white/40 text-[10px] mt-0.5">{topPrograms[4].horas}</p>
+              </div>
+            </Link>
+          )}
+
+          {topPrograms[5] && (
+            <Link
+              href={topPrograms[5].pageUrl || `/programas/${topPrograms[5].id}`}
+              className="col-span-1 relative rounded-2xl overflow-hidden group"
+              style={{ aspectRatio: "4/3" }}
+            >
+              <Image
+                src={topPrograms[5].image}
+                alt={topPrograms[5].name}
+                fill
+                className="object-cover group-hover:scale-105 transition-transform duration-700"
+                sizes="33vw"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#1a086e]/90 via-[#1a086e]/20 to-transparent" />
+              <div className="absolute bottom-0 left-0 right-0 p-4">
+                <span className="text-[9px] font-black text-[#ffb21d] block mb-1">06</span>
+                <p className="font-[family-name:var(--font-playfair)] italic text-sm font-black text-white leading-tight">
+                  {topPrograms[5].name}
+                </p>
+                <p className="text-white/40 text-[10px] mt-0.5">{topPrograms[5].horas}</p>
+              </div>
+            </Link>
+          )}
         </div>
 
-        <div className="mt-14 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-          {filtrados.map((program) => {
-            const isInternalLink = !!program.pageUrl;
-            // Componente dinámico: Next Link o Etiqueta 'a'
-            const CardWrapper = isInternalLink ? Link : "a";
-            const linkProps = isInternalLink 
-              ? { href: program.pageUrl as string } 
-              : { href: program.whatsappUrl, target: "_blank", rel: "noopener noreferrer" };
-
-            return (
-              <CardWrapper
-                key={program.id}
-                {...linkProps}
-                className="group flex flex-col overflow-hidden rounded-[24px] border border-gray-100 bg-white transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.1)]"
-              >
-                {/* Imagen del Programa */}
-                <div className="relative aspect-[4/3] w-full overflow-hidden bg-gray-100">
-                  <img
+        {/* Más programas — grilla compacta */}
+        {restPrograms.length > 0 && (
+          <div className="mt-10">
+            <div className="flex items-center gap-4 mb-6">
+              <div className="w-1.5 h-1.5 rounded-full bg-[#ffb21d]" />
+              <span className="text-xs font-bold uppercase tracking-[0.2em] text-[#787583]">Más programas</span>
+              <div className="flex-1 h-px bg-[#1a086e]/8" />
+            </div>
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
+              {restPrograms.map((program) => (
+                <Link
+                  key={program.id}
+                  href={program.pageUrl || `/programas/${program.id}`}
+                  className="group relative rounded-2xl overflow-hidden bg-[#eaeff1] border border-[#1a086e]/8 hover:border-[#1a086e]/25 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
+                  style={{ aspectRatio: "4/3" }}
+                >
+                  <Image
                     src={program.image}
                     alt={program.name}
-                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
-                    onError={(e) => { (e.target as HTMLImageElement).src = "https://images.unsplash.com/photo-1523240795612-9a054b0db644?q=80&w=1000&auto=format&fit=crop"; }}
+                    fill
+                    className="object-cover group-hover:scale-105 transition-transform duration-500"
+                    sizes="(max-width: 640px) 50vw, 20vw"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-                  
-                  {program.horas && (
-                    <div className="absolute left-4 top-4 flex items-center gap-1.5 rounded-full bg-white/90 px-3 py-1.5 text-xs font-bold text-gray-800 shadow-sm backdrop-blur-md">
-                      <Clock className="h-3.5 w-3.5 text-[#F0A500]" />
-                      {program.horas}
-                    </div>
-                  )}
-                </div>
-
-                {/* Info de la Tarjeta */}
-                <div className="flex flex-1 flex-col p-7">
-                  <div className="mb-3 text-[0.65rem] font-bold uppercase tracking-wider" style={{ color: program.color }}>
-                    ✦ {program.badge}
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#1a086e]/85 via-[#1a086e]/20 to-transparent" />
+                  <div className="absolute bottom-0 left-0 right-0 p-3">
+                    <p className="font-[family-name:var(--font-playfair)] italic text-sm font-black text-white leading-tight">
+                      {program.name}
+                    </p>
+                    <p className="text-[10px] text-white/50 mt-0.5">{program.horas}</p>
                   </div>
-                  
-                  <h3 className="font-[family-name:var(--font-playfair)] text-xl font-bold leading-snug text-gray-900 transition-colors group-hover:text-blue-900">
-                    {program.name}
-                  </h3>
-                  
-                  <p className="mt-3 line-clamp-2 flex-1 font-[family-name:var(--font-dm-sans)] text-sm font-light leading-relaxed text-gray-500">
-                    {program.description}
-                  </p>
+                </Link>
+              ))}
+            </div>
+          </div>
+        )}
 
-                  <div className="mt-6 flex items-center justify-between border-t border-gray-100 pt-5">
-                    <span className="font-[family-name:var(--font-dm-sans)] text-sm font-bold transition-all duration-300" style={{ color: program.color }}>
-                      Ver programa
-                    </span>
-                    <span
-                      className="flex h-8 w-8 items-center justify-center rounded-full text-white transition-all duration-300 group-hover:scale-110 group-hover:shadow-md"
-                      style={{ backgroundColor: program.color }}
-                    >
-                      <ArrowRight className="h-4 w-4" />
-                    </span>
-                  </div>
-                </div>
-              </CardWrapper>
-            );
-          })}
+        {/* CTA */}
+        <div
+          className="mt-12 rounded-3xl p-8 md:p-12 flex flex-col md:flex-row items-center justify-between gap-6"
+          style={{ background: "linear-gradient(135deg, #1a086e 0%, #312783 100%)" }}
+        >
+          <div>
+            <h3 className="font-[family-name:var(--font-playfair)] text-2xl md:text-3xl font-black text-white italic mb-1">
+              ¿No sabes cuál elegir?
+            </h3>
+            <p className="text-white/55 text-sm">Un asesor INDECAP te orienta sin costo ni compromiso.</p>
+          </div>
+          <a
+            href="https://wa.me/573174342783?text=Hola%20INDECAP%2C%20quiero%20informaci%C3%B3n%20sobre%20los%20programas%20t%C3%A9cnicos.%20%C2%BFMe%20pueden%20orientar%3F"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="shrink-0 inline-flex items-center gap-3 px-7 py-4 rounded-full font-black text-sm hover:scale-105 transition-transform shadow-xl"
+            style={{ backgroundColor: "#ffb21d", color: "#281800" }}
+          >
+            Solicitar orientación <ArrowUpRight size={16} />
+          </a>
         </div>
       </div>
     </section>

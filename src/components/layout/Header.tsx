@@ -24,7 +24,7 @@ const programas = [
   { label: "Cosmetología y Estética",            href: "/programas/cosmetologia",            escuela: "Belleza" },
   { label: "Auxiliar Contable",                  href: "/programas/contable",                escuela: "Administrativa" },
   { label: "Talento Humano",                     href: "/programas/talento-humano",          escuela: "Administrativa" },
-  { label: "Auxiliar en Mercadeo",               href: "/programas/mercadeo",                escuela: "Administrativa" },
+  { label: "Técnico en Marketing Digital",        href: "/programas/mercadeo",                escuela: "Administrativa" },
   { label: "Seguridad y Salud en el Trabajo",    href: "/programas/sst",                     escuela: "Administrativa" },
   { label: "Técnico en Sistemas",                href: "/programas/sistemas",                escuela: "Tecnología" },
   { label: "Auxiliar en Desarrollo de Software", href: "/programas/software",                escuela: "Tecnología" },

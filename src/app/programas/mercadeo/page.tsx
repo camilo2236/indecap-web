@@ -1,61 +1,65 @@
 import { ProgramPage } from "@/components/ProgramPage";
 
 export const metadata = {
-  title: "Auxiliar en Mercadeo | INDECAP – Medellín, Envigado, Caldas",
-  description: "Técnico Laboral en Auxiliar en Mercadeo en INDECAP. 1.000 horas. Aprende marketing digital, comunicación comercial y estrategias de ventas en empresas del Valle de Aburrá.",
+  title: "Técnico en Marketing Digital | INDECAP – Medellín, Envigado, Caldas",
+  description: "Técnico Laboral en Marketing Digital en INDECAP. 1.000 horas. Aprende redes sociales, SEO, publicidad digital, e-commerce y estrategias de contenido para empresas del Valle de Aburrá.",
 };
 
 export default function MercadeoPage() {
   return (
     <ProgramPage
-      titulo="Técnico Laboral Auxiliar en Mercadeo"
-      subtitulo="Auxiliar en"
-      emWord="Mercadeo"
-      accent="#1a086e"
-      escuela="Escuela Administrativa"
+      titulo="Técnico en Marketing Digital"
+      subtitulo="Técnico en"
+      emWord="Marketing Digital"
+      accent="#8A2A6B"
+      escuela="Escuela de Administración"
       horas="1.000"
       semestres="2"
       sedesNum="3"
       fotoSrc="/images/programs/mercadeo/mercadeo-hero.jpg"
-      fotoAlt="Estudiante de Mercadeo INDECAP"
-      descripcion="Toda empresa necesita vender. Y para vender, necesita personas que sepan comunicar, conectar y posicionar. El auxiliar en mercadeo es el perfil que las empresas del Valle de Aburrá necesitan para sus equipos comerciales, sus redes sociales y sus estrategias de crecimiento."
+      fotoAlt="Estudiante de Marketing Digital INDECAP"
+      descripcion="Las marcas viven en internet. Las empresas del Valle de Aburrá necesitan personas que sepan crear contenido, gestionar redes sociales, correr campañas digitales y analizar resultados. En 18 meses te formamos como el perfil más buscado en el mercado laboral digital de Medellín — con herramientas reales, campañas reales y métricas reales desde el primer semestre."
       capacidades={[
-        "Apoyar la planificación y ejecución de estrategias de mercadeo en empresas del Valle de Aburrá",
-        "Gestionar redes sociales empresariales con criterio estratégico",
-        "Elaborar material de comunicación comercial: presentaciones, piezas digitales, contenidos",
-        "Apoyar procesos de investigación de mercados y análisis de competencia",
-        "Brindar atención y servicio al cliente en canales presenciales y digitales",
-        "Apoyar equipos de ventas en seguimiento de prospectos y clientes",
+        "Crear y gestionar estrategias de contenido para redes sociales con criterio de marca y audiencia",
+        "Configurar y optimizar campañas de publicidad digital en Meta Ads y Google Ads",
+        "Aplicar fundamentos de SEO y posicionamiento web para mejorar la visibilidad digital",
+        "Gestionar tiendas en plataformas de e-commerce: Shopify, Mercado Libre, Instagram Shopping",
+        "Analizar métricas digitales con Google Analytics y Meta Business Suite",
+        "Diseñar piezas digitales y materiales de comunicación comercial para canales digitales",
+        "Apoyar estrategias de email marketing, funnels de venta y automatización básica",
+        "Brindar atención al cliente en canales digitales con enfoque en fidelización",
       ]}
       salidas={[
-        { icon: "📢", name: "Empresas del Valle de Aburrá", desc: "Áreas de mercadeo y comunicaciones de cualquier sector" },
-        { icon: "📱", name: "Community Management", desc: "Gestión de redes sociales y contenido digital" },
-        { icon: "🛒", name: "Equipos de Ventas", desc: "Apoyo comercial y atención al cliente" },
-        { icon: "🎯", name: "Agencias de Marketing", desc: "Agencias digitales y de publicidad en Medellín" },
-        { icon: "🚀", name: "Emprendimiento", desc: "Tu propio negocio o freelance en marketing digital" },
+        { icon: "📱", name: "Community Manager", desc: "Gestión de redes sociales y contenido digital en empresas de Medellín" },
+        { icon: "🎯", name: "Agencias Digitales", desc: "Agencias de marketing y publicidad digital del Valle de Aburrá" },
+        { icon: "🛒", name: "E-commerce", desc: "Tiendas online, marketplaces y proyectos de venta digital" },
+        { icon: "🏢", name: "Empresas del Valle de Aburrá", desc: "Áreas de mercadeo, comunicaciones y ventas de cualquier sector" },
+        { icon: "🚀", name: "Freelance y Emprendimiento", desc: "Tu propia agencia, negocio digital o servicios como independiente" },
       ]}
       pensum1={[
-        "Orientación institucional y proyecto de vida profesional",
-        "Fundamentos del emprendimiento y gestión empresarial",
-        "Herramientas digitales y plataformas de marketing",
-        "Ética y responsabilidad en comunicación comercial",
-        "Fundamentos de mercadeo: conceptos, segmentación, posicionamiento",
-        "Comunicación comercial: redacción, presentaciones, material publicitario",
-        "Marketing digital básico: redes sociales, SEO, publicidad digital",
-        "Servicio al cliente: atención, fidelización y manejo de quejas",
+        "Orientación institucional y proyecto de vida profesional en el entorno digital",
+        "Fundamentos del marketing y comportamiento del consumidor digital",
+        "Herramientas digitales esenciales: suite Google, Canva, plataformas de gestión",
+        "Estrategia de contenido y storytelling para redes sociales",
+        "Publicidad digital: Meta Ads, Google Ads, configuración y optimización de campañas",
+        "SEO y posicionamiento web: fundamentos, palabras clave y optimización básica",
+        "E-commerce: gestión de tiendas online, catálogos y experiencia de compra",
+        "Métricas y analítica digital: Google Analytics, reportes y toma de decisiones basada en datos",
+        "Servicio al cliente digital: atención, gestión de comunidades y manejo de crisis",
+        "Ética, responsabilidad y legislación en comunicación digital",
       ]}
       pensum2={[
-        "Práctica profesional en empresas del Valle de Aburrá apoyando procesos de mercadeo y ventas reales",
+        "Práctica profesional en empresas o agencias digitales del Valle de Aburrá — ejecutando campañas reales, gestionando redes y analizando resultados con supervisión profesional",
       ]}
-      mercadoTexto="Las empresas de Antioquia necesitan personas que sepan comunicar, vender y conectar con los clientes. Nuestros egresados salen con habilidades prácticas en marketing digital y comunicación comercial que las empresas pueden usar desde el primer día."
+      mercadoTexto="Medellín es la ciudad colombiana que más ha crecido en ecosistema digital en los últimos 5 años. Startups, pymes, grandes empresas y agencias necesitan personas que sepan moverse en el mundo digital con criterio. No solo publicar en redes — sino construir audiencias, convertir seguidores en clientes y medir cada resultado. Eso es exactamente lo que aprenderás aquí."
       waNum="573022389760"
-      waText="Hola INDECAP, estoy interesado en Auxiliar en Mercadeo. Mi nombre es "
+      waText="Hola INDECAP, estoy interesado en el programa de Marketing Digital. Mi nombre es "
       sedes={[
-        { icon: "🏙️", name: "Sede Medellín", address: "Cl. 56 # 45-26, Medellín", tag: "Tel: (604) 448 4794" },
-        { icon: "🏘️", name: "Sede Envigado", address: "Cl 37 Sur #43A-84, Envigado", tag: "Tel: (604) 448 4794" },
-        { icon: "🌿", name: "Sede Caldas", address: "Calle 130 sur # 51-65, Caldas", tag: "Tel: (604) 448 4794" },
+        { icon: "🏙️", name: "Sede Medellín",  address: "Cl. 56 # 45-26, Medellín",        tag: "Tel: (604) 448 4794" },
+        { icon: "🏘️", name: "Sede Envigado",  address: "Cl 37 Sur #43A-84, Envigado",     tag: "Tel: (604) 448 4794" },
+        { icon: "🌿", name: "Sede Caldas",     address: "Calle 130 sur # 51-65, Caldas",   tag: "Tel: (604) 448 4794" },
       ]}
-      ctaDesc="Fórmate en mercadeo y comunicación digital en 18 meses — una de las habilidades más demandadas en el mercado laboral de hoy."
+      ctaDesc="El marketing digital es la habilidad más demandada en Colombia. Fórmate en 18 meses y empieza a trabajar en el sector que más crece."
       programaId="mercadeo"
     />
   );
