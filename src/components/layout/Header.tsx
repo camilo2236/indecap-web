@@ -1,14 +1,8 @@
 "use client";
 
-<<<<<<< HEAD
 import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
-import { Menu, MessageCircle, ChevronLeft, ChevronDown } from "lucide-react";
-=======
-import { useState, useEffect } from "react";
-import { Menu, MessageCircle, ChevronLeft } from "lucide-react";
-import { CONTACTS } from "@/config/contacts";
->>>>>>> 8c340632f1d786cf278dc34e50140825b9db181b
+import { Menu, MessageCircle, ChevronLeft, ChevronDown, MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { buttonVariants } from "@/components/ui/button";
 import {
@@ -49,16 +43,16 @@ const escuelaColors: Record<string, string> = {
 };
 
 const cursos = [
-  { label: "RCP — Reanimación Cardiopulmonar",  href: "/cursos/rcp",                      categoria: "Salud" },
-  { label: "Inyectología",                       href: "/cursos/inyectologia",             categoria: "Salud" },
-  { label: "Primeros Auxilios",                  href: "/cursos/primeros-auxilios",        categoria: "Salud" },
-  { label: "Vacunación",                         href: "/cursos/vacunacion",               categoria: "Salud" },
-  { label: "Toma de Muestras de Laboratorio",    href: "/cursos/toma-muestras",            categoria: "Salud" },
-  { label: "Código Fucsia",                      href: "/cursos/codigo-fucsia",            categoria: "Salud" },
-  { label: "Calidad y Humanización",             href: "/cursos/calidad-humanizacion",     categoria: "Salud" },
-  { label: "Peluquería y Estética Canina",       href: "/cursos/peluqueria-estetica-canina", categoria: "Mascotas" },
-  { label: "Excel Básico, Intermedio y Avanzado", href: "/cursos/excel",                   categoria: "Tecnología" },
-  { label: "Word Básico y Avanzado",             href: "/cursos/word",                     categoria: "Tecnología" },
+  { label: "RCP — Reanimación Cardiopulmonar",   href: "/cursos/rcp",                        categoria: "Salud" },
+  { label: "Inyectología",                        href: "/cursos/inyectologia",               categoria: "Salud" },
+  { label: "Primeros Auxilios",                   href: "/cursos/primeros-auxilios",          categoria: "Salud" },
+  { label: "Vacunación",                          href: "/cursos/vacunacion",                 categoria: "Salud" },
+  { label: "Toma de Muestras de Laboratorio",     href: "/cursos/toma-muestras",              categoria: "Salud" },
+  { label: "Código Fucsia",                       href: "/cursos/codigo-fucsia",              categoria: "Salud" },
+  { label: "Calidad y Humanización",              href: "/cursos/calidad-humanizacion",       categoria: "Salud" },
+  { label: "Peluquería y Estética Canina",        href: "/cursos/peluqueria-estetica-canina", categoria: "Mascotas" },
+  { label: "Excel Básico, Intermedio y Avanzado", href: "/cursos/excel",                      categoria: "Tecnología" },
+  { label: "Word Básico y Avanzado",              href: "/cursos/word",                       categoria: "Tecnología" },
 ];
 
 const categoriasCursos = ["Salud", "Mascotas", "Tecnología"];
@@ -69,33 +63,32 @@ const categoriaColors: Record<string, string> = {
   "Tecnología": "#0F4C80",
 };
 
+const sedes = [
+  { label: "Sede Medellín",  href: "/sedes/medellin", icon: "🏙️", desc: "Cl. 56 # 45-26" },
+  { label: "Sede Envigado",  href: "/sedes/envigado",  icon: "🏘️", desc: "Cl 37 Sur #43A-84" },
+  { label: "Sede Caldas",    href: "/sedes/caldas",    icon: "🌿", desc: "Calle 130 sur # 51-65" },
+];
+
 const navLinks = [
-<<<<<<< HEAD
   { label: "Contacto",     href: "/contacto" },
   { label: "Pagos",        href: "/pagos" },
-  { label: "Nosotros",     href: "/#nosotros" },
-=======
-  { label: "Inicio", href: "/#inicio" },
-  { label: "Programas", href: "/#programas" },
-  { label: "Educación Continua", href: "/#cursos" },
-  { label: "Nosotros", href: "/#nosotros" },
->>>>>>> 8c340632f1d786cf278dc34e50140825b9db181b
   { label: "Bachillerato", href: "/#bachillerato" },
+  { label: "Q10",          href: "https://site6.q10.com/login?ReturnUrl=%2F&aplentId=7e530e5a-0d5d-4bfe-a7af-27bd57d9964c", external: true },
 ];
 
 export function Header() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [isProgram, setIsProgram] = useState(false);
-<<<<<<< HEAD
   const [progDropdown, setProgDropdown] = useState(false);
   const [cursosDropdown, setCursosDropdown] = useState(false);
+  const [sedesDropdown, setSedesDropdown] = useState(false);
   const [mobileProgOpen, setMobileProgOpen] = useState(false);
   const [mobileCursosOpen, setMobileCursosOpen] = useState(false);
+  const [mobileSedesOpen, setMobileSedesOpen] = useState(false);
   const progRef = useRef<HTMLDivElement>(null);
   const cursosRef = useRef<HTMLDivElement>(null);
-=======
->>>>>>> 8c340632f1d786cf278dc34e50140825b9db181b
+  const sedesRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 10);
@@ -108,10 +101,13 @@ export function Header() {
     const handleClickOutside = (e: MouseEvent) => {
       if (progRef.current && !progRef.current.contains(e.target as Node)) setProgDropdown(false);
       if (cursosRef.current && !cursosRef.current.contains(e.target as Node)) setCursosDropdown(false);
+      if (sedesRef.current && !sedesRef.current.contains(e.target as Node)) setSedesDropdown(false);
     };
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
+
+  const closeAll = () => { setProgDropdown(false); setCursosDropdown(false); setSedesDropdown(false); };
 
   return (
     <header
@@ -120,30 +116,7 @@ export function Header() {
       }`}
       style={{ background: "rgba(243,248,250,0.95)" }}
     >
-<<<<<<< HEAD
       <div className="container mx-auto flex h-20 items-center justify-between px-6 lg:px-12">
-=======
-      <div className="container mx-auto flex h-16 items-center justify-between px-6 lg:px-12">
-        <div className="flex items-center gap-4">
-          {isProgram && (
-            <a
-              href="/#programas"
-              className="flex items-center gap-1 rounded-full border border-[#E4F1F6] bg-white px-3 py-1.5 font-[family-name:var(--font-dm-sans)] text-xs font-semibold text-[#374151] transition-all hover:border-[#312783] hover:text-[#312783]"
-            >
-              <ChevronLeft className="h-3.5 w-3.5" />
-              Programas
-            </a>
-          )}
-          <a href="/" className="flex items-center gap-2">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="/images/logo.png"
-              alt="INDECAP"
-              className="h-11"
-            />
-          </a>
-        </div>
->>>>>>> 8c340632f1d786cf278dc34e50140825b9db181b
 
         {/* Logo */}
         <div className="flex items-center gap-4">
@@ -159,19 +132,18 @@ export function Header() {
         </div>
 
         {/* Nav desktop */}
-        <nav className="hidden items-center gap-6 lg:flex">
+        <nav className="hidden items-center gap-5 lg:flex">
 
           {/* Dropdown Programas */}
           <div className="relative" ref={progRef}>
             <button
-              onClick={() => { setProgDropdown(!progDropdown); setCursosDropdown(false); }}
+              onClick={() => { setProgDropdown(!progDropdown); setCursosDropdown(false); setSedesDropdown(false); }}
               aria-expanded={progDropdown}
               className="flex items-center gap-1 text-sm font-medium text-[#374151] transition-colors hover:text-[#312783]"
             >
               Programas
               <ChevronDown className={`h-4 w-4 transition-transform duration-200 ${progDropdown ? "rotate-180" : ""}`} />
             </button>
-
             {progDropdown && (
               <div className="absolute top-full left-1/2 -translate-x-1/2 mt-3 w-[700px] bg-white rounded-2xl shadow-2xl border border-[#e4e9eb] p-6 z-50">
                 <div className="grid grid-cols-3 gap-x-8 gap-y-1">
@@ -188,7 +160,7 @@ export function Header() {
                     </div>
                   ))}
                 </div>
-                <div className="mt-4 pt-4 border-t border-[#eaeff1] flex justify-between items-center">
+                <div className="mt-4 pt-4 border-t border-[#eaeff1]">
                   <a href="/programas" onClick={() => setProgDropdown(false)} className="text-sm font-bold text-[#312783] hover:underline">Ver todos los programas →</a>
                 </div>
               </div>
@@ -198,14 +170,13 @@ export function Header() {
           {/* Dropdown Cursos */}
           <div className="relative" ref={cursosRef}>
             <button
-              onClick={() => { setCursosDropdown(!cursosDropdown); setProgDropdown(false); }}
+              onClick={() => { setCursosDropdown(!cursosDropdown); setProgDropdown(false); setSedesDropdown(false); }}
               aria-expanded={cursosDropdown}
               className="flex items-center gap-1 text-sm font-medium text-[#374151] transition-colors hover:text-[#312783]"
             >
               Cursos
               <ChevronDown className={`h-4 w-4 transition-transform duration-200 ${cursosDropdown ? "rotate-180" : ""}`} />
             </button>
-
             {cursosDropdown && (
               <div className="absolute top-full left-1/2 -translate-x-1/2 mt-3 w-[360px] bg-white rounded-2xl shadow-2xl border border-[#e4e9eb] p-6 z-50">
                 <div className="space-y-4">
@@ -229,30 +200,54 @@ export function Header() {
             )}
           </div>
 
+          {/* Dropdown Sedes */}
+          <div className="relative" ref={sedesRef}>
+            <button
+              onClick={() => { setSedesDropdown(!sedesDropdown); setProgDropdown(false); setCursosDropdown(false); }}
+              aria-expanded={sedesDropdown}
+              className="flex items-center gap-1 text-sm font-medium text-[#374151] transition-colors hover:text-[#312783]"
+            >
+              Sedes
+              <ChevronDown className={`h-4 w-4 transition-transform duration-200 ${sedesDropdown ? "rotate-180" : ""}`} />
+            </button>
+            {sedesDropdown && (
+              <div className="absolute top-full left-1/2 -translate-x-1/2 mt-3 w-[280px] bg-white rounded-2xl shadow-2xl border border-[#e4e9eb] p-5 z-50">
+                <div className="space-y-2">
+                  {sedes.map((sede) => (
+                    <a
+                      key={sede.href}
+                      href={sede.href}
+                      onClick={() => setSedesDropdown(false)}
+                      className="flex items-center gap-3 p-3 rounded-xl hover:bg-[#f5fafc] transition-colors group"
+                    >
+                      <span className="text-2xl">{sede.icon}</span>
+                      <div>
+                        <p className="text-sm font-bold text-[#1A3A6B] group-hover:text-[#312783]">{sede.label}</p>
+                        <p className="text-xs text-[#787583]">{sede.desc}</p>
+                      </div>
+                    </a>
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
+
           {/* Otros links */}
           {navLinks.map((link) => (
-            <a key={link.href} href={link.href} className="text-sm font-medium text-[#374151] transition-colors hover:text-[#312783]">
+            <a
+              key={link.href}
+              href={link.href}
+              target={"external" in link && link.external ? "_blank" : undefined}
+              rel={"external" in link && link.external ? "noopener noreferrer" : undefined}
+              className="text-sm font-medium text-[#374151] transition-colors hover:text-[#312783]"
+            >
               {link.label}
             </a>
           ))}
-<<<<<<< HEAD
 
           <a href="/admision" className={buttonVariants({ className: "rounded-full bg-[#F0A500] px-7 py-3 text-sm font-black text-[#080F14] hover:bg-[#FFD166] shadow-[0_4px_20px_rgba(240,165,0,0.4)] hover:shadow-[0_4px_28px_rgba(240,165,0,0.6)] transition-all" })}>
             <MessageCircle className="mr-1 h-4 w-4" aria-hidden="true" />
             Formulario de admisión
-=======
-          <a
-            href={`https://api.whatsapp.com/send?phone=${CONTACTS.PRINCIPAL}`}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={buttonVariants({
-              className:
-                "rounded-full bg-[#312783] px-6 py-2 text-sm font-semibold text-white hover:bg-[#312783]/90",
-            })}
-          >
-            <MessageCircle className="mr-1 h-4 w-4" />
-            Inscribirme ahora
->>>>>>> 8c340632f1d786cf278dc34e50140825b9db181b
           </a>
         </nav>
 
@@ -264,29 +259,16 @@ export function Header() {
           </SheetTrigger>
           <SheetContent side="right">
             <SheetTitle className="sr-only">Menú de navegación</SheetTitle>
-<<<<<<< HEAD
             <nav className="mt-8 flex flex-col gap-2">
               {isProgram && (
                 <a href="/#programas" onClick={() => setOpen(false)} className="flex items-center gap-2 text-lg font-bold text-[#312783] mb-2">
-=======
-            <nav className="mt-8 flex flex-col gap-4">
-              {isProgram && (
-                <a
-                  href="/#programas"
-                  onClick={() => setOpen(false)}
-                  className="flex items-center gap-2 font-[family-name:var(--font-dm-sans)] text-lg font-bold text-[#312783]"
-                >
->>>>>>> 8c340632f1d786cf278dc34e50140825b9db181b
-                  <ChevronLeft className="h-5 w-5" />
-                  Ver todos los programas
+                  <ChevronLeft className="h-5 w-5" /> Ver todos los programas
                 </a>
               )}
-<<<<<<< HEAD
 
-              {/* Programas acordeón */}
+              {/* Programas móvil */}
               <button onClick={() => setMobileProgOpen(!mobileProgOpen)} className="flex items-center justify-between w-full text-lg font-medium text-[#080F14] py-2 border-b border-[#eaeff1]">
-                Programas
-                <ChevronDown className={`h-5 w-5 transition-transform duration-200 ${mobileProgOpen ? "rotate-180" : ""}`} />
+                Programas <ChevronDown className={`h-5 w-5 transition-transform ${mobileProgOpen ? "rotate-180" : ""}`} />
               </button>
               {mobileProgOpen && (
                 <div className="pl-3 pb-2">
@@ -304,10 +286,9 @@ export function Header() {
                 </div>
               )}
 
-              {/* Cursos acordeón */}
+              {/* Cursos móvil */}
               <button onClick={() => setMobileCursosOpen(!mobileCursosOpen)} className="flex items-center justify-between w-full text-lg font-medium text-[#080F14] py-2 border-b border-[#eaeff1]">
-                Cursos
-                <ChevronDown className={`h-5 w-5 transition-transform duration-200 ${mobileCursosOpen ? "rotate-180" : ""}`} />
+                Cursos <ChevronDown className={`h-5 w-5 transition-transform ${mobileCursosOpen ? "rotate-180" : ""}`} />
               </button>
               {mobileCursosOpen && (
                 <div className="pl-3 pb-2">
@@ -325,30 +306,35 @@ export function Header() {
                 </div>
               )}
 
-=======
->>>>>>> 8c340632f1d786cf278dc34e50140825b9db181b
+              {/* Sedes móvil */}
+              <button onClick={() => setMobileSedesOpen(!mobileSedesOpen)} className="flex items-center justify-between w-full text-lg font-medium text-[#080F14] py-2 border-b border-[#eaeff1]">
+                Sedes <ChevronDown className={`h-5 w-5 transition-transform ${mobileSedesOpen ? "rotate-180" : ""}`} />
+              </button>
+              {mobileSedesOpen && (
+                <div className="pl-3 pb-2 space-y-1">
+                  {sedes.map((sede) => (
+                    <a key={sede.href} href={sede.href} onClick={() => { setOpen(false); setMobileSedesOpen(false); }} className="flex items-center gap-2 py-2 text-sm text-[#374151] hover:text-[#312783]">
+                      <span>{sede.icon}</span> {sede.label}
+                    </a>
+                  ))}
+                </div>
+              )}
+
               {navLinks.map((link) => (
-                <a key={link.href} href={link.href} onClick={() => setOpen(false)} className="text-lg font-medium text-[#080F14] transition-colors hover:text-[#312783] py-2 border-b border-[#eaeff1]">
+                <a
+                  key={link.href}
+                  href={link.href}
+                  target={"external" in link && link.external ? "_blank" : undefined}
+                  rel={"external" in link && link.external ? "noopener noreferrer" : undefined}
+                  onClick={() => setOpen(false)}
+                  className="text-lg font-medium text-[#080F14] transition-colors hover:text-[#312783] py-2 border-b border-[#eaeff1]"
+                >
                   {link.label}
                 </a>
               ))}
-<<<<<<< HEAD
 
               <a href="/admision" onClick={() => setOpen(false)} className={buttonVariants({ className: "mt-4 rounded-full bg-[#312783] px-6 py-2 font-semibold text-white" })}>
-=======
-              <a
-                href={`https://api.whatsapp.com/send?phone=${CONTACTS.PRINCIPAL}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={() => setOpen(false)}
-                className={buttonVariants({
-                  className:
-                    "mt-4 rounded-full bg-[#312783] px-6 py-2 font-semibold text-white",
-                })}
-              >
->>>>>>> 8c340632f1d786cf278dc34e50140825b9db181b
-                <MessageCircle className="mr-1 h-4 w-4" />
-                Formulario de admisión
+                <MessageCircle className="mr-1 h-4 w-4" /> Formulario de admisión
               </a>
             </nav>
           </SheetContent>

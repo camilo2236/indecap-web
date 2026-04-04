@@ -3,9 +3,9 @@ import { GraduationCap, Award, Briefcase, Users } from "lucide-react";
 const differentiators = [
   {
     icon: GraduationCap,
-    title: "Práctica desde el día 1",
+    title: "Ambientes reales de aprendizaje",
     description:
-      "Nuestros estudiantes trabajan con equipos reales, pacientes reales y escenarios laborales auténticos desde el primer semestre.",
+      "Formamos en entornos que simulan el mundo laboral real — laboratorios, talleres y escenarios diseñados para que llegues listo al trabajo.",
     color: "#1A5CA8",
   },
   {
@@ -17,20 +17,16 @@ const differentiators = [
   },
   {
     icon: Briefcase,
-    title: "Convenios reales",
+    title: "Más de 120 convenios",
     description:
       "Alianzas con hospitales, clínicas, farmacias y empresas de Antioquia donde nuestros estudiantes hacen prácticas formativas.",
     color: "#0E7C7B",
   },
   {
     icon: Users,
-<<<<<<< HEAD
     title: "35.000+ egresados",
-=======
-    title: "25.000+ egresados",
->>>>>>> 8c340632f1d786cf278dc34e50140825b9db181b
     description:
-      "40 años formando técnicos que hoy trabajan en el sector salud, belleza, veterinaria y administración en todo Antioquia.",
+      "Más de 40 años de reconocimiento en la industria laboral de Antioquia. Nuestros egresados ya están en las mejores empresas.",
     color: "#F0A500",
   },
 ];

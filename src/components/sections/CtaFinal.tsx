@@ -1,8 +1,4 @@
 import { MessageCircle, Phone } from "lucide-react";
-<<<<<<< HEAD
-=======
-import { CONTACTS } from "@/config/contacts";
->>>>>>> 8c340632f1d786cf278dc34e50140825b9db181b
 
 export function CtaFinal() {
   return (
@@ -35,11 +31,7 @@ export function CtaFinal() {
           </p>
           <div className="mt-8 flex flex-wrap justify-center gap-4">
             <a
-<<<<<<< HEAD
-              href="https://api.whatsapp.com/send?phone=573022389760&text=Hola%20INDECAP%20quiero%20inscribirme%2C%20mi%20nombre%20es%20"
-=======
-              href={`https://api.whatsapp.com/send?phone=${CONTACTS.MEDELLIN}&text=${encodeURIComponent("Hola INDECAP, quiero inscribirme. Mi nombre es ")}`}
->>>>>>> 8c340632f1d786cf278dc34e50140825b9db181b
+              href="https://wa.me/573022389760?text=Hola%20INDECAP%2C%20quiero%20inscribirme.%20Mi%20nombre%20es%20"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 rounded-full bg-[#F0A500] px-8 py-4 font-[family-name:var(--font-dm-sans)] text-sm font-bold text-[#080F14] transition-all duration-250 hover:scale-105 hover:shadow-[0_8px_24px_rgba(240,165,0,0.35)]"
@@ -48,11 +40,7 @@ export function CtaFinal() {
               Inscribirme por WhatsApp
             </a>
             <a
-<<<<<<< HEAD
               href="tel:6044484794"
-=======
-              href="tel:+576044484794"
->>>>>>> 8c340632f1d786cf278dc34e50140825b9db181b
               className="inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/8 px-8 py-4 font-[family-name:var(--font-dm-sans)] text-sm font-semibold text-white backdrop-blur-sm transition-all duration-250 hover:bg-white/15"
             >
               <Phone className="h-4 w-4" />

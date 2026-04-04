@@ -27,8 +27,4 @@ export function ProgramImage({
       <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
     </div>
   );
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 8c340632f1d786cf278dc34e50140825b9db181b
