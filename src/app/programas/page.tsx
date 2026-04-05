@@ -20,7 +20,7 @@ const escuelas = [
     name: "Escuela de Salud", dot: "#378ADD", color: "#185FA5", bg: "#E6F1FB", short: "Salud",
     programs: [
       { name: "Auxiliar en Salud Pública",        hours: "1.650h", img: "/images/programs/salud-publica/salud-publica-hero.jpg",         slug: "salud-publica" },
-      { name: "Administrativo en Salud",          hours: "1.650h", img: "/images/programs/administrativo-salud/administrativo-hero.jpg", slug: "administrativo-salud" },
+      { name: "Administrativo en Salud",          hours: "1.650h", img: "/images/programs/administrativo-salud/administrativo-hero2.jpg", slug: "administrativo-salud" },
       { name: "Atención al Adulto Mayor",         hours: "700h",   img: "/images/programs/adulto-mayor/adulto-mayor-hero.jpg",           slug: "adulto-mayor" },
     ],
   },
