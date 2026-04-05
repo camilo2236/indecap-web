@@ -6,7 +6,6 @@ import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 
 const featured = [
-
   { name: "Auxiliar en Enfermería",        hours: "1.650h", img: "/images/programs/enfermeria/enfermeria-hero.jpg",      slug: "enfermeria",   main: true },
   { name: "Cosmetología y Estética",        hours: "1.190h", img: "/images/programs/cosmetologia/cosmetologia-hero.jpg",  slug: "cosmetologia" },
   { name: "Auxiliar en Veterinaria",        hours: "1.200h", img: "/images/programs/veterinaria/veterinaria-hero.jpg",    slug: "veterinaria" },
@@ -19,36 +18,36 @@ const escuelas = [
   {
     name: "Escuela de Salud", dot: "#378ADD", color: "#185FA5", bg: "#E6F1FB", short: "Salud",
     programs: [
-      { name: "Auxiliar en Salud Pública",        hours: "1.650h", img: "/images/programs/salud-publica/salud-publica-hero.jpg",         slug: "salud-publica" },
-      { name: "Administrativo en Salud",          hours: "1.650h", img: "/images/programs/administrativo-salud/administrativo-hero2.jpg", slug: "administrativo-salud" },
-      { name: "Atención al Adulto Mayor",         hours: "700h",   img: "/images/programs/adulto-mayor/adulto-mayor-hero.jpg",           slug: "adulto-mayor" },
+      { name: "Auxiliar en Salud Pública",          hours: "1.650h", img: "/images/programs/salud-publica/salud-publica-hero.jpg",          slug: "salud-publica" },
+      { name: "Administrativo en Salud",            hours: "1.650h", img: "/images/programs/administrativo-salud/administrativo-hero2.jpg",  slug: "administrativo-salud" },
+      { name: "Atención al Adulto Mayor",           hours: "700h",   img: "/images/programs/adulto-mayor/adulto-mayor-hero.jpg",             slug: "adulto-mayor" },
     ],
   },
   {
     name: "Escuela Veterinaria", dot: "#639922", color: "#3B6D11", bg: "#EAF3DE", short: "Veterinaria",
     programs: [
-     { name: "Auxiliar en Veterinaria",          hours: "1.200h", img: "/images/programs/veterinaria/veterinaria-hero.jpg",             slug: "veterinaria" },
+      { name: "Auxiliar en Veterinaria",            hours: "1.200h", img: "/images/programs/veterinaria/veterinaria-hero.jpg",              slug: "veterinaria" },
     ],
   },
   {
     name: "Escuela de Administración", dot: "#7F77DD", color: "#534AB7", bg: "#EEEDFE", short: "Administrativa",
     programs: [
-      { name: "Talento Humano",                   hours: "1.000h", img: "/images/programs/talento-humano/talento-humano-hero.jpg",       slug: "talento-humano" },
-      { name: "Auxiliar Contable",                hours: "1.000h", img: "/images/programs/contable/contable-hero.jpg",                   slug: "contable" },
-      { name: "Seguridad y Salud en el Trabajo",  hours: "1.000h", img: "/images/programs/sst/sst-hero.jpg",                             slug: "sst" },
+      { name: "Talento Humano",                     hours: "1.000h", img: "/images/programs/talento-humano/talento-humano-hero.jpg",        slug: "talento-humano" },
+      { name: "Auxiliar Contable",                  hours: "1.000h", img: "/images/programs/contable/contable-hero.jpg",                    slug: "contable" },
+      { name: "Seguridad y Salud en el Trabajo",    hours: "1.000h", img: "/images/programs/sst/sst-hero.jpg",                              slug: "sst" },
     ],
   },
   {
     name: "Escuela de Tecnología", dot: "#378ADD", color: "#185FA5", bg: "#E6F1FB", short: "Tecnología",
     programs: [
-      { name: "Técnico en Sistemas",              hours: "1.000h", img: "/images/programs/sistemas/sala-medellin.jpg",                   slug: "sistemas" },
-      { name: "Auxiliar en Desarrollo de Software", hours: "700h", img: "/images/programs/sistemas/sala-medellin-clase.jpg",             slug: "software" },
+      { name: "Técnico en Sistemas",                hours: "1.000h", img: "/images/programs/sistemas/sistemas-hero.jpg",                    slug: "sistemas" },
+      { name: "Auxiliar en Desarrollo de Software", hours: "700h",   img: "/images/programs/software/software-hero.jpg",                    slug: "software" },
     ],
   },
   {
     name: "Escuela de Deportes", dot: "#1D9E75", color: "#0F6E56", bg: "#E1F5EE", short: "Deportes",
     programs: [
-      { name: "Entrenamiento Deportivo",          hours: "1.000h", img: "/images/programs/entrenamiento-deportivo/entrenamiento-deportivo-hero.jpg", slug: "entrenamiento-deportivo" },
+      { name: "Entrenamiento Deportivo",            hours: "1.000h", img: "/images/programs/entrenamiento-deportivo/entrenamiento-deportivo-hero.jpg", slug: "entrenamiento-deportivo" },
     ],
   },
 ];
@@ -75,7 +74,6 @@ export default function ProgramasPage() {
   return (
     <main className="min-h-screen bg-white">
 
-      {/* HERO COMPACTO */}
       <section className="pt-24 pb-6 px-8 bg-white border-b border-[#c8c4d3]/20">
         <div className="max-w-7xl mx-auto">
           <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#787583] mb-2">
@@ -102,7 +100,6 @@ export default function ProgramasPage() {
         </div>
       </section>
 
-      {/* FILTROS STICKY */}
       <div className="sticky top-20 z-10 bg-white/95 backdrop-blur-sm border-b border-[#c8c4d3]/30">
         <div className="max-w-7xl mx-auto px-8 py-3 flex gap-2 overflow-x-auto">
           {filterLabels.map((f) => (
@@ -123,13 +120,12 @@ export default function ProgramasPage() {
 
       <div className="max-w-7xl mx-auto px-8">
 
-        {/* FEATURED — layout editorial */}
         {featFiltered.length > 0 && (
           <div className="py-8">
-            <div className={`grid gap-[3px] rounded-2xl overflow-hidden ${rest.length > 0 ? "grid-cols-2" : "grid-cols-1"}`}
-              style={{ border: "0.5px solid #c8c4d3" }}>
-
-              {/* Principal — grande */}
+            <div
+              className={`grid gap-[3px] rounded-2xl overflow-hidden ${rest.length > 0 ? "grid-cols-2" : "grid-cols-1"}`}
+              style={{ border: "0.5px solid #c8c4d3" }}
+            >
               {main && (
                 <Link
                   href={`/programas/${main.slug}`}
@@ -146,6 +142,7 @@ export default function ProgramasPage() {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
                   <div className="absolute bottom-0 left-0 right-0 p-8">
+                    <p className="text-[10px] text-white/40 uppercase tracking-widest mb-1">Técnico Laboral en</p>
                     <p className="font-[family-name:var(--font-playfair)] italic text-3xl font-black text-white mb-2 leading-tight">
                       {main.name}
                     </p>
@@ -157,7 +154,6 @@ export default function ProgramasPage() {
                 </Link>
               )}
 
-              {/* Resto — pequeños apilados */}
               {rest.length > 0 && (
                 <div className="grid gap-[3px]" style={{ gridTemplateRows: `repeat(${Math.min(rest.length, 5)}, 1fr)` }}>
                   {rest.slice(0, 5).map((p) => (
@@ -192,7 +188,6 @@ export default function ProgramasPage() {
           </div>
         )}
 
-        {/* DIVISOR */}
         {escFiltered.length > 0 && (
           <div className="flex items-center gap-4 py-2 mb-6">
             <div className="w-1.5 h-1.5 rounded-full bg-[#c8c4d3]" />
@@ -201,7 +196,6 @@ export default function ProgramasPage() {
           </div>
         )}
 
-        {/* GRILLA POR ESCUELA */}
         {escFiltered.map((esc) => (
           <div key={esc.name} className="mb-12">
             <div className="flex items-center gap-3 mb-5">
@@ -233,6 +227,9 @@ export default function ProgramasPage() {
                     >
                       {esc.short}
                     </span>
+                    <p className="text-[9px] text-[#c8c4d3] uppercase tracking-wider mb-1">
+                      Técnico Laboral en
+                    </p>
                     <p className="font-[family-name:var(--font-playfair)] text-base font-black text-[#171c1e] leading-snug mb-3 group-hover:text-[#1a086e] transition-colors">
                       {prog.name}
                     </p>
@@ -247,12 +244,13 @@ export default function ProgramasPage() {
           </div>
         ))}
 
-        {/* CTA */}
-        <div className="mb-16 rounded-3xl p-10 md:p-14 flex flex-col md:flex-row items-center justify-between gap-8"
-          style={{ background: "linear-gradient(135deg, #1a086e 0%, #312783 100%)" }}>
+        <div
+          className="mb-16 rounded-3xl p-10 md:p-14 flex flex-col md:flex-row items-center justify-between gap-8"
+          style={{ background: "linear-gradient(135deg, #1a086e 0%, #312783 100%)" }}
+        >
           <div>
             <h2 className="font-[family-name:var(--font-playfair)] text-4xl font-black text-white mb-2 tracking-tight">
-              ¿No sabes cuál <em className="italic">elegir?</em>
+              No sabes cual <em className="italic">elegir?</em>
             </h2>
             <p className="text-white/55 text-lg">Un asesor INDECAP te orienta sin costo ni compromiso.</p>
           </div>
@@ -261,7 +259,7 @@ export default function ProgramasPage() {
             className="shrink-0 inline-flex items-center gap-3 px-10 py-4 rounded-full font-black text-base hover:scale-105 transition-transform shadow-xl"
             style={{ backgroundColor: "#ffb21d", color: "#281800" }}
           >
-            Solicitar orientación gratuita
+            Solicitar orientacion gratuita
             <ArrowUpRight size={18} />
           </Link>
         </div>
