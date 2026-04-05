@@ -16,17 +16,17 @@ export default function SaludPublicaPage() {
       horas="1.650"
       semestres="3"
       sedesNum="2"
-      fotoSrc="/images/programs/enfermeria/enfermeria-clase.jpg"
-      fotoAlt="Estudiante de Salud Pública INDECAP"
-      descripcion="Te interesa el sector salud desde la prevención y la promoción — trabajando con comunidades, en programas de vacunación, campañas de salud y apoyo a instituciones que buscan que la gente no se enferme. Salud pública es entender que la salud empieza en el barrio, en la comunidad, en la familia."
+      fotoSrc="/images/programs/salud-publica/salud-publica-hero.jpg"
+      fotoAlt="Estudiantes de Salud Pública INDECAP en práctica comunitaria"
+      descripcion="La salud empieza en el barrio, en la escuela, en la familia — mucho antes de llegar a un hospital. Si te interesa trabajar con comunidades, liderar campañas de prevención y ser parte de los programas que evitan que la gente se enferme, este es tu camino. Nuestros egresados trabajan en EPS, secretarías de salud y programas comunitarios en todo Antioquia."
       capacidades={[
         "Apoyar programas de promoción de la salud y prevención en comunidades del Valle de Aburrá",
-        "Realizar actividades educativas en salud con poblaciones específicas (gestantes, niños, adultos mayores)",
-        "Apoyar campañas de vacunación y jornadas de tamizaje",
+        "Realizar actividades educativas en salud con poblaciones específicas: gestantes, niños, adultos mayores",
+        "Apoyar campañas de vacunación y jornadas de tamizaje comunitario",
         "Aplicar protocolos de bioseguridad y control de infecciones",
-        "Tomar signos vitales y realizar apoyo básico en procesos diagnósticos",
+        "Tomar signos vitales y dar apoyo básico en procesos diagnósticos",
         "Manejar registros epidemiológicos y formatos del sistema de salud colombiano",
-        "Administrar medicamentos básicos según las funciones autorizadas para el perfil",
+        "Administrar medicamentos básicos según las funciones autorizadas para el perfil técnico",
       ]}
       salidas={[
         { icon: "🏥", name: "Hospitales y Clínicas", desc: "Áreas de promoción y prevención (P&P)" },
@@ -50,9 +50,9 @@ export default function SaludPublicaPage() {
         "Práctica formativa en instituciones de salud o programas comunitarios",
       ]}
       pensum3={[
-        "Práctica profesional en hospitales, IPS, secretarías de salud o programas de prevención trabajando con comunidades",
+        "Práctica profesional en hospitales, IPS, secretarías de salud o programas de prevención con comunidades reales de Antioquia",
       ]}
-      mercadoTexto="Nuestros egresados salen a trabajar en los programas de prevención que Antioquia necesita, con formación práctica y contacto real con las comunidades desde el primer ciclo."
+      mercadoTexto="Antioquia necesita técnicos que trabajen desde la comunidad. Nuestros egresados entran al mercado laboral con práctica real desde el primer ciclo — en vacunación, promoción y prevención en las instituciones que más lo necesitan."
       waNum="573022389760"
       waText="Hola INDECAP, estoy interesado en Salud Pública. Mi nombre es "
       sedes={[

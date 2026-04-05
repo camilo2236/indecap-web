@@ -7,7 +7,7 @@ import { MiniTestimonio } from './MiniTestimonio';
 
 export function ProgramPage({
   titulo, subtitulo, emWord, accent, escuela,
-  fotoAlt, fotoSrc, descripcion, capacidades, salidas, ctaDesc,
+  fotoAlt, fotoSrc, fotoPosition, descripcion, capacidades, salidas, ctaDesc,
   waNum, waText, sedes, programaId, semestres, mercadoTexto,
   pensum1, pensum2, pensum3,
 }: any) {
@@ -28,7 +28,15 @@ export function ProgramPage({
       {/* ── HERO ─────────────────────────────────────────── */}
       <section className="relative min-h-[700px] flex items-center overflow-hidden">
         <div className="absolute inset-0 z-0">
-          <Image src={fotoSrc} alt={fotoAlt} fill className="object-cover" priority sizes="100vw" />
+          <Image
+            src={fotoSrc}
+            alt={fotoAlt}
+            fill
+            className="object-cover"
+            style={{ objectPosition: fotoPosition || "center" }}
+            priority
+            sizes="100vw"
+          />
           <div className="absolute inset-0" style={{ background: `linear-gradient(105deg, ${accent}cc 0%, ${accent}88 45%, ${accent}22 75%, transparent 100%)` }} />
           <div className="absolute inset-0 bg-black/20" />
         </div>
@@ -58,12 +66,12 @@ export function ProgramPage({
         </div>
       </section>
 
-      {/* ── QUICK INFO BAR — sin horas ──────────────────── */}
+      {/* ── QUICK INFO BAR ──────────────────────────────── */}
       <section className="max-w-7xl mx-auto px-8 -mt-6 relative z-20 mb-4">
         <div className="bg-white grid grid-cols-1 md:grid-cols-2 divide-y md:divide-y-0 md:divide-x divide-[#c8c4d3]/20 rounded-2xl shadow-xl border border-[#c8c4d3]/20">
           {[
-            { icon: Clock,  label: "Duración",   value: semestres ? `${semestres} ciclos` : "2 ciclos" },
-            { icon: MapPin, label: "Modalidad",  value: "Presencial" },
+            { icon: Clock,  label: "Duración",  value: semestres ? `${semestres} ciclos` : "2 ciclos" },
+            { icon: MapPin, label: "Modalidad", value: "Presencial" },
           ].map(({ icon: Icon, label, value }) => (
             <div key={label} className="p-7 flex items-center gap-5">
               <div className="w-11 h-11 rounded-full flex items-center justify-center" style={{ backgroundColor: `${accent}15` }}>
@@ -78,7 +86,7 @@ export function ProgramPage({
         </div>
       </section>
 
-      {/* ── CAMPO LABORAL — Bento Grid ──────────────────── */}
+      {/* ── CAMPO LABORAL ───────────────────────────────── */}
       <section className="py-20 px-8 max-w-7xl mx-auto">
         <div className="mb-12">
           <span className="text-xs font-bold uppercase tracking-widest block mb-3" style={{ color: "#805600" }}>¿Dónde vas a trabajar?</span>
@@ -122,7 +130,7 @@ export function ProgramPage({
         </div>
       </section>
 
-      {/* ── LO QUE APRENDERÁS + PLAN DESPLEGABLE + EGRESADOS ── */}
+      {/* ── LO QUE APRENDERÁS ───────────────────────────── */}
       <section className="py-20 bg-[#eff4f6]">
         <div className="max-w-7xl mx-auto px-8">
           <div className="mb-12">
@@ -133,8 +141,6 @@ export function ProgramPage({
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
-
-            {/* Izquierda — Capacidades */}
             <div>
               <p className="text-[#474551] text-lg mb-8 leading-relaxed">Formación diseñada con estándares reales de la industria, combinando teoría rigurosa con práctica intensiva en entornos laborales auténticos.</p>
               <div className="space-y-3 mb-10">
@@ -146,7 +152,6 @@ export function ProgramPage({
                 ))}
               </div>
 
-              {/* Plan de estudios — acordeón */}
               {ciclos.length > 0 && (
                 <div>
                   <p className="text-xs font-bold uppercase tracking-widest mb-4" style={{ color: "#805600" }}>Plan de estudios</p>
@@ -185,7 +190,6 @@ export function ProgramPage({
               )}
             </div>
 
-            {/* Derecha — Egresados */}
             {programaId && <MiniTestimonio programaId={programaId} accent={accent} />}
           </div>
         </div>

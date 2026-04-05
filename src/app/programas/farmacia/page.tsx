@@ -16,7 +16,7 @@ export default function FarmaciaPage() {
       horas="1.650"
       semestres="3"
       sedesNum="3"
-      fotoSrc="/images/programs/farmacia/farmacia-hero.jpg"
+      fotoSrc="/images/programs/farmacia/farmacia-hero2.jpg"
       fotoAlt="Estudiante de Servicios Farmacéuticos INDECAP"
       descripcion="En Antioquia hay más de 3.000 droguerías y farmacias, y todas necesitan personal capacitado para dispensar medicamentos de forma segura. Este programa te forma para trabajar desde el primer día en el sector farmacéutico con conocimiento real de la normativa colombiana vigente."
       capacidades={[

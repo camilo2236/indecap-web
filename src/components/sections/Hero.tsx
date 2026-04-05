@@ -5,6 +5,9 @@ import Image from "next/image";
 import { CheckCircle, Loader2, Send, ArrowRight } from "lucide-react";
 
 const SLIDES = [
+  { src: "/images/programs/IMG_0166-hero.jpg",                  label: "Enfermería y Veterinaria",       escuela: "Escuela de Salud" },
+  { src: "/images/programs/IMG_0186-hero.jpg",                  label: "Auxiliar en Veterinaria",        escuela: "Escuela Veterinaria" },
+  { src: "/images/programs/IMG_0190-hero.jpg",                  label: "Auxiliar en Enfermería",         escuela: "Escuela de Salud" },
   { src: "/images/programs/enfermeria/enfermeria-hero.jpg",     label: "Auxiliar en Enfermería",        escuela: "Escuela de Salud" },
   { src: "/images/programs/cosmetologia/cosmetologia-hero.jpg", label: "Cosmetología y Estética",        escuela: "Escuela de Belleza" },
   { src: "/images/programs/veterinaria/veterinaria-hero.jpg",   label: "Auxiliar en Veterinaria",        escuela: "Escuela Veterinaria" },

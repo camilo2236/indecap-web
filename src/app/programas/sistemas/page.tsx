@@ -16,7 +16,7 @@ export default function SistemasPage() {
       horas="1.000"
       semestres="2"
       sedesNum="2"
-      fotoSrc="/images/programs/sistemas/sala-medellin-clase.jpg"
+      fotoSrc="/images/programs/sistemas/sistemas-hero.jpg"
       fotoAlt="Estudiante de Sistemas INDECAP"
       descripcion="La tecnología cambia rápido, pero lo que no cambia es que las empresas necesitan personas que sepan resolver problemas técnicos hoy. No en 5 años. El soporte técnico y la gestión de sistemas es un perfil que necesitan empresas de todos los tamaños, y que te permite trabajar rápido mientras sigues aprendiendo."
       capacidades={[

@@ -16,7 +16,7 @@ export default function SoftwarePage() {
       horas="700"
       semestres="2"
       sedesNum="1"
-      fotoSrc="/images/programs/sistemas/sala-medellin-clase.jpg"
+      fotoSrc="/images/programs/software/software-hero.jpg"
       fotoAlt="Estudiante de Desarrollo de Software INDECAP"
       descripcion="Medellín es el hub tecnológico de Colombia. Las empresas de software, startups y áreas de TI necesitan personas que puedan programar desde el primer día. En 700 horas aprenderás a desarrollar aplicaciones reales — y a potenciarlas con inteligencia artificial, la herramienta que está transformando la industria del software."
       capacidades={[

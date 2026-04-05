@@ -16,7 +16,7 @@ export default function SaludOralPage() {
       horas="1.650"
       semestres="3"
       sedesNum="3"
-      fotoSrc="/images/programs/salud-oral/salud-oral-hero.jpg"
+      fotoSrc="/images/programs/salud-oral/salud-oral-hero2.jpg"
       fotoAlt="Estudiante de Salud Oral INDECAP"
       descripcion="En Medellín y el Valle de Aburrá hay cientos de consultorios odontológicos privados, clínicas dentales y centros de salud que necesitan auxiliares competentes todos los días. Este programa te forma para trabajar al lado del odontólogo, asistiendo procedimientos y cuidando pacientes con criterio técnico y calidez."
       capacidades={[
