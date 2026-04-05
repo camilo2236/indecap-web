@@ -27,7 +27,7 @@ const escuelas = [
   {
     name: "Escuela Veterinaria", dot: "#639922", color: "#3B6D11", bg: "#EAF3DE", short: "Veterinaria",
     programs: [
-      { name: "Peluquería y Estética Canina",     hours: "1.000h", img: "/images/programs/peluqueria-canina/peluqueria-hero.jpg",        slug: "peluqueria-canina" },
+     { name: "Auxiliar en Veterinaria",          hours: "1.200h", img: "/images/programs/veterinaria/veterinaria-hero.jpg",             slug: "veterinaria" },
     ],
   },
   {
