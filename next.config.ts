@@ -42,7 +42,7 @@ const nextConfig: NextConfig = {
               "font-src 'self' https://fonts.gstatic.com",
               "img-src 'self' data: blob: https://indecap.edu.co https://indecap-web.vercel.app https://*.vercel.app",
               "connect-src 'self' https://api.resend.com https://www.google-analytics.com https://vitals.vercel-insights.com",
-              "frame-src 'none'",
+              "frame-src https://www.google.com",
               "object-src 'none'",
               "base-uri 'self'",
               "form-action 'self'",

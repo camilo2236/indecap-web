@@ -4,14 +4,13 @@ import { MapPin, Phone, Mail, MessageCircle, ArrowRight, Clock, Building2, Gradu
 
 export const metadata: Metadata = {
   title: "Sede Caldas | INDECAP – Cerca al Parque Principal de Caldas",
-  description: "INDECAP Sede Caldas. Calle 130 sur N° 51-65. 10 aulas, laboratorio de química y física, biblioteca. 5.000+ egresados. Programas técnicos y bachillerato.",
+  description: "INDECAP Sede Caldas. Calle 130 sur N° 51-65. 10 aulas, laboratorio de química y física, biblioteca. 5000+ egresados. Programas técnicos y bachillerato.",
 };
 
 export default function SedesCaldasPage() {
   return (
     <main className="min-h-screen bg-[#f5fafc] text-[#171c1e]">
 
-      {/* HERO */}
       <section className="relative min-h-[500px] flex items-center overflow-hidden" style={{ background: "linear-gradient(135deg, #0F4C35 0%, #1a086e 100%)" }}>
         <div className="absolute inset-0 opacity-10">
           <Image src="/images/sedes/caldas.jpg" alt="Sede Caldas INDECAP" fill className="object-cover" priority sizes="100vw" />
@@ -19,7 +18,7 @@ export default function SedesCaldasPage() {
         <div className="relative z-10 max-w-7xl mx-auto px-8 py-32">
           <div className="flex items-center gap-3 mb-6">
             <span className="inline-block px-5 py-2 rounded-full text-xs font-bold uppercase tracking-widest" style={{ backgroundColor: "#ffb21d", color: "#281800" }}>
-              ✦ Sur del Valle
+              Sur del Valle
             </span>
             <span className="text-white/50 text-sm">Formando líderes del municipio de Caldas</span>
           </div>
@@ -27,18 +26,17 @@ export default function SedesCaldasPage() {
             Sede<br /><em className="italic" style={{ color: "#ffb21d" }}>Caldas</em>
           </h1>
           <p className="text-white/70 text-xl max-w-2xl leading-relaxed">
-            Seis años transformando vidas en el sur del Valle de Aburrá. Convenios con INPROQUIN, FRIKO, COMFAMA y más de 420 egresados que hoy son líderes de su comunidad.
+            más de 10 años transformando vidas en el sur del Valle de Aburrá. Convenios con INPROQUIN, FRIKO, COMFAMA y más de 5000 egresados que hoy son líderes de su comunidad.
           </p>
         </div>
       </section>
 
-      {/* QUICK INFO BAR */}
       <section className="max-w-7xl mx-auto px-8 -mt-6 relative z-20 mb-16">
         <div className="bg-white grid grid-cols-2 md:grid-cols-4 divide-x divide-[#c8c4d3]/20 rounded-2xl shadow-xl border border-[#c8c4d3]/20">
           {[
             { icon: GraduationCap, label: "Aulas",      value: "10 aulas" },
             { icon: Building2,    label: "Niveles",     value: "4 niveles" },
-            { icon: Users,        label: "Egresados",   value: "5.000+" },
+            { icon: Users,        label: "Egresados",   value: "5000+" },
             { icon: Building2,    label: "Convenios",   value: "COMFAMA y más" },
           ].map(({ icon: Icon, label, value }) => (
             <div key={label} className="p-6 flex items-center gap-4">
@@ -54,13 +52,11 @@ export default function SedesCaldasPage() {
         </div>
       </section>
 
-      {/* CONTENIDO PRINCIPAL */}
       <section className="max-w-7xl mx-auto px-8 pb-20">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
 
           <div className="lg:col-span-2 space-y-10">
 
-            {/* Sobre la sede */}
             <div>
               <span className="text-xs font-bold uppercase tracking-widest block mb-3 text-[#805600]">La sede</span>
               <h2 className="font-[family-name:var(--font-playfair)] text-4xl font-black text-[#1a086e] mb-6 tracking-tight">
@@ -74,18 +70,16 @@ export default function SedesCaldasPage() {
               </p>
             </div>
 
-            {/* Logro clave */}
             <div className="bg-[#1a086e] rounded-2xl p-8 text-white">
               <div className="flex items-start gap-6">
-                <div className="text-6xl font-[family-name:var(--font-playfair)] font-black text-[#ffb21d] leading-none shrink-0">420+</div>
+                <div className="text-6xl font-[family-name:var(--font-playfair)] font-black text-[#ffb21d] leading-none shrink-0">5000+</div>
                 <div>
                   <h3 className="font-[family-name:var(--font-playfair)] text-2xl font-black mb-3 tracking-tight">Egresados que hacen historia</h3>
-                  <p className="text-white/70 leading-relaxed">Más de 420 personas graduadas que se identifican como miembros de INDECAP y demuestran gran sentido de responsabilidad social en su comunidad. Rectores, docentes y líderes del municipio de Caldas pasaron por estas aulas.</p>
+                  <p className="text-white/70 leading-relaxed">Más de 5000 personas graduadas que se identifican como miembros de INDECAP y demuestran gran sentido de responsabilidad social en su comunidad. Rectores, docentes y líderes del municipio de Caldas pasaron por estas aulas.</p>
                 </div>
               </div>
             </div>
 
-            {/* Instalaciones */}
             <div>
               <span className="text-xs font-bold uppercase tracking-widest block mb-4 text-[#805600]">Instalaciones</span>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -108,7 +102,6 @@ export default function SedesCaldasPage() {
               </div>
             </div>
 
-            {/* Convenios */}
             <div>
               <span className="text-xs font-bold uppercase tracking-widest block mb-4 text-[#805600]">Alianzas estratégicas</span>
               <h3 className="font-[family-name:var(--font-playfair)] text-3xl font-black text-[#1a086e] mb-6 tracking-tight">Convenios con empresas del sector</h3>
@@ -122,10 +115,9 @@ export default function SedesCaldasPage() {
               <p className="text-[#474551] text-sm mt-4 leading-relaxed">Además de convenios con Secretarías municipales, Cooperativas, Centros de Salud y empresas productivas de la región.</p>
             </div>
 
-            {/* Programas */}
             <div>
               <span className="text-xs font-bold uppercase tracking-widest block mb-4 text-[#805600]">Oferta académica</span>
-              <h3 className="font-[family-name:var(--font-playfair)] text-3xl font-black text-[#1a086e] mb-6 tracking-tight">¿Qué puedes estudiar aquí?</h3>
+              <h3 className="font-[family-name:var(--font-playfair)] text-3xl font-black text-[#1a086e] mb-6 tracking-tight">Qué puedes estudiar aquí</h3>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 {[
                   "Auxiliar en Enfermería", "Servicios Farmacéuticos", "Auxiliar en Salud Oral",
@@ -145,68 +137,105 @@ export default function SedesCaldasPage() {
             </div>
           </div>
 
-          {/* Columna derecha */}
           <div className="space-y-6">
             <div className="bg-white rounded-2xl p-8 border border-[#c8c4d3]/20 shadow-sm sticky top-24">
               <h3 className="font-[family-name:var(--font-playfair)] text-2xl font-black text-[#1a086e] mb-6 tracking-tight">Información de contacto</h3>
               <div className="space-y-5 mb-8">
-                {[
-                  { icon: MapPin, label: "Dirección", value: "Calle 130 sur N° 51-65", sub: "Cerca al Parque Principal de Caldas" },
-                  { icon: Phone,  label: "Teléfono",  value: "(604) 448 4794", sub: "300 894 8517", href: "tel:6044484794" },
-                  { icon: Clock,  label: "Horario",   value: "Lunes a viernes", sub: "7:00 a.m. – 6:00 p.m." },
-                  { icon: Mail,   label: "Correo",    value: "sedecaldas@indecap.edu.co", href: "mailto:sedecaldas@indecap.edu.co" },
-                ].map(({ icon: Icon, label, value, sub, href }) => (
-                  <div key={label} className="flex items-start gap-4">
-                    <div className="w-10 h-10 rounded-full bg-[#1a086e10] flex items-center justify-center shrink-0 mt-0.5">
-                      <Icon size={16} color="#1a086e" />
-                    </div>
-                    <div>
-                      <p className="text-[10px] font-bold uppercase tracking-wider text-[#787583] mb-0.5">{label}</p>
-                      {href ? (
-                        <a href={href} className="text-sm font-semibold text-[#1a086e] hover:underline block">{value}</a>
-                      ) : (
-                        <p className="text-sm font-semibold text-[#171c1e]">{value}</p>
-                      )}
-                      {sub && <p className="text-xs text-[#474551]">{sub}</p>}
-                    </div>
+                <div className="flex items-start gap-4">
+                  <div className="w-10 h-10 rounded-full bg-[#1a086e10] flex items-center justify-center shrink-0 mt-0.5">
+                    <MapPin size={16} color="#1a086e" />
                   </div>
-                ))}
+                  <div>
+                    <p className="text-[10px] font-bold uppercase tracking-wider text-[#787583] mb-0.5">Dirección</p>
+                    <p className="text-sm font-semibold text-[#171c1e]">Calle 130 sur N° 51-65</p>
+                    <p className="text-xs text-[#474551]">Cerca al Parque Principal de Caldas</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-4">
+                  <div className="w-10 h-10 rounded-full bg-[#1a086e10] flex items-center justify-center shrink-0 mt-0.5">
+                    <Phone size={16} color="#1a086e" />
+                  </div>
+                  <div>
+                    <p className="text-[10px] font-bold uppercase tracking-wider text-[#787583] mb-0.5">Teléfono</p>
+                    <a href="tel:6044484794" className="text-sm font-semibold text-[#1a086e] hover:underline block">(604) 448 4794</a>
+                    <p className="text-xs text-[#474551]">300 894 8517</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-4">
+                  <div className="w-10 h-10 rounded-full bg-[#1a086e10] flex items-center justify-center shrink-0 mt-0.5">
+                    <Clock size={16} color="#1a086e" />
+                  </div>
+                  <div>
+                    <p className="text-[10px] font-bold uppercase tracking-wider text-[#787583] mb-0.5">Horario</p>
+                    <p className="text-sm font-semibold text-[#171c1e]">Lunes a viernes</p>
+                    <p className="text-xs text-[#474551]">8:00 a.m. – 5:00 p.m.</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-4">
+                  <div className="w-10 h-10 rounded-full bg-[#1a086e10] flex items-center justify-center shrink-0 mt-0.5">
+                    <Mail size={16} color="#1a086e" />
+                  </div>
+                  <div>
+                    <p className="text-[10px] font-bold uppercase tracking-wider text-[#787583] mb-0.5">Correo</p>
+                    <a href="mailto:sedecaldas@indecap.edu.co" className="text-sm font-semibold text-[#1a086e] hover:underline">sedecaldas@indecap.edu.co</a>
+                  </div>
+                </div>
               </div>
               <div className="space-y-3">
-                <a href="https://wa.me/573008948517?text=Hola%20INDECAP%20Caldas%2C%20quiero%20informaci%C3%B3n%20sobre%20los%20programas%20disponibles%20en%20la%20sede%20de%20Caldas.%20%C2%BFMe%20pueden%20orientar%3F"
-                  target="_blank" rel="noopener noreferrer"
-                  className="flex items-center justify-center gap-3 w-full py-4 rounded-xl font-black text-white bg-[#25D366] hover:scale-105 transition-transform">
+                <a
+                  href="https://wa.me/573008948517?text=Hola%20INDECAP%20Caldas%2C%20quiero%20informacion%20sobre%20los%20programas%20disponibles%20en%20la%20sede%20de%20Caldas."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-center gap-3 w-full py-4 rounded-xl font-black text-white bg-[#25D366] hover:scale-105 transition-transform"
+                >
                   <MessageCircle size={18} /> WhatsApp: 300 894 8517
                 </a>
-                <a href="https://maps.app.goo.gl/sYLr8MKC3mvRpvgF8" target="_blank" rel="noopener noreferrer"
-                  className="flex items-center justify-center gap-2 w-full py-4 rounded-xl font-bold text-[#1a086e] border-2 border-[#1a086e] hover:bg-[#1a086e] hover:text-white transition-colors">
+                <a
+                  href="https://maps.app.goo.gl/sYLr8MKC3mvRpvgF8"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-center gap-2 w-full py-4 rounded-xl font-bold text-[#1a086e] border-2 border-[#1a086e] hover:bg-[#1a086e] hover:text-white transition-colors"
+                >
                   <MapPin size={16} /> Ver en Google Maps
                 </a>
               </div>
             </div>
 
             <div className="rounded-2xl overflow-hidden shadow-sm border border-[#c8c4d3]/20 h-64">
-              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3967.2917608599473!2d-75.63738873784544!3d6.091342944564197!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e46868ee0555555%3A0x66963b66dfbc06b9!2sIndecap!5e1!3m2!1sen!2sco!4v1774831314418!5m2!1sen!2sco"
-                width="100%" height="100%" style={{ border: 0 }} allowFullScreen loading="lazy" title="INDECAP Caldas" />
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3967.2917608599473!2d-75.63738873784544!3d6.091342944564197!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e46868ee0555555%3A0x66963b66dfbc06b9!2sIndecap!5e1!3m2!1sen!2sco!4v1774831314418!5m2!1sen!2sco"
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                allowFullScreen
+                loading="lazy"
+                title="INDECAP Caldas"
+              />
             </div>
           </div>
         </div>
       </section>
 
-      {/* CTA */}
       <section className="py-16 px-8">
         <div className="max-w-7xl mx-auto">
           <div className="rounded-3xl p-12 md:p-16 text-center" style={{ background: "linear-gradient(135deg, #0F4C35 0%, #1a086e 100%)" }}>
             <h2 className="font-[family-name:var(--font-playfair)] text-5xl font-black text-white mb-4 tracking-tight">
               Estudia en <em className="italic">Caldas</em>
             </h2>
-            <p className="text-white/70 text-xl mb-10 max-w-xl mx-auto">Sé parte de los más de 5.000 egresados que transformaron su vida estudiando en INDECAP Caldas.</p>
+            <p className="text-white/70 text-xl mb-10 max-w-xl mx-auto">Se parte de los mas 5000 egresados que transformaron su vida estudiando en INDECAP Caldas.</p>
             <div className="flex flex-col md:flex-row gap-4 justify-center">
-              <a href="/admision" className="flex items-center justify-center gap-3 px-10 py-5 rounded-full font-black text-lg hover:scale-105 transition-transform shadow-xl bg-[#ffb21d] text-[#281800]">
-                Formulario de admisión <ArrowRight size={18} />
+              <a
+                href="/admision"
+                className="flex items-center justify-center gap-3 px-10 py-5 rounded-full font-black text-lg hover:scale-105 transition-transform shadow-xl bg-[#ffb21d] text-[#281800]"
+              >
+                Formulario de admision <ArrowRight size={18} />
               </a>
-              <a href="https://wa.me/573008948517?text=Hola%20INDECAP%20Caldas%2C%20quiero%20informaci%C3%B3n%20sobre%20los%20programas%20disponibles%20en%20la%20sede%20de%20Caldas.%20%C2%BFMe%20pueden%20orientar%3F" target="_blank" rel="noopener noreferrer"
-                className="flex items-center justify-center gap-3 px-10 py-5 rounded-full font-black text-lg border-2 border-white text-white hover:bg-white/10 transition-colors">
+              <a
+                href="https://wa.me/573008948517?text=Hola%20INDECAP%20Caldas%2C%20quiero%20informacion%20sobre%20los%20programas%20disponibles%20en%20la%20sede%20de%20Caldas."
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-center gap-3 px-10 py-5 rounded-full font-black text-lg border-2 border-white text-white hover:bg-white/10 transition-colors"
+              >
                 <MessageCircle size={20} /> Hablar por WhatsApp
               </a>
             </div>
