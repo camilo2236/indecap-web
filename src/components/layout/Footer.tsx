@@ -70,8 +70,11 @@ export function Footer() {
 
         <div className="mt-10 border-t border-white/10 pt-8 text-center font-[family-name:var(--font-dm-sans)] text-sm text-white/40">
           <p>
-            © {new Date().getFullYear()} Corporación Educativa INDECAP —
-            Instituto de Ciencias Aplicadas ®. Todos los derechos reservados.
+           © {new Date().getFullYear()} Corporación Educativa INDECAP —
+            Instituto de Ciencias Aplicadas ®. Todos los derechos reservados.{" "}
+            <a href="/privacy-policy" className="hover:text-white/70 underline underline-offset-2 transition-colors">
+              Política de Privacidad
+            </a>
           </p>
         </div>
       </div>

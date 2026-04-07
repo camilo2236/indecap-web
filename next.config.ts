@@ -113,8 +113,6 @@ const nextConfig: NextConfig = {
       { source: "/convenios/", destination: "/", permanent: true },
       { source: "/q10", destination: "/", permanent: true },
       { source: "/q10/", destination: "/", permanent: true },
-      { source: "/privacy-policy", destination: "/", permanent: true },
-      { source: "/privacy-policy/", destination: "/", permanent: true },
       { source: "/quienes-somos", destination: "/", permanent: true },
       { source: "/quienes-somos/", destination: "/", permanent: true },
       { source: "/enfermeria-indecap", destination: "/programas/enfermeria", permanent: true },

@@ -74,7 +74,8 @@ export default function SedesCaldasPage() {
               <div className="flex items-start gap-6">
                 <div className="text-6xl font-[family-name:var(--font-playfair)] font-black text-[#ffb21d] leading-none shrink-0">5000+</div>
                 <div>
-                  <h3 className="font-[family-name:var(--font-playfair)] text-2xl font-black mb-3 tracking-tight">Egresados que hacen historia</h3>
+                  <h3 className="font-[family-name:var(--font-playfair)] text-2xl font-black mb-3 tracking-tight text-white">Egresados que hacen historia</h3>
+
                   <p className="text-white/70 leading-relaxed">Más de 5000 personas graduadas que se identifican como miembros de INDECAP y demuestran gran sentido de responsabilidad social en su comunidad. Rectores, docentes y líderes del municipio de Caldas pasaron por estas aulas.</p>
                 </div>
               </div>
