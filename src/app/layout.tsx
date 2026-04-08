@@ -19,7 +19,7 @@ const inter = Inter({
   weight: ["300", "400", "500", "600", "700"],
 });
 
-const BASE_URL = "https://indecap-web.vercel.app";
+const BASE_URL = "https://indecap.edu.co";
 
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
