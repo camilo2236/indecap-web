@@ -31,7 +31,7 @@ const nextConfig: NextConfig = {
           { key: "Permissions-Policy", value: "camera=(), microphone=(), geolocation=()" },
           // Cross-Origin policies
           { key: "Cross-Origin-Opener-Policy", value: "same-origin" },
-          { key: "Cross-Origin-Embedder-Policy", value: "require-corp" },
+          { key: "Cross-Origin-Embedder-Policy", value: "unsafe-none" },
           // Content Security Policy
           {
             key: "Content-Security-Policy",
@@ -42,7 +42,7 @@ const nextConfig: NextConfig = {
               "font-src 'self' https://fonts.gstatic.com",
               "img-src 'self' data: blob: https://indecap.edu.co https://indecap-web.vercel.app https://*.vercel.app",
               "connect-src 'self' https://api.resend.com https://www.google-analytics.com https://vitals.vercel-insights.com",
-              "frame-src https://www.google.com",
+              "frame-src https://www.google.com https://www.youtube.com https://www.youtube-nocookie.com",
               "object-src 'none'",
               "base-uri 'self'",
               "form-action 'self'",
