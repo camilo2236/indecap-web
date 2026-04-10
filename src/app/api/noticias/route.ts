@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { noticiasIndecap } from "@/data/noticiasIndecap";
+import { getAllNoticias } from "@/lib/noticias";
 
 export interface NoticiaUnificada {
   id: string;
@@ -18,16 +18,16 @@ const RSS_FEEDS = [
   { url: "https://www.eltiempo.com/rss/vida_educacion.xml", nombre: "El Tiempo", categoria: "educacion" },
   { url: "https://www.elcolombiano.com/rss/feeds.xml", nombre: "El Colombiano", categoria: "educacion" },
   { url: "https://teleantioquia.co/noticias/feed", nombre: "Teleantioquia", categoria: "educacion" },
-  { url: "https://www.mineducacion.gov.co/cvn/1665/channel-rss.xml", nombre: "Ministerio de Educación", categoria: "educacion" },
-  { url: "https://www.semana.com/rss/educacion.xml", nombre: "Semana Educación", categoria: "educacion" },
+  { url: "https://www.mineducacion.gov.co/cvn/1665/channel-rss.xml", nombre: "Ministerio de Educacion", categoria: "educacion" },
+  { url: "https://www.semana.com/rss/educacion.xml", nombre: "Semana Educacion", categoria: "educacion" },
   { url: "https://www.portafolio.co/rss/economia.xml", nombre: "Portafolio", categoria: "educacion" },
   { url: "https://feeds.bbci.co.uk/mundo/rss.xml", nombre: "BBC Mundo", categoria: "educacion" },
-  { url: "https://es.wired.com/feed/rss", nombre: "Wired España", categoria: "educacion" },
+  { url: "https://es.wired.com/feed/rss", nombre: "Wired Espana", categoria: "educacion" },
 ];
 
 const KEYWORDS_EDUCACION = [
   "educaci", "estudi", "aprendi", "escuel", "colegio", "universidad",
-  "técnic", "formaci", "sena", "icfes", "becas", "docente", "laboral",
+  "tecnic", "formaci", "sena", "icfes", "becas", "docente", "laboral",
   "carrera", "programa", "instituto", "capacitaci", "egresad", "cursos",
 ];
 
@@ -75,7 +75,7 @@ function parseRSS(xml: string, fuente: typeof RSS_FEEDS[0], maxItems = 5): Notic
 
       if (!titulo) continue;
 
-      if (fuente.nombre !== "Ministerio de Educación") {
+      if (fuente.nombre !== "Ministerio de Educacion") {
         const texto = `${titulo} ${descripcion}`.toLowerCase();
         const esEducacion = KEYWORDS_EDUCACION.some((kw) => texto.includes(kw));
         if (!esEducacion) continue;
@@ -107,21 +107,24 @@ function parseRSS(xml: string, fuente: typeof RSS_FEEDS[0], maxItems = 5): Notic
 
 export async function GET(req: NextRequest) {
   const { searchParams } = new URL(req.url);
-
-  // ── Límite máximo — previene abuso ───────────────────────────────────────────
   const limiteRaw = parseInt(searchParams.get("limite") || "6");
-  const limite = Math.min(Math.max(1, limiteRaw), 24); // entre 1 y 24
-
+  const limite = Math.min(Math.max(1, limiteRaw), 24);
   const categoria = searchParams.get("categoria") || "todas";
 
-  // Noticias propias
-  const propias: NoticiaUnificada[] = noticiasIndecap.map((n) => ({
-    id: n.id, titulo: n.titulo, resumen: n.resumen,
-    fecha: n.fecha, categoria: n.categoria, imagen: n.imagen,
-    fuente: "indecap", fuenteNombre: "INDECAP", destacada: n.destacada,
+  // Noticias propias desde archivos markdown
+  const propias: NoticiaUnificada[] = getAllNoticias().map((n) => ({
+    id: n.id,
+    titulo: n.titulo,
+    resumen: n.resumen,
+    fecha: n.fecha,
+    categoria: n.categoria,
+    imagen: n.imagen,
+    fuente: "indecap",
+    fuenteNombre: "INDECAP",
+    destacada: n.destacada,
   }));
 
-  // Noticias RSS
+  // Noticias RSS externas
   const rssFetches = RSS_FEEDS.map(async (feed) => {
     try {
       const res = await fetch(feed.url, {
@@ -129,13 +132,10 @@ export async function GET(req: NextRequest) {
         headers: { "User-Agent": "Mozilla/5.0 (compatible; INDECAPBot/1.0)" },
         signal: AbortSignal.timeout(6000),
       });
-      if (!res.ok) { console.log(`RSS ${feed.nombre}: ${res.status}`); return []; }
+      if (!res.ok) return [];
       const xml = await res.text();
-      const parsed = parseRSS(xml, feed, 5);
-      console.log(`RSS ${feed.nombre}: ${parsed.length} noticias`);
-      return parsed;
+      return parseRSS(xml, feed, 5);
     } catch {
-      console.log(`RSS ${feed.nombre}: falló`);
       return [];
     }
   });
