@@ -91,10 +91,24 @@ export default async function NoticiaPage({ params }: Props) {
 
             <article className="lg:col-span-2">
               <div className="space-y-6">
-                {parrafos.map((p, i) => (
-                  <p key={i} className="text-[#374151] leading-relaxed text-lg">{p}</p>
-                ))}
-              </div>
+  {parrafos.map((p, i) => (
+    <>
+      <p key={i} className="text-[#374151] leading-relaxed text-lg">{p}</p>
+      {noticia.video && i === 1 && (
+        <div key="video" className="rounded-2xl overflow-hidden aspect-video w-full my-4">
+          <iframe
+            src={`https://www.youtube.com/embed/${noticia.video}?rel=0&modestbranding=1`}
+            title="Video INDECAP"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+            className="w-full h-full"
+            loading="lazy"
+          />
+        </div>
+      )}
+    </>
+  ))}
+</div>
               {noticia.imagenes && noticia.imagenes.length > 1 && (
                 <div className="mt-12">
                   <h2 className="font-[family-name:var(--font-playfair)] text-2xl font-black text-[#080F14] mb-6">Galeria de fotos</h2>

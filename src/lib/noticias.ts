@@ -11,7 +11,8 @@ export interface NoticiaIndecap {
   categoria: "indecap" | "educacion" | "egresados" | "convenios";
   imagen?: string;
   imagenes?: string[];
-  destacada?: boolean;
+video?: string;        // ← agrega esta línea
+destacada?: boolean;
 }
 
 const noticiasDir = path.join(process.cwd(), "src/content/noticias");
@@ -34,9 +35,10 @@ export function getAllNoticias(): NoticiaIndecap[] {
       categoria: data.categoria || "indecap",
       imagen: data.imagen || undefined,
       imagenes: data.imagenes
-        ? String(data.imagenes).split(",").map((s: string) => s.trim())
-        : undefined,
-      destacada: data.destacada || false,
+  ? String(data.imagenes).split(",").map((s: string) => s.trim())
+  : undefined,
+video: data.video || undefined,    // ← agrega esta línea
+destacada: data.destacada || false,
     } as NoticiaIndecap;
   });
 
