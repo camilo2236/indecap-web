@@ -1,6 +1,6 @@
 ---
 id: william-garcia-enfermeria
-titulo: "He crecido dentro de la empresa": la historia de William, de minero a Auxiliar en Enfermeria
+titulo: He crecido dentro de la institución — la historia de William, de minero a Auxiliar en Enfermeria
 resumen: William de Jesus Garcia Londono, empleado de una empresa del sector minero en Antioquia, fue reconocido como el Mejor Bachiller del Sabatino 2018. Hoy esta en la etapa final de su formacion como Auxiliar en Enfermeria en INDECAP.
 fecha: 2026-04-13
 categoria: egresados
