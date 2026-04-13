@@ -8,7 +8,7 @@ const SLIDES = [
   { src: "/images/programs/IMG_0166-hero.jpg",                  label: "Enfermería y Veterinaria",       escuela: "Escuela de Salud" },
   { src: "/images/programs/IMG_0186-hero.jpg",                  label: "Auxiliar en Veterinaria",        escuela: "Escuela Veterinaria" },
   { src: "/images/programs/IMG_0190-hero.jpg",                  label: "Auxiliar en Enfermería",         escuela: "Escuela de Salud" },
-  { src: "/images/programs/enfermeria/enfermeria-hero.jpg",     label: "Auxiliar en Enfermería",        escuela: "Escuela de Salud" },
+  { src: "/images/programs/enfermeria/enfermeria-hero.jpg",     label: "Auxiliar en Enfermería",         escuela: "Escuela de Salud" },
   { src: "/images/programs/cosmetologia/cosmetologia-hero.jpg", label: "Cosmetología y Estética",        escuela: "Escuela de Belleza" },
   { src: "/images/programs/veterinaria/veterinaria-hero.jpg",   label: "Auxiliar en Veterinaria",        escuela: "Escuela Veterinaria" },
   { src: "/images/programs/salud-oral/salud-oral-hero.jpg",     label: "Auxiliar en Salud Oral",         escuela: "Escuela de Salud" },
@@ -16,7 +16,7 @@ const SLIDES = [
   { src: "/images/programs/mercadeo/mercadeo-hero.jpg",         label: "Técnico en Marketing Digital",   escuela: "Escuela de Administración" },
 ];
 
-const programas = [
+const programasTecnicos = [
   "Auxiliar en Enfermería",
   "Cosmetología y Estética Integral",
   "Auxiliar en Veterinaria",
@@ -36,15 +36,30 @@ const programas = [
   "Otro / No sé aún",
 ];
 
+const cursos = [
+  "RCP y Soporte Vital Básico",
+  "Inyectología",
+  "Vacunación",
+  "Toma de Muestras de Laboratorio",
+  "Primeros Auxilios",
+  "Código Fucsia",
+  "Calidad y Humanización en Salud",
+  "Excel Básico y Avanzado",
+  "Word",
+  "Peluquería y Estética Canina (Curso)",
+];
+
 const sedes = ["Medellín", "Envigado", "Caldas"];
 
 type Estado = "idle" | "loading" | "success" | "error";
+type Tab = "tecnicos" | "cursos";
 
 export function Hero() {
   const [current, setCurrent] = useState(0);
   const [transitioning, setTransitioning] = useState(false);
   const [form, setForm] = useState({ nombres: "", apellidos: "", celular: "", correo: "", programa: "", sede: "" });
   const [estado, setEstado] = useState<Estado>("idle");
+  const [tab, setTab] = useState<Tab>("tecnicos");
 
   const goTo = useCallback((i: number) => {
     if (transitioning) return;
@@ -62,6 +77,10 @@ export function Hero() {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) =>
     setForm({ ...form, [e.target.name]: e.target.value });
 
+  const selectPrograma = (p: string) => {
+    setForm({ ...form, programa: p });
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setEstado("loading");
@@ -76,10 +95,12 @@ export function Hero() {
     } catch { setEstado("error"); }
   };
 
+  const lista = tab === "tecnicos" ? programasTecnicos : cursos;
+
   return (
     <section id="inicio" className="relative min-h-screen flex overflow-hidden bg-[#080F14]">
 
-      {/* FONDO — fotos reales rotando */}
+      {/* FONDO */}
       <div className="absolute inset-0">
         {SLIDES.map((slide, i) => (
           <div
@@ -98,12 +119,11 @@ export function Hero() {
             />
           </div>
         ))}
-        {/* Overlay — más suave para ver las fotos */}
         <div className="absolute inset-0 bg-gradient-to-r from-[#080F14]/90 via-[#080F14]/60 to-[#080F14]/20" />
         <div className="absolute inset-0 bg-gradient-to-t from-[#080F14]/50 via-transparent to-transparent" />
       </div>
 
-      {/* Indicador de programa activo — bottom izquierda */}
+      {/* Indicador */}
       <div className="absolute bottom-8 left-8 z-20 hidden lg:block">
         <div className="flex items-center gap-3">
           <div className="flex gap-1.5">
@@ -111,15 +131,14 @@ export function Hero() {
               <button
                 key={i}
                 onClick={() => goTo(i)}
+                aria-label={`Ir a slide ${i + 1}`}
                 className={`h-1 rounded-full transition-all duration-300 ${
                   i === current ? "w-8 bg-[#F0A500]" : "w-2 bg-white/25 hover:bg-white/40"
                 }`}
               />
             ))}
           </div>
-          <span className="text-xs text-white/40 font-medium">
-            {SLIDES[current].label}
-          </span>
+          <span className="text-xs text-white/40 font-medium">{SLIDES[current].label}</span>
         </div>
       </div>
 
@@ -127,9 +146,8 @@ export function Hero() {
       <div className="relative z-10 w-full container mx-auto px-6 lg:px-12 pt-28 pb-16 lg:pt-32 lg:pb-20 flex items-center">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center w-full">
 
-          {/* IZQUIERDA — Texto */}
+          {/* IZQUIERDA */}
           <div>
-            {/* Badge */}
             <div className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/8 px-4 py-2 text-xs font-semibold tracking-wide text-white/80 backdrop-blur-md mb-8">
               <span className="relative flex h-2 w-2">
                 <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#F0A500] opacity-75" />
@@ -137,20 +155,14 @@ export function Hero() {
               </span>
               Inscripciones abiertas 2026
             </div>
-
-            {/* Headline — grande y audaz */}
             <h1 className="font-[family-name:var(--font-playfair)] font-black text-white leading-[0.88] tracking-tight mb-8"
               style={{ fontSize: "clamp(3rem, 6vw, 5.5rem)" }}>
-              Tu carrera<br />
-              técnica<br />
+              Tu carrera<br />técnica<br />
               <em className="italic" style={{ color: "#FFD166" }}>empieza aquí</em>
             </h1>
-
             <p className="text-white/65 text-lg leading-relaxed max-w-md mb-10 font-light">
               40 años formando técnicos en Antioquia. Más de 35.000 egresados trabajando hoy en las mejores empresas de la región.
             </p>
-
-            {/* Checks */}
             <ul className="flex flex-col gap-3 mb-10">
               {[
                 "Formación avalada por la Secretaría de Educación",
@@ -163,8 +175,6 @@ export function Hero() {
                 </li>
               ))}
             </ul>
-
-            {/* Stats */}
             <div className="flex gap-8 pt-8 border-t border-white/10">
               {[
                 { num: "35.000+", label: "Egresados" },
@@ -197,7 +207,7 @@ export function Hero() {
               </div>
             ) : (
               <>
-                <div className="mb-6">
+                <div className="mb-5">
                   <h2 className="font-[family-name:var(--font-playfair)] text-2xl font-black text-[#1a086e] mb-1">
                     Solicita información gratis
                   </h2>
@@ -206,20 +216,16 @@ export function Hero() {
 
                 <form onSubmit={handleSubmit} className="space-y-3">
                   <div className="grid grid-cols-2 gap-3">
-                    <div>
-                      <input
-                        type="text" name="nombres" value={form.nombres}
-                        onChange={handleChange} placeholder="Nombres *" required
-                        className="w-full rounded-xl border border-[#e4e9eb] bg-[#f8fafc] px-4 py-3 text-sm text-[#171c1e] placeholder:text-[#aab0b8] focus:border-[#1a086e] focus:outline-none focus:ring-2 focus:ring-[#1a086e]/10 transition-all"
-                      />
-                    </div>
-                    <div>
-                      <input
-                        type="text" name="apellidos" value={form.apellidos}
-                        onChange={handleChange} placeholder="Apellidos *" required
-                        className="w-full rounded-xl border border-[#e4e9eb] bg-[#f8fafc] px-4 py-3 text-sm text-[#171c1e] placeholder:text-[#aab0b8] focus:border-[#1a086e] focus:outline-none focus:ring-2 focus:ring-[#1a086e]/10 transition-all"
-                      />
-                    </div>
+                    <input
+                      type="text" name="nombres" value={form.nombres}
+                      onChange={handleChange} placeholder="Nombres *" required
+                      className="w-full rounded-xl border border-[#e4e9eb] bg-[#f8fafc] px-4 py-3 text-sm text-[#171c1e] placeholder:text-[#aab0b8] focus:border-[#1a086e] focus:outline-none focus:ring-2 focus:ring-[#1a086e]/10 transition-all"
+                    />
+                    <input
+                      type="text" name="apellidos" value={form.apellidos}
+                      onChange={handleChange} placeholder="Apellidos *" required
+                      className="w-full rounded-xl border border-[#e4e9eb] bg-[#f8fafc] px-4 py-3 text-sm text-[#171c1e] placeholder:text-[#aab0b8] focus:border-[#1a086e] focus:outline-none focus:ring-2 focus:ring-[#1a086e]/10 transition-all"
+                    />
                   </div>
 
                   <input
@@ -234,19 +240,74 @@ export function Hero() {
                     className="w-full rounded-xl border border-[#e4e9eb] bg-[#f8fafc] px-4 py-3 text-sm text-[#171c1e] placeholder:text-[#aab0b8] focus:border-[#1a086e] focus:outline-none focus:ring-2 focus:ring-[#1a086e]/10 transition-all"
                   />
 
-                  <div className="relative">
-                    <select
-                      name="programa" value={form.programa} onChange={handleChange}
-                      className="w-full rounded-xl border border-[#e4e9eb] bg-[#f8fafc] px-4 py-3 text-sm text-[#171c1e] focus:border-[#1a086e] focus:outline-none focus:ring-2 focus:ring-[#1a086e]/10 transition-all appearance-none"
-                    >
-                      <option value="" disabled>Programa de interés</option>
-                      {programas.map((p) => <option key={p} value={p}>{p}</option>)}
-                    </select>
+                  {/* SELECTOR DE PROGRAMA INTERACTIVO */}
+                  <div className="rounded-xl border border-[#e4e9eb] bg-[#f8fafc] p-3">
+                    {/* Tabs */}
+                    <div className="flex gap-2 mb-3">
+                      <button
+                        type="button"
+                        onClick={() => { setTab("tecnicos"); setForm(f => ({ ...f, programa: "" })); }}
+                        className={`flex-1 py-2 rounded-lg text-xs font-bold transition-all ${
+                          tab === "tecnicos"
+                            ? "bg-[#1a086e] text-white"
+                            : "bg-white text-[#787583] border border-[#e4e9eb]"
+                        }`}
+                      >
+                        Programas técnicos
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => { setTab("cursos"); setForm(f => ({ ...f, programa: "" })); }}
+                        className={`flex-1 py-2 rounded-lg text-xs font-bold transition-all ${
+                          tab === "cursos"
+                            ? "bg-[#1a086e] text-white"
+                            : "bg-white text-[#787583] border border-[#e4e9eb]"
+                        }`}
+                      >
+                        Cursos cortos
+                      </button>
+                    </div>
+
+                    {/* Chips */}
+                    <div className="flex flex-wrap gap-1.5 max-h-28 overflow-y-auto">
+                      {lista.map((p) => {
+                        const sel = form.programa === p;
+                        const esCurso = tab === "cursos";
+                        return (
+                          <button
+                            key={p}
+                            type="button"
+                            onClick={() => selectPrograma(p)}
+                            className={`px-3 py-1.5 rounded-full text-[11px] font-semibold transition-all border ${
+                              sel
+                                ? esCurso
+                                  ? "bg-[#1a086e] text-white border-[#1a086e]"
+                                  : "bg-[#1a086e] text-white border-[#1a086e]"
+                                : "bg-white text-[#474551] border-[#e4e9eb] hover:border-[#1a086e]"
+                            }`}
+                          >
+                            {p}
+                          </button>
+                        );
+                      })}
+                    </div>
+
+                    {/* Programa seleccionado */}
+                    {form.programa && (
+                      <p className="text-[11px] text-[#787583] mt-2 pt-2 border-t border-[#e4e9eb]">
+                        Seleccionado: <span className="font-bold text-[#1a086e]">{form.programa}</span>
+                      </p>
+                    )}
+                    {!form.programa && (
+                      <p className="text-[11px] text-[#aab0b8] mt-2">Toca un programa para seleccionarlo</p>
+                    )}
                   </div>
 
+                  {/* Sede */}
                   <div className="relative">
                     <select
                       name="sede" value={form.sede} onChange={handleChange} required
+                      aria-label="Sede más cercana"
                       className="w-full rounded-xl border border-[#e4e9eb] bg-[#f8fafc] px-4 py-3 text-sm text-[#171c1e] focus:border-[#1a086e] focus:outline-none focus:ring-2 focus:ring-[#1a086e]/10 transition-all appearance-none"
                     >
                       <option value="" disabled>Sede más cercana *</option>
@@ -275,7 +336,6 @@ export function Hero() {
                   </p>
                 </form>
 
-                {/* CTA secundario */}
                 <div className="mt-4 pt-4 border-t border-[#eaeff1] flex items-center justify-center gap-2">
                   <a
                     href="https://wa.me/573022389760?text=Hola%20INDECAP%2C%20quiero%20informaci%C3%B3n%20sobre%20sus%20programas"

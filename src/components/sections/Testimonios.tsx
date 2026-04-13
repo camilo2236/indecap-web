@@ -6,6 +6,14 @@ import { ChevronLeft, ChevronRight, Quote, Play } from "lucide-react";
 
 const testimonios = [
   {
+    id: "enfermeria",
+    videoId: "L7erLCnqHGA",
+    nombre: "Egresadas Auxiliar en Enfermería",
+    programa: "Auxiliar en Enfermería",
+    cita: "Recomendamos la institución por su buena calidad y por sus excelentes profesores. Los invitamos a que hagan parte de esta gran institución.",
+    color: "#1A3A6B",
+  },
+  {
     id: "valentina",
     videoId: "1Hmhu7SKaHE",
     nombre: "Valentina Rangel",
@@ -20,14 +28,6 @@ const testimonios = [
     programa: "Bachillerato Semi Escolarizado",
     cita: "Recomiendo la institución por su excelente calidad de estudio y por sus excelentes profesores. Los invito a que hagan parte de esta gran institución.",
     color: "#312783",
-  },
-  {
-    id: "enfermeria",
-    videoId: "L7erLCnqHGA",
-    nombre: "Egresadas Auxiliar en Enfermería",
-    programa: "Auxiliar en Enfermería",
-    cita: "Recomendamos la institución por su buena calidad y por sus excelentes profesores. Los invitamos a que hagan parte de esta gran institución.",
-    color: "#1A3A6B",
   },
   {
     id: "graduados",
