@@ -5,6 +5,9 @@ import { MapPin, Phone, Mail, MessageCircle, ArrowRight, Clock, Building2, Gradu
 export const metadata: Metadata = {
   title: "Sede Envigado | INDECAP – Cerca al Parque Principal de Envigado",
   description: "INDECAP Sede Envigado. Cl 37 Sur #43A-84, cerca al parque principal. 1.446 m², 8 aulas, sala de cómputo. Programas técnicos y bachillerato privado.",
+  openGraph: {
+    images: [{ url: "/images/sedes/og-sede-envigado.jpg", width: 1200, height: 630 }],
+  },
 };
 
 export default function SedesEnvigadoPage() {
@@ -148,7 +151,7 @@ export default function SedesEnvigadoPage() {
                 {[
                   { icon: MapPin, label: "Dirección",  value: "Cl 37 Sur #43A-84",               sub: "Cerca al Parque Principal de Envigado" },
                   { icon: Phone,  label: "Teléfono",   value: "(604) 448 4794",                   sub: "317 434 2783", href: "tel:6044484794" },
-                  { icon: Clock,  label: "Horario",    value: "Lunes a viernes",                  sub: "7:00 a.m. – 6:00 p.m." },
+                  { icon: Clock,  label: "Horario",    value: "Lunes a viernes",                  sub: "8:00 a.m. – 5:00 p.m." },
                   { icon: Mail,   label: "Correo",     value: "sedeenvigado@indecap.edu.co",      href: "mailto:sedeenvigado@indecap.edu.co" },
                 ].map(({ icon: Icon, label, value, sub, href }) => (
                   <div key={label} className="flex items-start gap-4">

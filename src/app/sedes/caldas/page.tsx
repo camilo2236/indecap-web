@@ -4,7 +4,10 @@ import { MapPin, Phone, Mail, MessageCircle, ArrowRight, Clock, Building2, Gradu
 
 export const metadata: Metadata = {
   title: "Sede Caldas | INDECAP – Cerca al Parque Principal de Caldas",
-  description: "INDECAP Sede Caldas. Calle 130 sur N° 51-65. 10 aulas, laboratorio de química y física, biblioteca. 5000+ egresados. Programas técnicos y bachillerato.",
+  description: "INDECAP Sede Caldas. Calle 130 sur N° 51-65. 10 aulas, laboratorio de química y física, biblioteca. 420+ egresados. Programas técnicos y bachillerato.",
+  openGraph: {
+    images: [{ url: "/images/sedes/og-sede-caldas.jpg", width: 1200, height: 630 }],
+  },
 };
 
 export default function SedesCaldasPage() {
