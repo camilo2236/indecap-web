@@ -21,6 +21,7 @@ const escuelas = [
       { name: "Auxiliar en Salud Pública",          hours: "1.650h", img: "/images/programs/salud-publica/salud-publica-hero.jpg",          slug: "salud-publica" },
       { name: "Administrativo en Salud",            hours: "1.650h", img: "/images/programs/administrativo-salud/administrativo-hero2.jpg",  slug: "administrativo-salud" },
       { name: "Atención al Adulto Mayor",           hours: "700h",   img: "/images/programs/adulto-mayor/adulto-mayor-hero.jpg",             slug: "adulto-mayor" },
+      { name: "Atención a la Primera Infancia", hours: "1.000h", img: "/images/primera-infancia/hero.jpg", slug: "primera-infancia" },
     ],
   },
   {

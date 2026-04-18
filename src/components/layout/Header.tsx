@@ -19,6 +19,7 @@ const programas = [
   { label: "Auxiliar en Salud Pública",          href: "/programas/salud-publica",           escuela: "Salud" },
   { label: "Administrativo en Salud",            href: "/programas/administrativo-salud",    escuela: "Salud" },
   { label: "Atención al Adulto Mayor",           href: "/programas/adulto-mayor",            escuela: "Salud" },
+  { label: "Atención a la Primera Infancia", href: "/programas/primera-infancia", escuela: "Salud" },
   { label: "Auxiliar en Veterinaria",            href: "/programas/veterinaria",             escuela: "Veterinaria" },
   { label: "Peluquería Canina",                  href: "/programas/peluqueria-canina",       escuela: "Veterinaria" },
   { label: "Cosmetología y Estética",            href: "/programas/cosmetologia",            escuela: "Belleza" },
