@@ -3,7 +3,7 @@ import { NextRequest, NextResponse } from 'next/server'
 const PROTECTED_PATHS = ['/academia', '/induccion']
 const COOKIE_NAME = 'indecap_auth'
 
-export function middleware(req: NextRequest) {
+export function proxy(req: NextRequest) {
   const path = req.nextUrl.pathname
   const isProtected = PROTECTED_PATHS.some(p => path.startsWith(p))
   if (!isProtected) return NextResponse.next()

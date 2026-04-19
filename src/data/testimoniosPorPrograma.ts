@@ -102,4 +102,10 @@ export const testimoniosPorPrograma: Record<string, MiniTestimonio> = {
     programa: "Peluquería y Estética Canina",
     egresados: [],
   },
+  "primera-infancia": {
+    nombre: "Leidy Johana M.",
+    texto: "INDECAP me formó con amor y profesionalismo. Hoy trabajo en un jardín infantil y cada día aplico las técnicas de estimulación temprana que aprendí. Una carrera que transforma vidas.",
+    programa: "Atención a la Primera Infancia",
+    egresados: ["Leidy Johana M.", "Camila Andrea R.", "Luisa Fernanda T.", "Valentina G.", "Sara Melissa C."],
+  },
 };

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="UTF-8">
@@ -450,7 +450,7 @@ body{font-family:'Inter',sans-serif;background:#f5fafc;color:#1a1c1e;font-size:1
     <div class="card-label">Respuestas al cierre — qué hacer en cada caso</div>
     <div class="tree-step"><div class="step-num" style="background:linear-gradient(135deg,#166534,#14532d)">✓</div><div>
       <div class="step-label">Dice "¿Dónde queda la sede?"</div>
-      <div class="bubble-agent">"📍 Medellín: Calle 56 #45-26, cerca al Metro Prado.<br>📍 Envigado: [dirección]<br>📍 Caldas: Cl 130 Sur #51-65, cerca al parque.<br><br>¿Cuál te queda más cerca? Puedo avisarle al equipo que vas esta semana."</div>
+      <div class="bubble-agent">"📍 Medellín: Calle 56 #45-26, cerca al Metro Prado.<br>📍 Envigado: Cl 37 Sur #43A-84, cerca al Parque Principal de Envigado<br>📍 Caldas: Cl 130 Sur #51-65, cerca al parque.<br><br>¿Cuál te queda más cerca? Puedo avisarle al equipo que vas esta semana."</div>
     </div></div>
     <div class="tree-step"><div class="step-num" style="background:linear-gradient(135deg,#166534,#14532d)">✓</div><div>
       <div class="step-label">Dice "Esta semana me acerco"</div>
@@ -524,7 +524,7 @@ body{font-family:'Inter',sans-serif;background:#f5fafc;color:#1a1c1e;font-size:1
       <div class="obj-step"><div class="obj-step-label">Paso 1 · Validar sin ceder</div>
         <div class="bubble-agent" style="max-width:500px">"Entiendo, es una inversión importante. Y precisamente por eso quiero que tomes la mejor decisión."</div></div>
       <div class="obj-step"><div class="obj-step-label">Paso 2 · Reencuadrar con datos</div>
-        <div class="bubble-agent" style="max-width:500px">"El Técnico en Enfermería te habilita para trabajar en clínicas con salarios desde $1.400.000 al mes. En 2 meses de trabajo ya recuperas la inversión."</div></div>
+        <div class="bubble-agent" style="max-width:500px">"El Técnico en Enfermería te habilita para trabajar en clínicas con salarios desde $2.000.000 al mes. En 2 meses de trabajo ya recuperas la inversión."</div></div>
       <div class="obj-step"><div class="obj-step-label">Paso 3 · Ofrecer financiación</div>
         <div class="bubble-agent" style="max-width:500px">"Además tenemos financiación: empiezas con $500.000 y pagas el resto en 5 cuotas cómodas. ¿Así se te facilita más?"</div></div>
       <div class="alert-tip">✓ Nunca digas "es económico". Defiende el valor con datos concretos de empleabilidad.</div>
@@ -638,291 +638,213 @@ body{font-family:'Inter',sans-serif;background:#f5fafc;color:#1a1c1e;font-size:1
 </div><!-- /main -->
 
 <script>
-/* ============================================================ STATE */
-const SK = 'indecap_v3';
-let state = { modules_done:[], sim_count:0, total_score:0 };
-function loadState(){ try{ const s=localStorage.getItem(SK); if(s) state={...state,...JSON.parse(s)}; }catch(e){} }
-function saveState(){ try{ localStorage.setItem(SK,JSON.stringify(state)); }catch(e){} }
-function markDone(mod){ if(!state.modules_done.includes(mod)){ state.modules_done.push(mod); saveState(); updateProgress(); } }
-function resetProgress(){ if(confirm('¿Reiniciar todo el progreso?')){ state={modules_done:[],sim_count:0,total_score:0}; saveState(); updateProgress(); } }
-
-/* ============================================================ NAVIGATION */
-function goTo(id, btn){
-  document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
-  document.querySelectorAll('.nav-btn').forEach(b=>b.classList.remove('active'));
-  const sec=document.getElementById('s-'+id);
-  if(sec) sec.classList.add('active');
-  if(btn) btn.classList.add('active');
-  else { document.querySelectorAll('.nav-btn').forEach(b=>{ if(b.getAttribute('onclick')&&b.getAttribute('onclick').includes("'"+id+"'")) b.classList.add('active'); }); }
-  window.scrollTo({top:0,behavior:'smooth'});
-  if(id==='scripts') renderScripts();
-  if(id==='simulador') initSim();
-  if(id==='cierre') renderCierrePrograms();
-  updateProgress();
-}
-
-/* ============================================================ PROGRESS */
-const MODULES = ['tecnica','arbol','cierre','objeciones','scripts','simulador'];
-function updateProgress(){
-  const done=state.modules_done.length;
-  const pct=Math.round((done/MODULES.length)*100);
-  const circ=2*Math.PI*15;
-  const offset=circ-(pct/100)*circ;
-  const ring=document.getElementById('nav-ring');
-  if(ring) ring.setAttribute('stroke-dashoffset',offset);
-  const np=document.getElementById('nav-pct');
-  if(np) np.textContent=pct+'%';
-  const te=document.getElementById('tr-pct'); if(te) te.textContent=pct+'%';
-  const tm=document.getElementById('tr-modules'); if(tm) tm.textContent=done+'/'+MODULES.length;
-  const ts=document.getElementById('tr-sims'); if(ts) ts.textContent=state.sim_count;
-  const tsc=document.getElementById('tr-score'); if(tsc) tsc.textContent=state.total_score;
-  MODULES.forEach(m=>{
-    const mc=document.getElementById('mc-'+m);
-    const mb=document.getElementById('mb-'+m);
-    if(state.modules_done.includes(m)){
-      if(mc) mc.classList.add('done');
-      if(mb){ mb.textContent='Completado ✓'; mb.className='mod-badge badge-done'; }
-    } else {
-      if(mc) mc.classList.remove('done');
-      if(mb){ mb.textContent='Pendiente'; mb.className='mod-badge badge-pending'; }
-    }
-  });
-  const pl=document.getElementById('modules-progress-list');
-  if(pl){
-    const info=[
-      {id:'tecnica',icon:'🎯',name:'Técnica base — micro-confirmación'},
-      {id:'arbol',icon:'🌿',name:'Árbol de conversación'},
-      {id:'cierre',icon:'🏆',name:'Técnica de cierre'},
-      {id:'objeciones',icon:'🛡️',name:'Manejo de objeciones'},
-      {id:'scripts',icon:'📋',name:'Biblioteca de scripts'},
-      {id:'simulador',icon:'🎮',name:'Simulador de práctica'},
-    ];
-    pl.innerHTML=info.map(m=>`<div class="mod-progress-row"><span style="font-size:16px">${m.icon}</span><span class="mod-progress-name">${m.name}</span><span class="mod-status ${state.modules_done.includes(m.id)?'status-done':'status-pending'}">${state.modules_done.includes(m.id)?'Completado ✓':'Pendiente'}</span></div>`).join('');
-  }
-}
-
-/* ============================================================ OBJECIONES */
-function toggleObj(btn,id){
-  const body=document.getElementById(id);
-  body.classList.toggle('open');
-  const spans=btn.querySelectorAll('span');
-  const arrow=spans[spans.length-1];
-  arrow.textContent=body.classList.contains('open')?'▴':'▾';
-}
-
-/* ============================================================ CIERRE PROGRAMS */
-const CIERRE_PROGRAMS = [
-  {prog:'Auxiliar en Enfermería', emoji:'💙', msg:'Mira, invertir en tu formación como Auxiliar en Enfermería es la única decisión que nunca pierde valor. Lo que hoy ves como un pago, en 3 ciclos se habrá convertido en un camino rentable cuidando vidas — con opciones de trabajo en las mejores clínicas y hospitales de Antioquia. El conocimiento es lo único que nadie te puede quitar... ¡y lo que más te hará ganar! 💙'},
-  {prog:'Servicios Farmacéuticos', emoji:'💊', msg:'Mira, invertir en Servicios Farmacéuticos es abrirte las puertas de uno de los sectores más estables de Colombia. Lo que hoy ves como un pago, en 3 ciclos se habrá convertido en trabajo fijo en droguerías, clínicas y cadenas farmacéuticas. El conocimiento es lo único que nadie te puede quitar... ¡y lo que más te hará ganar! 💊'},
-  {prog:'Auxiliar en Salud Oral', emoji:'🦷', msg:'Mira, invertir en Salud Oral es entrar a uno de los sectores con más demanda laboral en Colombia. Lo que hoy ves como un pago, en 3 ciclos se habrá convertido en trabajo estable en consultorios y clínicas dentales que siempre necesitan personal certificado. El conocimiento es lo único que nadie te puede quitar... ¡y lo que más te hará ganar! 🦷'},
-  {prog:'Auxiliar en Salud Pública', emoji:'🏥', msg:'Mira, invertir en Salud Pública es prepararte para trabajar donde más se necesita: comunidades, alcaldías, hospitales y programas del Estado. Lo que hoy ves como un pago, en 3 ciclos se habrá convertido en una carrera con propósito y estabilidad. El conocimiento es lo único que nadie te puede quitar... ¡y lo que más te hará ganar! 🏥'},
-  {prog:'Administrativo en Salud', emoji:'📋', msg:'Mira, invertir en Administrativo en Salud es combinar dos mundos que siempre tienen demanda: la salud y la gestión. Lo que hoy ves como un pago, en 3 ciclos se habrá convertido en trabajo en clínicas, EPS, IPS y hospitales que necesitan personas organizadas y certificadas. El conocimiento es lo único que nadie te puede quitar... ¡y lo que más te hará ganar! 📋💙'},
-  {prog:'Atención al Adulto Mayor', emoji:'🤍', msg:'Mira, invertir en Atención al Adulto Mayor es prepararte para uno de los sectores con más crecimiento en Colombia. Lo que hoy ves como un pago, en 3 ciclos se habrá convertido en trabajo en hogares geriátricos, clínicas y servicios domiciliarios. El conocimiento es lo único que nadie te puede quitar... ¡y lo que más te hará ganar! 🤍'},
-  {prog:'Auxiliar en Veterinaria', emoji:'🐾', msg:'Mira, invertir en Veterinaria es convertir tu amor por los animales en una carrera real. Lo que hoy ves como un pago, en 3 ciclos se habrá convertido en trabajo en clínicas veterinarias, refugios y consultorios — haciendo lo que genuinamente te apasiona. El conocimiento es lo único que nadie te puede quitar... ¡y lo que más te hará ganar! 🐾'},
-  {prog:'Peluquería Canina', emoji:'🐶', msg:'Mira, invertir en Peluquería Canina es apostar por un negocio que crece cada día más en Colombia. Lo que hoy ves como un pago, en poco tiempo se habrá convertido en tus propios clientes, tu propio horario y tus propias ganancias — haciendo algo que amás. El conocimiento es lo único que nadie te puede quitar... ¡y lo que más te hará ganar! 🐶✂️'},
-  {prog:'Cosmetología y Estética', emoji:'✨', msg:'Mira, invertir en Cosmetología es apostar por tu propia independencia. Lo que hoy ves como un pago, en 2 ciclos se habrá convertido en tu propio negocio, tus propios clientes y tus propias ganancias — sin depender de nadie. El conocimiento es lo único que nadie te puede quitar... ¡y lo que más te hará ganar! ✂️✨'},
-  {prog:'Auxiliar Contable', emoji:'📊', msg:'Mira, invertir en Contabilidad es abrirte las puertas de todas las empresas — porque todas necesitan alguien que maneje sus números. Lo que hoy ves como un pago, en 3 ciclos se habrá convertido en trabajo estable con posibilidades de crecer en cualquier sector. El conocimiento es lo único que nadie te puede quitar... ¡y lo que más te hará ganar! 📊'},
-  {prog:'Talento Humano', emoji:'🤝', msg:'Mira, invertir en Talento Humano es prepararte para ser la persona que conecta empresas con personas — uno de los roles más valorados hoy. Lo que hoy ves como un pago, en 3 ciclos se habrá convertido en trabajo en empresas y organizaciones que necesitan gestores humanos certificados. El conocimiento es lo único que nadie te puede quitar... ¡y lo que más te hará ganar! 🤝'},
-  {prog:'Técnico en Marketing Digital', emoji:'🚀', msg:'Mira, invertir en Marketing Digital es entrar al mundo donde todas las empresas quieren estar pero pocas saben cómo. Lo que hoy ves como un pago, en 3 ciclos se habrá convertido en habilidades que puedes usar en empresas, agencias o tu propio emprendimiento desde cualquier lugar. El conocimiento es lo único que nadie te puede quitar... ¡y lo que más te hará ganar! 📱🚀'},
-  {prog:'Seguridad y Salud en el Trabajo', emoji:'🦺', msg:'Mira, invertir en SST es prepararte para algo que la ley exige en todas las empresas de Colombia — lo que significa que siempre habrá demanda de profesionales certificados. Lo que hoy ves como un pago, en 3 ciclos se habrá convertido en un perfil muy valorado en industrias, constructoras y empresas de todos los sectores. El conocimiento es lo único que nadie te puede quitar... ¡y lo que más te hará ganar! 🦺'},
-  {prog:'Técnico en Sistemas', emoji:'💻', msg:'Mira, invertir en Sistemas es apostar por el sector que más crece y que más necesita Colombia. Lo que hoy ves como un pago, en 3 ciclos se habrá convertido en trabajo en empresas, centros de cómputo y negocios que dependen de la tecnología. El conocimiento es lo único que nadie te puede quitar... ¡y lo que más te hará ganar! 💻'},
-  {prog:'Auxiliar en Desarrollo de Software', emoji:'👨‍💻', msg:'Mira, invertir en Desarrollo de Software es entrar a la carrera mejor pagada del mundo digital. Lo que hoy ves como un pago, en 3 ciclos se habrá convertido en habilidades que abren puertas en empresas locales, remotas e internacionales. El conocimiento es lo único que nadie te puede quitar... ¡y lo que más te hará ganar! 👨‍💻🌎'},
-  {prog:'Entrenamiento Deportivo', emoji:'🏋️', msg:'Mira, invertir en Entrenamiento Deportivo es convertir tu pasión por el deporte en una carrera profesional. Lo que hoy ves como un pago, en 3 ciclos se habrá convertido en trabajo en gimnasios, clubes deportivos, escuelas y programas de bienestar empresarial. El conocimiento es lo único que nadie te puede quitar... ¡y lo que más te hará ganar! 🏋️‍♂️'},
-];
-
-const SEDE_MSG = '¡¡Sin Embargo!! Mi recomendación es que, si tienes tiempo esta semana, te acerques a nuestra sede para conocer nuestros ambientes de aprendizaje, laboratorios y la ubicación. 😊 No solo es importante el precio del programa, sino también el entorno donde vas a desarrollarte y crecer profesionalmente. ¿Ya conoces la Sede?';
-
-function renderCierrePrograms(){
-  const cont=document.getElementById('cierre-programas');
-  if(!cont||cont.innerHTML) return;
-  
-  // Mensaje sede primero
-  cont.innerHTML=`
-    <div style="margin-bottom:1.25rem">
-      <div class="cierre-msg-label" style="font-family:'Work Sans',sans-serif;font-size:11px;font-weight:600;color:#166534;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:6px">Mensaje 2 · Invitación a sede (igual para todos los programas)</div>
-      <div class="script-msg" style="border-left-color:#166534;margin-bottom:6px">${SEDE_MSG}</div>
-      <button class="copy-btn" onclick="copyText(this,'${SEDE_MSG.replace(/'/g,"\\'")}')">Copiar mensaje sede</button>
-    </div>
-    <div class="divider"></div>
-    <div class="cierre-msg-label" style="font-family:'Work Sans',sans-serif;font-size:11px;font-weight:600;color:#1a086e;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:10px">Mensaje 1 · Ancla emocional por programa</div>
-  `;
-  
-  CIERRE_PROGRAMS.forEach((p,i)=>{
-    const div=document.createElement('div');
-    div.style.marginBottom='10px';
-    div.innerHTML=`
-      <div style="font-size:13px;font-weight:500;color:#1a086e;margin-bottom:5px">${p.emoji} ${p.prog}</div>
-      <div class="script-msg" id="cm-${i}">${p.msg}</div>
-      <button class="copy-btn" onclick="copyText(this,'${p.msg.replace(/'/g,"\\'")}')">Copiar mensaje</button>
-    `;
-    cont.appendChild(div);
-  });
-}
-
-/* ============================================================ SCRIPTS DATA */
-const SCRIPTS = [
-  {cat:'cierre',title:'Invitación a sede (universal)',situation:'Justo después de enviar el mensaje emocional', msg:SEDE_MSG},
-  {cat:'cierre',title:'Cuando pregunta "¿Dónde queda?"',situation:'Prospecto pide la dirección después del cierre', msg:'📍 Medellín: Calle 56 #45-26, cerca al Metro Prado.\n📍 Envigado: [dirección Envigado]\n📍 Caldas: Cl 130 Sur #51-65, cerca al parque principal.\n\n¿Cuál te queda más cerca? Puedo avisarle al equipo que vas esta semana 😊'},
-  {cat:'cierre',title:'Confirmar visita a sede',situation:'Prospecto dice "Esta semana me acerco"', msg:'¡Perfecto! ¿Qué día te funciona mejor, entre semana o sábado? Así te confirmo el horario de atención y te esperamos con toda la información lista 😊'},
-  {cat:'cierre',title:'Seguimiento 48h sin respuesta',situation:'Silencio después del cierre', msg:'Hola [Nombre], ¿pudiste revisar la información? Todavía tenemos cupo en el grupo que inicia [fecha]. ¿Hay alguna duda que pueda resolver para que no pierdas tu espacio? 😊'},
-  {cat:'salud',title:'Primer mensaje — Enfermería',situation:'Prospecto llega por anuncio de Enfermería', msg:'¡Hola! Veo que te llama la atención el programa de Auxiliar en Enfermería, ¿Correcto?'},
-  {cat:'salud',title:'Precios — Enfermería',situation:'Confirmó interés, pregunta precio', msg:'Tenemos dos opciones: de contado $2.560.000 por ciclo (18% de descuento incluido), o financiado con cuota inicial de $500.000 y 5 cuotas de $463.200.\n\nAdicionales: póliza $250.000, formulario + carnet $50.000, uniformes $120.000 c/u, bata $65.000.\n\n¿Cuál opción se ajusta mejor a ti?'},
-  {cat:'salud',title:'Ancla emocional — Enfermería',situation:'Justo después de dar el precio', msg:CIERRE_PROGRAMS[0].msg},
-  {cat:'salud',title:'Primer mensaje — Salud Oral',situation:'Prospecto llega por anuncio de Salud Oral', msg:'¡Hola! Veo que te llama la atención el programa de Auxiliar en Salud Oral, ¿Correcto?'},
-  {cat:'salud',title:'Primer mensaje — Farmacia',situation:'Prospecto llega por anuncio de Farmacia', msg:'¡Hola! Veo que te llama la atención el programa de Servicios Farmacéuticos, ¿Correcto?'},
-  {cat:'excel',title:'Primer mensaje — Excel',situation:'Prospecto llega por anuncio de Excel', msg:'¡Hola! Veo que te llama la atención el curso de Excel, ¿Correcto?'},
-  {cat:'excel',title:'Precios Excel — completo',situation:'Confirmó interés, pregunta precio', msg:'Manejamos 3 niveles: Básico, Intermedio y Avanzado. Cada nivel cuesta $200.000 (20 horas), o los 3 juntos por $499.900 — ya con el 15% de descuento incluido.\n\nHorarios:\n• Sábados 8am–12pm\n• Sábados 1pm–4pm\n• Entre semana mañana o noche\n• También en modalidad virtual\n\n¿Cuál horario te funciona mejor?'},
-  {cat:'excel',title:'Ancla emocional — Excel',situation:'Justo después de dar el precio', msg:CIERRE_PROGRAMS.find(p=>p.prog==='Técnico en Marketing Digital')?.msg||''},
-  {cat:'excel',title:'Descuento — Excel',situation:'Pide descuento adicional', msg:'El precio que tienes ya incluye el descuento especial. Pero si llevas los 3 niveles juntos, en vez de $600.000 te quedan en $499.900 — ya te ahorras $100.100. ¿Te animas con el paquete completo?'},
-  {cat:'cosm',title:'Primer mensaje — Cosmetología',situation:'Prospecto llega por anuncio de Cosmetología', msg:'¡Hola! Veo que te llama la atención el programa de Cosmetología y Estética, ¿Correcto?'},
-  {cat:'cosm',title:'Precios — Cosmetología',situation:'Confirmó interés, pregunta precio', msg:'El Técnico en Cosmetología tiene 2 ciclos.\n\nDe contado: $1.885.000 por ciclo (20% de descuento incluido).\nFinanciado: cuota inicial $500.000 y 5 cuotas de $314.700.\n\nAdicionales: formulario + carnet $50.000, uniforme $149.000.\n\n¿Cuál opción te funciona mejor?'},
-  {cat:'cosm',title:'Ancla emocional — Cosmetología',situation:'Justo después de dar el precio', msg:CIERRE_PROGRAMS.find(p=>p.prog==='Cosmetología y Estética')?.msg||''},
-  {cat:'vet',title:'Primer mensaje — Veterinaria',situation:'Prospecto llega por anuncio de Veterinaria', msg:'¡Hola! Veo que te llama la atención el programa de Auxiliar en Veterinaria, ¿Correcto?'},
-  {cat:'vet',title:'Ancla emocional — Veterinaria',situation:'Justo después de dar el precio', msg:CIERRE_PROGRAMS[6].msg},
-  {cat:'vet',title:'Primer mensaje — Peluquería Canina',situation:'Prospecto llega por anuncio de Peluquería Canina', msg:'¡Hola! Veo que te llama la atención el curso de Peluquería Canina, ¿Correcto?'},
-  {cat:'admin',title:'Ancla emocional — SST',situation:'Justo después de dar el precio', msg:CIERRE_PROGRAMS.find(p=>p.prog==='Seguridad y Salud en el Trabajo')?.msg||''},
-  {cat:'admin',title:'Ancla emocional — Marketing Digital',situation:'Justo después de dar el precio', msg:CIERRE_PROGRAMS.find(p=>p.prog==='Técnico en Marketing Digital')?.msg||''},
-  {cat:'admin',title:'Ancla emocional — Talento Humano',situation:'Justo después de dar el precio', msg:CIERRE_PROGRAMS.find(p=>p.prog==='Talento Humano')?.msg||''},
-  {cat:'tech',title:'Primer mensaje — Sistemas',situation:'Prospecto llega por anuncio de Sistemas', msg:'¡Hola! Veo que te llama la atención el programa de Técnico en Sistemas, ¿Correcto?'},
-  {cat:'tech',title:'Ancla emocional — Sistemas',situation:'Justo después de dar el precio', msg:CIERRE_PROGRAMS.find(p=>p.prog==='Técnico en Sistemas')?.msg||''},
-  {cat:'tech',title:'Ancla emocional — Software',situation:'Justo después de dar el precio', msg:CIERRE_PROGRAMS.find(p=>p.prog==='Auxiliar en Desarrollo de Software')?.msg||''},
-  {cat:'dep',title:'Primer mensaje — Entrenamiento Deportivo',situation:'Prospecto llega por anuncio', msg:'¡Hola! Veo que te llama la atención el programa de Entrenamiento Deportivo, ¿Correcto?'},
-  {cat:'dep',title:'Ancla emocional — Entrenamiento Deportivo',situation:'Justo después de dar el precio', msg:CIERRE_PROGRAMS.find(p=>p.prog==='Entrenamiento Deportivo')?.msg||''},
-  {cat:'gen',title:'Respuesta a "¿dónde quedan?"',situation:'Primera pregunta sobre ubicación', msg:'Tenemos 3 sedes:\n\n📍 Medellín: Calle 56 #45-26, cerca al Metro Prado\n📍 Envigado: [dirección]\n📍 Caldas: Cl 130 Sur #51-65, cerca al parque principal\n\n¿Cuál te queda más cerca?'},
-  {cat:'gen',title:'Pedir WhatsApp (después de dar valor)',situation:'Prospecto en inbox de Meta', msg:'Para enviarte los horarios completos y la información de inscripción de forma más cómoda, ¿me compartes tu WhatsApp? Así te llega todo organizado 😊'},
-  {cat:'gen',title:'Validez del certificado',situation:'Prospecto duda si el título sirve', msg:'INDECAP lleva 40 años en Antioquia, con aprobación de la Secretaría de Educación. Nuestros títulos son reconocidos por clínicas, hospitales y empresas del sector en toda la región. ¿Quieres que te comparta la resolución de aprobación?'},
-  {cat:'gen',title:'Seguimiento 7 días — nuevo grupo',situation:'Prospecto no respondió en una semana', msg:'Hola [Nombre], ¿cómo estás? Vamos a abrir un nuevo grupo de [programa] el [fecha]. Si en este momento no era el momento ideal, ¿cuándo sería buen momento para retomar? 😊'},
-];
-
-let currentCat='todos';
-function filterCat(cat,btn){
-  currentCat=cat;
-  document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
-  btn.classList.add('active');
-  renderScripts();
-}
-function filterScripts(){ renderScripts(); }
-
-function renderScripts(){
-  const q=document.getElementById('script-search')?.value.toLowerCase()||'';
-  const cont=document.getElementById('scripts-container');
-  if(!cont) return;
-  const tagClass={cierre:'tag-cierre',salud:'tag-salud',excel:'tag-excel',cosm:'tag-cosm',vet:'tag-vet',admin:'tag-admin',tech:'tag-tech',dep:'tag-dep',gen:'tag-gen'};
-  const tagLabel={cierre:'Cierre',salud:'Salud',excel:'Excel',cosm:'Belleza',vet:'Veterinaria',admin:'Administrativa',tech:'Tecnología',dep:'Deportes',gen:'General'};
-  const filtered=SCRIPTS.filter(s=>{
-    const mc=currentCat==='todos'||s.cat===currentCat;
-    const mq=!q||s.title.toLowerCase().includes(q)||s.msg.toLowerCase().includes(q)||s.situation.toLowerCase().includes(q);
-    return mc&&mq;
-  });
-  cont.innerHTML=filtered.map((s,i)=>`
-    <div class="script-card">
-      <span class="script-tag ${tagClass[s.cat]}">${tagLabel[s.cat]}</span>
-      <div class="script-title">${s.title}</div>
-      <div style="font-size:12px;color:#42474e;margin-bottom:6px;font-style:italic">Situación: ${s.situation}</div>
-      <div class="script-msg">${s.msg.replace(/\n/g,'<br>')}</div>
-      <button class="copy-btn" onclick="copyText(this,'${s.msg.replace(/\n/g,'\\n').replace(/'/g,"\\'")}')">Copiar mensaje</button>
-    </div>`).join('');
-  if(!filtered.length) cont.innerHTML='<div style="text-align:center;padding:2rem;color:#42474e;font-style:italic">No se encontraron scripts con ese filtro.</div>';
-}
-
-function copyText(btn,msg){
-  const text=msg.replace(/\\n/g,'\n');
-  navigator.clipboard.writeText(text).then(()=>{ btn.textContent='¡Copiado!'; btn.classList.add('copied'); setTimeout(()=>{ btn.textContent='Copiar mensaje'; btn.classList.remove('copied'); },2000); }).catch(()=>{ const ta=document.createElement('textarea'); ta.value=text; document.body.appendChild(ta); ta.select(); document.execCommand('copy'); document.body.removeChild(ta); btn.textContent='¡Copiado!'; btn.classList.add('copied'); setTimeout(()=>{ btn.textContent='Copiar mensaje'; btn.classList.remove('copied'); },2000); });
-}
-
-/* ============================================================ SIMULATOR */
 const PROSPECTS = [
-  {id:0,name:'Lore Ospina',initials:'LO',sub:'Enfermería · WhatsApp Medellín',steps:[
-    {prospect:'Hola buenas tardes',hint:'Identifica el canal y aplica la micro-confirmación.',opts:[
-      {text:'¡Hola! Veo que te llama la atención el programa de Auxiliar en Enfermería, ¿Correcto?',correct:true,fb:'Perfecto. Micro-confirmación aplicada. El prospecto siente que fue escuchado.'},
-      {text:'Hola! ¿En qué le puedo ayudar?',correct:false,fb:'Pregunta abierta sin dirección. Aplica la micro-confirmación con el programa del anuncio.'},
-      {text:'Hola! Te comparto nuestros programas: Enfermería, Cosmetología, Veterinaria...',correct:false,fb:'Error crítico. Nunca lances la lista. Un prospecto, un mensaje, un programa.'},
+  {id:0,name:'Lore Ospina',initials:'LO',sub:'Enferm\u00eda \u00b7 WhatsApp Medell\u00edn',steps:[
+    {prospect:'Hola buenas tardes',hint:'Identifica el canal y aplica la micro-confirmaci\u00f3n.',opts:[
+      {text:'\u00a1Hola! Veo que te llama la atenci\u00f3n el programa de Auxiliar en Enfermer\u00eda, \u00bfCorrecto?',correct:true,fb:'Perfecto. Micro-confirmaci\u00f3n aplicada.'},
+      {text:'Hola! \u00bfEn qu\u00e9 le puedo ayudar?',correct:false,fb:'Pregunta abierta sin direcci\u00f3n. Aplica la micro-confirmaci\u00f3n.'},
+      {text:'Hola! Te comparto nuestros programas: Enfermer\u00eda, Cosmetolog\u00eda, Veterinaria...',correct:false,fb:'Error cr\u00edtico. Nunca lances la lista.'},
     ]},
-    {prospect:'Sí, quiero información',hint:'Confirmó interés. Explora motivación antes de dar precios.',opts:[
-      {text:'Perfecto! ¿Ya tienes experiencia en el área o estás comenzando desde cero?',correct:true,fb:'Excelente. Preguntar antes de informar = entender la necesidad real.'},
-      {text:'El programa cuesta $2.560.000 de contado o puede financiarlo.',correct:false,fb:'Demasiado rápido. El precio sin contexto genera objeción inmediata.'},
-      {text:'Te envío el pensum y los horarios disponibles.',correct:false,fb:'Información sin contexto abruma. Primero escucha.'},
+    {prospect:'S\u00ed, quiero informaci\u00f3n',hint:'Confirm\u00f3 inter\u00e9s. Explora motivaci\u00f3n antes de dar precios.',opts:[
+      {text:'Perfecto! \u00bfYa tienes experiencia en el \u00e1rea o est\u00e1s comenzando desde cero?',correct:true,fb:'Excelente. Preguntar antes de informar.'},
+      {text:'El programa cuesta $2.560.000 de contado o puede financiarlo.',correct:false,fb:'Demasiado r\u00e1pido. El precio sin contexto genera objeci\u00f3n.'},
+      {text:'Te env\u00edo el pensum y los horarios disponibles.',correct:false,fb:'Informaci\u00f3n sin contexto abruma. Primero escucha.'},
     ]},
-    {prospect:'Estoy comenzando, quiero trabajar en clínicas',hint:'Motivación clara. Presenta el programa conectado a esa motivación.',opts:[
-      {text:'El Técnico en Enfermería te habilita para trabajar en clínicas, hospitales y centros de salud. INDECAP lleva 40 años en Antioquia. ¿Cuándo te gustaría empezar?',correct:true,fb:'Propuesta personalizada + credencial + pregunta de urgencia. Perfecto.'},
-      {text:'Perfecto, ¿cuánto puedes dar de cuota inicial?',correct:false,fb:'Prematuro. Construye valor antes de hablar de dinero.'},
-      {text:'Entonces Enfermería es ideal. Te mando todo por aquí.',correct:false,fb:'Siempre termina con pregunta para mantener el diálogo activo.'},
+    {prospect:'Estoy comenzando, quiero trabajar en cl\u00ednicas',hint:'Motivaci\u00f3n clara. Presenta el programa conectado a esa motivaci\u00f3n.',opts:[
+      {text:'El T\u00e9cnico en Enfermer\u00eda te habilita para trabajar en cl\u00ednicas y hospitales. INDECAP lleva 40 a\u00f1os en Antioquia. \u00bfCu\u00e1ndo te gustar\u00eda empezar?',correct:true,fb:'Propuesta personalizada + credencial + pregunta de urgencia.'},
+      {text:'Perfecto, \u00bfcu\u00e1nto puedes dar de cuota inicial?',correct:false,fb:'Prematuro. Construye valor antes de hablar de dinero.'},
+      {text:'Entonces Enfermer\u00eda es ideal. Te mando todo por aqu\u00ed.',correct:false,fb:'Siempre termina con pregunta para mantener el di\u00e1logo activo.'},
     ]},
-    {prospect:'¿Cuánto cuesta?',hint:'Momento de precios. Contado primero, financiado después.',opts:[
-      {text:'De contado $2.560.000 por ciclo (18% de descuento incluido), o financiado con cuota inicial $500.000 y 5 cuotas de $463.200. ¿Cuál se ajusta mejor a ti?',correct:true,fb:'Ancla con contado, ofrece financiado, cierra con pregunta. Perfecto.'},
+    {prospect:'\u00bfCu\u00e1nto cuesta?',hint:'Precio. Contado primero, financiado despu\u00e9s.',opts:[
+      {text:'De contado $2.560.000 por ciclo (18% de descuento incluido), o financiado con cuota inicial $500.000 y 5 cuotas de $463.200. \u00bfCu\u00e1l se ajusta mejor a ti?',correct:true,fb:'Ancla con contado, ofrece financiado, cierra con pregunta.'},
       {text:'Son $2.816.000 con cuotas de $463.200.',correct:false,fb:'Solo diste el precio financiado. Siempre presenta las dos opciones.'},
-      {text:'Depende del horario y la sede. ¿Cuál prefiere?',correct:false,fb:'El prospecto ya está listo. No lo desvíes, dale el precio.'},
+      {text:'Depende del horario y la sede. \u00bfCu\u00e1l prefiere?',correct:false,fb:'El prospecto ya est\u00e1 listo. No lo desv\u00edes.'},
     ]},
-    {prospect:'Mmm, déjame pensarlo',hint:'¡Aquí es donde el equipo más falla! Aplica el cierre emocional + invitación a sede.',opts:[
-      {text:'Mira, invertir en tu formación como Auxiliar en Enfermería es la única decisión que nunca pierde valor. Lo que hoy ves como un pago, en 3 ciclos se habrá convertido en un camino rentable cuidando vidas. El conocimiento es lo único que nadie te puede quitar... ¡y lo que más te hará ganar! 💙',correct:true,fb:'¡Excelente! Aplicaste el ancla emocional. Ahora sigue con la invitación a la sede.'},
-      {text:'Claro, cuando quieras nos escribes.',correct:false,fb:'Error crítico. Esto cierra la conversación sin resultado. El prospecto se pierde.'},
-      {text:'¿Cuál jornada te interesa, mañana, tarde o noche?',correct:false,fb:'El error más frecuente del equipo. Dar opciones frías sin mensaje emocional no convierte.'},
+    {prospect:'Mmm, d\u00e9jame pensarlo',hint:'El cierre emocional + invitaci\u00f3n a sede.',opts:[
+      {text:'Mira, invertir en tu formaci\u00f3n como Auxiliar en Enfermer\u00eda es la \u00fanica decisi\u00f3n que nunca pierde valor. Lo que hoy ves como un pago, en 3 ciclos se habr\u00e1 convertido en un camino rentable cuidando vidas. El conocimiento es lo \u00fanico que nadie te puede quitar... y lo que m\u00e1s te har\u00e1 ganar!',correct:true,fb:'Ancla emocional aplicada. Ahora sigue con la invitaci\u00f3n a la sede.'},
+      {text:'Claro, cuando quieras nos escribes.',correct:false,fb:'Error cr\u00edtico. Cierra la conversaci\u00f3n sin resultado.'},
+      {text:'\u00bfCu\u00e1l jornada te interesa, ma\u00f1ana, tarde o noche?',correct:false,fb:'El error m\u00e1s frecuente del equipo. Sin mensaje emocional no convierte.'},
     ]},
-    {prospect:'Ay sí, suena bien...',hint:'¡El momento exacto para la invitación a sede!',opts:[
-      {text:'¡Sin embargo! Mi recomendación es que, si tienes tiempo esta semana, te acerques a nuestra sede para conocer nuestros ambientes de aprendizaje, laboratorios y la ubicación. 😊 No solo es importante el precio, sino también el entorno. ¿Ya conoces la Sede?',correct:true,fb:'¡Perfecto cierre! Invitación a sede aplicada correctamente. Esto convierte el chat en visita física.'},
-      {text:'Perfecto, ¿entonces te matriculamos?',correct:false,fb:'Muy abrupto. La invitación a la sede es el paso natural antes de pedir la matrícula.'},
-      {text:'¿Me compartes tu nombre completo para hacer la reserva?',correct:false,fb:'Aún no hay compromiso real. La visita a la sede crea ese compromiso de forma natural.'},
-    ]},
-  ]},
-  {id:1,name:'Dianyi Vargas',initials:'DV',sub:'Cosmetología · Inbox Instagram',steps:[
-    {prospect:'Hola vi el anuncio de cosmetología',hint:'Inbox Instagram. Micro-confirmación con el programa correcto.',opts:[
-      {text:'¡Hola! Veo que te llama la atención el programa de Cosmetología y Estética, ¿Correcto?',correct:true,fb:'Micro-confirmación perfecta.'},
-      {text:'Hola! Sí, tenemos Cosmetología y muchos otros programas.',correct:false,fb:'No menciones otros programas todavía. Foco en el interés confirmado.'},
-      {text:'Hola! ¿Cuál es tu nombre?',correct:false,fb:'Primero confirma el interés, después pide datos.'},
-    ]},
-    {prospect:'Sí, ¿cuánto cuesta y qué horarios tienen?',hint:'Pregunta directa de precio + horario. Responde ambas y prepara el terreno para el cierre.',opts:[
-      {text:'El Técnico en Cosmetología tiene 2 ciclos. De contado $1.885.000 por ciclo (20% de descuento), o financiado: $500.000 inicial + 5 cuotas de $314.700. Horarios de lunes a sábado, mañana, tarde y noche. ¿Cuál horario te funciona mejor?',correct:true,fb:'Información completa y pregunta de cierre. Bien hecho.'},
-      {text:'Los horarios dependen del grupo disponible.',correct:false,fb:'Respuesta vaga. El prospecto necesita información concreta para decidir.'},
-      {text:'Primero dime en qué sede quieres estudiar.',correct:false,fb:'No pongas obstáculos antes de dar la información que pidió.'},
-    ]},
-    {prospect:'Los sábados en la mañana, y el precio me parece bien',hint:'¡Señal de compra clara! Momento perfecto para el cierre emocional + sede.',opts:[
-      {text:'Mira, invertir en Cosmetología es apostar por tu propia independencia. Lo que hoy ves como un pago, en 2 ciclos se habrá convertido en tu propio negocio y tus propias ganancias. El conocimiento es lo único que nadie te puede quitar... ¡y lo que más te hará ganar! ✂️✨',correct:true,fb:'¡Ancla emocional perfecta justo cuando hay señal de compra! Ahora invita a la sede.'},
-      {text:'Perfecto, entonces procedemos con la matrícula. ¿Cuánto puedes dar de cuota inicial?',correct:false,fb:'Muy directo al dinero. El ancla emocional y la invitación a sede aumentan la tasa de cierre.'},
-      {text:'¿Cuál jornada te interesa además del sábado?',correct:false,fb:'Ya dijo que los sábados. No repitas preguntas respondidas.'},
-    ]},
-    {prospect:'Ay sí! Qué bonito 😊',hint:'Respondió emocionalmente. Invitación a sede ahora.',opts:[
-      {text:'¡Sin embargo! Mi recomendación es que, si tienes tiempo esta semana, te acerques a nuestra sede para conocer nuestros ambientes de aprendizaje, laboratorios y la ubicación. 😊 ¿Ya conoces la Sede?',correct:true,fb:'¡Cierre perfecto! Invitación a sede en el momento exacto.'},
-      {text:'¡Qué bien! ¿Entonces te matriculamos?',correct:false,fb:'La visita a sede primero. Quien visita tiene altísima probabilidad de matricularse.'},
-      {text:'Te envío más información sobre el programa.',correct:false,fb:'Retroceder a dar información cuando ya hay intención de compra es un error. Avanza al cierre.'},
+    {prospect:'Ay s\u00ed, suena bien...',hint:'Momento exacto para la invitaci\u00f3n a sede.',opts:[
+      {text:'Sin embargo! Mi recomendaci\u00f3n es que, si tienes tiempo esta semana, te acerques a nuestra sede para conocer nuestros ambientes de aprendizaje, laboratorios y la ubicaci\u00f3n. No solo es importante el precio, sino tambi\u00e9n el entorno. \u00bfYa conoces la Sede?',correct:true,fb:'Cierre perfecto. Invitaci\u00f3n a sede aplicada correctamente.'},
+      {text:'Perfecto, \u00bfentonces te matriculamos?',correct:false,fb:'Muy abrupto. La invitaci\u00f3n a la sede va primero.'},
+      {text:'\u00bfMe compartes tu nombre completo para hacer la reserva?',correct:false,fb:'La visita a la sede crea el compromiso de forma natural.'},
     ]},
   ]},
-  {id:2,name:'Carlos Restrepo',initials:'CR',sub:'Excel · WhatsApp Cursos',steps:[
-    {prospect:'Buenas, información sobre excel',hint:'Mensaje corto. Micro-confirmación.',opts:[
-      {text:'¡Buenas! Veo que te llama la atención el curso de Excel, ¿Correcto?',correct:true,fb:'Correcto. Confirmaste antes de informar.'},
-      {text:'Hola! ¿Básico o avanzado?',correct:false,fb:'Pregunta prematura. Primero confirma el interés general.'},
-      {text:'Hola, el básico dura 20 horas y cuesta $200.000...',correct:false,fb:'No informes sin confirmar primero.'},
+  {id:1,name:'Dianyi Vargas',initials:'DV',sub:'Cosmetolog\u00eda \u00b7 Inbox Instagram',steps:[
+    {prospect:'Hola vi el anuncio de cosmetolog\u00eda',hint:'Inbox Instagram. Micro-confirmaci\u00f3n.',opts:[
+      {text:'\u00a1Hola! Veo que te llama la atenci\u00f3n el programa de Cosmetolog\u00eda y Est\u00e9tica, \u00bfCorrecto?',correct:true,fb:'Micro-confirmaci\u00f3n perfecta.'},
+      {text:'Hola! S\u00ed, tenemos Cosmetolog\u00eda y muchos otros programas.',correct:false,fb:'No menciones otros programas todav\u00eda.'},
+      {text:'Hola! \u00bfCu\u00e1l es tu nombre?',correct:false,fb:'Primero confirma el inter\u00e9s, despu\u00e9s pide datos.'},
     ]},
-    {prospect:'Sí, para mejorar en el trabajo',hint:'Motivación laboral. Presenta el paquete completo como la mejor opción.',opts:[
-      {text:'Perfecto. Tenemos 3 niveles: Básico, Intermedio y Avanzado. El paquete completo cuesta $499.900 — ahorras $100.100 vs pagar por separado. ¿Cuál horario tienes disponible?',correct:true,fb:'Usaste la motivación + presentaste el upsell del paquete + preguntaste por horario. Eficiente.'},
-      {text:'¿Ya sabes usar algo de Excel?',correct:false,fb:'Pregunta válida pero innecesaria aquí. Ya sabes lo que necesitas para avanzar.'},
-      {text:'Te mando el temario para que lo revises.',correct:false,fb:'Acción pasiva. El prospecto quiere mejorar en el trabajo — actúa con esa urgencia.'},
+    {prospect:'S\u00ed, \u00bfcu\u00e1nto cuesta y qu\u00e9 horarios tienen?',hint:'Responde precio + horario y prepara el cierre.',opts:[
+      {text:'El T\u00e9cnico en Cosmetolog\u00eda tiene 2 ciclos. De contado $1.885.000 por ciclo (20% descuento), o financiado: $500.000 inicial + 5 cuotas de $314.700. Horarios de lunes a s\u00e1bado. \u00bfCu\u00e1l horario te funciona mejor?',correct:true,fb:'Informaci\u00f3n completa y pregunta de cierre.'},
+      {text:'Los horarios dependen del grupo disponible.',correct:false,fb:'Respuesta vaga. Da informaci\u00f3n concreta.'},
+      {text:'Primero dime en qu\u00e9 sede quieres estudiar.',correct:false,fb:'No pongas obst\u00e1culos antes de dar la informaci\u00f3n.'},
     ]},
-    {prospect:'Los sábados. ¿Cuánto cuesta cada nivel?',hint:'Interés real. Da el precio completo y prepara el cierre.',opts:[
-      {text:'Cada nivel $200.000 (20 horas). O los 3 juntos por $499.900 — ya ahorras $100.100. Los sábados tenemos horarios 8am-12pm y 1pm-4pm. ¿Cuál te queda mejor?',correct:true,fb:'Precio claro + upsell del paquete + confirmar horario. Perfecto.'},
-      {text:'Son $200.000 por nivel.',correct:false,fb:'Faltó mencionar el paquete completo y el ahorro. Eso es dejar dinero sobre la mesa.'},
-      {text:'Depende del nivel que elijas primero.',correct:false,fb:'No generes confusión. Da el precio directo.'},
+    {prospect:'Los s\u00e1bados en la ma\u00f1ana, y el precio me parece bien',hint:'Momento perfecto para el cierre emocional.',opts:[
+      {text:'Mira, invertir en Cosmetolog\u00eda es apostar por tu propia independencia. Lo que hoy ves como un pago, en 2 ciclos se habr\u00e1 convertido en tu propio negocio y tus propias ganancias. El conocimiento es lo \u00fanico que nadie te puede quitar... y lo que m\u00e1s te har\u00e1 ganar!',correct:true,fb:'Ancla emocional perfecta. Ahora invita a la sede.'},
+      {text:'Perfecto, entonces procedemos con la matr\u00edcula.',correct:false,fb:'El ancla emocional y la sede aumentan la tasa de cierre.'},
+      {text:'\u00bfCu\u00e1l jornada adem\u00e1s del s\u00e1bado?',correct:false,fb:'Ya dijo que los s\u00e1bados. No repitas preguntas respondidas.'},
     ]},
-    {prospect:'Me interesa el paquete completo',hint:'¡Señal de compra! Cierre emocional ahora.',opts:[
-      {text:'Mira, invertir en Excel es la decisión más rentable que puedes tomar hoy. Lo que hoy ves como un pago, desde el primer mes ya te diferencia en tu trabajo y abre puertas cerradas. El conocimiento es lo único que nadie te puede quitar... ¡y lo que más te hará ganar! 📊💻',correct:true,fb:'¡Ancla emocional perfecta! Ahora invita a la sede o confirma la inscripción.'},
-      {text:'Perfecto, ¿cómo quieres pagar?',correct:false,fb:'El ancla emocional antes del pago aumenta la tasa de cierre y reduce arrepentimientos.'},
-      {text:'Bien, ¿y cuándo puedes empezar?',correct:false,fb:'Primero ancla emocional, luego logística.'},
+    {prospect:'Ay s\u00ed! Qu\u00e9 bonito',hint:'Respondi\u00f3 emocionalmente. Invitaci\u00f3n a sede ahora.',opts:[
+      {text:'Sin embargo! Mi recomendaci\u00f3n es que, si tienes tiempo esta semana, te acerques a nuestra sede para conocer nuestros ambientes de aprendizaje y laboratorios. \u00bfYa conoces la Sede?',correct:true,fb:'Cierre perfecto. Invitaci\u00f3n a sede en el momento exacto.'},
+      {text:'Qu\u00e9 bien! \u00bfEntonces te matriculamos?',correct:false,fb:'La visita a sede primero. Quien visita tiene alta probabilidad de matricularse.'},
+      {text:'Te env\u00edo m\u00e1s informaci\u00f3n sobre el programa.',correct:false,fb:'Retroceder cuando ya hay intenci\u00f3n de compra es un error.'},
     ]},
   ]},
-  {id:3,name:'Marta Gómez',initials:'MG',sub:'Cosmetología · Prospecto frío que dijo "después"',steps:[
-    {prospect:'[Hace 3 días dijiste que lo pensabas. Seguimiento automático]',hint:'Prospecto que quedó en silencio. Este es el mensaje de reactivación de 48-72h.',opts:[
-      {text:'Hola Marta, como te comenté, todavía tenemos cupo en el grupo de Cosmetología que inicia [fecha]. ¿Pudiste pensar si te gustaría acercarte a conocer la sede esta semana? 😊',correct:true,fb:'Seguimiento correcto: recordatorio suave + urgencia de cupo + invitación a sede.'},
-      {text:'Hola Marta, ¿entonces qué decidiste?',correct:false,fb:'Tono demasiado directo. Puede sentirse como presión y alejar al prospecto.'},
-      {text:'No enviar nada, si le interesa ella escribe.',correct:false,fb:'Error. Las 490 conversaciones perdidas en el dataset siguieron este patrón. El seguimiento es la diferencia.'},
+  {id:2,name:'Carlos Restrepo',initials:'CR',sub:'Excel \u00b7 WhatsApp Cursos',steps:[
+    {prospect:'Buenas, informaci\u00f3n sobre excel',hint:'Mensaje corto. Micro-confirmaci\u00f3n.',opts:[
+      {text:'\u00a1Buenas! Veo que te llama la atenci\u00f3n el curso de Excel, \u00bfCorrecto?',correct:true,fb:'Correcto. Confirmaste antes de informar.'},
+      {text:'Hola! \u00bfB\u00e1sico o avanzado?',correct:false,fb:'Pregunta prematura. Primero confirma el inter\u00e9s general.'},
+      {text:'Hola, el b\u00e1sico dura 20 horas y cuesta $200.000...',correct:false,fb:'No informes sin confirmar primero.'},
     ]},
-    {prospect:'Ay sí, todavía me interesa pero no he tenido tiempo',hint:'Interés reactivado. Facilita el siguiente paso sin presionar.',opts:[
-      {text:'¡Perfecto! No se necesita mucho tiempo. ¿Esta semana hay algún día que puedas pasar aunque sea 20 minutos por la sede para conocerla? Así ya tienes toda la info de primera mano 😊',correct:true,fb:'Reduce la barrera (solo 20 minutos), mantiene la invitación a sede, tono amigable.'},
-      {text:'Ok, cuando tenga tiempo escríbeme.',correct:false,fb:'Volviste al punto de partida. Necesitas un compromiso concreto.'},
-      {text:'¿Cuándo crees que puedas decidirte?',correct:false,fb:'Pregunta que puede sentirse como presión. Mejor facilitar la acción concreta.'},
+    {prospect:'S\u00ed, para mejorar en el trabajo',hint:'Motivaci\u00f3n laboral. Presenta el paquete completo.',opts:[
+      {text:'Perfecto. Tenemos 3 niveles: B\u00e1sico, Intermedio y Avanzado. El paquete completo cuesta $499.900 (ahorras $100.100). \u00bfCu\u00e1l horario tienes disponible?',correct:true,fb:'Motivaci\u00f3n + upsell del paquete + pregunta de horario.'},
+      {text:'\u00bfYa sabes usar algo de Excel?',correct:false,fb:'Pregunta innecesaria aqu\u00ed.'},
+      {text:'Te mando el temario para que lo revises.',correct:false,fb:'Acci\u00f3n pasiva. Activa con la urgencia del prospecto.'},
     ]},
-    {prospect:'El sábado podría pasar un momento',hint:'¡Comprometió una visita! Confirma y da detalles concretos.',opts:[
-      {text:'¡Perfecto Marta! Te esperamos el sábado. Estamos en [dirección sede más cercana] de 8am a 12pm. ¿Puedo avisarle al equipo que vas a llegar para que te atiendan con toda la información lista?',correct:true,fb:'Confirmación perfecta: hora, dirección, y crea expectativa. La visita es casi una matrícula.'},
-      {text:'Bien, el sábado abrimos de 8 a 12.',correct:false,fb:'Información incompleta. No aprovechaste para crear expectativa y compromiso.'},
-      {text:'Ok, avísame cuando vayas llegando.',correct:false,fb:'Muy pasivo. Confirma la visita y crea compromiso concreto.'},
+    {prospect:'Los s\u00e1bados. \u00bfCu\u00e1nto cuesta cada nivel?',hint:'Da precio completo y prepara el cierre.',opts:[
+      {text:'Cada nivel $200.000 (20 horas). O los 3 juntos por $499.900. Los s\u00e1bados tenemos 8am-12pm y 1pm-4pm. \u00bfCu\u00e1l te queda mejor?',correct:true,fb:'Precio + upsell + horario confirmado.'},
+      {text:'Son $200.000 por nivel.',correct:false,fb:'Falt\u00f3 el paquete y el ahorro.'},
+      {text:'Depende del nivel que elijas primero.',correct:false,fb:'No generes confusi\u00f3n.'},
+    ]},
+    {prospect:'Me interesa el paquete completo',hint:'Ancla emocional ahora.',opts:[
+      {text:'Mira, invertir en Excel es la decisi\u00f3n m\u00e1s rentable que puedes tomar hoy. Lo que hoy ves como un pago, desde el primer mes ya te diferencia en tu trabajo y abre puertas. El conocimiento es lo \u00fanico que nadie te puede quitar... y lo que m\u00e1s te har\u00e1 ganar!',correct:true,fb:'Ancla emocional perfecta. Ahora confirma la inscripci\u00f3n.'},
+      {text:'Perfecto, \u00bfc\u00f3mo quieres pagar?',correct:false,fb:'El ancla emocional antes del pago consolida la decisi\u00f3n.'},
+      {text:'Bien, \u00bfy cu\u00e1ndo puedes empezar?',correct:false,fb:'Primero ancla emocional, luego log\u00edstica.'},
+    ]},
+  ]},
+  {id:3,name:'Marta G\u00f3mez',initials:'MG',sub:'Cosmetolog\u00eda \u00b7 Prospecto fr\u00edo - seguimiento',steps:[
+    {prospect:'[Hace 3 d\u00edas dijiste que lo pensabas. Seguimiento.]',hint:'Prospecto en silencio. Mensaje de reactivaci\u00f3n.',opts:[
+      {text:'Hola Marta, como te coment\u00e9, todav\u00eda tenemos cupo en el grupo de Cosmetolog\u00eda. \u00bfPudiste pensar si te gustar\u00eda acercarte a conocer la sede esta semana?',correct:true,fb:'Seguimiento correcto: recordatorio suave + urgencia + sede.'},
+      {text:'Hola Marta, \u00bfentonces qu\u00e9 decidiste?',correct:false,fb:'Tono demasiado directo. Puede alejar al prospecto.'},
+      {text:'No enviar nada, si le interesa ella escribe.',correct:false,fb:'Error. As\u00ed se pierden las 490 conversaciones del dataset.'},
+    ]},
+    {prospect:'Ay s\u00ed, todav\u00eda me interesa pero no he tenido tiempo',hint:'Inter\u00e9s reactivado. Facilita el siguiente paso.',opts:[
+      {text:'No se necesita mucho tiempo. \u00bfEsta semana hay alg\u00fan d\u00eda que puedas pasar aunque sea 20 minutos por la sede?',correct:true,fb:'Reduce la barrera a solo 20 minutos. Invitaci\u00f3n concreta.'},
+      {text:'Ok, cuando tenga tiempo escr\u00edbeme.',correct:false,fb:'Volviste al punto de partida. Necesitas un compromiso concreto.'},
+      {text:'\u00bfCu\u00e1ndo crees que puedas decidirte?',correct:false,fb:'Puede sentirse como presi\u00f3n.'},
+    ]},
+    {prospect:'El s\u00e1bado podr\u00eda pasar un momento',hint:'Comprometi\u00f3 una visita. Confirma con detalles concretos.',opts:[
+      {text:'Perfecto Marta! Te esperamos el s\u00e1bado. Estamos en la sede m\u00e1s cercana de 8am a 12pm. \u00bfPuedo avisarle al equipo que vas a llegar?',correct:true,fb:'Confirmaci\u00f3n perfecta + crea expectativa. La visita es casi una matr\u00edcula.'},
+      {text:'Bien, el s\u00e1bado abrimos de 8 a 12.',correct:false,fb:'Informaci\u00f3n incompleta. No aprovechaste para crear compromiso.'},
+      {text:'Ok, av\u00edsame cuando vayas.',correct:false,fb:'Muy pasivo. Confirma el d\u00eda y crea compromiso real.'},
+    ]},
+  ]},
+  {id:4,name:'Valentina Torres',initials:'VT',sub:'Salud Oral \u00b7 Inbox Facebook',steps:[
+    {prospect:'Buenas quiero informaci\u00f3n de salud oral',hint:'Inbox Facebook. Micro-confirmaci\u00f3n.',opts:[
+      {text:'\u00a1Buenas! Veo que te llama la atenci\u00f3n el programa de Auxiliar en Salud Oral, \u00bfCorrecto?',correct:true,fb:'Micro-confirmaci\u00f3n perfecta.'},
+      {text:'Hola! \u00bfMe regalas tu WhatsApp para darte m\u00e1s informaci\u00f3n?',correct:false,fb:'Error frecuente. Pedir el n\u00famero antes de confirmar el inter\u00e9s genera fricci\u00f3n.'},
+      {text:'Hola! Tenemos Salud Oral, Enfermer\u00eda, Farmacia y muchos m\u00e1s.',correct:false,fb:'Nunca lances la lista.'},
+    ]},
+    {prospect:'S\u00ed, \u00bfcu\u00e1nto cuesta?',hint:'Precio directo. Contado primero, financiado despu\u00e9s.',opts:[
+      {text:'El T\u00e9cnico en Salud Oral tiene 3 ciclos. De contado $1.543.500 por ciclo. Financiado: $500.000 inicial + 5 cuotas de $239.570. \u00bfCu\u00e1l opci\u00f3n se ajusta mejor?',correct:true,fb:'Precios completos con ambas opciones y pregunta de cierre.'},
+      {text:'Depende del horario que elijas.',correct:false,fb:'Respuesta vaga. El prospecto pregunt\u00f3 el precio.'},
+      {text:'Son $239.570 mensuales.',correct:false,fb:'Solo la cuota. Sin el precio de contado el prospecto no sabe el valor real.'},
+    ]},
+    {prospect:'Mmm el financiado me funciona',hint:'Eligi\u00f3. Ancla emocional ahora.',opts:[
+      {text:'Mira, invertir en Salud Oral es entrar a uno de los sectores con m\u00e1s demanda laboral en Colombia. Lo que hoy ves como un pago, en 3 ciclos se habr\u00e1 convertido en trabajo estable. El conocimiento es lo \u00fanico que nadie te puede quitar... y lo que m\u00e1s te har\u00e1 ganar!',correct:true,fb:'Ancla emocional en el momento exacto.'},
+      {text:'Perfecto, \u00bfcu\u00e1l jornada te interesa?',correct:false,fb:'El error m\u00e1s frecuente. Sin ancla emocional la conversaci\u00f3n queda fr\u00eda.'},
+      {text:'Bien, \u00bftienes los $500.000 disponibles?',correct:false,fb:'Muy directo al dinero. El ancla emocional primero.'},
+    ]},
+    {prospect:'Ay s\u00ed, suena muy bien',hint:'Invitaci\u00f3n a sede ahora.',opts:[
+      {text:'Sin embargo! Mi recomendaci\u00f3n es que, si tienes tiempo esta semana, te acerques a nuestra sede para conocer nuestros ambientes de aprendizaje y laboratorios. \u00bfYa conoces la Sede?',correct:true,fb:'Cierre perfecto con invitaci\u00f3n a sede.'},
+      {text:'\u00bfCu\u00e1ndo puedes venir a matricularte?',correct:false,fb:'Saltar la sede pierde el paso m\u00e1s importante.'},
+      {text:'Te env\u00edo la direcci\u00f3n por aqu\u00ed.',correct:false,fb:'La invitaci\u00f3n personalizada es m\u00e1s efectiva.'},
+    ]},
+  ]},
+  {id:5,name:'Andr\u00e9s Mosquera',initials:'AM',sub:'Veterinaria \u00b7 WhatsApp Caldas',steps:[
+    {prospect:'Buenas, informaci\u00f3n veterinaria',hint:'WhatsApp Caldas. Micro-confirmaci\u00f3n.',opts:[
+      {text:'\u00a1Buenas! Veo que te llama la atenci\u00f3n el programa de Auxiliar en Veterinaria, \u00bfCorrecto?',correct:true,fb:'Correcto. Confirmaste antes de informar.'},
+      {text:'Hola! \u00bfYa sabes algo de veterinaria?',correct:false,fb:'Pregunta prematura. Primero la micro-confirmaci\u00f3n.'},
+      {text:'Hola! El programa dura 3 ciclos...',correct:false,fb:'No informes sin confirmar primero.'},
+    ]},
+    {prospect:'S\u00ed, me gustan los animales y quiero trabajar en algo de eso',hint:'Motivaci\u00f3n emocional. Conecta con esa pasi\u00f3n.',opts:[
+      {text:'Qu\u00e9 bueno! El T\u00e9cnico en Veterinaria te prepara para trabajar en cl\u00ednicas, consultorios y refugios. Tenemos sede en Caldas, Cl 130 Sur #51-65. \u00bfCu\u00e1ndo te gustar\u00eda empezar?',correct:true,fb:'Conectaste con la motivaci\u00f3n + sede local + urgencia.'},
+      {text:'Perfecto, el precio es $1.390.000 por ciclo.',correct:false,fb:'Precio sin construir valor primero.'},
+      {text:'\u00bfY tienes experiencia con animales?',correct:false,fb:'Pregunta innecesaria. Ya tienes lo que necesitas.'},
+    ]},
+    {prospect:'\u00bfTiene salida laboral en Caldas?',hint:'Pregunta local. Responde con datos de la zona.',opts:[
+      {text:'En Caldas hay cl\u00ednicas veterinarias y pet shops que contratan auxiliares certificados. Y Medell\u00edn queda a 20 minutos. \u00bfTe cuento el valor del programa?',correct:true,fb:'Contexto local + avanzaste al precio.'},
+      {text:'Toca ir a Medell\u00edn para encontrar trabajo.',correct:false,fb:'Puede desanimar. Menciona las oportunidades locales.'},
+      {text:'Eso depende de cada persona.',correct:false,fb:'Respuesta vaga. S\u00e9 espec\u00edfico.'},
+    ]},
+    {prospect:'\u00bfY cu\u00e1nto vale?',hint:'Precio + ancla emocional.',opts:[
+      {text:'De contado $1.390.000 por ciclo. Financiado: $500.000 inicial + 5 cuotas de $178.000. Mira, invertir en Veterinaria es convertir tu amor por los animales en una carrera real. El conocimiento es lo \u00fanico que nadie te puede quitar... y lo que m\u00e1s te har\u00e1 ganar!',correct:true,fb:'Precio completo + ancla emocional. Eficiente y poderoso.'},
+      {text:'Son $178.000 al mes.',correct:false,fb:'Solo la cuota mensual. Falt\u00f3 el precio de contado.'},
+      {text:'\u00bfCu\u00e1nto puedes pagar mensualmente?',correct:false,fb:'No pongas al prospecto a negociar antes de dar el valor real.'},
+    ]},
+    {prospect:'Me interesa, \u00bfpuedo ir a conocer la sede?',hint:'Confirmaci\u00f3n con detalles concretos.',opts:[
+      {text:'Claro! Te esperamos en la Cl 130 Sur #51-65, a dos cuadras del parque de Caldas. Lunes a viernes 8am-5pm, s\u00e1bados 8am-12pm. \u00bfQu\u00e9 d\u00eda te funciona mejor?',correct:true,fb:'Direcci\u00f3n exacta + horarios + confirmaci\u00f3n del d\u00eda.'},
+      {text:'S\u00ed claro, estamos en Caldas cerca al parque.',correct:false,fb:'Informaci\u00f3n incompleta. Da la direcci\u00f3n exacta.'},
+      {text:'Perfecto, av\u00edsame cuando vayas.',correct:false,fb:'Muy pasivo. Confirma el d\u00eda concreto.'},
+    ]},
+  ]},
+  {id:6,name:'Sandra R\u00edos',initials:'SR',sub:'SST \u00b7 Instagram - pide descuento',steps:[
+    {prospect:'Hola vi lo de seguridad y salud en el trabajo',hint:'Micro-confirmaci\u00f3n con SST.',opts:[
+      {text:'\u00a1Hola Sandra! Veo que te llama la atenci\u00f3n el programa de Seguridad y Salud en el Trabajo, \u00bfCorrecto?',correct:true,fb:'Micro-confirmaci\u00f3n perfecta con nombre.'},
+      {text:'Hola! S\u00ed, SST es muy demandado.',correct:false,fb:'Saltaste la micro-confirmaci\u00f3n.'},
+      {text:'Hola! \u00bfMe regalas tu WhatsApp?',correct:false,fb:'Nunca pidas el contacto antes de confirmar el inter\u00e9s.'},
+    ]},
+    {prospect:'S\u00ed, trabajo en empresa y me exigen la certificaci\u00f3n',hint:'Motivaci\u00f3n urgente.',opts:[
+      {text:'Perfecto, el T\u00e9cnico en SST de INDECAP est\u00e1 avalado por la Secretar\u00eda de Educaci\u00f3n. \u00bfCu\u00e1ndo necesitas tenerlo listo?',correct:true,fb:'Conectaste con la urgencia + credencial + pregunta.'},
+      {text:'Claro, el programa dura 3 ciclos y tiene estos m\u00f3dulos...',correct:false,fb:'El prospecto necesita saber que puede certificarse, no el pensum.'},
+      {text:'\u00bfY tu empresa te paga el programa?',correct:false,fb:'Pregunta que desv\u00eda la conversaci\u00f3n.'},
+    ]},
+    {prospect:'\u00bfCu\u00e1nto vale? \u00bfMe pueden hacer descuento?',hint:'El patr\u00f3n m\u00e1s frecuente del dataset - 2.907 casos.',opts:[
+      {text:'De contado con descuento incluido, o financiado desde $500.000 inicial. El precio que tienes ya incluye el descuento especial. Lo que s\u00ed te recomiendo es el financiado para que sea m\u00e1s c\u00f3modo. \u00bfCu\u00e1l te funciona?',correct:true,fb:'Defendiste el precio + redirigiste a la financiaci\u00f3n.'},
+      {text:'D\u00e9jame consultar con mi coordinadora.',correct:false,fb:'Nunca ofrezcas descuentos sin autorizaci\u00f3n.'},
+      {text:'El precio es fijo, no manejamos descuentos.',correct:false,fb:'Correcto en fondo pero muy cortante. Redirige a la financiaci\u00f3n.'},
+    ]},
+    {prospect:'Bueno, el financiado me sirve',hint:'Eligi\u00f3. Ancla emocional + sede.',opts:[
+      {text:'Mira, invertir en SST es prepararte para algo que la ley exige en todas las empresas. El conocimiento es lo \u00fanico que nadie te puede quitar... y lo que m\u00e1s te har\u00e1 ganar! \u00bfYa conoces nuestra sede?',correct:true,fb:'Ancla emocional + invitaci\u00f3n a sede.'},
+      {text:'Perfecto Sandra, \u00bfen cu\u00e1l sede prefieres estudiar?',correct:false,fb:'Pregunta log\u00edstica sin ancla emocional primero.'},
+      {text:'Excelente, te env\u00edo el link de inscripci\u00f3n.',correct:false,fb:'La visita a sede tiene mayor tasa de conversi\u00f3n que el link.'},
+    ]},
+  ]},
+  {id:7,name:'Felipe Cardona',initials:'FC',sub:'Software \u00b7 WhatsApp - prospecto indeciso',steps:[
+    {prospect:'Hola quiero info del programa de software',hint:'Micro-confirmaci\u00f3n.',opts:[
+      {text:'\u00a1Hola Felipe! Veo que te llama la atenci\u00f3n el programa de Auxiliar en Desarrollo de Software, \u00bfCorrecto?',correct:true,fb:'Micro-confirmaci\u00f3n perfecta.'},
+      {text:'Hola! \u00bfYa sabes programar?',correct:false,fb:'Confirma el inter\u00e9s primero.'},
+      {text:'Hola! Tenemos Software, Sistemas y Marketing Digital.',correct:false,fb:'No presentes opciones sin confirmar el inter\u00e9s.'},
+    ]},
+    {prospect:'S\u00ed, pero tambi\u00e9n me llama Sistemas. \u00bfCu\u00e1l recomiendas?',hint:'Prospecto indeciso. Orienta con claridad.',opts:[
+      {text:'Depende: Software es crear apps y p\u00e1ginas web. Sistemas es soporte, redes y mantenimiento. \u00bfCu\u00e1l de esas salidas te emociona m\u00e1s?',correct:true,fb:'Diferenciaste claramente y devolviste la pregunta.'},
+      {text:'Los dos son buenos, t\u00fa decides.',correct:false,fb:'No ayuda. El prospecto necesita orientaci\u00f3n concreta.'},
+      {text:'Software tiene m\u00e1s salida laboral.',correct:false,fb:'Explica el perfil de cada uno, no solo la salida.'},
+    ]},
+    {prospect:'Creo que Software, siempre me ha llamado crear cosas',hint:'Tom\u00f3 la decisi\u00f3n. Refuerza y avanza.',opts:[
+      {text:'Esa es la motivaci\u00f3n perfecta para Software! El T\u00e9cnico te ense\u00f1a a crear aplicaciones desde cero. INDECAP lleva 40 a\u00f1os en Antioquia. \u00bfTe cuento el valor?',correct:true,fb:'Reforzaste la decisi\u00f3n + credencial + avanzaste al precio.'},
+      {text:'Perfecto, \u00bfy cu\u00e1ndo puedes empezar?',correct:false,fb:'Falt\u00f3 dar el precio antes de hablar de fechas.'},
+      {text:'Bien, tambi\u00e9n podr\u00edas ver Sistemas despu\u00e9s.',correct:false,fb:'No confundas al prospecto que acaba de decidir.'},
+    ]},
+    {prospect:'Mmm d\u00e9jame pensarlo, est\u00e1 un poco caro',hint:'Objeci\u00f3n doble: indecisi\u00f3n + precio. Momento cr\u00edtico.',opts:[
+      {text:'Mira Felipe, invertir en Desarrollo de Software es entrar a la carrera mejor pagada del mundo digital. Lo que hoy ves como un pago, en 3 ciclos se habr\u00e1 convertido en habilidades que abren puertas internacionales. El conocimiento es lo \u00fanico que nadie te puede quitar... y lo que m\u00e1s te har\u00e1 ganar! \u00bfTienes tiempo esta semana para conocer la sede?',correct:true,fb:'Ancla emocional + objeci\u00f3n + invitaci\u00f3n a sede. Manejo completo.'},
+      {text:'Ok Felipe, cuando decidas nos escribes.',correct:false,fb:'Error cr\u00edtico. Dejar ir al prospecto indeciso es perderlo.'},
+      {text:'\u00bfCu\u00e1nto puedes dar de cuota inicial?',correct:false,fb:'Ir al dinero con indecisi\u00f3n empeora la situaci\u00f3n.'},
+    ]},
+  ]},
+  {id:8,name:'Gloria Herrera',initials:'GH',sub:'Primera Infancia \u00b7 Inbox Facebook',steps:[
+    {prospect:'Buenas noches, vi el programa de primera infancia',hint:'Inbox Facebook. Micro-confirmaci\u00f3n.',opts:[
+      {text:'Buenas noches Gloria! Veo que te llama la atenci\u00f3n el programa de Atenci\u00f3n a la Primera Infancia, \u00bfCorrecto?',correct:true,fb:'Micro-confirmaci\u00f3n perfecta con nombre.'},
+      {text:'Hola buenas! \u00bfTienes experiencia trabajando con ni\u00f1os?',correct:false,fb:'Confirma el inter\u00e9s primero.'},
+      {text:'Hola! Es un programa muy bonito, \u00bfte gustan los ni\u00f1os?',correct:false,fb:'Informal y no aplica la micro-confirmaci\u00f3n.'},
+    ]},
+    {prospect:'S\u00ed, trabajo en un jard\u00edn y quiero certificarme',hint:'Motivaci\u00f3n urgente: certificaci\u00f3n laboral.',opts:[
+      {text:'Perfecto. El T\u00e9cnico en Primera Infancia est\u00e1 avalado por la Secretar\u00eda de Educaci\u00f3n y te certifica para trabajar en jardines, CDI y hogares del ICBF. \u00bfCu\u00e1ndo necesitas tener el certificado?',correct:true,fb:'Necesidad + salidas laborales + urgencia.'},
+      {text:'Qu\u00e9 bueno. El programa tiene 8 m\u00f3dulos y dura 12 meses...',correct:false,fb:'El pensum no es lo que necesita ahora. Responde a su urgencia.'},
+      {text:'\u00bfY el jard\u00edn te puede ayudar a pagar?',correct:false,fb:'Pregunta que desv\u00eda. Mant\u00e9n el foco en la urgencia.'},
+    ]},
+    {prospect:'Lo antes posible, \u00bfcu\u00e1ndo inician?',hint:'Urgencia alta. Precio + sede.',opts:[
+      {text:'Tenemos grupos pr\u00f3ximos. El programa es de 2 ciclos: contado $1.349.000 por ciclo, o financiado desde $500.000 inicial. \u00bfCu\u00e1l sede te queda m\u00e1s cerca, Medell\u00edn, Envigado o Caldas?',correct:true,fb:'Urgencia atendida + precio + pregunta de sede.'},
+      {text:'Los grupos inician cada 2 meses.',correct:false,fb:'Informaci\u00f3n vaga sin precio ni siguiente paso.'},
+      {text:'Primero dime cu\u00e1nto puedes pagar.',correct:false,fb:'No pongas al prospecto a negociar antes de dar el valor.'},
+    ]},
+    {prospect:'Medell\u00edn me queda bien',hint:'Eligi\u00f3 sede. Ancla emocional + invitaci\u00f3n.',opts:[
+      {text:'Mira Gloria, invertir en Primera Infancia es prepararte para acompa\u00f1ar las etapas m\u00e1s importantes de la vida de un ni\u00f1o. El conocimiento es lo \u00fanico que nadie te puede quitar... y lo que m\u00e1s te har\u00e1 ganar! \u00bfYa conoces nuestra sede de Medell\u00edn?',correct:true,fb:'Ancla emocional + invitaci\u00f3n a sede. Cierre completo.'},
+      {text:'Perfecto, la sede queda en la Calle 56 #45-26.',correct:false,fb:'Solo la direcci\u00f3n sin ancla emocional.'},
+      {text:'Bien, \u00bfentonces procedemos con la matr\u00edcula?',correct:false,fb:'La visita a sede antes de la matr\u00edcula aumenta el compromiso.'},
     ]},
   ]},
 ];
