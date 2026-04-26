@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
 <title>INDECAP · Plataforma de Formación</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -11,60 +12,93 @@
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{font-family:'Inter',sans-serif;background:#f5fafc;color:#1a1c1e;font-size:15px;line-height:1.6;-webkit-font-smoothing:antialiased}
-
-/* ---- NAV ---- */
-.nav{position:sticky;top:0;z-index:100;background:rgba(245,250,252,0.88);backdrop-filter:blur(20px);border-bottom:1px solid rgba(26,8,110,0.08);padding:0 1.5rem;display:flex;align-items:center;height:56px}
-.nav-brand{font-family:'Newsreader',serif;font-size:1.05rem;font-weight:600;color:#1a086e;margin-right:1.5rem;flex-shrink:0;white-space:nowrap}
+.portal{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;background:linear-gradient(135deg,#1a086e 0%,#312783 60%,#1a086e 100%);padding:2rem;position:relative;overflow:hidden}
+.portal::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23fff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/svg%3E")}
+.portal-brand{font-family:'Newsreader',serif;font-size:1.4rem;font-weight:600;color:#fff;margin-bottom:0.4rem;position:relative}
+.portal-brand span{color:#ffddb3}
+.portal-tagline{font-size:13px;color:rgba(255,255,255,0.5);margin-bottom:3rem;font-family:'Work Sans',sans-serif;position:relative}
+.portal-title{font-family:'Newsreader',serif;font-size:clamp(1.6rem,4vw,2.4rem);color:#fff;font-weight:400;letter-spacing:-0.02em;margin-bottom:0.65rem;text-align:center;position:relative}
+.portal-title em{color:#ffddb3;font-style:italic}
+.portal-sub{font-size:13.5px;color:rgba(255,255,255,0.6);margin-bottom:2.5rem;text-align:center;max-width:380px;line-height:1.7;position:relative}
+.portal-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;width:100%;max-width:680px;margin-bottom:1.5rem;position:relative}
+@media(max-width:580px){.portal-grid{grid-template-columns:1fr;max-width:320px}}
+.portal-card{background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);border-radius:16px;padding:1.5rem 1.25rem;cursor:pointer;transition:all 0.22s;text-align:center}
+.portal-card:hover{background:rgba(255,255,255,0.14);border-color:rgba(255,255,255,0.3);transform:translateY(-3px)}
+.portal-card-icon{font-size:2.2rem;margin-bottom:0.75rem}
+.portal-card-title{font-family:'Newsreader',serif;font-size:1rem;font-weight:600;color:#fff;margin-bottom:0.3rem}
+.portal-card-desc{font-size:12px;color:rgba(255,255,255,0.6);line-height:1.5}
+.portal-card-tag{display:inline-block;margin-top:0.75rem;font-family:'Work Sans',sans-serif;font-size:10.5px;font-weight:600;padding:3px 10px;border-radius:100px;background:rgba(255,255,255,0.12);color:rgba(255,255,255,0.8)}
+.portal-card.coming .portal-card-tag{background:rgba(255,193,7,0.2);color:#ffc107}
+.portal-footer{font-size:11.5px;color:rgba(255,255,255,0.35);font-family:'Work Sans',sans-serif;position:relative}
+.pwd-overlay{position:fixed;inset:0;background:rgba(26,8,110,0.88);backdrop-filter:blur(12px);display:flex;align-items:center;justify-content:center;z-index:200;padding:1.5rem}
+.pwd-card{background:#fff;border-radius:18px;padding:2.25rem 2rem;width:100%;max-width:360px;text-align:center;box-shadow:0 24px 80px rgba(26,8,110,0.3)}
+.pwd-icon{font-size:2rem;margin-bottom:0.75rem}
+.pwd-title{font-family:'Newsreader',serif;font-size:1.2rem;font-weight:600;color:#1a086e;margin-bottom:4px}
+.pwd-sub{font-size:13px;color:#42474e;margin-bottom:1.5rem;line-height:1.5}
+.pwd-input{width:100%;padding:11px 14px;border:1px solid rgba(66,71,78,0.2);border-radius:9px;font-size:15px;margin-bottom:10px;outline:none;font-family:'Inter',sans-serif;transition:all 0.18s;text-align:center}
+.pwd-input:focus{border-color:#1a086e;box-shadow:0 0 0 3px rgba(26,8,110,0.08)}
+.pwd-btn{width:100%;padding:11px;background:linear-gradient(135deg,#1a086e,#312783);color:#fff;border:none;border-radius:9px;font-size:14px;font-weight:600;cursor:pointer;font-family:'Work Sans',sans-serif}
+.pwd-btn:hover{opacity:0.9}
+.pwd-err{color:#dc2626;font-size:12.5px;margin-top:8px;display:none}
+.pwd-back{margin-top:12px;font-size:12.5px;color:#42474e;cursor:pointer;font-family:'Work Sans',sans-serif}
+.pwd-back:hover{color:#1a086e}
+.app{display:none}
+.nav{position:sticky;top:0;z-index:100;background:rgba(245,250,252,0.92);backdrop-filter:blur(20px);border-bottom:1px solid rgba(26,8,110,0.08);padding:0 1.5rem;display:flex;align-items:center;height:56px}
+.nav-brand{font-family:'Newsreader',serif;font-size:1rem;font-weight:600;color:#1a086e;margin-right:1.25rem;flex-shrink:0;cursor:pointer}
 .nav-brand span{color:#805600}
+.nav-role{font-family:'Work Sans',sans-serif;font-size:11px;font-weight:600;padding:3px 10px;border-radius:100px;margin-right:1rem;flex-shrink:0}
+.role-v{background:rgba(26,8,110,0.1);color:#1a086e}
+.role-p{background:rgba(22,101,52,0.1);color:#166534}
+.role-e{background:rgba(3,105,161,0.1);color:#0369a1}
 .nav-track{display:flex;gap:0;flex:1;overflow-x:auto;scrollbar-width:none}
 .nav-track::-webkit-scrollbar{display:none}
 .nav-tab{font-family:'Work Sans',sans-serif;font-size:12.5px;font-weight:500;color:#42474e;padding:0 0.85rem;height:56px;display:flex;align-items:center;cursor:pointer;white-space:nowrap;border:none;border-bottom:2px solid transparent;background:none;transition:all 0.18s}
 .nav-tab:hover{color:#1a086e}
 .nav-tab.active{color:#1a086e;border-bottom-color:#1a086e}
-.nav-section-tabs{display:none;gap:0}
-.nav-section-tabs.visible{display:flex}
-.nav-section-btn{font-family:'Work Sans',sans-serif;font-size:11px;font-weight:600;color:#fff;padding:4px 12px;border-radius:100px;border:none;cursor:pointer;margin-left:4px;transition:all 0.18s}
 .nav-right{margin-left:auto;display:flex;align-items:center;gap:10px;flex-shrink:0}
 .ring-wrap{display:flex;align-items:center;gap:6px;cursor:pointer}
 .ring-pct{font-family:'Work Sans',sans-serif;font-size:12px;font-weight:600;color:#1a086e}
-
-/* ---- HERO ---- */
-.hero{background:linear-gradient(135deg,#1a086e 0%,#312783 100%);padding:3rem 1.5rem 2.5rem;position:relative;overflow:hidden}
+.exit-btn{font-family:'Work Sans',sans-serif;font-size:12px;font-weight:500;color:#42474e;cursor:pointer;padding:5px 10px;border-radius:6px;border:1px solid rgba(66,71,78,0.15);background:none}
+.exit-btn:hover{border-color:#1a086e;color:#1a086e}
+.hero{padding:2.75rem 1.5rem 2.25rem;position:relative;overflow:hidden}
+.hero-v{background:linear-gradient(135deg,#1a086e 0%,#312783 100%)}
+.hero-p{background:linear-gradient(135deg,#14532d 0%,#166534 100%)}
+.hero-e{background:linear-gradient(135deg,#0c4a6e 0%,#0369a1 100%)}
 .hero::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23fff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/svg%3E")}
-.hero-in{max-width:920px;margin:0 auto;position:relative}
-.hero-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.2);color:rgba(255,255,255,0.9);font-family:'Work Sans',sans-serif;font-size:11.5px;font-weight:500;padding:4px 14px;border-radius:100px;margin-bottom:1.1rem}
-.hero-badge::before{content:'';width:6px;height:6px;border-radius:50%;background:#4ade80}
-.hero-h{font-family:'Newsreader',serif;font-size:clamp(1.7rem,4vw,2.7rem);font-weight:400;color:#fff;letter-spacing:-0.02em;line-height:1.15;margin-bottom:0.65rem}
+.hero-in{max-width:940px;margin:0 auto;position:relative}
+.hero-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.2);color:rgba(255,255,255,0.9);font-family:'Work Sans',sans-serif;font-size:11.5px;font-weight:500;padding:4px 14px;border-radius:100px;margin-bottom:1rem}
+.hero-badge::before{content:'';width:6px;height:6px;border-radius:50%;background:#4ade80;flex-shrink:0}
+.hero-h{font-family:'Newsreader',serif;font-size:clamp(1.7rem,4vw,2.6rem);font-weight:400;color:#fff;letter-spacing:-0.02em;line-height:1.15;margin-bottom:0.65rem}
 .hero-h em{color:#ffddb3;font-style:italic}
-.hero-sub{font-size:13.5px;color:rgba(255,255,255,0.65);max-width:440px;line-height:1.7;margin-bottom:1.75rem}
+.hero-sub{font-size:13.5px;color:rgba(255,255,255,0.65);max-width:460px;line-height:1.7;margin-bottom:1.75rem}
 .hero-stats{display:flex;gap:1.75rem;flex-wrap:wrap}
-.hs-n{font-family:'Newsreader',serif;font-size:1.65rem;font-weight:600;color:#fff;letter-spacing:-0.02em}
+.hs-n{font-family:'Newsreader',serif;font-size:1.6rem;font-weight:600;color:#fff;letter-spacing:-0.02em}
 .hs-l{font-family:'Work Sans',sans-serif;font-size:11px;font-weight:500;color:rgba(255,255,255,0.5);margin-top:1px}
-
-/* ---- SECTION SWITCHER ---- */
-.sec-switcher{background:#fff;border-bottom:1px solid #eaeff1;padding:0 1.5rem;display:flex;gap:0}
-.sec-sw-btn{font-family:'Work Sans',sans-serif;font-size:13px;font-weight:600;color:#42474e;padding:0.75rem 1.25rem;border:none;border-bottom:3px solid transparent;background:none;cursor:pointer;transition:all 0.18s;display:flex;align-items:center;gap:6px}
-.sec-sw-btn:hover{color:#1a086e}
-.sec-sw-btn.active{color:#1a086e;border-bottom-color:#1a086e}
-.sec-badge{font-size:10px;font-weight:700;padding:2px 7px;border-radius:100px;background:#eaeff1;color:#42474e}
-.sec-sw-btn.active .sec-badge{background:rgba(26,8,110,0.1);color:#1a086e}
-
-/* ---- LAYOUT ---- */
-.main{max-width:940px;margin:0 auto;padding:1.75rem 1.5rem 4rem}
+.main{max-width:940px;margin:0 auto;padding:1.75rem 1.5rem 5rem}
 .page{display:none}.page.active{display:block}
-.module-page{display:none}.module-page.active{display:block}
-
-/* ---- CARDS ---- */
 .card{background:#fff;border-radius:14px;padding:1.25rem;box-shadow:0 4px 24px rgba(26,8,110,0.06);margin-bottom:1rem;transition:all 0.2s}
 .card:hover{box-shadow:0 8px 32px rgba(26,8,110,0.09);transform:translateY(-1px)}
 .card-label{font-family:'Work Sans',sans-serif;font-size:11px;font-weight:600;color:#42474e;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:0.6rem}
-
-/* ---- MODULE GRID ---- */
-.mod-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(255px,1fr));gap:1rem;margin-bottom:1.5rem}
+.tip-card{background:#fff;border-radius:14px;padding:1.35rem;box-shadow:0 4px 24px rgba(26,8,110,0.06);margin-bottom:1rem;border-left:4px solid #1a086e;transition:all 0.2s}
+.tip-card:hover{box-shadow:0 8px 32px rgba(26,8,110,0.10);transform:translateY(-1px)}
+.tip-badge{display:inline-flex;align-items:center;gap:6px;margin-bottom:6px}
+.tip-badge-inner{background:linear-gradient(135deg,#1a086e,#312783);color:#fff;padding:2px 9px;border-radius:100px;font-family:'Work Sans',sans-serif;font-size:10px;font-weight:700}
+.tip-title{font-family:'Newsreader',serif;font-size:1.05rem;font-weight:600;color:#1a086e;margin-bottom:0.65rem;line-height:1.3}
+.tip-body{font-size:13.5px;color:#42474e;line-height:1.7;margin-bottom:0.85rem}
+.tip-compare{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:0.85rem 0}
+@media(max-width:580px){.tip-compare{grid-template-columns:1fr}}
+.tip-wrong{background:rgba(239,68,68,0.06);border-radius:9px;padding:0.85rem;border-left:3px solid #dc2626}
+.tip-right{background:rgba(74,222,128,0.08);border-radius:9px;padding:0.85rem;border-left:3px solid #4ade80}
+.tip-clabel{font-family:'Work Sans',sans-serif;font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:5px}
+.tip-wrong .tip-clabel{color:#991b1b}
+.tip-right .tip-clabel{color:#166534}
+.tip-ctext{font-size:13px;line-height:1.6;color:#1a1c1e}
+.tip-remember{background:linear-gradient(135deg,rgba(26,8,110,0.06),rgba(49,39,131,0.03));border-radius:9px;padding:0.85rem 1rem;font-size:13px;color:#1a086e;font-family:'Work Sans',sans-serif;font-weight:500;line-height:1.6;margin-top:0.65rem}
+.mod-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:1rem;margin-bottom:1.5rem}
 .mod-card{background:#fff;border-radius:14px;padding:1.2rem;box-shadow:0 4px 24px rgba(26,8,110,0.06);cursor:pointer;transition:all 0.2s;border:2px solid transparent;position:relative;overflow:hidden}
 .mod-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#1a086e,#312783);transform:scaleX(0);transform-origin:left;transition:transform 0.22s}
 .mod-card:hover{box-shadow:0 8px 32px rgba(26,8,110,0.10);transform:scale(1.015)}
-.mod-card:hover::after{transform:scaleX(1)}
+.mod-card:hover::after,.mod-card.done::after{transform:scaleX(1)}
 .mod-card.done{border-color:rgba(74,222,128,0.4)}
 .mod-icon{width:40px;height:40px;border-radius:10px;background:#eff4f6;display:flex;align-items:center;justify-content:center;font-size:18px;margin-bottom:0.8rem}
 .mod-card.done .mod-icon{background:rgba(74,222,128,0.12)}
@@ -73,40 +107,32 @@ body{font-family:'Inter',sans-serif;background:#f5fafc;color:#1a1c1e;font-size:1
 .mod-badge{display:inline-block;margin-top:0.6rem;font-family:'Work Sans',sans-serif;font-size:11px;font-weight:600;padding:3px 10px;border-radius:100px}
 .b-pend{background:#eaeff1;color:#42474e}
 .b-done{background:rgba(74,222,128,0.15);color:#166534}
-
-/* ---- HERITAGE ---- */
 .heritage{background:linear-gradient(135deg,#1a086e,#312783);border-radius:16px;padding:1.4rem 1.75rem;margin-bottom:1.4rem;display:flex;align-items:center;gap:1.4rem}
 .h-years{font-family:'Newsreader',serif;font-size:3rem;font-weight:600;color:#ffddb3;letter-spacing:-0.03em;line-height:1;flex-shrink:0}
 .h-title{font-family:'Newsreader',serif;font-size:1rem;color:#fff;margin-bottom:3px}
 .h-sub{font-size:12.5px;color:rgba(255,255,255,0.6)}
-
-/* ---- TRAINING ---- */
+.b-agent{background:linear-gradient(135deg,#1a086e,#312783);color:#fff;border-radius:11px 0 11px 11px;padding:9px 13px;font-size:13.5px;max-width:480px;margin-bottom:4px;line-height:1.55}
 .t-step{display:flex;gap:11px;margin-bottom:1rem;align-items:flex-start}
 .t-num{min-width:26px;height:26px;border-radius:50%;background:linear-gradient(135deg,#1a086e,#312783);color:#fff;display:flex;align-items:center;justify-content:center;font-family:'Work Sans',sans-serif;font-size:11px;font-weight:600;flex-shrink:0;margin-top:2px}
 .t-label{font-family:'Work Sans',sans-serif;font-size:11px;font-weight:600;color:#42474e;margin-bottom:4px;text-transform:uppercase;letter-spacing:0.04em}
-.b-agent{background:linear-gradient(135deg,#1a086e,#312783);color:#fff;border-radius:11px 0 11px 11px;padding:9px 13px;font-size:13.5px;max-width:460px;margin-bottom:4px;line-height:1.55}
-.b-prospect{background:#eaeff1;border-radius:0 11px 11px 11px;padding:9px 13px;font-size:13.5px;max-width:420px;margin-bottom:4px;line-height:1.55}
 .branches{display:flex;gap:6px;flex-wrap:wrap;margin-top:6px}
 .br{padding:4px 11px;border-radius:100px;font-size:12px;font-family:'Work Sans',sans-serif;font-weight:500}
 .br-y{background:rgba(74,222,128,0.15);color:#166534}
 .br-n{background:rgba(239,68,68,0.1);color:#991b1b}
 .br-m{background:#eaeff1;color:#42474e}
-
-/* ---- CIERRE ---- */
+.a-good{background:rgba(74,222,128,0.1);border-radius:8px;padding:10px 13px;font-size:13px;color:#166534;margin:6px 0}
+.a-bad{background:rgba(239,68,68,0.07);border-radius:8px;padding:10px 13px;font-size:13px;color:#991b1b;margin:6px 0}
+.a-tip{background:rgba(128,86,0,0.08);border-radius:8px;padding:10px 13px;font-size:13px;color:#805600;margin:6px 0}
+.a-warn{background:rgba(128,86,0,0.08);border-radius:8px;padding:10px 13px;font-size:13px;color:#805600;margin:6px 0}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:9px}
 .cierre-box{background:linear-gradient(135deg,rgba(26,8,110,0.05),rgba(49,39,131,0.03));border-radius:11px;padding:1rem 1.2rem;margin-bottom:0.85rem;border-left:4px solid #1a086e}
 .cierre-lbl{font-family:'Work Sans',sans-serif;font-size:11px;font-weight:600;color:#1a086e;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:5px}
-
-/* ---- OBJECIONES ---- */
 .obj-wrap{margin-bottom:7px}
 .obj-btn{width:100%;text-align:left;padding:12px 15px;background:#fff;border:none;border-radius:11px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;font-family:'Inter',sans-serif;font-size:13.5px;font-weight:500;color:#1a1c1e;box-shadow:0 4px 24px rgba(26,8,110,0.06);transition:all 0.18s}
 .obj-btn:hover{box-shadow:0 8px 32px rgba(26,8,110,0.10)}
-.obj-freq{font-family:'Work Sans',sans-serif;font-size:11px;font-weight:600;padding:3px 10px;border-radius:100px;background:rgba(26,8,110,0.08);color:#1a086e}
+.obj-freq{font-family:'Work Sans',sans-serif;font-size:11px;font-weight:600;padding:3px 10px;border-radius:100px;background:rgba(26,8,110,0.08);color:#1a086e;flex-shrink:0}
 .obj-body{display:none;padding:13px 15px 15px;background:#eff4f6;border-radius:0 0 11px 11px;margin-top:-3px}
 .obj-body.open{display:block}
-.obj-step{margin-bottom:10px}
-.obj-step-lbl{font-family:'Work Sans',sans-serif;font-size:11px;font-weight:600;color:#42474e;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:4px}
-
-/* ---- SCRIPTS ---- */
 .sf{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:1.1rem}
 .sf-btn{padding:6px 14px;border:1px solid rgba(66,71,78,0.15);border-radius:100px;font-family:'Work Sans',sans-serif;font-size:12px;font-weight:500;cursor:pointer;background:#fff;color:#42474e;transition:all 0.18s}
 .sf-btn:hover,.sf-btn.active{background:#1a086e;color:#fff;border-color:#1a086e}
@@ -115,7 +141,7 @@ body{font-family:'Inter',sans-serif;background:#f5fafc;color:#1a1c1e;font-size:1
 .sc-tag{display:inline-block;font-family:'Work Sans',sans-serif;font-size:11px;font-weight:600;padding:3px 10px;border-radius:100px;margin-bottom:6px}
 .t-cierre{background:rgba(74,222,128,0.15);color:#166534}
 .t-salud{background:rgba(26,8,110,0.1);color:#1a086e}
-.t-excel{background:rgba(22,101,52,0.1);color:#166534}
+.t-excel{background:rgba(22,101,52,0.1);color:#166634}
 .t-cosm{background:rgba(128,86,0,0.1);color:#805600}
 .t-vet{background:rgba(180,83,9,0.1);color:#92400e}
 .t-admin{background:rgba(3,105,161,0.1);color:#0369a1}
@@ -129,21 +155,15 @@ body{font-family:'Inter',sans-serif;background:#f5fafc;color:#1a1c1e;font-size:1
 .cp-btn.copied{border-color:#4ade80;color:#166534;background:rgba(74,222,128,0.08)}
 .search-in{width:100%;padding:9px 14px;margin-bottom:1rem;background:#fff;border:1px solid rgba(66,71,78,0.15);border-radius:9px;font-family:'Inter',sans-serif;font-size:14px;color:#1a1c1e;transition:all 0.18s}
 .search-in:focus{outline:none;border-color:#1a086e;box-shadow:0 0 0 3px rgba(26,8,110,0.08)}
-
-/* ---- SIMULADOR ---- */
-.sim-lay{display:grid;grid-template-columns:240px 1fr;gap:1.1rem}
+.sim-lay{display:grid;grid-template-columns:230px 1fr;gap:1.1rem}
 @media(max-width:660px){.sim-lay{grid-template-columns:1fr}}
 .pc{display:flex;gap:9px;align-items:center;padding:10px;border-radius:11px;cursor:pointer;background:#fff;box-shadow:0 4px 24px rgba(26,8,110,0.06);margin-bottom:7px;border:2px solid transparent;transition:all 0.18s}
-.pc:hover{transform:translateY(-1px);box-shadow:0 8px 32px rgba(26,8,110,0.10)}
+.pc:hover{transform:translateY(-1px)}
 .pc.active{border-color:#1a086e}
 .pc-av{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#1a086e,#312783);color:#fff;display:flex;align-items:center;justify-content:center;font-family:'Work Sans',sans-serif;font-size:11px;font-weight:600;flex-shrink:0}
-.pc-name{font-size:13px;font-weight:500}
-.pc-prog{font-size:11.5px;color:#42474e}
 .sim-panel{background:#fff;border-radius:13px;overflow:hidden;box-shadow:0 4px 24px rgba(26,8,110,0.06);display:flex;flex-direction:column}
 .sim-hd{background:linear-gradient(135deg,#1a086e,#312783);padding:0.85rem 1rem;display:flex;align-items:center;gap:10px}
 .sim-av{width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,0.2);color:#fff;display:flex;align-items:center;justify-content:center;font-family:'Work Sans',sans-serif;font-size:12px;font-weight:600}
-.sim-nm{font-size:13.5px;font-weight:500;color:#fff}
-.sim-sb{font-size:11.5px;color:rgba(255,255,255,0.65)}
 .sim-sts{display:flex;border-bottom:1px solid #eaeff1}
 .sim-st{flex:1;padding:8px;text-align:center;border-right:1px solid #eaeff1}
 .sim-st:last-child{border-right:none}
@@ -155,7 +175,7 @@ body{font-family:'Inter',sans-serif;background:#f5fafc;color:#1a1c1e;font-size:1
 .msg{max-width:78%;font-size:13.5px;line-height:1.5;padding:9px 12px;border-radius:10px}
 .msg-p{background:#fff;box-shadow:0 2px 8px rgba(26,8,110,0.06);border-radius:0 10px 10px 10px;align-self:flex-start}
 .msg-a{background:linear-gradient(135deg,#1a086e,#312783);color:#fff;border-radius:10px 0 10px 10px;align-self:flex-end}
-.msg-h{background:rgba(128,86,0,0.08);border:1px solid rgba(128,86,0,0.2);color:#805600;font-size:12px;border-radius:8px;align-self:center;max-width:92%;text-align:center;font-style:italic}
+.msg-h{background:rgba(128,86,0,0.08);border:1px solid rgba(128,86,0,0.2);color:#805600;font-size:12px;border-radius:8px;align-self:center;max-width:92%;text-align:center;font-style:italic;padding:7px 12px}
 .msg-g{background:rgba(74,222,128,0.1);border:1px solid rgba(74,222,128,0.3);color:#166534;font-size:12.5px;border-radius:8px;align-self:center;max-width:92%;padding:7px 12px}
 .msg-b{background:rgba(239,68,68,0.07);border:1px solid rgba(239,68,68,0.2);color:#991b1b;font-size:12.5px;border-radius:8px;align-self:center;max-width:92%;padding:7px 12px}
 .opts-area{padding:0.85rem 1rem;background:#eff4f6;border-top:1px solid #eaeff1}
@@ -164,8 +184,6 @@ body{font-family:'Inter',sans-serif;background:#f5fafc;color:#1a1c1e;font-size:1
 .opt-btn:hover{border-color:#1a086e;color:#1a086e}
 .opt-btn.correct{background:rgba(74,222,128,0.1);border-color:rgba(74,222,128,0.5);color:#166534;cursor:default}
 .opt-btn.wrong{background:rgba(239,68,68,0.06);border-color:rgba(239,68,68,0.3);color:#991b1b;cursor:default}
-
-/* ---- PROGRESS ---- */
 .tr-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:0.9rem;margin-bottom:1.4rem}
 .tr-stat{background:#fff;border-radius:13px;padding:1rem;box-shadow:0 4px 24px rgba(26,8,110,0.06);text-align:center}
 .tr-n{font-family:'Newsreader',serif;font-size:1.9rem;font-weight:600;color:#1a086e;letter-spacing:-0.02em}
@@ -176,814 +194,793 @@ body{font-family:'Inter',sans-serif;background:#f5fafc;color:#1a1c1e;font-size:1
 .mp-status{font-family:'Work Sans',sans-serif;font-size:11.5px;font-weight:600;padding:3px 10px;border-radius:100px}
 .s-done{background:rgba(74,222,128,0.15);color:#166534}
 .s-pend{background:#eaeff1;color:#42474e}
-
-/* ---- UTILS ---- */
-.two{display:grid;grid-template-columns:1fr 1fr;gap:9px}
-.a-good{background:rgba(74,222,128,0.1);border-radius:8px;padding:10px 13px;font-size:13px;color:#166534;margin:6px 0}
-.a-bad{background:rgba(239,68,68,0.07);border-radius:8px;padding:10px 13px;font-size:13px;color:#991b1b;margin:6px 0}
-.a-tip{background:rgba(128,86,0,0.08);border-radius:8px;padding:10px 13px;font-size:13px;color:#805600;margin:6px 0;font-style:italic}
-.a-warn{background:rgba(128,86,0,0.08);border-radius:8px;padding:10px 13px;font-size:13px;color:#805600;margin:6px 0}
 .sec-h{font-family:'Newsreader',serif;font-size:1.65rem;font-weight:600;color:#1a086e;letter-spacing:-0.02em;margin-bottom:0.2rem}
-.sec-sub{font-size:13.5px;color:#42474e;margin-bottom:1.2rem;line-height:1.6}
+.sec-sub{font-size:13.5px;color:#42474e;margin-bottom:1.25rem;line-height:1.6}
 .btn-p{padding:9px 20px;border:none;border-radius:8px;background:linear-gradient(135deg,#1a086e,#312783);color:#fff;font-family:'Work Sans',sans-serif;font-size:13px;font-weight:600;cursor:pointer;transition:all 0.18s}
 .btn-p:hover{opacity:0.9;transform:translateY(-1px)}
 .btn-s{padding:9px 20px;border:1px solid rgba(66,71,78,0.15);border-radius:8px;background:#fff;color:#42474e;font-family:'Work Sans',sans-serif;font-size:13px;font-weight:500;cursor:pointer;transition:all 0.18s}
 .btn-s:hover{border-color:#1a086e;color:#1a086e}
-.divider{height:1px;background:#eaeff1;margin:1.1rem 0}
-@media(max-width:600px){.two{grid-template-columns:1fr}.hero{padding:2.5rem 1.25rem}.main{padding:1.5rem 1rem 3rem}.heritage{flex-direction:column;gap:0.7rem}}
+@media(max-width:600px){.two{grid-template-columns:1fr}.heritage{flex-direction:column;gap:0.7rem}}
 </style>
 </head>
 <body>
 
-<!-- NAV -->
-<nav class="nav">
-  <div class="nav-brand">IN<span>D</span>ECAP <span style="font-weight:300;color:#42474e;font-family:'Inter',sans-serif;font-size:0.8rem">&nbsp;· Formación</span></div>
-  <div class="nav-track" id="nav-track"></div>
-  <div class="nav-right">
-    <div class="ring-wrap" onclick="showPage('progreso')">
-      <svg width="34" height="34" viewBox="0 0 36 36">
-        <circle cx="18" cy="18" r="15" fill="none" stroke="#eaeff1" stroke-width="3"/>
-        <circle id="ring" cx="18" cy="18" r="15" fill="none" stroke="#1a086e" stroke-width="3"
-          stroke-dasharray="94.25" stroke-dashoffset="94.25" stroke-linecap="round"
-          transform="rotate(-90 18 18)" style="transition:stroke-dashoffset 0.6s"/>
-      </svg>
-      <span class="ring-pct" id="ring-pct">0%</span>
+<!-- PORTAL -->
+<div id="portal">
+  <div class="portal">
+    <div class="portal-brand">IN<span>D</span>ECAP</div>
+    <div class="portal-tagline">40 años formando profesionales en Antioquia</div>
+    <h1 class="portal-title">Plataforma de<br><em>Formación INDECAP</em></h1>
+    <p class="portal-sub">Selecciona tu perfil para acceder a tu espacio de aprendizaje personalizado.</p>
+    <div class="portal-grid">
+      <div class="portal-card" onclick="openPortal('v')">
+        <div class="portal-card-icon">🎯</div>
+        <div class="portal-card-title">Equipo Comercial</div>
+        <div class="portal-card-desc">Entrenamiento en ventas, técnicas de cierre y manejo de objeciones</div>
+        <div class="portal-card-tag">Acceso disponible</div>
+      </div>
+      <div class="portal-card coming" onclick="openPortal('p')">
+        <div class="portal-card-icon">👨‍🏫</div>
+        <div class="portal-card-title">Profesores</div>
+        <div class="portal-card-desc">Inducción docente, metodología y protocolos institucionales</div>
+        <div class="portal-card-tag">Próximamente</div>
+      </div>
+      <div class="portal-card coming" onclick="openPortal('e')">
+        <div class="portal-card-icon">📚</div>
+        <div class="portal-card-title">Estudiantes</div>
+        <div class="portal-card-desc">Pensum digital, materiales de clase y recursos académicos</div>
+        <div class="portal-card-tag">Próximamente</div>
+      </div>
     </div>
-  </div>
-</nav>
-
-<!-- SECTION SWITCHER -->
-<div class="sec-switcher">
-  <button class="sec-sw-btn active" id="sw-ventas" onclick="switchSection('ventas',this)">
-    <span>Ventas</span><span class="sec-badge" id="sw-ventas-badge">0/6</span>
-  </button>
-  <button class="sec-sw-btn" id="sw-profesores" onclick="switchSection('profesores',this)">
-    <span>Profesores</span><span class="sec-badge" id="sw-prof-badge">Próximamente</span>
-  </button>
-</div>
-
-<!-- HERO -->
-<div class="hero" id="hero">
-  <div class="hero-in">
-    <div class="hero-badge">Sistema de entrenamiento activo · INDECAP</div>
-    <h1 class="hero-h">El arte de convertir<br>un mensaje en <em>una matrícula</em></h1>
-    <p class="hero-sub">Entrenamiento basado en 10.702 conversaciones reales. Aprende los patrones que funcionan, practica los cierres y domina cada objeción.</p>
-    <div class="hero-stats">
-      <div><div class="hs-n">10.702</div><div class="hs-l">Conversaciones analizadas</div></div>
-      <div><div class="hs-n">6</div><div class="hs-l">Módulos</div></div>
-      <div><div class="hs-n">40</div><div class="hs-l">Años de trayectoria</div></div>
-      <div><div class="hs-n">3</div><div class="hs-l">Sedes en Antioquia</div></div>
-    </div>
+    <div class="portal-footer">INDECAP · Medellín · Envigado · Caldas</div>
   </div>
 </div>
 
-<div class="main">
+<!-- PASSWORD MODAL -->
+<div class="pwd-overlay" id="pwd-overlay" style="display:none">
+  <div class="pwd-card">
+    <div class="pwd-icon" id="pwd-icon">🎯</div>
+    <div class="pwd-title" id="pwd-title">Equipo Comercial</div>
+    <div class="pwd-sub">Ingresa la contraseña de acceso para continuar.</div>
+    <input type="password" class="pwd-input" id="pwd-input" placeholder="Contraseña" autocomplete="current-password">
+    <button class="pwd-btn" onclick="checkPassword()">Ingresar</button>
+    <div class="pwd-err" id="pwd-err">Contraseña incorrecta. Intenta de nuevo.</div>
+    <div class="pwd-back" onclick="closePortal()">← Volver</div>
+  </div>
+</div>
 
-<!-- ======== VENTAS SECTION ======== -->
-<div id="sec-ventas">
-
-  <!-- INICIO -->
-  <div class="page active" id="p-inicio">
-    <div class="sec-h">Tu entrenamiento</div>
-    <div class="sec-sub">Completa los módulos en orden para construir tu habilidad de forma sólida.</div>
-    <div class="mod-grid" id="mod-grid"></div>
-    <div class="heritage">
-      <div class="h-years">40</div>
-      <div><div class="h-title">Años formando profesionales en Antioquia</div><div class="h-sub">Medellín · Envigado · Caldas · Más de 15 programas técnicos laborales</div></div>
-    </div>
-    <div class="card">
-      <div class="card-label">Los 4 insights más importantes del dataset</div>
-      <div class="two" style="margin-top:4px">
-        <div class="a-tip">[📍] La pregunta #1 es la <strong>ubicación</strong> (6.375 de 10.702 conversaciones). Responde siempre con las 3 sedes.</div>
-        <div class="a-tip">[💰] <strong>2.907 prospectos piden descuento</strong>. No es objeción — es test de confianza. Defiende el precio.</div>
-        <div class="a-tip">🏆 <strong>El error más frecuente:</strong> enviar toda la info y preguntar "¿Cuál jornada?" sin mensaje emocional ni invitación a sede.</div>
-        <div class="a-tip">[⏱] <strong>490 prospectos dicen "después"</strong> sin seguimiento. Un mensaje a las 48h recupera el 10%.</div>
+<!-- APP -->
+<div class="app" id="app" style="display:block">
+  <nav class="nav">
+    <div class="nav-brand" onclick="exitToPortal()">IN<span>D</span>ECAP</div>
+    <div class="nav-role role-v" id="nav-role">Ventas</div>
+    <div class="nav-track" id="nav-track"></div>
+    <div class="nav-right">
+      <div class="ring-wrap" onclick="showPage('progreso')">
+        <svg width="34" height="34" viewBox="0 0 36 36">
+          <circle cx="18" cy="18" r="15" fill="none" stroke="#eaeff1" stroke-width="3"/>
+          <circle id="ring" cx="18" cy="18" r="15" fill="none" stroke="#1a086e" stroke-width="3"
+            stroke-dasharray="94.25" stroke-dashoffset="94.25" stroke-linecap="round"
+            transform="rotate(-90 18 18)" style="transition:stroke-dashoffset 0.6s"/>
+        </svg>
+        <span class="ring-pct" id="ring-pct">0%</span>
       </div>
+      <button class="exit-btn" onclick="exitToPortal()">Salir</button>
     </div>
+  </nav>
+
+  <div class="hero hero-v" id="app-hero">
+    <div class="hero-in" id="app-hero-in"></div>
   </div>
 
-  <!-- TECNICA BASE -->
-  <div class="page" id="p-tecnica">
-    <div class="sec-h">La micro-confirmación</div>
-    <div class="sec-sub">El primer "sí" psicológico que abre cualquier conversación de venta.</div>
-    <div class="card">
-      <div class="card-label">La fórmula exacta</div>
-      <div style="background:linear-gradient(135deg,rgba(26,8,110,0.06),rgba(49,39,131,0.04));border-radius:10px;padding:1rem 1.2rem;margin-bottom:1rem">
-        <div style="font-family:Newsreader,serif;font-size:1.05rem;color:#1a086e;line-height:1.6">"Veo que te llama la atención el programa de <span style="color:#805600;font-style:italic">[Nombre]</span>, ¿Correcto?"</div>
-      </div>
-      <div class="two">
-        <div><div class="card-label" style="color:#166534">Correcto</div>
-          <div class="a-good">✓ "Veo que te llama la atención Enfermería, ¿Correcto?"</div>
-          <div class="a-good">✓ "Veo que te llama la atención Excel, ¿Correcto?"</div>
+  <div class="main">
+
+    <!-- INICIO -->
+    <div class="page active" id="p-inicio">
+      <div class="sec-h">Tu entrenamiento</div>
+      <div class="sec-sub">Completa los módulos en orden para construir tu habilidad de forma sólida.</div>
+      <div class="mod-grid" id="mod-grid"></div>
+      <div class="heritage">
+        <div class="h-years">40</div>
+        <div>
+          <div class="h-title">Años formando profesionales en Antioquia</div>
+          <div class="h-sub">Medellín · Envigado · Caldas · Más de 15 programas técnicos laborales</div>
         </div>
-        <div><div class="card-label" style="color:#991b1b">Errores reales del dataset</div>
-          <div class="a-bad">✗ Enviar lista de todos los programas</div>
-          <div class="a-bad">✗ "¿En qué le puedo ayudar?"</div>
-          <div class="a-bad">✗ Pedir nombre antes de dar info</div>
+      </div>
+      <div class="card">
+        <div class="card-label">Los 4 insights más importantes del dataset</div>
+        <div class="two" style="margin-top:4px">
+          <div class="a-tip">📍 La pregunta #1 del prospecto es la <strong>ubicación</strong> (6.375 de 10.702 conversaciones). Responde siempre con las 3 sedes.</div>
+          <div class="a-tip">💰 <strong>2.907 prospectos piden descuento</strong>. No es objeción — es test de confianza. Defiende el precio.</div>
+          <div class="a-tip">🏆 <strong>El error más frecuente:</strong> dar precio y preguntar "¿Cuál jornada?" sin mensaje emocional ni invitación a sede.</div>
+          <div class="a-tip">⏱ <strong>490 prospectos dicen "después"</strong> sin recibir seguimiento. Un mensaje a las 48h recupera el 10%.</div>
         </div>
       </div>
     </div>
-    <div class="card">
-      <div class="card-label">Cómo identificar el programa de origen</div>
-      <div class="t-step"><div class="t-num">1</div><div><div class="t-label">WhatsApp directo</div><p style="font-size:13px;color:#42474e">El número indica la sede. WhatsApp Cursos → probable curso corto.</p></div></div>
-      <div class="t-step"><div class="t-num">2</div><div><div class="t-label">Inbox Facebook / Instagram</div><p style="font-size:13px;color:#42474e">Revisa el anuncio al que reaccionó en Meta Business Suite.</p></div></div>
-      <div class="t-step"><div class="t-num">3</div><div><div class="t-label">Sin dato claro</div><p style="font-size:13px;color:#42474e">"¿Sobre cuál de nuestros programas te gustaría conocer más?"</p></div></div>
-    </div>
-    <div style="text-align:right;margin-top:1rem"><button class="btn-p" onclick="markDone('tecnica');showPage('arbol')">Marcar completado →</button></div>
-  </div>
 
-  <!-- ARBOL -->
-  <div class="page" id="p-arbol">
-    <div class="sec-h">Árbol de conversación</div>
-    <div class="sec-sub">Flujo completo en 5 fases desde el primer mensaje hasta el cierre.</div>
-    <div class="card"><div class="card-label">Fase 1 · Apertura</div>
-      <div class="t-step"><div class="t-num">1</div><div><div class="t-label">Prospecto llega</div>
-        <div class="b-agent">"Veo que te llama la atención el programa de [Programa], ¿Correcto?"</div>
-        <div class="branches"><span class="br br-y">Sí → Fase 2</span><span class="br br-n">No responde → seguimiento 2h</span><span class="br br-m">Info general → preguntar qué área</span></div>
-      </div></div>
+    <!-- TIPS -->
+    <div class="page" id="p-tips">
+      <div class="sec-h">Sistema de Entrenamiento Comercial</div>
+      <div class="sec-sub">Tips prácticos con casos reales. Se actualiza constantemente — revísalo seguido.</div>
+      <div id="tips-container"></div>
+      <div style="text-align:right;margin-top:1rem"><button class="btn-p" onclick="markDone('tips');showPage('tecnica')">Marcar completado →</button></div>
     </div>
-    <div class="card"><div class="card-label">Fase 2 · Descubrimiento</div>
-      <div class="t-step"><div class="t-num">2</div><div><div class="t-label">Explorar motivación</div>
-        <div class="b-agent">"¿Ya tienes experiencia en el área o estás comenzando desde cero?"</div>
-      </div></div>
-      <div class="t-step"><div class="t-num">3</div><div><div class="t-label">Identificar urgencia</div>
-        <div class="b-agent">"¿Cuándo te gustaría empezar? Tenemos grupos que inician próximamente."</div>
-        <div class="branches"><span class="br br-y">Pronto → urgencia alta</span><span class="br br-m">En meses → nutrir</span><span class="br br-n">Solo mirando → propuesta de valor</span></div>
-      </div></div>
-    </div>
-    <div class="card"><div class="card-label">Fase 3 · Propuesta de valor</div>
-      <div class="t-step"><div class="t-num">4</div><div><div class="t-label">Presentar programa (uno solo, nunca lista)</div>
-        <div class="b-agent">"El Técnico en Enfermería está avalado por la Secretaría de Educación y te habilita para trabajar en clínicas y hospitales. INDECAP lleva 40 años en Antioquia. ¿Eso es lo que estás buscando?"</div>
-      </div></div>
-    </div>
-    <div class="card"><div class="card-label">Fase 4 · Precios</div>
-      <div class="t-step"><div class="t-num">5</div><div><div class="t-label">Contado primero, financiado después</div>
-        <div class="b-agent">"De contado $2.560.000 por ciclo (18% descuento incluido), o financiado con cuota inicial $500.000 y 5 cuotas de $463.200. ¿Cuál se ajusta mejor a ti?"</div>
-        <div class="a-warn" style="max-width:460px;margin-top:7px">El precio de contado ancla el valor. Si solo das el financiado, el prospecto no sabe cuánto ahorra.</div>
-      </div></div>
-    </div>
-    <div class="card"><div class="card-label">Fase 5 · Cierre emocional + sede</div>
-      <div class="t-step"><div class="t-num">6</div><div><div class="t-label">Mensaje emocional (ver módulo Cierre)</div>
-        <div class="b-agent">"Mira, invertir en tu formación es la única decisión que nunca pierde valor..."</div>
-      </div></div>
-      <div class="t-step"><div class="t-num">7</div><div><div class="t-label">Invitación a la sede</div>
-        <div class="b-agent">"Sin embargo! Mi recomendación es que te acerques a nuestra sede para conocer los ambientes de aprendizaje y laboratorios. ¿Ya conoces la Sede?"</div>
-        <div class="branches"><span class="br br-y">"¿Dónde queda?" → dar dirección</span><span class="br br-y">"Esta semana voy" → confirmar día</span><span class="br br-n">Silencio → seguimiento 48h</span></div>
-      </div></div>
-    </div>
-    <div style="text-align:right;margin-top:1rem"><button class="btn-p" onclick="markDone('arbol');showPage('cierre')">Marcar completado →</button></div>
-  </div>
 
-  <!-- CIERRE -->
-  <div class="page" id="p-cierre">
-    <div class="sec-h">Técnica de cierre</div>
-    <div class="sec-sub">La diferencia entre el equipo que solo informa y el que convierte. Dos mensajes que cambian todo.</div>
-    <div class="card">
-      <div class="card-label">El error más frecuente en los datos reales</div>
-      <div class="a-bad">✗ Dar precio → preguntar "¿Cuál jornada te interesa?" → esperar respuesta que nunca llega.</div>
-      <p style="font-size:13px;color:#42474e;margin-top:8px">Este patrón apareció en cientos de conversaciones. El prospecto recibe información fría, sin emoción, sin razón para actuar hoy.</p>
-    </div>
-    <div class="card">
-      <div class="card-label">La secuencia correcta — 2 mensajes después del precio</div>
-      <div class="cierre-box"><div class="cierre-lbl">Mensaje 1 · El ancla emocional</div><p style="font-size:13px;color:#42474e">Justo después del precio. Transforma "gasto" en "inversión".</p></div>
-      <div class="cierre-box"><div class="cierre-lbl">Mensaje 2 · Invitación a sede</div><p style="font-size:13px;color:#42474e">Convierte la conversación digital en visita física. La visita tiene tasa de conversión mucho mayor.</p></div>
-      <div class="a-good">✓ Cuando el prospecto dice "¿Dónde queda?" o "Esta semana me acerco" — ya está listo para matricularse.</div>
-    </div>
-    <div class="card">
-      <div class="card-label">Mensaje 2 · Invitación a sede (igual para todos los programas)</div>
-      <div class="sc-msg">Sin embargo! Mi recomendación es que, si tienes tiempo esta semana, te acerques a nuestra sede para conocer nuestros ambientes de aprendizaje, laboratorios y la ubicación. No solo es importante el precio del programa, sino también el entorno donde vas a desarrollarte y crecer profesionalmente. ¿Ya conoces la Sede?</div>
-      <button class="cp-btn" onclick="copyMsg(this,'Sin embargo! Mi recomendación es que, si tienes tiempo esta semana, te acerques a nuestra sede para conocer nuestros ambientes de aprendizaje, laboratorios y la ubicación. No solo es importante el precio del programa, sino también el entorno donde vas a desarrollarte y crecer profesionalmente. ¿Ya conoces la Sede?')">Copiar mensaje sede</button>
-    </div>
-    <div class="card">
-      <div class="card-label">Respuestas al cierre</div>
-      <div class="t-step"><div class="t-num" style="background:linear-gradient(135deg,#166534,#14532d)">✓</div><div>
-        <div class="t-label">Dice "¿Dónde queda?"</div>
-        <div class="b-agent">[📍] Medellín: Calle 56 #45-26, cerca al Metro Prado.<br>[📍] Envigado: Cl 37 Sur #43A-84, cerca al Parque Principal de Envigado.<br>[📍] Caldas: Cl 130 Sur #51-65, cerca al parque principal.<br><br>¿Cuál te queda más cerca? Puedo avisarle al equipo que vas esta semana.</div>
-      </div></div>
-      <div class="t-step"><div class="t-num" style="background:linear-gradient(135deg,#166534,#14532d)">✓</div><div>
-        <div class="t-label">Dice "Esta semana me acerco"</div>
-        <div class="b-agent">Perfecto! ¿Qué día te funciona mejor, entre semana o sábado? Así te confirmo el horario y te esperamos con toda la información lista.</div>
-      </div></div>
-      <div class="t-step"><div class="t-num" style="background:linear-gradient(135deg,#991b1b,#7f1d1d)">!</div><div>
-        <div class="t-label">Silencio (48 horas después)</div>
-        <div class="b-agent">Hola [Nombre], ¿pudiste revisar la información? Todavía tenemos cupo en el grupo que inicia [fecha]. ¿Hay alguna duda que pueda resolver para que no pierdas tu espacio?</div>
-      </div></div>
-    </div>
-    <div class="card">
-      <div class="card-label">Mensaje 1 · Ancla emocional por programa — listos para copiar</div>
-      <div id="cierre-progs"></div>
-    </div>
-    <div style="text-align:right;margin-top:1rem"><button class="btn-p" onclick="markDone('cierre');showPage('objeciones')">Marcar completado →</button></div>
-  </div>
-
-  <!-- OBJECIONES -->
-  <div class="page" id="p-objeciones">
-    <div class="sec-h">Manejo de objeciones</div>
-    <div class="sec-sub">Basado en 10.702 conversaciones reales. Frecuencias reales, respuestas que funcionan.</div>
-    <div class="card" style="margin-bottom:1.4rem">
-      <div class="card-label">Frecuencia en los datos</div>
-      <div style="display:flex;flex-direction:column;gap:5px;margin-top:4px">
-        <div style="display:flex;align-items:center;gap:9px"><div style="min-width:160px;font-size:13px">Piden descuento</div><div style="flex:1;height:6px;background:#eaeff1;border-radius:3px;overflow:hidden"><div style="width:100%;height:100%;background:linear-gradient(90deg,#1a086e,#312783)"></div></div><div style="font-size:12px;color:#42474e;min-width:42px;text-align:right;font-weight:600">2.907</div></div>
-        <div style="display:flex;align-items:center;gap:9px"><div style="min-width:160px;font-size:13px">Dicen "después"</div><div style="flex:1;height:6px;background:#eaeff1;border-radius:3px;overflow:hidden"><div style="width:17%;height:100%;background:#805600"></div></div><div style="font-size:12px;color:#42474e;min-width:42px;text-align:right;font-weight:600">490</div></div>
-        <div style="display:flex;align-items:center;gap:9px"><div style="min-width:160px;font-size:13px">Dicen "está caro"</div><div style="flex:1;height:6px;background:#eaeff1;border-radius:3px;overflow:hidden"><div style="width:7%;height:100%;background:#dc2626"></div></div><div style="font-size:12px;color:#42474e;min-width:42px;text-align:right;font-weight:600">199</div></div>
-        <div style="display:flex;align-items:center;gap:9px"><div style="min-width:160px;font-size:13px">Preguntan virtual</div><div style="flex:1;height:6px;background:#eaeff1;border-radius:3px;overflow:hidden"><div style="width:26%;height:100%;background:#60a5fa"></div></div><div style="font-size:12px;color:#42474e;min-width:42px;text-align:right;font-weight:600">762</div></div>
-      </div>
-    </div>
-    <div id="objeciones-list"></div>
-    <div style="text-align:right;margin-top:1rem"><button class="btn-p" onclick="markDone('objeciones');showPage('scripts')">Marcar completado →</button></div>
-  </div>
-
-  <!-- SCRIPTS -->
-  <div class="page" id="p-scripts">
-    <div class="sec-h">Biblioteca de scripts</div>
-    <div class="sec-sub">Mensajes listos para copiar. Filtra por programa o situación.</div>
-    <input class="search-in" type="text" placeholder="Buscar script..." id="script-search" oninput="renderScripts()">
-    <div class="sf" id="script-filters"></div>
-    <div id="scripts-list"></div>
-    <div style="text-align:right;margin-top:1rem"><button class="btn-p" onclick="markDone('scripts');showPage('simulador')">Marcar completado →</button></div>
-  </div>
-
-  <!-- SIMULADOR -->
-  <div class="page" id="p-simulador">
-    <div class="sec-h">Simulador de práctica</div>
-    <div class="sec-sub">9 prospectos basados en conversaciones reales. Enfocado en el cierre.</div>
-    <div class="sim-lay">
-      <div>
-        <div style="font-family:'Work Sans',sans-serif;font-size:11px;font-weight:600;color:#42474e;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:0.6rem">Elige un prospecto</div>
-        <div id="prospect-list"></div>
-      </div>
-      <div>
-        <div class="sim-panel">
-          <div class="sim-hd"><div class="sim-av" id="sim-av">LO</div><div><div class="sim-nm" id="sim-nm">Lore Ospina</div><div class="sim-sb" id="sim-sb">Enfermería</div></div></div>
-          <div class="sim-sts">
-            <div class="sim-st"><div class="sim-sn" id="sim-score">0</div><div class="sim-sl">Puntos</div></div>
-            <div class="sim-st"><div class="sim-sn" id="sim-step">0/0</div><div class="sim-sl">Avance</div></div>
-            <div class="sim-st"><div class="sim-sn" id="sim-streak">0</div><div class="sim-sl">Racha</div></div>
+    <!-- TECNICA -->
+    <div class="page" id="p-tecnica">
+      <div class="sec-h">La micro-confirmación</div>
+      <div class="sec-sub">El primer "sí" psicológico que abre cualquier conversación de venta.</div>
+      <div class="card">
+        <div class="card-label">La fórmula exacta</div>
+        <div style="background:linear-gradient(135deg,rgba(26,8,110,0.06),rgba(49,39,131,0.04));border-radius:10px;padding:1rem 1.2rem;margin-bottom:1rem">
+          <div style="font-family:'Newsreader',serif;font-size:1.05rem;color:#1a086e;line-height:1.6">"Veo que te llama la atención el programa de <span style="color:#805600;font-style:italic">[Nombre del programa]</span>, ¿Correcto?"</div>
+        </div>
+        <div class="two">
+          <div>
+            <div class="card-label" style="color:#166534">Correcto</div>
+            <div class="a-good">✓ "Veo que te llama la atención Enfermería, ¿Correcto?"</div>
+            <div class="a-good">✓ "Veo que te llama la atención Excel, ¿Correcto?"</div>
+            <div class="a-good">✓ "Veo que te llama la atención Cosmetología, ¿Correcto?"</div>
           </div>
-          <div class="sim-bar"><div class="sim-bar-fill" id="sim-bar" style="width:0%"></div></div>
-          <div class="chat" id="sim-chat"></div>
-          <div class="opts-area" id="sim-opts-area">
-            <div class="opts-lbl">Elige tu respuesta</div>
-            <div id="sim-opts"></div>
+          <div>
+            <div class="card-label" style="color:#991b1b">Errores reales del dataset</div>
+            <div class="a-bad">✗ Enviar lista de todos los programas</div>
+            <div class="a-bad">✗ "¿En qué le puedo ayudar?" — sin dirección</div>
+            <div class="a-bad">✗ Pedir nombre antes de dar información</div>
           </div>
         </div>
-        <div id="sim-result"></div>
       </div>
+      <div class="card">
+        <div class="card-label">Por qué funciona</div>
+        <p style="font-size:13.5px;line-height:1.75;color:#42474e">Cuando un prospecto responde un anuncio de Meta, ya mostró interés. La micro-confirmación reconoce ese interés y pide un "sí" simple. Esto crea compromiso psicológico, sensación de ser escuchado, y abre un diálogo real en lugar de un monólogo donde tú lanzas información sin saber qué necesita.</p>
+      </div>
+      <div class="card">
+        <div class="card-label">Cómo identificar el programa de origen</div>
+        <div class="t-step"><div class="t-num">1</div><div><div class="t-label">WhatsApp directo</div><p style="font-size:13px;color:#42474e">El número indica la sede y contexto. WhatsApp Cursos → probable curso corto.</p></div></div>
+        <div class="t-step"><div class="t-num">2</div><div><div class="t-label">Inbox Facebook / Instagram</div><p style="font-size:13px;color:#42474e">Revisa el anuncio al que reaccionó en Meta Business Suite. Usa ese programa para la micro-confirmación.</p></div></div>
+        <div class="t-step"><div class="t-num">3</div><div><div class="t-label">Sin dato claro</div><p style="font-size:13px;color:#42474e">"¿Sobre cuál de nuestros programas te gustaría conocer más?" — luego aplica la micro-confirmación.</p></div></div>
+      </div>
+      <div style="text-align:right;margin-top:1rem"><button class="btn-p" onclick="markDone('tecnica');showPage('arbol')">Marcar completado →</button></div>
     </div>
-    <div style="text-align:right;margin-top:1rem"><button class="btn-s" onclick="markDone('simulador')">Marcar módulo completado</button></div>
-  </div>
 
-  <!-- PROGRESO -->
-  <div class="page" id="p-progreso">
-    <div class="sec-h">Mi progreso</div>
-    <div class="sec-sub">Registro de tu avance en la Academia de Ventas INDECAP.</div>
-    <div class="tr-grid">
-      <div class="tr-stat"><div class="tr-n" id="tr-pct">0%</div><div class="tr-l">Completado</div></div>
-      <div class="tr-stat"><div class="tr-n" id="tr-mods">0/6</div><div class="tr-l">Módulos</div></div>
-      <div class="tr-stat"><div class="tr-n" id="tr-sims">0</div><div class="tr-l">Simulaciones</div></div>
-      <div class="tr-stat"><div class="tr-n" id="tr-score">0</div><div class="tr-l">Puntos totales</div></div>
+    <!-- ARBOL -->
+    <div class="page" id="p-arbol">
+      <div class="sec-h">Árbol de conversación</div>
+      <div class="sec-sub">Flujo completo en 5 fases desde el primer mensaje hasta la visita a sede.</div>
+      <div class="card"><div class="card-label">Fase 1 · Apertura</div>
+        <div class="t-step"><div class="t-num">1</div><div><div class="t-label">Prospecto llega</div>
+          <div class="b-agent">"Veo que te llama la atención el programa de [Programa], ¿Correcto?"</div>
+          <div class="branches"><span class="br br-y">Sí → Fase 2</span><span class="br br-n">No responde → seguimiento 2h</span><span class="br br-m">Info general → preguntar qué área</span></div>
+        </div></div>
+      </div>
+      <div class="card"><div class="card-label">Fase 2 · Descubrimiento</div>
+        <div class="t-step"><div class="t-num">2</div><div><div class="t-label">Explorar motivación</div>
+          <div class="b-agent">"¿Ya tienes experiencia en el área o estás comenzando desde cero?"</div>
+        </div></div>
+        <div class="t-step"><div class="t-num">3</div><div><div class="t-label">Identificar urgencia</div>
+          <div class="b-agent">"¿Cuándo te gustaría empezar? Tenemos grupos que inician próximamente."</div>
+          <div class="branches"><span class="br br-y">Pronto → urgencia alta</span><span class="br br-m">En meses → nutrir</span><span class="br br-n">Solo mirando → propuesta de valor</span></div>
+        </div></div>
+      </div>
+      <div class="card"><div class="card-label">Fase 3 · Propuesta de valor — PRIMERO valor, DESPUÉS precio</div>
+        <div class="t-step"><div class="t-num">4</div><div><div class="t-label">Presentar con propósito</div>
+          <div class="b-agent">"El Técnico en Enfermería está avalado por la Secretaría de Educación y te habilita para trabajar en clínicas y hospitales. INDECAP lleva 40 años en Antioquia. ¿Eso es lo que estás buscando?"</div>
+          <div class="a-warn" style="margin-top:7px">Nunca respondas como recepcionista. Responde como asesor comercial que quiere que el prospecto tome la mejor decisión.</div>
+        </div></div>
+      </div>
+      <div class="card"><div class="card-label">Fase 4 · Precio</div>
+        <div class="t-step"><div class="t-num">5</div><div><div class="t-label">Contado primero, financiado después</div>
+          <div class="b-agent">"De contado $2.560.000 por ciclo (18% descuento incluido), o financiado con cuota inicial $500.000 y 5 cuotas de $463.200. ¿Cuál se ajusta mejor a ti?"</div>
+          <div class="a-warn" style="margin-top:7px">El precio de contado ancla el valor. Nunca dejes al precio defenderse solo — siempre va acompañado del mensaje emocional.</div>
+        </div></div>
+      </div>
+      <div class="card"><div class="card-label">Fase 5 · Cierre emocional + invitación a sede</div>
+        <div class="t-step"><div class="t-num">6</div><div><div class="t-label">Mensaje emocional</div>
+          <div class="b-agent">"Mira, invertir en tu formación es la única decisión que nunca pierde valor..."</div>
+        </div></div>
+        <div class="t-step"><div class="t-num">7</div><div><div class="t-label">Invitación a sede — toda conversación termina con dirección</div>
+          <div class="b-agent">"¡Sin embargo! Mi recomendación es que te acerques a nuestra sede para conocer los ambientes de aprendizaje y laboratorios. ¿Ya conoces la Sede?"</div>
+          <div class="branches"><span class="br br-y">"¿Dónde queda?" → dar dirección</span><span class="br br-y">"Esta semana voy" → confirmar día</span><span class="br br-n">Silencio → seguimiento 48h</span></div>
+          <div class="a-good" style="margin-top:8px">WhatsApp inicia la venta. La sede la fortalece. La matrícula la cierra.</div>
+        </div></div>
+      </div>
+      <div style="text-align:right;margin-top:1rem"><button class="btn-p" onclick="markDone('arbol');showPage('cierre')">Marcar completado →</button></div>
     </div>
-    <div class="card"><div class="card-label">Estado de módulos</div><div id="progress-list"></div></div>
-    <div style="text-align:center;margin-top:1.4rem"><button class="btn-s" onclick="resetProgress()">Reiniciar progreso</button></div>
-  </div>
 
-</div><!-- /sec-ventas -->
-
-<!-- ======== PROFESORES SECTION ======== -->
-<div id="sec-profesores" style="display:none">
-  <div style="text-align:center;padding:4rem 2rem">
-    <div style="font-size:3rem;margin-bottom:1rem">[🏗️]</div>
-    <div class="sec-h" style="text-align:center">Inducción Docente</div>
-    <p style="font-size:14px;color:#42474e;margin:0.75rem auto 2rem;max-width:420px;line-height:1.7">Módulos interactivos para que los profesores nuevos puedan completar su inducción sin importar dónde estén.</p>
-    <div style="display:inline-flex;align-items:center;gap:8px;background:rgba(26,8,110,0.06);border-radius:100px;padding:8px 20px;font-family:Work Sans,sans-serif;font-size:13px;font-weight:500;color:#1a086e">
-      <span style="width:8px;height:8px;border-radius:50%;background:#f59e0b;display:inline-block"></span>
-      En construcción — disponible pronto
+    <!-- CIERRE -->
+    <div class="page" id="p-cierre">
+      <div class="sec-h">Técnica de cierre</div>
+      <div class="sec-sub">La diferencia entre el equipo que informa y el que convierte.</div>
+      <div class="card">
+        <div class="card-label">El error más frecuente en los datos reales</div>
+        <div class="a-bad">✗ Dar precio → preguntar "¿Cuál jornada te interesa?" → esperar respuesta que nunca llega.</div>
+        <p style="font-size:13px;color:#42474e;margin-top:8px">No vendemos información. Vendemos decisiones. No respondas por salir del paso — responde para acercarlo a matrícula.</p>
+      </div>
+      <div class="card">
+        <div class="card-label">La secuencia correcta — 2 mensajes después del precio</div>
+        <div class="cierre-box"><div class="cierre-lbl">Mensaje 1 · El ancla emocional</div><p style="font-size:13px;color:#42474e">Justo después del precio. Transforma "gasto" en "inversión". Sin este mensaje, el precio pelea solo.</p></div>
+        <div class="cierre-box"><div class="cierre-lbl">Mensaje 2 · Invitación a sede</div><p style="font-size:13px;color:#42474e">Convierte el chat en visita física. Ver instalaciones y ambiente genera más confianza que cualquier mensaje.</p></div>
+        <div class="a-good">✓ Cuando el prospecto dice "¿Dónde queda?" o "Esta semana me acerco" — ya está listo para matricularse.</div>
+      </div>
+      <div class="card">
+        <div class="card-label">Mensaje sede — válido para todos los programas</div>
+        <div class="sc-msg">¡Sin embargo! Mi recomendación es que, si tienes tiempo esta semana, te acerques a nuestra sede para conocer nuestros ambientes de aprendizaje, laboratorios y la ubicación. 😊 No solo es importante el precio del programa, sino también el entorno donde vas a desarrollarte y crecer profesionalmente. ¿Ya conoces la Sede?</div>
+        <button class="cp-btn" onclick="copyMsg(this,SEDE_MSG)">Copiar mensaje</button>
+      </div>
+      <div class="card">
+        <div class="card-label">Respuestas al cierre</div>
+        <div class="t-step"><div class="t-num" style="background:linear-gradient(135deg,#166534,#14532d)">✓</div><div>
+          <div class="t-label">Dice "¿Dónde queda?"</div>
+          <div class="b-agent">📍 Medellín: Calle 56 #45-26, cerca al Metro Prado.<br>📍 Envigado: Cl 37 Sur #43A-84, cerca al Parque Principal de Envigado.<br>📍 Caldas: Cl 130 Sur #51-65, cerca al parque principal.<br><br>¿Cuál te queda más cerca? Puedo avisarle al equipo que vas esta semana. 😊</div>
+        </div></div>
+        <div class="t-step"><div class="t-num" style="background:linear-gradient(135deg,#166534,#14532d)">✓</div><div>
+          <div class="t-label">Dice "Esta semana me acerco"</div>
+          <div class="b-agent">¡Perfecto! ¿Qué día te funciona mejor, entre semana o sábado? Así te confirmo el horario y te esperamos con toda la información lista. 😊</div>
+        </div></div>
+        <div class="t-step"><div class="t-num" style="background:linear-gradient(135deg,#991b1b,#7f1d1d)">!</div><div>
+          <div class="t-label">Silencio — seguimiento a las 48 horas</div>
+          <div class="b-agent">Hola [Nombre] 😊 hace unos días hablamos sobre el programa de [Programa]. Quería saber si aún estás interesado/a para ayudarte con horarios, sedes y la mejor opción. Todavía tenemos cupo en el grupo que inicia [fecha]. 🙌</div>
+        </div></div>
+        <div class="a-tip">El que hace seguimiento, vende más. No esperes que el interesado vuelva solo — la insistencia profesional también cierra matrículas.</div>
+      </div>
+      <div class="card">
+        <div class="card-label">Ancla emocional por programa — listos para copiar</div>
+        <div id="cierre-progs"></div>
+      </div>
+      <div style="text-align:right;margin-top:1rem"><button class="btn-p" onclick="markDone('cierre');showPage('objeciones')">Marcar completado →</button></div>
     </div>
+
+    <!-- OBJECIONES -->
+    <div class="page" id="p-objeciones">
+      <div class="sec-h">Manejo de objeciones</div>
+      <div class="sec-sub">Basado en 10.702 conversaciones reales. Frecuencias reales, respuestas que funcionan.</div>
+      <div class="card" style="margin-bottom:1.4rem">
+        <div class="card-label">Frecuencia en el dataset</div>
+        <div style="display:flex;flex-direction:column;gap:5px;margin-top:4px">
+          <div style="display:flex;align-items:center;gap:9px"><div style="min-width:160px;font-size:13px">Piden descuento</div><div style="flex:1;height:6px;background:#eaeff1;border-radius:3px;overflow:hidden"><div style="width:100%;height:100%;background:linear-gradient(90deg,#1a086e,#312783)"></div></div><div style="font-size:12px;color:#42474e;min-width:42px;text-align:right;font-weight:600">2.907</div></div>
+          <div style="display:flex;align-items:center;gap:9px"><div style="min-width:160px;font-size:13px">Dicen "después"</div><div style="flex:1;height:6px;background:#eaeff1;border-radius:3px;overflow:hidden"><div style="width:17%;height:100%;background:#805600"></div></div><div style="font-size:12px;color:#42474e;min-width:42px;text-align:right;font-weight:600">490</div></div>
+          <div style="display:flex;align-items:center;gap:9px"><div style="min-width:160px;font-size:13px">Dicen "está caro"</div><div style="flex:1;height:6px;background:#eaeff1;border-radius:3px;overflow:hidden"><div style="width:7%;height:100%;background:#dc2626"></div></div><div style="font-size:12px;color:#42474e;min-width:42px;text-align:right;font-weight:600">199</div></div>
+          <div style="display:flex;align-items:center;gap:9px"><div style="min-width:160px;font-size:13px">Preguntan virtual</div><div style="flex:1;height:6px;background:#eaeff1;border-radius:3px;overflow:hidden"><div style="width:26%;height:100%;background:#60a5fa"></div></div><div style="font-size:12px;color:#42474e;min-width:42px;text-align:right;font-weight:600">762</div></div>
+        </div>
+      </div>
+      <div id="objeciones-list"></div>
+      <div style="text-align:right;margin-top:1rem"><button class="btn-p" onclick="markDone('objeciones');showPage('scripts')">Marcar completado →</button></div>
+    </div>
+
+    <!-- SCRIPTS -->
+    <div class="page" id="p-scripts">
+      <div class="sec-h">Biblioteca de scripts</div>
+      <div class="sec-sub">Mensajes listos para copiar. Filtra por programa o situación.</div>
+      <input class="search-in" type="text" placeholder="Buscar script..." id="script-search" oninput="renderScripts()">
+      <div class="sf" id="script-filters"></div>
+      <div id="scripts-list"></div>
+      <div style="text-align:right;margin-top:1rem"><button class="btn-p" onclick="markDone('scripts');showPage('simulador')">Marcar completado →</button></div>
+    </div>
+
+    <!-- SIMULADOR -->
+    <div class="page" id="p-simulador">
+      <div class="sec-h">Simulador de práctica</div>
+      <div class="sec-sub">9 prospectos basados en conversaciones reales. Practica sin presión.</div>
+      <div class="sim-lay">
+        <div>
+          <div style="font-family:'Work Sans',sans-serif;font-size:11px;font-weight:600;color:#42474e;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:0.6rem">Elige un prospecto</div>
+          <div id="prospect-list"></div>
+        </div>
+        <div>
+          <div class="sim-panel">
+            <div class="sim-hd">
+              <div class="sim-av" id="sim-av">LO</div>
+              <div>
+                <div style="font-size:13.5px;font-weight:500;color:#fff" id="sim-nm">Lore Ospina</div>
+                <div style="font-size:11.5px;color:rgba(255,255,255,0.65)" id="sim-sb">Enfermería</div>
+              </div>
+            </div>
+            <div class="sim-sts">
+              <div class="sim-st"><div class="sim-sn" id="sim-score">0</div><div class="sim-sl">Puntos</div></div>
+              <div class="sim-st"><div class="sim-sn" id="sim-step">0/0</div><div class="sim-sl">Avance</div></div>
+              <div class="sim-st"><div class="sim-sn" id="sim-streak">0</div><div class="sim-sl">Racha</div></div>
+            </div>
+            <div class="sim-bar"><div class="sim-bar-fill" id="sim-bar" style="width:0%"></div></div>
+            <div class="chat" id="sim-chat"></div>
+            <div class="opts-area" id="sim-opts-area">
+              <div class="opts-lbl">Elige tu respuesta</div>
+              <div id="sim-opts"></div>
+            </div>
+          </div>
+          <div id="sim-result"></div>
+        </div>
+      </div>
+      <div style="text-align:right;margin-top:1rem"><button class="btn-s" onclick="markDone('simulador')">Marcar módulo completado</button></div>
+    </div>
+
+    <!-- PROGRESO -->
+    <div class="page" id="p-progreso">
+      <div class="sec-h">Mi progreso</div>
+      <div class="sec-sub">Registro de tu avance en la plataforma INDECAP.</div>
+      <div class="tr-grid">
+        <div class="tr-stat"><div class="tr-n" id="tr-pct">0%</div><div class="tr-l">Completado</div></div>
+        <div class="tr-stat"><div class="tr-n" id="tr-mods">0/7</div><div class="tr-l">Módulos</div></div>
+        <div class="tr-stat"><div class="tr-n" id="tr-sims">0</div><div class="tr-l">Simulaciones</div></div>
+        <div class="tr-stat"><div class="tr-n" id="tr-score">0</div><div class="tr-l">Puntos totales</div></div>
+      </div>
+      <div class="card"><div class="card-label">Estado de módulos</div><div id="progress-list"></div></div>
+      <div style="text-align:center;margin-top:1.4rem"><button class="btn-s" onclick="resetProgress()">Reiniciar progreso</button></div>
+    </div>
+
   </div>
 </div>
-
-</div><!-- /main -->
 
 <script>
+
 /* ============================================================
-   INDECAP ACADEMY v5 - Production Ready
+   INDECAP PLATAFORMA v6
    ============================================================ */
 
-// ---- SECTION DEFINITIONS ----
-const SECTIONS = {
-  ventas: {
-    label: 'Ventas',
-    modules: [
-      {id:'inicio',    icon:'🏠', label:'Inicio',             showInProgress:false},
-      {id:'tecnica',   icon:'🎯', label:'Técnica base',         showInProgress:true},
-      {id:'arbol',     icon:'🌿', label:'Árbol de conversación', showInProgress:true},
-      {id:'cierre',    icon:'🏆', label:'Técnica de cierre',   showInProgress:true},
-      {id:'objeciones',icon:'🛡️', label:'Objeciones',          showInProgress:true},
-      {id:'scripts',   icon:'📋', label:'Scripts',             showInProgress:true},
-      {id:'simulador', icon:'🎮', label:'Simulador',           showInProgress:true},
-      {id:'progreso',  icon:'📊', label:'Mi progreso',         showInProgress:false},
-    ]
-  },
-  profesores: {
-    label: 'Profesores',
-    modules: []
-  }
+const PASSWORDS = {v:'IndecapVentas2025', p:'IndecapProf2025', e:'IndecapEst2025'};
+
+const MODULES = [
+  {id:'tips',      icon:'💡', label:'Tips comerciales',      desc:'Sistema de entrenamiento con casos reales y ejemplos prácticos.'},
+  {id:'tecnica',   icon:'🎯', label:'Técnica base',          desc:'La micro-confirmación: el primer "sí" que abre toda conversación.'},
+  {id:'arbol',     icon:'🌿', label:'Árbol de conversación', desc:'Flujo completo desde el primer mensaje hasta el cierre.'},
+  {id:'cierre',    icon:'🏆', label:'Técnica de cierre',     desc:'El mensaje emocional + invitación a sede. La diferencia clave.'},
+  {id:'objeciones',icon:'🛡️', label:'Objeciones',           desc:'5 objeciones reales del dataset con respuestas que funcionan.'},
+  {id:'scripts',   icon:'📋', label:'Scripts',               desc:'Mensajes listos para copiar por programa y situación.'},
+  {id:'simulador', icon:'🎮', label:'Simulador',             desc:'9 prospectos reales. Practica el cierre sin presión.'},
+];
+
+const HERO_DATA = {
+  v:{badge:'Academia de Ventas · INDECAP',h:'El arte de convertir<br>un mensaje en <em>una matrícula</em>',sub:'Entrenamiento basado en 10.702 conversaciones reales. Aprende los patrones, practica los cierres y domina cada objeción.',stats:[{n:'10.702',l:'Conversaciones'},{n:'7',l:'Módulos'},{n:'9',l:'Simuladores'},{n:'40',l:'Años'}]},
+  p:{badge:'Inducción Docente · INDECAP',h:'Bienvenido al equipo<br><em>docente INDECAP</em>',sub:'Todo lo que necesitas saber antes de tu primer día de clase. Completa la inducción a tu ritmo.',stats:[{n:'40',l:'Años'},{n:'3',l:'Sedes'},{n:'15+',l:'Programas'},{n:'450',l:'Estudiantes'}]},
+  e:{badge:'Portal Estudiantil · INDECAP',h:'Tu formación<br><em>comienza aquí</em>',sub:'Accede a tu pensum, materiales de clase y recursos de tu programa técnico.',stats:[{n:'40',l:'Años'},{n:'3',l:'Sedes'},{n:'15+',l:'Programas'},{n:'400+',l:'Horas prácticas'}]},
 };
 
-// ---- STATE ----
-const SK = 'indecap_v5';
-let ST = {done:[], sims:0, score:0, section:'ventas'};
-function loadST(){try{const s=localStorage.getItem(SK);if(s)ST={...ST,...JSON.parse(s)};}catch(e){}}
-function saveST(){try{localStorage.setItem(SK,JSON.stringify(ST));}catch(e){}}
+const SK = 'indecap_v6';
+let ST = {done:[], sims:0, score:0};
+let role = 'v';
+let curPage = 'inicio';
+
+function loadST(){try{const s=localStorage.getItem(SK+'_'+role);if(s)ST={done:[],sims:0,score:0,...JSON.parse(s)};}catch(e){}}
+function saveST(){try{localStorage.setItem(SK+'_'+role,JSON.stringify(ST));}catch(e){}}
 function markDone(id){if(!ST.done.includes(id)){ST.done.push(id);saveST();updateUI();}}
-function resetProgress(){if(confirm('Reiniciar todo el progreso?')){ST={done:[],sims:0,score:0,section:ST.section};saveST();updateUI();renderModGrid();}}
+function resetProgress(){if(confirm('¿Reiniciar todo el progreso?')){ST={done:[],sims:0,score:0};saveST();updateUI();renderModGrid();}}
 
-// ---- NAVIGATION ----
-let currentSection = 'ventas';
-let currentPage = 'inicio';
+let pendingRole = '';
 
-function buildNav(){
-  const track = document.getElementById('nav-track');
-  track.innerHTML = '';
-  const sec = SECTIONS[currentSection];
-  sec.modules.forEach(m => {
-    const btn = document.createElement('button');
-    btn.className = 'nav-tab' + (m.id === currentPage ? ' active' : '');
-    btn.textContent = m.label;
-    btn.onclick = () => showPage(m.id);
-    btn.id = 'nav-' + m.id;
-    track.appendChild(btn);
+function openPortal(r){
+  pendingRole = r;
+  const icons={v:'🎯',p:'👨‍🏫',e:'📚'};
+  const titles={v:'Equipo Comercial',p:'Profesores',e:'Estudiantes'};
+  document.getElementById('pwd-icon').textContent = icons[r];
+  document.getElementById('pwd-title').textContent = titles[r];
+  document.getElementById('pwd-err').style.display = 'none';
+  document.getElementById('pwd-input').value = '';
+  document.getElementById('pwd-overlay').style.display = 'flex';
+  setTimeout(()=>document.getElementById('pwd-input').focus(), 100);
+}
+
+function closePortal(){
+  document.getElementById('pwd-overlay').style.display = 'none';
+}
+
+function checkPassword(){
+  const val = document.getElementById('pwd-input').value.trim();
+  if(val === PASSWORDS[pendingRole]){
+    document.getElementById('pwd-overlay').style.display = 'none';
+    launchApp(pendingRole);
+  } else {
+    document.getElementById('pwd-err').style.display = 'block';
+    document.getElementById('pwd-input').value = '';
+    document.getElementById('pwd-input').focus();
+  }
+}
+
+document.addEventListener('DOMContentLoaded', ()=>{
+  document.getElementById('pwd-input').addEventListener('keydown', e=>{
+    if(e.key==='Enter') checkPassword();
   });
+});
+
+function exitToPortal(){
+  document.getElementById('app').style.display = 'none';
+  document.getElementById('portal').style.display = '';
+  document.title = 'INDECAP · Plataforma de Formación';
 }
 
-function showPage(id){
-  currentPage = id;
-  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-  const pg = document.getElementById('p-' + id);
-  if(pg) pg.classList.add('active');
-  document.querySelectorAll('.nav-tab').forEach(b => b.classList.remove('active'));
-  const nb = document.getElementById('nav-' + id);
-  if(nb) nb.classList.add('active');
-  window.scrollTo({top:0,behavior:'smooth'});
-  if(id === 'scripts') renderScripts();
-  if(id === 'simulador') initSim();
-  if(id === 'cierre') renderCierreProgs();
-  if(id === 'objeciones') renderObjeciones();
-  if(id === 'progreso') updateProgress();
-}
-
-function switchSection(name, btn){
-  currentSection = name;
-  ST.section = name;
-  saveST();
-  document.querySelectorAll('.sec-sw-btn').forEach(b => b.classList.remove('active'));
-  btn.classList.add('active');
-  document.getElementById('sec-ventas').style.display = name === 'ventas' ? '' : 'none';
-  document.getElementById('sec-profesores').style.display = name === 'profesores' ? '' : 'none';
+function launchApp(r){
+  role = r;
+  ST = {done:[],sims:0,score:0};
+  loadST();
+  const rc={v:'role-v',p:'role-p',e:'role-e'};
+  const rl={v:'Ventas',p:'Profesores',e:'Estudiantes'};
+  const hc={v:'hero-v',p:'hero-p',e:'hero-e'};
+  const roleEl = document.getElementById('nav-role');
+  roleEl.textContent = rl[r];
+  roleEl.className = 'nav-role ' + rc[r];
+  const hero = document.getElementById('app-hero');
+  hero.className = 'hero ' + hc[r];
+  const hd = HERO_DATA[r];
+  document.getElementById('app-hero-in').innerHTML = `
+    <div class="hero-badge">${hd.badge}</div>
+    <h1 class="hero-h">${hd.h}</h1>
+    <p class="hero-sub">${hd.sub}</p>
+    <div class="hero-stats">${hd.stats.map(s=>`<div><div class="hs-n">${s.n}</div><div class="hs-l">${s.l}</div></div>`).join('')}</div>`;
   buildNav();
+  renderModGrid();
+  updateUI();
+  renderTips();
+  renderCierreProgs();
+  renderObjeciones();
+document.getElementById('portal').style.display = 'none';
+document.getElementById('p-inicio').style.display = 'block';
   showPage('inicio');
 }
 
-// ---- PROGRESS ----
+function buildNav(){
+  const track = document.getElementById('nav-track');
+  const items = [{id:'inicio',label:'Inicio'}, ...MODULES, {id:'progreso',label:'Mi progreso'}];
+  track.innerHTML = items.map(m=>`<button class="nav-tab ${m.id===curPage?'active':''}" id="nav-${m.id}" onclick="showPage('${m.id}')">${m.label}</button>`).join('');
+}
+
+function showPage(id){
+  curPage = id;
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  const pg = document.getElementById('p-'+id);
+  if(pg) pg.classList.add('active');
+  document.querySelectorAll('.nav-tab').forEach(b=>b.classList.remove('active'));
+  const nb = document.getElementById('nav-'+id);
+  if(nb) nb.classList.add('active');
+  window.scrollTo({top:0,behavior:'smooth'});
+  if(id==='progreso') updateProgress();
+  if(id==='simulador') initSim();
+  if(id==='scripts') renderScripts();
+}
+
 function updateUI(){
-  const mods = SECTIONS.ventas.modules.filter(m => m.showInProgress);
-  const done = mods.filter(m => ST.done.includes(m.id)).length;
-  const total = mods.length;
+  const done = MODULES.filter(m=>ST.done.includes(m.id)).length;
+  const total = MODULES.length;
   const pct = Math.round((done/total)*100);
-  const circ = 2*Math.PI*15;
-  const off = circ - (pct/100)*circ;
   const ring = document.getElementById('ring');
-  if(ring) ring.setAttribute('stroke-dashoffset', off);
+  if(ring) ring.setAttribute('stroke-dashoffset', (2*Math.PI*15)*(1-pct/100));
   const rp = document.getElementById('ring-pct');
-  if(rp) rp.textContent = pct + '%';
-  // sw badge
-  const swb = document.getElementById('sw-ventas-badge');
-  if(swb) swb.textContent = done + '/' + total;
-  // mod cards
-  mods.forEach(m => {
-    const mc = document.getElementById('mc-' + m.id);
-    const mb = document.getElementById('mb-' + m.id);
-    if(ST.done.includes(m.id)){
-      if(mc) mc.classList.add('done');
-      if(mb){mb.textContent = 'Completado ✓';mb.className = 'mod-badge b-done';}
-    } else {
-      if(mc) mc.classList.remove('done');
-      if(mb){mb.textContent = 'Pendiente';mb.className = 'mod-badge b-pend';}
-    }
+  if(rp) rp.textContent = pct+'%';
+  MODULES.forEach(m=>{
+    const mc=document.getElementById('mc-'+m.id);
+    const mb=document.getElementById('mb-'+m.id);
+    const d=ST.done.includes(m.id);
+    if(mc) mc.classList.toggle('done',d);
+    if(mb){mb.textContent=d?'Completado ✓':'Pendiente';mb.className='mod-badge '+(d?'b-done':'b-pend');}
   });
-  // nav tabs
-  buildNav();
 }
 
 function updateProgress(){
-  const mods = SECTIONS.ventas.modules.filter(m => m.showInProgress);
-  const done = mods.filter(m => ST.done.includes(m.id)).length;
-  const total = mods.length;
-  const pct = Math.round((done/total)*100);
-  const t = (id,v) => {const el=document.getElementById(id);if(el)el.textContent=v;};
-  t('tr-pct', pct + '%');
-  t('tr-mods', done + '/' + total);
-  t('tr-sims', ST.sims);
-  t('tr-score', ST.score);
-  const pl = document.getElementById('progress-list');
-  if(pl){
-    pl.innerHTML = mods.map(m => `
-      <div class="mp-row">
-        <span style="font-size:16px">${m.icon}</span>
-        <span class="mp-name">${m.label}</span>
-        <span class="mp-status ${ST.done.includes(m.id)?'s-done':'s-pend'}">${ST.done.includes(m.id)?'Completado ✓':'Pendiente'}</span>
-      </div>`).join('');
-  }
+  const done=MODULES.filter(m=>ST.done.includes(m.id)).length;
+  const total=MODULES.length;
+  const pct=Math.round((done/total)*100);
+  const t=(id,v)=>{const el=document.getElementById(id);if(el)el.textContent=v;};
+  t('tr-pct',pct+'%');t('tr-mods',done+'/'+total);t('tr-sims',ST.sims);t('tr-score',ST.score);
+  const pl=document.getElementById('progress-list');
+  if(pl) pl.innerHTML=MODULES.map(m=>`<div class="mp-row"><span style="font-size:16px">${m.icon}</span><span class="mp-name">${m.label}</span><span class="mp-status ${ST.done.includes(m.id)?'s-done':'s-pend'}">${ST.done.includes(m.id)?'Completado ✓':'Pendiente'}</span></div>`).join('');
 }
 
 function renderModGrid(){
-  const grid = document.getElementById('mod-grid');
+  const grid=document.getElementById('mod-grid');
   if(!grid) return;
-  const mods = SECTIONS.ventas.modules.filter(m => m.showInProgress);
-  grid.innerHTML = mods.map(m => `
-    <div class="mod-card ${ST.done.includes(m.id)?'done':''}" id="mc-${m.id}" onclick="showPage('${m.id}')">
-      <div class="mod-icon">${m.icon}</div>
-      <div class="mod-title">${m.label}</div>
-      <div class="mod-desc">${MOD_DESCS[m.id]||''}</div>
-      <span class="mod-badge ${ST.done.includes(m.id)?'b-done':'b-pend'}" id="mb-${m.id}">${ST.done.includes(m.id)?'Completado ✓':'Pendiente'}</span>
-    </div>`).join('');
+  grid.innerHTML=MODULES.map(m=>`<div class="mod-card ${ST.done.includes(m.id)?'done':''}" id="mc-${m.id}" onclick="showPage('${m.id}')"><div class="mod-icon">${m.icon}</div><div class="mod-title">${m.label}</div><div class="mod-desc">${m.desc}</div><span class="mod-badge ${ST.done.includes(m.id)?'b-done':'b-pend'}" id="mb-${m.id}">${ST.done.includes(m.id)?'Completado ✓':'Pendiente'}</span></div>`).join('');
 }
 
-const MOD_DESCS = {
-  tecnica:    'La micro-confirmación: el primer "sí" que abre toda conversación.',
-  arbol:      'Flujo completo desde el primer mensaje hasta el cierre.',
-  cierre:     'El mensaje emocional + invitación a sede. La diferencia entre vender y no vender.',
-  objeciones: '5 objeciones reales con frecuencia del dataset + técnica paso a paso.',
-  scripts:    'Mensajes listos para copiar por programa, situación y tipo de prospecto.',
-  simulador:  '9 prospectos basados en casos reales. Practica el cierre sin riesgo.',
-};
-
-// ---- COPY ----
-function copyMsg(btn, msg){
-  navigator.clipboard.writeText(msg).catch(() => {
-    const ta = document.createElement('textarea');
-    ta.value = msg; document.body.appendChild(ta); ta.select(); document.execCommand('copy'); document.body.removeChild(ta);
-  });
-  btn.textContent = 'Copiado!';
-  btn.classList.add('copied');
-  setTimeout(() => {btn.textContent = 'Copiar mensaje';btn.classList.remove('copied');}, 2000);
+function copyMsg(btn,msg){
+  navigator.clipboard.writeText(msg).catch(()=>{const ta=document.createElement('textarea');ta.value=msg;document.body.appendChild(ta);ta.select();document.execCommand('copy');document.body.removeChild(ta);});
+  btn.textContent='¡Copiado!';btn.classList.add('copied');
+  setTimeout(()=>{btn.textContent='Copiar mensaje';btn.classList.remove('copied');},2000);
 }
 
-// ---- CIERRE PROGRAMS ----
-const SEDE_MSG = 'Sin embargo! Mi recomendación es que, si tienes tiempo esta semana, te acerques a nuestra sede para conocer nuestros ambientes de aprendizaje, laboratorios y la ubicación. No solo es importante el precio del programa, sino también el entorno donde vas a desarrollarte y crecer profesionalmente. ¿Ya conoces la Sede?';
-
-const PROGS = [
-  {n:'Auxiliar en Enfermería',      m:'Mira, invertir en tu formación como Auxiliar en Enfermería es la única decisión que nunca pierde valor. Lo que hoy ves como un pago, en 3 ciclos se habrá convertido en un camino rentable cuidando vidas — con opciones de trabajo en las mejores clínicas y hospitales de Antioquia. El conocimiento es lo único que nadie te puede quitar... y lo que más te hará ganar!'},
-  {n:'Servicios Farmacéuticos',       m:'Mira, invertir en Servicios Farmacéuticos es abrirte las puertas de uno de los sectores más estables de Colombia. Lo que hoy ves como un pago, en 3 ciclos se habrá convertido en trabajo fijo en droguerías, clínicas y cadenas farmacéuticas. El conocimiento es lo único que nadie te puede quitar... y lo que más te hará ganar!'},
-  {n:'Auxiliar en Salud Oral',          m:'Mira, invertir en Salud Oral es entrar a uno de los sectores con más demanda laboral en Colombia. Lo que hoy ves como un pago, en 3 ciclos se habrá convertido en trabajo estable en consultorios y clínicas dentales que siempre necesitan personal certificado. El conocimiento es lo único que nadie te puede quitar... y lo que más te hará ganar!'},
-  {n:'Auxiliar en Salud Pública',     m:'Mira, invertir en Salud Pública es prepararte para trabajar donde más se necesita: comunidades, alcaldías, hospitales y programas del Estado. Lo que hoy ves como un pago, en 3 ciclos se habrá convertido en una carrera con propósito y estabilidad. El conocimiento es lo único que nadie te puede quitar... y lo que más te hará ganar!'},
-  {n:'Administrativo en Salud',         m:'Mira, invertir en Administrativo en Salud es combinar dos mundos que siempre tienen demanda: la salud y la gestión. Lo que hoy ves como un pago, en 3 ciclos se habrá convertido en trabajo en clínicas, EPS, IPS y hospitales. El conocimiento es lo único que nadie te puede quitar... y lo que más te hará ganar!'},
-  {n:'Atención al Adulto Mayor',      m:'Mira, invertir en Atención al Adulto Mayor es prepararte para uno de los sectores con más crecimiento en Colombia. Lo que hoy ves como un pago, en 3 ciclos se habrá convertido en trabajo en hogares geriátricos, clínicas y servicios domiciliarios. El conocimiento es lo único que nadie te puede quitar... y lo que más te hará ganar!'},
-  {n:'Auxiliar en Veterinaria',         m:'Mira, invertir en Veterinaria es convertir tu amor por los animales en una carrera real. Lo que hoy ves como un pago, en 3 ciclos se habrá convertido en trabajo en clínicas veterinarias, refugios y consultorios. El conocimiento es lo único que nadie te puede quitar... y lo que más te hará ganar!'},
-  {n:'Peluquería Canina',              m:'Mira, invertir en Peluquería Canina es apostar por un negocio que crece cada día más en Colombia. Lo que hoy ves como un pago, en poco tiempo se habrá convertido en tus propios clientes, tu propio horario y tus propias ganancias. El conocimiento es lo único que nadie te puede quitar... y lo que más te hará ganar!'},
-  {n:'Cosmetología y Estética',        m:'Mira, invertir en Cosmetología es apostar por tu propia independencia. Lo que hoy ves como un pago, en 2 ciclos se habrá convertido en tu propio negocio, tus propios clientes y tus propias ganancias. El conocimiento es lo único que nadie te puede quitar... y lo que más te hará ganar!'},
-  {n:'Auxiliar Contable',               m:'Mira, invertir en Contabilidad es abrirte las puertas de todas las empresas. Lo que hoy ves como un pago, en 3 ciclos se habrá convertido en trabajo estable con posibilidades de crecer en cualquier sector. El conocimiento es lo único que nadie te puede quitar... y lo que más te hará ganar!'},
-  {n:'Talento Humano',                  m:'Mira, invertir en Talento Humano es prepararte para ser la persona que conecta empresas con personas. Lo que hoy ves como un pago, en 3 ciclos se habrá convertido en trabajo en empresas y organizaciones que necesitan gestores certificados. El conocimiento es lo único que nadie te puede quitar... y lo que más te hará ganar!'},
-  {n:'Técnico en Marketing Digital',   m:'Mira, invertir en Marketing Digital es entrar al mundo donde todas las empresas quieren estar. Lo que hoy ves como un pago, en 3 ciclos se habrá convertido en habilidades para trabajar en empresas, agencias o tu propio emprendimiento. El conocimiento es lo único que nadie te puede quitar... y lo que más te hará ganar!'},
-  {n:'Seguridad y Salud en el Trabajo', m:'Mira, invertir en SST es prepararte para algo que la ley exige en todas las empresas de Colombia. Lo que hoy ves como un pago, en 3 ciclos se habrá convertido en un perfil muy valorado en industrias, constructoras y empresas de todos los sectores. El conocimiento es lo único que nadie te puede quitar... y lo que más te hará ganar!'},
-  {n:'Técnico en Sistemas',             m:'Mira, invertir en Sistemas es apostar por el sector que más crece en Colombia. Lo que hoy ves como un pago, en 3 ciclos se habrá convertido en trabajo en empresas, centros de cómputo y negocios que dependen de la tecnología. El conocimiento es lo único que nadie te puede quitar... y lo que más te hará ganar!'},
-  {n:'Auxiliar en Desarrollo de Software', m:'Mira, invertir en Desarrollo de Software es entrar a la carrera mejor pagada del mundo digital. Lo que hoy ves como un pago, en 3 ciclos se habrá convertido en habilidades que abren puertas en empresas locales e internacionales. El conocimiento es lo único que nadie te puede quitar... y lo que más te hará ganar!'},
-  {n:'Entrenamiento Deportivo',          m:'Mira, invertir en Entrenamiento Deportivo es convertir tu pasión por el deporte en una carrera profesional. Lo que hoy ves como un pago, en 3 ciclos se habrá convertido en trabajo en gimnasios, clubes deportivos y programas de bienestar. El conocimiento es lo único que nadie te puede quitar... y lo que más te hará ganar!'},
-  {n:'Primera Infancia',                 m:'Mira, invertir en Primera Infancia es prepararte para acompañar las etapas más importantes de la vida de un niño. Lo que hoy ves como un pago, en 2 ciclos se habrá convertido en trabajo en jardines, CDI y hogares del ICBF. El conocimiento es lo único que nadie te puede quitar... y lo que más te hará ganar!'},
+const TIPS = [
+  {num:1,title:'No respondas como recepcionista. Responde como asesor comercial.',body:'Muchas veces el error no está en la información… está en cómo se entrega. La forma en que presentas el precio y el programa determina si el prospecto avanza o se enfría.',wrong:'"El diplomado vale $750.000"',right:'"El diplomado completo tiene una promoción especial de $750.000 🙌 Sin embargo, más que el valor, lo importante es que aquí no vienes solo a estudiar Excel, sino a aprender herramientas que hoy realmente exigen las empresas. Mi recomendación es que puedas visitarnos en sede para mostrarte horarios, instalaciones y la mejor opción. ¿Ya conoces nuestra sede?"',remember:'No vendemos información. Vendemos decisiones. No respondas por salir del paso. Responde para acercarlo a matrícula.'},
+  {num:2,title:'No des precio demasiado rápido. Primero genera valor.',body:'Cuando una persona pregunta "¿Cuánto vale?", en realidad muchas veces está preguntando "¿Vale la pena para mí?". El precio solo es poderoso cuando ya construiste el valor.',wrong:'"Vale $300.000 por nivel"',right:'"Este diplomado está diseñado para que aprendas Excel + ChatGPT aplicado — algo que hoy muchas empresas valoran porque permite trabajar más rápido y tomar mejores decisiones 🙌 Incluye formación práctica, acompañamiento docente y certificación con respaldo de INDECAP. La inversión por nivel es de $300.000 😊"',remember:'Primero valor. Después precio. Nunca dejes al precio defendiendo solo la venta.'},
+  {num:3,title:'WhatsApp no es para cerrar todo. Es para llevar a sede.',body:'Muchos asesores intentan vender todo por chat… y ahí se pierden muchas matrículas. Ver instalaciones, laboratorios y ambiente genera mucha más confianza que cualquier mensaje.',wrong:'Mandar toda la información y esperar que pague desde el chat.',right:'"Mi recomendación es que si tienes un espacio esta semana, puedas visitarnos en sede 😊 Así conoces nuestros ambientes de aprendizaje, laboratorios, ubicación y la mejor opción según tu disponibilidad. No solo es importante el precio, sino también dónde vas a formarte. ¿Ya conoces nuestra sede?"',remember:'WhatsApp inicia la venta. La sede la fortalece. La matrícula la cierra.'},
+  {num:4,title:'Un "después te escribo" no es un no. Es seguimiento.',body:'Muchos leads se pierden porque el asesor asume que si la persona no respondió, ya no está interesada. Gran parte de las matrículas salen del seguimiento, no del primer mensaje.',wrong:'Dejar el chat olvidado porque no respondió.',right:'"Hola 😊 hace unos días hablamos sobre el Diplomado en Excel + ChatGPT Aplicado. Quería saber si aún estás interesado/a para ayudarte con horarios, sedes y la mejor opción según tu disponibilidad 🙌"',remember:'El que hace seguimiento, vende más. No esperes que el interesado vuelva solo. La insistencia profesional también cierra matrículas.'},
+  {num:5,title:'No termines una conversación sin dejar el siguiente paso claro.',body:'Muchos chats se enfrían porque el asesor entrega información… y ahí termina todo. Eso no es vender. Eso es solo responder. Toda conversación debe terminar con dirección.',wrong:'"Listo, cualquier cosa me avisas 😊" — eso mata la conversación.',right:'"Perfecto 🙌 Para ayudarte mejor, mi recomendación es que puedas visitarnos en sede y así te mostramos instalaciones, horarios y la mejor opción para ti 😊 ¿Te queda mejor Medellín, Envigado o Caldas?"',remember:'Toda conversación debe terminar con dirección. Siempre debe existir un siguiente paso: visita, llamada, confirmación o matrícula.'},
 ];
 
-function renderCierreProgs(){
-  const cont = document.getElementById('cierre-progs');
-  if(!cont || cont.innerHTML) return;
-  cont.innerHTML = PROGS.map((p,i) => `
-    <div style="margin-bottom:10px">
-      <div style="font-size:13px;font-weight:500;color:#1a086e;margin-bottom:4px">${p.n}</div>
-      <div class="sc-msg">${p.m}</div>
-      <button class="cp-btn" onclick="copyMsg(this,PROGS[${i}].m)">Copiar mensaje</button>
-    </div>`).join('');
+function renderTips(){
+  const cont=document.getElementById('tips-container');
+  if(!cont||cont.innerHTML) return;
+  cont.innerHTML=TIPS.map(t=>`<div class="tip-card"><div class="tip-badge"><span class="tip-badge-inner">TIP #${t.num}</span></div><div class="tip-title">${t.title}</div><div class="tip-body">${t.body}</div><div class="tip-compare"><div class="tip-wrong"><div class="tip-clabel">✗ Incorrecto</div><div class="tip-ctext">${t.wrong}</div></div><div class="tip-right"><div class="tip-clabel">✓ Correcto</div><div class="tip-ctext">${t.right}</div></div></div><div class="tip-remember">📌 Recuerda: ${t.remember}</div></div>`).join('');
 }
 
-// ---- OBJECIONES ----
+const PROGS = [
+  {n:'Auxiliar en Enfermería',m:'Mira, invertir en tu formación como Auxiliar en Enfermería es la única decisión que nunca pierde valor. Lo que hoy ves como un pago, en 3 ciclos se habrá convertido en un camino rentable cuidando vidas — con opciones de trabajo en las mejores clínicas y hospitales de Antioquia. El conocimiento es lo único que nadie te puede quitar... ¡y lo que más te hará ganar!'},
+  {n:'Servicios Farmacéuticos',m:'Mira, invertir en Servicios Farmacéuticos es abrirte las puertas de uno de los sectores más estables de Colombia. Lo que hoy ves como un pago, en 3 ciclos se habrá convertido en trabajo fijo en droguerías, clínicas y cadenas farmacéuticas. El conocimiento es lo único que nadie te puede quitar... ¡y lo que más te hará ganar!'},
+  {n:'Auxiliar en Salud Oral',m:'Mira, invertir en Salud Oral es entrar a uno de los sectores con más demanda laboral en Colombia. Lo que hoy ves como un pago, en 3 ciclos se habrá convertido en trabajo estable en consultorios y clínicas dentales. El conocimiento es lo único que nadie te puede quitar... ¡y lo que más te hará ganar!'},
+  {n:'Auxiliar en Salud Pública',m:'Mira, invertir en Salud Pública es prepararte para trabajar donde más se necesita: comunidades, alcaldías, hospitales y programas del Estado. El conocimiento es lo único que nadie te puede quitar... ¡y lo que más te hará ganar!'},
+  {n:'Administrativo en Salud',m:'Mira, invertir en Administrativo en Salud es combinar dos mundos con alta demanda: la salud y la gestión. En 3 ciclos: trabajo en clínicas, EPS e IPS. El conocimiento es lo único que nadie te puede quitar... ¡y lo que más te hará ganar!'},
+  {n:'Atención al Adulto Mayor',m:'Mira, invertir en Atención al Adulto Mayor es prepararte para uno de los sectores con más crecimiento en Colombia. En 3 ciclos: trabajo en hogares geriátricos, clínicas y servicios domiciliarios. El conocimiento es lo único que nadie te puede quitar... ¡y lo que más te hará ganar!'},
+  {n:'Auxiliar en Veterinaria',m:'Mira, invertir en Veterinaria es convertir tu amor por los animales en una carrera real. Lo que hoy ves como un pago, en 3 ciclos se habrá convertido en trabajo en clínicas veterinarias, refugios y consultorios. El conocimiento es lo único que nadie te puede quitar... ¡y lo que más te hará ganar!'},
+  {n:'Peluquería Canina',m:'Mira, invertir en Peluquería Canina es apostar por un negocio que crece cada día en Colombia. Lo que hoy ves como un pago, pronto serán tus propios clientes, tu propio horario y tus propias ganancias. El conocimiento es lo único que nadie te puede quitar... ¡y lo que más te hará ganar!'},
+  {n:'Cosmetología y Estética',m:'Mira, invertir en Cosmetología es apostar por tu propia independencia. Lo que hoy ves como un pago, en 2 ciclos se habrá convertido en tu propio negocio, tus propios clientes y tus propias ganancias. El conocimiento es lo único que nadie te puede quitar... ¡y lo que más te hará ganar!'},
+  {n:'Auxiliar Contable',m:'Mira, invertir en Contabilidad es abrirte las puertas de todas las empresas. En 3 ciclos: trabajo estable con posibilidades de crecer en cualquier sector. El conocimiento es lo único que nadie te puede quitar... ¡y lo que más te hará ganar!'},
+  {n:'Talento Humano',m:'Mira, invertir en Talento Humano es prepararte para ser la persona que conecta empresas con personas. En 3 ciclos: trabajo en empresas que necesitan gestores certificados. El conocimiento es lo único que nadie te puede quitar... ¡y lo que más te hará ganar!'},
+  {n:'Técnico en Marketing Digital',m:'Mira, invertir en Marketing Digital es entrar al mundo donde todas las empresas quieren estar. En 3 ciclos: habilidades para trabajar en empresas, agencias o tu propio emprendimiento. El conocimiento es lo único que nadie te puede quitar... ¡y lo que más te hará ganar!'},
+  {n:'Seguridad y Salud en el Trabajo',m:'Mira, invertir en SST es prepararte para algo que la ley exige en todas las empresas de Colombia. En 3 ciclos: perfil muy valorado en industrias, constructoras y empresas de todos los sectores. El conocimiento es lo único que nadie te puede quitar... ¡y lo que más te hará ganar!'},
+  {n:'Técnico en Sistemas',m:'Mira, invertir en Sistemas es apostar por el sector que más crece en Colombia. En 3 ciclos: trabajo en empresas, centros de cómputo y negocios que dependen de la tecnología. El conocimiento es lo único que nadie te puede quitar... ¡y lo que más te hará ganar!'},
+  {n:'Auxiliar en Desarrollo de Software',m:'Mira, invertir en Desarrollo de Software es entrar a la carrera mejor pagada del mundo digital. En 3 ciclos: habilidades que abren puertas en empresas locales e internacionales. El conocimiento es lo único que nadie te puede quitar... ¡y lo que más te hará ganar!'},
+  {n:'Entrenamiento Deportivo',m:'Mira, invertir en Entrenamiento Deportivo es convertir tu pasión por el deporte en una carrera profesional. En 3 ciclos: trabajo en gimnasios, clubes deportivos y programas de bienestar empresarial. El conocimiento es lo único que nadie te puede quitar... ¡y lo que más te hará ganar!'},
+  {n:'Primera Infancia',m:'Mira, invertir en Primera Infancia es prepararte para acompañar las etapas más importantes de la vida de un niño — con propósito, corazón y alta demanda laboral. En 2 ciclos: trabajo en jardines, CDI y hogares del ICBF. El conocimiento es lo único que nadie te puede quitar... ¡y lo que más te hará ganar!'},
+];
+
+const SEDE_MSG = '¡Sin embargo! Mi recomendación es que, si tienes tiempo esta semana, te acerques a nuestra sede para conocer nuestros ambientes de aprendizaje, laboratorios y la ubicación. 😊 No solo es importante el precio del programa, sino también el entorno donde vas a desarrollarte y crecer profesionalmente. ¿Ya conoces la Sede?';
+
+function renderCierreProgs(){
+  const cont=document.getElementById('cierre-progs');
+  if(!cont||cont.innerHTML) return;
+  cont.innerHTML=PROGS.map((p,i)=>`<div style="margin-bottom:10px"><div style="font-size:13px;font-weight:500;color:#1a086e;margin-bottom:4px">${p.n}</div><div class="sc-msg">${p.m}</div><button class="cp-btn" onclick="copyMsg(this,PROGS[${i}].m)">Copiar mensaje</button></div>`).join('');
+}
+
 const OBJS = [
-  {q:'¿Me pueden dar un descuento?', freq:'Más frecuente', freq_n:2907, steps:[
-    {l:'Respuesta correcta', m:'El precio que tienes ya incluye el descuento especial que manejamos. Lo que sí tengo para ti es la opción de financiar: empiezas con $500.000 y el resto en cuotas cómodas. ¿Así se te facilita más?'},
-    {l:'Para Excel (paquete)', m:'El precio por nivel ya es el especial. Pero si llevas los 3 niveles juntos, en vez de $600.000 te quedan en $499.900 — ya te ahorras $100.100. ¿Te animas con el paquete?'},
-  ], tip:'Nunca digas "déjame ver si puedo hacer algo". Señaliza que el precio es negociable.'},
-  {q:'Déjame pensarlo / después te aviso', freq:'Mayor pérdida', freq_clr:'rgba(239,68,68,0.1)', freq_txt:'#991b1b', freq_n:490, steps:[
-    {l:'Paso 1 · Descubrir la duda real', m:'¿Me puedes contar qué es lo que te genera duda? ¿El precio, los horarios, o algo más del programa?'},
-    {l:'Paso 2 · Urgencia legítima', m:'Los grupos tienen cupos limitados y el próximo cierra inscripciones el [fecha]. No quiero que pierdas tu espacio.'},
-    {l:'Paso 3 · Micro-compromiso', m:'¿Te parece si te escribo el [día concreto] para saber cómo vas?'},
-  ], tip:'Siempre quedar con fecha concreta. Son las 490 oportunidades que se están perdiendo.'},
-  {q:'Está muy caro / es mucho dinero', freq_n:199, steps:[
-    {l:'Paso 1 · Validar sin ceder', m:'Entiendo, es una inversión importante. Y precisamente por eso quiero que tomes la mejor decisión.'},
-    {l:'Paso 2 · Reencuadrar con datos', m:'El Técnico en Enfermería te habilita para trabajar en clínicas con salarios desde $2.000.000 al mes. En 2 meses de trabajo ya recuperas la inversión.'},
-    {l:'Paso 3 · Ofrecer financiación', m:'Además tenemos financiación: empiezas con $500.000 y pagas el resto en 5 cuotas cómodas. ¿Así se te facilita más?'},
-  ], tip:'Nunca digas "es económico". Defiende el valor con datos de empleabilidad.'},
-  {q:'No tengo tiempo / trabajo todo el día', freq_n:null, steps:[
-    {l:'Respuesta', m:'Te entiendo. La mayoría de nuestros estudiantes trabajan. Tenemos jornada nocturna (6pm-10pm) y sábados. ¿En qué días tienes más disponibilidad?'},
-  ], tip:'La pregunta sobre días transforma la objeción en conversación de logística.'},
-  {q:'¿Eso sirve para trabajar? ¿Están certificados?', freq_n:null, steps:[
-    {l:'Respuesta de credibilidad', m:'INDECAP lleva 40 años en Antioquia, con aprobación de la Secretaría de Educación. Nuestros egresados trabajan en clínicas, hospitales y empresas en toda la región. ¿Quieres que te comparta la resolución de aprobación?'},
-  ], tip:'Ofrecer el documento genera confianza y mantiene la conversación activa.'},
+  {q:'¿Me pueden dar un descuento?',extra:'2.907 conversaciones',freq:'Más frecuente',steps:[{l:'Respuesta correcta',m:'El precio que tienes ya incluye el descuento especial que manejamos. Lo que sí tengo para ti es la opción de financiar: empiezas con $500.000 y el resto en cuotas cómodas. ¿Así se te facilita más?'},{l:'Para Excel (paquete)',m:'El precio por nivel ya es el especial. Pero si llevas los 3 niveles juntos, en vez de $600.000 te quedan en $499.900 — ya te ahorras $100.100. ¿Te animas con el paquete?'}],tip:'Nunca digas "déjame ver si puedo hacer algo". Eso señaliza que el precio es negociable y pierdes autoridad.'},
+  {q:'Déjame pensarlo / después te aviso',extra:'490 sin seguimiento',freq:'Mayor pérdida',freqRed:true,steps:[{l:'Paso 1 · Descubrir la duda',m:'¿Me puedes contar qué es lo que te genera duda? ¿El precio, los horarios, o algo más del programa?'},{l:'Paso 2 · Urgencia legítima',m:'Los grupos tienen cupos limitados y el próximo cierra inscripciones el [fecha]. No quiero que pierdas tu espacio.'},{l:'Paso 3 · Micro-compromiso',m:'¿Te parece si te escribo el [día concreto] para saber cómo vas? Así no pierdes tiempo.'}],tip:'Siempre quedar con fecha concreta. Son las 490 oportunidades que se están perdiendo.'},
+  {q:'Está muy caro / es mucho dinero',extra:'199 conversaciones',steps:[{l:'Paso 1 · Validar sin ceder',m:'Entiendo, es una inversión importante. Y precisamente por eso quiero que tomes la mejor decisión.'},{l:'Paso 2 · Reencuadrar con datos',m:'El Técnico en Enfermería te habilita para trabajar en clínicas con salarios desde $2.000.000 al mes. En 2 meses de trabajo ya recuperas la inversión.'},{l:'Paso 3 · Ofrecer financiación',m:'Además tenemos financiación: empiezas con $500.000 y pagas el resto en 5 cuotas cómodas. ¿Así se te facilita más?'}],tip:'Nunca digas "es económico". Defiende el valor con datos concretos de empleabilidad.'},
+  {q:'No tengo tiempo / trabajo todo el día',steps:[{l:'Respuesta',m:'Te entiendo. La mayoría de nuestros estudiantes trabajan. Tenemos jornada nocturna (6pm-10pm) y sábados completos. ¿En qué días tienes más disponibilidad?'}],tip:'La pregunta sobre días transforma la objeción en conversación de logística.'},
+  {q:'¿Eso sirve para trabajar? ¿Están certificados?',steps:[{l:'Respuesta de credibilidad',m:'INDECAP lleva 40 años en Antioquia, con aprobación de la Secretaría de Educación. Nuestros egresados trabajan en clínicas, hospitales y empresas en toda la región. ¿Quieres que te comparta la resolución de aprobación?'}],tip:'Ofrecer el documento genera confianza Y mantiene la conversación activa.'},
 ];
 
 function renderObjeciones(){
-  const cont = document.getElementById('objeciones-list');
-  if(!cont || cont.innerHTML) return;
-  cont.innerHTML = OBJS.map((o,i) => `
-    <div class="obj-wrap">
-      <button class="obj-btn" onclick="toggleObj(${i})">
-        <span>${o.q}${o.freq_n ? ' <span style="font-size:12px;color:#42474e;font-weight:400"> — '+o.freq_n+' conversaciones</span>' : ''}</span>
-        <div style="display:flex;align-items:center;gap:7px">
-          ${o.freq ? '<span class="obj-freq" style="'+(o.freq_clr?'background:'+o.freq_clr+';color:'+o.freq_txt+';':'')+'">'+o.freq+'</span>' : ''}
-          <span id="obj-arr-${i}">▾</span>
-        </div>
-      </button>
-      <div class="obj-body" id="obj-body-${i}">
-        ${o.steps.map(s => `<div class="obj-step"><div class="obj-step-lbl">${s.l}</div><div class="b-agent" style="max-width:500px">${s.m}</div></div>`).join('')}
-        ${o.tip ? '<div class="a-tip">✓ '+o.tip+'</div>' : ''}
-      </div>
-    </div>`).join('');
+  const cont=document.getElementById('objeciones-list');
+  if(!cont||cont.innerHTML) return;
+  cont.innerHTML=OBJS.map((o,i)=>`<div class="obj-wrap"><button class="obj-btn" onclick="toggleObj(${i})"><span style="flex:1;text-align:left">"${o.q}"${o.extra?` <span style="font-size:12px;color:#42474e;font-weight:400"> — ${o.extra}</span>`:''}</span><div style="display:flex;align-items:center;gap:7px;flex-shrink:0">${o.freq?`<span class="obj-freq" style="${o.freqRed?'background:rgba(239,68,68,0.1);color:#991b1b;':''}">${o.freq}</span>`:''}<span id="obj-arr-${i}">▾</span></div></button><div class="obj-body" id="obj-body-${i}">${o.steps.map(s=>`<div style="margin-bottom:10px"><div style="font-family:Work Sans,sans-serif;font-size:11px;font-weight:600;color:#42474e;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:4px">${s.l}</div><div class="b-agent" style="max-width:500px">${s.m}</div></div>`).join('')}${o.tip?`<div class="a-tip">✓ ${o.tip}</div>`:''}</div></div>`).join('');
 }
 
 function toggleObj(i){
-  const body = document.getElementById('obj-body-' + i);
-  const arr = document.getElementById('obj-arr-' + i);
+  const body=document.getElementById('obj-body-'+i);
+  const arr=document.getElementById('obj-arr-'+i);
   body.classList.toggle('open');
-  arr.textContent = body.classList.contains('open') ? '▴' : '▾';
+  arr.textContent=body.classList.contains('open')?'▴':'▾';
 }
 
-// ---- SCRIPTS ----
-const SEDE_SHORT = 'Sin embargo! Mi recomendación es que te acerques a nuestra sede para conocer los ambientes de aprendizaje y laboratorios. No solo es importante el precio, sino también el entorno. ¿Ya conoces la Sede?';
 const SCRIPTS = [
-  {cat:'cierre',  title:'Invitación a sede (universal)',      sit:'Después del mensaje emocional',               msg:SEDE_MSG},
-  {cat:'cierre',  title:'Respuesta a "¿Dónde queda?"',         sit:'Prospecto pide la dirección',                  msg:'Medellín: Calle 56 #45-26, cerca al Metro Prado.\nEnvigado: Cl 37 Sur #43A-84, cerca al Parque Principal de Envigado.\nCaldas: Cl 130 Sur #51-65, cerca al parque principal.\n\n¿Cuál te queda más cerca? Puedo avisarle al equipo que vas esta semana.'},
-  {cat:'cierre',  title:'Confirmar visita a sede',              sit:'Prospecto dice "Esta semana me acerco"',        msg:'Perfecto! ¿Qué día te funciona mejor, entre semana o sábado? Así te confirmo el horario y te esperamos con toda la información lista.'},
-  {cat:'cierre',  title:'Seguimiento 48h sin respuesta',        sit:'Silencio después del cierre',                   msg:'Hola [Nombre], ¿pudiste revisar la información? Todavía tenemos cupo en el grupo que inicia [fecha]. ¿Hay alguna duda que pueda resolver para que no pierdas tu espacio?'},
-  {cat:'salud',   title:'Primer mensaje — Enfermería',          sit:'Prospecto llega por anuncio de Enfermería',    msg:'Hola! Veo que te llama la atención el programa de Auxiliar en Enfermería, ¿Correcto?'},
-  {cat:'salud',   title:'Precios — Enfermería',                 sit:'Confirmó interés, pregunta precio',            msg:'De contado $2.560.000 por ciclo (18% de descuento incluido), o financiado con cuota inicial de $500.000 y 5 cuotas de $463.200.\n\nAdicionales: póliza $250.000, formulario + carnet $50.000, uniformes $120.000 c/u.\n\n¿Cuál opción se ajusta mejor a ti?'},
-  {cat:'salud',   title:'Ancla emocional — Enfermería',          sit:'Justo después de dar el precio',                msg:PROGS[0].m},
-  {cat:'salud',   title:'Primer mensaje — Salud Oral',           sit:'Prospecto llega por anuncio',                  msg:'Hola! Veo que te llama la atención el programa de Auxiliar en Salud Oral, ¿Correcto?'},
-  {cat:'salud',   title:'Primer mensaje — Farmacia',             sit:'Prospecto llega por anuncio',                  msg:'Hola! Veo que te llama la atención el programa de Servicios Farmacéuticos, ¿Correcto?'},
-  {cat:'excel',   title:'Primer mensaje — Excel',                sit:'Prospecto llega por anuncio de Excel',         msg:'Hola! Veo que te llama la atención el curso de Excel, ¿Correcto?'},
-  {cat:'excel',   title:'Precios Excel — completo',              sit:'Confirmó interés, pregunta precio',            msg:'Manejamos 3 niveles: Básico, Intermedio y Avanzado. Cada nivel $200.000 (20 horas), o los 3 juntos por $499.900 (15% descuento incluido).\n\nHorarios: sábados 8am-12pm, sábados 1pm-4pm, entre semana mañana o noche, también virtual.\n\n¿Cuál horario te funciona mejor?'},
-  {cat:'excel',   title:'Descuento — Excel',                     sit:'Pide descuento adicional',                     msg:'El precio que tienes ya incluye el descuento. Pero si llevas los 3 niveles juntos en vez de $600.000 te quedan en $499.900 — ya te ahorras $100.100. ¿Te animas con el paquete?'},
-  {cat:'cosm',    title:'Primer mensaje — Cosmetología',         sit:'Prospecto llega por anuncio',                  msg:'Hola! Veo que te llama la atención el programa de Cosmetología y Estética, ¿Correcto?'},
-  {cat:'cosm',    title:'Precios — Cosmetología',               sit:'Confirmó interés, pregunta precio',            msg:'El Técnico en Cosmetología tiene 2 ciclos.\n\nDe contado: $1.885.000 por ciclo (20% descuento incluido).\nFinanciado: cuota inicial $500.000 y 5 cuotas de $314.700.\n\nAdicionales: formulario + carnet $50.000, uniforme $149.000.\n\n¿Cuál opción te funciona mejor?'},
-  {cat:'cosm',    title:'Ancla emocional — Cosmetología',         sit:'Después del precio',                           msg:PROGS[8].m},
-  {cat:'vet',     title:'Primer mensaje — Veterinaria',           sit:'Prospecto llega por anuncio',                  msg:'Hola! Veo que te llama la atención el programa de Auxiliar en Veterinaria, ¿Correcto?'},
-  {cat:'vet',     title:'Ancla emocional — Veterinaria',          sit:'Después del precio',                           msg:PROGS[6].m},
-  {cat:'admin',   title:'Ancla emocional — SST',                  sit:'Después del precio',                           msg:PROGS[12].m},
-  {cat:'admin',   title:'Ancla emocional — Marketing Digital',    sit:'Después del precio',                           msg:PROGS[11].m},
-  {cat:'tech',    title:'Primer mensaje — Sistemas',              sit:'Prospecto llega por anuncio',                  msg:'Hola! Veo que te llama la atención el programa de Técnico en Sistemas, ¿Correcto?'},
-  {cat:'tech',    title:'Ancla emocional — Software',             sit:'Después del precio',                           msg:PROGS[14].m},
-  {cat:'dep',     title:'Ancla emocional — Entrenamiento Deportivo', sit:'Después del precio',                        msg:PROGS[15].m},
-  {cat:'gen',     title:'Respuesta a "¿Dónde quedan?"',          sit:'Primera pregunta sobre ubicación',             msg:'Tenemos 3 sedes:\n\nMedellín: Calle 56 #45-26, cerca al Metro Prado\nEnvigado: Cl 37 Sur #43A-84, cerca al Parque Principal de Envigado\nCaldas: Cl 130 Sur #51-65, cerca al parque principal\n\n¿Cuál te queda más cerca?'},
-  {cat:'gen',     title:'Pedir WhatsApp (después de dar valor)',  sit:'Prospecto en inbox de Meta',                   msg:'Para enviarte los horarios y la información de inscripción más cómodo, ¿me compartes tu WhatsApp?'},
-  {cat:'gen',     title:'Validez del certificado',               sit:'Prospecto duda si el título sirve',             msg:'INDECAP lleva 40 años en Antioquia, con aprobación de la Secretaría de Educación. Nuestros títulos son reconocidos por clínicas, hospitales y empresas en toda la región. ¿Quieres que te comparta la resolución?'},
-  {cat:'gen',     title:'Seguimiento 7 días — nuevo grupo',      sit:'Prospecto no respondió en una semana',         msg:'Hola [Nombre], cómo estás? Vamos a abrir un nuevo grupo de [programa] el [fecha]. ¿Sería buen momento para retomar?'},
+  {cat:'cierre',title:'Invitación a sede (universal)',sit:'Después del mensaje emocional',msg:'¡Sin embargo! Mi recomendación es que, si tienes tiempo esta semana, te acerques a nuestra sede para conocer nuestros ambientes de aprendizaje, laboratorios y la ubicación. 😊 No solo es importante el precio del programa, sino también el entorno donde vas a desarrollarte y crecer profesionalmente. ¿Ya conoces la Sede?'},
+  {cat:'cierre',title:'Respuesta a ¿Dónde queda?',sit:'Prospecto pide la dirección',msg:'📍 Medellín: Calle 56 #45-26, cerca al Metro Prado.\n📍 Envigado: Cl 37 Sur #43A-84, cerca al Parque Principal de Envigado.\n📍 Caldas: Cl 130 Sur #51-65, cerca al parque principal.\n\n¿Cuál te queda más cerca? Puedo avisarle al equipo que vas esta semana. 😊'},
+  {cat:'cierre',title:'Confirmar visita a sede',sit:'Dice Esta semana me acerco',msg:'¡Perfecto! ¿Qué día te funciona mejor, entre semana o sábado? Así te confirmo el horario y te esperamos con toda la información lista. 😊'},
+  {cat:'cierre',title:'Seguimiento 48h sin respuesta',sit:'Silencio después del cierre',msg:'Hola [Nombre] 😊 hace unos días hablamos sobre el programa de [Programa]. Quería saber si aún estás interesado/a para ayudarte con horarios, sedes y la mejor opción según tu disponibilidad. 🙌'},
+  {cat:'cierre',title:'Seguimiento 7 días',sit:'Prospecto no respondió en una semana',msg:'Hola [Nombre], ¿cómo estás? Vamos a abrir un nuevo grupo de [Programa] el [fecha]. ¿Sería buen momento para retomar? 😊'},
+  {cat:'salud',title:'Micro-confirmación — Enfermería',sit:'Prospecto llega por anuncio',msg:'¡Hola! Veo que te llama la atención el programa de Auxiliar en Enfermería, ¿Correcto?'},
+  {cat:'salud',title:'Precios — Enfermería',sit:'Confirmó interés, pregunta precio',msg:'De contado $2.560.000 por ciclo (18% de descuento incluido), o financiado con cuota inicial de $500.000 y 5 cuotas de $463.200.\n\nAdicionales: póliza $250.000, formulario + carnet $50.000, uniformes $120.000 c/u.\n\n¿Cuál opción se ajusta mejor a ti?'},
+  {cat:'salud',title:'Ancla emocional — Enfermería',sit:'Justo después del precio',msg:'Mira, invertir en tu formación como Auxiliar en Enfermería es la única decisión que nunca pierde valor. Lo que hoy ves como un pago, en 3 ciclos se habrá convertido en un camino rentable cuidando vidas. El conocimiento es lo único que nadie te puede quitar... ¡y lo que más te hará ganar!'},
+  {cat:'salud',title:'Micro-confirmación — Salud Oral',sit:'Prospecto llega por anuncio',msg:'¡Hola! Veo que te llama la atención el programa de Auxiliar en Salud Oral, ¿Correcto?'},
+  {cat:'salud',title:'Micro-confirmación — Farmacia',sit:'Prospecto llega por anuncio',msg:'¡Hola! Veo que te llama la atención el programa de Servicios Farmacéuticos, ¿Correcto?'},
+  {cat:'excel',title:'Micro-confirmación — Excel',sit:'Prospecto llega por anuncio',msg:'¡Hola! Veo que te llama la atención el curso de Excel, ¿Correcto?'},
+  {cat:'excel',title:'Precios Excel — paquete completo',sit:'Confirmó interés, pregunta precio',msg:'Manejamos 3 niveles: Básico, Intermedio y Avanzado. Cada nivel $200.000 (20 horas), o los 3 juntos por $499.900 (ahorra $100.100).\n\nHorarios: sábados 8am-12pm, sábados 1pm-4pm, entre semana mañana o noche, también virtual.\n\n¿Cuál horario te funciona mejor?'},
+  {cat:'excel',title:'Ancla emocional — Excel',sit:'Justo después del precio',msg:'Mira, invertir en Excel es la decisión más rentable que puedes tomar hoy. Desde el primer mes ya te diferencia en el trabajo y abre puertas. El conocimiento es lo único que nadie te puede quitar... ¡y lo que más te hará ganar!'},
+  {cat:'cosm',title:'Micro-confirmación — Cosmetología',sit:'Prospecto llega por anuncio',msg:'¡Hola! Veo que te llama la atención el programa de Cosmetología y Estética, ¿Correcto?'},
+  {cat:'cosm',title:'Precios — Cosmetología',sit:'Confirmó interés, pregunta precio',msg:'El Técnico en Cosmetología tiene 2 ciclos.\n\nDe contado: $1.885.000 por ciclo (20% descuento incluido).\nFinanciado: cuota inicial $500.000 y 5 cuotas de $314.700.\n\nAdicionales: formulario + carnet $50.000, uniforme $149.000.\n\n¿Cuál opción te funciona mejor?'},
+  {cat:'cosm',title:'Ancla emocional — Cosmetología',sit:'Justo después del precio',msg:'Mira, invertir en Cosmetología es apostar por tu propia independencia. En 2 ciclos: tu propio negocio, tus propios clientes y tus propias ganancias. El conocimiento es lo único que nadie te puede quitar... ¡y lo que más te hará ganar!'},
+  {cat:'vet',title:'Micro-confirmación — Veterinaria',sit:'Prospecto llega por anuncio',msg:'¡Hola! Veo que te llama la atención el programa de Auxiliar en Veterinaria, ¿Correcto?'},
+  {cat:'vet',title:'Ancla emocional — Veterinaria',sit:'Justo después del precio',msg:'Mira, invertir en Veterinaria es convertir tu amor por los animales en una carrera real. En 3 ciclos: trabajo en clínicas veterinarias, refugios y consultorios. El conocimiento es lo único que nadie te puede quitar... ¡y lo que más te hará ganar!'},
+  {cat:'admin',title:'Ancla emocional — SST',sit:'Justo después del precio',msg:'Mira, invertir en SST es prepararte para algo que la ley exige en todas las empresas de Colombia. En 3 ciclos: perfil muy valorado en industrias y constructoras. El conocimiento es lo único que nadie te puede quitar... ¡y lo que más te hará ganar!'},
+  {cat:'admin',title:'Ancla emocional — Marketing Digital',sit:'Justo después del precio',msg:'Mira, invertir en Marketing Digital es entrar al mundo donde todas las empresas quieren estar. En 3 ciclos: habilidades para trabajar en empresas, agencias o tu propio emprendimiento. El conocimiento es lo único que nadie te puede quitar... ¡y lo que más te hará ganar!'},
+  {cat:'tech',title:'Micro-confirmación — Sistemas',sit:'Prospecto llega por anuncio',msg:'¡Hola! Veo que te llama la atención el programa de Técnico en Sistemas, ¿Correcto?'},
+  {cat:'tech',title:'Ancla emocional — Software',sit:'Justo después del precio',msg:'Mira, invertir en Desarrollo de Software es entrar a la carrera mejor pagada del mundo digital. En 3 ciclos: habilidades que abren puertas en empresas locales e internacionales. El conocimiento es lo único que nadie te puede quitar... ¡y lo que más te hará ganar!'},
+  {cat:'dep',title:'Ancla emocional — Entrenamiento Deportivo',sit:'Justo después del precio',msg:'Mira, invertir en Entrenamiento Deportivo es convertir tu pasión por el deporte en una carrera profesional. En 3 ciclos: trabajo en gimnasios, clubes deportivos y programas de bienestar. El conocimiento es lo único que nadie te puede quitar... ¡y lo que más te hará ganar!'},
+  {cat:'gen',title:'Respuesta a ¿Dónde quedan?',sit:'Primera pregunta sobre ubicación',msg:'Tenemos 3 sedes:\n\n📍 Medellín: Calle 56 #45-26, cerca al Metro Prado\n📍 Envigado: Cl 37 Sur #43A-84, cerca al Parque Principal de Envigado\n📍 Caldas: Cl 130 Sur #51-65, cerca al parque principal\n\n¿Cuál te queda más cerca?'},
+  {cat:'gen',title:'Pedir WhatsApp',sit:'Prospecto en inbox de Meta',msg:'Para enviarte los horarios y la información de inscripción de forma más cómoda, ¿me compartes tu WhatsApp? Así te llega todo organizado 😊'},
+  {cat:'gen',title:'Validez del certificado',sit:'Prospecto duda si el título sirve',msg:'INDECAP lleva 40 años en Antioquia, con aprobación de la Secretaría de Educación. Nuestros títulos son reconocidos en clínicas, hospitales y empresas de toda la región. ¿Quieres que te comparta la resolución de aprobación?'},
 ];
 
-const CAT_LABELS = {cierre:'Cierre',salud:'Salud',excel:'Excel',cosm:'Belleza',vet:'Veterinaria',admin:'Administrativa',tech:'Tecnología',dep:'Deportes',gen:'General'};
-const CAT_CLASSES = {cierre:'t-cierre',salud:'t-salud',excel:'t-excel',cosm:'t-cosm',vet:'t-vet',admin:'t-admin',tech:'t-tech',dep:'t-dep',gen:'t-gen'};
-let currentCat = 'todos';
+const CAT_L={cierre:'Cierre',salud:'Salud',excel:'Excel',cosm:'Belleza',vet:'Veterinaria',admin:'Administrativa',tech:'Tecnología',dep:'Deportes',gen:'General'};
+const CAT_C={cierre:'t-cierre',salud:'t-salud',excel:'t-excel',cosm:'t-cosm',vet:'t-vet',admin:'t-admin',tech:'t-tech',dep:'t-dep',gen:'t-gen'};
+let curCat='todos';
 
-function buildScriptFilters(){
-  const cont = document.getElementById('script-filters');
-  if(!cont || cont.innerHTML) return;
-  const cats = ['todos', ...Object.keys(CAT_LABELS)];
-  cont.innerHTML = cats.map(c => `<button class="sf-btn ${c==='todos'?'active':''}" onclick="filterCat('${c}',this)">${c==='todos'?'Todos':CAT_LABELS[c]}</button>`).join('');
+function renderScripts(){
+  const filtersEl=document.getElementById('script-filters');
+  if(filtersEl&&!filtersEl.innerHTML){
+    filtersEl.innerHTML=['todos',...Object.keys(CAT_L)].map(c=>`<button class="sf-btn ${c==='todos'?'active':''}" onclick="filterCat('${c}',this)">${c==='todos'?'Todos':CAT_L[c]}</button>`).join('');
+  }
+  const q=(document.getElementById('script-search')?.value||'').toLowerCase();
+  const cont=document.getElementById('scripts-list');
+  if(!cont) return;
+  const filtered=SCRIPTS.filter(s=>(curCat==='todos'||s.cat===curCat)&&(!q||s.title.toLowerCase().includes(q)||s.msg.toLowerCase().includes(q)||s.sit.toLowerCase().includes(q)));
+  cont.innerHTML=filtered.length?filtered.map(s=>`<div class="sc"><span class="sc-tag ${CAT_C[s.cat]}">${CAT_L[s.cat]}</span><div class="sc-title">${s.title}</div><div style="font-size:12px;color:#42474e;margin-bottom:5px;font-style:italic">Situación: ${s.sit}</div><div class="sc-msg">${s.msg}</div><button class="cp-btn" onclick="copyMsg(this,${JSON.stringify(s.msg)})">Copiar mensaje</button></div>`).join(''):'<div style="text-align:center;padding:2rem;color:#42474e;font-style:italic">No se encontraron scripts.</div>';
 }
 
-function filterCat(cat, btn){
-  currentCat = cat;
-  document.querySelectorAll('.sf-btn').forEach(b => b.classList.remove('active'));
+function filterCat(cat,btn){
+  curCat=cat;
+  document.querySelectorAll('.sf-btn').forEach(b=>b.classList.remove('active'));
   btn.classList.add('active');
   renderScripts();
 }
 
-function renderScripts(){
-  buildScriptFilters();
-  const q = (document.getElementById('script-search')?.value || '').toLowerCase();
-  const cont = document.getElementById('scripts-list');
-  if(!cont) return;
-  const filtered = SCRIPTS.filter(s => {
-    const mc = currentCat === 'todos' || s.cat === currentCat;
-    const mq = !q || s.title.toLowerCase().includes(q) || s.msg.toLowerCase().includes(q) || s.sit.toLowerCase().includes(q);
-    return mc && mq;
-  });
-  if(!filtered.length){
-    cont.innerHTML = '<div style="text-align:center;padding:2rem;color:#42474e;font-style:italic">No se encontraron scripts.</div>';
-    return;
-  }
-  cont.innerHTML = filtered.map((s,i) => `
-    <div class="sc">
-      <span class="sc-tag ${CAT_CLASSES[s.cat]}">${CAT_LABELS[s.cat]}</span>
-      <div class="sc-title">${s.title}</div>
-      <div style="font-size:12px;color:#42474e;margin-bottom:5px;font-style:italic">Situación: ${s.sit}</div>
-      <div class="sc-msg">${s.msg}</div>
-      <button class="cp-btn" onclick="copyMsg(this,SCRIPTS.filter(x=>x.cat==='${s.cat}'&&x.title==='${s.title.replace(/'/g,"\\'")}')[0]?.msg||'')">Copiar mensaje</button>
-    </div>`).join('');
-}
-
-// ---- SIMULATOR ----
 const PROSPECTS = [
-  {id:0,av:'LO',nm:'Lore Ospina',sb:'Enfermería · WhatsApp Medellín',steps:[
+  {av:'LO',nm:'Lore Ospina',sb:'Enfermería · WhatsApp Medellín',steps:[
     {p:'Hola buenas tardes',h:'Identifica el canal y aplica la micro-confirmación.',o:[
-      {t:'Hola! Veo que te llama la atención el programa de Auxiliar en Enfermería, ¿Correcto?',c:true,f:'Perfecto. Micro-confirmación aplicada.'},
-      {t:'Hola! ¿En qué le puedo ayudar?',c:false,f:'Pregunta abierta sin dirección. Aplica la micro-confirmación.'},
-      {t:'Hola! Te comparto nuestros programas: Enfermería, Cosmetología...',c:false,f:'Error crítico. Nunca lances la lista. Un prospecto, un mensaje.'},
+      {t:'¡Hola! Veo que te llama la atención el programa de Auxiliar en Enfermería, ¿Correcto?',c:true,f:'Micro-confirmación aplicada. El prospecto siente que fue escuchado.'},
+      {t:'Hola! ¿En qué le puedo ayudar?',c:false,f:'Pregunta sin dirección. Aplica la micro-confirmación con el programa del anuncio.'},
+      {t:'Hola! Te comparto nuestros programas disponibles...',c:false,f:'Error crítico. Nunca lances la lista. Un prospecto, un programa.'},
     ]},
-    {p:'Sí, quiero información',h:'Confirmó interés. Explora motivación antes de dar precios.',o:[
-      {t:'Perfecto! ¿Ya tienes experiencia en el área o estás comenzando desde cero?',c:true,f:'Excelente. Preguntar antes de informar.'},
-      {t:'El programa cuesta $2.560.000 de contado.',c:false,f:'Demasiado rápido. El precio sin contexto genera objeción.'},
-      {t:'Te envío el pensum y los horarios.',c:false,f:'Información sin contexto abruma. Primero escucha.'},
+    {p:'Sí, quiero información',h:'Confirmó. Explora motivación antes de dar precios.',o:[
+      {t:'Perfecto! ¿Ya tienes experiencia en el área o estás comenzando desde cero?',c:true,f:'Preguntar antes de informar. Así entregas información relevante.'},
+      {t:'El programa cuesta $2.560.000 de contado.',c:false,f:'Demasiado rápido. Primero valor, después precio.'},
+      {t:'Te envío el pensum y los horarios.',c:false,f:'Información sin contexto. Primero escucha qué necesita.'},
     ]},
-    {p:'Estoy comenzando, quiero trabajar en clínicas',h:'Motivación clara. Presenta el programa conectado a esa motivación.',o:[
-      {t:'El Técnico en Enfermería te habilita para trabajar en clínicas y hospitales. INDECAP lleva 40 años en Antioquia. ¿Cuándo te gustaría empezar?',c:true,f:'Propuesta personalizada + credencial + urgencia. Perfecto.'},
-      {t:'¿Cuánto puedes dar de cuota inicial?',c:false,f:'Prematuro. Construye valor antes del dinero.'},
+    {p:'Estoy comenzando, quiero trabajar en clínicas',h:'Motivación clara. Conecta el programa con esa meta.',o:[
+      {t:'El Técnico en Enfermería te habilita para trabajar en clínicas y hospitales. INDECAP lleva 40 años en Antioquia. ¿Cuándo te gustaría empezar?',c:true,f:'Propuesta personalizada + credencial + urgencia.'},
+      {t:'¿Cuánto puedes dar de cuota inicial?',c:false,f:'Prematuro. Construye valor antes de hablar de dinero.'},
       {t:'Entonces Enfermería es ideal. Te mando todo.',c:false,f:'Siempre termina con pregunta para mantener el diálogo.'},
     ]},
     {p:'¿Cuánto cuesta?',h:'Precio. Contado primero, financiado después.',o:[
-      {t:'De contado $2.560.000 por ciclo (18% descuento), o financiado con $500.000 inicial y 5 cuotas de $463.200. ¿Cuál se ajusta mejor?',c:true,f:'Ancla con contado, ofrece financiado, cierra con pregunta.'},
-      {t:'Son $2.816.000 con cuotas de $463.200.',c:false,f:'Solo diste el financiado. Siempre presenta las dos opciones.'},
-      {t:'Depende del horario y la sede.',c:false,f:'El prospecto está listo. No lo desvíes.'},
+      {t:'De contado $2.560.000 por ciclo (18% descuento), o financiado con $500.000 inicial y 5 cuotas de $463.200. ¿Cuál se ajusta mejor?',c:true,f:'Contado primero, financiado después, pregunta de cierre.'},
+      {t:'Son $2.816.000 con cuotas de $463.200.',c:false,f:'Solo el financiado. Siempre presenta las dos opciones.'},
+      {t:'Depende del horario que elijas.',c:false,f:'El prospecto preguntó el precio. Respóndelo.'},
     ]},
-    {p:'Mmm, déjame pensarlo',h:'Cierre emocional + invitación a sede. El momento crítico.',o:[
-      {t:'Mira, invertir en tu formación como Auxiliar en Enfermería es la única decisión que nunca pierde valor. Lo que hoy ves como un pago, en 3 ciclos se habrá convertido en un camino rentable. El conocimiento es lo único que nadie te puede quitar... y lo que más te hará ganar!',c:true,f:'Ancla emocional perfecta. Ahora la sede.'},
+    {p:'Mmm, déjame pensarlo',h:'El momento crítico. Cierre emocional + sede.',o:[
+      {t:'Mira, invertir en tu formación como Auxiliar en Enfermería es la única decisión que nunca pierde valor. Lo que hoy ves como un pago, en 3 ciclos se habrá convertido en un camino rentable cuidando vidas. El conocimiento es lo único que nadie te puede quitar... ¡y lo que más te hará ganar!',c:true,f:'Ancla emocional perfecta. Ahora invita a la sede.'},
       {t:'Claro, cuando quieras nos escribes.',c:false,f:'Error crítico. Cierra la conversación sin resultado.'},
-      {t:'¿Cuál jornada te interesa?',c:false,f:'El error más frecuente del equipo. Sin emoción no convierte.'},
+      {t:'¿Cuál jornada te interesa, mañana, tarde o noche?',c:false,f:'El error más frecuente. Sin emoción el precio pelea solo.'},
     ]},
-    {p:'Ay sí, suena bien...',h:'Invitación a sede ahora!',o:[
-      {t:'Sin embargo! Mi recomendación es que te acerques a nuestra sede esta semana para conocer los ambientes de aprendizaje y laboratorios. No solo es importante el precio, sino también el entorno. ¿Ya conoces la Sede?',c:true,f:'Cierre perfecto. Invitación a sede aplicada.'},
-      {t:'¿Entonces te matriculamos?',c:false,f:'La sede va primero. Quien visita tiene altísima probabilidad.'},
-      {t:'¿Me compartes tu nombre para la reserva?',c:false,f:'La visita a sede crea el compromiso de forma natural.'},
+    {p:'Ay sí, suena bien...',h:'¡Invitación a sede! Toda conversación termina con dirección.',o:[
+      {t:'¡Sin embargo! Mi recomendación es que te acerques a nuestra sede para conocer los ambientes de aprendizaje y laboratorios. No solo es importante el precio, sino también el entorno. ¿Ya conoces la Sede?',c:true,f:'Cierre perfecto. La sede convierte más que cualquier mensaje.'},
+      {t:'¿Entonces te matriculamos?',c:false,f:'La visita a sede va primero. Quien visita tiene altísima probabilidad.'},
+      {t:'¿Me compartes tu nombre para la reserva?',c:false,f:'La visita crea el compromiso de forma natural.'},
     ]},
   ]},
-  {id:1,av:'DV',nm:'Dianyi Vargas',sb:'Cosmetología · Inbox Instagram',steps:[
-    {p:'Hola vi el anuncio de cosmetología',h:'Inbox Instagram. Micro-confirmación.',o:[
-      {t:'Hola! Veo que te llama la atención el programa de Cosmetología y Estética, ¿Correcto?',c:true,f:'Micro-confirmación perfecta.'},
+  {av:'DV',nm:'Dianyi Vargas',sb:'Cosmetología · Inbox Instagram',steps:[
+    {p:'Hola vi el anuncio de cosmetología',h:'Micro-confirmación.',o:[
+      {t:'¡Hola! Veo que te llama la atención el programa de Cosmetología y Estética, ¿Correcto?',c:true,f:'Micro-confirmación perfecta.'},
       {t:'Hola! Sí, tenemos Cosmetología y muchos otros programas.',c:false,f:'No menciones otros programas todavía.'},
       {t:'Hola! ¿Cuál es tu nombre?',c:false,f:'Primero confirma el interés.'},
     ]},
-    {p:'Sí, ¿cuánto cuesta y qué horarios tienen?',h:'Precio + horario. Responde ambos y prepara el cierre.',o:[
-      {t:'El Técnico tiene 2 ciclos. De contado $1.885.000 por ciclo (20% descuento), o financiado $500.000 inicial + 5 cuotas de $314.700. Horarios de lunes a sábado. ¿Cuál horario te funciona mejor?',c:true,f:'Información completa y pregunta de cierre.'},
+    {p:'Sí, ¿cuánto cuesta y qué horarios tienen?',h:'Responde precio + horario. Primero valor.',o:[
+      {t:'El Técnico tiene 2 ciclos. De contado $1.885.000 por ciclo (20% descuento), o financiado $500.000 + 5 cuotas de $314.700. Horarios de lunes a sábado. ¿Cuál horario te funciona?',c:true,f:'Información completa y pregunta de cierre.'},
       {t:'Los horarios dependen del grupo.',c:false,f:'Respuesta vaga. Da información concreta.'},
-      {t:'Primero dime en qué sede quieres estudiar.',c:false,f:'No pongas obstáculos.'},
+      {t:'Primero dime en qué sede quieres estudiar.',c:false,f:'No pongas obstáculos antes de dar la información.'},
     ]},
     {p:'Los sábados en la mañana, y el precio me parece bien',h:'Señal de compra. Ancla emocional ahora.',o:[
-      {t:'Mira, invertir en Cosmetología es apostar por tu propia independencia. Lo que hoy ves como un pago, en 2 ciclos se habrá convertido en tu propio negocio y ganancias. El conocimiento es lo único que nadie te puede quitar... y lo que más te hará ganar!',c:true,f:'Ancla emocional en el momento exacto. Ahora la sede.'},
-      {t:'Perfecto, procedemos con la matrícula.',c:false,f:'El ancla + sede aumentan la tasa de cierre.'},
+      {t:'Mira, invertir en Cosmetología es apostar por tu propia independencia. En 2 ciclos: tu propio negocio y tus propias ganancias. El conocimiento es lo único que nadie te puede quitar... ¡y lo que más te hará ganar!',c:true,f:'Ancla emocional en el momento exacto.'},
+      {t:'Perfecto, entonces procedemos con la matrícula.',c:false,f:'El ancla + sede aumentan la tasa de cierre.'},
       {t:'¿Cuál jornada además del sábado?',c:false,f:'Ya dijo los sábados. No repitas preguntas respondidas.'},
     ]},
     {p:'Ay sí! Qué bonito',h:'Invitación a sede.',o:[
-      {t:'Sin embargo! Mi recomendación es que te acerques a nuestra sede para conocer los ambientes de aprendizaje y laboratorios. ¿Ya conoces la Sede?',c:true,f:'Cierre perfecto.'},
-      {t:'Qué bien! ¿Entonces te matriculamos?',c:false,f:'La visita primero. Alta probabilidad de conversión.'},
+      {t:'¡Sin embargo! Mi recomendación es que te acerques a nuestra sede para conocer los ambientes de aprendizaje y laboratorios. ¿Ya conoces la Sede?',c:true,f:'Cierre perfecto.'},
+      {t:'¡Qué bien! ¿Entonces te matriculamos?',c:false,f:'La visita primero.'},
       {t:'Te envío más información.',c:false,f:'Retroceder cuando hay intención de compra es un error.'},
     ]},
   ]},
-  {id:2,av:'CR',nm:'Carlos Restrepo',sb:'Excel · WhatsApp Cursos',steps:[
+  {av:'CR',nm:'Carlos Restrepo',sb:'Excel · WhatsApp Cursos',steps:[
     {p:'Buenas, información sobre excel',h:'Micro-confirmación.',o:[
-      {t:'Buenas! Veo que te llama la atención el curso de Excel, ¿Correcto?',c:true,f:'Correcto. Confirmaste antes de informar.'},
+      {t:'¡Buenas! Veo que te llama la atención el curso de Excel, ¿Correcto?',c:true,f:'Confirmaste antes de informar.'},
       {t:'Hola! ¿Básico o avanzado?',c:false,f:'Pregunta prematura.'},
       {t:'Hola, el básico dura 20 horas...',c:false,f:'No informes sin confirmar.'},
     ]},
     {p:'Sí, para mejorar en el trabajo',h:'Motivación laboral. Presenta el paquete completo.',o:[
-      {t:'Tenemos 3 niveles. El paquete completo $499.900 (ahorras $100.100 vs pagar por separado). ¿Cuál horario tienes?',c:true,f:'Motivación + upsell + horario.'},
-      {t:'¿Ya sabes algo de Excel?',c:false,f:'Pregunta innecesaria aquí.'},
+      {t:'Tenemos 3 niveles. El paquete completo $499.900 (ahorras $100.100 vs separados). ¿Cuál horario tienes?',c:true,f:'Motivación + upsell + horario.'},
+      {t:'¿Ya sabes usar Excel?',c:false,f:'Innecesario aquí.'},
       {t:'Te mando el temario.',c:false,f:'Acción pasiva.'},
     ]},
-    {p:'Los sábados. ¿Cuánto cuesta cada nivel?',h:'Da el precio completo con el upsell.',o:[
+    {p:'Los sábados. ¿Cuánto cuesta cada nivel?',h:'Precio con upsell.',o:[
       {t:'Cada nivel $200.000. O los 3 juntos por $499.900 (ahorras $100.100). Sábados 8am-12pm y 1pm-4pm. ¿Cuál te queda mejor?',c:true,f:'Precio + upsell + horario.'},
       {t:'Son $200.000 por nivel.',c:false,f:'Faltó el paquete y el ahorro.'},
       {t:'Depende del nivel que elijas.',c:false,f:'No generes confusión.'},
     ]},
     {p:'Me interesa el paquete completo',h:'Ancla emocional.',o:[
-      {t:'Mira, invertir en Excel es la decisión más rentable que puedes tomar hoy. Desde el primer mes te diferencia en el trabajo. El conocimiento es lo único que nadie te puede quitar... y lo que más te hará ganar!',c:true,f:'Ancla emocional perfecta.'},
+      {t:'Mira, invertir en Excel es la decisión más rentable que puedes tomar hoy. Desde el primer mes te diferencia en el trabajo y abre puertas. El conocimiento es lo único que nadie te puede quitar... ¡y lo que más te hará ganar!',c:true,f:'Ancla emocional perfecta.'},
       {t:'Perfecto, ¿cómo quieres pagar?',c:false,f:'El ancla consolida la decisión.'},
-      {t:'Bien, ¿cuándo puedes empezar?',c:false,f:'Ancla emocional primero.'},
+      {t:'¿Cuándo puedes empezar?',c:false,f:'Primero ancla, luego logística.'},
     ]},
   ]},
-  {id:3,av:'MG',nm:'Marta Gómez',sb:'Cosmetología · Seguimiento 3 días',steps:[
-    {p:'[Seguimiento 3 días después - dijo que iba a pensar]',h:'Prospecto frío. Mensaje de reactivación.',o:[
-      {t:'Hola Marta, todavía tenemos cupo en el grupo de Cosmetología que inicia pronto. ¿Pudiste pensar si te gustaría acercarte a conocer la sede esta semana?',c:true,f:'Seguimiento correcto: suave + urgencia + sede.'},
-      {t:'Hola Marta, ¿entonces qué decidiste?',c:false,f:'Muy directo. Puede alejar al prospecto.'},
+  {av:'MG',nm:'Marta Gómez',sb:'Cosmetología · Seguimiento 3 días',steps:[
+    {p:'[3 días después — dijo que lo pensaba]',h:'Prospecto frío. Mensaje de reactivación profesional.',o:[
+      {t:'Hola Marta 😊 hace unos días hablamos sobre Cosmetología. Quería saber si aún estás interesada para ayudarte con horarios, sedes y la mejor opción. Todavía tenemos cupo en el grupo próximo.',c:true,f:'Seguimiento correcto: suave + urgencia + opción concreta.'},
+      {t:'Hola Marta, ¿entonces qué decidiste?',c:false,f:'Muy directo. Puede alejar.'},
       {t:'No enviar nada.',c:false,f:'Error. Así se pierden las 490 conversaciones del dataset.'},
     ]},
-    {p:'Todavía me interesa pero no he tenido tiempo',h:'Interés reactivado. Facilita el paso.',o:[
-      {t:'No se necesita mucho tiempo. ¿Esta semana hay algún día que puedas pasar aunque sea 20 minutos por la sede?',c:true,f:'Reduce la barrera a 20 minutos. Concreto.'},
-      {t:'Ok, cuando tengas tiempo escríbeme.',c:false,f:'Volviste al punto de partida.'},
+    {p:'Todavía me interesa pero no he tenido tiempo',h:'Interés reactivado. Bajo compromiso.',o:[
+      {t:'No se necesita mucho tiempo. ¿Esta semana hay algún día que puedas pasar aunque sea 20 minutos por la sede?',c:true,f:'Reduces la barrera a 20 minutos.'},
+      {t:'Ok, cuando tengas tiempo escríbeme.',c:false,f:'Sin compromiso concreto.'},
       {t:'¿Cuándo crees que puedas decidirte?',c:false,f:'Puede sentirse como presión.'},
     ]},
-    {p:'El sábado podría pasar un momento',h:'Comprometió visita. Confirma con detalles.',o:[
-      {t:'Perfecto Marta! Te esperamos el sábado. ¿Puedo avisarle al equipo que vas a llegar para que te atiendan con toda la información lista?',c:true,f:'Confirmación + expectativa. La visita es casi una matrícula.'},
-      {t:'Bien, el sábado abrimos de 8 a 12.',c:false,f:'Información incompleta.'},
+    {p:'El sábado podría pasar un momento',h:'¡Comprometió visita! Confirma con expectativa.',o:[
+      {t:'¡Perfecto Marta! Te esperamos el sábado. ¿Puedo avisarle al equipo que vas a llegar para que te atiendan con toda la información lista?',c:true,f:'Confirmación + expectativa. La visita es casi una matrícula.'},
+      {t:'Bien, el sábado abrimos de 8 a 12.',c:false,f:'Sin expectativa ni compromiso real.'},
       {t:'Ok, avísame cuando vayas.',c:false,f:'Muy pasivo.'},
     ]},
   ]},
-  {id:4,av:'VT',nm:'Valentina Torres',sb:'Salud Oral · Inbox Facebook',steps:[
-    {p:'Buenas quiero información de salud oral',h:'Micro-confirmación.',o:[
-      {t:'Buenas! Veo que te llama la atención el programa de Auxiliar en Salud Oral, ¿Correcto?',c:true,f:'Micro-confirmación perfecta.'},
-      {t:'Hola! ¿Me regalas tu WhatsApp?',c:false,f:'Error frecuente. Pedir número antes de confirmar el interés.'},
-      {t:'Hola! Tenemos Salud Oral, Enfermería, Farmacia...',c:false,f:'Nunca lances la lista.'},
-    ]},
-    {p:'Sí, ¿cuánto cuesta?',h:'Precio directo. Contado primero.',o:[
-      {t:'El Técnico en Salud Oral tiene 3 ciclos. De contado $1.543.500 por ciclo. Financiado: $500.000 inicial + 5 cuotas de $239.570. ¿Cuál opción se ajusta?',c:true,f:'Precios completos con ambas opciones.'},
-      {t:'Depende del horario.',c:false,f:'Respuesta vaga.'},
-      {t:'Son $239.570 mensuales.',c:false,f:'Solo la cuota. Sin el contado el prospecto no sabe el valor real.'},
-    ]},
-    {p:'Mmm el financiado me funciona',h:'Eligió. Ancla emocional ahora.',o:[
-      {t:'Mira, invertir en Salud Oral es entrar a uno de los sectores con más demanda en Colombia. En 3 ciclos trabajo estable en consultorios. El conocimiento es lo único que nadie te puede quitar... y lo que más te hará ganar!',c:true,f:'Ancla emocional en el momento exacto.'},
-      {t:'Perfecto, ¿cuál jornada te interesa?',c:false,f:'Sin ancla emocional la conversación queda fría.'},
-      {t:'Bien, ¿tienes los $500.000 disponibles?',c:false,f:'Ancla emocional primero.'},
-    ]},
-    {p:'Ay sí, suena muy bien',h:'Invitación a sede.',o:[
-      {t:'Sin embargo! Si tienes tiempo esta semana, te acerques a nuestra sede para conocer los ambientes de aprendizaje y laboratorios. ¿Ya conoces la Sede?',c:true,f:'Cierre perfecto.'},
-      {t:'¿Cuándo puedes venir a matricularte?',c:false,f:'La sede va antes de la matrícula.'},
-      {t:'Te envío la dirección.',c:false,f:'La invitación personalizada es más efectiva.'},
-    ]},
-  ]},
-  {id:5,av:'AM',nm:'Andrés Mosquera',sb:'Veterinaria · WhatsApp Caldas',steps:[
-    {p:'Buenas, información veterinaria',h:'WhatsApp Caldas. Micro-confirmación.',o:[
-      {t:'Buenas! Veo que te llama la atención el programa de Auxiliar en Veterinaria, ¿Correcto?',c:true,f:'Correcto.'},
-      {t:'Hola! ¿Ya sabes algo de veterinaria?',c:false,f:'Micro-confirmación primero.'},
-      {t:'Hola! El programa dura 3 ciclos...',c:false,f:'No informes sin confirmar.'},
-    ]},
-    {p:'Sí, me gustan los animales y quiero trabajar en algo de eso',h:'Motivación emocional. Conecta y menciona la sede de Caldas.',o:[
-      {t:'Qué bueno! El Técnico te prepara para trabajar en clínicas, consultorios y refugios. Tenemos sede en Caldas, Cl 130 Sur #51-65. ¿Cuándo te gustaría empezar?',c:true,f:'Motivación + sede local + urgencia.'},
-      {t:'Perfecto, el precio es $1.390.000 por ciclo.',c:false,f:'Precio sin construir valor.'},
-      {t:'¿Tienes experiencia con animales?',c:false,f:'Innecesario. Ya tienes lo que necesitas.'},
-    ]},
-    {p:'¿Tiene salida laboral en Caldas?',h:'Pregunta local. Responde con datos de la zona.',o:[
-      {t:'En Caldas hay clínicas veterinarias y pet shops que contratan auxiliares certificados. Medellín queda a 20 minutos. ¿Te cuento el valor?',c:true,f:'Contexto local + avanzaste al precio.'},
-      {t:'Toca ir a Medellín para encontrar trabajo.',c:false,f:'Puede desanimar. Hay oportunidades locales.'},
-      {t:'Eso depende de cada persona.',c:false,f:'Respuesta vaga.'},
-    ]},
-    {p:'¿Y cuánto vale?',h:'Precio + ancla emocional en el mismo mensaje.',o:[
-      {t:'De contado $1.390.000 por ciclo. Financiado: $500.000 + 5 cuotas de $178.000. Mira, invertir en Veterinaria es convertir tu amor por los animales en una carrera real. El conocimiento es lo único que nadie te puede quitar... y lo que más te hará ganar!',c:true,f:'Precio + ancla. Eficiente y poderoso.'},
-      {t:'Son $178.000 al mes.',c:false,f:'Solo la cuota. Faltó contado y ancla.'},
-      {t:'¿Cuánto puedes pagar mensualmente?',c:false,f:'No negocies antes de dar el valor real.'},
-    ]},
-    {p:'Me interesa, ¿puedo ir a conocer la sede?',h:'Señal de cierre. Confirma con dirección y horarios.',o:[
-      {t:'Claro! Te esperamos en la Cl 130 Sur #51-65, a dos cuadras del parque de Caldas. Lunes a viernes 8am-5pm, sábados 8am-12pm. ¿Qué día te funciona?',c:true,f:'Dirección + horarios + confirmación.'},
-      {t:'Sí, estamos cerca al parque.',c:false,f:'Información incompleta.'},
-      {t:'Avísame cuando vayas.',c:false,f:'Muy pasivo.'},
-    ]},
-  ]},
-  {id:6,av:'SR',nm:'Sandra Ríos',sb:'SST · Instagram — pide descuento',steps:[
+  {av:'SR',nm:'Sandra Ríos',sb:'SST · Instagram — pide descuento',steps:[
     {p:'Hola vi lo de seguridad y salud en el trabajo',h:'Micro-confirmación con SST.',o:[
-      {t:'Hola Sandra! Veo que te llama la atención el programa de Seguridad y Salud en el Trabajo, ¿Correcto?',c:true,f:'Micro-confirmación con nombre.'},
-      {t:'Hola! SST es muy demandado.',c:false,f:'Saltaste la micro-confirmación.'},
+      {t:'¡Hola Sandra! Veo que te llama la atención el programa de Seguridad y Salud en el Trabajo, ¿Correcto?',c:true,f:'Micro-confirmación con nombre.'},
+      {t:'Hola! SST es muy demandado. ¿Ya trabajas en el área?',c:false,f:'Saltaste la micro-confirmación.'},
       {t:'Hola! ¿Me regalas tu WhatsApp?',c:false,f:'Primero confirma el interés.'},
     ]},
-    {p:'Sí, trabajo en empresa y me exigen la certificación',h:'Urgencia alta.',o:[
-      {t:'Perfecto, el Técnico en SST de INDECAP está avalado por la Secretaría de Educación. ¿Cuándo necesitas tenerlo listo?',c:true,f:'Urgencia + credencial.'},
-      {t:'Claro, el programa tiene estos módulos...',c:false,f:'El pensum no es lo que necesita.'},
-      {t:'¿Y tu empresa te paga?',c:false,f:'Desvía la conversación.'},
+    {p:'Sí, trabajo en empresa y me exigen la certificación',h:'Urgencia alta. Conecta con esa necesidad.',o:[
+      {t:'Perfecto, el Técnico en SST de INDECAP está avalado por la Secretaría de Educación. ¿Cuándo necesitas tenerlo listo?',c:true,f:'Urgencia + credencial + pregunta concreta.'},
+      {t:'El programa tiene estos módulos...',c:false,f:'El pensum no es lo urgente.'},
+      {t:'¿Tu empresa te paga el programa?',c:false,f:'Desvía la conversación.'},
     ]},
     {p:'¿Cuánto vale? ¿Me pueden hacer descuento?',h:'2.907 casos. Defiende el precio.',o:[
-      {t:'Con descuento incluido, o financiado desde $500.000. El precio ya incluye el descuento especial. Lo que sí te recomiendo es el financiado para más comodidad. ¿Cuál te funciona?',c:true,f:'Defendiste el precio + financiación.'},
-      {t:'Déjame consultar con mi coordinadora.',c:false,f:'Nunca ofrezcas descuentos sin autorización.'},
-      {t:'El precio es fijo.',c:false,f:'Correcto pero muy cortante. Redirige a la financiación.'},
+      {t:'El precio ya incluye el descuento especial. Lo que sí te recomiendo es el financiado para más comodidad: $500.000 inicial y cuotas. ¿Cuál te funciona?',c:true,f:'Defendiste el precio + financiación.'},
+      {t:'Déjame consultar si podemos hacer algo.',c:false,f:'Nunca ofrezcas descuentos sin autorización.'},
+      {t:'El precio es fijo, no manejamos descuentos.',c:false,f:'Correcto pero cortante. Redirige a la financiación.'},
     ]},
     {p:'Bueno, el financiado me sirve',h:'Eligió. Ancla + sede.',o:[
-      {t:'Mira, invertir en SST es prepararte para algo que la ley exige en todas las empresas. El conocimiento es lo único que nadie te puede quitar... y lo que más te hará ganar! ¿Ya conoces nuestra sede?',c:true,f:'Ancla + sede en un movimiento.'},
+      {t:'Mira, invertir en SST es prepararte para algo que la ley exige en todas las empresas. El conocimiento es lo único que nadie te puede quitar... ¡y lo que más te hará ganar! ¿Ya conoces nuestra sede?',c:true,f:'Ancla + sede en un movimiento.'},
       {t:'Perfecto, ¿en cuál sede prefieres?',c:false,f:'Pregunta logística sin ancla.'},
-      {t:'Te envío el link de inscripción.',c:false,f:'La sede tiene mayor tasa que el link.'},
+      {t:'Te envío el link de inscripción.',c:false,f:'La sede convierte más que el link.'},
     ]},
   ]},
-  {id:7,av:'FC',nm:'Felipe Cardona',sb:'Software · WhatsApp — indeciso',steps:[
+  {av:'FC',nm:'Felipe Cardona',sb:'Software · WhatsApp — indeciso',steps:[
     {p:'Hola quiero info del programa de software',h:'Micro-confirmación.',o:[
-      {t:'Hola Felipe! Veo que te llama la atención el programa de Auxiliar en Desarrollo de Software, ¿Correcto?',c:true,f:'Micro-confirmación con nombre.'},
+      {t:'¡Hola Felipe! Veo que te llama la atención el programa de Auxiliar en Desarrollo de Software, ¿Correcto?',c:true,f:'Micro-confirmación con nombre.'},
       {t:'Hola! ¿Ya sabes programar?',c:false,f:'Confirma el interés primero.'},
       {t:'Hola! Tenemos Software, Sistemas y Marketing Digital.',c:false,f:'No presentes opciones sin confirmar.'},
     ]},
     {p:'Sí, pero también me llama Sistemas. ¿Cuál recomiendas?',h:'Indeciso. Orienta con claridad.',o:[
-      {t:'Depende: Software es crear apps y páginas web. Sistemas es soporte, redes y mantenimiento. ¿Cuál te emociona más?',c:true,f:'Diferenciaste y devolviste la pregunta.'},
-      {t:'Los dos son buenos.',c:false,f:'No ayuda. El prospecto necesita orientación.'},
-      {t:'Software tiene más salida.',c:false,f:'Explica el perfil de cada uno.'},
+      {t:'Software es crear apps y páginas web. Sistemas es soporte, redes y mantenimiento. ¿Cuál de esas salidas te emociona más?',c:true,f:'Diferenciaste y devolviste la pregunta.'},
+      {t:'Los dos son buenos, tú decides.',c:false,f:'No ayuda. Necesita orientación concreta.'},
+      {t:'Software tiene más salida laboral.',c:false,f:'Explica el perfil, no solo la salida.'},
     ]},
     {p:'Creo que Software, siempre me ha llamado crear cosas',h:'Decidió. Refuerza y avanza.',o:[
-      {t:'Esa es la motivación perfecta! El Técnico te enseña a crear aplicaciones desde cero. 40 años en Antioquia. ¿Te cuento el valor?',c:true,f:'Reforzaste + credencial + precio.'},
-      {t:'Perfecto, ¿cuándo puedes empezar?',c:false,f:'Faltó el precio.'},
+      {t:'¡Esa es la motivación perfecta para Software! El Técnico te enseña a crear aplicaciones desde cero. INDECAP lleva 40 años en Antioquia. ¿Te cuento el valor?',c:true,f:'Reforzaste + credencial + precio.'},
+      {t:'Perfecto, ¿cuándo puedes empezar?',c:false,f:'Faltó el precio antes de fechas.'},
       {t:'También podrías ver Sistemas después.',c:false,f:'No confundas al que ya decidió.'},
     ]},
-    {p:'Mmm déjame pensarlo, está un poco caro',h:'Objeción doble. Momento crítico.',o:[
-      {t:'Mira Felipe, invertir en Software es entrar a la carrera mejor pagada del mundo digital. En 3 ciclos habilidades que abren puertas internacionales. El conocimiento es lo único que nadie te puede quitar... y lo que más te hará ganar! ¿Tienes tiempo esta semana para conocer la sede?',c:true,f:'Ancla + objeción + sede. Manejo completo.'},
-      {t:'Ok, cuando decidas nos escribes.',c:false,f:'Error crítico. El indeciso se pierde.'},
-      {t:'¿Cuánto puedes dar de cuota?',c:false,f:'Dinero con indecisión empeora.'},
+    {p:'Mmm déjame pensarlo, está un poco caro',h:'Objeción doble. Momento más crítico.',o:[
+      {t:'Mira Felipe, invertir en Software es entrar a la carrera mejor pagada del mundo digital. En 3 ciclos: habilidades que abren puertas internacionales. El conocimiento es lo único que nadie te puede quitar... ¡y lo que más te hará ganar! ¿Tienes tiempo esta semana para conocer la sede?',c:true,f:'Ancla + objeción + sede. Manejo completo.'},
+      {t:'Ok Felipe, cuando decidas nos escribes.',c:false,f:'Error crítico. El indeciso se pierde.'},
+      {t:'¿Cuánto puedes dar de cuota?',c:false,f:'Dinero con indecisión empeora todo.'},
     ]},
   ]},
-  {id:8,av:'GH',nm:'Gloria Herrera',sb:'Primera Infancia · Inbox Facebook',steps:[
+  {av:'AM',nm:'Andrés Mosquera',sb:'Veterinaria · WhatsApp Caldas',steps:[
+    {p:'Buenas, información veterinaria',h:'WhatsApp Caldas. Micro-confirmación.',o:[
+      {t:'¡Buenas! Veo que te llama la atención el programa de Auxiliar en Veterinaria, ¿Correcto?',c:true,f:'Confirmaste antes de informar.'},
+      {t:'Hola! ¿Ya sabes algo de veterinaria?',c:false,f:'Micro-confirmación primero.'},
+      {t:'Hola! El programa dura 3 ciclos...',c:false,f:'No informes sin confirmar.'},
+    ]},
+    {p:'Sí, me gustan los animales y quiero trabajar en algo de eso',h:'Motivación emocional. Menciona la sede de Caldas.',o:[
+      {t:'¡Qué bueno! El Técnico te prepara para trabajar en clínicas, consultorios y refugios. Tenemos sede en Caldas, Cl 130 Sur #51-65. ¿Cuándo te gustaría empezar?',c:true,f:'Motivación + sede local + urgencia.'},
+      {t:'El precio es $1.390.000 por ciclo.',c:false,f:'Precio sin valor primero.'},
+      {t:'¿Tienes experiencia con animales?',c:false,f:'Innecesario. Ya tienes lo que necesitas.'},
+    ]},
+    {p:'¿Tiene salida laboral en Caldas?',h:'Pregunta local. Responde con datos.',o:[
+      {t:'En Caldas hay clínicas veterinarias y pet shops que contratan auxiliares certificados. Medellín queda a 20 minutos. ¿Te cuento el valor?',c:true,f:'Contexto local + precio.'},
+      {t:'Toca ir a Medellín para trabajar.',c:false,f:'Puede desanimar. Hay oportunidades locales.'},
+      {t:'Eso depende de cada persona.',c:false,f:'Vago. Sé específico.'},
+    ]},
+    {p:'Me interesa, ¿puedo ir a conocer la sede?',h:'Señal perfecta. Confirma con dirección exacta.',o:[
+      {t:'¡Claro! Te esperamos en la Cl 130 Sur #51-65, dos cuadras del parque de Caldas. Lunes a viernes 8am-5pm, sábados 8am-12pm. ¿Qué día te funciona?',c:true,f:'Dirección + horarios + confirmación.'},
+      {t:'Sí, estamos cerca al parque.',c:false,f:'Información incompleta.'},
+      {t:'Avísame cuando vayas.',c:false,f:'Muy pasivo.'},
+    ]},
+  ]},
+  {av:'VT',nm:'Valentina Torres',sb:'Salud Oral · Inbox Facebook',steps:[
+    {p:'Buenas quiero información de salud oral',h:'Micro-confirmación.',o:[
+      {t:'¡Buenas! Veo que te llama la atención el programa de Auxiliar en Salud Oral, ¿Correcto?',c:true,f:'Micro-confirmación perfecta.'},
+      {t:'Hola! ¿Me regalas tu WhatsApp?',c:false,f:'Pedir número antes de confirmar el interés.'},
+      {t:'Hola! Tenemos Salud Oral, Enfermería, Farmacia...',c:false,f:'Nunca la lista.'},
+    ]},
+    {p:'Sí, ¿cuánto cuesta?',h:'Precio directo.',o:[
+      {t:'El Técnico tiene 3 ciclos. De contado $1.543.500 por ciclo. Financiado: $500.000 + 5 cuotas de $239.570. ¿Cuál opción se ajusta mejor?',c:true,f:'Ambas opciones claras.'},
+      {t:'Depende del horario.',c:false,f:'Respuesta vaga.'},
+      {t:'Son $239.570 mensuales.',c:false,f:'Solo la cuota. Sin el contado no sabe el valor real.'},
+    ]},
+    {p:'El financiado me funciona',h:'Eligió. Ancla emocional.',o:[
+      {t:'Mira, invertir en Salud Oral es entrar a uno de los sectores con más demanda en Colombia. En 3 ciclos: trabajo estable en consultorios y clínicas dentales. El conocimiento es lo único que nadie te puede quitar... ¡y lo que más te hará ganar!',c:true,f:'Ancla en el momento exacto.'},
+      {t:'Perfecto, ¿cuál jornada te interesa?',c:false,f:'Sin ancla la conversación queda fría.'},
+      {t:'¿Tienes los $500.000 disponibles?',c:false,f:'Ancla primero.'},
+    ]},
+    {p:'Ay sí, suena muy bien',h:'Invitación a sede.',o:[
+      {t:'¡Sin embargo! Te acerques a nuestra sede para conocer los ambientes de aprendizaje y laboratorios. ¿Ya conoces la Sede?',c:true,f:'Cierre perfecto.'},
+      {t:'¿Cuándo puedes venir a matricularte?',c:false,f:'La sede va antes de la matrícula.'},
+      {t:'Te envío la dirección.',c:false,f:'La invitación es más efectiva que solo dar la dirección.'},
+    ]},
+  ]},
+  {av:'GH',nm:'Gloria Herrera',sb:'Primera Infancia · Inbox Facebook',steps:[
     {p:'Buenas noches, vi el programa de primera infancia',h:'Micro-confirmación.',o:[
-      {t:'Buenas noches Gloria! Veo que te llama la atención el programa de Atención a la Primera Infancia, ¿Correcto?',c:true,f:'Micro-confirmación con nombre.'},
+      {t:'¡Buenas noches Gloria! Veo que te llama la atención el programa de Atención a la Primera Infancia, ¿Correcto?',c:true,f:'Micro-confirmación con nombre y horario respetado.'},
       {t:'Hola! ¿Tienes experiencia con niños?',c:false,f:'Confirma el interés primero.'},
-      {t:'Hola! Es un programa muy bonito.',c:false,f:'Informal y no aplica la micro-confirmación.'},
+      {t:'Hola! Es un programa muy bonito.',c:false,f:'Informal y sin micro-confirmación.'},
     ]},
     {p:'Sí, trabajo en un jardín y quiero certificarme',h:'Urgencia de certificación laboral.',o:[
       {t:'Perfecto. El Técnico está avalado por la Secretaría de Educación y certifica para trabajar en jardines, CDI y hogares del ICBF. ¿Cuándo necesitas el certificado?',c:true,f:'Necesidad + salidas + urgencia.'},
       {t:'El programa tiene 8 módulos y dura 12 meses...',c:false,f:'El pensum no es lo urgente.'},
-      {t:'¿El jardín te puede ayudar a pagar?',c:false,f:'Desvía. Foco en la urgencia.'},
+      {t:'¿El jardín te puede ayudar a pagar?',c:false,f:'Desvía el foco.'},
     ]},
     {p:'Lo antes posible, ¿cuándo inician?',h:'Alta urgencia. Precio + sede.',o:[
       {t:'Tenemos grupos próximos. 2 ciclos: contado $1.349.000 por ciclo, o financiado desde $500.000. ¿Cuál sede te queda más cerca, Medellín, Envigado o Caldas?',c:true,f:'Urgencia + precio + sede.'},
@@ -991,102 +988,83 @@ const PROSPECTS = [
       {t:'Primero dime cuánto puedes pagar.',c:false,f:'No negocies antes del valor.'},
     ]},
     {p:'Medellín me queda bien',h:'Eligió sede. Ancla + invitación.',o:[
-      {t:'Mira Gloria, invertir en Primera Infancia es prepararte para acompañar las etapas más importantes de la vida de un niño — con propósito y alta demanda laboral. El conocimiento es lo único que nadie te puede quitar... y lo que más te hará ganar! ¿Ya conoces nuestra sede de Medellín?',c:true,f:'Ancla + invitación a sede. Cierre completo.'},
+      {t:'Mira Gloria, invertir en Primera Infancia es prepararte para acompañar las etapas más importantes de la vida de un niño — con propósito y alta demanda laboral. El conocimiento es lo único que nadie te puede quitar... ¡y lo que más te hará ganar! ¿Ya conoces nuestra sede de Medellín?',c:true,f:'Ancla + invitación. Cierre completo.'},
       {t:'Perfecto, la sede queda en la Calle 56 #45-26.',c:false,f:'Solo dirección sin ancla.'},
-      {t:'Bien, procedemos con la matrícula?',c:false,f:'La visita primero.'},
+      {t:'¿Procedemos con la matrícula?',c:false,f:'La visita va antes.'},
     ]},
   ]},
 ];
 
-let simST = {idx:0, step:0, score:0, streak:0};
+let simST={idx:0,step:0,score:0,streak:0};
+let simInited=false;
 
 function initSim(){
-  const pl = document.getElementById('prospect-list');
-  if(!pl || pl.innerHTML) return;
-  pl.innerHTML = PROSPECTS.map((p,i) => `
-    <div class="pc ${i===0?'active':''}" id="pc-${i}" onclick="selectProspect(${i})">
-      <div class="pc-av">${p.av}</div>
-      <div><div class="pc-name">${p.nm}</div><div class="pc-prog">${p.sb}</div></div>
-    </div>`).join('');
-  selectProspect(0);
+  const pl=document.getElementById('prospect-list');
+  if(!pl) return;
+  if(!simInited){
+    pl.innerHTML=PROSPECTS.map((p,i)=>`<div class="pc ${i===0?'active':''}" id="pc-${i}" onclick="selectProspect(${i})"><div class="pc-av">${p.av}</div><div><div style="font-size:13px;font-weight:500">${p.nm}</div><div style="font-size:11.5px;color:#42474e">${p.sb}</div></div></div>`).join('');
+    simInited=true;
+    selectProspect(0);
+  }
 }
 
 function selectProspect(idx){
-  simST = {idx, step:0, score:0, streak:0};
-  document.querySelectorAll('.pc').forEach((c,i) => c.classList.toggle('active', i===idx));
-  const p = PROSPECTS[idx];
-  document.getElementById('sim-av').textContent = p.av;
-  document.getElementById('sim-nm').textContent = p.nm;
-  document.getElementById('sim-sb').textContent = p.sb;
-  document.getElementById('sim-score').textContent = 0;
-  document.getElementById('sim-streak').textContent = 0;
-  document.getElementById('sim-bar').style.width = '0%';
-  document.getElementById('sim-chat').innerHTML = '';
-  document.getElementById('sim-result').innerHTML = '';
-  document.getElementById('sim-opts-area').style.display = '';
+  simST={idx,step:0,score:0,streak:0};
+  document.querySelectorAll('.pc').forEach((c,i)=>c.classList.toggle('active',i===idx));
+  const p=PROSPECTS[idx];
+  document.getElementById('sim-av').textContent=p.av;
+  document.getElementById('sim-nm').textContent=p.nm;
+  document.getElementById('sim-sb').textContent=p.sb;
+  document.getElementById('sim-score').textContent=0;
+  document.getElementById('sim-streak').textContent=0;
+  document.getElementById('sim-bar').style.width='0%';
+  document.getElementById('sim-chat').innerHTML='';
+  document.getElementById('sim-result').innerHTML='';
+  document.getElementById('sim-opts-area').style.display='';
   renderSimStep();
 }
 
 function renderSimStep(){
-  const p = PROSPECTS[simST.idx];
-  if(simST.step >= p.steps.length){endSim();return;}
-  const step = p.steps[simST.step];
-  document.getElementById('sim-step').textContent = (simST.step+1) + '/' + p.steps.length;
-  addMsg(step.p, 'msg-p');
-  addMsg('💡 ' + step.h, 'msg-h');
-  const opts = document.getElementById('sim-opts');
-  opts.innerHTML = step.o.map((o,i) => `<button class="opt-btn" onclick="pickOpt(${i})">${o.t}</button>`).join('');
+  const p=PROSPECTS[simST.idx];
+  if(simST.step>=p.steps.length){endSim();return;}
+  const step=p.steps[simST.step];
+  document.getElementById('sim-step').textContent=(simST.step+1)+'/'+p.steps.length;
+  addMsg(step.p,'msg-p');addMsg('💡 '+step.h,'msg-h');
+  const opts=document.getElementById('sim-opts');
+  opts.innerHTML=step.o.map((o,i)=>`<button class="opt-btn" onclick="pickOpt(${i})">${o.t}</button>`).join('');
 }
 
 function pickOpt(idx){
-  const p = PROSPECTS[simST.idx];
-  const step = p.steps[simST.step];
-  const opt = step.o[idx];
-  const btns = document.querySelectorAll('.opt-btn');
-  btns.forEach(b => b.disabled = true);
-  btns[idx].classList.add(opt.c ? 'correct' : 'wrong');
-  if(!opt.c) btns.forEach((b,i) => {if(step.o[i].c) b.classList.add('correct');});
-  addMsg(opt.t, 'msg-a');
-  if(opt.c){simST.score += 10 + simST.streak*2; simST.streak++; addMsg('✓ ' + opt.f, 'msg-g');}
-  else{simST.streak = 0; addMsg('✗ ' + opt.f, 'msg-b');}
-  document.getElementById('sim-score').textContent = simST.score;
-  document.getElementById('sim-streak').textContent = simST.streak;
-  document.getElementById('sim-bar').style.width = Math.round(((simST.step+1)/p.steps.length)*100) + '%';
-  setTimeout(() => {simST.step++; document.getElementById('sim-opts').innerHTML = ''; renderSimStep();}, 2000);
+  const step=PROSPECTS[simST.idx].steps[simST.step];
+  const opt=step.o[idx];
+  const btns=document.querySelectorAll('.opt-btn');
+  btns.forEach(b=>b.disabled=true);
+  btns[idx].classList.add(opt.c?'correct':'wrong');
+  if(!opt.c) btns.forEach((b,i)=>{if(step.o[i].c)b.classList.add('correct');});
+  addMsg(opt.t,'msg-a');
+  if(opt.c){simST.score+=10+simST.streak*2;simST.streak++;addMsg('✓ '+opt.f,'msg-g');}
+  else{simST.streak=0;addMsg('✗ '+opt.f,'msg-b');}
+  document.getElementById('sim-score').textContent=simST.score;
+  document.getElementById('sim-streak').textContent=simST.streak;
+  document.getElementById('sim-bar').style.width=Math.round(((simST.step+1)/PROSPECTS[simST.idx].steps.length)*100)+'%';
+  setTimeout(()=>{simST.step++;document.getElementById('sim-opts').innerHTML='';renderSimStep();},2000);
 }
 
-function addMsg(text, cls){
-  const chat = document.getElementById('sim-chat');
-  const div = document.createElement('div');
-  div.className = 'msg ' + cls;
-  div.textContent = text;
-  chat.appendChild(div);
-  chat.scrollTop = chat.scrollHeight;
+function addMsg(text,cls){
+  const chat=document.getElementById('sim-chat');
+  const div=document.createElement('div');div.className='msg '+cls;div.textContent=text;
+  chat.appendChild(div);chat.scrollTop=chat.scrollHeight;
 }
 
 function endSim(){
-  const p = PROSPECTS[simST.idx];
-  const max = p.steps.length * 10;
-  const pct = Math.round((simST.score/max)*100);
-  document.getElementById('sim-opts-area').style.display = 'none';
-  ST.sims++; ST.score += simST.score;
-  markDone('simulador');
-  const res = document.getElementById('sim-result');
-  res.innerHTML = `
-    <div style="background:#fff;border-radius:13px;padding:1.75rem;text-align:center;box-shadow:0 4px 24px rgba(26,8,110,0.06);margin-top:0.9rem">
-      <div style="font-family:Newsreader,serif;font-size:2.6rem;font-weight:600;color:#1a086e;letter-spacing:-0.02em">${simST.score}<span style="font-size:1.1rem;color:#42474e">/${max}</span></div>
-      <div style="font-size:13.5px;color:#42474e;margin:0.4rem 0 1.25rem">${pct>=70?'Excelente dominio del cierre! Listo para casos reales.':'Buen intento. Repasa el módulo de Cierre y vuelve a practicar.'}</div>
-      <button class="btn-p" onclick="selectProspect(${simST.idx})" style="margin-right:7px">Intentar de nuevo</button>
-      <button class="btn-s" onclick="showPage('cierre')">Repasar cierre</button>
-    </div>`;
+  const p=PROSPECTS[simST.idx];
+  const max=p.steps.length*10;
+  const pct=Math.round((simST.score/max)*100);
+  document.getElementById('sim-opts-area').style.display='none';
+  ST.sims++;ST.score+=simST.score;markDone('simulador');
+  document.getElementById('sim-result').innerHTML=`<div style="background:#fff;border-radius:13px;padding:1.75rem;text-align:center;box-shadow:0 4px 24px rgba(26,8,110,0.06);margin-top:0.9rem"><div style="font-family:Newsreader,serif;font-size:2.6rem;font-weight:600;color:#1a086e;letter-spacing:-0.02em">${simST.score}<span style="font-size:1.1rem;color:#42474e">/${max}</span></div><div style="font-size:13.5px;color:#42474e;margin:0.4rem 0 1.25rem">${pct>=70?'¡Excelente! Listo para casos reales.':'Buen intento. Repasa el módulo de Cierre y vuelve a practicar.'}</div><button class="btn-p" onclick="selectProspect(${simST.idx})" style="margin-right:7px">Intentar de nuevo</button><button class="btn-s" onclick="showPage('cierre')">Repasar cierre</button></div>`;
 }
 
-// ---- INIT ----
-loadST();
-buildNav();
-renderModGrid();
-updateUI();
-renderScripts();
 </script>
 </body>
 </html>
