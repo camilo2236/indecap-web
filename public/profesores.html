@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="es" class="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
+<title>INDECAP · Inducción Docente</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400;1,6..72,500&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+tailwind.config = {
+  darkMode: "class",
+  theme: {
+    extend: {
+      colors: {
+        "primary-container": "#1a086e",
+        "on-primary-container": "#847ddc",
+        "secondary-container": "#a59dff",
+        "surface": "#fcf8ff",
+        "surface-container": "#f0ecf5",
+        "surface-container-low": "#f6f2fb",
+        "surface-container-lowest": "#ffffff",
+        "surface-container-high": "#ebe6ef",
+        "surface-variant": "#e5e1e9",
+        "on-surface": "#1c1b21",
+        "on-surface-variant": "#474551",
+        "outline": "#787583",
+        "outline-variant": "#c8c4d3",
+        "secondary": "#5a52ae",
+        "on-secondary": "#ffffff",
+        "tertiary-fixed": "#ffddb0",
+        "tertiary-fixed-dim": "#f5bd65",
+        "error-container": "#ffdad6",
+        "on-error-container": "#93000a",
+        "inverse-surface": "#313036",
+        "primary": "#060036",
+      },
+      fontFamily: {
+        "newsreader": ["Newsreader"],
+        "inter": ["Inter"],
+        "work-sans": ["Work Sans"],
+      }
+    }
+  }
+}
+</script>
+<style>
+.glass-panel{background:rgba(255,255,255,0.8);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px)}
+.pattern-overlay{background-image:repeating-linear-gradient(45deg,rgba(26,8,110,0.02) 0,rgba(26,8,110,0.02) 1px,transparent 1px,transparent 10px),repeating-linear-gradient(-45deg,rgba(26,8,110,0.02) 0,rgba(26,8,110,0.02) 1px,transparent 1px,transparent 10px)}
+.lesson-content h2{font-family:Newsreader,serif;font-size:1.4rem;font-weight:600;color:#1a086e;margin:1.5rem 0 0.75rem}
+.lesson-content h3{font-family:Work Sans,sans-serif;font-size:0.85rem;font-weight:700;color:#474551;text-transform:uppercase;letter-spacing:0.06em;margin:1.25rem 0 0.5rem}
+.lesson-content p{font-size:0.95rem;color:#474551;line-height:1.75;margin-bottom:0.85rem}
+.lesson-content ul{margin:0.5rem 0 1rem 1.25rem;display:flex;flex-direction:column;gap:0.4rem}
+.lesson-content ul li{font-size:0.95rem;color:#474551;line-height:1.6;list-style:disc}
+.lesson-content .highlight{background:linear-gradient(135deg,rgba(26,8,110,0.06),rgba(49,39,131,0.03));border-radius:10px;padding:1rem 1.25rem;border-left:4px solid #1a086e;margin:1rem 0}
+.lesson-content .alert{background:rgba(245,189,101,0.15);border-radius:10px;padding:1rem 1.25rem;border-left:4px solid #f5bd65;margin:1rem 0}
+.lesson-content .data-grid{display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;margin:1rem 0}
+@media(max-width:600px){.lesson-content .data-grid{grid-template-columns:1fr}}
+.data-card{background:#fff;border:1px solid #c8c4d3;border-radius:10px;padding:1rem}
+.data-card-title{font-family:Work Sans,sans-serif;font-size:10.5px;font-weight:700;color:#474551;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:0.4rem}
+.data-card-val{font-family:Newsreader,serif;font-size:1.5rem;font-weight:600;color:#1a086e;letter-spacing:-0.01em}
+.data-card-sub{font-size:12px;color:#787583;margin-top:2px}
+</style>
+</head>
+<body class="bg-surface text-on-surface font-inter antialiased h-screen flex flex-col overflow-hidden pattern-overlay">
+
+<!-- NAV -->
+<nav class="bg-white/80 backdrop-blur-md border-b border-outline-variant shadow-sm fixed top-0 left-0 w-full z-50 flex justify-between items-center px-8 h-16">
+  <div class="flex items-center gap-3">
+    <span class="font-newsreader text-xl font-bold text-primary-container tracking-tight">INDECAP</span>
+    <span class="text-outline-variant">·</span>
+    <span class="text-sm font-medium text-on-surface-variant font-work-sans">Inducción Docente</span>
+  </div>
+  <div class="hidden md:flex items-center gap-6">
+    <span id="progress-text" class="text-sm font-work-sans font-medium text-on-surface-variant">0 de 8 módulos</span>
+    <div class="w-32 h-1.5 bg-surface-variant rounded-full overflow-hidden">
+      <div id="progress-bar" class="h-full bg-gradient-to-r from-primary-container to-secondary rounded-full transition-all duration-500" style="width:0%"></div>
+    </div>
+  </div>
+  <div class="flex items-center gap-3">
+    <button onclick="exitToPortal()" class="text-sm font-work-sans font-medium text-on-surface-variant hover:text-primary-container transition-colors border border-outline-variant rounded-lg px-3 py-1.5">← Salir</button>
+  </div>
+</nav>
+
+<!-- LAYOUT -->
+<div class="flex flex-1 pt-16 overflow-hidden">
+
+  <!-- SIDEBAR -->
+  <aside class="w-72 flex-shrink-0 border-r border-outline-variant bg-surface-container-lowest flex flex-col h-full shadow-sm z-10">
+    <div class="p-4 border-b border-outline-variant bg-surface-container-low">
+      <p class="text-xs font-work-sans font-semibold text-on-surface-variant uppercase tracking-wider mb-1">Inducción Docente</p>
+      <h2 class="font-newsreader text-lg font-semibold text-primary-container leading-snug">Bienvenido al equipo INDECAP</h2>
+      <p class="text-xs text-on-surface-variant mt-1 font-inter">Completa todos los módulos antes de tu primer día de clase.</p>
+    </div>
+    <div class="flex-1 overflow-y-auto p-3" id="sidebar-modules"></div>
+  </aside>
+
+  <!-- MAIN CONTENT -->
+  <main class="flex-1 overflow-y-auto bg-surface-container-low p-6 md:p-10 relative">
+    <div class="max-w-3xl mx-auto">
+      <!-- BREADCRUMB -->
+      <div class="flex items-center gap-2 text-xs text-on-surface-variant mb-4 font-work-sans" id="breadcrumb">
+        <span>Inducción Docente</span>
+        <span class="material-symbols-outlined text-base">chevron_right</span>
+        <span class="text-primary-container font-medium" id="breadcrumb-module">Selecciona un módulo</span>
+      </div>
+
+      <!-- LESSON HEADER -->
+      <div class="mb-6" id="lesson-header">
+        <h1 class="font-newsreader text-3xl font-semibold text-primary-container mb-2">Bienvenido a la plataforma docente</h1>
+        <p class="text-on-surface-variant leading-relaxed">Selecciona un módulo en el panel izquierdo para comenzar tu inducción.</p>
+      </div>
+
+      <!-- LESSON CONTENT -->
+      <div id="lesson-content" class="lesson-content">
+        <!-- Welcome state -->
+        <div class="text-center py-16">
+          <div class="text-6xl mb-4">👨‍🏫</div>
+          <h2 style="text-align:center;font-size:1.5rem;color:#1a086e;font-family:Newsreader,serif;margin-bottom:0.5rem">¡Bienvenido al equipo INDECAP!</h2>
+          <p style="color:#474551;font-size:0.95rem;max-width:400px;margin:0 auto;line-height:1.7">Llevas 40 años de historia contigo. Completa los 8 módulos de inducción para estar listo para tu primer día de clase.</p>
+        </div>
+      </div>
+
+      <!-- NAVIGATION -->
+      <div class="flex items-center justify-between mt-10 pt-6 border-t border-outline-variant" id="lesson-nav" style="display:none!important">
+        <button id="btn-prev" onclick="navigateLesson(-1)" class="flex items-center gap-2 text-on-surface-variant hover:text-primary-container transition-colors font-work-sans text-sm px-4 py-2">
+          <span class="material-symbols-outlined text-xl">arrow_back</span>
+          Módulo anterior
+        </button>
+        <button id="btn-done" onclick="markCurrentDone()" class="flex items-center gap-2 bg-gradient-to-r from-primary-container to-secondary text-white px-6 py-2.5 rounded-lg font-work-sans text-sm font-medium shadow-md hover:shadow-lg hover:-translate-y-0.5 transition-all">
+          Marcar completado
+          <span class="material-symbols-outlined text-xl">check_circle</span>
+        </button>
+        <button id="btn-next" onclick="navigateLesson(1)" class="flex items-center gap-2 text-on-surface-variant hover:text-primary-container transition-colors font-work-sans text-sm px-4 py-2">
+          Siguiente módulo
+          <span class="material-symbols-outlined text-xl">arrow_forward</span>
+        </button>
+      </div>
+
+    </div>
+    <div class="h-20"></div>
+  </main>
+</div>
+
+<script>
+/* ============================================================
+   INDECAP — Inducción Docente
+   ============================================================ */
+
+const SK = 'indecap_profesores_v1';
+let progress = {};
+try { progress = JSON.parse(localStorage.getItem(SK) || '{}'); } catch(e){}
+function saveProgress(){ try{ localStorage.setItem(SK, JSON.stringify(progress)); }catch(e){} }
+
+let currentModule = null;
+
+const MODULES = [
+  {
+    id: 'historia',
+    icon: '🏛️',
+    label: 'Historia y valores de INDECAP',
+    duration: '15 min',
+    content: `
+      <h2>40 años educando el tejido social de Antioquia</h2>
+      <p>INDECAP — Instituto de Ciencias Aplicadas — nació hace más de 40 años con una convicción clara: <strong>la educación técnica es el vehículo de movilidad social más eficiente y accesible</strong> para los jóvenes de nuestra ciudad.</p>
+      <p>A lo largo de nuestra historia hemos tenido todas las formas de educación: Bachillerato Semi-escolarizado, cursos cortos y diplomados, y programas técnicos de 1 a 1.5 años. Hoy estamos enfocados exclusivamente en la educación técnica laboral porque es donde más impacto generamos.</p>
+
+      <h3>Misión</h3>
+      <div class="highlight">
+        <p style="margin:0;font-style:italic;color:#1a086e">Somos una organización educativa de carácter técnico, que brinda formación integral con estándares de excelencia y alta calidad, enfocada en el desarrollo del ser, comprometidos con la responsabilidad social empresarial y la satisfacción de los grupos de interés.</p>
+      </div>
+
+      <h3>Visión 2030</h3>
+      <div class="highlight">
+        <p style="margin:0;font-style:italic;color:#1a086e">En el 2030 INDECAP será una institución de educación superior reconocida y posicionada a nivel nacional por su cumplimiento en los estándares de calidad académica, responsabilidad social y la pertinencia de sus programas.</p>
+      </div>
+
+      <h3>Nuestras 3 sedes</h3>
+      <div class="data-grid">
+        <div class="data-card">
+          <div class="data-card-title">Medellín</div>
+          <div class="data-card-val">Sede principal</div>
+          <div class="data-card-sub">Calle 56 #45-26 · Tel. 4484794</div>
+          <div class="data-card-sub" style="margin-top:4px">Licencia 00372 · 26 ene 2009</div>
+        </div>
+        <div class="data-card">
+          <div class="data-card-title">Envigado</div>
+          <div class="data-card-val">Sede sur</div>
+          <div class="data-card-sub">Calle 37 Sur #43A-84 · Tel. 4484794</div>
+          <div class="data-card-sub" style="margin-top:4px">Licencia 1309 · 19 may 2009</div>
+        </div>
+        <div class="data-card">
+          <div class="data-card-title">Caldas</div>
+          <div class="data-card-val">Sede suroeste</div>
+          <div class="data-card-sub">Calle 130 Sur #51-65 · Tel. 4484794</div>
+          <div class="data-card-sub" style="margin-top:4px">Licencia 7470 · 8 mar 2010</div>
+        </div>
+        <div class="data-card">
+          <div class="data-card-title">Propietaria</div>
+          <div class="data-card-val">Claudia M. Toro</div>
+          <div class="data-card-sub">Corporación Educativa INDECAP</div>
+          <div class="data-card-sub" style="margin-top:4px">Certificado de Existencia y Representación Legal</div>
+        </div>
+      </div>
+
+      <h3>Lo que nos mueve</h3>
+      <ul>
+        <li>Creemos que la educación técnica es el vehículo de movilidad social más eficiente y accesible para los jóvenes de Antioquia.</li>
+        <li>El 71.4% de nuestros egresados está laborando — ese es nuestro indicador de éxito más importante.</li>
+        <li>Certificación ISO 9001:2015 y NTC 5555:2011 — calidad no es una opción, es nuestra promesa.</li>
+        <li>Atendemos a estudiantes en jornadas mañana, tarde, noche y sabatina para que nadie quede fuera por su horario.</li>
+      </ul>
+
+      <div class="alert">
+        <strong>Como docente, tú eres la cara de esta promesa.</strong> Cada clase que dictas impacta directamente la probabilidad de que ese estudiante se gradúe, consiga empleo y cambie su situación económica. Eso es lo que hace tu trabajo importante.
+      </div>
+    `
+  },
+  {
+    id: 'metodologia',
+    icon: '📐',
+    label: 'Metodología de enseñanza',
+    duration: '20 min',
+    content: `
+      <h2>Cómo enseñamos en INDECAP</h2>
+      <p>INDECAP aplica una <strong>metodología teórico-práctica</strong> basada en el desarrollo de competencias. No enseñamos materias — formamos personas capaces de hacer algo concreto al terminar cada módulo.</p>
+
+      <h3>El modelo por competencias</h3>
+      <div class="highlight">
+        <p style="margin:0;color:#1a086e"><strong>Principio fundamental:</strong> El estudiante no aprueba por memorizar — aprueba por demostrar que puede hacer. Cada evaluación debe medir una habilidad real, no conocimiento teórico abstracto.</p>
+      </div>
+
+      <h3>Estructura de una sesión ideal</h3>
+      <ul>
+        <li><strong>Apertura (10%):</strong> Conectar con lo visto la clase anterior. Pregunta activadora. ¿Qué vamos a aprender hoy y para qué sirve en la vida real?</li>
+        <li><strong>Desarrollo teórico (30%):</strong> Explicación del concepto con ejemplos del contexto laboral real del programa.</li>
+        <li><strong>Práctica guiada (40%):</strong> El docente hace, el estudiante observa. Luego el estudiante hace, el docente guía.</li>
+        <li><strong>Práctica autónoma (15%):</strong> El estudiante lo hace solo. El docente circula y observa.</li>
+        <li><strong>Cierre (5%):</strong> ¿Qué aprendimos? ¿Dónde lo van a usar? Anticipa la próxima clase.</li>
+      </ul>
+
+      <h3>Principios pedagógicos INDECAP</h3>
+      <ul>
+        <li>El estudiante de INDECAP generalmente trabaja — diseña clases que respetan su energía y tiempo.</li>
+        <li>Usa ejemplos del mundo laboral real del programa. Un estudiante de Enfermería aprende mejor con casos clínicos reales, no con teoría abstracta.</li>
+        <li>La práctica en laboratorio o taller no es opcional — es el corazón del programa técnico.</li>
+        <li>El error es parte del aprendizaje. Crea un ambiente donde equivocarse es permitido y corregido con respeto.</li>
+      </ul>
+
+      <h3>Herramientas que puedes usar</h3>
+      <ul>
+        <li>Casos clínicos / casos reales del sector (según tu programa)</li>
+        <li>Demostraciones prácticas en laboratorio o taller</li>
+        <li>Trabajo en grupos pequeños (máximo 4 personas)</li>
+        <li>Videos cortos (máximo 8 minutos) como apoyo, nunca como reemplazo</li>
+        <li>Quiz rápidos de 5 preguntas para verificar comprensión</li>
+      </ul>
+
+      <div class="alert">
+        <strong>Recuerda:</strong> Nuestros estudiantes vienen de contextos diversos. Algunos tienen brechas académicas. Tu trabajo no es solo enseñar el contenido — es asegurarte de que todos puedan seguir el ritmo. Si un estudiante no entiende, el problema casi siempre es la forma de enseñar, no la capacidad del estudiante.
+      </div>
+    `
+  },
+  {
+    id: 'plataformas',
+    icon: '💻',
+    label: 'Plataformas y sistemas',
+    duration: '20 min',
+    content: `
+      <h2>Las herramientas digitales de INDECAP</h2>
+      <p>Como docente vas a usar varias plataformas en tu día a día. Conocerlas bien desde el primer día te ahorra tiempo y evita errores en el registro de notas y asistencia.</p>
+
+      <h3>Q10 — Sistema académico principal</h3>
+      <div class="highlight">
+        <p style="margin:0;color:#1a086e"><strong>Q10 es el sistema central.</strong> Aquí registras asistencia, notas y competencias. Todo lo que no esté en Q10 no existe institucionalmente.</p>
+      </div>
+      <ul>
+        <li>El coordinador de tu sede te entregará tus credenciales de acceso el primer día.</li>
+        <li>Registra la asistencia en cada clase — no al final de la semana. Es un requisito de auditoría.</li>
+        <li>Las notas deben ingresarse antes de la fecha límite del ciclo. Los atrasos generan problemas administrativos para el estudiante.</li>
+        <li>Si tienes dudas técnicas con Q10, contacta directamente a la coordinación académica de tu sede.</li>
+      </ul>
+
+      <h3>Esta plataforma de inducción</h3>
+      <ul>
+        <li>Es tu espacio de formación continua como docente.</li>
+        <li>Aquí encontrarás módulos de actualización, protocolos y recursos pedagógicos.</li>
+        <li>Tu progreso se guarda automáticamente.</li>
+      </ul>
+
+      <h3>Comunicación interna</h3>
+      <ul>
+        <li>El canal principal de comunicación institucional es WhatsApp (grupo de docentes por sede).</li>
+        <li>Los comunicados oficiales llegan por correo electrónico institucional.</li>
+        <li>Para urgencias, contacta directamente a la coordinación de tu sede.</li>
+      </ul>
+
+      <div class="alert">
+        <strong>Importante:</strong> Nunca compartas tus credenciales de Q10 con estudiantes ni con otros docentes. Cada docente es responsable de los registros que hace con su usuario.
+      </div>
+    `
+  },
+  {
+    id: 'reglamento',
+    icon: '📋',
+    label: 'Reglamento y protocolos',
+    duration: '25 min',
+    content: `
+      <h2>Normas institucionales que debes conocer</h2>
+      <p>INDECAP opera bajo certificación ISO 9001:2015, lo que significa que los procesos están documentados y deben cumplirse. Conocer las normas te protege a ti y protege a los estudiantes.</p>
+
+      <h3>Puntualidad y asistencia docente</h3>
+      <ul>
+        <li>El docente debe estar en el aula antes de que lleguen los estudiantes.</li>
+        <li>Si no puedes asistir, notifica a la coordinación con el mayor tiempo posible de anticipación — mínimo 2 horas antes.</li>
+        <li>Las clases canceladas sin previo aviso afectan directamente el proceso de los estudiantes y generan descuento en honorarios.</li>
+        <li>El reemplazo de clases debe coordinarse con la dirección académica — no directamente entre docentes.</li>
+      </ul>
+
+      <h3>Conducta en el aula</h3>
+      <ul>
+        <li>El uso de celular personal durante clase está restringido, igual que para los estudiantes.</li>
+        <li>El lenguaje en el aula debe ser respetuoso y profesional en todo momento.</li>
+        <li>Ningún tipo de discriminación (económica, de género, étnica) es tolerada.</li>
+        <li>Las relaciones sentimentales o de amistad cercana con estudiantes activos están prohibidas.</li>
+      </ul>
+
+      <h3>Manejo de situaciones difíciles</h3>
+      <ul>
+        <li>Si un estudiante presenta comportamiento disruptivo, el primer paso es la conversación privada — nunca la confrontación pública.</li>
+        <li>Si el problema persiste, escala a coordinación académica. Nunca tomes decisiones disciplinarias unilateralmente.</li>
+        <li>Si un estudiante te comunica una situación personal grave (crisis familiar, salud mental, violencia), remítelo inmediatamente a coordinación. No es tu responsabilidad resolverlo — sí es tu responsabilidad reportarlo.</li>
+      </ul>
+
+      <h3>Confidencialidad</h3>
+      <ul>
+        <li>La información académica y personal de los estudiantes es confidencial.</li>
+        <li>No compartas notas, situaciones personales ni datos de estudiantes fuera del contexto institucional.</li>
+        <li>Los datos del sistema Q10 son de uso exclusivo para gestión académica.</li>
+      </ul>
+
+      <div class="alert">
+        <strong>Conducto regular:</strong> Docente → Coordinador académico de sede → Director académico → Dirección general. Si tienes una duda, una queja o una situación difícil, sigue siempre este orden.
+      </div>
+    `
+  },
+  {
+    id: 'primeros-dias',
+    icon: '🌟',
+    label: 'Primeros días de clase',
+    duration: '20 min',
+    content: `
+      <h2>Tu primer día en el aula INDECAP</h2>
+      <p>Los primeros días definen el clima del grupo para todo el ciclo. Un comienzo sólido genera confianza, establece expectativas claras y reduce los problemas de disciplina y asistencia en el resto del ciclo.</p>
+
+      <h3>Antes del primer día</h3>
+      <ul>
+        <li>Revisa el syllabus completo de la competencia que vas a dictar.</li>
+        <li>Confirma con coordinación el número de estudiantes, el aula asignada y los materiales disponibles.</li>
+        <li>Prepara tu presentación personal — los estudiantes quieren saber quién eres y por qué estás ahí.</li>
+        <li>Ten listo el encuadre del curso: qué van a aprender, cómo se van a evaluar y qué se espera de ellos.</li>
+      </ul>
+
+      <h3>El primer día — protocolo sugerido</h3>
+      <ul>
+        <li><strong>Presentación tuya (5 min):</strong> Nombre, experiencia en el sector, por qué te apasiona el tema. Humanízate — eres un profesional, no un policía.</li>
+        <li><strong>Presentación del grupo (10 min):</strong> Nombre, sede donde trabajan o aspiran a trabajar, qué esperan del curso. Toma nota de los nombres.</li>
+        <li><strong>Encuadre del ciclo (10 min):</strong> Qué vamos a aprender, cómo se va a evaluar, cuáles son las reglas del aula, cómo pueden contactarte.</li>
+        <li><strong>Primera clase real (30 min):</strong> No pierdas el primer día solo en presentaciones. Da al menos 30 minutos de contenido real para que el estudiante sienta que el ciclo ya comenzó.</li>
+        <li><strong>Cierre y preguntas (5 min):</strong> ¿Hay alguna duda? ¿Qué necesitan para la próxima clase?</li>
+      </ul>
+
+      <h3>Primeras semanas — señales de alerta</h3>
+      <ul>
+        <li>Estudiante que no aparece en el listado de Q10 → reportar a coordinación ese mismo día.</li>
+        <li>Grupo muy pequeño respecto al listado → verificar si hay problemas de matrícula.</li>
+        <li>Estudiante que llega tarde sistemáticamente desde la primera semana → conversación privada antes de la tercera clase.</li>
+        <li>Estudiante que no tiene materiales o uniformes → posible situación económica difícil → reportar a coordinación confidencialmente.</li>
+      </ul>
+
+      <div class="highlight">
+        <p style="margin:0;color:#1a086e"><strong>La regla de oro del primer día:</strong> El estudiante de INDECAP generalmente tiene miedo de fracasar. Tu trabajo el primer día es convencerle de que puede lograrlo — y que tú vas a estar ahí para ayudarle.</p>
+      </div>
+    `
+  },
+  {
+    id: 'evaluacion',
+    icon: '📊',
+    label: 'Sistema de evaluación',
+    duration: '20 min',
+    content: `
+      <h2>Cómo se evalúa en INDECAP</h2>
+      <p>El sistema de evaluación de INDECAP está diseñado para medir competencias reales, no memoria. Cada competencia se evalúa de forma independiente y tiene criterios claros de aprobación.</p>
+
+      <h3>La distribución del 100%</h3>
+      <div class="data-grid">
+        <div class="data-card">
+          <div class="data-card-title">Institución (40%)</div>
+          <div class="data-card-val">40%</div>
+          <div class="data-card-sub">Parcial inicial: 15%</div>
+          <div class="data-card-sub">Parcial final: 25%</div>
+        </div>
+        <div class="data-card">
+          <div class="data-card-title">Docente (60%)</div>
+          <div class="data-card-val">60%</div>
+          <div class="data-card-sub">Distribuido a criterio del docente</div>
+          <div class="data-card-sub">Talleres, quizzes, prácticas, participación</div>
+        </div>
+      </div>
+
+      <h3>Reglas clave de evaluación</h3>
+      <ul>
+        <li><strong>Escala:</strong> 0 (mínima) a 5 (máxima). Las competencias se aprueban con nota <strong>mayor a 3.5</strong>.</li>
+        <li><strong>Asistencia:</strong> Con el 25% de inasistencia el estudiante pierde la competencia automáticamente. No hay excepciones — es una norma institucional.</li>
+        <li>El 60% que maneja el docente debe distribuirse en al menos 3 notas parciales — no en un solo trabajo final.</li>
+        <li>Las notas deben ingresarse en Q10 antes de la fecha límite del ciclo. Los retrasos afectan el proceso de grado del estudiante.</li>
+      </ul>
+
+      <h3>Cómo diseñar tu 60%</h3>
+      <ul>
+        <li>Talleres prácticos en clase (recomendado: 20-25%)</li>
+        <li>Quiz de seguimiento (recomendado: 15-20%)</li>
+        <li>Trabajo aplicado / proyecto (recomendado: 15-20%)</li>
+        <li>Participación y actitud (recomendado: hasta 5%)</li>
+      </ul>
+
+      <div class="alert">
+        <strong>Sobre la participación como nota:</strong> Si vas a usar participación como criterio, define desde el primer día qué significa exactamente. "Participa bien" no es un criterio medible — "responde al menos 2 preguntas por clase" sí lo es.
+      </div>
+
+      <h3>Prácticas profesionales</h3>
+      <p>Algunos programas incluyen práctica profesional supervisada al final del ciclo. Para que un estudiante pueda ir a práctica debe cumplir:</p>
+      <ul>
+        <li>Curso de Humanización y Calidad en el Servicio aprobado</li>
+        <li>Paz y salvo con la institución</li>
+        <li>Afiliación a ARL vigente</li>
+        <li>Esquema de vacunación completo</li>
+        <li>Certificado de EPS</li>
+        <li>Hoja de vida y fotocopia del documento de identidad</li>
+      </ul>
+    `
+  },
+  {
+    id: 'retencion',
+    icon: '❤️',
+    label: 'Tu rol en la retención estudiantil',
+    duration: '25 min',
+    content: `
+      <h2>Por qué los docentes son clave en la permanencia</h2>
+      <p>En INDECAP, el docente es el punto de contacto más frecuente entre la institución y el estudiante. Eso te convierte en la primera persona que puede detectar cuando algo va mal — antes que coordinación, antes que dirección, antes que el área financiera.</p>
+
+      <div class="highlight">
+        <p style="margin:0;color:#1a086e"><strong>Un estudiante que siente que su docente se preocupa por él, tiene mucho más probabilidad de pagar a tiempo y continuar el programa.</strong> No es intuición — es lo que la evidencia educativa muestra consistentemente.</p>
+      </div>
+
+      <h3>La relación entre aprendizaje y pago</h3>
+      <p>Cuando un estudiante siente que está aprendiendo y avanzando, el pago se percibe como inversión. Cuando siente que está perdiendo el tiempo o que no entiende nada, el pago se percibe como gasto — y deja de pagar.</p>
+      <ul>
+        <li>Un estudiante que falta 3 clases seguidas sin aviso tiene alta probabilidad de deserción en las próximas 2 semanas.</li>
+        <li>Un estudiante que pregunta "¿esto para qué sirve?" está enviando una señal de desconexión — esa pregunta debe responderse con urgencia.</li>
+        <li>Un estudiante que menciona problemas económicos no está pidiendo que le regales la nota — está pidiendo ser escuchado y orientado.</li>
+      </ul>
+
+      <h3>Señales de alerta que debes reportar a coordinación</h3>
+      <ul>
+        <li>Inasistencia de 2 o más clases seguidas sin justificación</li>
+        <li>Cambio brusco en el rendimiento o la actitud</li>
+        <li>Estudiante que menciona dificultades económicas graves</li>
+        <li>Estudiante que pregunta sobre devoluciones de dinero o cancelación</li>
+        <li>Estudiante que llega en evidentes condiciones difíciles (sin comer, sin materiales, afectado emocionalmente)</li>
+      </ul>
+
+      <h3>Qué hacer cuando un estudiante menciona que no puede pagar</h3>
+      <ul>
+        <li><strong>Escucha sin juzgar.</strong> No es tu trabajo cobrar ni presionar.</li>
+        <li><strong>No prometas nada</strong> sobre descuentos, plazos ni acuerdos de pago. Eso lo maneja exclusivamente el área administrativa.</li>
+        <li><strong>Remite a coordinación ese mismo día</strong> con la información concreta de lo que te dijo el estudiante.</li>
+        <li><strong>Sigue tratando al estudiante exactamente igual en clase.</strong> Su situación de pago no debe afectar tu trato pedagógico hacia él.</li>
+      </ul>
+
+      <h3>Lo que SÍ puedes hacer como docente</h3>
+      <ul>
+        <li>Hacer que cada clase valga la pena — que el estudiante salga sintiendo que aprendió algo real.</li>
+        <li>Llamar por nombre a tus estudiantes. La personalización crea pertenencia.</li>
+        <li>Reconocer el esfuerzo, no solo el resultado. "Veo que trabajaste mucho en esto" es poderoso.</li>
+        <li>Ser predecible y confiable — llegar puntual, preparado y de buen humor hace una diferencia enorme.</li>
+      </ul>
+
+      <div class="alert">
+        <strong>Recuerda:</strong> No eres el asesor financiero ni el psicólogo del estudiante. Eres el docente. Tu poder está en hacer que la experiencia de aprendizaje sea tan valiosa que el estudiante quiera quedarse — y eso comienza en el aula, en cada clase, contigo.
+      </div>
+    `
+  },
+  {
+    id: 'experiencias',
+    icon: '✨',
+    label: 'Experiencias exitosas de docentes',
+    duration: '15 min',
+    content: `
+      <h2>Lo que funciona — aprendizajes del equipo docente INDECAP</h2>
+      <p>Este módulo reúne prácticas y aprendizajes de docentes que llevan tiempo en INDECAP. No son reglas — son experiencias que han marcado la diferencia.</p>
+
+      <h3>Sobre el primer contacto con el grupo</h3>
+      <div class="highlight">
+        <p style="margin:0;color:#1a086e">"El primer día no uso el tablero. Me siento con ellos, les pregunto por qué están aquí, qué esperan lograr con este técnico. Cuando entiendo sus metas, puedo conectar cada clase con algo que les importa de verdad."</p>
+        <p style="margin:0.5rem 0 0;font-size:0.85rem;color:#474551">— Docente de Enfermería, sede Medellín</p>
+      </div>
+
+      <h3>Sobre la práctica en laboratorio</h3>
+      <div class="highlight">
+        <p style="margin:0;color:#1a086e">"Les digo desde el primer día: aquí vienen a equivocarse. El laboratorio es el único lugar donde equivocarse no cuesta nada — afuera sí cuesta. Eso cambia la actitud frente a la práctica."</p>
+        <p style="margin:0.5rem 0 0;font-size:0.85rem;color:#474551">— Docente de Cosmetología, sede Envigado</p>
+      </div>
+
+      <h3>Sobre estudiantes con dificultades</h3>
+      <div class="highlight">
+        <p style="margin:0;color:#1a086e">"Cuando noto que alguien está fallando, no lo espero en el salón — lo busco antes de la clase. Una conversación de 5 minutos en el corredor vale más que diez clases sin ese contacto."</p>
+        <p style="margin:0.5rem 0 0;font-size:0.85rem;color:#474551">— Docente de SST, sede Caldas</p>
+      </div>
+
+      <h3>Sobre la relación con el pago y la permanencia</h3>
+      <div class="highlight">
+        <p style="margin:0;color:#1a086e">"Me di cuenta de que cuando un estudiante empieza a faltar, casi siempre hay algo detrás — económico, familiar, laboral. Aprendí a no esperar a que coordinación me lo diga. Si falta dos veces seguidas, yo pregunto. A veces eso solo — que alguien le pregunte cómo está — es suficiente para que siga."</p>
+        <p style="margin:0.5rem 0 0;font-size:0.85rem;color:#474551">— Docente de Auxiliar Contable, sede Medellín</p>
+      </div>
+
+      <h3>Lo que los estudiantes más valoran de sus docentes</h3>
+      <ul>
+        <li>Que lleguen preparados y puntales.</li>
+        <li>Que expliquen con ejemplos reales del sector, no solo teoría.</li>
+        <li>Que los traten como adultos, no como niños.</li>
+        <li>Que estén disponibles para preguntas fuera del horario de clase (al menos por WhatsApp).</li>
+        <li>Que sean justos y transparentes con las notas.</li>
+      </ul>
+
+      <div class="alert">
+        <strong>Tu historia aquí también importa.</strong> Si tienes una experiencia, un método o un aprendizaje que quieras compartir con el equipo docente, escríbelo y envíalo a coordinación académica. Esta plataforma se actualiza con las voces del equipo.
+      </div>
+    `
+  },
+];
+
+let currentIdx = -1;
+
+function renderSidebar(){
+  const cont = document.getElementById('sidebar-modules');
+  cont.innerHTML = MODULES.map((m, i) => {
+    const done = progress[m.id];
+    return `
+      <div class="mb-1 rounded-lg overflow-hidden border ${currentIdx===i?'border-primary-container bg-white shadow-sm':'border-outline-variant'} transition-all cursor-pointer" onclick="selectModule(${i})">
+        <div class="p-3 flex items-center gap-3">
+          <span class="text-xl flex-shrink-0">${m.icon}</span>
+          <div class="flex-1 min-w-0">
+            <p class="text-xs font-work-sans font-semibold ${currentIdx===i?'text-primary-container':'text-on-surface'} leading-snug">${m.label}</p>
+            <p class="text-xs text-on-surface-variant mt-0.5">${m.duration}</p>
+          </div>
+          ${done ? '<span class="material-symbols-outlined text-secondary text-xl flex-shrink-0" style="font-variation-settings:\'FILL\' 1">check_circle</span>' : ''}
+        </div>
+      </div>`;
+  }).join('');
+}
+
+function updateProgress(){
+  const done = Object.keys(progress).length;
+  const total = MODULES.length;
+  const pct = Math.round((done/total)*100);
+  const bar = document.getElementById('progress-bar');
+  const txt = document.getElementById('progress-text');
+  if(bar) bar.style.width = pct + '%';
+  if(txt) txt.textContent = done + ' de ' + total + ' módulos';
+}
+
+function selectModule(idx){
+  currentIdx = idx;
+  const m = MODULES[idx];
+
+  // Update sidebar
+  renderSidebar();
+
+  // Update breadcrumb
+  document.getElementById('breadcrumb-module').textContent = m.label;
+
+  // Update header
+  document.getElementById('lesson-header').innerHTML = `
+    <div class="flex items-center gap-3 mb-3">
+      <span class="text-3xl">${m.icon}</span>
+      <div>
+        <p class="text-xs font-work-sans font-semibold text-on-surface-variant uppercase tracking-wider">Módulo ${idx+1} de ${MODULES.length} · ${m.duration}</p>
+      </div>
+    </div>
+    <h1 class="font-newsreader text-3xl font-semibold text-primary-container mb-2">${m.label}</h1>
+  `;
+
+  // Update content
+  document.getElementById('lesson-content').innerHTML = m.content;
+
+  // Show nav
+  const nav = document.getElementById('lesson-nav');
+  nav.style.display = 'flex';
+
+  // Update nav buttons
+  document.getElementById('btn-prev').style.visibility = idx === 0 ? 'hidden' : 'visible';
+  document.getElementById('btn-next').style.visibility = idx === MODULES.length-1 ? 'hidden' : 'visible';
+
+  // Update done button
+  const doneBtn = document.getElementById('btn-done');
+  if(progress[m.id]){
+    doneBtn.innerHTML = '<span class="material-symbols-outlined text-xl" style="font-variation-settings:\'FILL\' 1">check_circle</span> Completado';
+    doneBtn.className = 'flex items-center gap-2 bg-green-600 text-white px-6 py-2.5 rounded-lg font-work-sans text-sm font-medium';
+  } else {
+    doneBtn.innerHTML = 'Marcar completado <span class="material-symbols-outlined text-xl">check_circle</span>';
+    doneBtn.className = 'flex items-center gap-2 bg-gradient-to-r from-primary-container to-secondary text-white px-6 py-2.5 rounded-lg font-work-sans text-sm font-medium shadow-md hover:shadow-lg hover:-translate-y-0.5 transition-all';
+  }
+
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+
+function markCurrentDone(){
+  if(currentIdx < 0) return;
+  const m = MODULES[currentIdx];
+  progress[m.id] = true;
+  saveProgress();
+  updateProgress();
+  renderSidebar();
+
+  const doneBtn = document.getElementById('btn-done');
+  doneBtn.innerHTML = '<span class="material-symbols-outlined text-xl" style="font-variation-settings:\'FILL\' 1">check_circle</span> Completado';
+  doneBtn.className = 'flex items-center gap-2 bg-green-600 text-white px-6 py-2.5 rounded-lg font-work-sans text-sm font-medium';
+
+  // Auto-advance if not last
+  if(currentIdx < MODULES.length - 1){
+    setTimeout(()=>selectModule(currentIdx+1), 800);
+  }
+}
+
+function navigateLesson(dir){
+  const next = currentIdx + dir;
+  if(next >= 0 && next < MODULES.length) selectModule(next);
+}
+
+function exitToPortal(){
+  window.location.href = '/academia';
+}
+
+// Init
+renderSidebar();
+updateProgress();
+</script>
+</body>
+</html>

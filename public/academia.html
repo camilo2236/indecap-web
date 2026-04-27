@@ -1,10 +1,10 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="noindex,nofollow">
-<title>INDECAP · Plataforma de Formación</title>
+<title>INDECAP · Academia de Ventas</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400&family=Inter:wght@300;400;500;600&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
@@ -201,58 +201,15 @@ body{font-family:'Inter',sans-serif;background:#f5fafc;color:#1a1c1e;font-size:1
 .btn-s{padding:9px 20px;border:1px solid rgba(66,71,78,0.15);border-radius:8px;background:#fff;color:#42474e;font-family:'Work Sans',sans-serif;font-size:13px;font-weight:500;cursor:pointer;transition:all 0.18s}
 .btn-s:hover{border-color:#1a086e;color:#1a086e}
 @media(max-width:600px){.two{grid-template-columns:1fr}.heritage{flex-direction:column;gap:0.7rem}}
+
 </style>
 </head>
 <body>
 
-<!-- PORTAL -->
-<div id="portal">
-  <div class="portal">
-    <div class="portal-brand">IN<span>D</span>ECAP</div>
-    <div class="portal-tagline">40 años formando profesionales en Antioquia</div>
-    <h1 class="portal-title">Plataforma de<br><em>Formación INDECAP</em></h1>
-    <p class="portal-sub">Selecciona tu perfil para acceder a tu espacio de aprendizaje personalizado.</p>
-    <div class="portal-grid">
-      <div class="portal-card" onclick="openPortal('v')">
-        <div class="portal-card-icon">🎯</div>
-        <div class="portal-card-title">Equipo Comercial</div>
-        <div class="portal-card-desc">Entrenamiento en ventas, técnicas de cierre y manejo de objeciones</div>
-        <div class="portal-card-tag">Acceso disponible</div>
-      </div>
-      <div class="portal-card coming" onclick="openPortal('p')">
-        <div class="portal-card-icon">👨‍🏫</div>
-        <div class="portal-card-title">Profesores</div>
-        <div class="portal-card-desc">Inducción docente, metodología y protocolos institucionales</div>
-        <div class="portal-card-tag">Próximamente</div>
-      </div>
-      <div class="portal-card coming" onclick="openPortal('e')">
-        <div class="portal-card-icon">📚</div>
-        <div class="portal-card-title">Estudiantes</div>
-        <div class="portal-card-desc">Pensum digital, materiales de clase y recursos académicos</div>
-        <div class="portal-card-tag">Próximamente</div>
-      </div>
-    </div>
-    <div class="portal-footer">INDECAP · Medellín · Envigado · Caldas</div>
-  </div>
-</div>
-
-<!-- PASSWORD MODAL -->
-<div class="pwd-overlay" id="pwd-overlay" style="display:none">
-  <div class="pwd-card">
-    <div class="pwd-icon" id="pwd-icon">🎯</div>
-    <div class="pwd-title" id="pwd-title">Equipo Comercial</div>
-    <div class="pwd-sub">Ingresa la contraseña de acceso para continuar.</div>
-    <input type="password" class="pwd-input" id="pwd-input" placeholder="Contraseña" autocomplete="current-password">
-    <button class="pwd-btn" onclick="checkPassword()">Ingresar</button>
-    <div class="pwd-err" id="pwd-err">Contraseña incorrecta. Intenta de nuevo.</div>
-    <div class="pwd-back" onclick="closePortal()">← Volver</div>
-  </div>
-</div>
-
-<!-- APP -->
+<!-- APP — Auth handled by Next.js/Supabase -->
 <div class="app" id="app" style="display:block">
   <nav class="nav">
-    <div class="nav-brand" onclick="exitToPortal()">IN<span>D</span>ECAP</div>
+    <div class="nav-brand" onclick="exitToPortal()" style="cursor:pointer">IN<span>D</span>ECAP</div>
     <div class="nav-role role-v" id="nav-role">Ventas</div>
     <div class="nav-track" id="nav-track"></div>
     <div class="nav-right">
@@ -265,7 +222,7 @@ body{font-family:'Inter',sans-serif;background:#f5fafc;color:#1a1c1e;font-size:1
         </svg>
         <span class="ring-pct" id="ring-pct">0%</span>
       </div>
-      <button class="exit-btn" onclick="exitToPortal()">Salir</button>
+      <button class="exit-btn" onclick="exitToPortal()">← Plataforma</button>
     </div>
   </nav>
 
@@ -274,8 +231,6 @@ body{font-family:'Inter',sans-serif;background:#f5fafc;color:#1a1c1e;font-size:1
   </div>
 
   <div class="main">
-
-    <!-- INICIO -->
     <div class="page active" id="p-inicio">
       <div class="sec-h">Tu entrenamiento</div>
       <div class="sec-sub">Completa los módulos en orden para construir tu habilidad de forma sólida.</div>
@@ -297,16 +252,12 @@ body{font-family:'Inter',sans-serif;background:#f5fafc;color:#1a1c1e;font-size:1
         </div>
       </div>
     </div>
-
-    <!-- TIPS -->
     <div class="page" id="p-tips">
       <div class="sec-h">Sistema de Entrenamiento Comercial</div>
-      <div class="sec-sub">Tips prácticos con casos reales. Se actualiza constantemente — revísalo seguido.</div>
+      <div class="sec-sub">Tips prácticos con casos reales. Se actualiza constantemente.</div>
       <div id="tips-container"></div>
       <div style="text-align:right;margin-top:1rem"><button class="btn-p" onclick="markDone('tips');showPage('tecnica')">Marcar completado →</button></div>
     </div>
-
-    <!-- TECNICA -->
     <div class="page" id="p-tecnica">
       <div class="sec-h">La micro-confirmación</div>
       <div class="sec-sub">El primer "sí" psicológico que abre cualquier conversación de venta.</div>
@@ -332,18 +283,16 @@ body{font-family:'Inter',sans-serif;background:#f5fafc;color:#1a1c1e;font-size:1
       </div>
       <div class="card">
         <div class="card-label">Por qué funciona</div>
-        <p style="font-size:13.5px;line-height:1.75;color:#42474e">Cuando un prospecto responde un anuncio de Meta, ya mostró interés. La micro-confirmación reconoce ese interés y pide un "sí" simple. Esto crea compromiso psicológico, sensación de ser escuchado, y abre un diálogo real en lugar de un monólogo donde tú lanzas información sin saber qué necesita.</p>
+        <p style="font-size:13.5px;line-height:1.75;color:#42474e">Cuando un prospecto responde un anuncio de Meta, ya mostró interés. La micro-confirmación reconoce ese interés y pide un "sí" simple. Esto crea compromiso psicológico y abre un diálogo real.</p>
       </div>
       <div class="card">
         <div class="card-label">Cómo identificar el programa de origen</div>
-        <div class="t-step"><div class="t-num">1</div><div><div class="t-label">WhatsApp directo</div><p style="font-size:13px;color:#42474e">El número indica la sede y contexto. WhatsApp Cursos → probable curso corto.</p></div></div>
-        <div class="t-step"><div class="t-num">2</div><div><div class="t-label">Inbox Facebook / Instagram</div><p style="font-size:13px;color:#42474e">Revisa el anuncio al que reaccionó en Meta Business Suite. Usa ese programa para la micro-confirmación.</p></div></div>
-        <div class="t-step"><div class="t-num">3</div><div><div class="t-label">Sin dato claro</div><p style="font-size:13px;color:#42474e">"¿Sobre cuál de nuestros programas te gustaría conocer más?" — luego aplica la micro-confirmación.</p></div></div>
+        <div class="t-step"><div class="t-num">1</div><div><div class="t-label">WhatsApp directo</div><p style="font-size:13px;color:#42474e">El número indica la sede. WhatsApp Cursos → probable curso corto.</p></div></div>
+        <div class="t-step"><div class="t-num">2</div><div><div class="t-label">Inbox Facebook / Instagram</div><p style="font-size:13px;color:#42474e">Revisa el anuncio al que reaccionó en Meta Business Suite.</p></div></div>
+        <div class="t-step"><div class="t-num">3</div><div><div class="t-label">Sin dato claro</div><p style="font-size:13px;color:#42474e">"¿Sobre cuál de nuestros programas te gustaría conocer más?"</p></div></div>
       </div>
       <div style="text-align:right;margin-top:1rem"><button class="btn-p" onclick="markDone('tecnica');showPage('arbol')">Marcar completado →</button></div>
     </div>
-
-    <!-- ARBOL -->
     <div class="page" id="p-arbol">
       <div class="sec-h">Árbol de conversación</div>
       <div class="sec-sub">Flujo completo en 5 fases desde el primer mensaje hasta la visita a sede.</div>
@@ -354,9 +303,7 @@ body{font-family:'Inter',sans-serif;background:#f5fafc;color:#1a1c1e;font-size:1
         </div></div>
       </div>
       <div class="card"><div class="card-label">Fase 2 · Descubrimiento</div>
-        <div class="t-step"><div class="t-num">2</div><div><div class="t-label">Explorar motivación</div>
-          <div class="b-agent">"¿Ya tienes experiencia en el área o estás comenzando desde cero?"</div>
-        </div></div>
+        <div class="t-step"><div class="t-num">2</div><div><div class="t-label">Explorar motivación</div><div class="b-agent">"¿Ya tienes experiencia en el área o estás comenzando desde cero?"</div></div></div>
         <div class="t-step"><div class="t-num">3</div><div><div class="t-label">Identificar urgencia</div>
           <div class="b-agent">"¿Cuándo te gustaría empezar? Tenemos grupos que inician próximamente."</div>
           <div class="branches"><span class="br br-y">Pronto → urgencia alta</span><span class="br br-m">En meses → nutrir</span><span class="br br-n">Solo mirando → propuesta de valor</span></div>
@@ -364,21 +311,18 @@ body{font-family:'Inter',sans-serif;background:#f5fafc;color:#1a1c1e;font-size:1
       </div>
       <div class="card"><div class="card-label">Fase 3 · Propuesta de valor — PRIMERO valor, DESPUÉS precio</div>
         <div class="t-step"><div class="t-num">4</div><div><div class="t-label">Presentar con propósito</div>
-          <div class="b-agent">"El Técnico en Enfermería está avalado por la Secretaría de Educación y te habilita para trabajar en clínicas y hospitales. INDECAP lleva 40 años en Antioquia. ¿Eso es lo que estás buscando?"</div>
-          <div class="a-warn" style="margin-top:7px">Nunca respondas como recepcionista. Responde como asesor comercial que quiere que el prospecto tome la mejor decisión.</div>
+          <div class="b-agent">"El Técnico en Enfermería está avalado por la Secretaría de Educación. INDECAP lleva 40 años en Antioquia. ¿Eso es lo que estás buscando?"</div>
+          <div class="a-warn" style="margin-top:7px">Nunca respondas como recepcionista. Responde como asesor comercial.</div>
         </div></div>
       </div>
-      <div class="card"><div class="card-label">Fase 4 · Precio</div>
-        <div class="t-step"><div class="t-num">5</div><div><div class="t-label">Contado primero, financiado después</div>
+      <div class="card"><div class="card-label">Fase 4 · Precio — Contado primero, financiado después</div>
+        <div class="t-step"><div class="t-num">5</div><div><div class="t-label">Presentar precios</div>
           <div class="b-agent">"De contado $2.560.000 por ciclo (18% descuento incluido), o financiado con cuota inicial $500.000 y 5 cuotas de $463.200. ¿Cuál se ajusta mejor a ti?"</div>
-          <div class="a-warn" style="margin-top:7px">El precio de contado ancla el valor. Nunca dejes al precio defenderse solo — siempre va acompañado del mensaje emocional.</div>
+          <div class="a-warn" style="margin-top:7px">Nunca dejes al precio defenderse solo — siempre va con el mensaje emocional.</div>
         </div></div>
       </div>
       <div class="card"><div class="card-label">Fase 5 · Cierre emocional + invitación a sede</div>
-        <div class="t-step"><div class="t-num">6</div><div><div class="t-label">Mensaje emocional</div>
-          <div class="b-agent">"Mira, invertir en tu formación es la única decisión que nunca pierde valor..."</div>
-        </div></div>
-        <div class="t-step"><div class="t-num">7</div><div><div class="t-label">Invitación a sede — toda conversación termina con dirección</div>
+        <div class="t-step"><div class="t-num">6</div><div><div class="t-label">Mensaje emocional + sede</div>
           <div class="b-agent">"¡Sin embargo! Mi recomendación es que te acerques a nuestra sede para conocer los ambientes de aprendizaje y laboratorios. ¿Ya conoces la Sede?"</div>
           <div class="branches"><span class="br br-y">"¿Dónde queda?" → dar dirección</span><span class="br br-y">"Esta semana voy" → confirmar día</span><span class="br br-n">Silencio → seguimiento 48h</span></div>
           <div class="a-good" style="margin-top:8px">WhatsApp inicia la venta. La sede la fortalece. La matrícula la cierra.</div>
@@ -386,29 +330,23 @@ body{font-family:'Inter',sans-serif;background:#f5fafc;color:#1a1c1e;font-size:1
       </div>
       <div style="text-align:right;margin-top:1rem"><button class="btn-p" onclick="markDone('arbol');showPage('cierre')">Marcar completado →</button></div>
     </div>
-
-    <!-- CIERRE -->
     <div class="page" id="p-cierre">
       <div class="sec-h">Técnica de cierre</div>
       <div class="sec-sub">La diferencia entre el equipo que informa y el que convierte.</div>
-      <div class="card">
-        <div class="card-label">El error más frecuente en los datos reales</div>
-        <div class="a-bad">✗ Dar precio → preguntar "¿Cuál jornada te interesa?" → esperar respuesta que nunca llega.</div>
-        <p style="font-size:13px;color:#42474e;margin-top:8px">No vendemos información. Vendemos decisiones. No respondas por salir del paso — responde para acercarlo a matrícula.</p>
+      <div class="card"><div class="card-label">El error más frecuente</div>
+        <div class="a-bad">✗ Dar precio → preguntar "¿Cuál jornada?" → esperar respuesta que nunca llega.</div>
+        <p style="font-size:13px;color:#42474e;margin-top:8px">No vendemos información. Vendemos decisiones.</p>
       </div>
-      <div class="card">
-        <div class="card-label">La secuencia correcta — 2 mensajes después del precio</div>
-        <div class="cierre-box"><div class="cierre-lbl">Mensaje 1 · El ancla emocional</div><p style="font-size:13px;color:#42474e">Justo después del precio. Transforma "gasto" en "inversión". Sin este mensaje, el precio pelea solo.</p></div>
-        <div class="cierre-box"><div class="cierre-lbl">Mensaje 2 · Invitación a sede</div><p style="font-size:13px;color:#42474e">Convierte el chat en visita física. Ver instalaciones y ambiente genera más confianza que cualquier mensaje.</p></div>
-        <div class="a-good">✓ Cuando el prospecto dice "¿Dónde queda?" o "Esta semana me acerco" — ya está listo para matricularse.</div>
+      <div class="card"><div class="card-label">La secuencia correcta — 2 mensajes después del precio</div>
+        <div class="cierre-box"><div class="cierre-lbl">Mensaje 1 · El ancla emocional</div><p style="font-size:13px;color:#42474e">Justo después del precio. Transforma "gasto" en "inversión".</p></div>
+        <div class="cierre-box"><div class="cierre-lbl">Mensaje 2 · Invitación a sede</div><p style="font-size:13px;color:#42474e">Convierte el chat en visita física. La visita convierte más que cualquier mensaje.</p></div>
+        <div class="a-good">✓ Cuando dice "¿Dónde queda?" o "Esta semana me acerco" — ya está listo.</div>
       </div>
-      <div class="card">
-        <div class="card-label">Mensaje sede — válido para todos los programas</div>
+      <div class="card"><div class="card-label">Mensaje sede — válido para todos los programas</div>
         <div class="sc-msg">¡Sin embargo! Mi recomendación es que, si tienes tiempo esta semana, te acerques a nuestra sede para conocer nuestros ambientes de aprendizaje, laboratorios y la ubicación. 😊 No solo es importante el precio del programa, sino también el entorno donde vas a desarrollarte y crecer profesionalmente. ¿Ya conoces la Sede?</div>
-        <button class="cp-btn" onclick="copyMsg(this,SEDE_MSG)">Copiar mensaje</button>
+        <button class="cp-btn" onclick="copyMsg(this,'¡Sin embargo! Mi recomendación es que, si tienes tiempo esta semana, te acerques a nuestra sede para conocer nuestros ambientes de aprendizaje, laboratorios y la ubicación. 😊 No solo es importante el precio del programa, sino también el entorno donde vas a desarrollarte y crecer profesionalmente. ¿Ya conoces la Sede?')">Copiar mensaje</button>
       </div>
-      <div class="card">
-        <div class="card-label">Respuestas al cierre</div>
+      <div class="card"><div class="card-label">Respuestas al cierre</div>
         <div class="t-step"><div class="t-num" style="background:linear-gradient(135deg,#166534,#14532d)">✓</div><div>
           <div class="t-label">Dice "¿Dónde queda?"</div>
           <div class="b-agent">📍 Medellín: Calle 56 #45-26, cerca al Metro Prado.<br>📍 Envigado: Cl 37 Sur #43A-84, cerca al Parque Principal de Envigado.<br>📍 Caldas: Cl 130 Sur #51-65, cerca al parque principal.<br><br>¿Cuál te queda más cerca? Puedo avisarle al equipo que vas esta semana. 😊</div>
@@ -418,22 +356,17 @@ body{font-family:'Inter',sans-serif;background:#f5fafc;color:#1a1c1e;font-size:1
           <div class="b-agent">¡Perfecto! ¿Qué día te funciona mejor, entre semana o sábado? Así te confirmo el horario y te esperamos con toda la información lista. 😊</div>
         </div></div>
         <div class="t-step"><div class="t-num" style="background:linear-gradient(135deg,#991b1b,#7f1d1d)">!</div><div>
-          <div class="t-label">Silencio — seguimiento a las 48 horas</div>
-          <div class="b-agent">Hola [Nombre] 😊 hace unos días hablamos sobre el programa de [Programa]. Quería saber si aún estás interesado/a para ayudarte con horarios, sedes y la mejor opción. Todavía tenemos cupo en el grupo que inicia [fecha]. 🙌</div>
+          <div class="t-label">Silencio — seguimiento 48 horas</div>
+          <div class="b-agent">Hola [Nombre] 😊 hace unos días hablamos sobre el programa de [Programa]. Quería saber si aún estás interesado/a para ayudarte con horarios, sedes y la mejor opción. 🙌</div>
         </div></div>
-        <div class="a-tip">El que hace seguimiento, vende más. No esperes que el interesado vuelva solo — la insistencia profesional también cierra matrículas.</div>
+        <div class="a-tip">El que hace seguimiento, vende más. La insistencia profesional también cierra matrículas.</div>
       </div>
-      <div class="card">
-        <div class="card-label">Ancla emocional por programa — listos para copiar</div>
-        <div id="cierre-progs"></div>
-      </div>
+      <div class="card"><div class="card-label">Ancla emocional por programa — listos para copiar</div><div id="cierre-progs"></div></div>
       <div style="text-align:right;margin-top:1rem"><button class="btn-p" onclick="markDone('cierre');showPage('objeciones')">Marcar completado →</button></div>
     </div>
-
-    <!-- OBJECIONES -->
     <div class="page" id="p-objeciones">
       <div class="sec-h">Manejo de objeciones</div>
-      <div class="sec-sub">Basado en 10.702 conversaciones reales. Frecuencias reales, respuestas que funcionan.</div>
+      <div class="sec-sub">Basado en 10.702 conversaciones reales.</div>
       <div class="card" style="margin-bottom:1.4rem">
         <div class="card-label">Frecuencia en el dataset</div>
         <div style="display:flex;flex-direction:column;gap:5px;margin-top:4px">
@@ -446,8 +379,6 @@ body{font-family:'Inter',sans-serif;background:#f5fafc;color:#1a1c1e;font-size:1
       <div id="objeciones-list"></div>
       <div style="text-align:right;margin-top:1rem"><button class="btn-p" onclick="markDone('objeciones');showPage('scripts')">Marcar completado →</button></div>
     </div>
-
-    <!-- SCRIPTS -->
     <div class="page" id="p-scripts">
       <div class="sec-h">Biblioteca de scripts</div>
       <div class="sec-sub">Mensajes listos para copiar. Filtra por programa o situación.</div>
@@ -456,8 +387,6 @@ body{font-family:'Inter',sans-serif;background:#f5fafc;color:#1a1c1e;font-size:1
       <div id="scripts-list"></div>
       <div style="text-align:right;margin-top:1rem"><button class="btn-p" onclick="markDone('scripts');showPage('simulador')">Marcar completado →</button></div>
     </div>
-
-    <!-- SIMULADOR -->
     <div class="page" id="p-simulador">
       <div class="sec-h">Simulador de práctica</div>
       <div class="sec-sub">9 prospectos basados en conversaciones reales. Practica sin presión.</div>
@@ -468,13 +397,7 @@ body{font-family:'Inter',sans-serif;background:#f5fafc;color:#1a1c1e;font-size:1
         </div>
         <div>
           <div class="sim-panel">
-            <div class="sim-hd">
-              <div class="sim-av" id="sim-av">LO</div>
-              <div>
-                <div style="font-size:13.5px;font-weight:500;color:#fff" id="sim-nm">Lore Ospina</div>
-                <div style="font-size:11.5px;color:rgba(255,255,255,0.65)" id="sim-sb">Enfermería</div>
-              </div>
-            </div>
+            <div class="sim-hd"><div class="sim-av" id="sim-av">LO</div><div><div style="font-size:13.5px;font-weight:500;color:#fff" id="sim-nm">Lore Ospina</div><div style="font-size:11.5px;color:rgba(255,255,255,0.65)" id="sim-sb">Enfermería</div></div></div>
             <div class="sim-sts">
               <div class="sim-st"><div class="sim-sn" id="sim-score">0</div><div class="sim-sl">Puntos</div></div>
               <div class="sim-st"><div class="sim-sn" id="sim-step">0/0</div><div class="sim-sl">Avance</div></div>
@@ -482,18 +405,13 @@ body{font-family:'Inter',sans-serif;background:#f5fafc;color:#1a1c1e;font-size:1
             </div>
             <div class="sim-bar"><div class="sim-bar-fill" id="sim-bar" style="width:0%"></div></div>
             <div class="chat" id="sim-chat"></div>
-            <div class="opts-area" id="sim-opts-area">
-              <div class="opts-lbl">Elige tu respuesta</div>
-              <div id="sim-opts"></div>
-            </div>
+            <div class="opts-area" id="sim-opts-area"><div class="opts-lbl">Elige tu respuesta</div><div id="sim-opts"></div></div>
           </div>
           <div id="sim-result"></div>
         </div>
       </div>
       <div style="text-align:right;margin-top:1rem"><button class="btn-s" onclick="markDone('simulador')">Marcar módulo completado</button></div>
     </div>
-
-    <!-- PROGRESO -->
     <div class="page" id="p-progreso">
       <div class="sec-h">Mi progreso</div>
       <div class="sec-sub">Registro de tu avance en la plataforma INDECAP.</div>
@@ -506,17 +424,17 @@ body{font-family:'Inter',sans-serif;background:#f5fafc;color:#1a1c1e;font-size:1
       <div class="card"><div class="card-label">Estado de módulos</div><div id="progress-list"></div></div>
       <div style="text-align:center;margin-top:1.4rem"><button class="btn-s" onclick="resetProgress()">Reiniciar progreso</button></div>
     </div>
-
   </div>
 </div>
 
 <script>
+// Auth handled by Next.js/Supabase — no portal needed here
 
 /* ============================================================
    INDECAP PLATAFORMA v6
    ============================================================ */
 
-const PASSWORDS = {v:'IndecapVentas2025', p:'IndecapProf2025', e:'IndecapEst2025'};
+// Auth handled by Next.js/Supabase
 
 const MODULES = [
   {id:'tips',      icon:'💡', label:'Tips comerciales',      desc:'Sistema de entrenamiento con casos reales y ejemplos prácticos.'},
@@ -544,46 +462,8 @@ function saveST(){try{localStorage.setItem(SK+'_'+role,JSON.stringify(ST));}catc
 function markDone(id){if(!ST.done.includes(id)){ST.done.push(id);saveST();updateUI();}}
 function resetProgress(){if(confirm('¿Reiniciar todo el progreso?')){ST={done:[],sims:0,score:0};saveST();updateUI();renderModGrid();}}
 
-let pendingRole = '';
-
-function openPortal(r){
-  pendingRole = r;
-  const icons={v:'🎯',p:'👨‍🏫',e:'📚'};
-  const titles={v:'Equipo Comercial',p:'Profesores',e:'Estudiantes'};
-  document.getElementById('pwd-icon').textContent = icons[r];
-  document.getElementById('pwd-title').textContent = titles[r];
-  document.getElementById('pwd-err').style.display = 'none';
-  document.getElementById('pwd-input').value = '';
-  document.getElementById('pwd-overlay').style.display = 'flex';
-  setTimeout(()=>document.getElementById('pwd-input').focus(), 100);
-}
-
-function closePortal(){
-  document.getElementById('pwd-overlay').style.display = 'none';
-}
-
-function checkPassword(){
-  const val = document.getElementById('pwd-input').value.trim();
-  if(val === PASSWORDS[pendingRole]){
-    document.getElementById('pwd-overlay').style.display = 'none';
-    launchApp(pendingRole);
-  } else {
-    document.getElementById('pwd-err').style.display = 'block';
-    document.getElementById('pwd-input').value = '';
-    document.getElementById('pwd-input').focus();
-  }
-}
-
-document.addEventListener('DOMContentLoaded', ()=>{
-  document.getElementById('pwd-input').addEventListener('keydown', e=>{
-    if(e.key==='Enter') checkPassword();
-  });
-});
-
 function exitToPortal(){
-  document.getElementById('app').style.display = 'none';
-  document.getElementById('portal').style.display = '';
-  document.title = 'INDECAP · Plataforma de Formación';
+  window.location.href = '/plataforma';
 }
 
 function launchApp(r){
@@ -610,8 +490,8 @@ function launchApp(r){
   renderTips();
   renderCierreProgs();
   renderObjeciones();
-document.getElementById('portal').style.display = 'none';
-document.getElementById('p-inicio').style.display = 'block';
+  document.getElementById('portal').style.display = 'none';
+  document.getElementById('app').style.display = '';
   showPage('inicio');
 }
 
@@ -1065,6 +945,25 @@ function endSim(){
   document.getElementById('sim-result').innerHTML=`<div style="background:#fff;border-radius:13px;padding:1.75rem;text-align:center;box-shadow:0 4px 24px rgba(26,8,110,0.06);margin-top:0.9rem"><div style="font-family:Newsreader,serif;font-size:2.6rem;font-weight:600;color:#1a086e;letter-spacing:-0.02em">${simST.score}<span style="font-size:1.1rem;color:#42474e">/${max}</span></div><div style="font-size:13.5px;color:#42474e;margin:0.4rem 0 1.25rem">${pct>=70?'¡Excelente! Listo para casos reales.':'Buen intento. Repasa el módulo de Cierre y vuelve a practicar.'}</div><button class="btn-p" onclick="selectProspect(${simST.idx})" style="margin-right:7px">Intentar de nuevo</button><button class="btn-s" onclick="showPage('cierre')">Repasar cierre</button></div>`;
 }
 
+
+
+// Auto-initialize
+loadST();
+buildNav();
+renderModGrid();
+updateUI();
+renderTips();
+renderCierreProgs();
+renderObjeciones();
+showPage('inicio');
+
+const hd = HERO_DATA['v'];
+document.getElementById('app-hero-in').innerHTML = `
+  <div class="hero-badge">${hd.badge}</div>
+  <h1 class="hero-h">${hd.h}</h1>
+  <p class="hero-sub">${hd.sub}</p>
+  <div class="hero-stats">${hd.stats.map(s=>`<div><div class="hs-n">${s.n}</div><div class="hs-l">${s.l}</div></div>`).join('')}</div>
+`;
 </script>
 </body>
 </html>

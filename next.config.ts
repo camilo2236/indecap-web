@@ -38,11 +38,11 @@ const nextConfig: NextConfig = {
             key: "Content-Security-Policy",
             value: [
               "default-src 'self'",
-              "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://fonts.googleapis.com",
+              "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://fonts.googleapis.com https://cdn.tailwindcss.com",
               "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
               "font-src 'self' https://fonts.gstatic.com",
               "img-src 'self' data: blob: https://indecap.edu.co https://indecap-web.vercel.app https://*.vercel.app",
-              "connect-src 'self' https://api.resend.com https://www.google-analytics.com https://vitals.vercel-insights.com https://generativelanguage.googleapis.com https://api.anthropic.com",
+              "connect-src 'self' https://api.resend.com https://www.google-analytics.com https://vitals.vercel-insights.com https://generativelanguage.googleapis.com https://api.anthropic.com https://cjjkdeqbntplofgzfgma.supabase.co",
               "frame-src https://www.google.com https://www.youtube.com https://www.youtube-nocookie.com",
               "object-src 'none'",
               "base-uri 'self'",
