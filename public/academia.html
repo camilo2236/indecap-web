@@ -1,354 +1,227 @@
 ﻿<!DOCTYPE html>
-<html lang="es">
+<html lang="es" class="light">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="noindex,nofollow">
-<title>INDECAP · Academia de Ventas</title>
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet"/>
+<title>Academia de Ventas · INDECAP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400&family=Work+Sans:wght@500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+tailwind.config={darkMode:"class",theme:{extend:{colors:{
+"primary-container":"#1a086e","secondary":"#5a52ae",
+"secondary-container":"#a59dff","on-secondary-container":"#382f8a",
+"surface":"#fcf8ff","surface-container":"#f0ecf5",
+"surface-container-low":"#f6f2fb","surface-container-lowest":"#ffffff",
+"surface-container-high":"#ebe6ef","surface-variant":"#e5e1e9",
+"on-surface":"#1c1b21","on-surface-variant":"#474551",
+"outline":"#787583","outline-variant":"#c8c4d3",
+"tertiary-fixed":"#ffddb0","tertiary-fixed-dim":"#f5bd65",
+"on-tertiary-container":"#b07f2e","primary":"#060036","background":"#fcf8ff"
+}}}}
+</script>
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
-html{height:100%}
-body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Inter',sans-serif;background:#f0f0f0;height:100%;-webkit-font-smoothing:antialiased}
-
-/* ===== NAV ===== */
-.top-nav{position:fixed;top:0;left:0;right:0;height:52px;background:#fff;border-bottom:1px solid #e5e5e5;display:flex;align-items:center;padding:0 20px;gap:12px;z-index:100}
-.nav-logo{font-size:16px;font-weight:600;color:#1a086e;letter-spacing:-0.01em;flex-shrink:0}
-.nav-logo span{color:#805600}
-.nav-badge{background:#eef0ff;border-radius:100px;padding:3px 10px;font-size:11px;font-weight:600;color:#3730a3;flex-shrink:0}
-.nav-spacer{flex:1}
-.nav-progress-wrap{display:flex;align-items:center;gap:8px}
-.nav-progress-bar{width:80px;height:4px;background:#e5e5e5;border-radius:100px;overflow:hidden}
-.nav-progress-fill{height:100%;background:#1a086e;border-radius:100px;transition:width 0.4s}
-.nav-pct{font-size:12px;font-weight:600;color:#1a086e}
-.nav-menu-btn{width:36px;height:36px;border:1px solid #e5e5e5;border-radius:8px;background:none;cursor:pointer;display:none;align-items:center;justify-content:center;flex-direction:column;gap:4px;flex-shrink:0;padding:0}
-.nav-menu-line{width:14px;height:1.5px;background:#666;border-radius:2px;display:block}
-.nav-exit{background:none;border:1px solid #e5e5e5;border-radius:8px;padding:6px 14px;font-size:12px;font-weight:500;color:#555;cursor:pointer;white-space:nowrap}
-.nav-exit:hover{border-color:#1a086e;color:#1a086e}
-
-/* ===== LAYOUT ===== */
-.app{display:flex;height:100vh;padding-top:52px}
-
-/* ===== SIDEBAR ===== */
-.sidebar{width:256px;flex-shrink:0;background:#fff;border-right:1px solid #e5e5e5;display:flex;flex-direction:column;height:100%;overflow:hidden;transition:transform 0.28s cubic-bezier(.4,0,.2,1)}
-.sidebar-header{padding:16px;border-bottom:1px solid #e5e5e5;flex-shrink:0;background:#fafafa}
-.sidebar-label{font-size:10px;font-weight:600;color:#999;text-transform:uppercase;letter-spacing:0.07em;margin-bottom:4px}
-.sidebar-title{font-size:14px;font-weight:600;color:#1a086e;margin-bottom:2px}
-.sidebar-sub{font-size:11.5px;color:#666;line-height:1.4}
-.sidebar-list{flex:1;overflow-y:auto;padding:8px}
-.mod-item{display:flex;align-items:center;gap:10px;padding:9px 10px;border-radius:8px;cursor:pointer;border:1px solid transparent;margin-bottom:2px;transition:all 0.15s}
-.mod-item:hover{background:#f5f5f5}
-.mod-item.active{background:#eef0ff;border-color:#c7d2fe}
-.mod-item.done{opacity:0.75}
-.mod-icon{font-size:15px;width:22px;text-align:center;flex-shrink:0}
-.mod-info{flex:1;min-width:0}
-.mod-name{font-size:12.5px;font-weight:500;color:#111;line-height:1.3;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.mod-item.active .mod-name{color:#1a086e;font-weight:600}
-.mod-dur{font-size:11px;color:#999;margin-top:1px}
-.mod-done-icon{font-size:13px;color:#16a34a;flex-shrink:0;font-weight:600}
-
-/* ===== OVERLAY (mobile) ===== */
-.sidebar-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.45);z-index:49;top:52px}
-
-/* ===== MAIN ===== */
-.main-content{flex:1;overflow-y:auto;background:#f7f7f8}
-.main-inner{max-width:720px;margin:0 auto;padding:24px 24px 80px}
-
-/* ===== BREADCRUMB ===== */
-.breadcrumb{display:flex;align-items:center;gap:6px;font-size:12px;color:#999;margin-bottom:14px}
-.bc-arrow{font-size:10px}
-.bc-cur{color:#1a086e;font-weight:600}
-
-/* ===== LESSON HEADER ===== */
-.lesson-meta-row{display:flex;align-items:center;gap:8px;margin-bottom:8px}
-.lesson-icon{font-size:22px}
-.lesson-meta{font-size:11px;font-weight:600;color:#999;text-transform:uppercase;letter-spacing:0.05em}
-.lesson-h{font-size:22px;font-weight:600;color:#111;margin-bottom:20px;line-height:1.3;letter-spacing:-0.02em}
-
-/* ===== CONTENT CARDS ===== */
-.card{background:#fff;border-radius:12px;border:1px solid #e5e5e5;padding:16px;margin-bottom:12px}
-.card-label{font-size:10px;font-weight:600;color:#999;text-transform:uppercase;letter-spacing:0.07em;margin-bottom:10px}
-.highlight{background:#eef0ff;border-radius:8px;padding:12px 14px;border-left:3px solid #6366f1;margin-bottom:10px;font-size:13.5px;color:#312e81;line-height:1.65}
-.alert{background:#fffbeb;border-radius:8px;padding:12px 14px;border-left:3px solid #f59e0b;margin-bottom:10px;font-size:13.5px;color:#92400e;line-height:1.65}
-.success{background:#f0fdf4;border-radius:8px;padding:12px 14px;border-left:3px solid #22c55e;margin-bottom:10px;font-size:13.5px;color:#14532d;line-height:1.65}
-.a-good{background:#f0fdf4;border-radius:6px;padding:8px 12px;font-size:13px;color:#14532d;margin:4px 0}
-.a-bad{background:#fef2f2;border-radius:6px;padding:8px 12px;font-size:13px;color:#991b1b;margin:4px 0}
-.a-tip{background:#fffbeb;border-radius:6px;padding:8px 12px;font-size:13px;color:#92400e;margin:4px 0}
-.a-warn{background:#fffbeb;border-radius:6px;padding:8px 12px;font-size:13px;color:#92400e;margin:4px 0}
-.two{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.data-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:10px 0}
-.data-card{background:#fafafa;border-radius:8px;padding:12px;border:1px solid #e5e5e5}
-.data-card-title{font-size:10px;font-weight:600;color:#999;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:4px}
-.data-card-val{font-size:20px;font-weight:600;color:#1a086e;letter-spacing:-0.02em}
-.data-card-sub{font-size:11.5px;color:#666;margin-top:2px}
-p{font-size:13.5px;color:#444;line-height:1.75;margin-bottom:10px}
-h2{font-size:17px;font-weight:600;color:#111;margin:16px 0 8px;letter-spacing:-0.01em}
-h2:first-child{margin-top:0}
-h3{font-size:10px;font-weight:600;color:#999;text-transform:uppercase;letter-spacing:0.07em;margin:14px 0 6px}
-ul{margin:4px 0 10px 16px;display:flex;flex-direction:column;gap:5px}
-ul li{font-size:13.5px;color:#444;line-height:1.6}
-strong{font-weight:600;color:#222}
-
-/* ===== AGENT BUBBLES ===== */
-.b-agent{background:linear-gradient(135deg,#1a086e,#312783);color:#fff;border-radius:12px 2px 12px 12px;padding:10px 14px;font-size:13px;max-width:480px;margin-bottom:6px;line-height:1.6}
-.t-step{display:flex;gap:12px;margin-bottom:12px;align-items:flex-start}
-.t-num{min-width:24px;height:24px;border-radius:50%;background:#1a086e;color:#fff;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:600;flex-shrink:0;margin-top:2px}
-.t-label{font-size:10px;font-weight:600;color:#999;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:4px}
-.branches{display:flex;gap:5px;flex-wrap:wrap;margin-top:6px}
-.br{padding:3px 10px;border-radius:100px;font-size:11.5px;font-weight:500}
-.br-y{background:#f0fdf4;color:#15803d;border:1px solid #bbf7d0}
-.br-n{background:#fef2f2;color:#dc2626;border:1px solid #fecaca}
-.br-m{background:#f5f5f5;color:#555;border:1px solid #e5e5e5}
-
-/* ===== CIERRE ===== */
-.cierre-box{background:#fafafa;border-radius:8px;padding:12px 14px;margin-bottom:8px;border-left:3px solid #1a086e;border:1px solid #e5e5e5;border-left:3px solid #1a086e}
-.cierre-lbl{font-size:10px;font-weight:600;color:#1a086e;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:4px}
-
-/* ===== OBJECIONES ===== */
-.obj-wrap{margin-bottom:6px}
-.obj-btn{width:100%;text-align:left;padding:11px 14px;background:#fff;border:1px solid #e5e5e5;border-radius:10px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;font-size:13.5px;font-weight:500;color:#111;transition:all 0.15s}
-.obj-btn:hover{border-color:#1a086e;background:#fafafa}
-.obj-freq{font-size:11px;font-weight:600;padding:2px 8px;border-radius:100px;background:#eef0ff;color:#3730a3;flex-shrink:0;margin-left:8px}
-.obj-freq.red{background:#fef2f2;color:#dc2626}
-.obj-body{display:none;padding:12px 14px;background:#fafafa;border:1px solid #e5e5e5;border-top:none;border-radius:0 0 10px 10px;margin-top:-6px}
-.obj-body.open{display:block}
-
-/* ===== SCRIPTS ===== */
-.sf{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:12px}
-.sf-btn{padding:5px 12px;border:1px solid #e5e5e5;border-radius:100px;font-size:12px;font-weight:500;cursor:pointer;background:#fff;color:#555;transition:all 0.15s}
-.sf-btn:hover,.sf-btn.active{background:#1a086e;color:#fff;border-color:#1a086e}
-.sc{background:#fff;border-radius:10px;padding:12px;border:1px solid #e5e5e5;margin-bottom:8px;transition:all 0.15s}
-.sc:hover{border-color:#c7d2fe}
-.sc-tag{display:inline-block;font-size:10.5px;font-weight:600;padding:2px 8px;border-radius:100px;margin-bottom:6px}
-.t-cierre{background:#f0fdf4;color:#15803d}
-.t-salud{background:#eef0ff;color:#3730a3}
-.t-excel{background:#f0fdf4;color:#15803d}
-.t-cosm{background:#fffbeb;color:#92400e}
-.t-vet{background:#fff7ed;color:#c2410c}
-.t-admin{background:#eff6ff;color:#1d4ed8}
-.t-tech{background:#f5f3ff;color:#7c3aed}
-.t-dep{background:#fef2f2;color:#dc2626}
-.t-gen{background:#f5f5f5;color:#555}
-.sc-title{font-size:13px;font-weight:600;color:#111;margin-bottom:4px}
-.sc-sit{font-size:11.5px;color:#999;margin-bottom:6px;font-style:italic}
-.sc-msg{font-size:12.5px;line-height:1.65;color:#444;background:#fafafa;border-radius:6px;padding:8px 11px;border-left:3px solid #1a086e;white-space:pre-wrap;border:1px solid #e5e5e5;border-left:3px solid #1a086e}
-.cp-btn{margin-top:6px;padding:4px 10px;background:none;border:1px solid #e5e5e5;border-radius:6px;font-size:11.5px;font-weight:500;cursor:pointer;color:#555;transition:all 0.15s}
-.cp-btn:hover{border-color:#1a086e;color:#1a086e}
-.cp-btn.copied{border-color:#22c55e;color:#15803d;background:#f0fdf4}
-.search-in{width:100%;padding:8px 12px;margin-bottom:12px;background:#fff;border:1px solid #e5e5e5;border-radius:8px;font-size:14px;color:#111;transition:all 0.15s;outline:none}
-.search-in:focus{border-color:#1a086e;box-shadow:0 0 0 3px rgba(26,8,110,0.06)}
-
-/* ===== TIP CARDS ===== */
-.tip-card{background:#fff;border-radius:12px;padding:16px;border:1px solid #e5e5e5;margin-bottom:12px;border-left:3px solid #1a086e}
-.tip-badge{display:inline-block;background:#1a086e;color:#fff;padding:2px 8px;border-radius:100px;font-size:10px;font-weight:600;margin-bottom:8px}
-.tip-title{font-size:15px;font-weight:600;color:#111;margin-bottom:8px;line-height:1.35;letter-spacing:-0.01em}
-.tip-body{font-size:13.5px;color:#444;line-height:1.7;margin-bottom:10px}
-.tip-compare{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:10px 0}
-.tip-wrong{background:#fef2f2;border-radius:8px;padding:10px;border-left:3px solid #dc2626}
-.tip-right{background:#f0fdf4;border-radius:8px;padding:10px;border-left:3px solid #22c55e}
-.tip-clabel{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:5px}
-.tip-wrong .tip-clabel{color:#991b1b}
-.tip-right .tip-clabel{color:#166534}
-.tip-ctext{font-size:12.5px;line-height:1.6;color:#333}
-.tip-remember{background:#eef0ff;border-radius:8px;padding:10px 12px;font-size:13px;color:#312e81;font-weight:500;line-height:1.6;margin-top:8px}
-
-/* ===== SIMULADOR ===== */
-.sim-lay{display:grid;grid-template-columns:200px 1fr;gap:12px}
-.pc{display:flex;gap:8px;align-items:center;padding:9px 10px;border-radius:8px;cursor:pointer;background:#fff;border:1px solid #e5e5e5;margin-bottom:5px;transition:all 0.15s}
-.pc:hover,.pc.active{border-color:#1a086e;background:#eef0ff}
-.pc-av{width:32px;height:32px;border-radius:50%;background:#1a086e;color:#fff;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:600;flex-shrink:0}
-.sim-panel{background:#fff;border-radius:12px;overflow:hidden;border:1px solid #e5e5e5;display:flex;flex-direction:column}
-.sim-hd{background:#1a086e;padding:12px 14px;display:flex;align-items:center;gap:10px}
-.sim-av{width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,0.15);color:#fff;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:600}
-.sim-sts{display:flex;border-bottom:1px solid #f0f0f0}
-.sim-st{flex:1;padding:8px;text-align:center;border-right:1px solid #f0f0f0}
-.sim-st:last-child{border-right:none}
-.sim-sn{font-size:17px;font-weight:600;color:#1a086e}
-.sim-sl{font-size:11px;color:#666}
-.sim-bar{height:3px;background:#f0f0f0}
-.sim-bar-fill{height:100%;background:linear-gradient(90deg,#1a086e,#805600);transition:width 0.4s}
-.chat{flex:1;min-height:240px;max-height:320px;overflow-y:auto;padding:12px;display:flex;flex-direction:column;gap:8px;background:#f7f7f8}
-.msg{max-width:80%;font-size:13px;line-height:1.5;padding:8px 11px;border-radius:10px}
-.msg-p{background:#fff;border:1px solid #e5e5e5;border-radius:2px 10px 10px 10px;align-self:flex-start}
-.msg-a{background:#1a086e;color:#fff;border-radius:10px 2px 10px 10px;align-self:flex-end}
-.msg-h{background:#fffbeb;border:1px solid #fde68a;color:#92400e;font-size:11.5px;border-radius:8px;align-self:center;max-width:94%;text-align:center;font-style:italic;padding:6px 10px}
-.msg-g{background:#f0fdf4;border:1px solid #bbf7d0;color:#166534;font-size:12px;border-radius:8px;align-self:center;max-width:94%;padding:6px 10px}
-.msg-b{background:#fef2f2;border:1px solid #fecaca;color:#991b1b;font-size:12px;border-radius:8px;align-self:center;max-width:94%;padding:6px 10px}
-.opts-area{padding:10px 12px;background:#fafafa;border-top:1px solid #f0f0f0}
-.opts-lbl{font-size:10px;font-weight:600;color:#999;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:6px}
-.opt-btn{width:100%;text-align:left;padding:7px 10px;background:#fff;border:1px solid #e5e5e5;border-radius:7px;font-size:12.5px;cursor:pointer;margin-bottom:4px;color:#111;line-height:1.4;transition:all 0.15s}
-.opt-btn:hover{border-color:#1a086e}
+body{-webkit-font-smoothing:antialiased;font-family:'Inter',sans-serif}
+.pbg{background-image:repeating-linear-gradient(45deg,#1a086e 0,#1a086e 1px,transparent 0,transparent 50%),repeating-linear-gradient(135deg,#1a086e 0,#1a086e 1px,transparent 0,transparent 50%);background-size:8px 8px}
+.mm{transform:translateX(-100%);transition:transform 0.28s cubic-bezier(.4,0,.2,1)}
+.mm.open{transform:translateX(0)}
+.mo{opacity:0;pointer-events:none;transition:opacity 0.28s}
+.mo.open{opacity:1;pointer-events:all}
+.obj-body{display:none}.obj-body.open{display:block}
+.cp-btn.copied{background:#f0fdf4;border-color:#86efac;color:#166534}
+.opt-btn:disabled{cursor:default}
 .opt-btn.correct{background:#f0fdf4;border-color:#86efac;color:#166534;cursor:default}
 .opt-btn.wrong{background:#fef2f2;border-color:#fca5a5;color:#991b1b;cursor:default}
-
-/* ===== PROGRESS PAGE ===== */
-.tr-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:10px;margin-bottom:16px}
-.tr-stat{background:#fff;border-radius:10px;padding:12px;border:1px solid #e5e5e5;text-align:center}
-.tr-n{font-size:28px;font-weight:600;color:#1a086e;letter-spacing:-0.02em}
-.tr-l{font-size:11.5px;color:#666;margin-top:2px}
-.mp-row{display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid #f0f0f0}
-.mp-row:last-child{border-bottom:none}
-.mp-name{font-size:13.5px;font-weight:500;flex:1}
-.mp-status{font-size:11px;font-weight:600;padding:3px 9px;border-radius:100px}
-.s-done{background:#f0fdf4;color:#166534}
-.s-pend{background:#f5f5f5;color:#666}
-
-/* ===== BOTTOM NAV ===== */
-.bottom-nav{display:flex;align-items:center;justify-content:space-between;padding:10px 20px;border-top:1px solid #e5e5e5;flex-shrink:0;background:#fff}
-.btn-nav{background:none;border:1px solid #e5e5e5;border-radius:8px;padding:7px 14px;font-size:12.5px;font-weight:500;color:#555;cursor:pointer;display:flex;align-items:center;gap:5px;transition:all 0.15s}
-.btn-nav:hover{border-color:#1a086e;color:#1a086e}
-.btn-done{background:#1a086e;border:none;border-radius:8px;padding:8px 18px;font-size:12.5px;font-weight:600;color:#fff;cursor:pointer;display:flex;align-items:center;gap:5px;transition:all 0.15s}
-.btn-done:hover{background:#312783}
-.btn-done.completed{background:#15803d}
-
-/* ===== MOBILE ===== */
-@media(max-width:768px){
-  .nav-menu-btn{display:flex}
-  .nav-progress-wrap{display:none}
-  .sidebar{position:fixed;top:52px;left:0;bottom:0;transform:translateX(-100%);z-index:50}
-  .sidebar.open{transform:translateX(0)}
-  .sidebar-overlay{display:block}
-  .sidebar-overlay.visible{display:block}
-  .app{height:auto;min-height:calc(100vh - 52px)}
-  .main-content{height:auto;min-height:calc(100vh - 52px - 56px)}
-  .main-inner{padding:16px 14px 60px}
-  .two{grid-template-columns:1fr}
-  .data-grid{grid-template-columns:1fr 1fr}
-  .tip-compare{grid-template-columns:1fr}
-  .sim-lay{grid-template-columns:1fr}
-  h2{font-size:15px}
-  .lesson-h{font-size:18px}
-  .bottom-nav{padding:8px 14px}
-}
-@media(min-width:769px){
-  .app{height:calc(100vh - 52px)}
-  .main-content{height:100%;overflow-y:auto}
-}
+.panel{display:none}.panel.active{display:block}
+::-webkit-scrollbar{width:4px}::-webkit-scrollbar-thumb{background:#c8c4d3;border-radius:4px}
+.b-agent{background:linear-gradient(135deg,#1a086e,#312783);color:#fff;border-radius:12px 2px 12px 12px;padding:10px 14px;font-size:13px;line-height:1.6;max-width:480px;margin-bottom:6px}
 </style>
 </head>
-<body>
-<nav class="top-nav">
-  <span class="nav-logo">IN<span style="color:#805600">D</span>ECAP</span>
-  <span class="nav-badge">Ventas</span>
-  <div class="nav-spacer"></div>
-  <div class="nav-progress-wrap">
-    <div class="nav-progress-bar"><div class="nav-progress-fill" id="progress-bar" style="width:0%"></div></div>
-    <span class="nav-pct" id="progress-txt">0%</span>
+<body class="bg-background text-on-surface min-h-screen relative">
+
+<div class="fixed inset-0 pointer-events-none opacity-[0.02] pbg"></div>
+
+<!-- MOBILE OVERLAY -->
+<div class="mo fixed inset-0 bg-black/40 z-40 md:hidden" id="mo" onclick="closeMM()"></div>
+
+<!-- MOBILE MENU -->
+<div class="mm fixed top-0 left-0 h-full w-72 bg-surface-container-lowest z-50 md:hidden flex flex-col shadow-2xl" id="mm">
+  <div class="p-6 border-b border-outline-variant">
+    <div class="flex items-center justify-between mb-1">
+      <span class="text-xl font-semibold text-primary-container" style="font-family:Newsreader,serif">INDECAP</span>
+      <button onclick="closeMM()" class="p-1 rounded-lg hover:bg-surface-container text-on-surface-variant">
+        <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 0">close</span>
+      </button>
+    </div>
+    <p class="text-xs text-on-surface-variant" style="font-family:Work Sans,sans-serif">Academia de Ventas</p>
   </div>
-  <button class="nav-menu-btn" onclick="toggleSidebar()">
-    <span class="nav-menu-line"></span><span class="nav-menu-line"></span><span class="nav-menu-line"></span>
-  </button>
-  <button class="nav-exit" onclick="window.location.href='/plataforma'">← Plataforma</button>
-</nav>
-<div class="sidebar-overlay" id="overlay" onclick="closeSidebar()"></div>
-<div class="app">
-  <aside class="sidebar" id="sidebar">
-    <div class="sidebar-header">
-      <div class="sidebar-label">INDECAP · Plataforma</div>
-      <div class="sidebar-title">Academia de Ventas</div>
-      <div class="sidebar-sub">Basado en 10.702 conversaciones reales</div>
-    </div>
-    <div class="sidebar-list" id="sidebar-list"></div>
-  </aside>
-  <div style="flex:1;display:flex;flex-direction:column;min-width:0;overflow:hidden">
-    <div class="main-content" id="main-scroll">
-      <div class="main-inner">
-        <div class="breadcrumb">
-          <span>Academia de Ventas</span><span class="bc-arrow">›</span>
-          <span class="bc-cur" id="bc-cur">Inicio</span>
-        </div>
-        <div id="lesson-header">
-          <div style="text-align:center;padding:32px 0 12px;font-size:2.5rem">🎯</div>
-          <div class="lesson-h" style="text-align:center;margin-bottom:8px">Tu entrenamiento comercial</div>
-          <p style="text-align:center;color:#666">Selecciona un módulo para comenzar.</p>
-          <div class="two" style="margin-top:16px">
-            <div class="a-tip">&#128205; Pregunta #1 del prospecto: la <strong>ubicación</strong> (6.375 conversaciones)</div>
-            <div class="a-tip">&#128176; <strong>2.907 piden descuento</strong> — es test de confianza, no objeción</div>
-            <div class="a-tip">&#127942; <strong>Error más frecuente:</strong> dar precio sin mensaje emocional ni sede</div>
-            <div class="a-tip">&#9200; <strong>490 dicen "después"</strong> sin seguimiento — un mensaje a 48h cambia todo</div>
-          </div>
-        </div>
-        <div id="lesson-content"></div>
-      </div>
-    </div>
-    <div class="bottom-nav" id="bottom-nav" style="display:none">
-      <button class="btn-nav" id="btn-prev" onclick="navigateLesson(-1)">← Anterior</button>
-      <button class="btn-done" id="btn-done" onclick="markCurrentDone()">Marcar completado</button>
-      <button class="btn-nav" id="btn-next" onclick="navigateLesson(1)">Siguiente →</button>
-    </div>
+  <div class="flex-1 overflow-y-auto p-3" id="mm-modules"></div>
+  <div class="p-4 border-t border-outline-variant">
+    <button onclick="window.location.href='/plataforma'" class="w-full flex items-center gap-3 px-4 py-2.5 rounded-lg text-on-surface-variant hover:bg-surface-container text-sm" style="font-family:Work Sans,sans-serif">
+      <span class="material-symbols-outlined text-xl" style="font-variation-settings:'FILL' 0">arrow_back</span>Volver a Plataforma
+    </button>
   </div>
 </div>
+
+<!-- LAYOUT -->
+<div class="flex h-screen overflow-hidden relative z-10">
+
+  <!-- SIDEBAR DESKTOP -->
+  <nav class="hidden md:flex flex-col h-full w-64 bg-surface-container-lowest border-r border-outline-variant z-30 relative pt-20 pb-6">
+    <div class="px-6 mb-5">
+      <p class="text-xs font-semibold text-on-surface-variant uppercase tracking-widest mb-1" style="font-family:Work Sans,sans-serif">Academia de Ventas</p>
+      <h2 class="text-base font-semibold text-primary-container leading-tight" style="font-family:Newsreader,serif">Tu entrenamiento comercial</h2>
+      <div class="mt-3 flex items-center gap-3">
+        <div class="relative w-11 h-11 flex-shrink-0">
+          <svg class="w-full h-full -rotate-90" viewBox="0 0 36 36">
+            <path d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="#e5e1e9" stroke-width="3"/>
+            <path id="sb-ring" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="#f5bd65" stroke-dasharray="0,100" stroke-linecap="round" stroke-width="3" style="transition:stroke-dasharray 0.5s"/>
+          </svg>
+          <div class="absolute inset-0 flex items-center justify-center text-xs font-semibold text-primary-container" style="font-family:Work Sans,sans-serif" id="sb-pct">0%</div>
+        </div>
+        <div>
+          <p class="text-xs font-medium text-on-surface" style="font-family:Work Sans,sans-serif">Progreso</p>
+          <p class="text-xs text-on-surface-variant" id="sb-txt">0 de 7 módulos</p>
+        </div>
+      </div>
+    </div>
+    <div class="flex-1 overflow-y-auto px-3" id="sidebar-modules"></div>
+    <div class="px-4 pt-4 border-t border-outline-variant mt-4">
+      <button onclick="window.location.href='/plataforma'" class="w-full flex items-center gap-3 px-4 py-2.5 rounded-lg text-on-surface-variant hover:bg-surface-container text-sm transition-colors" style="font-family:Work Sans,sans-serif">
+        <span class="material-symbols-outlined text-xl" style="font-variation-settings:'FILL' 0">arrow_back</span>Volver a Plataforma
+      </button>
+    </div>
+  </nav>
+
+  <!-- MAIN -->
+  <div class="flex-1 flex flex-col h-screen overflow-hidden">
+
+    <!-- TOP NAV -->
+    <header class="fixed top-0 left-0 md:left-64 right-0 z-30 flex items-center justify-between px-6 h-16 bg-surface-container-lowest/80 backdrop-blur-md border-b border-outline-variant shadow-sm">
+      <div class="flex items-center gap-3">
+        <button onclick="openMM()" class="md:hidden p-2 rounded-lg hover:bg-surface-container text-on-surface-variant">
+          <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 0">menu</span>
+        </button>
+        <span class="font-semibold text-primary-container text-lg md:hidden" style="font-family:Newsreader,serif">INDECAP</span>
+        <p class="hidden md:block text-xs text-on-surface-variant" style="font-family:Work Sans,sans-serif" id="hd-bc">Academia de Ventas → Dashboard</p>
+      </div>
+      <div class="flex items-center gap-3">
+        <div class="hidden md:flex items-center gap-2 text-xs font-medium text-on-surface-variant" style="font-family:Work Sans,sans-serif">
+          <div class="w-24 h-1.5 bg-surface-variant rounded-full overflow-hidden">
+            <div id="hd-bar" class="h-full bg-primary-container rounded-full transition-all duration-500" style="width:0%"></div>
+          </div>
+          <span id="hd-pct">0%</span>
+        </div>
+        <button onclick="window.location.href='/plataforma'" class="hidden md:flex items-center gap-1.5 px-3 py-1.5 border border-outline-variant rounded-lg text-xs text-on-surface-variant hover:border-primary-container hover:text-primary-container transition-colors" style="font-family:Work Sans,sans-serif">
+          <span class="material-symbols-outlined text-base" style="font-variation-settings:'FILL' 0">logout</span>Salir
+        </button>
+      </div>
+    </header>
+
+    <!-- CONTENT -->
+    <main class="flex-1 overflow-y-auto pt-16" id="main-scroll">
+
+      <!-- DASHBOARD -->
+      <div class="panel active" id="panel-dashboard">
+        <div class="max-w-5xl mx-auto px-6 py-8">
+
+          <!-- Hero -->
+          <section class="mb-8 relative rounded-2xl overflow-hidden p-8 shadow-lg" style="background:linear-gradient(135deg,#1a086e,#5a52ae)">
+            <div class="absolute inset-0 pbg opacity-5"></div>
+            <div class="relative z-10 flex items-start justify-between gap-6">
+              <div class="max-w-lg">
+                <span class="inline-block px-3 py-1 mb-4 rounded-full text-xs font-semibold border" style="background:rgba(245,189,101,0.2);color:#f5bd65;border-color:rgba(245,189,101,0.3);font-family:Work Sans,sans-serif">
+                  Sistema de Entrenamiento Activo · INDECAP
+                </span>
+                <h2 class="text-3xl font-semibold text-white mb-2 leading-tight" style="font-family:Newsreader,serif;letter-spacing:-0.02em">El arte de convertir un mensaje<br>en <em>una matrícula</em></h2>
+                <p class="text-sm leading-relaxed" style="color:rgba(255,255,255,0.7)">Entrenamiento basado en 10.702 conversaciones reales. Aprende los patrones, practica los cierres y domina cada objeción.</p>
+              </div>
+              <div class="hidden lg:block relative w-28 h-28 flex-shrink-0">
+                <svg class="w-full h-full -rotate-90" viewBox="0 0 100 100">
+                  <circle cx="50" cy="50" r="45" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="8"/>
+                  <circle id="hero-ring" cx="50" cy="50" r="45" fill="none" stroke="#f5bd65" stroke-dasharray="0,283" stroke-linecap="round" stroke-width="8" style="transition:stroke-dasharray 0.6s"/>
+                </svg>
+                <div class="absolute inset-0 flex flex-col items-center justify-center text-white">
+                  <span class="text-2xl font-semibold" style="font-family:Newsreader,serif" id="hero-pct">0%</span>
+                  <span class="text-xs" style="color:rgba(255,255,255,0.6)">completado</span>
+                </div>
+              </div>
+            </div>
+            <div class="relative z-10 mt-6 flex gap-6 flex-wrap">
+              <div><span class="text-2xl font-semibold text-white" style="font-family:Newsreader,serif">10.702</span><p class="text-xs" style="color:rgba(255,255,255,0.5);font-family:Work Sans,sans-serif">Conversaciones</p></div>
+              <div><span class="text-2xl font-semibold text-white" style="font-family:Newsreader,serif">7</span><p class="text-xs" style="color:rgba(255,255,255,0.5);font-family:Work Sans,sans-serif">Módulos</p></div>
+              <div><span class="text-2xl font-semibold text-white" style="font-family:Newsreader,serif">9</span><p class="text-xs" style="color:rgba(255,255,255,0.5);font-family:Work Sans,sans-serif">Simuladores</p></div>
+              <div><span class="text-2xl font-semibold text-white" style="font-family:Newsreader,serif">40</span><p class="text-xs" style="color:rgba(255,255,255,0.5);font-family:Work Sans,sans-serif">Años INDECAP</p></div>
+            </div>
+          </section>
+
+          <!-- Bento -->
+          <div class="grid grid-cols-1 md:grid-cols-12 gap-5">
+
+            <!-- Módulos -->
+            <div class="md:col-span-8 bg-surface-container-lowest rounded-2xl border border-outline-variant shadow-sm p-6">
+              <div class="flex items-center justify-between mb-5">
+                <h3 class="text-lg font-semibold text-primary-container" style="font-family:Newsreader,serif">Módulos de entrenamiento</h3>
+                <span class="text-xs font-semibold text-on-surface-variant bg-surface-container px-2.5 py-1 rounded-full" style="font-family:Work Sans,sans-serif" id="mod-count">0/7 completados</span>
+              </div>
+              <div class="space-y-2" id="mod-grid"></div>
+            </div>
+
+            <!-- Right -->
+            <div class="md:col-span-4 flex flex-col gap-5">
+
+              <!-- Insights -->
+              <div class="bg-surface-container-lowest rounded-2xl border border-outline-variant shadow-sm p-5">
+                <h4 class="text-xs font-semibold text-on-surface-variant uppercase tracking-wider mb-4" style="font-family:Work Sans,sans-serif">Insights del dataset</h4>
+                <div class="space-y-3">
+                  <div class="flex items-start gap-3"><span class="text-base flex-shrink-0">📍</span><p class="text-xs text-on-surface-variant leading-relaxed"><strong class="text-on-surface">6.375</strong> prospectos preguntan por ubicación primero.</p></div>
+                  <div class="flex items-start gap-3"><span class="text-base flex-shrink-0">💰</span><p class="text-xs text-on-surface-variant leading-relaxed"><strong class="text-on-surface">2.907</strong> piden descuento — test de confianza, no objeción.</p></div>
+                  <div class="flex items-start gap-3"><span class="text-base flex-shrink-0">⏱</span><p class="text-xs text-on-surface-variant leading-relaxed"><strong class="text-on-surface">490</strong> dicen "después" sin recibir seguimiento.</p></div>
+                  <div class="flex items-start gap-3"><span class="text-base flex-shrink-0">🏆</span><p class="text-xs text-on-surface-variant leading-relaxed">Error más frecuente: dar precio sin mensaje emocional.</p></div>
+                </div>
+              </div>
+
+              <!-- Acceso rápido -->
+              <div class="bg-surface-container-lowest rounded-2xl border border-outline-variant shadow-sm p-5">
+                <h4 class="text-xs font-semibold text-on-surface-variant uppercase tracking-wider mb-4" style="font-family:Work Sans,sans-serif">Acceso rápido</h4>
+                <div class="space-y-2">
+                  <button onclick="showPanel('scripts')" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-surface-container border border-outline-variant transition-colors text-left">
+                    <div class="w-9 h-9 rounded-full flex items-center justify-center flex-shrink-0" style="background:rgba(26,8,110,0.1)">
+                      <span class="material-symbols-outlined text-primary-container" style="font-size:20px;font-variation-settings:'FILL' 0">content_copy</span>
+                    </div>
+                    <div><p class="text-sm font-medium text-on-surface" style="font-family:Work Sans,sans-serif">Scripts</p><p class="text-xs text-on-surface-variant">25+ mensajes listos</p></div>
+                  </button>
+                  <button onclick="showPanel('simulador')" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-surface-container border border-outline-variant transition-colors text-left">
+                    <div class="w-9 h-9 rounded-full flex items-center justify-center flex-shrink-0" style="background:rgba(245,189,101,0.2)">
+                      <span class="material-symbols-outlined text-on-tertiary-container" style="font-size:20px;font-variation-settings:'FILL' 0">sports_esports</span>
+                    </div>
+                    <div><p class="text-sm font-medium text-on-surface" style="font-family:Work Sans,sans-serif">Simulador</p><p class="text-xs text-on-surface-variant">9 prospectos reales</p></div>
+                  </button>
+                  <button onclick="showPanel('cierre')" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-surface-container border border-outline-variant transition-colors text-left">
+                    <div class="w-9 h-9 rounded-full flex items-center justify-center flex-shrink-0" style="background:rgba(90,82,174,0.15)">
+                      <span class="material-symbols-outlined" style="font-size:20px;font-variation-settings:'FILL' 0;color:#5a52ae">emoji_events</span>
+                    </div>
+                    <div><p class="text-sm font-medium text-on-surface" style="font-family:Work Sans,sans-serif">Técnica de cierre</p><p class="text-xs text-on-surface-variant">El módulo más importante</p></div>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- MODULE PANELS CONTAINER -->
+      <div id="panels-area"></div>
+
+    </main>
+  </div>
+</div>
+
 <script>
-
-function toggleSidebar(){document.getElementById('sidebar').classList.toggle('open');document.getElementById('overlay').classList.toggle('visible');}
-function closeSidebar(){document.getElementById('sidebar').classList.remove('open');document.getElementById('overlay').classList.remove('visible');}
-
-const SECCION='ventas',SK='indecap_ventas_v3';
-let progress={},currentIdx=-1;
-function saveLocal(){try{localStorage.setItem(SK,JSON.stringify(progress));}catch(e){}}
-async function loadProgress(){
-  try{const r=await fetch('/api/progreso?seccion='+SECCION);if(r.ok){const d=await r.json();if(d.progress&&Object.keys(d.progress).length){progress=d.progress;saveLocal();return;}}}catch(e){}
-  try{const l=localStorage.getItem(SK);if(l)progress=JSON.parse(l);}catch(e){}
-}
-async function saveProgress(id,pts){
-  progress[id]=true;saveLocal();
-  try{await fetch('/api/progreso',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({seccion:SECCION,modulo_id:id,puntaje:pts||0})});}catch(e){}
-}
-const MODULES=[
-  {id:'tips',      icon:'💡', label:'Tips comerciales',      duration:'15 min'},
-  {id:'tecnica',   icon:'🎯', label:'Técnica base',          duration:'15 min'},
-  {id:'arbol',     icon:'🌿', label:'Árbol de conversación', duration:'20 min'},
-  {id:'cierre',    icon:'🏆', label:'Técnica de cierre',     duration:'20 min'},
-  {id:'objeciones',icon:'🛡️', label:'Objeciones',           duration:'20 min'},
-  {id:'scripts',   icon:'📋', label:'Scripts',               duration:'15 min'},
-  {id:'simulador', icon:'🎮', label:'Simulador',             duration:'30 min'},
-];
-function updateProgressUI(){
-  const done=Object.keys(progress).length,total=MODULES.length,pct=Math.round(done/total*100);
-  const b=document.getElementById('progress-bar'),t=document.getElementById('progress-txt');
-  if(b)b.style.width=pct+'%';if(t)t.textContent=pct+'%';
-}
-function renderSidebar(){
-  const list=document.getElementById('sidebar-list');if(!list)return;
-  list.innerHTML=MODULES.map((m,i)=>{
-    const done=progress[m.id],active=i===currentIdx;
-    return '<div class="mod-item'+(active?' active':'')+(done?' done':'')+'" onclick="selectModule('+i+');closeSidebar()">'
-      +'<span class="mod-icon">'+m.icon+'</span><div class="mod-info"><div class="mod-name">'+m.label+'</div><div class="mod-dur">'+m.duration+'</div></div>'
-      +(done?'<span class="mod-done-icon">&#10003;</span>':'')+'</div>';
-  }).join('');
-  updateProgressUI();
-}
-function selectModule(idx){
-  currentIdx=idx;const m=MODULES[idx];
-  renderSidebar();
-  document.getElementById('bc-cur').textContent=m.label;
-  document.getElementById('lesson-header').innerHTML=
-    '<div class="lesson-meta-row"><span class="lesson-icon">'+m.icon+'</span>'
-    +'<span class="lesson-meta">Módulo '+(idx+1)+' de '+MODULES.length+' · '+m.duration+'</span></div>'
-    +'<div class="lesson-h">'+m.label+'</div>';
-  document.getElementById('lesson-content').innerHTML='';
-  const fns=getContentFunctions();if(fns[m.id])fns[m.id]();
-  document.getElementById('bottom-nav').style.display='flex';
-  document.getElementById('btn-prev').style.visibility=idx===0?'hidden':'visible';
-  document.getElementById('btn-next').style.visibility=idx===MODULES.length-1?'hidden':'visible';
-  const db=document.getElementById('btn-done');
-  if(db){if(progress[m.id]){db.innerHTML='&#10003; Completado';db.classList.add('completed');}else{db.innerHTML='Marcar completado';db.classList.remove('completed');}}
-  const ms=document.getElementById('main-scroll');if(ms)ms.scrollTop=0;
-  window.scrollTo({top:0,behavior:'smooth'});
-}
-function markCurrentDone(){
-  if(currentIdx<0)return;const m=MODULES[currentIdx];
-  saveProgress(m.id,0);renderSidebar();
-  const db=document.getElementById('btn-done');if(db){db.innerHTML='&#10003; Completado';db.classList.add('completed');}
-  if(currentIdx<MODULES.length-1)setTimeout(()=>selectModule(currentIdx+1),600);
-}
-function navigateLesson(dir){const n=currentIdx+dir;if(n>=0&&n<MODULES.length)selectModule(n);}
-function copyMsg(btn,msg){
-  navigator.clipboard.writeText(msg).catch(()=>{const ta=document.createElement('textarea');ta.value=msg;document.body.appendChild(ta);ta.select();document.execCommand('copy');document.body.removeChild(ta);});
-  const o=btn.innerHTML;btn.innerHTML='&#10003; Copiado';btn.classList.add('copied');
-  setTimeout(()=>{btn.innerHTML=o;btn.classList.remove('copied');},2000);
-}
-
+// DATA
 const TIPS = [
   {num:1,title:'No respondas como recepcionista. Responde como asesor comercial.',body:'Muchas veces el error no está en la información… está en cómo se entrega. La forma en que presentas el precio y el programa determina si el prospecto avanza o se enfría.',wrong:'"El diplomado vale $750.000"',right:'"El diplomado completo tiene una promoción especial de $750.000 🙌 Sin embargo, más que el valor, lo importante es que aquí no vienes solo a estudiar Excel, sino a aprender herramientas que hoy realmente exigen las empresas. Mi recomendación es que puedas visitarnos en sede para mostrarte horarios, instalaciones y la mejor opción. ¿Ya conoces nuestra sede?"',remember:'No vendemos información. Vendemos decisiones. No respondas por salir del paso. Responde para acercarlo a matrícula.'},
   {num:2,title:'No des precio demasiado rápido. Primero genera valor.',body:'Cuando una persona pregunta "¿Cuánto vale?", en realidad muchas veces está preguntando "¿Vale la pena para mí?". El precio solo es poderoso cuando ya construiste el valor.',wrong:'"Vale $300.000 por nivel"',right:'"Este diplomado está diseñado para que aprendas Excel + ChatGPT aplicado — algo que hoy muchas empresas valoran porque permite trabajar más rápido y tomar mejores decisiones 🙌 Incluye formación práctica, acompañamiento docente y certificación con respaldo de INDECAP. La inversión por nivel es de $300.000 😊"',remember:'Primero valor. Después precio. Nunca dejes al precio defendiendo solo la venta.'},
@@ -670,202 +543,320 @@ const PROSPECTS = [
   ]},
 ];
 
-let simST={idx:0,step:0,score:0,streak:0};
+// PROGRESS
+const SECCION='ventas', SK='indecap_ventas_v4';
+let progress = {};
+function saveLocal(){ try{ localStorage.setItem(SK,JSON.stringify(progress)); }catch(e){} }
 
-function getContentFunctions(){return{
-  tips:renderTips,tecnica:renderTecnica,arbol:renderArbol,
-  cierre:renderCierre,objeciones:renderObjeciones,
-  scripts:renderScripts,simulador:renderSimulador,
-};}
-function setC(html){document.getElementById('lesson-content').innerHTML=html;}
-
-function renderTips(){
-  setC(TIPS.map(t=>`
-    <div class="tip-card">
-      <span class="tip-badge">TIP #${t.num}</span>
-      <div class="tip-title">${t.title}</div>
-      <div class="tip-body">${t.body}</div>
-      <div class="tip-compare">
-        <div class="tip-wrong"><div class="tip-clabel">Incorrecto</div><div class="tip-ctext">${t.wrong}</div></div>
-        <div class="tip-right"><div class="tip-clabel">Correcto</div><div class="tip-ctext">${t.right}</div></div>
-      </div>
-      <div class="tip-remember">&#128204; Recuerda: ${t.remember}</div>
-    </div>`).join(''));
+async function loadProgress(){
+  try{
+    const r=await fetch('/api/progreso?seccion='+SECCION);
+    if(r.ok){ const d=await r.json(); if(d.progress&&Object.keys(d.progress).length){ progress=d.progress; saveLocal(); return; }}
+  }catch(e){}
+  try{ const l=localStorage.getItem(SK); if(l) progress=JSON.parse(l); }catch(e){}
 }
 
-function renderTecnica(){setC(`
-  <div class="card">
-    <div class="card-label">La fórmula exacta</div>
-    <div class="highlight">"Veo que te llama la atención el programa de <strong>[Nombre del programa]</strong>, ¿Correcto?"</div>
-    <div class="two">
-      <div>
-        <div class="card-label" style="color:#166534">Correcto</div>
-        <div class="a-good">Enfermería, ¿Correcto?</div>
-        <div class="a-good">Excel, ¿Correcto?</div>
-        <div class="a-good">Cosmetología, ¿Correcto?</div>
-      </div>
-      <div>
-        <div class="card-label" style="color:#991b1b">Errores reales</div>
-        <div class="a-bad">Enviar lista de todos los programas</div>
-        <div class="a-bad">"¿En qué le puedo ayudar?"</div>
-        <div class="a-bad">Pedir nombre antes de informar</div>
-      </div>
-    </div>
-  </div>
-  <div class="card">
-    <div class="card-label">Por qué funciona</div>
-    <p>Cuando un prospecto responde un anuncio de Meta, ya mostró interés. La micro-confirmación reconoce ese interés y pide un "sí" simple. Crea compromiso psicológico y abre un diálogo real.</p>
-  </div>
-  <div class="card">
-    <div class="card-label">Cómo identificar el programa</div>
-    <div class="t-step"><div class="t-num">1</div><div><div class="t-label">WhatsApp directo</div><p>El número indica la sede y contexto.</p></div></div>
-    <div class="t-step"><div class="t-num">2</div><div><div class="t-label">Inbox Meta</div><p>Revisa el anuncio en Meta Business Suite.</p></div></div>
-    <div class="t-step"><div class="t-num">3</div><div><div class="t-label">Sin dato claro</div><p>"¿Sobre cuál de nuestros programas te gustaría conocer más?"</p></div></div>
-  </div>`);
+async function markDone(id, pts){
+  if(progress[id]) return;
+  progress[id]=true; saveLocal();
+  try{
+    await fetch('/api/progreso',{method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({seccion:SECCION,modulo_id:id,puntaje:pts||0})});
+  }catch(e){}
+  updateUI();
 }
 
-function renderArbol(){setC(`
-  <div class="card"><div class="card-label">Fase 1 · Apertura</div>
-    <div class="t-step"><div class="t-num">1</div><div><div class="t-label">Prospecto llega</div>
-      <div class="b-agent">"Veo que te llama la atención el programa de [Programa], ¿Correcto?"</div>
-      <div class="branches"><span class="br br-y">Sí → Fase 2</span><span class="br br-n">No responde → 2h</span><span class="br br-m">Info general → preguntar</span></div>
-    </div></div>
-  </div>
-  <div class="card"><div class="card-label">Fase 2 · Descubrimiento</div>
-    <div class="t-step"><div class="t-num">2</div><div><div class="t-label">Motivación</div><div class="b-agent">"¿Ya tienes experiencia o estás comenzando desde cero?"</div></div></div>
-    <div class="t-step"><div class="t-num">3</div><div><div class="t-label">Urgencia</div>
-      <div class="b-agent">"¿Cuándo te gustaría empezar? Tenemos grupos próximos."</div>
-      <div class="branches"><span class="br br-y">Pronto → urgencia alta</span><span class="br br-m">En meses → nutrir</span></div>
-    </div></div>
-  </div>
-  <div class="card"><div class="card-label">Fase 3 · Propuesta de valor — PRIMERO valor, DESPUÉS precio</div>
-    <div class="t-step"><div class="t-num">4</div><div><div class="t-label">Con propósito</div>
-      <div class="b-agent">"El Técnico en Enfermería está avalado por la Secretaría de Educación. INDECAP lleva 40 años en Antioquia. ¿Eso es lo que estás buscando?"</div>
-      <div class="a-warn" style="margin-top:7px">Nunca respondas como recepcionista.</div>
-    </div></div>
-  </div>
-  <div class="card"><div class="card-label">Fase 4 · Precio — Contado primero</div>
-    <div class="b-agent">"De contado $2.560.000 por ciclo (18% descuento), o financiado $500.000 inicial y 5 cuotas de $463.200. ¿Cuál se ajusta mejor?"</div>
-  </div>
-  <div class="card"><div class="card-label">Fase 5 · Cierre emocional + sede</div>
-    <div class="t-step"><div class="t-num">5</div><div><div class="t-label">Ancla + invitación</div>
-      <div class="b-agent">"¡Sin embargo! Te recomiendo que te acerques a nuestra sede para conocer los ambientes de aprendizaje. ¿Ya conoces la Sede?"</div>
-      <div class="branches"><span class="br br-y">"¿Dónde queda?" → dirección</span><span class="br br-y">"Esta semana voy" → confirmar</span><span class="br br-n">Silencio → 48h</span></div>
-      <div class="a-good" style="margin-top:8px">WhatsApp inicia. La sede fortalece. La matrícula cierra.</div>
-    </div></div>
-  </div>`);
+// MODULES
+const MODULES = [
+  {id:'tips',      icon:'💡', label:'Tips comerciales',      dur:'15 min', desc:'Sistema de entrenamiento con casos reales.'},
+  {id:'tecnica',   icon:'🎯', label:'Técnica base',          dur:'15 min', desc:'La micro-confirmación: el primer "sí".'},
+  {id:'arbol',     icon:'🌿', label:'Árbol de conversación', dur:'20 min', desc:'Flujo completo desde el primer mensaje.'},
+  {id:'cierre',    icon:'🏆', label:'Técnica de cierre',     dur:'20 min', desc:'El mensaje emocional + invitación a sede.'},
+  {id:'objeciones',icon:'🛡️', label:'Objeciones',           dur:'20 min', desc:'5 objeciones reales del dataset.'},
+  {id:'scripts',   icon:'📋', label:'Scripts',               dur:'15 min', desc:'Mensajes listos para copiar.'},
+  {id:'simulador', icon:'🎮', label:'Simulador',             dur:'30 min', desc:'9 prospectos reales. Practica sin presión.'},
+];
+
+function updateUI(){
+  const done=Object.keys(progress).length, total=MODULES.length;
+  const pct=Math.round(done/total*100);
+  const sbr=document.getElementById('sb-ring');
+  if(sbr) sbr.setAttribute('stroke-dasharray',pct+',100');
+  const sbp=document.getElementById('sb-pct'); if(sbp) sbp.textContent=pct+'%';
+  const sbt=document.getElementById('sb-txt'); if(sbt) sbt.textContent=done+' de '+total+' módulos';
+  const hr=document.getElementById('hero-ring');
+  if(hr) hr.setAttribute('stroke-dasharray',(pct/100*283)+',283');
+  const hp=document.getElementById('hero-pct'); if(hp) hp.textContent=pct+'%';
+  const hb=document.getElementById('hd-bar'); if(hb) hb.style.width=pct+'%';
+  const hpct=document.getElementById('hd-pct'); if(hpct) hpct.textContent=pct+'%';
+  const mc=document.getElementById('mod-count'); if(mc) mc.textContent=done+'/'+total+' completados';
+  renderSidebars();
+  renderDashGrid();
 }
 
-function renderCierre(){
-  setC(`<div class="card"><div class="card-label">El error más frecuente</div>
-    <div class="a-bad">Dar precio → preguntar "¿Cuál jornada?" → esperar respuesta que nunca llega.</div>
-  </div>
-  <div class="card"><div class="card-label">La secuencia correcta</div>
-    <div class="cierre-box"><div class="cierre-lbl">Mensaje 1 · Ancla emocional</div><p>Justo después del precio. Transforma "gasto" en "inversión".</p></div>
-    <div class="cierre-box"><div class="cierre-lbl">Mensaje 2 · Invitación a sede</div><p>Convierte el chat en visita física.</p></div>
-    <div class="a-good">Cuando dice "¿Dónde queda?" o "Esta semana me acerco" — ya está listo.</div>
-  </div>
-  <div class="card"><div class="card-label">Mensaje sede universal</div>
-    <div class="sc-msg">${SEDE_MSG}</div>
-    <button class="cp-btn" onclick="copyMsg(this,SEDE_MSG)">Copiar mensaje</button>
-  </div>
-  <div class="card"><div class="card-label">Ancla emocional por programa</div><div id="cierre-progs"></div></div>`);
-  document.getElementById('cierre-progs').innerHTML=PROGS.map((p,i)=>`
-    <div style="margin-bottom:10px">
-      <div style="font-size:13px;font-weight:600;color:#1a086e;margin-bottom:4px">${p.n}</div>
-      <div class="sc-msg">${p.m}</div>
-      <button class="cp-btn" onclick="copyMsg(this,PROGS[${i}].m)">Copiar mensaje</button>
-    </div>`).join('');
+function renderSidebars(){
+  ['sidebar-modules','mm-modules'].forEach(sid=>{
+    const el=document.getElementById(sid); if(!el) return;
+    el.innerHTML=MODULES.map((m,i)=>{
+      const done=progress[m.id];
+      return '<button onclick="showPanel(\''+m.id+'\')" class="w-full flex items-center gap-3 px-4 py-2.5 rounded-xl text-left mb-0.5 hover:bg-surface-container transition-colors">'
+        +'<span class="text-lg flex-shrink-0 w-6 text-center">'+m.icon+'</span>'
+        +'<div class="flex-1 min-w-0"><p class="text-sm font-medium text-on-surface truncate" style="font-family:Work Sans,sans-serif">'+m.label+'</p>'
+        +'<p class="text-xs text-on-surface-variant">'+m.dur+'</p></div>'
+        +(done?'<span class="text-sm text-secondary font-bold flex-shrink-0">&#10003;</span>':'')+'</button>';
+    }).join('');
+  });
 }
 
-function renderObjeciones(){
-  setC(`<div class="card" style="margin-bottom:12px">
-    <div class="card-label">Frecuencia en el dataset</div>
-    <div style="display:flex;flex-direction:column;gap:6px;margin-top:4px">
-      <div style="display:flex;align-items:center;gap:9px"><div style="min-width:140px;font-size:13px">Piden descuento</div><div style="flex:1;height:5px;background:#f0f0f0;border-radius:3px;overflow:hidden"><div style="width:100%;height:100%;background:#1a086e"></div></div><div style="font-size:12px;color:#666;min-width:38px;text-align:right;font-weight:600">2.907</div></div>
-      <div style="display:flex;align-items:center;gap:9px"><div style="min-width:140px;font-size:13px">Dicen "después"</div><div style="flex:1;height:5px;background:#f0f0f0;border-radius:3px;overflow:hidden"><div style="width:17%;height:100%;background:#805600"></div></div><div style="font-size:12px;color:#666;min-width:38px;text-align:right;font-weight:600">490</div></div>
-      <div style="display:flex;align-items:center;gap:9px"><div style="min-width:140px;font-size:13px">Dicen "está caro"</div><div style="flex:1;height:5px;background:#f0f0f0;border-radius:3px;overflow:hidden"><div style="width:7%;height:100%;background:#dc2626"></div></div><div style="font-size:12px;color:#666;min-width:38px;text-align:right;font-weight:600">199</div></div>
-    </div>
-  </div>
-  <div id="objs-list"></div>`);
-  document.getElementById('objs-list').innerHTML=OBJS.map((o,i)=>`
-    <div class="obj-wrap">
-      <button class="obj-btn" onclick="(()=>{const b=document.getElementById('ob${i}'),a=document.getElementById('oa${i}');b.classList.toggle('open');a.textContent=b.classList.contains('open')?'▴':'▾';})()">
-        <span style="flex:1;text-align:left">"${o.q}"${o.extra?' — <span style=\"font-size:12px;color:#666\">'+o.extra+'</span>':''}</span>
-        <div style="display:flex;align-items:center;gap:6px;flex-shrink:0">
-          ${o.freq?'<span class="obj-freq'+(o.freqRed?' red':'')+'">'+o.freq+'</span>':''}
-          <span id="oa${i}">▾</span>
-        </div>
-      </button>
-      <div class="obj-body" id="ob${i}">
-        ${o.steps.map(s=>'<div style="margin-bottom:10px"><div style="font-size:10px;font-weight:600;color:#999;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:4px">'+s.l+'</div><div class="b-agent" style="max-width:480px">'+s.m+'</div></div>').join('')}
-        ${o.tip?'<div class="a-tip">'+o.tip+'</div>':''}
-      </div>
-    </div>`).join('');
+function renderDashGrid(){
+  const el=document.getElementById('mod-grid'); if(!el) return;
+  el.innerHTML=MODULES.map(m=>{
+    const done=progress[m.id];
+    return '<button onclick="showPanel(\''+m.id+'\')" class="w-full flex items-center gap-4 p-4 rounded-xl border hover:border-primary-container/50 hover:bg-surface-container transition-all text-left group" style="border-color:'+(done?'rgba(90,82,174,0.3)':'#c8c4d3')+';background:'+(done?'rgba(90,82,174,0.04)':'#fff')+'">'
+      +'<div class="w-10 h-10 rounded-xl flex items-center justify-center text-xl flex-shrink-0" style="background:'+(done?'rgba(90,82,174,0.1)':'#ebe6ef')+'">'+m.icon+'</div>'
+      +'<div class="flex-1 min-w-0"><p class="text-sm font-semibold text-on-surface" style="font-family:Work Sans,sans-serif">'+m.label+'</p>'
+      +'<p class="text-xs text-on-surface-variant">'+m.desc+'</p></div>'
+      +'<div class="flex items-center gap-2 flex-shrink-0">'
+      +'<span class="text-xs text-on-surface-variant" style="font-family:Work Sans,sans-serif">'+m.dur+'</span>'
+      +(done
+        ?'<span class="text-xs font-semibold px-2 py-0.5 rounded-full" style="background:rgba(90,82,174,0.1);color:#5a52ae;font-family:Work Sans,sans-serif">&#10003; Hecho</span>'
+        :'<span class="material-symbols-outlined text-on-surface-variant text-lg" style="font-variation-settings:\'FILL\' 0">chevron_right</span>')
+      +'</div></button>';
+  }).join('');
 }
 
-function renderScripts(){
-  setC(`<input class="search-in" type="text" placeholder="Buscar script..." id="script-search" oninput="filterScripts()">
-    <div class="sf" id="script-filters"></div>
-    <div id="scripts-list"></div>`);
-  document.getElementById('script-filters').innerHTML=['todos',...Object.keys(CAT_L)].map(c=>
-    '<button class="sf-btn'+(c==='todos'?' active':'')+'" onclick="filterCat(this,\''+c+'\')">'+( c==='todos'?'Todos':CAT_L[c])+'</button>').join('');
-  filterScripts();
+// NAVIGATION
+function showPanel(id){
+  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
+  let p=document.getElementById('panel-'+id);
+  if(!p){ buildPanel(id); p=document.getElementById('panel-'+id); }
+  if(p) p.classList.add('active');
+  const m=MODULES.find(x=>x.id===id);
+  const bc=document.getElementById('hd-bc');
+  if(bc) bc.textContent='Academia de Ventas → '+(m?m.label:id);
+  closeMM();
+  const ms=document.getElementById('main-scroll'); if(ms) ms.scrollTop=0;
 }
 
-function filterScripts(){
-  const q=(document.getElementById('script-search')?.value||'').toLowerCase();
-  const cont=document.getElementById('scripts-list');if(!cont)return;
-  const f=SCRIPTS.filter(s=>(curCat==='todos'||s.cat===curCat)&&(!q||s.title.toLowerCase().includes(q)||s.msg.toLowerCase().includes(q)));
-  cont.innerHTML=f.length?f.map(s=>`
-    <div class="sc">
-      <span class="sc-tag ${CAT_C[s.cat]}">${CAT_L[s.cat]}</span>
-      <div class="sc-title">${s.title}</div>
-      <div class="sc-sit">Situación: ${s.sit}</div>
-      <div class="sc-msg">${s.msg}</div>
-      <button class="cp-btn" onclick="copyMsg(this,${JSON.stringify(s.msg)})">Copiar mensaje</button>
-    </div>`).join(''):'<p style="text-align:center;color:#999;padding:2rem">No se encontraron scripts.</p>';
+function buildPanel(id){
+  const area=document.getElementById('panels-area');
+  const div=document.createElement('div');
+  div.id='panel-'+id; div.className='panel';
+  div.innerHTML=getPanelHTML(id);
+  area.appendChild(div);
+  if(id==='simulador') initSim();
+  if(id==='scripts') initScripts();
+  if(id==='objeciones') initObjs();
+  if(id==='cierre'){
+    const cp=document.getElementById('cierre-progs');
+    if(cp) cp.innerHTML=PROGS.map((p,i)=>'<div class="mb-4"><p class="text-xs font-semibold text-primary-container mb-1" style="font-family:Work Sans,sans-serif">'+p.n+'</p>'
+      +'<div class="bg-surface-container rounded-xl p-3 text-xs text-on-surface-variant leading-relaxed mb-2 whitespace-pre-wrap" style="border-left:3px solid #1a086e">'+p.m+'</div>'
+      +'<button class="cp-btn text-xs px-3 py-1.5 border border-outline-variant rounded-lg text-on-surface-variant hover:border-primary-container" onclick="copyMsg(this,PROGS['+i+'].m)">Copiar mensaje</button></div>').join('');
+  }
 }
 
-function filterCat(btn,cat){
+function backBtn(){ return '<button onclick="showPanel(\'dashboard\')" class="flex items-center gap-2 text-sm text-on-surface-variant hover:text-primary-container mb-6 transition-colors" style="font-family:Work Sans,sans-serif"><span class="material-symbols-outlined text-lg" style="font-variation-settings:\'FILL\' 0">arrow_back</span>Volver al dashboard</button>'; }
+
+function doneBtn(id){ return '<div class="flex items-center justify-between mt-8 pt-6 border-t border-outline-variant"><button onclick="markDone(\''+id+'\');this.innerHTML=\'&#10003; Completado\';this.style.background=\'#15803d\'" class="flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-semibold text-white" style="background:#1a086e;border:none;cursor:pointer;font-family:Work Sans,sans-serif">Marcar completado &#10003;</button></div>'; }
+
+function wrapContent(id, content){
+  const m=MODULES.find(x=>x.id===id)||{icon:'📄',label:id,dur:''};
+  return '<div class="max-w-3xl mx-auto px-6 py-8">'
+    +backBtn()
+    +'<div class="flex items-center gap-3 mb-2"><span class="text-2xl">'+m.icon+'</span><span class="text-xs font-semibold text-on-surface-variant uppercase tracking-wider" style="font-family:Work Sans,sans-serif">'+m.dur+'</span></div>'
+    +'<h1 class="text-2xl font-semibold text-primary-container mb-6" style="font-family:Newsreader,serif;letter-spacing:-0.02em">'+m.label+'</h1>'
+    +content
+    +doneBtn(id)
+    +'</div>';
+}
+
+function card(label, content){
+  return '<div class="bg-surface-container-lowest rounded-2xl border border-outline-variant p-5 mb-4">'
+    +(label?'<p class="text-xs font-semibold text-on-surface-variant uppercase tracking-wider mb-3" style="font-family:Work Sans,sans-serif">'+label+'</p>':'')
+    +content+'</div>';
+}
+
+function getPanelHTML(id){
+  if(id==='tips'){
+    return wrapContent(id, TIPS.map(t=>
+      '<div class="bg-surface-container-lowest rounded-2xl border border-outline-variant p-5 mb-4" style="border-left:4px solid #1a086e">'
+      +'<span class="inline-block text-white text-xs font-semibold px-2 py-0.5 rounded-full mb-3" style="background:#1a086e;font-family:Work Sans,sans-serif">TIP #'+t.num+'</span>'
+      +'<h3 class="text-base font-semibold text-on-surface mb-3 leading-snug" style="font-family:Newsreader,serif">'+t.title+'</h3>'
+      +'<p class="text-sm text-on-surface-variant leading-relaxed mb-4">'+t.body+'</p>'
+      +'<div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-4">'
+      +'<div class="rounded-xl p-3" style="background:#fef2f2;border-left:3px solid #dc2626"><p class="text-xs font-semibold uppercase mb-2" style="color:#991b1b;font-family:Work Sans,sans-serif">&#10007; Incorrecto</p><p class="text-xs leading-relaxed" style="color:#7f1d1d">'+t.wrong+'</p></div>'
+      +'<div class="rounded-xl p-3" style="background:#f0fdf4;border-left:3px solid #22c55e"><p class="text-xs font-semibold uppercase mb-2" style="color:#166534;font-family:Work Sans,sans-serif">&#10003; Correcto</p><p class="text-xs leading-relaxed" style="color:#14532d">'+t.right+'</p></div>'
+      +'</div>'
+      +'<div class="rounded-xl p-3" style="background:rgba(26,8,110,0.05)"><p class="text-xs font-medium leading-relaxed" style="color:#1a086e;font-family:Work Sans,sans-serif">&#128204; '+t.remember+'</p></div>'
+      +'</div>'
+    ).join(''));
+  }
+
+  if(id==='tecnica'){
+    return wrapContent(id,
+      card('La fórmula exacta',
+        '<div class="rounded-xl p-4 mb-4" style="background:rgba(26,8,110,0.05);border-left:3px solid #1a086e">'
+        +'<p class="text-base" style="font-family:Newsreader,serif;color:#1a086e">"Veo que te llama la atención el programa de <span style="color:#805600;font-style:italic">[Nombre del programa]</span>, ¿Correcto?"</p></div>'
+        +'<div class="grid grid-cols-2 gap-3">'
+        +'<div><p class="text-xs font-semibold uppercase mb-2" style="color:#166534;font-family:Work Sans,sans-serif">Correcto</p>'
+        +'<div class="rounded-lg p-2.5 text-xs mb-1.5" style="background:#f0fdf4;color:#166534">&#10003; "Veo que te llama la atención Enfermería, ¿Correcto?"</div>'
+        +'<div class="rounded-lg p-2.5 text-xs" style="background:#f0fdf4;color:#166534">&#10003; "Veo que te llama la atención Excel, ¿Correcto?"</div></div>'
+        +'<div><p class="text-xs font-semibold uppercase mb-2" style="color:#991b1b;font-family:Work Sans,sans-serif">Errores reales</p>'
+        +'<div class="rounded-lg p-2.5 text-xs mb-1.5" style="background:#fef2f2;color:#991b1b">&#10007; Enviar lista de todos los programas</div>'
+        +'<div class="rounded-lg p-2.5 text-xs" style="background:#fef2f2;color:#991b1b">&#10007; "¿En qué le puedo ayudar?"</div></div>'
+        +'</div>')
+      +card('Por qué funciona',
+        '<p class="text-sm text-on-surface-variant leading-relaxed">Cuando un prospecto responde un anuncio de Meta, ya mostró interés. La micro-confirmación reconoce ese interés y pide un "sí" simple. Crea compromiso psicológico y abre un diálogo real.</p>')
+      +card('Cómo identificar el programa',
+        [['WhatsApp directo','El número indica la sede. WhatsApp Cursos → probable curso corto.'],
+         ['Inbox Meta','Revisa el anuncio al que reaccionó en Meta Business Suite.'],
+         ['Sin dato claro','"¿Sobre cuál de nuestros programas te gustaría conocer más?"']]
+        .map((s,i)=>'<div class="flex gap-3 mb-3"><div class="w-6 h-6 rounded-full flex items-center justify-center text-xs font-semibold text-white flex-shrink-0 mt-0.5" style="background:#1a086e">'+(i+1)+'</div>'
+          +'<div><p class="text-xs font-semibold text-on-surface mb-1" style="font-family:Work Sans,sans-serif">'+s[0]+'</p><p class="text-xs text-on-surface-variant">'+s[1]+'</p></div></div>').join('')
+      )
+    );
+  }
+
+  if(id==='arbol'){
+    const fases = [
+      ['Fase 1 · Apertura','<div class="b-agent mb-2">"Veo que te llama la atención el programa de [Programa], ¿Correcto?"</div><div class="flex gap-2 flex-wrap mt-2"><span class="text-xs px-2.5 py-1 rounded-full" style="background:#f0fdf4;color:#166534;border:1px solid #bbf7d0">Sí → Fase 2</span><span class="text-xs px-2.5 py-1 rounded-full" style="background:#fef2f2;color:#dc2626;border:1px solid #fecaca">No responde → 2h</span></div>'],
+      ['Fase 2 · Descubrimiento','<div class="b-agent mb-2">"¿Ya tienes experiencia en el área o estás comenzando desde cero?"</div><div class="b-agent">"¿Cuándo te gustaría empezar? Tenemos grupos próximos."</div>'],
+      ['Fase 3 · Propuesta de valor','<div class="b-agent mb-2">"El Técnico en Enfermería está avalado por la Secretaría de Educación. INDECAP lleva 40 años en Antioquia. ¿Eso es lo que estás buscando?"</div><div class="rounded-xl p-3 text-xs mt-2" style="background:#fffbeb;border:1px solid #fde68a;color:#92400e">Nunca respondas como recepcionista. Responde como asesor.</div>'],
+      ['Fase 4 · Precio — Contado primero','<div class="b-agent">"De contado $2.560.000 por ciclo (18% descuento), o financiado $500.000 inicial y 5 cuotas de $463.200. ¿Cuál se ajusta mejor?"</div>'],
+      ['Fase 5 · Cierre emocional + sede','<div class="b-agent mb-2">"¡Sin embargo! Mi recomendación es que te acerques a nuestra sede para conocer los ambientes de aprendizaje. ¿Ya conoces la Sede?"</div><div class="flex gap-2 flex-wrap mt-2"><span class="text-xs px-2.5 py-1 rounded-full" style="background:#f0fdf4;color:#166534;border:1px solid #bbf7d0">¿Dónde queda? → dirección</span><span class="text-xs px-2.5 py-1 rounded-full" style="background:#f0fdf4;color:#166534;border:1px solid #bbf7d0">Esta semana voy → confirmar</span><span class="text-xs px-2.5 py-1 rounded-full" style="background:#fef2f2;color:#dc2626;border:1px solid #fecaca">Silencio → 48h</span></div>'],
+    ];
+    return wrapContent(id, fases.map(f=>card(f[0],f[1])).join(''));
+  }
+
+  if(id==='cierre'){
+    return wrapContent(id,
+      '<div class="rounded-2xl p-5 mb-4" style="background:#fef2f2;border:1px solid #fecaca">'
+      +'<p class="text-xs font-semibold uppercase mb-2" style="color:#991b1b;font-family:Work Sans,sans-serif">Error más frecuente</p>'
+      +'<p class="text-sm" style="color:#7f1d1d">Dar precio → preguntar "¿Cuál jornada?" → esperar respuesta que nunca llega.</p></div>'
+      +card('La secuencia correcta',
+        '<div class="space-y-3">'
+        +'<div class="rounded-xl p-4" style="border:1px solid #c8c4d3;border-left:4px solid #1a086e"><p class="text-xs font-semibold uppercase mb-1" style="color:#1a086e;font-family:Work Sans,sans-serif">Mensaje 1 · Ancla emocional</p><p class="text-xs text-on-surface-variant">Justo después del precio. Transforma "gasto" en "inversión". Sin este mensaje el precio pelea solo.</p></div>'
+        +'<div class="rounded-xl p-4" style="border:1px solid #c8c4d3;border-left:4px solid #1a086e"><p class="text-xs font-semibold uppercase mb-1" style="color:#1a086e;font-family:Work Sans,sans-serif">Mensaje 2 · Invitación a sede</p><p class="text-xs text-on-surface-variant">Convierte el chat en visita física. La visita convierte más que cualquier mensaje.</p></div>'
+        +'</div>')
+      +card('Mensaje sede universal',
+        '<div class="rounded-xl p-4 text-sm text-on-surface-variant leading-relaxed mb-3 whitespace-pre-wrap" style="background:#f0ecf5;border-left:3px solid #1a086e">'+SEDE_MSG+'</div>'
+        +'<button class="cp-btn text-xs px-3 py-1.5 border border-outline-variant rounded-lg text-on-surface-variant hover:border-primary-container" onclick="copyMsg(this,SEDE_MSG)">Copiar mensaje</button>')
+      +card('Ancla emocional por programa','<div id="cierre-progs"></div>')
+    );
+  }
+
+  if(id==='objeciones'){
+    return wrapContent(id,
+      card('Frecuencia en el dataset',
+        [['Piden descuento','2.907',100,'#1a086e'],
+         ['Dicen después','490',17,'#805600'],
+         ['Está caro','199',7,'#dc2626'],
+         ['Preguntan virtual','762',26,'#3b82f6']]
+        .map(r=>'<div class="flex items-center gap-3 mb-2"><span class="text-xs text-on-surface-variant" style="min-width:130px">'+r[0]+'</span>'
+          +'<div class="flex-1 h-1.5 rounded-full overflow-hidden" style="background:#e5e1e9"><div class="h-full rounded-full" style="width:'+r[2]+'%;background:'+r[3]+'"></div></div>'
+          +'<span class="text-xs font-semibold text-on-surface-variant" style="min-width:35px;text-align:right;font-family:Work Sans,sans-serif">'+r[1]+'</span></div>').join('')
+      )
+      +'<div id="objs-list"></div>'
+    );
+  }
+
+  if(id==='scripts'){
+    return wrapContent(id,
+      '<input type="text" placeholder="Buscar script..." id="sc-search" oninput="filterSc()" class="w-full px-4 py-2.5 border border-outline-variant rounded-xl text-sm mb-4 outline-none" style="font-family:Inter,sans-serif">'
+      +'<div class="flex gap-2 flex-wrap mb-4" id="sc-filters"></div>'
+      +'<div id="sc-list"></div>'
+    );
+  }
+
+  if(id==='simulador'){
+    return wrapContent(id,
+      '<div class="grid grid-cols-1 md:grid-cols-3 gap-4">'
+      +'<div><p class="text-xs font-semibold text-on-surface-variant uppercase tracking-wider mb-3" style="font-family:Work Sans,sans-serif">Elige un prospecto</p><div class="space-y-2" id="prospect-list"></div></div>'
+      +'<div class="md:col-span-2">'
+      +'<div class="bg-surface-container-lowest rounded-2xl border border-outline-variant overflow-hidden">'
+      +'<div class="p-4 flex items-center gap-3" style="background:linear-gradient(135deg,#1a086e,#5a52ae)">'
+      +'<div class="w-10 h-10 rounded-full flex items-center justify-center text-white text-xs font-semibold" style="background:rgba(255,255,255,0.2)" id="sim-av">LO</div>'
+      +'<div><p class="text-sm font-medium text-white" id="sim-nm">Lore Ospina</p><p class="text-xs" id="sim-sb" style="color:rgba(255,255,255,0.6)">Enfermería</p></div></div>'
+      +'<div class="flex border-b border-outline-variant">'
+      +'<div class="flex-1 py-2.5 text-center border-r border-outline-variant"><p class="text-lg font-semibold text-primary-container" style="font-family:Newsreader,serif" id="sim-score">0</p><p class="text-xs text-on-surface-variant">Puntos</p></div>'
+      +'<div class="flex-1 py-2.5 text-center border-r border-outline-variant"><p class="text-lg font-semibold text-primary-container" style="font-family:Newsreader,serif" id="sim-step">0/0</p><p class="text-xs text-on-surface-variant">Avance</p></div>'
+      +'<div class="flex-1 py-2.5 text-center"><p class="text-lg font-semibold text-primary-container" style="font-family:Newsreader,serif" id="sim-streak">0</p><p class="text-xs text-on-surface-variant">Racha</p></div>'
+      +'</div>'
+      +'<div class="h-1 bg-surface-variant"><div id="sim-bar" class="h-full bg-primary-container transition-all duration-400" style="width:0%"></div></div>'
+      +'<div class="min-h-52 max-h-72 overflow-y-auto p-4 flex flex-col gap-2" id="sim-chat" style="background:#f6f2fb"></div>'
+      +'<div class="p-4 border-t border-outline-variant" id="sim-opts-area" style="background:#fafafa">'
+      +'<p class="text-xs font-semibold text-on-surface-variant uppercase tracking-wider mb-3" style="font-family:Work Sans,sans-serif">Elige tu respuesta</p>'
+      +'<div id="sim-opts"></div></div></div>'
+      +'<div id="sim-result"></div></div></div>'
+    );
+  }
+
+  return '<div class="max-w-3xl mx-auto px-6 py-8">'+backBtn()+'<p class="text-on-surface-variant">Módulo en construcción.</p></div>';
+}
+
+// MOBILE MENU
+function openMM(){ document.getElementById('mm').classList.add('open'); document.getElementById('mo').classList.add('open'); }
+function closeMM(){ document.getElementById('mm').classList.remove('open'); document.getElementById('mo').classList.remove('open'); }
+
+// COPY
+function copyMsg(btn, msg){
+  navigator.clipboard.writeText(msg).catch(()=>{ const ta=document.createElement('textarea');ta.value=msg;document.body.appendChild(ta);ta.select();document.execCommand('copy');document.body.removeChild(ta); });
+  const o=btn.innerHTML; btn.innerHTML='&#10003; Copiado'; btn.classList.add('copied');
+  setTimeout(()=>{ btn.innerHTML=o; btn.classList.remove('copied'); }, 2000);
+}
+
+// SCRIPTS MODULE
+function initScripts(){
+  const f=document.getElementById('sc-filters'); if(!f) return;
+  f.innerHTML=['todos',...Object.keys(CAT_L)].map(c=>`<button class="scfb text-xs font-medium px-3 py-1.5 border border-outline-variant rounded-full ${c==='todos'?'bg-primary-container text-white border-primary-container':'bg-surface-container-lowest text-on-surface-variant hover:border-primary-container'}" onclick="setCat('${c}',this)" style="font-family:Work Sans,sans-serif">${c==='todos'?'Todos':CAT_L[c]}</button>`).join('');
+  filterSc();
+}
+
+function setCat(cat, btn){
   curCat=cat;
-  document.querySelectorAll('.sf-btn').forEach(b=>b.classList.remove('active'));
-  btn.classList.add('active');filterScripts();
+  document.querySelectorAll('.scfb').forEach(b=>{
+    b.style.background=''; b.style.color=''; b.style.borderColor='';
+    b.classList.remove('bg-primary-container','text-white','border-primary-container');
+    b.classList.add('bg-surface-container-lowest','text-on-surface-variant');
+  });
+  btn.classList.remove('bg-surface-container-lowest','text-on-surface-variant');
+  btn.classList.add('bg-primary-container','text-white','border-primary-container');
+  filterSc();
 }
 
-function renderSimulador(){
-  setC(`<div class="sim-lay">
-    <div>
-      <div style="font-size:10px;font-weight:600;color:#999;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:8px">Elige un prospecto</div>
-      <div id="prospect-list"></div>
-    </div>
-    <div>
-      <div class="sim-panel">
-        <div class="sim-hd"><div class="sim-av" id="sim-av">LO</div><div><div style="font-size:13px;font-weight:500;color:#fff" id="sim-nm">Lore Ospina</div><div style="font-size:11px;color:rgba(255,255,255,0.6)" id="sim-sb">Enfermería</div></div></div>
-        <div class="sim-sts">
-          <div class="sim-st"><div class="sim-sn" id="sim-score">0</div><div class="sim-sl">Puntos</div></div>
-          <div class="sim-st"><div class="sim-sn" id="sim-step">0/0</div><div class="sim-sl">Avance</div></div>
-          <div class="sim-st"><div class="sim-sn" id="sim-streak">0</div><div class="sim-sl">Racha</div></div>
-        </div>
-        <div class="sim-bar"><div class="sim-bar-fill" id="sim-bar" style="width:0%"></div></div>
-        <div class="chat" id="sim-chat"></div>
-        <div class="opts-area" id="sim-opts-area"><div class="opts-lbl">Elige tu respuesta</div><div id="sim-opts"></div></div>
-      </div>
-      <div id="sim-result"></div>
-    </div>
-  </div>`);
-  initSim();
+function filterSc(){
+  const q=(document.getElementById('sc-search')?.value||'').toLowerCase();
+  const el=document.getElementById('sc-list'); if(!el) return;
+  const f=SCRIPTS.filter(s=>(curCat==='todos'||s.cat===curCat)&&(!q||s.title.toLowerCase().includes(q)||s.msg.toLowerCase().includes(q)));
+  const tagColors = {cierre:'background:#f0fdf4;color:#166534',salud:'background:rgba(26,8,110,0.1);color:#1a086e',excel:'background:#f0fdf4;color:#14532d',cosm:'background:#fffbeb;color:#92400e',vet:'background:#fff7ed;color:#c2410c',admin:'background:#eff6ff;color:#1d4ed8',tech:'background:#f5f3ff;color:#7c3aed',dep:'background:#fef2f2;color:#dc2626',gen:'background:#f5f5f5;color:#555'};
+  el.innerHTML=f.length?f.map(s=>`
+    <div class="bg-surface-container-lowest rounded-2xl border border-outline-variant p-4 mb-3 hover:border-primary-container/40 transition-colors">
+      <span class="text-xs font-semibold px-2 py-0.5 rounded-full mb-2 inline-block" style="${tagColors[s.cat]||tagColors.gen};font-family:Work Sans,sans-serif">${CAT_L[s.cat]}</span>
+      <p class="text-sm font-semibold text-on-surface mb-1" style="font-family:Work Sans,sans-serif">${s.title}</p>
+      <p class="text-xs text-on-surface-variant italic mb-3">Situación: ${s.sit}</p>
+      <div class="rounded-xl p-3 text-xs text-on-surface-variant leading-relaxed mb-2 whitespace-pre-wrap" style="background:#f0ecf5;border-left:3px solid #1a086e">${s.msg}</div>
+      <button class="cp-btn text-xs px-3 py-1.5 border border-outline-variant rounded-lg text-on-surface-variant hover:border-primary-container" onclick="copyMsg(this,${JSON.stringify(s.msg)})">Copiar mensaje</button>
+    </div>`).join(''):'<p class="text-center text-on-surface-variant text-sm py-8">No se encontraron scripts.</p>';
 }
+
+// SIMULATOR
+let simST = {idx:0, step:0, score:0, streak:0};
 
 function initSim(){
-  const pl=document.getElementById('prospect-list');if(!pl)return;
-  pl.innerHTML=PROSPECTS.map((p,i)=>'<div class="pc'+(i===0?' active':'')+'" id="pc-'+i+'" onclick="selectProspect('+i+')">'+'<div class="pc-av">'+p.av+'</div><div><div style="font-size:13px;font-weight:500">'+p.nm+'</div><div style="font-size:11px;color:#666">'+p.sb+'</div></div></div>').join('');
+  const pl=document.getElementById('prospect-list'); if(!pl) return;
+  pl.innerHTML=PROSPECTS.map((p,i)=>`<button onclick="selectProspect(${i})" id="pc-${i}" class="w-full flex items-center gap-3 p-3 rounded-xl border transition-all text-left mb-2" style="border-color:${i===0?'#1a086e':'#c8c4d3'};background:${i===0?'rgba(26,8,110,0.04)':'#fff'}">
+    <div class="w-9 h-9 rounded-full flex items-center justify-center text-xs font-semibold text-white flex-shrink-0" style="background:#1a086e">${p.av}</div>
+    <div class="min-w-0"><p class="text-xs font-semibold text-on-surface truncate" style="font-family:Work Sans,sans-serif">${p.nm}</p><p class="text-xs text-on-surface-variant truncate">${p.sb}</p></div>
+  </button>`).join('');
   selectProspect(0);
 }
 
 function selectProspect(idx){
   simST={idx,step:0,score:0,streak:0};
-  document.querySelectorAll('.pc').forEach((c,i)=>c.classList.toggle('active',i===idx));
+  document.querySelectorAll('[id^="pc-"]').forEach((c,i)=>{
+    c.style.borderColor=i===idx?'#1a086e':'#c8c4d3';
+    c.style.background=i===idx?'rgba(26,8,110,0.04)':'#fff';
+  });
   const p=PROSPECTS[idx];
   document.getElementById('sim-av').textContent=p.av;
   document.getElementById('sim-nm').textContent=p.nm;
@@ -881,48 +872,87 @@ function selectProspect(idx){
 
 function renderSimStep(){
   const p=PROSPECTS[simST.idx];
-  if(simST.step>=p.steps.length){endSim();return;}
+  if(simST.step>=p.steps.length){ endSim(); return; }
   const step=p.steps[simST.step];
   document.getElementById('sim-step').textContent=(simST.step+1)+'/'+p.steps.length;
-  addMsg(step.p,'msg-p');addMsg('&#128161; '+step.h,'msg-h');
-  document.getElementById('sim-opts').innerHTML=step.o.map((o,i)=>'<button class="opt-btn" onclick="pickOpt('+i+')">'+o.t+'</button>').join('');
+  addMsg(step.p,'prospect'); addMsg('💡 '+step.h,'hint');
+  document.getElementById('sim-opts').innerHTML=step.o.map((o,i)=>
+    `<button class="opt-btn w-full text-left text-xs p-3 rounded-xl border border-outline-variant bg-surface-container-lowest mb-2 hover:border-primary-container/50 transition-all" onclick="pickOpt(${i})">${o.t}</button>`
+  ).join('');
 }
 
 function pickOpt(idx){
-  const step=PROSPECTS[simST.idx].steps[simST.step],opt=step.o[idx];
-  const btns=document.querySelectorAll('.opt-btn');
-  btns.forEach(b=>b.disabled=true);
-  btns[idx].classList.add(opt.c?'correct':'wrong');
-  if(!opt.c)btns.forEach((b,i)=>{if(step.o[i].c)b.classList.add('correct');});
-  addMsg(opt.t,'msg-a');
-  if(opt.c){simST.score+=10+simST.streak*2;simST.streak++;addMsg('&#10003; '+opt.f,'msg-g');}
-  else{simST.streak=0;addMsg('&#10007; '+opt.f,'msg-b');}
+  const step=PROSPECTS[simST.idx].steps[simST.step], opt=step.o[idx];
+  document.querySelectorAll('.opt-btn').forEach(b=>b.disabled=true);
+  document.querySelectorAll('.opt-btn')[idx].classList.add(opt.c?'correct':'wrong');
+  if(!opt.c) document.querySelectorAll('.opt-btn').forEach((b,i)=>{ if(step.o[i].c) b.classList.add('correct'); });
+  addMsg(opt.t,'agent');
+  if(opt.c){ simST.score+=10+simST.streak*2; simST.streak++; addMsg('✓ '+opt.f,'good'); }
+  else{ simST.streak=0; addMsg('✗ '+opt.f,'bad'); }
   document.getElementById('sim-score').textContent=simST.score;
   document.getElementById('sim-streak').textContent=simST.streak;
   document.getElementById('sim-bar').style.width=Math.round(((simST.step+1)/PROSPECTS[simST.idx].steps.length)*100)+'%';
-  setTimeout(()=>{simST.step++;document.getElementById('sim-opts').innerHTML='';renderSimStep();},2000);
+  setTimeout(()=>{ simST.step++; document.getElementById('sim-opts').innerHTML=''; renderSimStep(); }, 2000);
 }
 
-function addMsg(text,cls){
+function addMsg(text, type){
   const chat=document.getElementById('sim-chat');
-  const div=document.createElement('div');div.className='msg '+cls;div.textContent=text;
-  chat.appendChild(div);chat.scrollTop=chat.scrollHeight;
+  const styles={
+    prospect:'background:#fff;border:1px solid #c8c4d3;color:#1c1b21;border-radius:12px 12px 12px 2px;align-self:flex-start;max-width:85%',
+    agent:'background:linear-gradient(135deg,#1a086e,#5a52ae);color:#fff;border-radius:12px 12px 2px 12px;align-self:flex-end;max-width:85%',
+    hint:'background:#fffbeb;border:1px solid #fde68a;color:#92400e;border-radius:8px;align-self:center;max-width:95%;text-align:center;font-style:italic',
+    good:'background:#f0fdf4;border:1px solid #bbf7d0;color:#166534;border-radius:8px;align-self:center;max-width:95%',
+    bad:'background:#fef2f2;border:1px solid #fecaca;color:#991b1b;border-radius:8px;align-self:center;max-width:95%',
+  };
+  const wrap=document.createElement('div'); wrap.style.cssText='display:flex;flex-direction:column';
+  const msg=document.createElement('div');
+  msg.style.cssText='padding:8px 12px;font-size:12px;line-height:1.5;'+( styles[type]||'');
+  msg.textContent=text; wrap.appendChild(msg); chat.appendChild(wrap);
+  chat.scrollTop=chat.scrollHeight;
 }
 
 function endSim(){
-  const p=PROSPECTS[simST.idx],max=p.steps.length*10,pct=Math.round(simST.score/max*100);
+  const max=PROSPECTS[simST.idx].steps.length*10, pct=Math.round(simST.score/max*100);
   document.getElementById('sim-opts-area').style.display='none';
-  saveProgress('simulador',simST.score);renderSidebar();
-  document.getElementById('sim-result').innerHTML=
-    '<div style="background:#fff;border-radius:12px;padding:20px;text-align:center;border:1px solid #e5e5e5;margin-top:12px">'
-    +'<div style="font-size:2.2rem;font-weight:600;color:#1a086e;letter-spacing:-0.02em">'+simST.score+'<span style="font-size:1rem;color:#666">/'+max+'</span></div>'
-    +'<p style="color:#666;margin:6px 0 14px">'+(pct>=70?'Excelente. Listo para casos reales.':'Buen intento. Repasa el módulo de Cierre.')+'</p>'
-    +'<button class="btn-nav" onclick="selectProspect('+simST.idx+')" style="margin-right:6px">Intentar de nuevo</button>'
-    +'<button class="btn-nav" onclick="selectModule(3)">Repasar cierre</button>'
-    +'</div>';
+  markDone('simulador', simST.score);
+  document.getElementById('sim-result').innerHTML=`
+    <div class="bg-surface-container-lowest rounded-2xl border border-outline-variant p-6 mt-4 text-center">
+      <div class="text-4xl font-semibold text-primary-container mb-1" style="font-family:Newsreader,serif">${simST.score}<span class="text-lg text-on-surface-variant">/${max}</span></div>
+      <p class="text-sm text-on-surface-variant mb-4">${pct>=70?'¡Excelente! Listo para casos reales.':'Buen intento. Repasa el módulo de Cierre.'}</p>
+      <div class="flex gap-3 justify-center">
+        <button onclick="selectProspect(${simST.idx})" class="px-4 py-2 border border-outline-variant rounded-xl text-sm text-on-surface-variant hover:border-primary-container transition-colors" style="font-family:Work Sans,sans-serif">Intentar de nuevo</button>
+        <button onclick="showPanel('cierre')" class="px-4 py-2 text-white rounded-xl text-sm transition-colors" style="background:#1a086e;border:none;cursor:pointer;font-family:Work Sans,sans-serif">Repasar cierre</button>
+      </div>
+    </div>`;
 }
 
-(async()=>{await loadProgress();renderSidebar();})();
+function initObjs(){
+  const el=document.getElementById('objs-list'); if(!el) return;
+  el.innerHTML=OBJS.map((o,i)=>`
+    <div class="rounded-2xl border border-outline-variant overflow-hidden mb-2">
+      <button class="w-full flex items-center justify-between px-5 py-4 bg-surface-container-lowest hover:bg-surface-container text-left transition-colors" onclick="(()=>{const b=document.getElementById('ob${i}');const a=document.getElementById('oa${i}');b.classList.toggle('open');a.textContent=b.classList.contains('open')?'▴':'▾';})()">
+        <span class="text-sm font-medium text-on-surface" style="font-family:Work Sans,sans-serif">"${o.q}"${o.extra?` <span class="text-xs text-on-surface-variant font-normal">— ${o.extra}</span>`:''}</span>
+        <div class="flex items-center gap-2">
+          ${o.freq?`<span class="text-xs font-semibold px-2 py-0.5 rounded-full" style="${o.freqRed?'background:#fef2f2;color:#dc2626':'background:rgba(26,8,110,0.1);color:#1a086e'};font-family:Work Sans,sans-serif">${o.freq}</span>`:''}
+          <span id="oa${i}" class="text-on-surface-variant text-xs">▾</span>
+        </div>
+      </button>
+      <div class="obj-body px-5 py-4 bg-surface-container" id="ob${i}">
+        ${o.steps.map(s=>`<div class="mb-3"><p class="text-xs font-semibold text-on-surface-variant uppercase tracking-wider mb-2" style="font-family:Work Sans,sans-serif">${s.l}</p><div class="b-agent">${s.m}</div></div>`).join('')}
+        ${o.tip?`<div class="rounded-xl p-3 text-xs mt-2" style="background:#fffbeb;border:1px solid #fde68a;color:#92400e">&#10003; ${o.tip}</div>`:''}
+      </div>
+    </div>`).join('');
+}
+
+// INIT
+(async()=>{
+  try{
+    const r=await fetch('/api/progreso?seccion='+SECCION);
+    if(r.ok){ const d=await r.json(); if(d.progress&&Object.keys(d.progress).length){ progress=d.progress; saveLocal(); }}
+  }catch(e){}
+  if(!Object.keys(progress).length){ try{ const l=localStorage.getItem(SK); if(l) progress=JSON.parse(l); }catch(e){} }
+  updateUI();
+})();
 </script>
 </body>
 </html>

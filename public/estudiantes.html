@@ -4,359 +4,319 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="noindex,nofollow">
-<title>INDECAP · Inducción Estudiantil</title>
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet"/>
+<title>Portal Estudiantil · INDECAP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400&family=Work+Sans:wght@500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>tailwind.config={darkMode:"class",theme:{extend:{colors:{"primary-container":"#1a086e","secondary":"#5a52ae","surface":"#fcf8ff","surface-container":"#f0ecf5","surface-container-lowest":"#ffffff","surface-container-high":"#ebe6ef","surface-variant":"#e5e1e9","on-surface":"#1c1b21","on-surface-variant":"#474551","outline":"#787583","outline-variant":"#c8c4d3","tertiary-fixed":"#ffddb0","tertiary-fixed-dim":"#f5bd65","on-tertiary-container":"#b07f2e","primary":"#060036","background":"#fcf8ff"}}}}</script>
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
-html{height:100%}
-body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Inter',sans-serif;background:#f0f0f0;height:100%;-webkit-font-smoothing:antialiased}
-
-/* ===== NAV ===== */
-.top-nav{position:fixed;top:0;left:0;right:0;height:52px;background:#fff;border-bottom:1px solid #e5e5e5;display:flex;align-items:center;padding:0 20px;gap:12px;z-index:100}
-.nav-logo{font-size:16px;font-weight:600;color:#1a086e;letter-spacing:-0.01em;flex-shrink:0}
-.nav-logo span{color:#805600}
-.nav-badge{background:#eef0ff;border-radius:100px;padding:3px 10px;font-size:11px;font-weight:600;color:#3730a3;flex-shrink:0}
-.nav-spacer{flex:1}
-.nav-progress-wrap{display:flex;align-items:center;gap:8px}
-.nav-progress-bar{width:80px;height:4px;background:#e5e5e5;border-radius:100px;overflow:hidden}
-.nav-progress-fill{height:100%;background:#1a086e;border-radius:100px;transition:width 0.4s}
-.nav-pct{font-size:12px;font-weight:600;color:#1a086e}
-.nav-menu-btn{width:36px;height:36px;border:1px solid #e5e5e5;border-radius:8px;background:none;cursor:pointer;display:none;align-items:center;justify-content:center;flex-direction:column;gap:4px;flex-shrink:0;padding:0}
-.nav-menu-line{width:14px;height:1.5px;background:#666;border-radius:2px;display:block}
-.nav-exit{background:none;border:1px solid #e5e5e5;border-radius:8px;padding:6px 14px;font-size:12px;font-weight:500;color:#555;cursor:pointer;white-space:nowrap}
-.nav-exit:hover{border-color:#1a086e;color:#1a086e}
-
-/* ===== LAYOUT ===== */
-.app{display:flex;height:100vh;padding-top:52px}
-
-/* ===== SIDEBAR ===== */
-.sidebar{width:256px;flex-shrink:0;background:#fff;border-right:1px solid #e5e5e5;display:flex;flex-direction:column;height:100%;overflow:hidden;transition:transform 0.28s cubic-bezier(.4,0,.2,1)}
-.sidebar-header{padding:16px;border-bottom:1px solid #e5e5e5;flex-shrink:0;background:#fafafa}
-.sidebar-label{font-size:10px;font-weight:600;color:#999;text-transform:uppercase;letter-spacing:0.07em;margin-bottom:4px}
-.sidebar-title{font-size:14px;font-weight:600;color:#1a086e;margin-bottom:2px}
-.sidebar-sub{font-size:11.5px;color:#666;line-height:1.4}
-.sidebar-list{flex:1;overflow-y:auto;padding:8px}
-.mod-item{display:flex;align-items:center;gap:10px;padding:9px 10px;border-radius:8px;cursor:pointer;border:1px solid transparent;margin-bottom:2px;transition:all 0.15s}
-.mod-item:hover{background:#f5f5f5}
-.mod-item.active{background:#eef0ff;border-color:#c7d2fe}
-.mod-item.done{opacity:0.75}
-.mod-icon{font-size:15px;width:22px;text-align:center;flex-shrink:0}
-.mod-info{flex:1;min-width:0}
-.mod-name{font-size:12.5px;font-weight:500;color:#111;line-height:1.3;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.mod-item.active .mod-name{color:#1a086e;font-weight:600}
-.mod-dur{font-size:11px;color:#999;margin-top:1px}
-.mod-done-icon{font-size:13px;color:#16a34a;flex-shrink:0;font-weight:600}
-
-/* ===== OVERLAY (mobile) ===== */
-.sidebar-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.45);z-index:49;top:52px}
-
-/* ===== MAIN ===== */
-.main-content{flex:1;overflow-y:auto;background:#f7f7f8}
-.main-inner{max-width:720px;margin:0 auto;padding:24px 24px 80px}
-
-/* ===== BREADCRUMB ===== */
-.breadcrumb{display:flex;align-items:center;gap:6px;font-size:12px;color:#999;margin-bottom:14px}
-.bc-arrow{font-size:10px}
-.bc-cur{color:#1a086e;font-weight:600}
-
-/* ===== LESSON HEADER ===== */
-.lesson-meta-row{display:flex;align-items:center;gap:8px;margin-bottom:8px}
-.lesson-icon{font-size:22px}
-.lesson-meta{font-size:11px;font-weight:600;color:#999;text-transform:uppercase;letter-spacing:0.05em}
-.lesson-h{font-size:22px;font-weight:600;color:#111;margin-bottom:20px;line-height:1.3;letter-spacing:-0.02em}
-
-/* ===== CONTENT CARDS ===== */
-.card{background:#fff;border-radius:12px;border:1px solid #e5e5e5;padding:16px;margin-bottom:12px}
-.card-label{font-size:10px;font-weight:600;color:#999;text-transform:uppercase;letter-spacing:0.07em;margin-bottom:10px}
-.highlight{background:#eef0ff;border-radius:8px;padding:12px 14px;border-left:3px solid #6366f1;margin-bottom:10px;font-size:13.5px;color:#312e81;line-height:1.65}
-.alert{background:#fffbeb;border-radius:8px;padding:12px 14px;border-left:3px solid #f59e0b;margin-bottom:10px;font-size:13.5px;color:#92400e;line-height:1.65}
-.success{background:#f0fdf4;border-radius:8px;padding:12px 14px;border-left:3px solid #22c55e;margin-bottom:10px;font-size:13.5px;color:#14532d;line-height:1.65}
-.a-good{background:#f0fdf4;border-radius:6px;padding:8px 12px;font-size:13px;color:#14532d;margin:4px 0}
-.a-bad{background:#fef2f2;border-radius:6px;padding:8px 12px;font-size:13px;color:#991b1b;margin:4px 0}
-.a-tip{background:#fffbeb;border-radius:6px;padding:8px 12px;font-size:13px;color:#92400e;margin:4px 0}
-.a-warn{background:#fffbeb;border-radius:6px;padding:8px 12px;font-size:13px;color:#92400e;margin:4px 0}
-.two{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.data-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:10px 0}
-.data-card{background:#fafafa;border-radius:8px;padding:12px;border:1px solid #e5e5e5}
-.data-card-title{font-size:10px;font-weight:600;color:#999;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:4px}
-.data-card-val{font-size:20px;font-weight:600;color:#1a086e;letter-spacing:-0.02em}
-.data-card-sub{font-size:11.5px;color:#666;margin-top:2px}
-p{font-size:13.5px;color:#444;line-height:1.75;margin-bottom:10px}
-h2{font-size:17px;font-weight:600;color:#111;margin:16px 0 8px;letter-spacing:-0.01em}
-h2:first-child{margin-top:0}
-h3{font-size:10px;font-weight:600;color:#999;text-transform:uppercase;letter-spacing:0.07em;margin:14px 0 6px}
-ul{margin:4px 0 10px 16px;display:flex;flex-direction:column;gap:5px}
-ul li{font-size:13.5px;color:#444;line-height:1.6}
-strong{font-weight:600;color:#222}
-
-/* ===== AGENT BUBBLES ===== */
-.b-agent{background:linear-gradient(135deg,#1a086e,#312783);color:#fff;border-radius:12px 2px 12px 12px;padding:10px 14px;font-size:13px;max-width:480px;margin-bottom:6px;line-height:1.6}
-.t-step{display:flex;gap:12px;margin-bottom:12px;align-items:flex-start}
-.t-num{min-width:24px;height:24px;border-radius:50%;background:#1a086e;color:#fff;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:600;flex-shrink:0;margin-top:2px}
-.t-label{font-size:10px;font-weight:600;color:#999;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:4px}
-.branches{display:flex;gap:5px;flex-wrap:wrap;margin-top:6px}
-.br{padding:3px 10px;border-radius:100px;font-size:11.5px;font-weight:500}
-.br-y{background:#f0fdf4;color:#15803d;border:1px solid #bbf7d0}
-.br-n{background:#fef2f2;color:#dc2626;border:1px solid #fecaca}
-.br-m{background:#f5f5f5;color:#555;border:1px solid #e5e5e5}
-
-/* ===== CIERRE ===== */
-.cierre-box{background:#fafafa;border-radius:8px;padding:12px 14px;margin-bottom:8px;border-left:3px solid #1a086e;border:1px solid #e5e5e5;border-left:3px solid #1a086e}
-.cierre-lbl{font-size:10px;font-weight:600;color:#1a086e;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:4px}
-
-/* ===== OBJECIONES ===== */
-.obj-wrap{margin-bottom:6px}
-.obj-btn{width:100%;text-align:left;padding:11px 14px;background:#fff;border:1px solid #e5e5e5;border-radius:10px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;font-size:13.5px;font-weight:500;color:#111;transition:all 0.15s}
-.obj-btn:hover{border-color:#1a086e;background:#fafafa}
-.obj-freq{font-size:11px;font-weight:600;padding:2px 8px;border-radius:100px;background:#eef0ff;color:#3730a3;flex-shrink:0;margin-left:8px}
-.obj-freq.red{background:#fef2f2;color:#dc2626}
-.obj-body{display:none;padding:12px 14px;background:#fafafa;border:1px solid #e5e5e5;border-top:none;border-radius:0 0 10px 10px;margin-top:-6px}
-.obj-body.open{display:block}
-
-/* ===== SCRIPTS ===== */
-.sf{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:12px}
-.sf-btn{padding:5px 12px;border:1px solid #e5e5e5;border-radius:100px;font-size:12px;font-weight:500;cursor:pointer;background:#fff;color:#555;transition:all 0.15s}
-.sf-btn:hover,.sf-btn.active{background:#1a086e;color:#fff;border-color:#1a086e}
-.sc{background:#fff;border-radius:10px;padding:12px;border:1px solid #e5e5e5;margin-bottom:8px;transition:all 0.15s}
-.sc:hover{border-color:#c7d2fe}
-.sc-tag{display:inline-block;font-size:10.5px;font-weight:600;padding:2px 8px;border-radius:100px;margin-bottom:6px}
-.t-cierre{background:#f0fdf4;color:#15803d}
-.t-salud{background:#eef0ff;color:#3730a3}
-.t-excel{background:#f0fdf4;color:#15803d}
-.t-cosm{background:#fffbeb;color:#92400e}
-.t-vet{background:#fff7ed;color:#c2410c}
-.t-admin{background:#eff6ff;color:#1d4ed8}
-.t-tech{background:#f5f3ff;color:#7c3aed}
-.t-dep{background:#fef2f2;color:#dc2626}
-.t-gen{background:#f5f5f5;color:#555}
-.sc-title{font-size:13px;font-weight:600;color:#111;margin-bottom:4px}
-.sc-sit{font-size:11.5px;color:#999;margin-bottom:6px;font-style:italic}
-.sc-msg{font-size:12.5px;line-height:1.65;color:#444;background:#fafafa;border-radius:6px;padding:8px 11px;border-left:3px solid #1a086e;white-space:pre-wrap;border:1px solid #e5e5e5;border-left:3px solid #1a086e}
-.cp-btn{margin-top:6px;padding:4px 10px;background:none;border:1px solid #e5e5e5;border-radius:6px;font-size:11.5px;font-weight:500;cursor:pointer;color:#555;transition:all 0.15s}
-.cp-btn:hover{border-color:#1a086e;color:#1a086e}
-.cp-btn.copied{border-color:#22c55e;color:#15803d;background:#f0fdf4}
-.search-in{width:100%;padding:8px 12px;margin-bottom:12px;background:#fff;border:1px solid #e5e5e5;border-radius:8px;font-size:14px;color:#111;transition:all 0.15s;outline:none}
-.search-in:focus{border-color:#1a086e;box-shadow:0 0 0 3px rgba(26,8,110,0.06)}
-
-/* ===== TIP CARDS ===== */
-.tip-card{background:#fff;border-radius:12px;padding:16px;border:1px solid #e5e5e5;margin-bottom:12px;border-left:3px solid #1a086e}
-.tip-badge{display:inline-block;background:#1a086e;color:#fff;padding:2px 8px;border-radius:100px;font-size:10px;font-weight:600;margin-bottom:8px}
-.tip-title{font-size:15px;font-weight:600;color:#111;margin-bottom:8px;line-height:1.35;letter-spacing:-0.01em}
-.tip-body{font-size:13.5px;color:#444;line-height:1.7;margin-bottom:10px}
-.tip-compare{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:10px 0}
-.tip-wrong{background:#fef2f2;border-radius:8px;padding:10px;border-left:3px solid #dc2626}
-.tip-right{background:#f0fdf4;border-radius:8px;padding:10px;border-left:3px solid #22c55e}
-.tip-clabel{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:5px}
-.tip-wrong .tip-clabel{color:#991b1b}
-.tip-right .tip-clabel{color:#166534}
-.tip-ctext{font-size:12.5px;line-height:1.6;color:#333}
-.tip-remember{background:#eef0ff;border-radius:8px;padding:10px 12px;font-size:13px;color:#312e81;font-weight:500;line-height:1.6;margin-top:8px}
-
-/* ===== SIMULADOR ===== */
-.sim-lay{display:grid;grid-template-columns:200px 1fr;gap:12px}
-.pc{display:flex;gap:8px;align-items:center;padding:9px 10px;border-radius:8px;cursor:pointer;background:#fff;border:1px solid #e5e5e5;margin-bottom:5px;transition:all 0.15s}
-.pc:hover,.pc.active{border-color:#1a086e;background:#eef0ff}
-.pc-av{width:32px;height:32px;border-radius:50%;background:#1a086e;color:#fff;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:600;flex-shrink:0}
-.sim-panel{background:#fff;border-radius:12px;overflow:hidden;border:1px solid #e5e5e5;display:flex;flex-direction:column}
-.sim-hd{background:#1a086e;padding:12px 14px;display:flex;align-items:center;gap:10px}
-.sim-av{width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,0.15);color:#fff;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:600}
-.sim-sts{display:flex;border-bottom:1px solid #f0f0f0}
-.sim-st{flex:1;padding:8px;text-align:center;border-right:1px solid #f0f0f0}
-.sim-st:last-child{border-right:none}
-.sim-sn{font-size:17px;font-weight:600;color:#1a086e}
-.sim-sl{font-size:11px;color:#666}
-.sim-bar{height:3px;background:#f0f0f0}
-.sim-bar-fill{height:100%;background:linear-gradient(90deg,#1a086e,#805600);transition:width 0.4s}
-.chat{flex:1;min-height:240px;max-height:320px;overflow-y:auto;padding:12px;display:flex;flex-direction:column;gap:8px;background:#f7f7f8}
-.msg{max-width:80%;font-size:13px;line-height:1.5;padding:8px 11px;border-radius:10px}
-.msg-p{background:#fff;border:1px solid #e5e5e5;border-radius:2px 10px 10px 10px;align-self:flex-start}
-.msg-a{background:#1a086e;color:#fff;border-radius:10px 2px 10px 10px;align-self:flex-end}
-.msg-h{background:#fffbeb;border:1px solid #fde68a;color:#92400e;font-size:11.5px;border-radius:8px;align-self:center;max-width:94%;text-align:center;font-style:italic;padding:6px 10px}
-.msg-g{background:#f0fdf4;border:1px solid #bbf7d0;color:#166534;font-size:12px;border-radius:8px;align-self:center;max-width:94%;padding:6px 10px}
-.msg-b{background:#fef2f2;border:1px solid #fecaca;color:#991b1b;font-size:12px;border-radius:8px;align-self:center;max-width:94%;padding:6px 10px}
-.opts-area{padding:10px 12px;background:#fafafa;border-top:1px solid #f0f0f0}
-.opts-lbl{font-size:10px;font-weight:600;color:#999;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:6px}
-.opt-btn{width:100%;text-align:left;padding:7px 10px;background:#fff;border:1px solid #e5e5e5;border-radius:7px;font-size:12.5px;cursor:pointer;margin-bottom:4px;color:#111;line-height:1.4;transition:all 0.15s}
-.opt-btn:hover{border-color:#1a086e}
-.opt-btn.correct{background:#f0fdf4;border-color:#86efac;color:#166534;cursor:default}
-.opt-btn.wrong{background:#fef2f2;border-color:#fca5a5;color:#991b1b;cursor:default}
-
-/* ===== PROGRESS PAGE ===== */
-.tr-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:10px;margin-bottom:16px}
-.tr-stat{background:#fff;border-radius:10px;padding:12px;border:1px solid #e5e5e5;text-align:center}
-.tr-n{font-size:28px;font-weight:600;color:#1a086e;letter-spacing:-0.02em}
-.tr-l{font-size:11.5px;color:#666;margin-top:2px}
-.mp-row{display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid #f0f0f0}
-.mp-row:last-child{border-bottom:none}
-.mp-name{font-size:13.5px;font-weight:500;flex:1}
-.mp-status{font-size:11px;font-weight:600;padding:3px 9px;border-radius:100px}
-.s-done{background:#f0fdf4;color:#166534}
-.s-pend{background:#f5f5f5;color:#666}
-
-/* ===== BOTTOM NAV ===== */
-.bottom-nav{display:flex;align-items:center;justify-content:space-between;padding:10px 20px;border-top:1px solid #e5e5e5;flex-shrink:0;background:#fff}
-.btn-nav{background:none;border:1px solid #e5e5e5;border-radius:8px;padding:7px 14px;font-size:12.5px;font-weight:500;color:#555;cursor:pointer;display:flex;align-items:center;gap:5px;transition:all 0.15s}
-.btn-nav:hover{border-color:#1a086e;color:#1a086e}
-.btn-done{background:#1a086e;border:none;border-radius:8px;padding:8px 18px;font-size:12.5px;font-weight:600;color:#fff;cursor:pointer;display:flex;align-items:center;gap:5px;transition:all 0.15s}
-.btn-done:hover{background:#312783}
-.btn-done.completed{background:#15803d}
-
-/* ===== MOBILE ===== */
-@media(max-width:768px){
-  .nav-menu-btn{display:flex}
-  .nav-progress-wrap{display:none}
-  .sidebar{position:fixed;top:52px;left:0;bottom:0;transform:translateX(-100%);z-index:50}
-  .sidebar.open{transform:translateX(0)}
-  .sidebar-overlay{display:block}
-  .sidebar-overlay.visible{display:block}
-  .app{height:auto;min-height:calc(100vh - 52px)}
-  .main-content{height:auto;min-height:calc(100vh - 52px - 56px)}
-  .main-inner{padding:16px 14px 60px}
-  .two{grid-template-columns:1fr}
-  .data-grid{grid-template-columns:1fr 1fr}
-  .tip-compare{grid-template-columns:1fr}
-  .sim-lay{grid-template-columns:1fr}
-  h2{font-size:15px}
-  .lesson-h{font-size:18px}
-  .bottom-nav{padding:8px 14px}
-}
-@media(min-width:769px){
-  .app{height:calc(100vh - 52px)}
-  .main-content{height:100%;overflow-y:auto}
-}
+body{-webkit-font-smoothing:antialiased;font-family:'Inter',sans-serif}
+.pbg{background-image:repeating-linear-gradient(45deg,#1a086e 0,#1a086e 1px,transparent 0,transparent 50%),repeating-linear-gradient(135deg,#1a086e 0,#1a086e 1px,transparent 0,transparent 50%);background-size:8px 8px}
+.mm{transform:translateX(-100%);transition:transform 0.28s cubic-bezier(.4,0,.2,1)}.mm.open{transform:translateX(0)}
+.mo{opacity:0;pointer-events:none;transition:opacity 0.28s}.mo.open{opacity:1;pointer-events:all}
+.panel{display:none}.panel.active{display:block}
+::-webkit-scrollbar{width:4px}::-webkit-scrollbar-thumb{background:#c8c4d3;border-radius:4px}
 </style>
 </head>
-<body>
+<body class="bg-background text-on-surface min-h-screen relative">
+<div class="fixed inset-0 pointer-events-none opacity-[0.02] pbg"></div>
+<div class="mo fixed inset-0 bg-black/40 z-40 md:hidden" id="mo" onclick="closeMM()"></div>
 
-<nav class="top-nav">
-  <span class="nav-logo">IN<span style="color:#805600">D</span>ECAP</span>
-  <span class="nav-badge">Estudiantes</span>
-  <div class="nav-spacer"></div>
-  <div class="nav-progress-wrap">
-    <div class="nav-progress-bar"><div class="nav-progress-fill" id="progress-bar" style="width:0%"></div></div>
-    <span class="nav-pct" id="progress-txt">0%</span>
+<div class="mm fixed top-0 left-0 h-full w-72 bg-surface-container-lowest z-50 md:hidden flex flex-col shadow-2xl" id="mm">
+  <div class="p-6 border-b border-outline-variant">
+    <div class="flex items-center justify-between mb-1">
+      <span class="text-xl font-semibold text-primary-container" style="font-family:Newsreader,serif">INDECAP</span>
+      <button onclick="closeMM()" class="p-1 rounded-lg hover:bg-surface-container text-on-surface-variant"><span class="material-symbols-outlined" style="font-variation-settings:'FILL' 0">close</span></button>
+    </div>
+    <p class="text-xs text-on-surface-variant" style="font-family:Work Sans,sans-serif">Portal Estudiantil</p>
   </div>
-  <button class="nav-menu-btn" onclick="toggleSidebar()">
-    <span class="nav-menu-line"></span><span class="nav-menu-line"></span><span class="nav-menu-line"></span>
-  </button>
-  <button class="nav-exit" onclick="window.location.href='/plataforma'">← Plataforma</button>
-</nav>
-<div class="sidebar-overlay" id="overlay" onclick="closeSidebar()"></div>
-<div class="app">
-  <aside class="sidebar" id="sidebar">
-    <div class="sidebar-header">
-      <div class="sidebar-label">INDECAP · Plataforma</div>
-      <div class="sidebar-title">Inducción Estudiantil</div>
-      <div class="sidebar-sub">Completa los módulos para empezar con el pie derecho.</div>
-    </div>
-    <div class="sidebar-list" id="sidebar-list"></div>
-  </aside>
-  <div style="flex:1;display:flex;flex-direction:column;min-width:0;overflow:hidden">
-    <div class="main-content" id="main-scroll">
-      <div class="main-inner">
-        <div class="breadcrumb">
-          <span>Estudiantes</span><span class="bc-arrow">›</span>
-          <span class="bc-cur" id="bc-cur">Inicio</span>
-        </div>
-        <div id="lesson-header">
-          <div style="text-align:center;padding:40px 0 16px;font-size:2.5rem">🎓</div>
-          <div class="lesson-h" style="text-align:center;margin-bottom:8px">¡Bienvenido a INDECAP!</div>
-          <p style="text-align:center;color:#666">Selecciona un módulo en el menú para comenzar.</p>
-        </div>
-        <div id="lesson-content"></div>
-      </div>
-    </div>
-    <div class="bottom-nav" id="bottom-nav" style="display:none">
-      <button class="btn-nav" id="btn-prev" onclick="navigateLesson(-1)">← Anterior</button>
-      <button class="btn-done" id="btn-done" onclick="markCurrentDone()">Marcar completado</button>
-      <button class="btn-nav" id="btn-next" onclick="navigateLesson(1)">Siguiente →</button>
-    </div>
+  <div class="flex-1 overflow-y-auto p-3" id="mm-modules"></div>
+  <div class="p-4 border-t border-outline-variant">
+    <button onclick="window.location.href='/plataforma'" class="w-full flex items-center gap-3 px-4 py-2.5 rounded-lg text-on-surface-variant hover:bg-surface-container text-sm" style="font-family:Work Sans,sans-serif">
+      <span class="material-symbols-outlined text-xl" style="font-variation-settings:'FILL' 0">arrow_back</span>Volver a Plataforma
+    </button>
   </div>
 </div>
+
+<div class="flex h-screen overflow-hidden relative z-10">
+  <nav class="hidden md:flex flex-col h-full w-64 bg-surface-container-lowest border-r border-outline-variant z-30 relative pt-20 pb-6">
+    <div class="px-6 mb-5">
+      <p class="text-xs font-semibold text-on-surface-variant uppercase tracking-widest mb-1" style="font-family:Work Sans,sans-serif">Portal Estudiantil</p>
+      <h2 class="text-base font-semibold text-primary-container leading-tight" style="font-family:Newsreader,serif">Tu formación comienza aquí</h2>
+      <div class="mt-3 flex items-center gap-3">
+        <div class="relative w-11 h-11 flex-shrink-0">
+          <svg class="w-full h-full -rotate-90" viewBox="0 0 36 36">
+            <path d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="#e5e1e9" stroke-width="3"/>
+            <path id="sb-ring" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="#f5bd65" stroke-dasharray="0,100" stroke-linecap="round" stroke-width="3" style="transition:stroke-dasharray 0.5s"/>
+          </svg>
+          <div class="absolute inset-0 flex items-center justify-center text-xs font-semibold text-primary-container" style="font-family:Work Sans,sans-serif" id="sb-pct">0%</div>
+        </div>
+        <div>
+          <p class="text-xs font-medium text-on-surface" style="font-family:Work Sans,sans-serif">Progreso</p>
+          <p class="text-xs text-on-surface-variant" id="sb-txt">0 de 7 módulos</p>
+        </div>
+      </div>
+    </div>
+    <div class="flex-1 overflow-y-auto px-3" id="sidebar-modules"></div>
+    <div class="px-4 pt-4 border-t border-outline-variant mt-4">
+      <button onclick="window.location.href='/plataforma'" class="w-full flex items-center gap-3 px-4 py-2.5 rounded-lg text-on-surface-variant hover:bg-surface-container text-sm transition-colors" style="font-family:Work Sans,sans-serif">
+        <span class="material-symbols-outlined text-xl" style="font-variation-settings:'FILL' 0">arrow_back</span>Volver a Plataforma
+      </button>
+    </div>
+  </nav>
+
+  <div class="flex-1 flex flex-col h-screen overflow-hidden">
+    <header class="fixed top-0 left-0 md:left-64 right-0 z-30 flex items-center justify-between px-6 h-16 bg-surface-container-lowest/80 backdrop-blur-md border-b border-outline-variant shadow-sm">
+      <div class="flex items-center gap-3">
+        <button onclick="openMM()" class="md:hidden p-2 rounded-lg hover:bg-surface-container text-on-surface-variant"><span class="material-symbols-outlined" style="font-variation-settings:'FILL' 0">menu</span></button>
+        <span class="font-semibold text-primary-container text-lg md:hidden" style="font-family:Newsreader,serif">INDECAP</span>
+        <p class="hidden md:block text-xs text-on-surface-variant" style="font-family:Work Sans,sans-serif" id="hd-bc">Portal Estudiantil → Dashboard</p>
+      </div>
+      <div class="flex items-center gap-3">
+        <div class="hidden md:flex items-center gap-2 text-xs font-medium text-on-surface-variant" style="font-family:Work Sans,sans-serif">
+          <div class="w-24 h-1.5 bg-surface-variant rounded-full overflow-hidden"><div id="hd-bar" class="h-full bg-primary-container rounded-full transition-all duration-500" style="width:0%"></div></div>
+          <span id="hd-pct">0%</span>
+        </div>
+        <button onclick="window.location.href='/plataforma'" class="hidden md:flex items-center gap-1.5 px-3 py-1.5 border border-outline-variant rounded-lg text-xs text-on-surface-variant hover:border-primary-container hover:text-primary-container transition-colors" style="font-family:Work Sans,sans-serif">
+          <span class="material-symbols-outlined text-base" style="font-variation-settings:'FILL' 0">logout</span>Salir
+        </button>
+      </div>
+    </header>
+
+    <main class="flex-1 overflow-y-auto pt-16" id="main-scroll">
+      <div class="panel active" id="panel-dashboard">
+        <div class="max-w-5xl mx-auto px-6 py-8">
+
+          <!-- Hero -->
+          <section class="mb-8 relative rounded-2xl overflow-hidden p-8 shadow-lg" style="background:linear-gradient(135deg,#0369a1,#0284c7)">
+            <div class="absolute inset-0 pbg opacity-5"></div>
+            <div class="relative z-10 flex items-start justify-between gap-6">
+              <div class="max-w-lg">
+                <span class="inline-block px-3 py-1 mb-4 rounded-full text-xs font-semibold border" style="background:rgba(245,189,101,0.2);color:#f5bd65;border-color:rgba(245,189,101,0.3);font-family:Work Sans,sans-serif">Portal Estudiantil · INDECAP</span>
+                <h2 class="text-3xl font-semibold text-white mb-2 leading-tight" style="font-family:Newsreader,serif;letter-spacing:-0.02em">Tu formación técnica<br><em>comienza aquí</em></h2>
+                <p class="text-sm leading-relaxed" style="color:rgba(255,255,255,0.7)">Tomaste una de las mejores decisiones de tu vida. Esta inducción te ayudará a conocer tu institución, tus derechos y todo lo que necesitas para tener éxito.</p>
+              </div>
+              <div class="hidden lg:block relative w-28 h-28 flex-shrink-0">
+                <svg class="w-full h-full -rotate-90" viewBox="0 0 100 100">
+                  <circle cx="50" cy="50" r="45" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="8"/>
+                  <circle id="hero-ring" cx="50" cy="50" r="45" fill="none" stroke="#f5bd65" stroke-dasharray="0,283" stroke-linecap="round" stroke-width="8" style="transition:stroke-dasharray 0.6s"/>
+                </svg>
+                <div class="absolute inset-0 flex flex-col items-center justify-center text-white">
+                  <span class="text-2xl font-semibold" style="font-family:Newsreader,serif" id="hero-pct">0%</span>
+                  <span class="text-xs" style="color:rgba(255,255,255,0.6)">completado</span>
+                </div>
+              </div>
+            </div>
+            <div class="relative z-10 mt-6 flex gap-6 flex-wrap">
+              <div><span class="text-2xl font-semibold text-white" style="font-family:Newsreader,serif">40</span><p class="text-xs" style="color:rgba(255,255,255,0.5);font-family:Work Sans,sans-serif">Años INDECAP</p></div>
+              <div><span class="text-2xl font-semibold text-white" style="font-family:Newsreader,serif">71.4%</span><p class="text-xs" style="color:rgba(255,255,255,0.5);font-family:Work Sans,sans-serif">Egresados empleados</p></div>
+              <div><span class="text-2xl font-semibold text-white" style="font-family:Newsreader,serif">3</span><p class="text-xs" style="color:rgba(255,255,255,0.5);font-family:Work Sans,sans-serif">Sedes</p></div>
+              <div><span class="text-2xl font-semibold text-white" style="font-family:Newsreader,serif">7</span><p class="text-xs" style="color:rgba(255,255,255,0.5);font-family:Work Sans,sans-serif">Módulos</p></div>
+            </div>
+          </section>
+
+          <!-- Bento -->
+          <div class="grid grid-cols-1 md:grid-cols-12 gap-5">
+            <div class="md:col-span-8 bg-surface-container-lowest rounded-2xl border border-outline-variant shadow-sm p-6">
+              <div class="flex items-center justify-between mb-5">
+                <h3 class="text-lg font-semibold text-primary-container" style="font-family:Newsreader,serif">Módulos de inducción</h3>
+                <span class="text-xs font-semibold text-on-surface-variant bg-surface-container px-2.5 py-1 rounded-full" style="font-family:Work Sans,sans-serif" id="mod-count">0/7 completados</span>
+              </div>
+              <div class="space-y-2" id="mod-grid"></div>
+            </div>
+            <div class="md:col-span-4 flex flex-col gap-5">
+              <div class="bg-surface-container-lowest rounded-2xl border border-outline-variant shadow-sm p-5">
+                <h4 class="text-xs font-semibold text-on-surface-variant uppercase tracking-wider mb-4" style="font-family:Work Sans,sans-serif">Lo esencial</h4>
+                <div class="space-y-3">
+                  <div class="flex items-start gap-3"><span class="text-base flex-shrink-0">📊</span><p class="text-xs text-on-surface-variant leading-relaxed">Nota mínima: <strong class="text-on-surface">mayor a 3.5</strong>. Máx inasistencias: <strong class="text-on-surface">25%</strong>.</p></div>
+                  <div class="flex items-start gap-3"><span class="text-base flex-shrink-0">💻</span><p class="text-xs text-on-surface-variant leading-relaxed">Tu sistema de notas se llama <strong class="text-on-surface">Q10</strong>.</p></div>
+                  <div class="flex items-start gap-3"><span class="text-base flex-shrink-0">💳</span><p class="text-xs text-on-surface-variant leading-relaxed">Habla con administración <strong class="text-on-surface">antes</strong> de atrasarte en pagos.</p></div>
+                  <div class="flex items-start gap-3"><span class="text-base flex-shrink-0">🏥</span><p class="text-xs text-on-surface-variant leading-relaxed">Necesitas <strong class="text-on-surface">paz y salvo</strong> para ir a prácticas.</p></div>
+                </div>
+              </div>
+              <div class="bg-surface-container-lowest rounded-2xl border border-outline-variant shadow-sm p-5">
+                <h4 class="text-xs font-semibold text-on-surface-variant uppercase tracking-wider mb-4" style="font-family:Work Sans,sans-serif">Acceso rápido</h4>
+                <div class="space-y-2">
+                  <button onclick="showPanel('evaluacion')" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-surface-container border border-outline-variant transition-colors text-left">
+                    <div class="w-9 h-9 rounded-full flex items-center justify-center flex-shrink-0" style="background:rgba(26,8,110,0.1)"><span class="material-symbols-outlined text-primary-container" style="font-size:20px;font-variation-settings:'FILL' 0">grading</span></div>
+                    <div><p class="text-sm font-medium text-on-surface" style="font-family:Work Sans,sans-serif">Cómo te evalúan</p><p class="text-xs text-on-surface-variant">40/60, nota mayor a 3.5</p></div>
+                  </button>
+                  <button onclick="showPanel('pagos')" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-surface-container border border-outline-variant transition-colors text-left">
+                    <div class="w-9 h-9 rounded-full flex items-center justify-center flex-shrink-0" style="background:rgba(245,189,101,0.2)"><span class="material-symbols-outlined" style="font-size:20px;font-variation-settings:'FILL' 0;color:#b07f2e">payments</span></div>
+                    <div><p class="text-sm font-medium text-on-surface" style="font-family:Work Sans,sans-serif">Pagos y matrículas</p><p class="text-xs text-on-surface-variant">Lo que debes saber</p></div>
+                  </button>
+                  <button onclick="showPanel('practicas')" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-surface-container border border-outline-variant transition-colors text-left">
+                    <div class="w-9 h-9 rounded-full flex items-center justify-center flex-shrink-0" style="background:rgba(90,82,174,0.15)"><span class="material-symbols-outlined" style="font-size:20px;font-variation-settings:'FILL' 0;color:#5a52ae">school</span></div>
+                    <div><p class="text-sm font-medium text-on-surface" style="font-family:Work Sans,sans-serif">Prácticas y graduación</p><p class="text-xs text-on-surface-variant">Requisitos y proceso</p></div>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="panels-area"></div>
+    </main>
+  </div>
+</div>
+
 <script>
-
-function toggleSidebar(){document.getElementById('sidebar').classList.toggle('open');document.getElementById('overlay').classList.toggle('visible');}
-function closeSidebar(){document.getElementById('sidebar').classList.remove('open');document.getElementById('overlay').classList.remove('visible');}
-
-const SECCION='estudiantes',SK='indecap_estudiantes_v3';
-let progress={},currentIdx=-1;
+const SECCION='estudiantes', SK='indecap_estudiantes_v4';
+let progress={};
 function saveLocal(){try{localStorage.setItem(SK,JSON.stringify(progress));}catch(e){}}
 async function loadProgress(){
   try{const r=await fetch('/api/progreso?seccion='+SECCION);if(r.ok){const d=await r.json();if(d.progress&&Object.keys(d.progress).length){progress=d.progress;saveLocal();return;}}}catch(e){}
   try{const l=localStorage.getItem(SK);if(l)progress=JSON.parse(l);}catch(e){}
 }
-async function saveProgress(id,pts){
+async function markDone(id){
+  if(progress[id])return;
   progress[id]=true;saveLocal();
-  try{await fetch('/api/progreso',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({seccion:SECCION,modulo_id:id,puntaje:pts||0})});}catch(e){}
+  try{await fetch('/api/progreso',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({seccion:SECCION,modulo_id:id,puntaje:0})});}catch(e){}
+  updateUI();
 }
+
 const MODULES=[
-  {id:'bienvenida', icon:'🏛️', label:'Quiénes somos',         duration:'10 min'},
-  {id:'programas',  icon:'📚', label:'Tu programa técnico',    duration:'15 min'},
-  {id:'evaluacion', icon:'📊', label:'Cómo te evalúan',        duration:'15 min'},
-  {id:'plataforma', icon:'💻', label:'Q10 y tus notas',        duration:'10 min'},
-  {id:'reglamento', icon:'📋', label:'Tus derechos y deberes', duration:'20 min'},
-  {id:'pagos',      icon:'💳', label:'Pagos y matrículas',     duration:'15 min'},
-  {id:'practicas',  icon:'🏥', label:'Prácticas y graduación', duration:'15 min'},
+  {id:'bienvenida',icon:'🏛️',label:'Quiénes somos',        dur:'10 min',desc:'40 años transformando vidas en Antioquia.'},
+  {id:'programas', icon:'📚',label:'Tu programa técnico',  dur:'15 min',desc:'Todos los programas por área.'},
+  {id:'evaluacion',icon:'📊',label:'Cómo te evalúan',      dur:'15 min',desc:'Sistema de notas, escala y asistencias.'},
+  {id:'plataforma',icon:'💻',label:'Q10 y tus notas',      dur:'10 min',desc:'Cómo consultar tus calificaciones.'},
+  {id:'reglamento',icon:'📋',label:'Tus derechos y deberes',dur:'20 min',desc:'Lo que puedes esperar y lo que se espera.'},
+  {id:'pagos',     icon:'💳',label:'Pagos y matrículas',   dur:'15 min',desc:'Todo sobre tu inversión en INDECAP.'},
+  {id:'practicas', icon:'🏥',label:'Prácticas y graduación',dur:'15 min',desc:'El paso final hacia tu certificado.'},
 ];
-function updateProgressUI(){
+
+function updateUI(){
   const done=Object.keys(progress).length,total=MODULES.length,pct=Math.round(done/total*100);
-  const b=document.getElementById('progress-bar'),t=document.getElementById('progress-txt');
-  if(b)b.style.width=pct+'%';if(t)t.textContent=pct+'%';
+  const sbr=document.getElementById('sb-ring');if(sbr)sbr.setAttribute('stroke-dasharray',pct+',100');
+  const sbp=document.getElementById('sb-pct');if(sbp)sbp.textContent=pct+'%';
+  const sbt=document.getElementById('sb-txt');if(sbt)sbt.textContent=done+' de '+total+' módulos';
+  const hr=document.getElementById('hero-ring');if(hr)hr.setAttribute('stroke-dasharray',(pct/100*283)+',283');
+  const hp=document.getElementById('hero-pct');if(hp)hp.textContent=pct+'%';
+  const hb=document.getElementById('hd-bar');if(hb)hb.style.width=pct+'%';
+  const hpct=document.getElementById('hd-pct');if(hpct)hpct.textContent=pct+'%';
+  const mc=document.getElementById('mod-count');if(mc)mc.textContent=done+'/'+total+' completados';
+  renderSidebars();renderGrid();
 }
-function renderSidebar(){
-  const list=document.getElementById('sidebar-list');if(!list)return;
-  list.innerHTML=MODULES.map((m,i)=>{
-    const done=progress[m.id],active=i===currentIdx;
-    return '<div class="mod-item'+(active?' active':'')+(done?' done':'')+'" onclick="selectModule('+i+');closeSidebar()">'
-      +'<span class="mod-icon">'+m.icon+'</span><div class="mod-info"><div class="mod-name">'+m.label+'</div><div class="mod-dur">'+m.duration+'</div></div>'
-      +(done?'<span class="mod-done-icon">&#10003;</span>':'')+'</div>';
+function renderSidebars(){
+  ['sidebar-modules','mm-modules'].forEach(sid=>{
+    const el=document.getElementById(sid);if(!el)return;
+    el.innerHTML=MODULES.map(m=>{const done=progress[m.id];
+      return '<button onclick="showPanel(\''+m.id+'\')" class="w-full flex items-center gap-3 px-4 py-2.5 rounded-xl text-left mb-0.5 hover:bg-surface-container transition-colors">'
+        +'<span class="text-lg flex-shrink-0 w-6 text-center">'+m.icon+'</span><div class="flex-1 min-w-0">'
+        +'<p class="text-sm font-medium text-on-surface truncate" style="font-family:Work Sans,sans-serif">'+m.label+'</p>'
+        +'<p class="text-xs text-on-surface-variant">'+m.dur+'</p></div>'
+        +(done?'<span class="text-sm text-secondary font-bold flex-shrink-0">&#10003;</span>':'')+'</button>';
+    }).join('');
+  });
+}
+function renderGrid(){
+  const el=document.getElementById('mod-grid');if(!el)return;
+  el.innerHTML=MODULES.map(m=>{const done=progress[m.id];
+    return '<button onclick="showPanel(\''+m.id+'\')" class="w-full flex items-center gap-4 p-4 rounded-xl border hover:border-primary-container/50 hover:bg-surface-container transition-all text-left" style="border-color:'+(done?'rgba(90,82,174,0.3)':'#c8c4d3')+';background:'+(done?'rgba(90,82,174,0.04)':'#fff')+'">'
+      +'<div class="w-10 h-10 rounded-xl flex items-center justify-center text-xl flex-shrink-0" style="background:'+(done?'rgba(90,82,174,0.1)':'#ebe6ef')+'">'+m.icon+'</div>'
+      +'<div class="flex-1 min-w-0"><p class="text-sm font-semibold text-on-surface" style="font-family:Work Sans,sans-serif">'+m.label+'</p><p class="text-xs text-on-surface-variant">'+m.desc+'</p></div>'
+      +'<div class="flex items-center gap-2 flex-shrink-0"><span class="text-xs text-on-surface-variant" style="font-family:Work Sans,sans-serif">'+m.dur+'</span>'
+      +(done?'<span class="text-xs font-semibold px-2 py-0.5 rounded-full" style="background:rgba(90,82,174,0.1);color:#5a52ae;font-family:Work Sans,sans-serif">&#10003; Hecho</span>'
+        :'<span class="material-symbols-outlined text-on-surface-variant text-lg" style="font-variation-settings:\'FILL\' 0">chevron_right</span>')
+      +'</div></button>';
   }).join('');
-  updateProgressUI();
 }
-function selectModule(idx){
-  currentIdx=idx;const m=MODULES[idx];
-  renderSidebar();
-  document.getElementById('bc-cur').textContent=m.label;
-  document.getElementById('lesson-header').innerHTML=
-    '<div class="lesson-meta-row"><span class="lesson-icon">'+m.icon+'</span>'
-    +'<span class="lesson-meta">Módulo '+(idx+1)+' de '+MODULES.length+' · '+m.duration+'</span></div>'
-    +'<div class="lesson-h">'+m.label+'</div>';
-  document.getElementById('lesson-content').innerHTML='';
-  const fns=getContentFunctions();if(fns[m.id])fns[m.id]();
-  document.getElementById('bottom-nav').style.display='flex';
-  document.getElementById('btn-prev').style.visibility=idx===0?'hidden':'visible';
-  document.getElementById('btn-next').style.visibility=idx===MODULES.length-1?'hidden':'visible';
-  const db=document.getElementById('btn-done');
-  if(db){if(progress[m.id]){db.innerHTML='&#10003; Completado';db.classList.add('completed');}else{db.innerHTML='Marcar completado';db.classList.remove('completed');}}
+function showPanel(id){
+  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
+  let p=document.getElementById('panel-'+id);
+  if(!p){buildPanel(id);p=document.getElementById('panel-'+id);}
+  if(p)p.classList.add('active');
+  const m=MODULES.find(x=>x.id===id);
+  const bc=document.getElementById('hd-bc');if(bc)bc.textContent='Portal Estudiantil → '+(m?m.label:id);
+  closeMM();
   const ms=document.getElementById('main-scroll');if(ms)ms.scrollTop=0;
-  window.scrollTo({top:0,behavior:'smooth'});
 }
-function markCurrentDone(){
-  if(currentIdx<0)return;const m=MODULES[currentIdx];
-  saveProgress(m.id,0);renderSidebar();
-  const db=document.getElementById('btn-done');if(db){db.innerHTML='&#10003; Completado';db.classList.add('completed');}
-  if(currentIdx<MODULES.length-1)setTimeout(()=>selectModule(currentIdx+1),600);
+function buildPanel(id){
+  const area=document.getElementById('panels-area');
+  const div=document.createElement('div');div.id='panel-'+id;div.className='panel';
+  div.innerHTML=getContent(id);area.appendChild(div);
 }
-function navigateLesson(dir){const n=currentIdx+dir;if(n>=0&&n<MODULES.length)selectModule(n);}
-function copyMsg(btn,msg){
-  navigator.clipboard.writeText(msg).catch(()=>{const ta=document.createElement('textarea');ta.value=msg;document.body.appendChild(ta);ta.select();document.execCommand('copy');document.body.removeChild(ta);});
-  const o=btn.innerHTML;btn.innerHTML='&#10003; Copiado';btn.classList.add('copied');
-  setTimeout(()=>{btn.innerHTML=o;btn.classList.remove('copied');},2000);
+function back(){return '<button onclick="showPanel(\'dashboard\')" class="flex items-center gap-2 text-sm text-on-surface-variant hover:text-primary-container mb-6 transition-colors" style="font-family:Work Sans,sans-serif"><span class="material-symbols-outlined text-lg" style="font-variation-settings:\'FILL\' 0">arrow_back</span>Volver al dashboard</button>';}
+function done2(id){return '<div class="mt-8 pt-6 border-t border-outline-variant"><button onclick="markDone(\''+id+'\');this.innerHTML=\'&#10003; Completado\';this.style.background=\'#15803d\'" class="flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-semibold text-white" style="background:#1a086e;border:none;cursor:pointer;font-family:Work Sans,sans-serif">Marcar completado &#10003;</button></div>';}
+function wrap(id,content){const m=MODULES.find(x=>x.id===id)||{icon:'📄',label:id,dur:''};return '<div class="max-w-3xl mx-auto px-6 py-8">'+back()+'<div class="flex items-center gap-3 mb-2"><span class="text-2xl">'+m.icon+'</span><span class="text-xs font-semibold text-on-surface-variant uppercase tracking-wider" style="font-family:Work Sans,sans-serif">'+m.dur+'</span></div><h1 class="text-2xl font-semibold text-primary-container mb-6" style="font-family:Newsreader,serif;letter-spacing:-0.02em">'+m.label+'</h1>'+content+done2(id)+'</div>';}
+function card(label,content){return '<div class="bg-surface-container-lowest rounded-2xl border border-outline-variant p-5 mb-4">'+(label?'<p class="text-xs font-semibold text-on-surface-variant uppercase tracking-wider mb-3" style="font-family:Work Sans,sans-serif">'+label+'</p>':'')+content+'</div>';}
+function hl(text){return '<div class="rounded-xl p-4 mb-3" style="background:rgba(26,8,110,0.05);border-left:3px solid #1a086e"><p class="text-sm leading-relaxed" style="color:#1a086e">'+text+'</p></div>';}
+function al(text){return '<div class="rounded-xl p-4 mb-3" style="background:#fffbeb;border:1px solid #fde68a;border-left:3px solid #f59e0b"><p class="text-sm leading-relaxed" style="color:#92400e">'+text+'</p></div>';}
+function su(text){return '<div class="rounded-xl p-4 mb-3" style="background:#f0fdf4;border:1px solid #bbf7d0;border-left:3px solid #22c55e"><p class="text-sm leading-relaxed" style="color:#166534">'+text+'</p></div>';}
+function ul(items){return '<ul class="space-y-2 mb-3">'+items.map(i=>'<li class="text-sm text-on-surface-variant leading-relaxed flex gap-2"><span class="flex-shrink-0">·</span>'+i+'</li>').join('')+'</ul>';}
+function dg(items){return '<div class="grid grid-cols-2 gap-3 my-3">'+items.map(i=>'<div class="rounded-xl p-3" style="background:#fafafa;border:1px solid #e5e5e5"><p class="text-xs font-semibold text-on-surface-variant uppercase mb-1" style="font-family:Work Sans,sans-serif">'+i[0]+'</p><p class="text-lg font-semibold text-primary-container" style="font-family:Newsreader,serif">'+i[1]+'</p>'+(i[2]?'<p class="text-xs text-on-surface-variant">'+i[2]+'</p>':'')+'</div>').join('')+'</div>';}
+function p(text){return '<p class="text-sm text-on-surface-variant leading-relaxed mb-3">'+text+'</p>';}
+
+function getContent(id){
+  const C={
+    bienvenida:()=>wrap(id,
+      p('Elegiste bien. INDECAP lleva más de 40 años siendo el puente entre los jóvenes de Antioquia y el mundo laboral. <strong class="text-on-surface">El 71.4% de nuestros egresados está laborando.</strong>')
+      +hl('<strong>Misión:</strong> Somos una organización educativa de carácter técnico, que brinda formación integral con estándares de excelencia y alta calidad.')
+      +card('Tus 3 sedes',dg([['Medellín','Calle 56 #45-26','Metro Prado · 4484794'],['Envigado','Cl 37 Sur #43A-84','Parque Ppal · 4484794'],['Caldas','Cl 130 Sur #51-65','Parque ppal · 4484794'],['Jornadas','4','Mañana · Tarde · Noche · Sabatino']]))
+      +su('<strong>Tu título tiene respaldo real.</strong> Nuestros certificados son reconocidos por clínicas, hospitales y empresas en toda la región.')),
+
+    programas:()=>{
+      const areas=[
+        {a:'Salud',p:['Auxiliar en Enfermería','Servicios Farmacéuticos','Auxiliar en Salud Oral','Auxiliar en Salud Pública','Administrativo en Salud','Atención al Adulto Mayor']},
+        {a:'Veterinaria',p:['Auxiliar en Veterinaria','Peluquería Canina']},
+        {a:'Belleza',p:['Cosmetología y Estética']},
+        {a:'Administrativa',p:['Auxiliar Contable','Talento Humano','Marketing Digital','SST','Primera Infancia']},
+        {a:'Tecnología',p:['Técnico en Sistemas','Desarrollo de Software']},
+        {a:'Deportes',p:['Entrenamiento Deportivo']},
+      ];
+      return wrap(id,
+        p('Tu programa está diseñado bajo la modalidad de Formación para el Trabajo, avalado por la Secretaría de Educación. Al graduarte tienes una certificación con validez legal para trabajar en Colombia.')
+        +areas.map(a=>'<div class="mb-4"><p class="text-xs font-semibold text-on-surface-variant uppercase tracking-wider mb-2" style="font-family:Work Sans,sans-serif">'+a.a+'</p><div class="flex flex-wrap gap-2">'+a.p.map(pg=>'<span class="text-xs font-medium px-3 py-1 rounded-full" style="background:rgba(26,8,110,0.08);color:#1a086e;font-family:Work Sans,sans-serif">'+pg+'</span>').join('')+'</div></div>').join('')
+        +hl('<strong>¿Quieres cambiar de programa?</strong> Habla con coordinación académica antes de tomar cualquier decisión.')
+      );
+    },
+
+    evaluacion:()=>wrap(id,
+      dg([['La institución','40%','Inicial 15% · Final 25%'],['Tu docente','60%','Talleres, quizzes, prácticas']])
+      +card('Las reglas que debes saber sí o sí',
+        ul(['<strong>Escala 0 a 5.</strong> Apruebas con nota mayor a 3.5.','<strong>Con el 25% de inasistencias pierdes la competencia</strong>, sin importar tu nota.','Cada competencia se evalúa de forma independiente.','Tienes derecho a pedir revisión de nota si consideras que hay un error.']))
+      +al('<strong>Sobre la asistencia:</strong> Si faltas por enfermedad o fuerza mayor, informa a tu docente ese mismo día. Siempre es mejor avisar que no avisar.')),
+
+    plataforma:()=>wrap(id,
+      hl('<strong>La coordinación de tu sede te entregará tu usuario y contraseña en los primeros días.</strong> Si no las has recibido, solicítalas en coordinación.')
+      +card('Qué puedes ver en Q10',ul(['Tus notas por competencia y por evaluación','Tu registro de asistencia','El estado de tu proceso académico general']))
+      +card('Buenas prácticas',ul(['Revisa tus notas al menos una vez por semana.','Si una nota parece incorrecta, primero habla con tu docente.','No compartas tu usuario y contraseña con nadie.']))),
+
+    reglamento:()=>wrap(id,
+      card('Tus derechos como estudiante',
+        ul(['Recibir educación de calidad en las condiciones acordadas al momento de tu matrícula.','Ser tratado con respeto por docentes, coordinadores y personal administrativo.','Conocer el sistema de evaluación de cada competencia desde el primer día.','Solicitar revisión de nota si consideras que hay un error.','Presentar quejas sin temor a represalias.']))
+      +card('Tus deberes',
+        ul(['Asistir puntualmente a todas tus clases.','Llegar con los materiales, uniformes y equipos requeridos.','Tratar con respeto a docentes, compañeros y personal.','Mantener tu matrícula y pagos al día.']))
+      +card('El conducto regular',
+        dg([['Paso 1','Tu docente','Notas, dudas académicas'],['Paso 2','Coordinación','Si el docente no resuelve'],['Pagos','Administración','Directamente'],['Escalado','Dirección','Situaciones graves']]))),
+
+    pagos:()=>wrap(id,
+      hl('<strong>Lo más importante: habla con nosotros antes de atrasarte.</strong> INDECAP entiende los imprevistos. Lo que no podemos hacer es ayudarte si no sabemos que hay un problema.')
+      +card('Si no puedes pagar a tiempo',
+        ul(['Acércate al área administrativa antes de la fecha de vencimiento.','En muchos casos se pueden hacer acuerdos de pago a tiempo.','Los atrasos prolongados pueden generar bloqueos en Q10.','El paz y salvo es requisito para ir a prácticas y recibir el certificado.']))
+      +card('Costos adicionales',
+        ul(['Póliza de responsabilidad civil (según programa)','Formulario de matrícula y carnet estudiantil','Uniformes y dotación según el programa','ARL y EPS para prácticas profesionales']))
+      +al('<strong>Recuerda:</strong> Tu situación de pago no afecta el trato de tu docente hacia ti en el aula.')),
+
+    practicas:()=>wrap(id,
+      p('Las prácticas son el momento donde todo lo que aprendiste se convierte en experiencia real. Para muchos egresados, son la puerta de entrada al empleo.')
+      +card('Requisitos para ir a prácticas',
+        dg([['Académicos','✅ Humanización\n✅ Competencias al día',''],['Administrativos','✅ Paz y salvo\n✅ Documentos al día',''],['Seguridad','✅ ARL vigente\n✅ EPS · Vacunación',''],['Documentos','✅ Hoja de vida\n✅ Fotocopia doc.','']]))
+      +su('<strong>El 71.4% de los egresados de INDECAP está trabajando.</strong> Cuando termines, harás parte de esa comunidad que abre puertas.')),
+  };
+  return C[id]?C[id]():'<div class="max-w-3xl mx-auto px-6 py-8">'+back()+'<p class="text-on-surface-variant">Módulo en construcción.</p></div>';
 }
 
-function getContentFunctions(){return{
-bienvenida:()=>setC(`<div class="card"><h2>40 años transformando vidas en Antioquia</h2><p>Elegiste bien. INDECAP lleva más de 40 años siendo el puente entre los jóvenes de Antioquia y el mundo laboral. <strong>El 71.4% de nuestros egresados está laborando.</strong></p><div class="highlight"><strong>Misión:</strong> Somos una organización educativa de carácter técnico, que brinda formación integral con estándares de excelencia y alta calidad, enfocada en el desarrollo del ser.</div><h3>Tus 3 sedes</h3><div class="data-grid"><div class="data-card"><div class="data-card-title">Medellín</div><div class="data-card-val" style="font-size:1rem">Calle 56 #45-26</div><div class="data-card-sub">Metro Prado · 4484794</div></div><div class="data-card"><div class="data-card-title">Envigado</div><div class="data-card-val" style="font-size:1rem">Cl 37 Sur #43A-84</div><div class="data-card-sub">Parque Principal · 4484794</div></div><div class="data-card"><div class="data-card-title">Caldas</div><div class="data-card-val" style="font-size:1rem">Cl 130 Sur #51-65</div><div class="data-card-sub">Parque principal · 4484794</div></div><div class="data-card"><div class="data-card-title">Jornadas</div><div class="data-card-val" style="font-size:1rem">4</div><div class="data-card-sub">Mañana · Tarde · Noche · Sabatino</div></div></div><div class="success"><strong>Tu título tiene respaldo real.</strong> Nuestros certificados son reconocidos por clínicas, hospitales y empresas en toda la región.</div></div>`),
-programas:()=>{const areas=[{a:'Salud',p:['Auxiliar en Enfermería','Servicios Farmacéuticos','Auxiliar en Salud Oral','Auxiliar en Salud Pública','Administrativo en Salud','Atención al Adulto Mayor']},{a:'Veterinaria',p:['Auxiliar en Veterinaria','Peluquería Canina']},{a:'Belleza',p:['Cosmetología y Estética']},{a:'Administrativa',p:['Auxiliar Contable','Talento Humano','Marketing Digital','SST','Primera Infancia']},{a:'Tecnología',p:['Técnico en Sistemas','Desarrollo de Software']},{a:'Deportes',p:['Entrenamiento Deportivo']}];setC('<div class="card"><h2>Formación para el Trabajo</h2><p>Tu programa está avalado por la Secretaría de Educación. Al graduarte tienes una certificación con validez legal para trabajar en Colombia.</p>'+areas.map(a=>'<h3>'+a.a+'</h3><div style="display:flex;flex-wrap:wrap;gap:5px;margin-bottom:12px">'+a.p.map(p=>'<span style="background:#eef0ff;border-radius:100px;padding:4px 10px;font-size:12px;font-weight:500;color:#3730a3">'+p+'</span>').join('')+'</div>').join('')+'<div class="highlight"><strong>¿Quieres cambiar de programa?</strong> Habla con coordinación académica antes de tomar cualquier decisión.</div></div>');},
-evaluacion:()=>setC(`<div class="card"><h2>El sistema de evaluación</h2><div class="data-grid"><div class="data-card"><div class="data-card-title">La institución (40%)</div><div class="data-card-val">40%</div><div class="data-card-sub">Inicial 15% · Final 25%</div></div><div class="data-card"><div class="data-card-title">Tu docente (60%)</div><div class="data-card-val">60%</div><div class="data-card-sub">Talleres, quizzes, prácticas</div></div></div><h3>Las reglas que debes saber</h3><ul><li><strong>Escala 0 a 5.</strong> Apruebas con nota mayor a 3.5.</li><li><strong>Con el 25% de inasistencias pierdes la competencia</strong> sin importar tu nota.</li><li>Cada competencia se evalúa de forma independiente.</li><li>Tienes derecho a pedir revisión de nota.</li></ul><div class="alert"><strong>Sobre la asistencia:</strong> Si faltas por enfermedad, informa a tu docente ese mismo día. Siempre es mejor avisar que no avisar.</div></div>`),
-plataforma:()=>setC(`<div class="card"><h2>Cómo consultar tus notas en Q10</h2><div class="highlight"><strong>La coordinación de tu sede te entregará tu usuario y contraseña en los primeros días.</strong></div><h3>Qué puedes ver en Q10</h3><ul><li>Tus notas por competencia y por evaluación</li><li>Tu registro de asistencia</li><li>El estado de tu proceso académico</li></ul><h3>Buenas prácticas</h3><ul><li>Revisa tus notas al menos una vez por semana.</li><li>Si una nota parece incorrecta, primero habla con tu docente.</li><li>No compartas tu usuario con nadie.</li></ul></div>`),
-reglamento:()=>setC(`<div class="card"><h2>Tus derechos y deberes</h2><h3>Tus derechos</h3><ul><li>Recibir educación de calidad en las condiciones acordadas.</li><li>Ser tratado con respeto en todo momento.</li><li>Conocer el sistema de evaluación desde el primer día.</li><li>Solicitar revisión de nota si consideras que hay un error.</li><li>Presentar quejas sin temor a represalias.</li></ul><h3>Tus deberes</h3><ul><li>Asistir puntualmente a todas tus clases.</li><li>Llegar con los materiales y uniformes requeridos.</li><li>Tratar con respeto a docentes, compañeros y personal.</li><li>Mantener tu matrícula y pagos al día.</li></ul><h3>El conducto regular</h3><div class="data-grid"><div class="data-card"><div class="data-card-title">Paso 1</div><div class="data-card-val" style="font-size:1rem">Tu docente</div><div class="data-card-sub">Notas, dudas académicas</div></div><div class="data-card"><div class="data-card-title">Paso 2</div><div class="data-card-val" style="font-size:1rem">Coordinación</div><div class="data-card-sub">Si el docente no resuelve</div></div><div class="data-card"><div class="data-card-title">Pagos</div><div class="data-card-val" style="font-size:1rem">Administración</div><div class="data-card-sub">Directamente</div></div><div class="data-card"><div class="data-card-title">Escalado</div><div class="data-card-val" style="font-size:1rem">Dirección</div><div class="data-card-sub">Situaciones graves</div></div></div></div>`),
-pagos:()=>setC(`<div class="card"><h2>Tu inversión en INDECAP</h2><div class="highlight"><strong>Lo más importante: habla con nosotros antes de atrasarte.</strong> INDECAP entiende los imprevistos. Lo que no podemos hacer es ayudarte si no sabemos que hay un problema.</div><h3>Si no puedes pagar a tiempo</h3><ul><li>Acércate al área administrativa antes de la fecha de vencimiento.</li><li>En muchos casos se pueden hacer acuerdos de pago a tiempo.</li><li>Los atrasos prolongados pueden generar bloqueos en Q10.</li><li>El paz y salvo es requisito para ir a prácticas y recibir el certificado.</li></ul><h3>Costos adicionales</h3><ul><li>Póliza de responsabilidad civil (según programa)</li><li>Formulario de matrícula y carnet estudiantil</li><li>Uniformes y dotación según el programa</li><li>ARL y EPS para prácticas profesionales</li></ul><div class="alert"><strong>Recuerda:</strong> Tu situación de pago no afecta el trato de tu docente hacia ti en el aula.</div></div>`),
-practicas:()=>setC(`<div class="card"><h2>Prácticas profesionales y tu certificado</h2><p>Las prácticas son el momento donde todo lo que aprendiste se convierte en experiencia real. Para muchos egresados, son la puerta de entrada al empleo.</p><h3>Requisitos para ir a prácticas</h3><div class="data-grid"><div class="data-card"><div class="data-card-title">Académicos</div><div class="data-card-sub" style="font-size:13px;margin-top:4px">✅ Humanización aprobado<br>✅ Competencias al día</div></div><div class="data-card"><div class="data-card-title">Administrativos</div><div class="data-card-sub" style="font-size:13px;margin-top:4px">✅ Paz y salvo<br>✅ Documentos al día</div></div><div class="data-card"><div class="data-card-title">Seguridad</div><div class="data-card-sub" style="font-size:13px;margin-top:4px">✅ ARL vigente<br>✅ EPS · Vacunación</div></div><div class="data-card"><div class="data-card-title">Documentos</div><div class="data-card-sub" style="font-size:13px;margin-top:4px">✅ Hoja de vida<br>✅ Fotocopia documento</div></div></div><div class="success"><strong>El 71.4% de los egresados de INDECAP está trabajando.</strong> Cuando termines, harás parte de esa comunidad que abre puertas.</div></div>`),
-};}
-function setC(html){document.getElementById('lesson-content').innerHTML=html;}
+function openMM(){document.getElementById('mm').classList.add('open');document.getElementById('mo').classList.add('open');}
+function closeMM(){document.getElementById('mm').classList.remove('open');document.getElementById('mo').classList.remove('open');}
 
-(async()=>{await loadProgress();renderSidebar();})();
+(async()=>{
+  try{const r=await fetch('/api/progreso?seccion='+SECCION);if(r.ok){const d=await r.json();if(d.progress&&Object.keys(d.progress).length){progress=d.progress;saveLocal();}}}catch(e){}
+  if(!Object.keys(progress).length){try{const l=localStorage.getItem(SK);if(l)progress=JSON.parse(l);}catch(e){}}
+  updateUI();
+})();
 </script>
-
 </body>
 </html>
