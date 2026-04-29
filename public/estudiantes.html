@@ -1,642 +1,362 @@
-<!DOCTYPE html>
-<html lang="es" class="light">
+﻿<!DOCTYPE html>
+<html lang="es">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="noindex,nofollow">
 <title>INDECAP · Inducción Estudiantil</title>
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400;1,6..72,500&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet"/>
-<script id="tailwind-config">
-tailwind.config = {
-  darkMode: "class",
-  theme: {
-    extend: {
-      colors: {
-        "primary-container": "#1a086e",
-        "on-primary-container": "#847ddc",
-        "secondary-container": "#a59dff",
-        "surface": "#fcf8ff",
-        "surface-container": "#f0ecf5",
-        "surface-container-low": "#f6f2fb",
-        "surface-container-lowest": "#ffffff",
-        "surface-container-high": "#ebe6ef",
-        "surface-variant": "#e5e1e9",
-        "on-surface": "#1c1b21",
-        "on-surface-variant": "#474551",
-        "outline": "#787583",
-        "outline-variant": "#c8c4d3",
-        "secondary": "#5a52ae",
-        "on-secondary": "#ffffff",
-        "tertiary-fixed": "#ffddb0",
-        "tertiary-fixed-dim": "#f5bd65",
-        "error-container": "#ffdad6",
-        "on-error-container": "#93000a",
-        "inverse-surface": "#313036",
-        "primary": "#060036",
-      },
-      fontFamily: {
-        "newsreader": ["Newsreader"],
-        "inter": ["Inter"],
-        "work-sans": ["Work Sans"],
-      }
-    }
-  }
-}
-</script>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet"/>
 <style>
-.glass-panel{background:rgba(255,255,255,0.8);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px)}
-.pattern-overlay{background-image:repeating-linear-gradient(45deg,rgba(26,8,110,0.02) 0,rgba(26,8,110,0.02) 1px,transparent 1px,transparent 10px),repeating-linear-gradient(-45deg,rgba(26,8,110,0.02) 0,rgba(26,8,110,0.02) 1px,transparent 1px,transparent 10px)}
-.lesson-content h2{font-family:Newsreader,serif;font-size:1.4rem;font-weight:600;color:#1a086e;margin:1.5rem 0 0.75rem}
-.lesson-content h3{font-family:Work Sans,sans-serif;font-size:0.85rem;font-weight:700;color:#474551;text-transform:uppercase;letter-spacing:0.06em;margin:1.25rem 0 0.5rem}
-.lesson-content p{font-size:0.95rem;color:#474551;line-height:1.75;margin-bottom:0.85rem}
-.lesson-content ul{margin:0.5rem 0 1rem 1.25rem;display:flex;flex-direction:column;gap:0.4rem}
-.lesson-content ul li{font-size:0.95rem;color:#474551;line-height:1.6;list-style:disc}
-.lesson-content .highlight{background:linear-gradient(135deg,rgba(26,8,110,0.06),rgba(49,39,131,0.03));border-radius:10px;padding:1rem 1.25rem;border-left:4px solid #1a086e;margin:1rem 0}
-.lesson-content .alert{background:rgba(245,189,101,0.15);border-radius:10px;padding:1rem 1.25rem;border-left:4px solid #f5bd65;margin:1rem 0}
-.lesson-content .success{background:rgba(74,222,128,0.1);border-radius:10px;padding:1rem 1.25rem;border-left:4px solid #4ade80;margin:1rem 0}
-.lesson-content .data-grid{display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;margin:1rem 0}
-@media(max-width:600px){.lesson-content .data-grid{grid-template-columns:1fr}}
-.data-card{background:#fff;border:1px solid #c8c4d3;border-radius:10px;padding:1rem}
-.data-card-title{font-family:Work Sans,sans-serif;font-size:10.5px;font-weight:700;color:#474551;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:0.4rem}
-.data-card-val{font-family:Newsreader,serif;font-size:1.5rem;font-weight:600;color:#1a086e;letter-spacing:-0.01em}
-.data-card-sub{font-size:12px;color:#787583;margin-top:2px}
-.program-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(26,8,110,0.08);border-radius:100px;padding:4px 12px;font-family:Work Sans,sans-serif;font-size:12px;font-weight:600;color:#1a086e;margin:2px}
+*{box-sizing:border-box;margin:0;padding:0}
+html{height:100%}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Inter',sans-serif;background:#f0f0f0;height:100%;-webkit-font-smoothing:antialiased}
+
+/* ===== NAV ===== */
+.top-nav{position:fixed;top:0;left:0;right:0;height:52px;background:#fff;border-bottom:1px solid #e5e5e5;display:flex;align-items:center;padding:0 20px;gap:12px;z-index:100}
+.nav-logo{font-size:16px;font-weight:600;color:#1a086e;letter-spacing:-0.01em;flex-shrink:0}
+.nav-logo span{color:#805600}
+.nav-badge{background:#eef0ff;border-radius:100px;padding:3px 10px;font-size:11px;font-weight:600;color:#3730a3;flex-shrink:0}
+.nav-spacer{flex:1}
+.nav-progress-wrap{display:flex;align-items:center;gap:8px}
+.nav-progress-bar{width:80px;height:4px;background:#e5e5e5;border-radius:100px;overflow:hidden}
+.nav-progress-fill{height:100%;background:#1a086e;border-radius:100px;transition:width 0.4s}
+.nav-pct{font-size:12px;font-weight:600;color:#1a086e}
+.nav-menu-btn{width:36px;height:36px;border:1px solid #e5e5e5;border-radius:8px;background:none;cursor:pointer;display:none;align-items:center;justify-content:center;flex-direction:column;gap:4px;flex-shrink:0;padding:0}
+.nav-menu-line{width:14px;height:1.5px;background:#666;border-radius:2px;display:block}
+.nav-exit{background:none;border:1px solid #e5e5e5;border-radius:8px;padding:6px 14px;font-size:12px;font-weight:500;color:#555;cursor:pointer;white-space:nowrap}
+.nav-exit:hover{border-color:#1a086e;color:#1a086e}
+
+/* ===== LAYOUT ===== */
+.app{display:flex;height:100vh;padding-top:52px}
+
+/* ===== SIDEBAR ===== */
+.sidebar{width:256px;flex-shrink:0;background:#fff;border-right:1px solid #e5e5e5;display:flex;flex-direction:column;height:100%;overflow:hidden;transition:transform 0.28s cubic-bezier(.4,0,.2,1)}
+.sidebar-header{padding:16px;border-bottom:1px solid #e5e5e5;flex-shrink:0;background:#fafafa}
+.sidebar-label{font-size:10px;font-weight:600;color:#999;text-transform:uppercase;letter-spacing:0.07em;margin-bottom:4px}
+.sidebar-title{font-size:14px;font-weight:600;color:#1a086e;margin-bottom:2px}
+.sidebar-sub{font-size:11.5px;color:#666;line-height:1.4}
+.sidebar-list{flex:1;overflow-y:auto;padding:8px}
+.mod-item{display:flex;align-items:center;gap:10px;padding:9px 10px;border-radius:8px;cursor:pointer;border:1px solid transparent;margin-bottom:2px;transition:all 0.15s}
+.mod-item:hover{background:#f5f5f5}
+.mod-item.active{background:#eef0ff;border-color:#c7d2fe}
+.mod-item.done{opacity:0.75}
+.mod-icon{font-size:15px;width:22px;text-align:center;flex-shrink:0}
+.mod-info{flex:1;min-width:0}
+.mod-name{font-size:12.5px;font-weight:500;color:#111;line-height:1.3;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.mod-item.active .mod-name{color:#1a086e;font-weight:600}
+.mod-dur{font-size:11px;color:#999;margin-top:1px}
+.mod-done-icon{font-size:13px;color:#16a34a;flex-shrink:0;font-weight:600}
+
+/* ===== OVERLAY (mobile) ===== */
+.sidebar-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.45);z-index:49;top:52px}
+
+/* ===== MAIN ===== */
+.main-content{flex:1;overflow-y:auto;background:#f7f7f8}
+.main-inner{max-width:720px;margin:0 auto;padding:24px 24px 80px}
+
+/* ===== BREADCRUMB ===== */
+.breadcrumb{display:flex;align-items:center;gap:6px;font-size:12px;color:#999;margin-bottom:14px}
+.bc-arrow{font-size:10px}
+.bc-cur{color:#1a086e;font-weight:600}
+
+/* ===== LESSON HEADER ===== */
+.lesson-meta-row{display:flex;align-items:center;gap:8px;margin-bottom:8px}
+.lesson-icon{font-size:22px}
+.lesson-meta{font-size:11px;font-weight:600;color:#999;text-transform:uppercase;letter-spacing:0.05em}
+.lesson-h{font-size:22px;font-weight:600;color:#111;margin-bottom:20px;line-height:1.3;letter-spacing:-0.02em}
+
+/* ===== CONTENT CARDS ===== */
+.card{background:#fff;border-radius:12px;border:1px solid #e5e5e5;padding:16px;margin-bottom:12px}
+.card-label{font-size:10px;font-weight:600;color:#999;text-transform:uppercase;letter-spacing:0.07em;margin-bottom:10px}
+.highlight{background:#eef0ff;border-radius:8px;padding:12px 14px;border-left:3px solid #6366f1;margin-bottom:10px;font-size:13.5px;color:#312e81;line-height:1.65}
+.alert{background:#fffbeb;border-radius:8px;padding:12px 14px;border-left:3px solid #f59e0b;margin-bottom:10px;font-size:13.5px;color:#92400e;line-height:1.65}
+.success{background:#f0fdf4;border-radius:8px;padding:12px 14px;border-left:3px solid #22c55e;margin-bottom:10px;font-size:13.5px;color:#14532d;line-height:1.65}
+.a-good{background:#f0fdf4;border-radius:6px;padding:8px 12px;font-size:13px;color:#14532d;margin:4px 0}
+.a-bad{background:#fef2f2;border-radius:6px;padding:8px 12px;font-size:13px;color:#991b1b;margin:4px 0}
+.a-tip{background:#fffbeb;border-radius:6px;padding:8px 12px;font-size:13px;color:#92400e;margin:4px 0}
+.a-warn{background:#fffbeb;border-radius:6px;padding:8px 12px;font-size:13px;color:#92400e;margin:4px 0}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.data-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:10px 0}
+.data-card{background:#fafafa;border-radius:8px;padding:12px;border:1px solid #e5e5e5}
+.data-card-title{font-size:10px;font-weight:600;color:#999;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:4px}
+.data-card-val{font-size:20px;font-weight:600;color:#1a086e;letter-spacing:-0.02em}
+.data-card-sub{font-size:11.5px;color:#666;margin-top:2px}
+p{font-size:13.5px;color:#444;line-height:1.75;margin-bottom:10px}
+h2{font-size:17px;font-weight:600;color:#111;margin:16px 0 8px;letter-spacing:-0.01em}
+h2:first-child{margin-top:0}
+h3{font-size:10px;font-weight:600;color:#999;text-transform:uppercase;letter-spacing:0.07em;margin:14px 0 6px}
+ul{margin:4px 0 10px 16px;display:flex;flex-direction:column;gap:5px}
+ul li{font-size:13.5px;color:#444;line-height:1.6}
+strong{font-weight:600;color:#222}
+
+/* ===== AGENT BUBBLES ===== */
+.b-agent{background:linear-gradient(135deg,#1a086e,#312783);color:#fff;border-radius:12px 2px 12px 12px;padding:10px 14px;font-size:13px;max-width:480px;margin-bottom:6px;line-height:1.6}
+.t-step{display:flex;gap:12px;margin-bottom:12px;align-items:flex-start}
+.t-num{min-width:24px;height:24px;border-radius:50%;background:#1a086e;color:#fff;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:600;flex-shrink:0;margin-top:2px}
+.t-label{font-size:10px;font-weight:600;color:#999;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:4px}
+.branches{display:flex;gap:5px;flex-wrap:wrap;margin-top:6px}
+.br{padding:3px 10px;border-radius:100px;font-size:11.5px;font-weight:500}
+.br-y{background:#f0fdf4;color:#15803d;border:1px solid #bbf7d0}
+.br-n{background:#fef2f2;color:#dc2626;border:1px solid #fecaca}
+.br-m{background:#f5f5f5;color:#555;border:1px solid #e5e5e5}
+
+/* ===== CIERRE ===== */
+.cierre-box{background:#fafafa;border-radius:8px;padding:12px 14px;margin-bottom:8px;border-left:3px solid #1a086e;border:1px solid #e5e5e5;border-left:3px solid #1a086e}
+.cierre-lbl{font-size:10px;font-weight:600;color:#1a086e;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:4px}
+
+/* ===== OBJECIONES ===== */
+.obj-wrap{margin-bottom:6px}
+.obj-btn{width:100%;text-align:left;padding:11px 14px;background:#fff;border:1px solid #e5e5e5;border-radius:10px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;font-size:13.5px;font-weight:500;color:#111;transition:all 0.15s}
+.obj-btn:hover{border-color:#1a086e;background:#fafafa}
+.obj-freq{font-size:11px;font-weight:600;padding:2px 8px;border-radius:100px;background:#eef0ff;color:#3730a3;flex-shrink:0;margin-left:8px}
+.obj-freq.red{background:#fef2f2;color:#dc2626}
+.obj-body{display:none;padding:12px 14px;background:#fafafa;border:1px solid #e5e5e5;border-top:none;border-radius:0 0 10px 10px;margin-top:-6px}
+.obj-body.open{display:block}
+
+/* ===== SCRIPTS ===== */
+.sf{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:12px}
+.sf-btn{padding:5px 12px;border:1px solid #e5e5e5;border-radius:100px;font-size:12px;font-weight:500;cursor:pointer;background:#fff;color:#555;transition:all 0.15s}
+.sf-btn:hover,.sf-btn.active{background:#1a086e;color:#fff;border-color:#1a086e}
+.sc{background:#fff;border-radius:10px;padding:12px;border:1px solid #e5e5e5;margin-bottom:8px;transition:all 0.15s}
+.sc:hover{border-color:#c7d2fe}
+.sc-tag{display:inline-block;font-size:10.5px;font-weight:600;padding:2px 8px;border-radius:100px;margin-bottom:6px}
+.t-cierre{background:#f0fdf4;color:#15803d}
+.t-salud{background:#eef0ff;color:#3730a3}
+.t-excel{background:#f0fdf4;color:#15803d}
+.t-cosm{background:#fffbeb;color:#92400e}
+.t-vet{background:#fff7ed;color:#c2410c}
+.t-admin{background:#eff6ff;color:#1d4ed8}
+.t-tech{background:#f5f3ff;color:#7c3aed}
+.t-dep{background:#fef2f2;color:#dc2626}
+.t-gen{background:#f5f5f5;color:#555}
+.sc-title{font-size:13px;font-weight:600;color:#111;margin-bottom:4px}
+.sc-sit{font-size:11.5px;color:#999;margin-bottom:6px;font-style:italic}
+.sc-msg{font-size:12.5px;line-height:1.65;color:#444;background:#fafafa;border-radius:6px;padding:8px 11px;border-left:3px solid #1a086e;white-space:pre-wrap;border:1px solid #e5e5e5;border-left:3px solid #1a086e}
+.cp-btn{margin-top:6px;padding:4px 10px;background:none;border:1px solid #e5e5e5;border-radius:6px;font-size:11.5px;font-weight:500;cursor:pointer;color:#555;transition:all 0.15s}
+.cp-btn:hover{border-color:#1a086e;color:#1a086e}
+.cp-btn.copied{border-color:#22c55e;color:#15803d;background:#f0fdf4}
+.search-in{width:100%;padding:8px 12px;margin-bottom:12px;background:#fff;border:1px solid #e5e5e5;border-radius:8px;font-size:14px;color:#111;transition:all 0.15s;outline:none}
+.search-in:focus{border-color:#1a086e;box-shadow:0 0 0 3px rgba(26,8,110,0.06)}
+
+/* ===== TIP CARDS ===== */
+.tip-card{background:#fff;border-radius:12px;padding:16px;border:1px solid #e5e5e5;margin-bottom:12px;border-left:3px solid #1a086e}
+.tip-badge{display:inline-block;background:#1a086e;color:#fff;padding:2px 8px;border-radius:100px;font-size:10px;font-weight:600;margin-bottom:8px}
+.tip-title{font-size:15px;font-weight:600;color:#111;margin-bottom:8px;line-height:1.35;letter-spacing:-0.01em}
+.tip-body{font-size:13.5px;color:#444;line-height:1.7;margin-bottom:10px}
+.tip-compare{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:10px 0}
+.tip-wrong{background:#fef2f2;border-radius:8px;padding:10px;border-left:3px solid #dc2626}
+.tip-right{background:#f0fdf4;border-radius:8px;padding:10px;border-left:3px solid #22c55e}
+.tip-clabel{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:5px}
+.tip-wrong .tip-clabel{color:#991b1b}
+.tip-right .tip-clabel{color:#166534}
+.tip-ctext{font-size:12.5px;line-height:1.6;color:#333}
+.tip-remember{background:#eef0ff;border-radius:8px;padding:10px 12px;font-size:13px;color:#312e81;font-weight:500;line-height:1.6;margin-top:8px}
+
+/* ===== SIMULADOR ===== */
+.sim-lay{display:grid;grid-template-columns:200px 1fr;gap:12px}
+.pc{display:flex;gap:8px;align-items:center;padding:9px 10px;border-radius:8px;cursor:pointer;background:#fff;border:1px solid #e5e5e5;margin-bottom:5px;transition:all 0.15s}
+.pc:hover,.pc.active{border-color:#1a086e;background:#eef0ff}
+.pc-av{width:32px;height:32px;border-radius:50%;background:#1a086e;color:#fff;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:600;flex-shrink:0}
+.sim-panel{background:#fff;border-radius:12px;overflow:hidden;border:1px solid #e5e5e5;display:flex;flex-direction:column}
+.sim-hd{background:#1a086e;padding:12px 14px;display:flex;align-items:center;gap:10px}
+.sim-av{width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,0.15);color:#fff;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:600}
+.sim-sts{display:flex;border-bottom:1px solid #f0f0f0}
+.sim-st{flex:1;padding:8px;text-align:center;border-right:1px solid #f0f0f0}
+.sim-st:last-child{border-right:none}
+.sim-sn{font-size:17px;font-weight:600;color:#1a086e}
+.sim-sl{font-size:11px;color:#666}
+.sim-bar{height:3px;background:#f0f0f0}
+.sim-bar-fill{height:100%;background:linear-gradient(90deg,#1a086e,#805600);transition:width 0.4s}
+.chat{flex:1;min-height:240px;max-height:320px;overflow-y:auto;padding:12px;display:flex;flex-direction:column;gap:8px;background:#f7f7f8}
+.msg{max-width:80%;font-size:13px;line-height:1.5;padding:8px 11px;border-radius:10px}
+.msg-p{background:#fff;border:1px solid #e5e5e5;border-radius:2px 10px 10px 10px;align-self:flex-start}
+.msg-a{background:#1a086e;color:#fff;border-radius:10px 2px 10px 10px;align-self:flex-end}
+.msg-h{background:#fffbeb;border:1px solid #fde68a;color:#92400e;font-size:11.5px;border-radius:8px;align-self:center;max-width:94%;text-align:center;font-style:italic;padding:6px 10px}
+.msg-g{background:#f0fdf4;border:1px solid #bbf7d0;color:#166534;font-size:12px;border-radius:8px;align-self:center;max-width:94%;padding:6px 10px}
+.msg-b{background:#fef2f2;border:1px solid #fecaca;color:#991b1b;font-size:12px;border-radius:8px;align-self:center;max-width:94%;padding:6px 10px}
+.opts-area{padding:10px 12px;background:#fafafa;border-top:1px solid #f0f0f0}
+.opts-lbl{font-size:10px;font-weight:600;color:#999;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:6px}
+.opt-btn{width:100%;text-align:left;padding:7px 10px;background:#fff;border:1px solid #e5e5e5;border-radius:7px;font-size:12.5px;cursor:pointer;margin-bottom:4px;color:#111;line-height:1.4;transition:all 0.15s}
+.opt-btn:hover{border-color:#1a086e}
+.opt-btn.correct{background:#f0fdf4;border-color:#86efac;color:#166534;cursor:default}
+.opt-btn.wrong{background:#fef2f2;border-color:#fca5a5;color:#991b1b;cursor:default}
+
+/* ===== PROGRESS PAGE ===== */
+.tr-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:10px;margin-bottom:16px}
+.tr-stat{background:#fff;border-radius:10px;padding:12px;border:1px solid #e5e5e5;text-align:center}
+.tr-n{font-size:28px;font-weight:600;color:#1a086e;letter-spacing:-0.02em}
+.tr-l{font-size:11.5px;color:#666;margin-top:2px}
+.mp-row{display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid #f0f0f0}
+.mp-row:last-child{border-bottom:none}
+.mp-name{font-size:13.5px;font-weight:500;flex:1}
+.mp-status{font-size:11px;font-weight:600;padding:3px 9px;border-radius:100px}
+.s-done{background:#f0fdf4;color:#166534}
+.s-pend{background:#f5f5f5;color:#666}
+
+/* ===== BOTTOM NAV ===== */
+.bottom-nav{display:flex;align-items:center;justify-content:space-between;padding:10px 20px;border-top:1px solid #e5e5e5;flex-shrink:0;background:#fff}
+.btn-nav{background:none;border:1px solid #e5e5e5;border-radius:8px;padding:7px 14px;font-size:12.5px;font-weight:500;color:#555;cursor:pointer;display:flex;align-items:center;gap:5px;transition:all 0.15s}
+.btn-nav:hover{border-color:#1a086e;color:#1a086e}
+.btn-done{background:#1a086e;border:none;border-radius:8px;padding:8px 18px;font-size:12.5px;font-weight:600;color:#fff;cursor:pointer;display:flex;align-items:center;gap:5px;transition:all 0.15s}
+.btn-done:hover{background:#312783}
+.btn-done.completed{background:#15803d}
+
+/* ===== MOBILE ===== */
+@media(max-width:768px){
+  .nav-menu-btn{display:flex}
+  .nav-progress-wrap{display:none}
+  .sidebar{position:fixed;top:52px;left:0;bottom:0;transform:translateX(-100%);z-index:50}
+  .sidebar.open{transform:translateX(0)}
+  .sidebar-overlay{display:block}
+  .sidebar-overlay.visible{display:block}
+  .app{height:auto;min-height:calc(100vh - 52px)}
+  .main-content{height:auto;min-height:calc(100vh - 52px - 56px)}
+  .main-inner{padding:16px 14px 60px}
+  .two{grid-template-columns:1fr}
+  .data-grid{grid-template-columns:1fr 1fr}
+  .tip-compare{grid-template-columns:1fr}
+  .sim-lay{grid-template-columns:1fr}
+  h2{font-size:15px}
+  .lesson-h{font-size:18px}
+  .bottom-nav{padding:8px 14px}
+}
+@media(min-width:769px){
+  .app{height:calc(100vh - 52px)}
+  .main-content{height:100%;overflow-y:auto}
+}
 </style>
 </head>
-<body class="bg-surface text-on-surface font-inter antialiased h-screen flex flex-col overflow-hidden pattern-overlay">
+<body>
 
-<!-- NAV -->
-<nav class="bg-white/80 backdrop-blur-md border-b border-outline-variant shadow-sm fixed top-0 left-0 w-full z-50 flex justify-between items-center px-8 h-16">
-  <div class="flex items-center gap-3">
-    <span class="font-newsreader text-xl font-bold text-primary-container tracking-tight">INDECAP</span>
-    <span class="text-outline-variant">·</span>
-    <span class="text-sm font-medium text-on-surface-variant font-work-sans">Inducción Estudiantil</span>
+<nav class="top-nav">
+  <span class="nav-logo">IN<span style="color:#805600">D</span>ECAP</span>
+  <span class="nav-badge">Estudiantes</span>
+  <div class="nav-spacer"></div>
+  <div class="nav-progress-wrap">
+    <div class="nav-progress-bar"><div class="nav-progress-fill" id="progress-bar" style="width:0%"></div></div>
+    <span class="nav-pct" id="progress-txt">0%</span>
   </div>
-  <div class="hidden md:flex items-center gap-6">
-    <span id="progress-text" class="text-sm font-work-sans font-medium text-on-surface-variant">0 de 7 módulos</span>
-    <div class="w-32 h-1.5 bg-surface-variant rounded-full overflow-hidden">
-      <div id="progress-bar" class="h-full bg-gradient-to-r from-primary-container to-secondary rounded-full transition-all duration-500" style="width:0%"></div>
-    </div>
-  </div>
-  <div class="flex items-center gap-3">
-    <button onclick="exitToPortal()" class="text-sm font-work-sans font-medium text-on-surface-variant hover:text-primary-container transition-colors border border-outline-variant rounded-lg px-3 py-1.5">← Salir</button>
-  </div>
+  <button class="nav-menu-btn" onclick="toggleSidebar()">
+    <span class="nav-menu-line"></span><span class="nav-menu-line"></span><span class="nav-menu-line"></span>
+  </button>
+  <button class="nav-exit" onclick="window.location.href='/plataforma'">← Plataforma</button>
 </nav>
-
-<!-- LAYOUT -->
-<div class="flex flex-1 pt-16 overflow-hidden">
-
-  <!-- SIDEBAR -->
-  <aside class="w-72 flex-shrink-0 border-r border-outline-variant bg-surface-container-lowest flex flex-col h-full shadow-sm z-10">
-    <div class="p-4 border-b border-outline-variant bg-surface-container-low">
-      <p class="text-xs font-work-sans font-semibold text-on-surface-variant uppercase tracking-wider mb-1">Inducción Estudiantil</p>
-      <h2 class="font-newsreader text-lg font-semibold text-primary-container leading-snug">¡Bienvenido a INDECAP!</h2>
-      <p class="text-xs text-on-surface-variant mt-1 font-inter">Completa todos los módulos para conocer tu institución y empezar con el pie derecho.</p>
+<div class="sidebar-overlay" id="overlay" onclick="closeSidebar()"></div>
+<div class="app">
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <div class="sidebar-label">INDECAP · Plataforma</div>
+      <div class="sidebar-title">Inducción Estudiantil</div>
+      <div class="sidebar-sub">Completa los módulos para empezar con el pie derecho.</div>
     </div>
-    <div class="flex-1 overflow-y-auto p-3" id="sidebar-modules"></div>
+    <div class="sidebar-list" id="sidebar-list"></div>
   </aside>
-
-  <!-- MAIN -->
-  <main class="flex-1 overflow-y-auto bg-surface-container-low p-6 md:p-10 relative">
-    <div class="max-w-3xl mx-auto">
-
-      <div class="flex items-center gap-2 text-xs text-on-surface-variant mb-4 font-work-sans" id="breadcrumb">
-        <span>Inducción Estudiantil</span>
-        <span class="material-symbols-outlined text-base">chevron_right</span>
-        <span class="text-primary-container font-medium" id="breadcrumb-module">Selecciona un módulo</span>
-      </div>
-
-      <div class="mb-6" id="lesson-header">
-        <h1 class="font-newsreader text-3xl font-semibold text-primary-container mb-2">Bienvenido a INDECAP</h1>
-        <p class="text-on-surface-variant leading-relaxed">Selecciona un módulo en el panel izquierdo para comenzar.</p>
-      </div>
-
-      <div id="lesson-content" class="lesson-content">
-        <div class="text-center py-16">
-          <div class="text-6xl mb-4">🎓</div>
-          <h2 style="text-align:center;font-size:1.5rem;color:#1a086e;font-family:Newsreader,serif;margin-bottom:0.5rem">¡Bienvenido a INDECAP!</h2>
-          <p style="color:#474551;font-size:0.95rem;max-width:420px;margin:0 auto;line-height:1.7">Tomaste una de las mejores decisiones de tu vida. Esta inducción te ayudará a conocer tu institución, tus derechos, tus deberes y todo lo que necesitas para tener éxito en tu programa técnico.</p>
+  <div style="flex:1;display:flex;flex-direction:column;min-width:0;overflow:hidden">
+    <div class="main-content" id="main-scroll">
+      <div class="main-inner">
+        <div class="breadcrumb">
+          <span>Estudiantes</span><span class="bc-arrow">›</span>
+          <span class="bc-cur" id="bc-cur">Inicio</span>
         </div>
+        <div id="lesson-header">
+          <div style="text-align:center;padding:40px 0 16px;font-size:2.5rem">🎓</div>
+          <div class="lesson-h" style="text-align:center;margin-bottom:8px">¡Bienvenido a INDECAP!</div>
+          <p style="text-align:center;color:#666">Selecciona un módulo en el menú para comenzar.</p>
+        </div>
+        <div id="lesson-content"></div>
       </div>
-
-      <div class="flex items-center justify-between mt-10 pt-6 border-t border-outline-variant" id="lesson-nav" style="display:none!important">
-        <button id="btn-prev" onclick="navigateLesson(-1)" class="flex items-center gap-2 text-on-surface-variant hover:text-primary-container transition-colors font-work-sans text-sm px-4 py-2">
-          <span class="material-symbols-outlined text-xl">arrow_back</span>
-          Anterior
-        </button>
-        <button id="btn-done" onclick="markCurrentDone()" class="flex items-center gap-2 bg-gradient-to-r from-primary-container to-secondary text-white px-6 py-2.5 rounded-lg font-work-sans text-sm font-medium shadow-md hover:shadow-lg hover:-translate-y-0.5 transition-all">
-          Marcar completado
-          <span class="material-symbols-outlined text-xl">check_circle</span>
-        </button>
-        <button id="btn-next" onclick="navigateLesson(1)" class="flex items-center gap-2 text-on-surface-variant hover:text-primary-container transition-colors font-work-sans text-sm px-4 py-2">
-          Siguiente
-          <span class="material-symbols-outlined text-xl">arrow_forward</span>
-        </button>
-      </div>
-
     </div>
-    <div class="h-20"></div>
-  </main>
+    <div class="bottom-nav" id="bottom-nav" style="display:none">
+      <button class="btn-nav" id="btn-prev" onclick="navigateLesson(-1)">← Anterior</button>
+      <button class="btn-done" id="btn-done" onclick="markCurrentDone()">Marcar completado</button>
+      <button class="btn-nav" id="btn-next" onclick="navigateLesson(1)">Siguiente →</button>
+    </div>
+  </div>
 </div>
-
 <script>
-const SK = 'indecap_estudiantes_v1';
-let progress = {};
-try { progress = JSON.parse(localStorage.getItem(SK) || '{}'); } catch(e){}
-function saveProgress(){ try{ localStorage.setItem(SK, JSON.stringify(progress)); }catch(e){} }
 
-let currentIdx = -1;
+function toggleSidebar(){document.getElementById('sidebar').classList.toggle('open');document.getElementById('overlay').classList.toggle('visible');}
+function closeSidebar(){document.getElementById('sidebar').classList.remove('open');document.getElementById('overlay').classList.remove('visible');}
 
-const MODULES = [
-  {
-    id: 'bienvenida',
-    icon: '🏛️',
-    label: 'Quiénes somos',
-    duration: '10 min',
-    content: `
-      <h2>40 años transformando vidas en Antioquia</h2>
-      <p>Elegiste bien. INDECAP lleva más de 40 años siendo el puente entre los jóvenes de Antioquia y el mundo laboral. Hemos tenido todas las formas de educación — bachillerato, cursos cortos, diplomados — y encontramos que <strong>la educación técnica es el vehículo de movilidad social más eficiente y accesible</strong> que existe.</p>
-      <p>El 71.4% de nuestros egresados está laborando. Ese número es nuestra promesa contigo.</p>
-
-      <h3>Misión</h3>
-      <div class="highlight">
-        <p style="margin:0;color:#1a086e;font-style:italic">Somos una organización educativa de carácter técnico, que brinda formación integral con estándares de excelencia y alta calidad, enfocada en el desarrollo del ser, comprometidos con la responsabilidad social empresarial y la satisfacción de los grupos de interés.</p>
-      </div>
-
-      <h3>Visión 2030</h3>
-      <div class="highlight">
-        <p style="margin:0;color:#1a086e;font-style:italic">En el 2030 INDECAP será una institución de educación superior reconocida y posicionada a nivel nacional por su cumplimiento en los estándares de calidad académica, responsabilidad social y la pertinencia de sus programas.</p>
-      </div>
-
-      <h3>Tus 3 sedes — todas son tuyas</h3>
-      <div class="data-grid">
-        <div class="data-card">
-          <div class="data-card-title">📍 Medellín</div>
-          <div class="data-card-val">Calle 56 #45-26</div>
-          <div class="data-card-sub">Cerca al Metro Prado</div>
-          <div class="data-card-sub" style="margin-top:4px">Tel. 4484794</div>
-        </div>
-        <div class="data-card">
-          <div class="data-card-title">📍 Envigado</div>
-          <div class="data-card-val">Cl 37 Sur #43A-84</div>
-          <div class="data-card-sub">Cerca al Parque Principal</div>
-          <div class="data-card-sub" style="margin-top:4px">Tel. 4484794</div>
-        </div>
-        <div class="data-card">
-          <div class="data-card-title">📍 Caldas</div>
-          <div class="data-card-val">Cl 130 Sur #51-65</div>
-          <div class="data-card-sub">Cerca al parque principal</div>
-          <div class="data-card-sub" style="margin-top:4px">Tel. 4484794</div>
-        </div>
-        <div class="data-card">
-          <div class="data-card-title">Jornadas disponibles</div>
-          <div class="data-card-val">4 jornadas</div>
-          <div class="data-card-sub">Mañana · Tarde · Noche · Sabatino</div>
-        </div>
-      </div>
-
-      <h3>Lo que nos certifica</h3>
-      <ul>
-        <li>Certificación ISO 9001:2015 — estándar internacional de calidad</li>
-        <li>NTC 5555:2011 — norma técnica colombiana para instituciones de formación para el trabajo</li>
-        <li>Aprobación de la Secretaría de Educación de Antioquia en todas nuestras sedes</li>
-      </ul>
-
-      <div class="success">
-        <strong>Tu título tiene respaldo real.</strong> Nuestros certificados son reconocidos por clínicas, hospitales, empresas y organizaciones en toda la región. No estudias para un papel — estudias para trabajar.
-      </div>
-    `
-  },
-  {
-    id: 'programas',
-    icon: '📚',
-    label: 'Tu programa técnico',
-    duration: '15 min',
-    content: `
-      <h2>Formación para el Trabajo y Desarrollo Humano</h2>
-      <p>Tu programa técnico está diseñado bajo la modalidad de <strong>Formación para el Trabajo y Desarrollo Humano</strong>, avalado por la Secretaría de Educación. Esto significa que al graduarte tienes una certificación con validez legal para trabajar en Colombia.</p>
-
-      <h3>Programas que ofrecemos</h3>
-      <p style="margin-bottom:0.5rem">INDECAP tiene programas en 5 áreas:</p>
-
-      <div style="margin:1rem 0">
-        <p style="font-family:Work Sans,sans-serif;font-size:11px;font-weight:700;color:#474551;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:8px">Salud</p>
-        <div>
-          <span class="program-badge">Auxiliar en Enfermería</span>
-          <span class="program-badge">Servicios Farmacéuticos</span>
-          <span class="program-badge">Auxiliar en Salud Oral</span>
-          <span class="program-badge">Auxiliar en Salud Pública</span>
-          <span class="program-badge">Administrativo en Salud</span>
-          <span class="program-badge">Atención al Adulto Mayor</span>
-        </div>
-      </div>
-
-      <div style="margin:1rem 0">
-        <p style="font-family:Work Sans,sans-serif;font-size:11px;font-weight:700;color:#474551;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:8px">Veterinaria</p>
-        <div>
-          <span class="program-badge">Auxiliar en Veterinaria</span>
-          <span class="program-badge">Peluquería Canina</span>
-        </div>
-      </div>
-
-      <div style="margin:1rem 0">
-        <p style="font-family:Work Sans,sans-serif;font-size:11px;font-weight:700;color:#474551;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:8px">Belleza</p>
-        <div>
-          <span class="program-badge">Cosmetología y Estética</span>
-        </div>
-      </div>
-
-      <div style="margin:1rem 0">
-        <p style="font-family:Work Sans,sans-serif;font-size:11px;font-weight:700;color:#474551;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:8px">Administrativa</p>
-        <div>
-          <span class="program-badge">Auxiliar Contable</span>
-          <span class="program-badge">Talento Humano</span>
-          <span class="program-badge">Marketing Digital</span>
-          <span class="program-badge">Seguridad y Salud en el Trabajo</span>
-          <span class="program-badge">Primera Infancia</span>
-        </div>
-      </div>
-
-      <div style="margin:1rem 0">
-        <p style="font-family:Work Sans,sans-serif;font-size:11px;font-weight:700;color:#474551;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:8px">Tecnología</p>
-        <div>
-          <span class="program-badge">Técnico en Sistemas</span>
-          <span class="program-badge">Auxiliar en Desarrollo de Software</span>
-        </div>
-      </div>
-
-      <div style="margin:1rem 0">
-        <p style="font-family:Work Sans,sans-serif;font-size:11px;font-weight:700;color:#474551;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:8px">Deportes</p>
-        <div>
-          <span class="program-badge">Entrenamiento Deportivo</span>
-        </div>
-      </div>
-
-      <h3>También ofrecemos</h3>
-      <ul>
-        <li><strong>Bachillerato Semi-escolarizado (CLEI):</strong> Para quienes no terminaron el bachillerato. Ciclos CLEI 3, 4, 5 y 6 con metodología flexible.</li>
-        <li><strong>Educación Continua:</strong> Seminarios, diplomados y cursos de profundización para egresados y comunidad en general.</li>
-      </ul>
-
-      <div class="highlight">
-        <p style="margin:0;color:#1a086e"><strong>¿Quieres cambiar de programa?</strong> Habla con coordinación académica de tu sede antes de tomar cualquier decisión. Hay procesos para hacer el cambio de forma ordenada sin perder lo que ya pagaste.</p>
-      </div>
-    `
-  },
-  {
-    id: 'evaluacion',
-    icon: '📊',
-    label: 'Cómo te evalúan',
-    duration: '15 min',
-    content: `
-      <h2>El sistema de evaluación de INDECAP</h2>
-      <p>En INDECAP no te evaluamos para reprobarte — te evaluamos para confirmar que aprendiste y que puedes hacer lo que el programa te enseña. Conocer las reglas desde el principio te da ventaja.</p>
-
-      <h3>La distribución de notas</h3>
-      <div class="data-grid">
-        <div class="data-card">
-          <div class="data-card-title">La institución evalúa (40%)</div>
-          <div class="data-card-val">40%</div>
-          <div class="data-card-sub">Parcial inicial: 15%</div>
-          <div class="data-card-sub">Parcial final: 25%</div>
-        </div>
-        <div class="data-card">
-          <div class="data-card-title">Tu docente evalúa (60%)</div>
-          <div class="data-card-val">60%</div>
-          <div class="data-card-sub">Talleres, quizzes, prácticas</div>
-          <div class="data-card-sub">A criterio de cada docente</div>
-        </div>
-      </div>
-
-      <h3>Las reglas que debes saber sí o sí</h3>
-      <ul>
-        <li><strong>La escala es de 0 a 5.</strong> Apruebas con nota <strong>mayor a 3.5</strong>. Si sacas exactamente 3.5 — repruebas.</li>
-        <li><strong>Asistencia crítica:</strong> Con el 25% de inasistencias pierdes la competencia, sin importar tu nota. Si el ciclo tiene 40 clases, no puedes faltar más de 10.</li>
-        <li>Cada competencia se evalúa de forma independiente. Puedes pasar una y reprobar otra.</li>
-        <li>Las notas son definitivas cuando las publica el docente en Q10. Si crees que hay un error, tienes derecho a revisarla — habla con el docente primero.</li>
-      </ul>
-
-      <h3>¿Qué pasa si repruebas una competencia?</h3>
-      <ul>
-        <li>Debes habilitarla o repetirla en el siguiente ciclo según las condiciones de tu programa.</li>
-        <li>Habla con coordinación académica — ellos te explican el proceso específico según tu situación.</li>
-        <li>No entres en pánico. Reprobar una competencia no significa que perdiste el ciclo completo.</li>
-      </ul>
-
-      <h3>Prácticas profesionales — lo que necesitas tener listo</h3>
-      <p>Algunos programas incluyen práctica supervisada. Para poder ir a práctica debes tener:</p>
-      <ul>
-        <li>✅ Curso de Humanización y Calidad en el Servicio aprobado</li>
-        <li>✅ Paz y salvo con la institución (sin deudas pendientes)</li>
-        <li>✅ Afiliación a ARL vigente</li>
-        <li>✅ Esquema de vacunación completo</li>
-        <li>✅ Certificado de EPS</li>
-        <li>✅ Hoja de vida y fotocopia del documento de identidad</li>
-      </ul>
-
-      <div class="alert">
-        <strong>Sobre la asistencia:</strong> Si faltas por enfermedad o fuerza mayor, informa a tu docente ese mismo día. Algunas ausencias pueden justificarse pero no se borran del conteo — lo que cambia es el contexto. Siempre es mejor avisar que no avisar.
-      </div>
-    `
-  },
-  {
-    id: 'plataforma',
-    icon: '💻',
-    label: 'Q10 y tus notas',
-    duration: '10 min',
-    content: `
-      <h2>Cómo consultar tus notas en Q10</h2>
-      <p>Q10 es el sistema académico de INDECAP. Aquí puedes ver tus notas, tu asistencia y el estado de tus competencias en tiempo real. Es tu herramienta más importante para hacer seguimiento a tu proceso.</p>
-
-      <h3>Tus credenciales de acceso</h3>
-      <div class="highlight">
-        <p style="margin:0;color:#1a086e"><strong>La coordinación de tu sede te entregará tu usuario y contraseña en los primeros días.</strong> Si no las has recibido, solicítalas directamente en la oficina de coordinación.</p>
-      </div>
-
-      <h3>Qué puedes ver en Q10</h3>
-      <ul>
-        <li>Tus notas por competencia y por evaluación</li>
-        <li>Tu registro de asistencia — cuántas clases has faltado en cada competencia</li>
-        <li>El estado de tu proceso académico general</li>
-        <li>Información de tu programa y ciclo actual</li>
-      </ul>
-
-      <h3>Buenas prácticas con Q10</h3>
-      <ul>
-        <li>Revisa tus notas al menos una vez por semana — no esperes al final del ciclo para enterarte de cómo vas.</li>
-        <li>Si una nota no aparece o parece incorrecta, primero habla con tu docente. Si no se resuelve, escala a coordinación.</li>
-        <li>Guarda tus credenciales en un lugar seguro. Si las pierdes, solicita recuperación en coordinación.</li>
-        <li>No compartas tu usuario y contraseña con nadie.</li>
-      </ul>
-
-      <h3>Esta plataforma de inducción</h3>
-      <ul>
-        <li>Es tu espacio de orientación institucional.</li>
-        <li>Tu progreso se guarda automáticamente en este navegador.</li>
-        <li>Puedes volver a cualquier módulo cuando quieras para consultar información.</li>
-      </ul>
-
-      <div class="alert">
-        <strong>Importante:</strong> Q10 muestra la información en tiempo real pero las notas pueden tener un pequeño retraso si el docente aún no las ha subido. Si el plazo del ciclo ya venció y tu nota no aparece, repórtalo a coordinación de inmediato.
-      </div>
-    `
-  },
-  {
-    id: 'reglamento',
-    icon: '📋',
-    label: 'Tus derechos y deberes',
-    duration: '20 min',
-    content: `
-      <h2>Lo que puedes esperar de INDECAP y lo que INDECAP espera de ti</h2>
-      <p>Conocer tus derechos y tus deberes desde el principio te protege y te da herramientas para tener una buena experiencia en tu programa técnico.</p>
-
-      <h3>Tus derechos como estudiante INDECAP</h3>
-      <ul>
-        <li>Recibir educación de calidad en las condiciones acordadas al momento de tu matrícula.</li>
-        <li>Ser tratado con respeto por docentes, coordinadores y personal administrativo en todo momento.</li>
-        <li>Conocer el sistema de evaluación de cada competencia desde el primer día de clase.</li>
-        <li>Solicitar revisión de nota si consideras que hay un error — tienes derecho a que te expliquen cómo se calificó.</li>
-        <li>Acceder a tus notas y asistencia en Q10 en cualquier momento.</li>
-        <li>Presentar quejas, sugerencias o inquietudes a través del conducto regular sin temor a represalias.</li>
-        <li>Recibir información clara sobre los requisitos para tus prácticas profesionales con suficiente anticipación.</li>
-      </ul>
-
-      <h3>Tus deberes como estudiante INDECAP</h3>
-      <ul>
-        <li>Asistir puntualmente a todas tus clases. Recuerda: más del 25% de inasistencias = pierdes la competencia.</li>
-        <li>Llegar con los materiales, uniformes y equipos requeridos según tu programa.</li>
-        <li>Tratar con respeto a tus docentes, compañeros y personal de la institución.</li>
-        <li>Mantener tu matrícula y pagos al día para no generar bloqueos académicos.</li>
-        <li>Informar a tu docente o coordinación cuando tengas una situación que afecte tu proceso académico.</li>
-        <li>Cuidar las instalaciones, equipos y laboratorios de la institución.</li>
-        <li>Representar con orgullo a INDECAP en tus prácticas profesionales.</li>
-      </ul>
-
-      <h3>El conducto regular — a quién acudir según el problema</h3>
-      <div class="data-grid">
-        <div class="data-card">
-          <div class="data-card-title">Paso 1</div>
-          <div class="data-card-val" style="font-size:1.1rem">Tu docente</div>
-          <div class="data-card-sub">Notas, contenido, dudas académicas, inasistencias</div>
-        </div>
-        <div class="data-card">
-          <div class="data-card-title">Paso 2</div>
-          <div class="data-card-val" style="font-size:1.1rem">Coordinación</div>
-          <div class="data-card-sub">Si el docente no resuelve, problemas de matrícula, Q10</div>
-        </div>
-        <div class="data-card">
-          <div class="data-card-title">Paso 3</div>
-          <div class="data-card-val" style="font-size:1.1rem">Dirección académica</div>
-          <div class="data-card-sub">Situaciones que coordinación no pudo resolver</div>
-        </div>
-        <div class="data-card">
-          <div class="data-card-title">Pagos y financiero</div>
-          <div class="data-card-val" style="font-size:1.1rem">Área administrativa</div>
-          <div class="data-card-sub">Directamente — no pases por docentes para temas de pago</div>
-        </div>
-      </div>
-
-      <div class="alert">
-        <strong>Si tienes un problema:</strong> Siempre es mejor hablarlo que callarlo. INDECAP tiene 40 años porque aprende de sus estudiantes. No tengas miedo de hablar — el silencio casi siempre empeora las situaciones.
-      </div>
-    `
-  },
-  {
-    id: 'pagos',
-    icon: '💳',
-    label: 'Pagos y matrículas',
-    duration: '15 min',
-    content: `
-      <h2>Todo sobre tu inversión en INDECAP</h2>
-      <p>Estudiar en INDECAP es una inversión en tu futuro. Para que puedas aprovecharla al máximo, es importante que entiendas cómo funciona el sistema de pagos y qué pasa si tienes dificultades.</p>
-
-      <h3>Tu compromiso de pago</h3>
-      <ul>
-        <li>Al matricularte firmaste un acuerdo de pago. Ese acuerdo tiene fechas específicas que debes respetar.</li>
-        <li>Los pagos se hacen en el área administrativa de tu sede — no con docentes ni coordinadores.</li>
-        <li>Guarda siempre tus recibos de pago. Son tu único comprobante en caso de algún inconveniente.</li>
-      </ul>
-
-      <h3>¿Qué pasa si no puedo pagar a tiempo?</h3>
-      <div class="highlight">
-        <p style="margin:0;color:#1a086e"><strong>Lo más importante: habla con nosotros antes de atrasarte.</strong> INDECAP entiende que la vida tiene imprevistos. Lo que no podemos hacer es ayudarte si no sabemos que hay un problema.</p>
-      </div>
-      <ul>
-        <li>Si anticipas que vas a tener dificultades para pagar, acércate al área administrativa <strong>antes</strong> de la fecha de vencimiento.</li>
-        <li>En muchos casos se pueden hacer acuerdos de pago o refinanciaciones si se solicitan a tiempo.</li>
-        <li>Los atrasos prolongados pueden generar bloqueos en el sistema académico que afectan tu acceso a notas y constancias.</li>
-        <li>Un paz y salvo es requisito para ir a prácticas y para recibir tu certificado al finalizar el programa.</li>
-      </ul>
-
-      <h3>Opciones de pago que existen</h3>
-      <ul>
-        <li><strong>Pago de contado por ciclo</strong> — incluye descuento especial</li>
-        <li><strong>Pago financiado</strong> — cuota inicial + cuotas mensuales</li>
-        <li>Las condiciones exactas dependen de tu programa y sede — consulta en administración</li>
-      </ul>
-
-      <h3>Costos adicionales que debes tener en cuenta</h3>
-      <ul>
-        <li>Póliza de responsabilidad civil (según programa)</li>
-        <li>Formulario de matrícula y carnet estudiantil</li>
-        <li>Uniformes y dotación según el programa</li>
-        <li>ARL y EPS para prácticas profesionales</li>
-      </ul>
-
-      <div class="alert">
-        <strong>Recuerda:</strong> Tu proceso académico y tu situación de pago son temas separados en el aula. Tu docente no sabe si estás al día con tus pagos y no debe saberlo. Si alguien en el aula comenta sobre tu situación financiera, tienes derecho a reportarlo a coordinación.
-      </div>
-    `
-  },
-  {
-    id: 'practicas',
-    icon: '🏥',
-    label: 'Prácticas y graduación',
-    duration: '15 min',
-    content: `
-      <h2>El paso final: prácticas profesionales y tu certificado</h2>
-      <p>Las prácticas profesionales son el momento donde todo lo que aprendiste en el aula se convierte en experiencia real. Para muchos de nuestros egresados, las prácticas son también la puerta de entrada al empleo.</p>
-
-      <h3>¿Cuándo vas a prácticas?</h3>
-      <ul>
-        <li>Al final del programa, cuando hayas completado todas las competencias del pensum.</li>
-        <li>La duración varía según el programa — tu coordinador te informará con anticipación.</li>
-        <li>INDECAP tiene convenios con instituciones del sector para que puedas hacer tus prácticas en entornos reales.</li>
-      </ul>
-
-      <h3>Requisitos para ir a prácticas</h3>
-      <div class="data-grid">
-        <div class="data-card">
-          <div class="data-card-title">Académicos</div>
-          <div class="data-card-sub" style="font-size:13px;margin-top:4px">✅ Curso de Humanización aprobado</div>
-          <div class="data-card-sub" style="font-size:13px">✅ Todas las competencias del pensum al día</div>
-        </div>
-        <div class="data-card">
-          <div class="data-card-title">Administrativos</div>
-          <div class="data-card-sub" style="font-size:13px;margin-top:4px">✅ Paz y salvo (sin deudas)</div>
-          <div class="data-card-sub" style="font-size:13px">✅ Documentos al día en sistema</div>
-        </div>
-        <div class="data-card">
-          <div class="data-card-title">Salud y seguridad</div>
-          <div class="data-card-sub" style="font-size:13px;margin-top:4px">✅ Afiliación a ARL vigente</div>
-          <div class="data-card-sub" style="font-size:13px">✅ Certificado de EPS</div>
-          <div class="data-card-sub" style="font-size:13px">✅ Vacunación completa</div>
-        </div>
-        <div class="data-card">
-          <div class="data-card-title">Documentos</div>
-          <div class="data-card-sub" style="font-size:13px;margin-top:4px">✅ Hoja de vida actualizada</div>
-          <div class="data-card-sub" style="font-size:13px">✅ Fotocopia del documento de identidad</div>
-        </div>
-      </div>
-
-      <h3>Comportamiento durante las prácticas</h3>
-      <ul>
-        <li>En el lugar de práctica representas a INDECAP. Tu actitud y profesionalismo reflejan la calidad de la institución.</li>
-        <li>Sigue las instrucciones del supervisor del sitio de práctica como si fuera tu jefe — porque lo es durante ese tiempo.</li>
-        <li>Cualquier inconveniente en el sitio de práctica debe reportarse a INDECAP de inmediato.</li>
-        <li>La puntualidad en las prácticas es tan importante como en el aula — o más.</li>
-      </ul>
-
-      <h3>Tu certificado</h3>
-      <ul>
-        <li>Al completar todas las competencias y tus prácticas, recibes tu Certificado Técnico Laboral con validez en todo el país.</li>
-        <li>Para recibir el certificado debes estar a paz y salvo con la institución.</li>
-        <li>El proceso de grado tiene fechas específicas — infórmate con anticipación para no atrasarte.</li>
-      </ul>
-
-      <div class="success">
-        <strong>El 71.4% de los egresados de INDECAP está trabajando.</strong> Cuando termines tu programa, tendrás un certificado real, experiencia práctica en el sector, y harás parte de una comunidad de egresados que abre puertas. Eso es lo que construiste al elegir INDECAP.
-      </div>
-    `
-  },
+const SECCION='estudiantes',SK='indecap_estudiantes_v3';
+let progress={},currentIdx=-1;
+function saveLocal(){try{localStorage.setItem(SK,JSON.stringify(progress));}catch(e){}}
+async function loadProgress(){
+  try{const r=await fetch('/api/progreso?seccion='+SECCION);if(r.ok){const d=await r.json();if(d.progress&&Object.keys(d.progress).length){progress=d.progress;saveLocal();return;}}}catch(e){}
+  try{const l=localStorage.getItem(SK);if(l)progress=JSON.parse(l);}catch(e){}
+}
+async function saveProgress(id,pts){
+  progress[id]=true;saveLocal();
+  try{await fetch('/api/progreso',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({seccion:SECCION,modulo_id:id,puntaje:pts||0})});}catch(e){}
+}
+const MODULES=[
+  {id:'bienvenida', icon:'🏛️', label:'Quiénes somos',         duration:'10 min'},
+  {id:'programas',  icon:'📚', label:'Tu programa técnico',    duration:'15 min'},
+  {id:'evaluacion', icon:'📊', label:'Cómo te evalúan',        duration:'15 min'},
+  {id:'plataforma', icon:'💻', label:'Q10 y tus notas',        duration:'10 min'},
+  {id:'reglamento', icon:'📋', label:'Tus derechos y deberes', duration:'20 min'},
+  {id:'pagos',      icon:'💳', label:'Pagos y matrículas',     duration:'15 min'},
+  {id:'practicas',  icon:'🏥', label:'Prácticas y graduación', duration:'15 min'},
 ];
-
+function updateProgressUI(){
+  const done=Object.keys(progress).length,total=MODULES.length,pct=Math.round(done/total*100);
+  const b=document.getElementById('progress-bar'),t=document.getElementById('progress-txt');
+  if(b)b.style.width=pct+'%';if(t)t.textContent=pct+'%';
+}
 function renderSidebar(){
-  const cont = document.getElementById('sidebar-modules');
-  cont.innerHTML = MODULES.map((m, i) => {
-    const done = progress[m.id];
-    return `
-      <div class="mb-1 rounded-lg overflow-hidden border ${currentIdx===i?'border-primary-container bg-white shadow-sm':'border-outline-variant'} transition-all cursor-pointer" onclick="selectModule(${i})">
-        <div class="p-3 flex items-center gap-3">
-          <span class="text-xl flex-shrink-0">${m.icon}</span>
-          <div class="flex-1 min-w-0">
-            <p class="text-xs font-work-sans font-semibold ${currentIdx===i?'text-primary-container':'text-on-surface'} leading-snug">${m.label}</p>
-            <p class="text-xs text-on-surface-variant mt-0.5">${m.duration}</p>
-          </div>
-          ${done ? '<span class="material-symbols-outlined text-secondary text-xl flex-shrink-0" style="font-variation-settings:\'FILL\' 1">check_circle</span>' : ''}
-        </div>
-      </div>`;
+  const list=document.getElementById('sidebar-list');if(!list)return;
+  list.innerHTML=MODULES.map((m,i)=>{
+    const done=progress[m.id],active=i===currentIdx;
+    return '<div class="mod-item'+(active?' active':'')+(done?' done':'')+'" onclick="selectModule('+i+');closeSidebar()">'
+      +'<span class="mod-icon">'+m.icon+'</span><div class="mod-info"><div class="mod-name">'+m.label+'</div><div class="mod-dur">'+m.duration+'</div></div>'
+      +(done?'<span class="mod-done-icon">&#10003;</span>':'')+'</div>';
   }).join('');
+  updateProgressUI();
 }
-
-function updateProgress(){
-  const done = Object.keys(progress).length;
-  const total = MODULES.length;
-  const pct = Math.round((done/total)*100);
-  const bar = document.getElementById('progress-bar');
-  const txt = document.getElementById('progress-text');
-  if(bar) bar.style.width = pct + '%';
-  if(txt) txt.textContent = done + ' de ' + total + ' módulos';
-}
-
 function selectModule(idx){
-  currentIdx = idx;
-  const m = MODULES[idx];
+  currentIdx=idx;const m=MODULES[idx];
   renderSidebar();
-  document.getElementById('breadcrumb-module').textContent = m.label;
-  document.getElementById('lesson-header').innerHTML = `
-    <div class="flex items-center gap-3 mb-3">
-      <span class="text-3xl">${m.icon}</span>
-      <div>
-        <p class="text-xs font-work-sans font-semibold text-on-surface-variant uppercase tracking-wider">Módulo ${idx+1} de ${MODULES.length} · ${m.duration}</p>
-      </div>
-    </div>
-    <h1 class="font-newsreader text-3xl font-semibold text-primary-container mb-2">${m.label}</h1>
-  `;
-  document.getElementById('lesson-content').innerHTML = m.content;
-  const nav = document.getElementById('lesson-nav');
-  nav.style.display = 'flex';
-  document.getElementById('btn-prev').style.visibility = idx === 0 ? 'hidden' : 'visible';
-  document.getElementById('btn-next').style.visibility = idx === MODULES.length-1 ? 'hidden' : 'visible';
-  const doneBtn = document.getElementById('btn-done');
-  if(progress[m.id]){
-    doneBtn.innerHTML = '<span class="material-symbols-outlined text-xl" style="font-variation-settings:\'FILL\' 1">check_circle</span> Completado';
-    doneBtn.className = 'flex items-center gap-2 bg-green-600 text-white px-6 py-2.5 rounded-lg font-work-sans text-sm font-medium';
-  } else {
-    doneBtn.innerHTML = 'Marcar completado <span class="material-symbols-outlined text-xl">check_circle</span>';
-    doneBtn.className = 'flex items-center gap-2 bg-gradient-to-r from-primary-container to-secondary text-white px-6 py-2.5 rounded-lg font-work-sans text-sm font-medium shadow-md hover:shadow-lg hover:-translate-y-0.5 transition-all';
-  }
-  window.scrollTo({top:0, behavior:'smooth'});
+  document.getElementById('bc-cur').textContent=m.label;
+  document.getElementById('lesson-header').innerHTML=
+    '<div class="lesson-meta-row"><span class="lesson-icon">'+m.icon+'</span>'
+    +'<span class="lesson-meta">Módulo '+(idx+1)+' de '+MODULES.length+' · '+m.duration+'</span></div>'
+    +'<div class="lesson-h">'+m.label+'</div>';
+  document.getElementById('lesson-content').innerHTML='';
+  const fns=getContentFunctions();if(fns[m.id])fns[m.id]();
+  document.getElementById('bottom-nav').style.display='flex';
+  document.getElementById('btn-prev').style.visibility=idx===0?'hidden':'visible';
+  document.getElementById('btn-next').style.visibility=idx===MODULES.length-1?'hidden':'visible';
+  const db=document.getElementById('btn-done');
+  if(db){if(progress[m.id]){db.innerHTML='&#10003; Completado';db.classList.add('completed');}else{db.innerHTML='Marcar completado';db.classList.remove('completed');}}
+  const ms=document.getElementById('main-scroll');if(ms)ms.scrollTop=0;
+  window.scrollTo({top:0,behavior:'smooth'});
 }
-
 function markCurrentDone(){
-  if(currentIdx < 0) return;
-  const m = MODULES[currentIdx];
-  progress[m.id] = true;
-  saveProgress();
-  updateProgress();
-  renderSidebar();
-  const doneBtn = document.getElementById('btn-done');
-  doneBtn.innerHTML = '<span class="material-symbols-outlined text-xl" style="font-variation-settings:\'FILL\' 1">check_circle</span> Completado';
-  doneBtn.className = 'flex items-center gap-2 bg-green-600 text-white px-6 py-2.5 rounded-lg font-work-sans text-sm font-medium';
-  if(currentIdx < MODULES.length - 1){
-    setTimeout(()=>selectModule(currentIdx+1), 800);
-  }
+  if(currentIdx<0)return;const m=MODULES[currentIdx];
+  saveProgress(m.id,0);renderSidebar();
+  const db=document.getElementById('btn-done');if(db){db.innerHTML='&#10003; Completado';db.classList.add('completed');}
+  if(currentIdx<MODULES.length-1)setTimeout(()=>selectModule(currentIdx+1),600);
+}
+function navigateLesson(dir){const n=currentIdx+dir;if(n>=0&&n<MODULES.length)selectModule(n);}
+function copyMsg(btn,msg){
+  navigator.clipboard.writeText(msg).catch(()=>{const ta=document.createElement('textarea');ta.value=msg;document.body.appendChild(ta);ta.select();document.execCommand('copy');document.body.removeChild(ta);});
+  const o=btn.innerHTML;btn.innerHTML='&#10003; Copiado';btn.classList.add('copied');
+  setTimeout(()=>{btn.innerHTML=o;btn.classList.remove('copied');},2000);
 }
 
-function navigateLesson(dir){
-  const next = currentIdx + dir;
-  if(next >= 0 && next < MODULES.length) selectModule(next);
-}
+function getContentFunctions(){return{
+bienvenida:()=>setC(`<div class="card"><h2>40 años transformando vidas en Antioquia</h2><p>Elegiste bien. INDECAP lleva más de 40 años siendo el puente entre los jóvenes de Antioquia y el mundo laboral. <strong>El 71.4% de nuestros egresados está laborando.</strong></p><div class="highlight"><strong>Misión:</strong> Somos una organización educativa de carácter técnico, que brinda formación integral con estándares de excelencia y alta calidad, enfocada en el desarrollo del ser.</div><h3>Tus 3 sedes</h3><div class="data-grid"><div class="data-card"><div class="data-card-title">Medellín</div><div class="data-card-val" style="font-size:1rem">Calle 56 #45-26</div><div class="data-card-sub">Metro Prado · 4484794</div></div><div class="data-card"><div class="data-card-title">Envigado</div><div class="data-card-val" style="font-size:1rem">Cl 37 Sur #43A-84</div><div class="data-card-sub">Parque Principal · 4484794</div></div><div class="data-card"><div class="data-card-title">Caldas</div><div class="data-card-val" style="font-size:1rem">Cl 130 Sur #51-65</div><div class="data-card-sub">Parque principal · 4484794</div></div><div class="data-card"><div class="data-card-title">Jornadas</div><div class="data-card-val" style="font-size:1rem">4</div><div class="data-card-sub">Mañana · Tarde · Noche · Sabatino</div></div></div><div class="success"><strong>Tu título tiene respaldo real.</strong> Nuestros certificados son reconocidos por clínicas, hospitales y empresas en toda la región.</div></div>`),
+programas:()=>{const areas=[{a:'Salud',p:['Auxiliar en Enfermería','Servicios Farmacéuticos','Auxiliar en Salud Oral','Auxiliar en Salud Pública','Administrativo en Salud','Atención al Adulto Mayor']},{a:'Veterinaria',p:['Auxiliar en Veterinaria','Peluquería Canina']},{a:'Belleza',p:['Cosmetología y Estética']},{a:'Administrativa',p:['Auxiliar Contable','Talento Humano','Marketing Digital','SST','Primera Infancia']},{a:'Tecnología',p:['Técnico en Sistemas','Desarrollo de Software']},{a:'Deportes',p:['Entrenamiento Deportivo']}];setC('<div class="card"><h2>Formación para el Trabajo</h2><p>Tu programa está avalado por la Secretaría de Educación. Al graduarte tienes una certificación con validez legal para trabajar en Colombia.</p>'+areas.map(a=>'<h3>'+a.a+'</h3><div style="display:flex;flex-wrap:wrap;gap:5px;margin-bottom:12px">'+a.p.map(p=>'<span style="background:#eef0ff;border-radius:100px;padding:4px 10px;font-size:12px;font-weight:500;color:#3730a3">'+p+'</span>').join('')+'</div>').join('')+'<div class="highlight"><strong>¿Quieres cambiar de programa?</strong> Habla con coordinación académica antes de tomar cualquier decisión.</div></div>');},
+evaluacion:()=>setC(`<div class="card"><h2>El sistema de evaluación</h2><div class="data-grid"><div class="data-card"><div class="data-card-title">La institución (40%)</div><div class="data-card-val">40%</div><div class="data-card-sub">Inicial 15% · Final 25%</div></div><div class="data-card"><div class="data-card-title">Tu docente (60%)</div><div class="data-card-val">60%</div><div class="data-card-sub">Talleres, quizzes, prácticas</div></div></div><h3>Las reglas que debes saber</h3><ul><li><strong>Escala 0 a 5.</strong> Apruebas con nota mayor a 3.5.</li><li><strong>Con el 25% de inasistencias pierdes la competencia</strong> sin importar tu nota.</li><li>Cada competencia se evalúa de forma independiente.</li><li>Tienes derecho a pedir revisión de nota.</li></ul><div class="alert"><strong>Sobre la asistencia:</strong> Si faltas por enfermedad, informa a tu docente ese mismo día. Siempre es mejor avisar que no avisar.</div></div>`),
+plataforma:()=>setC(`<div class="card"><h2>Cómo consultar tus notas en Q10</h2><div class="highlight"><strong>La coordinación de tu sede te entregará tu usuario y contraseña en los primeros días.</strong></div><h3>Qué puedes ver en Q10</h3><ul><li>Tus notas por competencia y por evaluación</li><li>Tu registro de asistencia</li><li>El estado de tu proceso académico</li></ul><h3>Buenas prácticas</h3><ul><li>Revisa tus notas al menos una vez por semana.</li><li>Si una nota parece incorrecta, primero habla con tu docente.</li><li>No compartas tu usuario con nadie.</li></ul></div>`),
+reglamento:()=>setC(`<div class="card"><h2>Tus derechos y deberes</h2><h3>Tus derechos</h3><ul><li>Recibir educación de calidad en las condiciones acordadas.</li><li>Ser tratado con respeto en todo momento.</li><li>Conocer el sistema de evaluación desde el primer día.</li><li>Solicitar revisión de nota si consideras que hay un error.</li><li>Presentar quejas sin temor a represalias.</li></ul><h3>Tus deberes</h3><ul><li>Asistir puntualmente a todas tus clases.</li><li>Llegar con los materiales y uniformes requeridos.</li><li>Tratar con respeto a docentes, compañeros y personal.</li><li>Mantener tu matrícula y pagos al día.</li></ul><h3>El conducto regular</h3><div class="data-grid"><div class="data-card"><div class="data-card-title">Paso 1</div><div class="data-card-val" style="font-size:1rem">Tu docente</div><div class="data-card-sub">Notas, dudas académicas</div></div><div class="data-card"><div class="data-card-title">Paso 2</div><div class="data-card-val" style="font-size:1rem">Coordinación</div><div class="data-card-sub">Si el docente no resuelve</div></div><div class="data-card"><div class="data-card-title">Pagos</div><div class="data-card-val" style="font-size:1rem">Administración</div><div class="data-card-sub">Directamente</div></div><div class="data-card"><div class="data-card-title">Escalado</div><div class="data-card-val" style="font-size:1rem">Dirección</div><div class="data-card-sub">Situaciones graves</div></div></div></div>`),
+pagos:()=>setC(`<div class="card"><h2>Tu inversión en INDECAP</h2><div class="highlight"><strong>Lo más importante: habla con nosotros antes de atrasarte.</strong> INDECAP entiende los imprevistos. Lo que no podemos hacer es ayudarte si no sabemos que hay un problema.</div><h3>Si no puedes pagar a tiempo</h3><ul><li>Acércate al área administrativa antes de la fecha de vencimiento.</li><li>En muchos casos se pueden hacer acuerdos de pago a tiempo.</li><li>Los atrasos prolongados pueden generar bloqueos en Q10.</li><li>El paz y salvo es requisito para ir a prácticas y recibir el certificado.</li></ul><h3>Costos adicionales</h3><ul><li>Póliza de responsabilidad civil (según programa)</li><li>Formulario de matrícula y carnet estudiantil</li><li>Uniformes y dotación según el programa</li><li>ARL y EPS para prácticas profesionales</li></ul><div class="alert"><strong>Recuerda:</strong> Tu situación de pago no afecta el trato de tu docente hacia ti en el aula.</div></div>`),
+practicas:()=>setC(`<div class="card"><h2>Prácticas profesionales y tu certificado</h2><p>Las prácticas son el momento donde todo lo que aprendiste se convierte en experiencia real. Para muchos egresados, son la puerta de entrada al empleo.</p><h3>Requisitos para ir a prácticas</h3><div class="data-grid"><div class="data-card"><div class="data-card-title">Académicos</div><div class="data-card-sub" style="font-size:13px;margin-top:4px">✅ Humanización aprobado<br>✅ Competencias al día</div></div><div class="data-card"><div class="data-card-title">Administrativos</div><div class="data-card-sub" style="font-size:13px;margin-top:4px">✅ Paz y salvo<br>✅ Documentos al día</div></div><div class="data-card"><div class="data-card-title">Seguridad</div><div class="data-card-sub" style="font-size:13px;margin-top:4px">✅ ARL vigente<br>✅ EPS · Vacunación</div></div><div class="data-card"><div class="data-card-title">Documentos</div><div class="data-card-sub" style="font-size:13px;margin-top:4px">✅ Hoja de vida<br>✅ Fotocopia documento</div></div></div><div class="success"><strong>El 71.4% de los egresados de INDECAP está trabajando.</strong> Cuando termines, harás parte de esa comunidad que abre puertas.</div></div>`),
+};}
+function setC(html){document.getElementById('lesson-content').innerHTML=html;}
 
-function exitToPortal(){
-  window.location.href = '/plataforma';
-}
-
-renderSidebar();
-updateProgress();
+(async()=>{await loadProgress();renderSidebar();})();
 </script>
+
 </body>
 </html>
