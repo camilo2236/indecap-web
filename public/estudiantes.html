@@ -252,59 +252,102 @@ function p(text){return '<p class="text-sm text-on-surface-variant leading-relax
 function getContent(id){
   const C={
     bienvenida:()=>wrap(id,
-      p('Elegiste bien. INDECAP lleva más de 40 años siendo el puente entre los jóvenes de Antioquia y el mundo laboral. <strong class="text-on-surface">El 71.4% de nuestros egresados está laborando.</strong>')
-      +hl('<strong>Misión:</strong> Somos una organización educativa de carácter técnico, que brinda formación integral con estándares de excelencia y alta calidad.')
-      +card('Tus 3 sedes',dg([['Medellín','Calle 56 #45-26','Metro Prado · 4484794'],['Envigado','Cl 37 Sur #43A-84','Parque Ppal · 4484794'],['Caldas','Cl 130 Sur #51-65','Parque ppal · 4484794'],['Jornadas','4','Mañana · Tarde · Noche · Sabatino']]))
-      +su('<strong>Tu título tiene respaldo real.</strong> Nuestros certificados son reconocidos por clínicas, hospitales y empresas en toda la región.')),
+      p('Tomaste una de las mejores decisiones de tu vida. No porque lo digamos nosotros — sino porque el <strong class="text-on-surface">71.4% de nuestros egresados está trabajando</strong> en lo que estudió. INDECAP lleva más de 40 años siendo el puente entre los jóvenes de Antioquia y el mundo laboral real.')
+      +p('Propietaria: Claudia María Toro García · Naturaleza: Privado · Carácter Mixto · Calendario A.')
+      +hl('<strong>Misión:</strong> Somos una organización educativa de carácter técnico, que brinda formación integral con estándares de excelencia y alta calidad, enfocada en el desarrollo del ser, comprometidos con la responsabilidad social empresarial y la satisfacción de los grupos de interés.')
+      +hl('<strong>Visión 2030:</strong> En el 2030 INDECAP será una institución de educación superior reconocida y posicionada a nivel nacional por su cumplimiento en los estándares de calidad académica, responsabilidad social y la pertinencia de sus programas, enmarcados dentro de la formación integral y el desarrollo sostenible.')
+      +card('Certificaciones vigentes',
+        ul(['ISO 9001:2015 — Estándar internacional de gestión de calidad','NTC 5555:2011 — Norma técnica colombiana para formación para el trabajo','Licencias ETDH vigentes en las 3 sedes — Secretaría de Educación de Antioquia','Licencias de Bachillerato vigentes en las 3 sedes']))
+      +card('Tus 3 sedes — todas son tuyas',dg([
+        ['Medellín','Calle 56 #45-26','Metro Prado · 4484794 · Lic. ETDH 00372/2009'],
+        ['Envigado','Cl 37 Sur #43A-84','Parque Ppal · 4484794 · Lic. ETDH 1309/2009'],
+        ['Caldas','Cl 130 Sur #51-65','Parque ppal · 4484794 · Lic. ETDH 7470/2010'],
+        ['Jornadas','4','Mañana · Tarde · Noche · Sabatino']]))
+      +card('Lo que INDECAP ofrece además de tu programa técnico',
+        ul(['<strong>Formación para el Trabajo y Desarrollo Humano (ETDH):</strong> tu programa técnico laboral','<strong>Bachillerato semiescolarizado (CLEI 3 al 6):</strong> para quienes quieran terminar el bachillerato mientras estudian','<strong>Educación Continua:</strong> seminarios, diplomados y cursos de actualización para egresados y comunidad']))
+      +su('<strong>Tu certificado tiene respaldo real.</strong> El Certificado Técnico Laboral está avalado por la Secretaría de Educación de Antioquia. Es reconocido por hospitales, clínicas, empresas del sector productivo y entidades públicas de toda la región.')),
 
     programas:()=>{
       const areas=[
         {a:'Salud',p:['Auxiliar en Enfermería','Servicios Farmacéuticos','Auxiliar en Salud Oral','Auxiliar en Salud Pública','Administrativo en Salud','Atención al Adulto Mayor']},
         {a:'Veterinaria',p:['Auxiliar en Veterinaria','Peluquería Canina']},
-        {a:'Belleza',p:['Cosmetología y Estética']},
-        {a:'Administrativa',p:['Auxiliar Contable','Talento Humano','Marketing Digital','SST','Primera Infancia']},
-        {a:'Tecnología',p:['Técnico en Sistemas','Desarrollo de Software']},
+        {a:'Belleza y Estética',p:['Cosmetología y Estética Integral']},
+        {a:'Administrativa',p:['Auxiliar Contable y Financiero','Gestión del Talento Humano','Marketing Digital','Seguridad y Salud en el Trabajo (SST)','Atención a la Primera Infancia']},
+        {a:'Tecnología',p:['Técnico en Sistemas','Auxiliar en Desarrollo de Software']},
         {a:'Deportes',p:['Entrenamiento Deportivo']},
       ];
       return wrap(id,
-        p('Tu programa está diseñado bajo la modalidad de Formación para el Trabajo, avalado por la Secretaría de Educación. Al graduarte tienes una certificación con validez legal para trabajar en Colombia.')
+        p('Tu programa pertenece a la modalidad de Formación para el Trabajo, regulada por el Ministerio de Educación Nacional. INDECAP aplica una metodología teórico-práctica, desarrollando competencias aplicables directamente en el entorno laboral. Al completar el programa recibes un <strong class="text-on-surface">Certificado Técnico Laboral con validez legal</strong> para trabajar en Colombia.')
         +areas.map(a=>'<div class="mb-4"><p class="text-xs font-semibold text-on-surface-variant uppercase tracking-wider mb-2" style="font-family:Work Sans,sans-serif">'+a.a+'</p><div class="flex flex-wrap gap-2">'+a.p.map(pg=>'<span class="text-xs font-medium px-3 py-1 rounded-full" style="background:rgba(26,8,110,0.08);color:#1a086e;font-family:Work Sans,sans-serif">'+pg+'</span>').join('')+'</div></div>').join('')
-        +hl('<strong>¿Quieres cambiar de programa?</strong> Habla con coordinación académica antes de tomar cualquier decisión.')
+        +card('Educación Continua — más allá de tu programa',
+          p('INDECAP también ofrece seminarios, diplomados y cursos de profundización para egresados y comunidad en general. Una vez termines, puedes seguir actualizándote con nosotros.')
+          +ul(['Seminarios especializados por área','Diplomados de profundización','Cursos de actualización profesional']))
+        +card('El Bachillerato semiescolarizado (CLEI)',
+          p('Si además quieres terminar el bachillerato, INDECAP ofrece el modelo CLEI (Ciclos Lectivos Especiales Integrados), orientado a jóvenes en extraedad y adultos. Los ciclos van del CLEI 3 al CLEI 6 y tienen validez igual a la educación regular.')
+          +ul(['CLEI 3: equivale a 6° y 7° de bachillerato','CLEI 4: equivale a 8° y 9° de bachillerato','CLEI 5: equivale a 10° de bachillerato','CLEI 6: equivale a 11° de bachillerato']))
+        +hl('<strong>¿Quieres cambiar de programa?</strong> Habla con coordinación académica antes de tomar cualquier decisión. Hay opciones de cambio o traslado según los requisitos de cada caso.')
       );
     },
 
     evaluacion:()=>wrap(id,
-      dg([['La institución','40%','Inicial 15% · Final 25%'],['Tu docente','60%','Talleres, quizzes, prácticas']])
-      +card('Las reglas que debes saber sí o sí',
-        ul(['<strong>Escala 0 a 5.</strong> Apruebas con nota mayor a 3.5.','<strong>Con el 25% de inasistencias pierdes la competencia</strong>, sin importar tu nota.','Cada competencia se evalúa de forma independiente.','Tienes derecho a pedir revisión de nota si consideras que hay un error.']))
-      +al('<strong>Sobre la asistencia:</strong> Si faltas por enfermedad o fuerza mayor, informa a tu docente ese mismo día. Siempre es mejor avisar que no avisar.')),
+      p('Cada semestre se evalúa por competencias. Cada competencia tiene su propia duración y se evalúa de forma independiente bajo la siguiente distribución oficial:')
+      +dg([['La institución evalúa','40%','Parcial inicial 15% · Parcial final 25%'],['Tu docente evalúa','60%','Talleres, quizzes, prácticas · Mínimo 3 notas parciales']])
+      +card('Las reglas que debes saber desde el primer día',
+        ul(['Escala numérica del 0 al 5','<strong>Nota mínima para aprobar: mayor a 3.5</strong>','<strong>Con el 25% de inasistencias pierdes la competencia</strong>, sin importar tu nota','En un módulo de 20 sesiones: con 5 faltas ya estás en el límite','En un módulo de 16 sesiones: con 4 faltas ya perdiste','Perder una competencia no significa perder el ciclo completo, pero sí afecta tu avance']))
+      +card('Tu derecho a la revisión de nota',
+        ul(['Si una nota tiene un error, tienes derecho a solicitar revisión formal','Proceso: habla primero con tu docente — la mayoría de errores se resuelven aquí','Si no se resuelve, solicita revisión formal a coordinación académica','Coordinación revisará con el docente y te dará una respuesta por escrito']))
+      +card('Sobre las inasistencias',
+        ul(['Si faltas por enfermedad o fuerza mayor, informa a tu docente el mismo día','Presenta soporte (incapacidad médica, carta de calamidad) a coordinación','El soporte no borra la inasistencia del registro, pero puede considerarse en casos límite','Siempre es mejor avisar que no avisar — el docente puede registrar "excusa" en Q10']))
+      +al('<strong>Importante:</strong> La asistencia en INDECAP no es opcional. El 25% de inasistencias aplica sin excepción. Organiza tu horario, comunica tus situaciones oportunamente y cuida ese porcentaje desde la primera semana.')),
 
     plataforma:()=>wrap(id,
-      hl('<strong>La coordinación de tu sede te entregará tu usuario y contraseña en los primeros días.</strong> Si no las has recibido, solicítalas en coordinación.')
-      +card('Qué puedes ver en Q10',ul(['Tus notas por competencia y por evaluación','Tu registro de asistencia','El estado de tu proceso académico general']))
-      +card('Buenas prácticas',ul(['Revisa tus notas al menos una vez por semana.','Si una nota parece incorrecta, primero habla con tu docente.','No compartas tu usuario y contraseña con nadie.']))),
+      p('Q10 es el sistema académico de INDECAP donde puedes consultar en tiempo real tu estado académico completo.')
+      +hl('<strong>La coordinación de tu sede te entregará tu usuario y contraseña en los primeros días.</strong> Si no los has recibido después de la primera semana, acércate a coordinación y solicítalos. No esperes — acceder a tus notas desde el inicio es tu derecho.')
+      +card('Qué puedes ver en Q10',
+        ul(['Tus calificaciones por competencia y por evaluación individual','Tu registro de asistencia: faltas, tardanzas y excusas','El estado general de tu proceso académico en el ciclo','Información sobre tu programa, módulos y docentes']))
+      +card('Buenas prácticas con Q10',
+        ul(['Revisa tus notas al menos una vez por semana — no esperes al cierre del ciclo','Si una nota no aparece después de 5 días hábiles de la evaluación, pregúntale al docente','Si una nota parece incorrecta, primero habla con el docente — muchos errores son de digitación','No compartas tu usuario y contraseña con nadie','Si olvidaste tu contraseña, solicita restablecimiento a coordinación — no a compañeros']))
+      +card('¿Qué hacer si el sistema marca algo incorrecto?',
+        ul(['Verifica la información con tu docente','Si hay un error confirmado, repórtalo a coordinación académica con los datos específicos: materia, fecha, nota incorrecta y nota correcta','Coordinación tiene acceso para corregir errores antes del cierre del ciclo']))
+      +al('<strong>¿Qué pasa si el plazo del ciclo ya venció?</strong> Si el ciclo cerró y tu nota no está registrada o hay un error, repórtalo a coordinación inmediatamente. Después del cierre se requiere autorización especial. No lo dejes pasar.')),
 
     reglamento:()=>wrap(id,
-      card('Tus derechos como estudiante',
-        ul(['Recibir educación de calidad en las condiciones acordadas al momento de tu matrícula.','Ser tratado con respeto por docentes, coordinadores y personal administrativo.','Conocer el sistema de evaluación de cada competencia desde el primer día.','Solicitar revisión de nota si consideras que hay un error.','Presentar quejas sin temor a represalias.']))
-      +card('Tus deberes',
-        ul(['Asistir puntualmente a todas tus clases.','Llegar con los materiales, uniformes y equipos requeridos.','Tratar con respeto a docentes, compañeros y personal.','Mantener tu matrícula y pagos al día.']))
-      +card('El conducto regular',
-        dg([['Paso 1','Tu docente','Notas, dudas académicas'],['Paso 2','Coordinación','Si el docente no resuelve'],['Pagos','Administración','Directamente'],['Escalado','Dirección','Situaciones graves']]))),
+      card('Tus derechos como estudiante INDECAP',
+        ul(['Recibir educación de calidad en las condiciones acordadas al momento de tu matrícula','Ser tratado con respeto por docentes, coordinadores y personal administrativo en todo momento','Conocer el sistema de evaluación de cada competencia desde el primer día de clase','Recibir retroalimentación oportuna sobre tu desempeño académico','Solicitar revisión de nota con derecho a respuesta formal si consideras que hay un error','Presentar quejas y sugerencias a través del conducto regular sin temor a represalias','Acceder a tus registros académicos en Q10 en tiempo real','Ser escuchado en situaciones personales que afecten tu proceso académico']))
+      +card('Tus deberes como estudiante INDECAP',
+        ul(['Asistir puntualmente a todas tus clases y prácticas de laboratorio','Llegar con los materiales, uniformes y equipos requeridos por tu programa','Tratar con respeto a docentes, compañeros y personal administrativo en todo momento','Mantener tu matrícula y pagos al día según los acuerdos firmados','Cuidar las instalaciones, equipos y laboratorios — cualquier daño por mal uso puede generar cobro','Reportar situaciones de riesgo o incidentes a coordinación','Comportarte conforme a los valores institucionales dentro y fuera del aula']))
+      +card('El conducto regular — siempre en este orden',
+        dg([['Paso 1','Tu docente','Notas, dudas de clase, situaciones del aula'],['Paso 2','Coordinación académica','Si el docente no resolvió'],['Paso 3','Administración','Exclusivamente para pagos y matrículas'],['Paso 4','Dirección','Casos institucionales graves']]))
+      +card('Situaciones especiales',
+        ul(['<strong>Conflicto con un compañero:</strong> reporta a coordinación, no lo resuelvas por tu cuenta','<strong>Situación personal grave:</strong> habla con coordinación, tenemos recursos de apoyo','<strong>Sentiste que te trataron mal:</strong> tienes derecho a presentar queja formal por escrito','<strong>Uso de equipos y laboratorios:</strong> si hay un equipo en mal estado al llegar, repórtalo antes de usarlo']))
+      +al('<strong>Recuerda:</strong> el conducto regular no es burocracia — es la forma de resolver situaciones de manera efectiva. Saltarte pasos generalmente retrasa la solución.')),
 
     pagos:()=>wrap(id,
-      hl('<strong>Lo más importante: habla con nosotros antes de atrasarte.</strong> INDECAP entiende los imprevistos. Lo que no podemos hacer es ayudarte si no sabemos que hay un problema.')
-      +card('Si no puedes pagar a tiempo',
-        ul(['Acércate al área administrativa antes de la fecha de vencimiento.','En muchos casos se pueden hacer acuerdos de pago a tiempo.','Los atrasos prolongados pueden generar bloqueos en Q10.','El paz y salvo es requisito para ir a prácticas y recibir el certificado.']))
-      +card('Costos adicionales',
-        ul(['Póliza de responsabilidad civil (según programa)','Formulario de matrícula y carnet estudiantil','Uniformes y dotación según el programa','ARL y EPS para prácticas profesionales']))
-      +al('<strong>Recuerda:</strong> Tu situación de pago no afecta el trato de tu docente hacia ti en el aula.')),
+      hl('<strong>Lo más importante antes de todo: habla con nosotros antes de atrasarte.</strong> INDECAP entiende que la vida tiene imprevistos. Lo que no podemos hacer es ayudarte si no sabemos que hay un problema. Un acuerdo de pago previo es mucho más fácil de gestionar que una deuda acumulada.')
+      +card('Tu compromiso de pago',
+        ul(['Al matricularte firmaste un acuerdo de pago con fechas y montos específicos — es tu responsabilidad conocerlo','Los pagos se realizan en el área administrativa — no con docentes, no por transferencia a cuentas personales','Guarda siempre tus recibos de pago — son la prueba de tu estado financiero con la institución']))
+      +card('¿Qué pasa si no pago a tiempo?',
+        ul(['Los atrasos prolongados pueden generar bloqueo en Q10 — no puedes ver tus notas','El paz y salvo es requisito obligatorio para ir a prácticas profesionales','El paz y salvo es requisito para recibir tu Certificado Técnico Laboral','Los atrasos <strong>no afectan el trato de tu docente hacia ti en el aula</strong> — si alguien lo hace, tienes derecho a reportarlo']))
+      +card('Si no puedes pagar — qué hacer',
+        ul(['Acércate al área administrativa antes de la fecha de vencimiento','Explica tu situación con honestidad — hay opciones para quien las busca a tiempo','En muchos casos se puede gestionar un acuerdo de pago o facilidad temporal','No esperes a que la deuda se acumule — el problema crece, las opciones se reducen']))
+      +card('Costos adicionales que debes tener en cuenta',
+        ul(['<strong>Formulario de matrícula y carnet estudiantil:</strong> se paga una vez al inicio','<strong>Póliza de responsabilidad civil:</strong> según el programa (especialmente salud y veterinaria)','<strong>Uniformes y dotación:</strong> específicos para cada programa — consulta con coordinación','<strong>ARL (Administradora de Riesgos Laborales):</strong> obligatoria para ir a prácticas — trámite personal','<strong>EPS:</strong> debe estar activa para ir a prácticas','<strong>Esquema de vacunación:</strong> completo para programas de salud: hepatitis B, tétano, influenza']))
+      +al('<strong>Empieza a tramitar ARL, EPS y vacunación con anticipación.</strong> Estos procesos toman tiempo. No esperes a tener todo académico listo para empezar — hazlo en paralelo.')),
 
     practicas:()=>wrap(id,
-      p('Las prácticas son el momento donde todo lo que aprendiste se convierte en experiencia real. Para muchos egresados, son la puerta de entrada al empleo.')
-      +card('Requisitos para ir a prácticas',
-        dg([['Académicos','✅ Humanización\n✅ Competencias al día',''],['Administrativos','✅ Paz y salvo\n✅ Documentos al día',''],['Seguridad','✅ ARL vigente\n✅ EPS · Vacunación',''],['Documentos','✅ Hoja de vida\n✅ Fotocopia doc.','']]))
-      +su('<strong>El 71.4% de los egresados de INDECAP está trabajando.</strong> Cuando termines, harás parte de esa comunidad que abre puertas.')),
+      p('Las prácticas profesionales son el momento donde todo lo que aprendiste se convierte en experiencia real. Para muchos egresados de INDECAP, las prácticas son la puerta de entrada directa al empleo — porque la empresa te conoce, ve cómo trabajas, y muchas veces te contratan.')
+      +card('Requisitos para ir a prácticas — lista completa',
+        ul(['✅ <strong>Curso de Humanización y Calidad en el Servicio</strong> aprobado (obligatorio para todos los programas)','✅ Todas las competencias del programa al día','✅ <strong>Paz y salvo</strong> con la institución (sin deudas pendientes)','✅ <strong>ARL</strong> (Administradora de Riesgos Laborales) vigente — trámite personal','✅ <strong>Certificado de EPS</strong> activo','✅ <strong>Esquema de vacunación completo</strong> — especialmente para salud: hepatitis B, tétano, influenza','✅ <strong>Formato de hoja de vida</strong> diligenciado (formato institucional — coordinación te lo entrega)','✅ <strong>Fotocopia del documento de identidad</strong>']))
+      +card('Cómo se asignan las prácticas',
+        p('La coordinación académica gestiona los convenios con las entidades donde realizarás las prácticas. No debes buscar el sitio por tu cuenta — debes cumplir los requisitos y coordinación te asigna el lugar según disponibilidad y perfil del programa.')
+        +al('Empieza a preparar los documentos con anticipación. Los trámites de ARL, vacunación y paz y salvo toman tiempo. No esperes a tener todo académico listo para empezar.'))
+      +card('Tu Certificado Técnico Laboral',
+        p('Al completar todas las competencias y las prácticas, recibes tu Certificado Técnico Laboral con validez legal en Colombia.')
+        +ul(['Todas las competencias aprobadas (nota mayor a 3.5)','Prácticas profesionales completadas y evaluadas','Paz y salvo con la institución','Documentos personales en regla'])
+        +p('<strong>Los grados tienen fechas específicas por ciclo.</strong> Infórmate con coordinación con anticipación — no te quedes fuera por no conocer las fechas.'))
+      +card('Lo que viene después',
+        ul(['Acceso a cursos de actualización y educación continua','Comunidad de egresados INDECAP','Próximamente: plataforma de egresados con cursos gratuitos (RCP, Primeros Auxilios, Código Rojo)']))
+      +su('<strong>El 71.4% de los egresados de INDECAP está trabajando.</strong> Eso no es un número arbitrario — es el resultado de 40 años perfeccionando programas que el mercado laboral reconoce y valora. Cuando termines, harás parte de esa comunidad. Vale la pena llegar hasta el final.')),
   };
   return C[id]?C[id]():'<div class="max-w-3xl mx-auto px-6 py-8">'+back()+'<p class="text-on-surface-variant">Módulo en construcción.</p></div>';
 }

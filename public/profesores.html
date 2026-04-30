@@ -260,6 +260,10 @@ function card(label,content){return '<div class="bg-surface-container-lowest rou
 function highlight(text){return '<div class="rounded-xl p-4 mb-3" style="background:rgba(26,8,110,0.05);border-left:3px solid #1a086e"><p class="text-sm leading-relaxed" style="color:#1a086e">'+text+'</p></div>';}
 function alert2(text){return '<div class="rounded-xl p-4 mb-3" style="background:#fffbeb;border:1px solid #fde68a;border-left:3px solid #f59e0b"><p class="text-sm leading-relaxed" style="color:#92400e">'+text+'</p></div>';}
 function dataGrid(items){return '<div class="grid grid-cols-2 gap-3 my-3">'+items.map(i=>'<div class="rounded-xl p-3" style="background:#fafafa;border:1px solid #e5e5e5"><p class="text-xs font-semibold text-on-surface-variant uppercase mb-1" style="font-family:Work Sans,sans-serif">'+i[0]+'</p><p class="text-lg font-semibold text-primary-container" style="font-family:Newsreader,serif">'+i[1]+'</p>'+(i[2]?'<p class="text-xs text-on-surface-variant">'+i[2]+'</p>':'')+'</div>').join('')+'</div>';}
+function hl(t){return highlight(t);}
+function dg(items){return '<div class="grid grid-cols-2 gap-3 my-3">'+items.map(i=>'<div class="rounded-xl p-3" style="background:#fafafa;border:1px solid #e5e5e5"><p class="text-xs font-semibold text-on-surface-variant uppercase mb-1" style="font-family:Work Sans,sans-serif">'+i[0]+'</p><p class="text-lg font-semibold text-primary-container" style="font-family:Newsreader,serif">'+i[1]+'</p>'+(i[2]?'<p class="text-xs text-on-surface-variant">'+i[2]+'</p>':'')+'</div>').join('')+'</div>';}
+function al(t){return alert2(t);}
+function su(t){return '<div class="rounded-xl p-4 mb-3" style="background:#f0fdf4;border:1px solid #bbf7d0;border-left:3px solid #22c55e"><p class="text-sm leading-relaxed" style="color:#166534">'+t+'</p></div>';}
 function wrap(id,content){const m=MODULES.find(x=>x.id===id)||{icon:'📄',label:id,dur:''};return '<div class="max-w-3xl mx-auto px-6 py-8">'+backBtn()+'<div class="flex items-center gap-3 mb-2"><span class="text-2xl">'+m.icon+'</span><span class="text-xs font-semibold text-on-surface-variant uppercase tracking-wider" style="font-family:Work Sans,sans-serif">'+m.dur+'</span></div><h1 class="text-2xl font-semibold text-primary-container mb-6" style="font-family:Newsreader,serif;letter-spacing:-0.02em">'+m.label+'</h1>'+content+doneBtn(id)+'</div>';}
 function p(text){return '<p class="text-sm text-on-surface-variant leading-relaxed mb-3">'+text+'</p>';}
 function ul(items){return '<ul class="space-y-2 mb-4">'+items.map(i=>'<li class="text-sm text-on-surface-variant leading-relaxed flex gap-2"><span class="text-on-surface-variant flex-shrink-0">·</span>'+i+'</li>').join('')+'</ul>';}
@@ -267,56 +271,104 @@ function ul(items){return '<ul class="space-y-2 mb-4">'+items.map(i=>'<li class=
 function getContent(id){
   const C={
     historia:()=>wrap(id,
-      p('INDECAP nació con una convicción clara: <strong class="text-on-surface">la educación técnica es el vehículo de movilidad social más eficiente y accesible</strong> para los jóvenes de nuestra ciudad.')
-      +highlight('<strong>Misión:</strong> Somos una organización educativa de carácter técnico, que brinda formación integral con estándares de excelencia y alta calidad, enfocada en el desarrollo del ser.')
-      +highlight('<strong>Visión 2030:</strong> En el 2030 INDECAP será una institución de educación superior reconocida a nivel nacional por su calidad académica.')
-      +card('Nuestras 3 sedes',dataGrid([['Medellín','Calle 56 #45-26','Metro Prado · 4484794'],['Envigado','Cl 37 Sur #43A-84','Parque Ppal · 4484794'],['Caldas','Cl 130 Sur #51-65','Parque ppal · 4484794'],['Jornadas','4','Mañana · Tarde · Noche · Sabatino']]))
-      +alert2('<strong>Como docente, tú eres la cara de esta promesa.</strong> Cada clase que dictas impacta directamente la probabilidad de que ese estudiante se gradúe y cambie su situación económica.')),
+      p('INDECAP — Instituto de Ciencias Aplicadas — nació hace más de 40 años con una convicción clara: <strong class="text-on-surface">la educación técnica es el vehículo de movilidad social más eficiente y accesible</strong> para los jóvenes de Antioquia.')
+      +p('Propietaria: Claudia María Toro García · Naturaleza: Privado · Carácter Mixto · Calendario A.')
+      +hl('<strong>Misión:</strong> Somos una organización educativa de carácter técnico, que brinda formación integral con estándares de excelencia y alta calidad, enfocada en el desarrollo del ser, comprometidos con la responsabilidad social empresarial y la satisfacción de los grupos de interés.')
+      +hl('<strong>Visión 2030:</strong> En el 2030 INDECAP será una institución de educación superior reconocida y posicionada a nivel nacional por su cumplimiento en los estándares de calidad académica, responsabilidad social y la pertinencia de sus programas, enmarcados dentro de la formación integral y el desarrollo sostenible.')
+      +card('Certificaciones vigentes',
+        ul(['ISO 9001:2015 — Estándar internacional de gestión de calidad','NTC 5555:2011 — Norma técnica colombiana para formación para el trabajo','Licencias ETDH vigentes en las 3 sedes — Secretaría de Educación de Antioquia','Licencias de Bachillerato vigentes en las 3 sedes']))
+      +card('Nuestras 3 sedes',dg([
+        ['Medellín','Calle 56 #45-26','Metro Prado · 4484794 · Lic. ETDH 00372/2009'],
+        ['Envigado','Cl 37 Sur #43A-84','Parque Ppal · 4484794 · Lic. ETDH 1309/2009'],
+        ['Caldas','Cl 130 Sur #51-65','Parque ppal · 4484794 · Lic. ETDH 7470/2010'],
+        ['Jornadas','4','Mañana · Tarde · Noche · Sabatino']]))
+      +card('Oferta educativa completa',
+        ul(['<strong>Formación para el Trabajo y Desarrollo Humano (ETDH):</strong> programas técnicos por competencias — la oferta principal de INDECAP','<strong>Bachillerato semiescolarizado (CLEI 3 al 6):</strong> para adultos y jóvenes en extraedad, con énfasis en empresarismo','<strong>Educación Continua:</strong> seminarios, diplomados y cursos de profundización para egresados y comunidad en general']))
+      +al('<strong>Como docente, usted no solo enseña una competencia técnica</strong> — forma personas que en muchos casos son primera generación técnica de su familia. El 71.4% de nuestros egresados está laborando, y usted es parte fundamental de ese resultado.')),
 
     metodologia:()=>wrap(id,
-      p('INDECAP aplica una <strong class="text-on-surface">metodología teórico-práctica</strong> basada en el desarrollo de competencias. No enseñamos materias — formamos personas capaces de hacer algo concreto.')
-      +highlight('<strong>Principio fundamental:</strong> El estudiante no aprueba por memorizar — aprueba por demostrar que puede hacer. Cada evaluación debe medir una habilidad real.')
+      p('INDECAP aplica una <strong class="text-on-surface">metodología teórico-práctica</strong> basada en el desarrollo de competencias. No evaluamos cuánto sabe el estudiante — evaluamos qué puede hacer con lo que sabe en el entorno laboral real.')
+      +hl('<strong>Principio fundamental:</strong> El estudiante no aprueba por memorizar — aprueba por demostrar que puede hacer. Cada evaluación debe medir una habilidad real aplicable en el contexto laboral.')
       +card('Estructura de una sesión ideal',
-        ul(['<strong>Apertura (10%):</strong> Conectar con lo anterior. ¿Para qué sirve lo de hoy?','<strong>Desarrollo teórico (30%):</strong> Explicación con ejemplos del sector real.','<strong>Práctica guiada (40%):</strong> El docente hace, el estudiante observa. Luego al revés.','<strong>Práctica autónoma (15%):</strong> El estudiante lo hace solo.','<strong>Cierre (5%):</strong> ¿Qué aprendimos? ¿Dónde lo van a usar?']))
-      +alert2('<strong>Si un estudiante no entiende, el problema casi siempre es la forma de enseñar, no la capacidad del estudiante.</strong>')),
+        ul(['<strong>Apertura (10%):</strong> Conectar con lo aprendido. ¿Para qué sirve lo de hoy en la vida real?','<strong>Desarrollo teórico (30%):</strong> Explicación con ejemplos reales del sector del programa.','<strong>Práctica guiada (40%):</strong> El docente hace, el estudiante observa. Luego el estudiante hace con acompañamiento.','<strong>Práctica autónoma (15%):</strong> El estudiante lo hace solo. El docente circula, observa y retroalimenta.','<strong>Cierre (5%):</strong> ¿Qué aprendimos hoy? ¿Dónde lo van a usar? Qué viene la próxima sesión.']))
+      +card('El perfil del estudiante INDECAP',
+        p('La mayoría de nuestros estudiantes son adultos que trabajan. Muchos llegan después de una jornada laboral o madrugando antes de ir al trabajo. Diseña tus clases respetando esa realidad: ejemplos prácticos, actividades que se puedan completar en el tiempo de clase, evaluaciones que midan habilidades reales.')
+        +ul(['Adultos que concilian trabajo y estudio','Jóvenes en extraedad con experiencias previas de fracaso escolar','Adultos mayores que regresan al sistema educativo después de muchos años','Personas con dificultades económicas para quienes cada clase tiene un costo de oportunidad real']))
+      +card('Herramientas didácticas recomendadas',
+        ul(['Casos reales del sector: enfermería, cosmetología, contabilidad, veterinaria según el programa','Práctica en laboratorio desde las primeras sesiones — no al final del ciclo','Evaluaciones de proceso, no solo sumativas','Retroalimentación inmediata — el error en el aula no tiene consecuencias, afuera sí']))
+      +al('<strong>Si un estudiante no entiende, el problema casi siempre es la forma de enseñar, no la capacidad del estudiante.</strong> Esta creencia no es solo pedagogía — es la actitud que transforma grupos difíciles en grupos exitosos.')),
 
     plataformas:()=>wrap(id,
-      highlight('<strong>Q10 es el sistema central.</strong> Aquí registras asistencia, notas y competencias. Todo lo que no esté en Q10 no existe institucionalmente.')
-      +card('Q10 — Sistema académico',
-        ul(['El coordinador te entregará credenciales el primer día.','Registra asistencia en cada clase — no al final de la semana.','Las notas deben ingresarse antes de la fecha límite del ciclo.','Nunca compartas tus credenciales.']))
-      +card('Comunicación interna',
-        ul(['Canal principal: WhatsApp (grupo de docentes por sede).','Comunicados oficiales: correo electrónico institucional.','Urgencias: contacta directamente a coordinación de sede.']))),
+      hl('<strong>Q10 es el sistema central de INDECAP.</strong> Todo lo institucional pasa por aquí: notas, asistencia, estado académico, reportes. Lo que no está en Q10, no existe institucionalmente.')
+      +card('Lo que debes hacer en Q10',
+        ul(['Registrar la asistencia en <strong>cada sesión</strong> — no acumular al final de la semana','Ingresar las notas parciales antes de las fechas límite del ciclo','Revisar el estado académico de tus estudiantes periódicamente','Reportar inconsistencias o errores técnicos a coordinación inmediatamente']))
+      +card('Lo que NO debes hacer en Q10',
+        ul(['Compartir tus credenciales con nadie','Registrar asistencia de sesiones que no ocurrieron','Dejar la carga de notas para la última semana del ciclo','Ignorar alertas de inasistencia — son señales tempranas de deserción']))
+      +card('Acceso y soporte',
+        p('El coordinador académico de tu sede te entregará usuario y contraseña en los primeros días. Si hay algún problema técnico, contacta directamente a coordinación — no improvises.')
+        +ul(['<strong>Email institucional:</strong> indecap@indecap.edu.co','<strong>WhatsApp:</strong> canal principal para comunicación rápida (grupo de docentes por sede)','<strong>Correo electrónico:</strong> para comunicados oficiales, solicitudes formales y documentos']))
+      +al('<strong>Importante:</strong> Nunca compartas tus credenciales de Q10 con estudiantes ni con otros docentes. El acceso es personal e intransferible.')),
 
     reglamento:()=>wrap(id,
-      card('Puntualidad y asistencia',ul(['El docente debe estar en el aula antes que los estudiantes.','Si no puedes asistir, notifica mínimo 2 horas antes.','Clases canceladas sin aviso generan descuento en honorarios.']))
-      +card('Conducta en el aula',ul(['Celular restringido durante clase.','Lenguaje respetuoso y profesional en todo momento.','Ningún tipo de discriminación es tolerada.']))
-      +card('Manejo de situaciones difíciles',ul(['Comportamiento disruptivo: conversación privada primero.','Si persiste, escala a coordinación académica.','Situación grave del estudiante: remite a coordinación ese mismo día.']))
-      +alert2('<strong>Conducto regular:</strong> Docente → Coordinador académico → Director académico → Dirección general.')),
+      card('Puntualidad y asistencia docente',
+        ul(['El docente debe estar en el aula antes que los estudiantes','Si no puedes asistir, notifica a coordinación con mínimo 2 horas de anticipación','Las clases canceladas sin aviso previo generan descuento en honorarios','El reemplazo de clases debe coordinarse con dirección académica — no con otro docente directamente']))
+      +card('Conducta en el aula',
+        ul(['Uso del celular personal restringido durante clase — predicar con el ejemplo','Lenguaje respetuoso y profesional en todo momento con estudiantes y colegas','Ningún tipo de discriminación es tolerada: por origen, género, edad, condición económica o nivel académico previo','Las relaciones sentimentales con estudiantes activos están expresamente prohibidas']))
+      +card('Conducto regular — siempre en este orden',
+        dg([['Paso 1','Docente','Primera instancia para cualquier situación en el aula'],['Paso 2','Coordinador académico','Si el docente no puede resolver'],['Paso 3','Director académico','Situaciones que requieren escalamiento'],['Paso 4','Dirección general','Casos institucionales graves']]))
+      +card('Manejo de conflictos y situaciones difíciles',
+        ul(['Comportamiento disruptivo: conversación privada primero, nunca confrontación pública frente al grupo','Si el comportamiento persiste: escalar a coordinación académica ese mismo día, no la semana siguiente','Situación personal grave del estudiante: remitir a coordinación inmediatamente — no intentar resolverlo solo','Conflicto entre estudiantes: separar, escuchar a ambas partes en privado, reportar']))
+      +card('Protección de datos',
+        p('Los datos personales de los estudiantes — información médica, situación económica, datos familiares — son confidenciales. No los compartas con otros estudiantes ni fuera de la institución. Cualquier situación que requiera divulgar información sensible debe pasar por coordinación.'))),
 
     primerosdias:()=>wrap(id,
-      highlight('<strong>La regla de oro:</strong> El estudiante de INDECAP generalmente tiene miedo de fracasar. Tu trabajo el primer día es convencerle de que puede lograrlo.')
-      +card('Protocolo sugerido — primer día',ul(['<strong>Presentación tuya (5 min):</strong> Nombre, experiencia, por qué te apasiona el tema.','<strong>Presentación del grupo (10 min):</strong> Nombre y qué esperan del curso.','<strong>Encuadre del ciclo (10 min):</strong> Qué aprenderemos, cómo se evalúa, las reglas.','<strong>Primera clase real (30 min):</strong> No pierdas el primer día solo en presentaciones.','<strong>Cierre y preguntas (5 min):</strong> ¿Hay dudas?']))
-      +card('Señales de alerta — primeras semanas',ul(['Estudiante que no aparece en Q10 → reportar ese mismo día.','Llega tarde sistemáticamente → conversación privada antes de la tercera clase.','Sin materiales o uniforme → posible situación económica → reportar a coordinación.']))),
+      p('El ambiente que construyes en las primeras 2 semanas define la dinámica del grupo para todo el ciclo. Un inicio sólido reduce ausentismo, mejora el rendimiento y disminuye los problemas de disciplina. Un inicio caótico es muy difícil de recuperar.')
+      +hl('<strong>La regla de oro:</strong> El estudiante de INDECAP generalmente llega con miedo — miedo de no poder, miedo de ser el más lento, miedo de fracasar de nuevo. Tu trabajo el primer día no es impresionarlos con tu conocimiento — es convencerlos de que pueden lograrlo contigo.')
+      +card('Antes del primer día — lista de verificación',
+        ul(['☐ Recibiste tus credenciales de Q10','☐ Conoces el aula asignada y verificaste el estado del espacio o laboratorio','☐ Tienes el syllabus completo de la competencia','☐ Sabes cuántos estudiantes esperas (lista en Q10)','☐ Tienes preparada tu primera clase real — no solo la presentación','☐ Conoces las fechas clave del ciclo: parciales y cierre de notas']))
+      +card('Protocolo sugerido — primer día',
+        ul(['<strong>Presentación tuya (5 min):</strong> Nombre, experiencia profesional real en el área, por qué te apasiona el tema. Que te vean como experto, no solo como académico.','<strong>Presentación del grupo (10 min):</strong> Nombre de cada uno y qué esperan del curso. Escucha activamente — esta información es valiosa.','<strong>Encuadre del ciclo (10 min):</strong> Qué aprenderemos, cómo se evalúa, las reglas del aula, tus expectativas. Sé claro desde el principio.','<strong>Primera clase real (30 min):</strong> No pierdas el primer día solo en presentaciones. Empieza a enseñar. Eso genera credibilidad inmediata.','<strong>Cierre y preguntas (5 min):</strong> ¿Hay dudas sobre la dinámica? ¿Qué necesitan para la próxima clase?']))
+      +card('Señales de alerta — primeras semanas',
+        ul(['<strong>Estudiante que no aparece en Q10:</strong> reportar ese mismo día a coordinación','<strong>Llega tarde sistemáticamente:</strong> conversación privada antes de la tercera clase — pregunta qué pasa, no solo exijas','<strong>Sin materiales o uniformes:</strong> puede ser situación económica — reportar a coordinación con discreción','<strong>Cambio brusco de actitud o desempeño:</strong> algo pasó fuera del aula — pregunta en privado','<strong>Pregunta por cancelación o devoluciones:</strong> señal de deserción inminente — reportar a coordinación ese mismo día']))
+      +al('<strong>Las primeras 3 semanas son las más críticas.</strong> Estadísticamente, la deserción ocurre más en ese período y justo después del primer parcial. Tu atención y seguimiento en esos momentos puede ser la diferencia entre un estudiante que termina y uno que no.')),
 
     evaluacion:()=>wrap(id,
-      dataGrid([['Institución evalúa','40%','Inicial 15% · Final 25%'],['Docente evalúa','60%','Talleres, quizzes, prácticas']])
-      +card('Reglas clave',ul(['<strong>Escala 0 a 5.</strong> Se aprueba con nota mayor a 3.5.','<strong>25% de inasistencias = pierde la competencia.</strong> Sin excepciones.','El 60% debe distribuirse en al menos 3 notas parciales.','Las notas deben ingresarse en Q10 antes de la fecha límite.']))
-      +card('Prácticas — requisitos del estudiante',ul(['✅ Humanización y Calidad aprobado','✅ Paz y salvo con la institución','✅ ARL vigente · EPS · Vacunación completa','✅ Hoja de vida y fotocopia del documento']))),
+      p('El sistema de evaluación se realiza por competencias. Cada competencia tiene su propia duración y se evalúa de forma independiente.')
+      +dg([['Institución evalúa','40%','Parcial inicial 15% · Parcial final 25%'],['Docente evalúa','60%','Mínimo 3 evaluaciones parciales en el ciclo']])
+      +card('Escala y reglas de aprobación',
+        ul(['Escala numérica del 0 (mínima) al 5 (máxima)','<strong>Nota mínima para aprobar: mayor a 3.5</strong>','<strong>Con el 25% de inasistencias se pierde la competencia</strong>, independientemente de la nota','Cuando el estudiante acumule el 20% de inasistencias, notifica a coordinación — no esperes al 25%','Las competencias se evalúan de forma independiente entre sí']))
+      +card('Cómo distribuir tu 60% — recomendación',
+        ul(['<strong>Talleres prácticos en clase (20-25%):</strong> evalúan habilidades en tiempo real','<strong>Quiz de seguimiento (15-20%):</strong> verifica comprensión teórica','<strong>Trabajo aplicado o proyecto (15-20%):</strong> evaluación integradora al final del módulo','<strong>Participación y actitud (hasta 5%):</strong> define criterios claros desde el día 1 — no lo uses como comodín subjetivo']))
+      +card('Registro en Q10 y revisiones',
+        ul(['Las notas deben ingresarse antes de la fecha límite del ciclo','Una vez cerrado el ciclo, cualquier corrección requiere autorización de coordinación','Si hay un error, repórtalo inmediatamente — no esperes al cierre','Los estudiantes tienen derecho a solicitar revisión de nota — atiéndelos con evidencias del proceso evaluativo']))
+      +card('Requisitos para enviar estudiantes a prácticas',
+        ul(['✅ Curso de Humanización y Calidad en el Servicio aprobado','✅ Paz y salvo con la institución (sin deudas)','✅ Afiliación a ARL (Administradora de Riesgos Laborales) vigente','✅ Esquema de vacunación completo — especialmente en salud: hepatitis B, tétano, influenza','✅ Certificado de EPS activo','✅ Formato de hoja de vida diligenciado (formato institucional)','✅ Fotocopia del documento de identidad']))),
 
     retencion:()=>wrap(id,
-      highlight('<strong>Un estudiante que siente que su docente se preocupa por él, tiene mucho más probabilidad de pagar a tiempo y continuar el programa.</strong>')
-      +card('Señales de alerta — reportar a coordinación',ul(['Inasistencia de 2 o más clases seguidas sin justificación','Cambio brusco en rendimiento o actitud','Menciona dificultades económicas graves','Pregunta sobre cancelación o devoluciones']))
-      +card('Cuando dice que no puede pagar',ul(['<strong>Escucha sin juzgar.</strong> No es tu trabajo cobrar ni presionar.','<strong>No prometas nada</strong> sobre descuentos o plazos.','<strong>Remite a coordinación ese mismo día.</strong>','<strong>Sigue tratando al estudiante exactamente igual en clase.</strong>']))
-      +alert2('<strong>Tu poder está en el aula.</strong> Haz que cada clase valga la pena — eso es lo que hace que el estudiante quiera quedarse.')),
+      p('Cada estudiante que deserta es una persona que no logró su objetivo de formación. La retención no es solo un indicador institucional — es una responsabilidad compartida entre todos.')
+      +hl('<strong>La relación directa:</strong> cuando un estudiante siente que aprende algo útil, el pago de la mensualidad se percibe como inversión. Cuando siente que pierde el tiempo, se percibe como gasto — y el primer gasto que recortan es ese. Tu clase es el argumento más poderoso para que el estudiante decida pagar y quedarse.')
+      +card('Señales de deserción inminente — actúa antes de que ocurra',
+        ul(['2 o más clases seguidas sin justificación','Cambio brusco en rendimiento, motivación o actitud','Menciona dificultades económicas o familiares graves','Pregunta por cancelación, traslado o devolución de dinero','Deja de participar en clase si antes lo hacía activamente','Conflicto no resuelto con otro estudiante o con el docente']))
+      +card('Qué hacer cuando detectas una señal',
+        ul(['<strong>Habla con el estudiante en privado</strong> — no en público, no delante del grupo','<strong>Escucha sin juzgar</strong> — pregunta cómo está, no solo por qué faltó','<strong>No prometas lo que no puedes dar</strong> — no ofrezcas descuentos, plazos ni excepciones académicas','<strong>Reporta a coordinación ese mismo día</strong> — no esperes a ver si se resuelve solo','<strong>Sigue tratando al estudiante exactamente igual en clase</strong> — que no sienta diferencia']))
+      +card('Cuando el estudiante dice que no puede pagar',
+        ul(['Escuchar con empatía — no cobrar ni presionar, ese no es tu trabajo','NO prometer acuerdos de pago o descuentos — eso lo maneja administración','Decirle: "Habla con coordinación hoy mismo, ellos pueden ayudarte a encontrar una solución"','Reportar a coordinación inmediatamente']))
+      +card('Datos que debes conocer',
+        ul(['El 71.4% de nuestros egresados está laborando — ese es el argumento más poderoso para que el estudiante continúe','La deserción ocurre más en las primeras 3 semanas y justo después del primer parcial','Los estudiantes que tienen una buena relación con al menos un docente tienen significativamente mayor probabilidad de terminar el programa']))
+      +al('<strong>El poder de una pregunta:</strong> a veces lo único que un estudiante necesita para no desertar es que alguien le pregunte genuinamente cómo está. Esa pregunta, en el momento correcto, puede cambiar una decisión.')),
 
     experiencias:()=>wrap(id,
-      ['<em>"El primer día no uso el tablero. Me siento con ellos, les pregunto por qué están aquí. Cuando entiendo sus metas, puedo conectar cada clase con algo que les importa de verdad."</em><br><span style="font-size:11px;color:#787583;display:block;margin-top:4px">— Docente de Enfermería, sede Medellín</span>',
-       '<em>"Les digo desde el primer día: aquí vienen a equivocarse. El laboratorio es el único lugar donde equivocarse no cuesta nada — afuera sí cuesta."</em><br><span style="font-size:11px;color:#787583;display:block;margin-top:4px">— Docente de Cosmetología, sede Envigado</span>',
-       '<em>"Cuando noto que alguien está fallando, no lo espero en el salón — lo busco antes de la clase. Una conversación de 5 minutos en el corredor vale más que diez clases sin ese contacto."</em><br><span style="font-size:11px;color:#787583;display:block;margin-top:4px">— Docente de SST, sede Caldas</span>']
+      ['<em>"El primer día no uso el tablero. Me siento con ellos, les pregunto por qué están aquí, qué esperan lograr. Cuando entiendo sus metas, puedo conectar cada clase con algo que les importa de verdad. Ese vínculo hace que vengan, que pregunten, que se esfuercen."</em><br><span style="font-size:11px;color:#787583;display:block;margin-top:6px">— Docente de Enfermería, sede Medellín</span>',
+       '<em>"Les digo desde el primer día: aquí vienen a equivocarse. El laboratorio es el único lugar donde equivocarse no cuesta nada — afuera sí cuesta. Eso cambia la actitud. Dejan de tener miedo y empiezan a experimentar."</em><br><span style="font-size:11px;color:#787583;display:block;margin-top:6px">— Docente de Cosmetología, sede Envigado</span>',
+       '<em>"Cuando noto que alguien está fallando, no lo espero en el salón — lo busco antes de la clase. Una conversación de 5 minutos en el corredor vale más que diez clases sin ese contacto. Muchas veces el problema no tiene nada que ver con la materia."</em><br><span style="font-size:11px;color:#787583;display:block;margin-top:6px">— Docente de SST, sede Caldas</span>',
+       '<em>"Aprendí que cuando un estudiante empieza a faltar, casi siempre hay algo detrás. Si falta dos veces seguidas, yo pregunto. A veces eso solo — que alguien le pregunte cómo está — es suficiente para que siga."</em><br><span style="font-size:11px;color:#787583;display:block;margin-top:6px">— Docente de Auxiliar Contable, sede Medellín</span>',
+       '<em>"Al inicio de cada ciclo les pregunto qué esperan del programa. Al final les muestro esa lista y les pregunto si lo lograron. La mayoría dice que sí, y eso cierra algo importante para ellos — y para mí."</em><br><span style="font-size:11px;color:#787583;display:block;margin-top:6px">— Docente de Veterinaria, sede Envigado</span>']
       .map(q=>'<div class="rounded-2xl p-5 mb-4" style="background:#fafafa;border:1px solid #e5e5e5;border-left:4px solid #166534"><p class="text-sm text-on-surface-variant leading-relaxed">'+q+'</p></div>').join('')
-      +card('Lo que los estudiantes más valoran',ul(['Que lleguen preparados y puntuales','Que expliquen con ejemplos reales del sector','Que los traten como adultos','Que sean justos y transparentes con las notas']))),
+      +card('Lo que los estudiantes más valoran',
+        ul(['Que los docentes lleguen preparados y puntuales — la impuntualidad docente destruye credibilidad','Que expliquen con ejemplos reales del sector, no solo teoría abstracta','Que los traten como adultos capaces, no como estudiantes de colegio','Que sean justos y transparentes con las notas desde el día 1','Que estén disponibles para preguntas fuera del horario de clase']))
+      +al('<strong>Tu historia también importa.</strong> Si tienes una experiencia que quieras compartir con el equipo docente, envíala a coordinación académica. Esta plataforma se actualiza con las voces del equipo.')),
   };
-  return C[id]?C[id]():'<div class="max-w-3xl mx-auto px-6 py-8">'+backBtn()+'<p class="text-on-surface-variant">Módulo en construcción.</p></div>';
+  return C[id]?C[id]():'<div class="max-w-3xl mx-auto px-6 py-8">'+back()+'<p class="text-on-surface-variant">Módulo en construcción.</p></div>';
 }
 
 function openMM(){document.getElementById('mm').classList.add('open');document.getElementById('mo').classList.add('open');}
