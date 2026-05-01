@@ -51,8 +51,8 @@ const cursos = [
   { label: "Código Fucsia",                       href: "/cursos/codigo-fucsia",              categoria: "Salud" },
   { label: "Calidad y Humanización",              href: "/cursos/calidad-humanizacion",       categoria: "Salud" },
   { label: "Peluquería y Estética Canina",        href: "/cursos/peluqueria-estetica-canina", categoria: "Mascotas" },
-  { label: "Excel B├ísico, Intermedio y Avanzado", href: "/cursos/excel",                      categoria: "Tecnología" },
-  { label: "Word B├ísico y Avanzado",              href: "/cursos/word",                       categoria: "Tecnología" },
+  { label: "Excel Básico, Intermedio y Avanzado", href: "/cursos/excel",                      categoria: "Tecnología" },
+  { label: "Word Básico y Avanzado",              href: "/cursos/word",                       categoria: "Tecnología" },
 ];
 
 const categoriasCursos = ["Salud", "Mascotas", "Tecnología"];
@@ -160,7 +160,7 @@ export function Header() {
                   ))}
                 </div>
                 <div className="mt-4 pt-4 border-t border-[#eaeff1]">
-                  <a href="/programas" onClick={() => setProgDropdown(false)} className="text-sm font-bold text-[#312783] hover:underline">Ver todos los programas ÔåÆ</a>
+                  <a href="/programas" onClick={() => setProgDropdown(false)} className="text-sm font-bold text-[#312783] hover:underline">Ver todos los programas</a>
                 </div>
               </div>
             )}
@@ -183,7 +183,7 @@ export function Header() {
                   ))}
                 </div>
                 <div className="mt-4 pt-4 border-t border-[#eaeff1]">
-                  <a href="/educacion-continua" onClick={() => setCursosDropdown(false)} className="text-sm font-bold text-[#805600] hover:underline">Ver todos los cursos ÔåÆ</a>
+                  <a href="/educacion-continua" onClick={() => setCursosDropdown(false)} className="text-sm font-bold text-[#805600] hover:underline">Ver todos los cursos</a>
                 </div>
               </div>
             )}
@@ -393,7 +393,7 @@ export function Header() {
                 <div className="mt-8 pt-6 border-t border-white/10">
                   <p className="text-xs text-white/25 text-center">
                     Corporación Educativa INDECAP<br />
-                    (604) 448 4794 ┬À indecap@indecap.edu.co
+                    (604) 448 4794  indecap@indecap.edu.co
                   </p>
                 </div>
               </div>
