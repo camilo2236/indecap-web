@@ -13,58 +13,58 @@ import {
 } from "@/components/ui/sheet";
 
 const programas = [
-  { label: "Auxiliar en Enfermer├¡a",            href: "/programas/enfermeria",              escuela: "Salud" },
-  { label: "Servicios Farmac├®uticos",            href: "/programas/farmacia",                escuela: "Salud" },
+  { label: "Auxiliar en Enfermería",            href: "/programas/enfermeria",              escuela: "Salud" },
+  { label: "Servicios Farmacéuticos",            href: "/programas/farmacia",                escuela: "Salud" },
   { label: "Auxiliar en Salud Oral",             href: "/programas/salud-oral",              escuela: "Salud" },
   { label: "Auxiliar en Salud P├║blica",          href: "/programas/salud-publica",           escuela: "Salud" },
   { label: "Administrativo en Salud",            href: "/programas/administrativo-salud",    escuela: "Salud" },
-  { label: "Atenci├│n al Adulto Mayor",           href: "/programas/adulto-mayor",            escuela: "Salud" },
-  { label: "Atenci├│n a la Primera Infancia", href: "/programas/primera-infancia", escuela: "Salud" },
+  { label: "Atención al Adulto Mayor",           href: "/programas/adulto-mayor",            escuela: "Salud" },
+  { label: "Atención a la Primera Infancia", href: "/programas/primera-infancia", escuela: "Salud" },
   { label: "Auxiliar en Veterinaria",            href: "/programas/veterinaria",             escuela: "Veterinaria" },
-  { label: "Cosmetolog├¡a y Est├®tica",            href: "/programas/cosmetologia",            escuela: "Belleza" },
+  { label: "Cosmetología y Estética",            href: "/programas/cosmetologia",            escuela: "Belleza" },
   { label: "Auxiliar Contable",                  href: "/programas/contable",                escuela: "Administrativa" },
   { label: "Talento Humano",                     href: "/programas/talento-humano",          escuela: "Administrativa" },
-  { label: "T├®cnico en Marketing Digital",       href: "/programas/mercadeo",                escuela: "Administrativa" },
+  { label: "Técnico en Marketing Digital",       href: "/programas/mercadeo",                escuela: "Administrativa" },
   { label: "Seguridad y Salud en el Trabajo",    href: "/programas/sst",                     escuela: "Administrativa" },
-  { label: "T├®cnico en Sistemas",                href: "/programas/sistemas",                escuela: "Tecnolog├¡a" },
-  { label: "Auxiliar en Desarrollo de Software", href: "/programas/software",                escuela: "Tecnolog├¡a" },
+  { label: "Técnico en Sistemas",                href: "/programas/sistemas",                escuela: "Tecnología" },
+  { label: "Auxiliar en Desarrollo de Software", href: "/programas/software",                escuela: "Tecnología" },
   { label: "Entrenamiento Deportivo",            href: "/programas/entrenamiento-deportivo", escuela: "Deportes" },
 ];
 
-const escuelas = ["Salud", "Veterinaria", "Belleza", "Administrativa", "Tecnolog├¡a", "Deportes"];
+const escuelas = ["Salud", "Veterinaria", "Belleza", "Administrativa", "Tecnología", "Deportes"];
 
 const escuelaColors: Record<string, string> = {
   "Salud":          "#1A3A6B",
   "Veterinaria":    "#7B1F1F",
   "Belleza":        "#C0394B",
   "Administrativa": "#1a086e",
-  "Tecnolog├¡a":     "#0F4C80",
+  "Tecnología":     "#0F4C80",
   "Deportes":       "#0F6E56",
 };
 
 const cursos = [
-  { label: "RCP ÔÇö Reanimaci├│n Cardiopulmonar",   href: "/cursos/rcp",                        categoria: "Salud" },
-  { label: "Inyectolog├¡a",                        href: "/cursos/inyectologia",               categoria: "Salud" },
+  { label: "RCP – Reanimación Cardiopulmonar",   href: "/cursos/rcp",                        categoria: "Salud" },
+  { label: "Inyectología",                        href: "/cursos/inyectologia",               categoria: "Salud" },
   { label: "Primeros Auxilios",                   href: "/cursos/primeros-auxilios",          categoria: "Salud" },
-  { label: "Vacunaci├│n",                          href: "/cursos/vacunacion",                 categoria: "Salud" },
+  { label: "Vacunación",                          href: "/cursos/vacunacion",                 categoria: "Salud" },
   { label: "Toma de Muestras de Laboratorio",     href: "/cursos/toma-muestras",              categoria: "Salud" },
-  { label: "C├│digo Fucsia",                       href: "/cursos/codigo-fucsia",              categoria: "Salud" },
-  { label: "Calidad y Humanizaci├│n",              href: "/cursos/calidad-humanizacion",       categoria: "Salud" },
-  { label: "Peluquer├¡a y Est├®tica Canina",        href: "/cursos/peluqueria-estetica-canina", categoria: "Mascotas" },
-  { label: "Excel B├ísico, Intermedio y Avanzado", href: "/cursos/excel",                      categoria: "Tecnolog├¡a" },
-  { label: "Word B├ísico y Avanzado",              href: "/cursos/word",                       categoria: "Tecnolog├¡a" },
+  { label: "Código Fucsia",                       href: "/cursos/codigo-fucsia",              categoria: "Salud" },
+  { label: "Calidad y Humanización",              href: "/cursos/calidad-humanizacion",       categoria: "Salud" },
+  { label: "Peluquería y Estética Canina",        href: "/cursos/peluqueria-estetica-canina", categoria: "Mascotas" },
+  { label: "Excel B├ísico, Intermedio y Avanzado", href: "/cursos/excel",                      categoria: "Tecnología" },
+  { label: "Word B├ísico y Avanzado",              href: "/cursos/word",                       categoria: "Tecnología" },
 ];
 
-const categoriasCursos = ["Salud", "Mascotas", "Tecnolog├¡a"];
+const categoriasCursos = ["Salud", "Mascotas", "Tecnología"];
 
 const categoriaColors: Record<string, string> = {
   "Salud":      "#60a5fa",
   "Mascotas":   "#f87171",
-  "Tecnolog├¡a": "#34d399",
+  "Tecnología": "#34d399",
 };
 
 const sedes = [
-  { label: "Sede Medell├¡n",  href: "/sedes/medellin", desc: "Cl. 56 # 45-26" },
+  { label: "Sede Medellín",  href: "/sedes/medellin", desc: "Cl. 56 # 45-26" },
   { label: "Sede Envigado",  href: "/sedes/envigado",  desc: "Cl 37 Sur #43A-84" },
   { label: "Sede Caldas",    href: "/sedes/caldas",    desc: "Calle 130 sur # 51-65" },
 ];
@@ -86,6 +86,15 @@ export function Header() {
   const [mobileProgOpen, setMobileProgOpen] = useState(false);
   const [mobileCursosOpen, setMobileCursosOpen] = useState(false);
   const [mobileSedesOpen, setMobileSedesOpen] = useState(false);
+
+  useEffect(() => {
+    if (!open) {
+      setMobileProgOpen(false);
+      setMobileCursosOpen(false);
+      setMobileSedesOpen(false);
+    }
+  }, [open]);
+
   const progRef = useRef<HTMLDivElement>(null);
   const cursosRef = useRef<HTMLDivElement>(null);
   const sedesRef = useRef<HTMLDivElement>(null);
@@ -126,6 +135,9 @@ export function Header() {
           )}
           <a href="/" className="flex items-center gap-2">
             <Image src="/images/logo.png" alt="INDECAP" width={160} height={56} className="h-14 w-auto" priority />
+          </a>
+          <a href="/login" className="hidden sm:flex items-center gap-1.5 rounded-full border border-[#1a086e]/20 bg-[#1a086e]/5 px-3 py-1.5 text-xs font-black text-[#1a086e] transition-all hover:bg-[#1a086e] hover:text-white">
+            INDECAP Virtual
           </a>
         </div>
 
@@ -204,24 +216,30 @@ export function Header() {
 
           <a href="/admision" className={buttonVariants({ className: "rounded-full bg-[#F0A500] px-7 py-3 text-sm font-black text-[#080F14] hover:bg-[#FFD166] shadow-[0_4px_20px_rgba(240,165,0,0.4)] transition-all" })}>
             <MessageCircle className="mr-1 h-4 w-4" />
-            Formulario de admisi├│n
+            Formulario de admisión
           </a>
         </nav>
 
-        {/* Bot├│n men├║ m├│vil */}
+        {/* Móvil: Info gratis + hamburger */}
+        <div className="flex items-center gap-2 lg:hidden">
+          <a href="/admision" className="flex items-center gap-1.5 rounded-full bg-[#F0A500] px-4 py-2 text-xs font-black text-[#080F14] shadow-[0_2px_12px_rgba(240,165,0,0.35)]">
+            <MessageCircle className="h-3.5 w-3.5" />
+            Info gratis
+          </a>
+        </div>
         <Sheet open={open} onOpenChange={setOpen}>
           <SheetTrigger className="lg:hidden" render={<Button variant="ghost" size="icon" />}>
             <Menu className="h-5 w-5" />
             <span className="sr-only">Men├║</span>
           </SheetTrigger>
 
-          {/* PANEL M├ôVIL ÔÇö fondo azul INDECAP */}
+          {/* PANEL M├ôVIL – fondo azul INDECAP */}
           <SheetContent
             side="right"
             className="w-full sm:w-[380px] p-0 border-0"
             style={{ background: "#0f0c2e" }}
           >
-            <SheetTitle className="sr-only">Men├║ de navegaci├│n</SheetTitle>
+            <SheetTitle className="sr-only">Men├║ de navegación</SheetTitle>
 
             {/* Header del panel */}
             <div className="flex items-center justify-between px-6 py-5 border-b border-white/10">
@@ -245,14 +263,12 @@ export function Header() {
 
               {/* CTA principal */}
               <div className="px-6 py-5 border-b border-white/8">
-                <a
-                  href="/admision"
-                  onClick={() => setOpen(false)}
-                  className="flex items-center justify-center gap-2 w-full py-4 rounded-2xl font-black text-sm text-[#1a086e] transition-all hover:opacity-90"
-                  style={{ backgroundColor: "#ffb21d" }}
-                >
+                <a href="/login" onClick={() => setOpen(false)} className="flex items-center justify-center gap-2 w-full py-3.5 rounded-2xl font-black text-sm text-white border border-white/20 hover:bg-white/10 transition-all" style={{ background: "rgba(26,8,110,0.6)" }}>
+                  INDECAP Virtual — Entrar a mi plataforma
+                </a>
+                <a href="/admision" onClick={() => setOpen(false)} className="flex items-center justify-center gap-2 w-full py-4 rounded-2xl font-black text-sm text-[#1a086e] transition-all hover:opacity-90" style={{ backgroundColor: "#ffb21d" }}>
                   <MessageCircle size={16} />
-                  Formulario de admisi├│n
+                  Formulario de admisión
                 </a>
                 <a
                   href="https://wa.me/573174342783?text=Hola%20INDECAP%2C%20quiero%20informaci%C3%B3n%20sobre%20sus%20programas"
@@ -376,7 +392,7 @@ export function Header() {
                 {/* Footer del men├║ */}
                 <div className="mt-8 pt-6 border-t border-white/10">
                   <p className="text-xs text-white/25 text-center">
-                    Corporaci├│n Educativa INDECAP<br />
+                    Corporación Educativa INDECAP<br />
                     (604) 448 4794 ┬À indecap@indecap.edu.co
                   </p>
                 </div>
