@@ -58,10 +58,10 @@ export default function ContactoPage() {
     e.preventDefault();
     setEstado("loading");
     try {
-      const res = await fetch("/api/inscripcion", {
+      const res = await fetch("/api/captacion", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ nombres: form.nombre, correo: form.correo, celular: form.telefono, programa: form.programa, sede: "Por definir" }),
+        body: JSON.stringify({ nombre: form.nombre, correo: form.correo, celular: form.telefono, programa: form.programa, sede: "Medellín" }),
       });
       setEstado(res.ok ? "success" : "error");
     } catch { setEstado("error"); }
