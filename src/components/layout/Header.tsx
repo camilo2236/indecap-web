@@ -16,7 +16,7 @@ const programas = [
   { label: "Auxiliar en Enfermería",            href: "/programas/enfermeria",              escuela: "Salud" },
   { label: "Servicios Farmacéuticos",            href: "/programas/farmacia",                escuela: "Salud" },
   { label: "Auxiliar en Salud Oral",             href: "/programas/salud-oral",              escuela: "Salud" },
-  { label: "Auxiliar en Salud P├║blica",          href: "/programas/salud-publica",           escuela: "Salud" },
+  { label: "Auxiliar en Salud Pública",          href: "/programas/salud-publica",           escuela: "Salud" },
   { label: "Administrativo en Salud",            href: "/programas/administrativo-salud",    escuela: "Salud" },
   { label: "Atención al Adulto Mayor",           href: "/programas/adulto-mayor",            escuela: "Salud" },
   { label: "Atención a la Primera Infancia", href: "/programas/primera-infancia", escuela: "Salud" },
