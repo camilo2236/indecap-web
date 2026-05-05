@@ -63,7 +63,14 @@ export default function ContactoPage() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ nombre: form.nombre, correo: form.correo, celular: form.telefono, programa: form.programa, sede: "Medellín" }),
       });
-      setEstado(res.ok ? "success" : "error");
+      if (res.ok) {
+  setEstado("success");
+  if (typeof window !== "undefined" && window.fbq) {
+    window.fbq("track", "Lead", { content_name: "Contacto", content_category: "Web" });
+  }
+} else {
+  setEstado("error");
+}
     } catch { setEstado("error"); }
   };
 

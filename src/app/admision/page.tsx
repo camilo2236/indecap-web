@@ -63,6 +63,9 @@ export default function AdmisionPage() {
       const data = await res.json();
       if (!res.ok) throw new Error(data.error || "Error al enviar");
       setSuccess(true);
+if (typeof window !== "undefined" && window.fbq) {
+  window.fbq("track", "Lead", { content_name: form.programa, content_category: form.sede });
+}
     } catch (err: unknown) {
       setError(err instanceof Error ? err.message : "Error al enviar. Intenta de nuevo.");
     } finally {

@@ -93,7 +93,14 @@ export function Hero() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(form),
       });
-      setEstado(res.ok ? "success" : "error");
+      if (res.ok) {
+  setEstado("success");
+  if (typeof window !== "undefined" && window.fbq) {
+    window.fbq("track", "Lead", { content_name: form.programa, content_category: form.sede });
+  }
+} else {
+  setEstado("error");
+}
       if (res.ok) setForm({ nombres: "", apellidos: "", celular: "", correo: "", programa: "", sede: "" });
     } catch { setEstado("error"); }
   };
