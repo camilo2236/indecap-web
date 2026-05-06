@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { useState } from "react";
 import { MapPin, Phone, Mail, MessageCircle, ArrowRight, ChevronDown } from "lucide-react";
 import { Loader2, CheckCircle } from "lucide-react";
+declare const fbq: (...args: unknown[]) => void;
 
 const sedes = [
   {
@@ -65,9 +66,9 @@ export default function ContactoPage() {
       });
       if (res.ok) {
   setEstado("success");
-  if (typeof window !== "undefined" && window.fbq) {
-    window.fbq("track", "Lead", { content_name: "Contacto", content_category: "Web" });
-  }
+  if (typeof window !== "undefined") {
+  fbq("track", "Lead", { content_name: "Contacto", content_category: "Web" });
+}
 } else {
   setEstado("error");
 }

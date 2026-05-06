@@ -3,6 +3,7 @@
 import { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
 import { CheckCircle, Loader2, Send, ArrowRight } from "lucide-react";
+declare const fbq: (...args: unknown[]) => void;
 
 const SLIDES = [
   { src: "/images/programs/hero-enfermeria.jpg",   label: "Estudiantes de Enfermería",  escuela: "Escuela de Salud" },
@@ -95,9 +96,9 @@ export function Hero() {
       });
       if (res.ok) {
   setEstado("success");
-  if (typeof window !== "undefined" && window.fbq) {
-    window.fbq("track", "Lead", { content_name: form.programa, content_category: form.sede });
-  }
+  if (typeof window !== "undefined") {
+  fbq("track", "Lead", { content_name: form.programa, content_category: form.sede });
+}
 } else {
   setEstado("error");
 }

@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { CheckCircle, Loader2, Phone, Mail, MapPin, BookOpen, ArrowRight, GraduationCap } from "lucide-react";
-
+declare const fbq: (...args: unknown[]) => void;
 const programasTecnicos = [
   "Auxiliar en Enfermería",
   "Cosmetología y Estética Integral",
@@ -63,8 +63,8 @@ export default function AdmisionPage() {
       const data = await res.json();
       if (!res.ok) throw new Error(data.error || "Error al enviar");
       setSuccess(true);
-if (typeof window !== "undefined" && window.fbq) {
-  window.fbq("track", "Lead", { content_name: form.programa, content_category: form.sede });
+if (typeof window !== "undefined") {
+  fbq("track", "Lead", { content_name: form.programa, content_category: form.sede });
 }
     } catch (err: unknown) {
       setError(err instanceof Error ? err.message : "Error al enviar. Intenta de nuevo.");
