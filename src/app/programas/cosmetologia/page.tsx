@@ -25,7 +25,7 @@ export default function CosmetologiaPage() {
       capacidades={[
         "Realizar tratamientos faciales profesionales: hidratación, limpieza profunda, manejo de acné y manchas",
         "Ejecutar técnicas de depilación con cera, hilo y métodos definitivos básicos",
-        "Aplicar maquillaje social y artístico con técnicas de contorno, corrección y acabado profesional",
+        "Aplicar maquillaje social con técnicas de contorno, corrección y acabado profesional",
         "Realizar cosmetología corporal: tratamientos reductores, reafirmantes y modelantes",
         "Aplicar protocolos pre y post quirúrgicos en cirugía estética",
         "Brindar servicios de SPA: aromaterapia, exfoliación corporal, envolturas e hidroterapia",
@@ -43,7 +43,7 @@ export default function CosmetologiaPage() {
         "Bioseguridad y protocolos de higiene en estética",
         "Cosmetología facial: limpieza, hidratación, tratamientos específicos",
         "Técnicas de depilación profesional",
-        "Maquillaje social y artístico",
+        "Maquillaje social",
         "Cosmetología corporal: tratamientos reductores, reafirmantes y modelantes",
         "Protocolos pre y post quirúrgicos en cirugía estética",
       ]}
