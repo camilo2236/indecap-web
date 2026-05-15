@@ -43,7 +43,7 @@ export default function SSTPage() {
         "Práctica profesional en empresas del Valle de Aburrá apoyando la implementación real del SG-SST",
       ]}
       mercadoTexto="La seguridad laboral no es un tema de moda — es una obligación legal. Las empresas de Antioquia necesitan personas que sepan hacerlo, no que repitan normas de memoria. Nuestros egresados llegan a las empresas listos para inspeccionar, documentar y capacitar desde el primer día."
-      waNum="573174342783"
+      waNum="573167405680"
       waText="Hola INDECAP, estoy interesado en Seguridad y Salud en el Trabajo. Mi nombre es "
       sedes={[
         { icon: "🏘️", name: "Sede Envigado", address: "Cl 37 Sur #43A-84, Envigado", tag: "Tel: (604) 448 4794" },

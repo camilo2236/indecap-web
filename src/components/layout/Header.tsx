@@ -271,7 +271,7 @@ export function Header() {
                   Formulario de admisión
                 </a>
                 <a
-                  href="https://wa.me/573174342783?text=Hola%20INDECAP%2C%20quiero%20informaci%C3%B3n%20sobre%20sus%20programas"
+                  href="https://wa.me/573167405680?text=Hola%20INDECAP%2C%20quiero%20informaci%C3%B3n%20sobre%20sus%20programas"
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={() => setOpen(false)}
