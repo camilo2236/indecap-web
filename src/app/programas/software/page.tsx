@@ -49,7 +49,7 @@ export default function SoftwarePage() {
         "Práctica profesional en empresas de tecnología o áreas de TI participando en proyectos reales bajo supervisión",
       ]}
       mercadoTexto="El desarrollador que construyó esta página web aprendió solo, trabajando con las herramientas disponibles, sin esperar permiso. Ese es el espíritu que fomentamos. No necesitas una carrera de 5 años para empezar a programar — necesitas fundamentos sólidos, práctica real y la mentalidad de nunca dejar de aprender. La inteligencia artificial no reemplaza al programador — lo multiplica. Y aquí aprendes a usarla."
-      waNum="573167405680"
+      waNum="573174342783"
       waText="Hola INDECAP, estoy interesado en el programa de Desarrollo de Software. Mi nombre es "
       sedes={[
         { icon: "🏘️", name: "Sede Envigado", address: "Cl 37 Sur #43A-84, Envigado", tag: "Tel: (604) 448 4794" },

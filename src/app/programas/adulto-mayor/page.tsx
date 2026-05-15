@@ -49,7 +49,7 @@ export default function AdultoMayorPage() {
         "Práctica profesional en centros geriátricos, hogares o atención domiciliaria con personas reales bajo supervisión",
       ]}
       mercadoTexto="Nuestro programa combina formación técnica rigurosa con algo que no se puede enseñar en un aula genérica: la sensibilidad que nace de practicar en entornos reales, con personas reales, desde el principio."
-      waNum="573167405680"
+      waNum="573174342783"
       waText="Hola INDECAP, estoy interesado en Atención al Adulto Mayor. Mi nombre es "
       sedes={[
         { icon: "🏘️", name: "Sede Envigado", address: "Cl 37 Sur #43A-84, Envigado", tag: "Tel: (604) 448 4794" },
