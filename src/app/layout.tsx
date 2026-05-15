@@ -1,4 +1,4 @@
-ï»¿import type { Metadata } from "next";
+import type { Metadata } from "next";
 import { Newsreader, Inter } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/layout/Header";
@@ -24,25 +24,25 @@ const BASE_URL = "https://indecap.edu.co";
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
   title: {
-    default: "INDECAP â€” Instituto de Ciencias Aplicadas | 40 AÃ±os Formando Antioquia",
-    template: "%s | INDECAP â€” Instituto de Ciencias Aplicadas",
+    default: "INDECAP — Instituto de Ciencias Aplicadas | 40 Años Formando Antioquia",
+    template: "%s | INDECAP — Instituto de Ciencias Aplicadas",
   },
   description:
-    "CorporaciÃ³n Educativa INDECAP â€” 40 aÃ±os formando tÃ©cnicos laborales en Antioquia. 35.000+ egresados. Programas en enfermerÃ­a, cosmetologÃ­a, veterinaria, farmacia, salud oral y mÃ¡s. Sedes en MedellÃ­n, Envigado y Caldas.",
+    "Corporación Educativa INDECAP — 40 años formando técnicos laborales en Antioquia. 35.000+ egresados. Programas en enfermería, cosmetología, veterinaria, farmacia, salud oral y más. Sedes en Medellín, Envigado y Caldas.",
   keywords: [
-    "INDECAP", "tÃ©cnico laboral MedellÃ­n", "auxiliar enfermerÃ­a MedellÃ­n",
-    "cosmetologÃ­a MedellÃ­n", "veterinaria MedellÃ­n", "farmacia MedellÃ­n",
-    "salud oral MedellÃ­n", "educaciÃ³n tÃ©cnica Antioquia", "programas tÃ©cnicos Envigado",
-    "programas tÃ©cnicos Caldas", "bachillerato adultos MedellÃ­n",
-    "cursos enfermerÃ­a", "instituto ciencias aplicadas", "INDECAP MedellÃ­n",
+    "INDECAP", "técnico laboral Medellín", "auxiliar enfermería Medellín",
+    "cosmetología Medellín", "veterinaria Medellín", "farmacia Medellín",
+    "salud oral Medellín", "educación técnica Antioquia", "programas técnicos Envigado",
+    "programas técnicos Caldas", "bachillerato adultos Medellín",
+    "cursos enfermería", "instituto ciencias aplicadas", "INDECAP Medellín",
   ],
-  authors: [{ name: "CorporaciÃ³n Educativa INDECAP" }],
+  authors: [{ name: "Corporación Educativa INDECAP" }],
   openGraph: {
-    title: "INDECAP â€” 40 AÃ±os Formando el Talento de Antioquia",
-    description: "35.000+ egresados. 16 programas tÃ©cnicos laborales. Sedes en MedellÃ­n, Envigado y Caldas.",
+    title: "INDECAP — 40 Años Formando el Talento de Antioquia",
+    description: "35.000+ egresados. 16 programas técnicos laborales. Sedes en Medellín, Envigado y Caldas.",
     locale: "es_CO",
     type: "website",
-    siteName: "INDECAP â€” Instituto de Ciencias Aplicadas",
+    siteName: "INDECAP — Instituto de Ciencias Aplicadas",
     url: BASE_URL,
     images: [{ url: "/images/og-image.jpg", width: 1200, height: 630, alt: "INDECAP" }],
   },
@@ -55,7 +55,7 @@ const schemaOrg = {
     {
       "@type": "EducationalOrganization",
       "@id": `${BASE_URL}/#organization`,
-      "name": "CorporaciÃ³n Educativa INDECAP",
+      "name": "Corporación Educativa INDECAP",
       "url": BASE_URL,
       "logo": `${BASE_URL}/images/logo.png`,
       "foundingDate": "1986",
@@ -66,7 +66,7 @@ const schemaOrg = {
       "@type": "WebSite",
       "@id": `${BASE_URL}/#website`,
       "url": BASE_URL,
-      "name": "INDECAP â€” Instituto de Ciencias Aplicadas",
+      "name": "INDECAP — Instituto de Ciencias Aplicadas",
       "inLanguage": "es-CO",
     },
   ],

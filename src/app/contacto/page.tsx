@@ -18,7 +18,7 @@ const sedes = [
   {
     id: "envigado", ciudad: "Envigado", tagline: "Zona Sur",
     address: "Cl 37 Sur #43A-84, cerca al parque principal",
-    phone: "(604) 448 4794", whatsapp: "573174342783",
+    phone: "(604) 448 4794", whatsapp: "573167405680",
     email: "sedeenvigado@indecap.edu.co",
     mapUrl: "https://maps.app.goo.gl/3YL91ZWChN7YyRad6",
     image: "/images/sedes/envigado.jpg",
@@ -159,7 +159,7 @@ export default function ContactoPage() {
                     icon: <MessageCircle size={20} className="text-green-600" />, bg: "bg-green-100",
                   },
                   {
-                    href: "https://wa.me/573174342783?text=Hola%20INDECAP%20Envigado%2C%20quiero%20informaci%C3%B3n%20sobre%20sus%20programas.%20%C2%BFMe%20pueden%20orientar%3F",
+                    href: "https://wa.me/573167405680?text=Hola%20INDECAP%20Envigado%2C%20quiero%20informaci%C3%B3n%20sobre%20sus%20programas.%20%C2%BFMe%20pueden%20orientar%3F",
                     label: "WhatsApp Envigado", value: "+57 317 434 2783",
                     icon: <MessageCircle size={20} className="text-green-600" />, bg: "bg-green-100",
                   },

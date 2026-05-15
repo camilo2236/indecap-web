@@ -172,7 +172,7 @@ export default function SedesEnvigadoPage() {
               </div>
               <div className="space-y-3">
                 <a
-                  href="https://wa.me/573174342783?text=Hola%20INDECAP%20Envigado%2C%20quiero%20informaci%C3%B3n%20sobre%20los%20programas%20disponibles%20en%20la%20sede%20de%20Envigado.%20%C2%BFMe%20pueden%20orientar%3F"
+                  href="https://wa.me/573167405680?text=Hola%20INDECAP%20Envigado%2C%20quiero%20informaci%C3%B3n%20sobre%20los%20programas%20disponibles%20en%20la%20sede%20de%20Envigado.%20%C2%BFMe%20pueden%20orientar%3F"
                   target="_blank" rel="noopener noreferrer"
                   className="flex items-center justify-center gap-3 w-full py-4 rounded-xl font-black text-white bg-[#25D366] hover:scale-105 transition-transform"
                 >
@@ -213,7 +213,7 @@ export default function SedesEnvigadoPage() {
                 Formulario de admisión <ArrowRight size={18} />
               </a>
               <a
-                href="https://wa.me/573174342783?text=Hola%20INDECAP%20Envigado%2C%20quiero%20informaci%C3%B3n%20sobre%20los%20programas%20disponibles%20en%20la%20sede%20de%20Envigado.%20%C2%BFMe%20pueden%20orientar%3F"
+                href="https://wa.me/573167405680?text=Hola%20INDECAP%20Envigado%2C%20quiero%20informaci%C3%B3n%20sobre%20los%20programas%20disponibles%20en%20la%20sede%20de%20Envigado.%20%C2%BFMe%20pueden%20orientar%3F"
                 target="_blank" rel="noopener noreferrer"
                 className="flex items-center justify-center gap-3 px-10 py-5 rounded-full font-black text-lg border-2 border-white text-white hover:bg-white/10 transition-colors"
               >
