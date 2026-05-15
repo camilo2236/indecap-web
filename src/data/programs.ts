@@ -203,7 +203,7 @@ export const programs: Program[] = [
     badge: "Escuela de Seguridad",
     horas: "1.000h",
     escuela: "Escuela de Seguridad",
-    whatsappUrl: "https://wa.me/573167405680?text=Hola%20INDECAP%2C%20estoy%20interesado%20en%20Seguridad%20y%20Salud%20en%20el%20Trabajo.%20%C2%BFMe%20pueden%20orientar%3F",
+    whatsappUrl: "https://wa.me/573174342783?text=Hola%20INDECAP%2C%20estoy%20interesado%20en%20Seguridad%20y%20Salud%20en%20el%20Trabajo.%20%C2%BFMe%20pueden%20orientar%3F",
     pageUrl: "/programas/sst",
   },
 
@@ -249,7 +249,7 @@ export const programs: Program[] = [
     badge: "Escuela de Sistemas",
     horas: "700h",
     escuela: "Escuela de Sistemas",
-    whatsappUrl: "https://wa.me/573167405680?text=Hola%20INDECAP%2C%20estoy%20interesado%20en%20Desarrollo%20de%20Software.%20%C2%BFMe%20pueden%20orientar%3F",
+    whatsappUrl: "https://wa.me/573174342783?text=Hola%20INDECAP%2C%20estoy%20interesado%20en%20Desarrollo%20de%20Software.%20%C2%BFMe%20pueden%20orientar%3F",
     pageUrl: "/programas/software",
   },
 

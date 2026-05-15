@@ -1,4 +1,4 @@
-"use client";
+ï»¿"use client";
 
 import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
@@ -13,58 +13,58 @@ import {
 } from "@/components/ui/sheet";
 
 const programas = [
-  { label: "Auxiliar en Enfermería",            href: "/programas/enfermeria",              escuela: "Salud" },
-  { label: "Servicios Farmacéuticos",            href: "/programas/farmacia",                escuela: "Salud" },
+  { label: "Auxiliar en EnfermerÃ­a",            href: "/programas/enfermeria",              escuela: "Salud" },
+  { label: "Servicios FarmacÃ©uticos",            href: "/programas/farmacia",                escuela: "Salud" },
   { label: "Auxiliar en Salud Oral",             href: "/programas/salud-oral",              escuela: "Salud" },
-  { label: "Auxiliar en Salud Pública",          href: "/programas/salud-publica",           escuela: "Salud" },
+  { label: "Auxiliar en Salud PÃºblica",          href: "/programas/salud-publica",           escuela: "Salud" },
   { label: "Administrativo en Salud",            href: "/programas/administrativo-salud",    escuela: "Salud" },
-  { label: "Atención al Adulto Mayor",           href: "/programas/adulto-mayor",            escuela: "Salud" },
-  { label: "Atención a la Primera Infancia", href: "/programas/primera-infancia", escuela: "Salud" },
+  { label: "AtenciÃ³n al Adulto Mayor",           href: "/programas/adulto-mayor",            escuela: "Salud" },
+  { label: "AtenciÃ³n a la Primera Infancia", href: "/programas/primera-infancia", escuela: "Salud" },
   { label: "Auxiliar en Veterinaria",            href: "/programas/veterinaria",             escuela: "Veterinaria" },
-  { label: "Cosmetología y Estética",            href: "/programas/cosmetologia",            escuela: "Belleza" },
+  { label: "CosmetologÃ­a y EstÃ©tica",            href: "/programas/cosmetologia",            escuela: "Belleza" },
   { label: "Auxiliar Contable",                  href: "/programas/contable",                escuela: "Administrativa" },
   { label: "Talento Humano",                     href: "/programas/talento-humano",          escuela: "Administrativa" },
-  { label: "Técnico en Marketing Digital",       href: "/programas/mercadeo",                escuela: "Administrativa" },
+  { label: "TÃ©cnico en Marketing Digital",       href: "/programas/mercadeo",                escuela: "Administrativa" },
   { label: "Seguridad y Salud en el Trabajo",    href: "/programas/sst",                     escuela: "Administrativa" },
-  { label: "Técnico en Sistemas",                href: "/programas/sistemas",                escuela: "Tecnología" },
-  { label: "Auxiliar en Desarrollo de Software", href: "/programas/software",                escuela: "Tecnología" },
+  { label: "TÃ©cnico en Sistemas",                href: "/programas/sistemas",                escuela: "TecnologÃ­a" },
+  { label: "Auxiliar en Desarrollo de Software", href: "/programas/software",                escuela: "TecnologÃ­a" },
   { label: "Entrenamiento Deportivo",            href: "/programas/entrenamiento-deportivo", escuela: "Deportes" },
 ];
 
-const escuelas = ["Salud", "Veterinaria", "Belleza", "Administrativa", "Tecnología", "Deportes"];
+const escuelas = ["Salud", "Veterinaria", "Belleza", "Administrativa", "TecnologÃ­a", "Deportes"];
 
 const escuelaColors: Record<string, string> = {
   "Salud":          "#1A3A6B",
   "Veterinaria":    "#7B1F1F",
   "Belleza":        "#C0394B",
   "Administrativa": "#1a086e",
-  "Tecnología":     "#0F4C80",
+  "TecnologÃ­a":     "#0F4C80",
   "Deportes":       "#0F6E56",
 };
 
 const cursos = [
-  { label: "RCP – Reanimación Cardiopulmonar",   href: "/cursos/rcp",                        categoria: "Salud" },
-  { label: "Inyectología",                        href: "/cursos/inyectologia",               categoria: "Salud" },
+  { label: "RCP â€“ ReanimaciÃ³n Cardiopulmonar",   href: "/cursos/rcp",                        categoria: "Salud" },
+  { label: "InyectologÃ­a",                        href: "/cursos/inyectologia",               categoria: "Salud" },
   { label: "Primeros Auxilios",                   href: "/cursos/primeros-auxilios",          categoria: "Salud" },
-  { label: "Vacunación",                          href: "/cursos/vacunacion",                 categoria: "Salud" },
+  { label: "VacunaciÃ³n",                          href: "/cursos/vacunacion",                 categoria: "Salud" },
   { label: "Toma de Muestras de Laboratorio",     href: "/cursos/toma-muestras",              categoria: "Salud" },
-  { label: "Código Fucsia",                       href: "/cursos/codigo-fucsia",              categoria: "Salud" },
-  { label: "Calidad y Humanización",              href: "/cursos/calidad-humanizacion",       categoria: "Salud" },
-  { label: "Peluquería y Estética Canina",        href: "/cursos/peluqueria-estetica-canina", categoria: "Mascotas" },
-  { label: "Excel Básico, Intermedio y Avanzado", href: "/cursos/excel",                      categoria: "Tecnología" },
-  { label: "Word Básico y Avanzado",              href: "/cursos/word",                       categoria: "Tecnología" },
+  { label: "CÃ³digo Fucsia",                       href: "/cursos/codigo-fucsia",              categoria: "Salud" },
+  { label: "Calidad y HumanizaciÃ³n",              href: "/cursos/calidad-humanizacion",       categoria: "Salud" },
+  { label: "PeluquerÃ­a y EstÃ©tica Canina",        href: "/cursos/peluqueria-estetica-canina", categoria: "Mascotas" },
+  { label: "Excel BÃ¡sico, Intermedio y Avanzado", href: "/cursos/excel",                      categoria: "TecnologÃ­a" },
+  { label: "Word BÃ¡sico y Avanzado",              href: "/cursos/word",                       categoria: "TecnologÃ­a" },
 ];
 
-const categoriasCursos = ["Salud", "Mascotas", "Tecnología"];
+const categoriasCursos = ["Salud", "Mascotas", "TecnologÃ­a"];
 
 const categoriaColors: Record<string, string> = {
   "Salud":      "#60a5fa",
   "Mascotas":   "#f87171",
-  "Tecnología": "#34d399",
+  "TecnologÃ­a": "#34d399",
 };
 
 const sedes = [
-  { label: "Sede Medellín",  href: "/sedes/medellin", desc: "Cl. 56 # 45-26" },
+  { label: "Sede MedellÃ­n",  href: "/sedes/medellin", desc: "Cl. 56 # 45-26" },
   { label: "Sede Envigado",  href: "/sedes/envigado",  desc: "Cl 37 Sur #43A-84" },
   { label: "Sede Caldas",    href: "/sedes/caldas",    desc: "Calle 130 sur # 51-65" },
 ];
@@ -216,11 +216,11 @@ export function Header() {
 
           <a href="/admision" className={buttonVariants({ className: "rounded-full bg-[#F0A500] px-7 py-3 text-sm font-black text-[#080F14] hover:bg-[#FFD166] shadow-[0_4px_20px_rgba(240,165,0,0.4)] transition-all" })}>
             <MessageCircle className="mr-1 h-4 w-4" />
-            Formulario de admisión
+            Formulario de admisiÃ³n
           </a>
         </nav>
 
-        {/* Móvil: Info gratis + hamburger */}
+        {/* MÃ³vil: Info gratis + hamburger */}
         <div className="flex items-center gap-2 lg:hidden">
           <a href="/admision" className="flex items-center gap-1.5 rounded-full bg-[#F0A500] px-4 py-2 text-xs font-black text-[#080F14] shadow-[0_2px_12px_rgba(240,165,0,0.35)]">
             <MessageCircle className="h-3.5 w-3.5" />
@@ -230,16 +230,16 @@ export function Header() {
         <Sheet open={open} onOpenChange={setOpen}>
           <SheetTrigger className="lg:hidden" render={<Button variant="ghost" size="icon" />}>
             <Menu className="h-5 w-5" />
-            <span className="sr-only">Men+¦</span>
+            <span className="sr-only">Menâ”œâ•‘</span>
           </SheetTrigger>
 
-          {/* PANEL M+ôVIL – fondo azul INDECAP */}
+          {/* PANEL Mâ”œÃ´VIL â€“ fondo azul INDECAP */}
           <SheetContent
             side="right"
             className="w-full sm:w-[380px] p-0 border-0"
             style={{ background: "#0f0c2e" }}
           >
-            <SheetTitle className="sr-only">Men+¦ de navegación</SheetTitle>
+            <SheetTitle className="sr-only">Menâ”œâ•‘ de navegaciÃ³n</SheetTitle>
 
             {/* Header del panel */}
             <div className="flex items-center justify-between px-6 py-5 border-b border-white/10">
@@ -264,14 +264,14 @@ export function Header() {
               {/* CTA principal */}
               <div className="px-6 py-5 border-b border-white/8">
                 <a href="/login" onClick={() => setOpen(false)} className="flex items-center justify-center gap-2 w-full py-3.5 rounded-2xl font-black text-sm text-white border border-white/20 hover:bg-white/10 transition-all" style={{ background: "rgba(26,8,110,0.6)" }}>
-                  INDECAP Virtual — Entrar a mi plataforma
+                  INDECAP Virtual â€” Entrar a mi plataforma
                 </a>
                 <a href="/admision" onClick={() => setOpen(false)} className="flex items-center justify-center gap-2 w-full py-4 rounded-2xl font-black text-sm text-[#1a086e] transition-all hover:opacity-90" style={{ backgroundColor: "#ffb21d" }}>
                   <MessageCircle size={16} />
-                  Formulario de admisión
+                  Formulario de admisiÃ³n
                 </a>
                 <a
-                  href="https://wa.me/573167405680?text=Hola%20INDECAP%2C%20quiero%20informaci%C3%B3n%20sobre%20sus%20programas"
+                  href="https://wa.me/573174342783?text=Hola%20INDECAP%2C%20quiero%20informaci%C3%B3n%20sobre%20sus%20programas"
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={() => setOpen(false)}
@@ -389,10 +389,10 @@ export function Header() {
                   ))}
                 </div>
 
-                {/* Footer del men+¦ */}
+                {/* Footer del menâ”œâ•‘ */}
                 <div className="mt-8 pt-6 border-t border-white/10">
                   <p className="text-xs text-white/25 text-center">
-                    Corporación Educativa INDECAP<br />
+                    CorporaciÃ³n Educativa INDECAP<br />
                     (604) 448 4794  indecap@indecap.edu.co
                   </p>
                 </div>
