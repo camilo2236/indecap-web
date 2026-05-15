@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { MessageCircle, CheckCircle, ArrowRight, Clock, MapPin, ChevronDown } from "lucide-react";
 import { WhatsAppSelector } from './WhatsAppSelector';
@@ -7,13 +7,37 @@ import { MiniTestimonio } from './MiniTestimonio';
 
 export function ProgramPage({
   titulo, subtitulo, emWord, accent, escuela,
-  fotoAlt, fotoSrc, fotoPosition, descripcion, capacidades, salidas, ctaDesc,
+  fotoAlt, fotoSrc, fotos, fotoPosition, descripcion, capacidades, salidas, ctaDesc,
   waNum, waText, sedes, programaId, semestres, mercadoTexto,
   pensum1, pensum2, pensum3,
 }: any) {
 
   const [isSelectorOpen, setIsSelectorOpen] = useState(false);
   const [cicloAbierto, setCicloAbierto] = useState<number | null>(null);
+  const [fotoActiva, setFotoActiva] = useState(0);
+  const [fadeIn, setFadeIn] = useState(true);
+
+  // Normalizar: acepta fotoSrc (string) o fotos (array)
+  // Si pasan fotoSrc solo, lo convierte en array de 1 elemento
+  const imagenes: string[] = fotos?.length
+    ? fotos
+    : fotoSrc
+    ? [fotoSrc]
+    : [];
+
+  // Rotar automáticamente cada 4 segundos si hay más de 1 foto
+  useEffect(() => {
+    if (imagenes.length <= 1) return;
+    const interval = setInterval(() => {
+      setFadeIn(false);
+      setTimeout(() => {
+        setFotoActiva((prev) => (prev + 1) % imagenes.length);
+        setFadeIn(true);
+      }, 400); // 400ms fade out, luego cambia
+    }, 4500);
+    return () => clearInterval(interval);
+  }, [imagenes.length]);
+
   const handleOpenSelector = (e: React.MouseEvent) => { e.preventDefault(); setIsSelectorOpen(true); };
 
   const ciclos = [
@@ -25,25 +49,62 @@ export function ProgramPage({
   return (
     <main className="min-h-screen bg-[#f5fafc] text-[#171c1e]">
 
-      {/* ── HERO ─────────────────────────────────────────── */}
+      {/* ── HERO con carousel ─────────────────────────────────── */}
       <section className="relative min-h-[700px] flex items-center overflow-hidden">
         <div className="absolute inset-0 z-0">
-          <Image
-            src={fotoSrc}
-            alt={fotoAlt}
-            fill
-            className="object-cover"
-            style={{ objectPosition: fotoPosition || "center" }}
-            priority
-            sizes="100vw"
+
+          {/* Foto activa con fade */}
+          {imagenes.map((src, i) => (
+            <Image
+              key={src}
+              src={src}
+              alt={fotoAlt}
+              fill
+              className="object-cover transition-opacity duration-500"
+              style={{
+                objectPosition: fotoPosition || "center",
+                opacity: i === fotoActiva && fadeIn ? 1 : 0,
+              }}
+              priority={i === 0}
+              sizes="100vw"
+            />
+          ))}
+
+          {/* Gradiente de color del programa */}
+          <div
+            className="absolute inset-0"
+            style={{
+              background: `linear-gradient(105deg, ${accent}cc 0%, ${accent}88 45%, ${accent}22 75%, transparent 100%)`,
+            }}
           />
-          <div className="absolute inset-0" style={{ background: `linear-gradient(105deg, ${accent}cc 0%, ${accent}88 45%, ${accent}22 75%, transparent 100%)` }} />
           <div className="absolute inset-0 bg-black/20" />
+
+          {/* Indicadores de foto — solo si hay más de 1 */}
+          {imagenes.length > 1 && (
+            <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex gap-2">
+              {imagenes.map((_, i) => (
+                <button
+                  key={i}
+                  onClick={() => { setFadeIn(false); setTimeout(() => { setFotoActiva(i); setFadeIn(true); }, 400); }}
+                  aria-label={`Ver foto ${i + 1}`}
+                  className="rounded-full transition-all duration-300"
+                  style={{
+                    width: i === fotoActiva ? "24px" : "8px",
+                    height: "8px",
+                    backgroundColor: i === fotoActiva ? "#ffb21d" : "rgba(255,255,255,0.5)",
+                  }}
+                />
+              ))}
+            </div>
+          )}
         </div>
 
         <div className="relative z-10 max-w-7xl mx-auto px-8 w-full pt-32 pb-16">
           <div className="max-w-xl">
-            <span className="inline-block px-5 py-2 mb-6 rounded-full text-xs font-bold uppercase tracking-widest" style={{ backgroundColor: "#ffb21d", color: "#281800" }}>
+            <span
+              className="inline-block px-5 py-2 mb-6 rounded-full text-xs font-bold uppercase tracking-widest"
+              style={{ backgroundColor: "#ffb21d", color: "#281800" }}
+            >
               ✦ {escuela}
             </span>
             <h1 className="font-[family-name:var(--font-playfair)] text-6xl md:text-7xl font-black text-white mb-5 leading-[0.95] tracking-tight">
@@ -53,20 +114,27 @@ export function ProgramPage({
             <p className="text-lg text-white/85 mb-8 leading-relaxed">{descripcion}</p>
             <div className="flex flex-wrap gap-2 mb-10">
               {salidas.slice(0, 4).map((s: any, i: number) => (
-                <span key={i} className="flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold bg-white/15 backdrop-blur-sm border border-white/25 text-white">
+                <span
+                  key={i}
+                  className="flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold bg-white/15 backdrop-blur-sm border border-white/25 text-white"
+                >
                   {s.icon} {s.name}
                 </span>
               ))}
             </div>
-            <button onClick={handleOpenSelector} aria-label={`Iniciar proceso de inscripción en ${titulo}`}
-              className="flex items-center gap-3 px-8 py-4 rounded-2xl font-black text-base hover:scale-105 transition-transform shadow-xl" style={{ backgroundColor: "#ffb21d", color: "#281800" }}>
+            <button
+              onClick={handleOpenSelector}
+              aria-label={`Iniciar proceso de inscripción en ${titulo}`}
+              className="flex items-center gap-3 px-8 py-4 rounded-2xl font-black text-base hover:scale-105 transition-transform shadow-xl"
+              style={{ backgroundColor: "#ffb21d", color: "#281800" }}
+            >
               Iniciar mi proceso <ArrowRight size={18} />
             </button>
           </div>
         </div>
       </section>
 
-      {/* ── QUICK INFO BAR ──────────────────────────────── */}
+      {/* ── QUICK INFO BAR ──────────────────────────────────────── */}
       <section className="max-w-7xl mx-auto px-8 -mt-6 relative z-20 mb-4">
         <div className="bg-white grid grid-cols-1 md:grid-cols-2 divide-y md:divide-y-0 md:divide-x divide-[#c8c4d3]/20 rounded-2xl shadow-xl border border-[#c8c4d3]/20">
           {[
@@ -86,14 +154,13 @@ export function ProgramPage({
         </div>
       </section>
 
-      {/* ── CAMPO LABORAL ───────────────────────────────── */}
+      {/* ── CAMPO LABORAL ───────────────────────────────────────── */}
       <section className="py-20 px-8 max-w-7xl mx-auto">
         <div className="mb-12">
           <span className="text-xs font-bold uppercase tracking-widest block mb-3" style={{ color: "#805600" }}>¿Dónde vas a trabajar?</span>
           <h2 className="font-[family-name:var(--font-playfair)] text-5xl font-black tracking-tight" style={{ color: accent }}>Campo Laboral</h2>
           <p className="text-[#474551] text-lg mt-3 max-w-xl">{mercadoTexto || "Tu formación te abre puertas en los entornos más demandados de Antioquia."}</p>
         </div>
-
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           <div className="md:row-span-2 rounded-2xl p-8 flex flex-col justify-between hover:scale-[1.02] transition-all shadow-sm border border-black/5 bg-white min-h-[220px]">
             <span className="text-5xl">{salidas[0]?.icon}</span>
@@ -130,7 +197,7 @@ export function ProgramPage({
         </div>
       </section>
 
-      {/* ── LO QUE APRENDERÁS ───────────────────────────── */}
+      {/* ── LO QUE APRENDERÁS ───────────────────────────────────── */}
       <section className="py-20 bg-[#eff4f6]">
         <div className="max-w-7xl mx-auto px-8">
           <div className="mb-12">
@@ -139,7 +206,6 @@ export function ProgramPage({
               Lo que <em className="italic">aprenderás</em>
             </h2>
           </div>
-
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
             <div>
               <p className="text-[#474551] text-lg mb-8 leading-relaxed">Formación diseñada con estándares reales de la industria, combinando teoría rigurosa con práctica intensiva en entornos laborales auténticos.</p>
@@ -151,7 +217,6 @@ export function ProgramPage({
                   </div>
                 ))}
               </div>
-
               {ciclos.length > 0 && (
                 <div>
                   <p className="text-xs font-bold uppercase tracking-widest mb-4" style={{ color: "#805600" }}>Plan de estudios</p>
@@ -189,13 +254,12 @@ export function ProgramPage({
                 </div>
               )}
             </div>
-
             {programaId && <MiniTestimonio programaId={programaId} accent={accent} />}
           </div>
         </div>
       </section>
 
-      {/* ── SEDES ────────────────────────────────────────── */}
+      {/* ── SEDES ───────────────────────────────────────────────── */}
       {sedes && sedes.length > 0 && (
         <section className="py-20 px-8 max-w-7xl mx-auto">
           <div className="mb-12">
@@ -231,11 +295,11 @@ export function ProgramPage({
         </section>
       )}
 
-      {/* ── CTA FINAL ────────────────────────────────────── */}
+      {/* ── CTA FINAL ───────────────────────────────────────────── */}
       <section className="py-20 px-8 max-w-7xl mx-auto">
         <div className="rounded-3xl p-12 md:p-20 text-center relative overflow-hidden" style={{ backgroundColor: accent }}>
           <div className="absolute inset-0 opacity-10">
-            <Image src={fotoSrc} alt="" fill className="object-cover mix-blend-overlay grayscale" sizes="100vw" />
+            <Image src={imagenes[0]} alt="" fill className="object-cover mix-blend-overlay grayscale" sizes="100vw" />
           </div>
           <div className="relative z-10 max-w-2xl mx-auto">
             <h2 className="font-[family-name:var(--font-playfair)] text-5xl md:text-6xl font-black text-white mb-6 tracking-tight leading-tight">
