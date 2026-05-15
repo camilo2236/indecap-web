@@ -1,6 +1,6 @@
-// ─────────────────────────────────────────────────────────
-// COSMETOLOGÍA — src/app/programas/cosmetologia/page.tsx
-// ─────────────────────────────────────────────────────────
+// ─────────────────────────────────────────────────────────────
+// COSMETOLOGÍA – src/app/programas/cosmetologia/page.tsx
+// ─────────────────────────────────────────────────────────────
 import { ProgramPage } from "@/components/ProgramPage";
 
 export const metadata = {
@@ -19,8 +19,14 @@ export default function CosmetologiaPage() {
       horas="1.190"
       semestres="2"
       sedesNum="2"
-      fotoSrc="/images/programs/cosmetologia/cosmetologia-hero.jpg"
-      fotoAlt="Estudiante de Cosmetología INDECAP"
+      fotos={[
+        "/images/programs/cosmetologia/cosmo-hero2.jpg",
+        "/images/programs/cosmetologia/cosmo-hero.jpg",
+        "/images/programs/cosmetologia/cosmo-grupo2.jpg",
+        "/images/programs/cosmetologia/cosmetologia-vapor.jpg",
+        "/images/programs/cosmetologia/cosmo-egresadas.jpg",
+      ]}
+      fotoAlt="Estudiantes de Cosmetología INDECAP"
       descripcion="La estética en Medellín es un sector que no para de crecer. Aprendes técnicas que puedes cobrar desde que las dominas — en un spa, en un centro estético, o con tus propios clientes. Nuestras egresadas y egresados salen con horas reales de práctica en clientes y con la capacidad de trabajar o emprender con los estándares que exige el mercado."
       capacidades={[
         "Realizar tratamientos faciales profesionales: hidratación, limpieza profunda, manejo de acné y manchas",
@@ -32,7 +38,7 @@ export default function CosmetologiaPage() {
       ]}
       salidas={[
         { icon: "💅", name: "Centros de Estética", desc: "Cosmetóloga profesional en spas y centros de belleza del Valle de Aburrá" },
-        { icon: "💄", name: "Maquilladora Profesional", desc: "Eventos sociales, novia, artístico y fotografía" },
+        { icon: "💄", name: "Maquilladora Profesional", desc: "Eventos sociales, novia y fotografía" },
         { icon: "🧴", name: "Tratamientos Especializados", desc: "Facial, corporal y pre-post quirúrgico en clínicas de estética" },
         { icon: "🧖", name: "Servicios de SPA", desc: "Spas boutique, hoteles y centros de bienestar" },
         { icon: "🏠", name: "Trabajo Independiente", desc: "Atención a clientes propios desde el inicio" },
