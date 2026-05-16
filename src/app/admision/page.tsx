@@ -90,7 +90,7 @@ if (typeof window !== "undefined") {
             ¿Prefieres hablar ahora mismo?
           </p>
           <a
-            href="https://wa.me/573174342783?text=Hola%2C%20acabo%20de%20solicitar%20información%20sobre%20INDECAP"
+            href="https://wa.me/573022389760?text=Hola%2C%20acabo%20de%20solicitar%20información%20sobre%20INDECAP"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center justify-center gap-2 w-full py-3.5 rounded-2xl font-bold text-white text-sm transition-all hover:opacity-90"
@@ -247,7 +247,7 @@ if (typeof window !== "undefined") {
           {/* WhatsApp alternativo */}
           <div className="mt-5 pt-5 border-t border-[#f3f4f6] text-center">
             <a
-              href="https://wa.me/573174342783?text=Hola%20INDECAP%2C%20quiero%20información%20sobre%20sus%20programas"
+              href="https://wa.me/573022389760?text=Hola%20INDECAP%2C%20quiero%20información%20sobre%20sus%20programas"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 text-sm font-semibold text-[#25D366] hover:opacity-80 transition-opacity"

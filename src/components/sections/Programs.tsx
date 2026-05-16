@@ -242,7 +242,7 @@ export function Programs() {
             <p className="text-white/55 text-sm">Un asesor INDECAP te orienta sin costo ni compromiso.</p>
           </div>
           <a
-            href="https://wa.me/573174342783?text=Hola%20INDECAP%2C%20quiero%20informaci%C3%B3n%20sobre%20los%20programas%20t%C3%A9cnicos.%20%C2%BFMe%20pueden%20orientar%3F"
+            href="https://wa.me/573022389760?text=Hola%20INDECAP%2C%20quiero%20informaci%C3%B3n%20sobre%20los%20programas%20t%C3%A9cnicos.%20%C2%BFMe%20pueden%20orientar%3F"
             target="_blank"
             rel="noopener noreferrer"
             className="shrink-0 inline-flex items-center gap-3 px-7 py-4 rounded-full font-black text-sm hover:scale-105 transition-transform shadow-xl"
