@@ -4,15 +4,16 @@ const nextConfig: NextConfig = {
   images: {
     unoptimized: false,
     formats: ["image/avif", "image/webp"],
-     qualities: [75, 85],
+    qualities: [75, 85],
     deviceSizes: [640, 750, 828, 1080, 1200, 1920],
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
     remotePatterns: [
-  { protocol: "https", hostname: "indecap.edu.co" },
-  { protocol: "https", hostname: "indecap-web.vercel.app" },
-  { protocol: "https", hostname: "**.vercel.app" },
-  { protocol: "https", hostname: "i.ytimg.com" },
-],
+      { protocol: "https", hostname: "indecap.edu.co" },
+      { protocol: "https", hostname: "indecap-web.vercel.app" },
+      { protocol: "https", hostname: "**.vercel.app" },
+      { protocol: "https", hostname: "i.ytimg.com" },
+      { protocol: "https", hostname: "www.facebook.com" }, // Permite imágenes o recursos remotos de Facebook si se requieren
+    ],
   },
 
   async headers() {
@@ -33,16 +34,16 @@ const nextConfig: NextConfig = {
           // Cross-Origin policies
           { key: "Cross-Origin-Opener-Policy", value: "same-origin" },
           { key: "Cross-Origin-Embedder-Policy", value: "unsafe-none" },
-          // Content Security Policy
+          // Content Security Policy (Perfeccionado para Meta/Facebook Pixel)
           {
             key: "Content-Security-Policy",
             value: [
               "default-src 'self'",
-              "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://fonts.googleapis.com https://cdn.tailwindcss.com",
+              "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://fonts.googleapis.com https://cdn.tailwindcss.com https://connect.facebook.net https://www.facebook.com",
               "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
               "font-src 'self' https://fonts.gstatic.com",
-              "img-src 'self' data: blob: https://indecap.edu.co https://indecap-web.vercel.app https://*.vercel.app",
-              "connect-src 'self' https://api.resend.com https://www.google-analytics.com https://vitals.vercel-insights.com https://generativelanguage.googleapis.com https://api.anthropic.com https://cjjkdeqbntplofgzfgma.supabase.co",
+              "img-src 'self' data: blob: https://indecap.edu.co https://indecap-web.vercel.app https://*.vercel.app https://www.facebook.com",
+              "connect-src 'self' https://api.resend.com https://www.google-analytics.com https://vitals.vercel-insights.com https://generativelanguage.googleapis.com https://api.anthropic.com https://cjjkdeqbntplofgzfgma.supabase.co https://www.facebook.com",
               "frame-src https://www.google.com https://www.youtube.com https://www.youtube-nocookie.com",
               "object-src 'none'",
               "base-uri 'self'",
