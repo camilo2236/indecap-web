@@ -19,7 +19,15 @@ export default async function SecretariaLayout({
     .eq('id', user.id)
     .single()
 
-  if (!usuario || usuario.rol !== 'admin') redirect('/plataforma')
+  const { data: tieneAcceso } = await admin
+  .from('usuario_roles')
+  .select('id')
+  .eq('usuario_id', user.id)
+  .in('seccion', ['admin', 'secretaria'])
+  .limit(1)
+  .single()
+
+if (!tieneAcceso) redirect('/plataforma')
 
   return (
     <div style={{

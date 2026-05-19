@@ -17,6 +17,7 @@ interface Usuario {
 
 const SECCIONES_DISPONIBLES = [
   { key: 'admin', label: 'Administración' },
+  { key: 'secretaria', label: 'Secretaría académica' },
   { key: 'ventas', label: 'Equipo comercial' },
   { key: 'profesores', label: 'Profesores' },
   { key: 'estudiantes', label: 'Estudiantes' },
