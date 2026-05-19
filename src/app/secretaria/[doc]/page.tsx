@@ -84,6 +84,49 @@ function getIniciales(nombre: string): string {
   return partes[0].substring(0, 2).toUpperCase()
 }
 
+// Extrae el número de CLEI del programa_jornada
+function getCleiNum(programaJornada: string | null): number | null {
+  if (!programaJornada) return null
+  const match = programaJornada.match(/CLEI\s+(\d+)/i)
+  return match ? parseInt(match[1]) : null
+}
+
+// Dado el CLEI de la matrícula y los periodos ordenados,
+// asigna el CLEI correcto a cada periodo
+function asignarCleiAPeriodos(
+  periodos: string[],
+  cleiMatricula: number | null,
+  periodoMatricula: string | null
+): Record<string, string> {
+  if (!cleiMatricula) return {}
+
+  // Ordenar periodos cronológicamente
+  const ordenados = [...periodos].sort((a, b) => {
+    // Extraer año para comparar
+    const añoA = parseInt(a.split('-')[0])
+    const añoB = parseInt(b.split('-')[0])
+    if (añoA !== añoB) return añoA - añoB
+    // Si mismo año, comparar sufijo (1A < 2A)
+    return a.localeCompare(b)
+  })
+
+  const resultado: Record<string, string> = {}
+
+  // El periodo más reciente = CLEI de la matrícula
+  // Hacia atrás = CLEI - 1, CLEI - 2, etc.
+  ordenados.forEach((periodo, index) => {
+    const offset = ordenados.length - 1 - index
+    const clei = cleiMatricula - offset
+    if (clei >= 1 && clei <= 6) {
+      resultado[periodo] = `CLEI ${clei}`
+    } else {
+      resultado[periodo] = periodo
+    }
+  })
+
+  return resultado
+}
+
 export default function EstudiantePage() {
   const params = useParams()
   const doc = params.doc as string
@@ -139,18 +182,15 @@ export default function EstudiantePage() {
               {estudiante.municipio_direccion ? ` · ${estudiante.municipio_direccion}` : ''}
             </div>
           </div>
-          <div style={{ display: 'flex', gap: '8px' }}>
-            <a
-              href={`/api/secretaria/pdf?doc=${estudiante.doc}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              style={{ background: '#1a086e', color: '#fff', borderRadius: '8px', padding: '8px 16px', fontSize: '12px', fontWeight: 600, fontFamily: 'Work Sans, sans-serif', textDecoration: 'none', whiteSpace: 'nowrap' }}>
-              Descargar PDF
-            </a>
-          </div>
+          <a
+            href={`/api/secretaria/pdf?doc=${estudiante.doc}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{ background: '#1a086e', color: '#fff', borderRadius: '8px', padding: '8px 16px', fontSize: '12px', fontWeight: 600, fontFamily: 'Work Sans, sans-serif', textDecoration: 'none', whiteSpace: 'nowrap' }}>
+            Descargar PDF
+          </a>
         </div>
 
-        {/* Stats */}
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '10px' }}>
           {[
             { label: 'Periodos', value: String(total_periodos) },
@@ -200,57 +240,90 @@ export default function EstudiantePage() {
       {tab === 'notas' && (
         <>
           {matriculas.map(m => {
-            const notasValidas = m.notas.filter(n => n.definitiva !== null)
-            const promPeriodo = notasValidas.length > 0
-              ? notasValidas.reduce((a, b) => a + (b.definitiva || 0), 0) / notasValidas.length
-              : null
+            const cleiMatricula = getCleiNum(m.programa_jornada)
+
+            // Agrupar notas por periodo
+            const periodos = Array.from(new Set(m.notas.map(n => n.periodo || 'Sin periodo')))
+            const cleiPorPeriodo = asignarCleiAPeriodos(periodos, cleiMatricula, m.periodo)
+
+            // Ordenar periodos cronológicamente
+            const periodosOrdenados = periodos.sort((a, b) => {
+              const añoA = parseInt(a.split('-')[0])
+              const añoB = parseInt(b.split('-')[0])
+              if (añoA !== añoB) return añoA - añoB
+              return a.localeCompare(b)
+            })
 
             return (
               <div key={m.codigo_matricula} style={{ background: '#fff', border: '0.5px solid rgba(26,8,110,0.1)', borderRadius: '14px', overflow: 'hidden', marginBottom: '1rem' }}>
-                <div style={{ background: '#eeedfe', padding: '10px 16px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                {/* Header matrícula */}
+                <div style={{ background: '#1a086e', padding: '10px 16px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
                   <div>
-                    <span style={{ fontSize: '13px', fontWeight: 600, color: '#3c3489' }}>
-                      {m.periodo} &mdash; {m.programa_jornada}
+                    <span style={{ fontSize: '13px', fontWeight: 600, color: '#fff' }}>
+                      {m.programa_jornada}
                     </span>
                     {m.sede && (
-                      <span style={{ fontSize: '11px', color: '#534ab7', marginLeft: '8px' }}>
+                      <span style={{ fontSize: '11px', color: 'rgba(255,255,255,0.6)', marginLeft: '8px' }}>
                         &middot; {m.sede}
                       </span>
                     )}
                   </div>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                    {promPeriodo !== null && (
-                      <span style={{ fontSize: '12px', fontWeight: 600, color: '#3c3489' }}>
-                        Prom. {formatNota(promPeriodo)}
-                      </span>
-                    )}
-                    <span style={{ fontSize: '10px', padding: '2px 8px', borderRadius: '999px', background: m.estado_matricula === 'ACTIVO' ? '#eaf3de' : 'rgba(83,74,183,0.1)', color: m.estado_matricula === 'ACTIVO' ? '#3b6d11' : '#534ab7', fontWeight: 500 }}>
-                      {m.estado_matricula}
-                    </span>
-                  </div>
+                  <span style={{ fontSize: '10px', padding: '2px 8px', borderRadius: '999px', background: m.estado_matricula === 'ACTIVO' ? '#eaf3de' : 'rgba(255,255,255,0.15)', color: m.estado_matricula === 'ACTIVO' ? '#3b6d11' : 'rgba(255,255,255,0.8)', fontWeight: 500 }}>
+                    {m.estado_matricula}
+                  </span>
                 </div>
 
                 {m.notas.length === 0 ? (
                   <div style={{ padding: '12px 16px', fontSize: '13px', color: '#42474e' }}>
-                    Sin notas registradas para este periodo.
+                    Sin notas registradas.
                   </div>
                 ) : (
-                  <table style={{ width: '100%', borderCollapse: 'collapse', tableLayout: 'fixed' }}>
-                    <thead>
-                      <tr style={{ background: '#fafbff' }}>
-                        <th style={{ padding: '8px 16px', textAlign: 'left', fontSize: '11px', fontWeight: 600, color: '#42474e', textTransform: 'uppercase', letterSpacing: '0.04em', width: '75%' }}>Asignatura</th>
-                        <th style={{ padding: '8px 16px', textAlign: 'right', fontSize: '11px', fontWeight: 600, color: '#42474e', textTransform: 'uppercase', letterSpacing: '0.04em', width: '25%' }}>Definitiva</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {m.notas.map((n, i) => (
-                        <tr key={n.id} style={{ borderTop: '0.5px solid #eaeff1', background: i % 2 === 0 ? '#fff' : '#fafbff' }}>
-                          <td style={{ padding: '9px 16px', fontSize: '13px', color: '#1a1c1e' }}>{n.asignatura}</td>
-                          <td style={{ padding: '9px 16px', textAlign: 'right', fontSize: '13px', fontWeight: 600, color: getColorNota(n.definitiva) }}>{formatNota(n.definitiva)}</td>
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
+                  <>
+                    {periodosOrdenados.map(periodo => {
+                      const notasPeriodo = m.notas
+                        .filter(n => (n.periodo || 'Sin periodo') === periodo)
+                        .sort((a, b) => (a.asignatura || '').localeCompare(b.asignatura || ''))
+
+                      const notasValidas = notasPeriodo.filter(n => n.definitiva !== null)
+                      const promPeriodo = notasValidas.length > 0
+                        ? notasValidas.reduce((a, b) => a + (b.definitiva || 0), 0) / notasValidas.length
+                        : null
+
+                      const cleiLabel = cleiPorPeriodo[periodo]
+
+                      return (
+                        <div key={periodo}>
+                          {/* Sub-header por periodo */}
+                          <div style={{ background: '#eeedfe', padding: '8px 16px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', borderTop: '0.5px solid rgba(83,74,183,0.15)' }}>
+                            <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                              <span style={{ fontSize: '12px', fontWeight: 600, color: '#3c3489' }}>
+                                {cleiLabel && cleiLabel !== periodo ? cleiLabel : periodo}
+                              </span>
+                              <span style={{ fontSize: '11px', color: '#787583' }}>
+                                · {periodo}
+                              </span>
+                            </div>
+                            {promPeriodo !== null && (
+                              <span style={{ fontSize: '12px', fontWeight: 600, color: '#3c3489' }}>
+                                Prom. {formatNota(promPeriodo)}
+                              </span>
+                            )}
+                          </div>
+
+                          <table style={{ width: '100%', borderCollapse: 'collapse', tableLayout: 'fixed' }}>
+                            <tbody>
+                              {notasPeriodo.map((n, i) => (
+                                <tr key={n.id} style={{ borderTop: '0.5px solid #eaeff1', background: i % 2 === 0 ? '#fff' : '#fafbff' }}>
+                                  <td style={{ padding: '8px 16px', fontSize: '13px', color: '#1a1c1e', width: '75%' }}>{n.asignatura}</td>
+                                  <td style={{ padding: '8px 16px', textAlign: 'right', fontSize: '13px', fontWeight: 600, color: getColorNota(n.definitiva), width: '25%' }}>{formatNota(n.definitiva)}</td>
+                                </tr>
+                              ))}
+                            </tbody>
+                          </table>
+                        </div>
+                      )
+                    })}
+                  </>
                 )}
               </div>
             )
@@ -267,7 +340,6 @@ export default function EstudiantePage() {
       {/* TAB PAGOS */}
       {tab === 'pagos' && (
         <>
-          {/* Resumen */}
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '8px', marginBottom: '1rem' }}>
             {[
               { label: 'Total pagado', value: formatPesos(pagos.total_pagado) },
@@ -281,7 +353,6 @@ export default function EstudiantePage() {
             ))}
           </div>
 
-          {/* Lista de pagos */}
           {pagos.pagos.length === 0 ? (
             <div style={{ background: '#fff', border: '0.5px solid rgba(26,8,110,0.1)', borderRadius: '14px', padding: '2rem', textAlign: 'center', color: '#42474e', fontSize: '14px' }}>
               Este estudiante no tiene pagos registrados.
@@ -310,10 +381,8 @@ export default function EstudiantePage() {
                       )}
                     </div>
                   </div>
-                  <div style={{ textAlign: 'right' }}>
-                    <div style={{ fontSize: '14px', fontWeight: 600, color: '#3b6d11' }}>
-                      {formatPesos(p.valor_pagado)}
-                    </div>
+                  <div style={{ fontSize: '14px', fontWeight: 600, color: '#3b6d11' }}>
+                    {formatPesos(p.valor_pagado)}
                   </div>
                 </div>
               ))}
