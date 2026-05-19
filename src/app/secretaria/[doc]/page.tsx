@@ -190,7 +190,6 @@ export default function EstudiantePage() {
               fontSize: '13px',
               cursor: 'pointer',
               fontFamily: 'Inter, sans-serif',
-              border: tab === t.key ? '0.5px solid rgba(26,8,110,0.1)' : 'none',
             }}>
             {t.label}
           </button>
