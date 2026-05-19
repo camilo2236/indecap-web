@@ -1,57 +1,49 @@
 // src/app/plataforma/page.tsx
-// Portal con 4 tarjetas — muestra solo las del rol del usuario
-
 import { createClient } from '@/lib/supabase/server'
 import { createAdminClient } from '@/lib/supabase/admin'
 import { redirect } from 'next/navigation'
 
 const SECCIONES: Record<string, {
-  icon: string
   label: string
   desc: string
   href: string
   tag: string
-  color: string
 }> = {
   admin: {
-    icon: '⚙️',
     label: 'Administración',
-    desc: 'Panel de control, usuarios y reportes',
+    desc: 'Panel de control y gestión de usuarios',
     href: '/admin',
     tag: 'Panel admin',
-    color: '#805600',
+  },
+  secretaria: {
+    label: 'Secretaría académica',
+    desc: 'Consulta historial de estudiantes, notas y genera reportes PDF',
+    href: '/secretaria',
+    tag: 'Acceso disponible',
   },
   ventas: {
-    icon: '🎯',
     label: 'Equipo Comercial',
     desc: 'Entrenamiento en ventas, técnicas de cierre y manejo de objeciones',
     href: '/academia',
     tag: 'Acceso disponible',
-    color: '#1a086e',
   },
   profesores: {
-    icon: '👨‍🏫',
     label: 'Profesores',
     desc: 'Inducción docente, metodología y protocolos institucionales',
     href: '/profesores',
     tag: 'Acceso disponible',
-    color: '#166534',
   },
   estudiantes: {
-    icon: '📚',
     label: 'Estudiantes',
     desc: 'Pensum digital, materiales de clase y recursos académicos',
     href: '/estudiantes',
     tag: 'Acceso disponible',
-    color: '#0369a1',
   },
   egresados: {
-    icon: '🎓',
     label: 'Egresados',
     desc: 'Cursos gratuitos de actualización y comunidad de egresados',
     href: '/egresados',
     tag: 'Próximamente',
-    color: '#7c3aed',
   },
 }
 
@@ -75,9 +67,7 @@ export default async function PlataformaPage() {
 
   if (!roles || roles.length === 0) redirect('/login')
 
-  // Si solo tiene admin, ir directo
-  if (roles.length === 1 && roles[0].seccion === 'admin') redirect('/admin')
-
+  // Si el usuario admin tiene secretaria en sus secciones va a plataforma
   // Si solo tiene un rol que no es admin, ir directo
   if (roles.length === 1) {
     const destinos: Record<string, string> = {
@@ -86,10 +76,17 @@ export default async function PlataformaPage() {
       estudiantes: '/estudiantes',
       egresados: '/egresados',
     }
-    redirect(destinos[roles[0].seccion] || '/login')
+    const seccion = roles[0].seccion
+    if (destinos[seccion]) redirect(destinos[seccion])
   }
 
-  const secciones = roles.map((r: any) => r.seccion)
+  // Agregar secretaria automáticamente para admins
+  const secciones = roles.map((r: { seccion: string }) => r.seccion)
+  const esAdmin = secciones.includes('admin')
+  const seccionesFinales = esAdmin && !secciones.includes('secretaria')
+    ? [...secciones, 'secretaria']
+    : secciones
+
   const nombre = usuario?.nombre?.split(' ')[0] || 'Bienvenido'
 
   return (
@@ -104,7 +101,6 @@ export default async function PlataformaPage() {
       padding: '2rem',
       position: 'relative',
     }}>
-      {/* Logout */}
       <form action="/api/auth/logout" method="POST" style={{
         position: 'absolute', top: '1.5rem', right: '1.5rem'
       }}>
@@ -121,7 +117,6 @@ export default async function PlataformaPage() {
         }}>Salir</button>
       </form>
 
-      {/* Brand */}
       <div style={{
         fontFamily: 'Newsreader, serif',
         fontSize: '1.6rem',
@@ -150,15 +145,14 @@ export default async function PlataformaPage() {
         Bienvenido, {nombre}
       </p>
 
-      {/* Cards grid */}
       <div style={{
         display: 'grid',
-        gridTemplateColumns: `repeat(${Math.min(secciones.length, 2)}, 1fr)`,
+        gridTemplateColumns: `repeat(${Math.min(seccionesFinales.length, 2)}, 1fr)`,
         gap: '1rem',
         width: '100%',
-        maxWidth: secciones.length <= 2 ? '520px' : '680px',
+        maxWidth: seccionesFinales.length <= 2 ? '520px' : '680px',
       }}>
-        {secciones.map((s: string) => {
+        {seccionesFinales.map((s: string) => {
           const cfg = SECCIONES[s]
           if (!cfg) return null
           const isComingSoon = cfg.tag === 'Próximamente'
@@ -179,7 +173,6 @@ export default async function PlataformaPage() {
                 transition: 'all 0.22s',
               }}
             >
-              <div style={{ fontSize: '2.2rem', marginBottom: '0.75rem' }}>{cfg.icon}</div>
               <div style={{
                 fontFamily: 'Newsreader, serif',
                 fontSize: '1rem',
