@@ -74,7 +74,7 @@ if (!tieneAcceso) redirect('/plataforma')
             fontSize: '12px',
             color: 'rgba(255,255,255,0.6)',
           }}>
-            {usuario.nombre?.split(' ')[0]}
+            {usuario?.nombre?.split(' ')[0]}
           </span>
           <form action="/api/auth/logout" method="POST">
             <button style={{
