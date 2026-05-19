@@ -33,11 +33,32 @@ export interface Nota {
   definitiva: number | null
 }
 
+export interface Pago {
+  id: string
+  doc: string
+  periodo: string | null
+  grado: string | null
+  recibo_caja: string | null
+  fecha_pago: string | null
+  observacion: string | null
+  valor_pagado: number | null
+  estado: string | null
+  forma_pago: string | null
+}
+
+export interface ResumenPagos {
+  total_pagado: number
+  total_pagos: number
+  ultimo_pago: string | null
+  pagos: Pago[]
+}
+
 export interface EstudianteCompleto {
   estudiante: Estudiante
   matriculas: Matricula[]
   promedio_general: number | null
   total_periodos: number
+  pagos: ResumenPagos
 }
 
 export async function getEstudiante(doc: string): Promise<EstudianteCompleto | null> {
@@ -51,44 +72,40 @@ export async function getEstudiante(doc: string): Promise<EstudianteCompleto | n
 
   if (errEst || !estudiante) return null
 
+  // Matrículas
   const { data: matriculas } = await sb
     .from('matriculas_q10')
     .select('*')
     .eq('doc', doc.trim())
     .order('periodo', { ascending: true })
 
-  if (!matriculas || matriculas.length === 0) {
-    return {
-      estudiante,
-      matriculas: [],
-      promedio_general: null,
-      total_periodos: 0,
+  // Notas
+  let matriculasConNotas: Matricula[] = []
+  if (matriculas && matriculas.length > 0) {
+    const codigos = matriculas.map(m => m.codigo_matricula)
+    const { data: notas } = await sb
+      .from('notas_q10')
+      .select('*')
+      .in('codigo_matricula', codigos)
+      .order('asignatura', { ascending: true })
+
+    const notasPorMatricula: Record<string, Nota[]> = {}
+    for (const nota of notas || []) {
+      if (!notasPorMatricula[nota.codigo_matricula]) {
+        notasPorMatricula[nota.codigo_matricula] = []
+      }
+      notasPorMatricula[nota.codigo_matricula].push(nota)
     }
+
+    matriculasConNotas = matriculas.map(m => ({
+      ...m,
+      notas: notasPorMatricula[m.codigo_matricula] || [],
+    }))
   }
 
-  const codigos = matriculas.map(m => m.codigo_matricula)
-
-  const { data: notas } = await sb
-    .from('notas_q10')
-    .select('*')
-    .in('codigo_matricula', codigos)
-    .order('asignatura', { ascending: true })
-
-  const notasPorMatricula: Record<string, Nota[]> = {}
-  for (const nota of notas || []) {
-    if (!notasPorMatricula[nota.codigo_matricula]) {
-      notasPorMatricula[nota.codigo_matricula] = []
-    }
-    notasPorMatricula[nota.codigo_matricula].push(nota)
-  }
-
-  const matriculasConNotas: Matricula[] = matriculas.map(m => ({
-    ...m,
-    notas: notasPorMatricula[m.codigo_matricula] || [],
-  }))
-
-  // Calcular promedio general
-  const todasLasNotas = (notas || [])
+  // Promedio general
+  const todasLasNotas = matriculasConNotas
+    .flatMap(m => m.notas)
     .map(n => n.definitiva)
     .filter((n): n is number => n !== null && n !== undefined)
 
@@ -96,23 +113,40 @@ export async function getEstudiante(doc: string): Promise<EstudianteCompleto | n
     ? Math.round((todasLasNotas.reduce((a, b) => a + b, 0) / todasLasNotas.length) * 100) / 100
     : null
 
+  // Pagos
+  const { data: pagosData } = await sb
+    .from('pagos_q10')
+    .select('*')
+    .eq('doc', doc.trim())
+    .order('fecha_pago', { ascending: true })
+
+  const pagos = pagosData || []
+  const total_pagado = pagos.reduce((sum, p) => sum + (p.valor_pagado || 0), 0)
+  const ultimo_pago = pagos.length > 0
+    ? pagos[pagos.length - 1].fecha_pago
+    : null
+
   return {
     estudiante,
     matriculas: matriculasConNotas,
     promedio_general,
-    total_periodos: matriculas.length,
+    total_periodos: matriculas?.length || 0,
+    pagos: {
+      total_pagado: Math.round(total_pagado),
+      total_pagos: pagos.length,
+      ultimo_pago,
+      pagos,
+    },
   }
 }
 
 export async function buscarPorNombre(nombre: string) {
   const sb = createAdminClient()
-
   const { data } = await sb
     .from('estudiantes_q10')
     .select('doc, nombre, tipo_documento, municipio_direccion')
     .ilike('nombre', `%${nombre.trim()}%`)
     .limit(10)
-
   return data || []
 }
 
@@ -133,4 +167,20 @@ export function getColorNota(nota: number | null): string {
   if (nota === null) return 'inherit'
   if (nota >= 3.0) return '#3b6d11'
   return '#a32d2d'
+}
+
+export function formatPesos(valor: number | null): string {
+  if (valor === null || valor === undefined) return '—'
+  return new Intl.NumberFormat('es-CO', {
+    style: 'currency',
+    currency: 'COP',
+    minimumFractionDigits: 0,
+    maximumFractionDigits: 0,
+  }).format(valor)
+}
+
+export function formatFecha(fecha: string | null): string {
+  if (!fecha) return '—'
+  const [year, month, day] = fecha.split('-')
+  return `${day}/${month}/${year}`
 }

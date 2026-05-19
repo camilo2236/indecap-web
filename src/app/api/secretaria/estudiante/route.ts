@@ -1,8 +1,8 @@
-// src/app/api/secretaria/buscar/route.ts
+// src/app/api/secretaria/estudiante/route.ts
 import { createClient } from '@/lib/supabase/server'
 import { createAdminClient } from '@/lib/supabase/admin'
 import { NextRequest, NextResponse } from 'next/server'
-import { buscarPorNombre } from '@/lib/secretaria'
+import { getEstudiante } from '@/lib/secretaria'
 
 export async function GET(req: NextRequest) {
   const supabase = await createClient()
@@ -20,11 +20,11 @@ export async function GET(req: NextRequest) {
     return NextResponse.json({ error: 'No autorizado' }, { status: 403 })
   }
 
-  const nombre = req.nextUrl.searchParams.get('nombre') || ''
-  if (!nombre.trim()) {
-    return NextResponse.json({ resultados: [] })
-  }
+  const doc = req.nextUrl.searchParams.get('doc') || ''
+  if (!doc) return NextResponse.json({ error: 'Falta documento' }, { status: 400 })
 
-  const resultados = await buscarPorNombre(nombre)
-  return NextResponse.json({ resultados })
+  const data = await getEstudiante(doc)
+  if (!data) return NextResponse.json({ error: 'No encontrado' }, { status: 404 })
+
+  return NextResponse.json({ data })
 }
