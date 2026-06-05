@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   title: "Sede Envigado | INDECAP – Cerca al Parque Principal de Envigado",
   description: "INDECAP Sede Envigado. Cl 37 Sur #43A-84, cerca al parque principal. 1.446 m², 8 aulas, sala de cómputo. Programas técnicos y bachillerato privado.",
   openGraph: {
-    images: [{ url: "/images/sedes/og-sede-envigado.jpg", width: 1200, height: 630 }],
+    images: [{ url: "https://indecap.edu.co/images/sedes/og-sede-envigado.jpg", width: 1200, height: 630 }],
   },
 };
 
