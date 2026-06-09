@@ -1,6 +1,6 @@
 "use client";
 
-import { ExternalLink, CreditCard, Shield, Clock, CheckCircle } from "lucide-react";
+import { ExternalLink, CreditCard, Shield, Clock, CheckCircle, FileCheck } from "lucide-react";
 import { useState } from "react";
 
 const pasos = [
@@ -47,60 +47,15 @@ function FlipCard({ cuenta }: { cuenta: typeof cuentas[0] }) {
           transform: flipped ? "rotateY(180deg)" : "rotateY(0deg)",
         }}
       >
-        <div
-          style={{
-            position: "absolute",
-            inset: 0,
-            backfaceVisibility: "hidden",
-            borderRadius: "12px",
-            padding: "16px",
-            boxSizing: "border-box",
-            background: "#1a086e",
-          }}
-        >
-          <p style={{ fontSize: "10px", color: "rgba(255,255,255,0.55)", letterSpacing: "1.5px", textTransform: "uppercase", margin: "0 0 6px" }}>
-            {cuenta.banco}
-          </p>
-          <p style={{ fontSize: "16px", fontWeight: 500, color: "white", margin: 0 }}>
-            {cuenta.tipo}
-          </p>
-          <p style={{ fontSize: "10px", color: "rgba(255,255,255,0.4)", margin: "8px 0 0" }}>
-            Toca para ver
-          </p>
+        <div style={{ position: "absolute", inset: 0, backfaceVisibility: "hidden", borderRadius: "12px", padding: "16px", boxSizing: "border-box", background: "#1a086e" }}>
+          <p style={{ fontSize: "10px", color: "rgba(255,255,255,0.55)", letterSpacing: "1.5px", textTransform: "uppercase", margin: "0 0 6px" }}>{cuenta.banco}</p>
+          <p style={{ fontSize: "16px", fontWeight: 500, color: "white", margin: 0 }}>{cuenta.tipo}</p>
+          <p style={{ fontSize: "10px", color: "rgba(255,255,255,0.4)", margin: "8px 0 0" }}>Toca para ver</p>
         </div>
-
-        <div
-          style={{
-            position: "absolute",
-            inset: 0,
-            backfaceVisibility: "hidden",
-            borderRadius: "12px",
-            padding: "16px",
-            boxSizing: "border-box",
-            transform: "rotateY(180deg)",
-            background: "#f4f4ff",
-            border: "1px solid #1a086e20",
-          }}
-        >
-          <p style={{ fontSize: "10px", color: "#1a086e", opacity: 0.6, textTransform: "uppercase", letterSpacing: "1px", margin: "0 0 4px" }}>
-            Num. de cuenta
-          </p>
-          <p style={{ fontSize: cuenta.numero.length > 10 ? "17px" : "20px", fontWeight: 500, color: "#1a086e", margin: 0, letterSpacing: "1px" }}>
-            {cuenta.numero}
-          </p>
-          <button
-            onClick={handleCopy}
-            style={{
-              marginTop: "8px",
-              fontSize: "11px",
-              padding: "4px 12px",
-              borderRadius: "99px",
-              border: "1px solid #1a086e30",
-              background: "transparent",
-              color: "#1a086e",
-              cursor: "pointer",
-            }}
-          >
+        <div style={{ position: "absolute", inset: 0, backfaceVisibility: "hidden", borderRadius: "12px", padding: "16px", boxSizing: "border-box", transform: "rotateY(180deg)", background: "#f4f4ff", border: "1px solid #1a086e20" }}>
+          <p style={{ fontSize: "10px", color: "#1a086e", opacity: 0.6, textTransform: "uppercase", letterSpacing: "1px", margin: "0 0 4px" }}>Num. de cuenta</p>
+          <p style={{ fontSize: cuenta.numero.length > 10 ? "17px" : "20px", fontWeight: 500, color: "#1a086e", margin: 0, letterSpacing: "1px" }}>{cuenta.numero}</p>
+          <button onClick={handleCopy} style={{ marginTop: "8px", fontSize: "11px", padding: "4px 12px", borderRadius: "99px", border: "1px solid #1a086e30", background: "transparent", color: "#1a086e", cursor: "pointer" }}>
             {copied ? "Copiado!" : "Copiar"}
           </button>
         </div>
@@ -130,7 +85,6 @@ export default function PagosPage() {
       <section className="py-16 lg:py-20">
         <div className="container mx-auto px-6 lg:px-12 max-w-4xl">
 
-          {/* Tarjeta principal con PSE + cuentas integradas */}
           <div className="rounded-[28px] bg-white border border-gray-100 shadow-sm p-10 mb-10">
             <div className="flex items-center gap-2 mb-4">
               <Shield className="h-5 w-5 text-[#0F6E56]" />
@@ -153,40 +107,43 @@ export default function PagosPage() {
               <ExternalLink className="h-4 w-4" />
             </a>
 
-            {/* Divisor */}
             <div className="border-t border-gray-100 pt-6">
               <p className="text-[10px] font-bold uppercase tracking-[1.5px] text-[#9CA3AF] mb-4">
                 Cuentas bancarias — toca para ver el numero
               </p>
               <div className="flex gap-3 flex-wrap">
-                {cuentas.map((c) => (
-                  <FlipCard key={c.banco} cuenta={c} />
-                ))}
+                {cuentas.map((c) => <FlipCard key={c.banco} cuenta={c} />)}
               </div>
               <p className="text-xs text-[#6B7280] mt-4 leading-relaxed">
-  A nombre de: Corporacion Educativa INDECAP Envia comprobante por WhatsApp
-</p>
-<p className="text-xs text-[#6B7280] mt-2 leading-relaxed">
-  Siempre que hagas una consignacion, envia el comprobante a la sede con: nombre completo, numero de documento, programa que estas estudiando y motivo del pago (mensualidad, uniforme, certificado de estudio, derechos de grado, etc.)
-</p>
+                A nombre de: Corporacion Educativa INDECAP
+              </p>
+
+              {/* NUEVO: Banner para registrar comprobante */}
+              <a
+                href="/comprobantes"
+                className="mt-6 flex items-center justify-between gap-4 rounded-2xl bg-[#F5F3FF] border border-[#312783]/20 px-6 py-4 hover:bg-[#EDE9FE] transition-colors group"
+              >
+                <div className="flex items-center gap-3">
+                  <div className="flex items-center justify-center h-10 w-10 rounded-xl bg-[#312783]/10">
+                    <FileCheck className="h-5 w-5 text-[#312783]" />
+                  </div>
+                  <div>
+                    <p className="text-sm font-bold text-[#312783]">¿Pagaste por consignación?</p>
+                    <p className="text-xs text-[#6B7280]">Registra tu comprobante aquí — confirmamos en menos de 24 horas</p>
+                  </div>
+                </div>
+                <ExternalLink className="h-4 w-4 text-[#312783]/40 group-hover:text-[#312783] shrink-0" />
+              </a>
             </div>
           </div>
 
           <div className="grid md:grid-cols-2 gap-8">
-
             <div className="rounded-[24px] bg-white border border-gray-100 shadow-sm p-8">
-              <h3 className="font-[family-name:var(--font-playfair)] text-xl font-bold text-[#080F14] mb-6">
-                Como pagar
-              </h3>
+              <h3 className="font-[family-name:var(--font-playfair)] text-xl font-bold text-[#080F14] mb-6">Como pagar</h3>
               <div className="space-y-4">
                 {pasos.map((paso, i) => (
                   <div key={i} className="flex gap-4 items-start">
-                    <div
-                      className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full text-xs font-black text-white"
-                      style={{ backgroundColor: "#312783" }}
-                    >
-                      {i + 1}
-                    </div>
+                    <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full text-xs font-black text-white" style={{ backgroundColor: "#312783" }}>{i + 1}</div>
                     <p className="text-sm text-[#374151] leading-relaxed pt-0.5">{paso}</p>
                   </div>
                 ))}
@@ -195,9 +152,7 @@ export default function PagosPage() {
 
             <div className="flex flex-col gap-6">
               <div className="rounded-[24px] bg-white border border-gray-100 shadow-sm p-8">
-                <h3 className="font-[family-name:var(--font-playfair)] text-xl font-bold text-[#080F14] mb-6">
-                  Metodos de pago
-                </h3>
+                <h3 className="font-[family-name:var(--font-playfair)] text-xl font-bold text-[#080F14] mb-6">Metodos de pago</h3>
                 <div className="space-y-4">
                   {metodos.map((m) => (
                     <div key={m.name} className="flex items-start gap-3">

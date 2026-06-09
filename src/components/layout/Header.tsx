@@ -70,10 +70,11 @@ const sedes = [
 ];
 
 const navLinks = [
-  { label: "Contacto",     href: "/contacto" },
-  { label: "Pagos",        href: "/pagos" },
-  { label: "Bachillerato", href: "/#bachillerato" },
-  { label: "Q10",          href: "https://site6.q10.com/login?ReturnUrl=%2F&aplentId=7e530e5a-0d5d-4bfe-a7af-27bd57d9964c", external: true },
+  { label: "Contacto",       href: "/contacto" },
+  { label: "Pagos",          href: "/pagos" },
+  { label: "Registrar pago", href: "/comprobantes" },
+  { label: "Bachillerato",   href: "/#bachillerato" },
+  { label: "Q10",            href: "https://site6.q10.com/login?ReturnUrl=%2F&aplentId=7e530e5a-0d5d-4bfe-a7af-27bd57d9964c", external: true },
 ];
 
 export function Header() {
