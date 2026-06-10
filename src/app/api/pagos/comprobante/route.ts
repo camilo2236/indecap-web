@@ -2,16 +2,19 @@
 import { NextRequest, NextResponse } from "next/server"
 import { createAdminClient } from "@/lib/supabase/admin"
 
-const PHONE_CAMILO = "573182354400"
-const PHONE_ID     = "1167947676398207"
+const PHONE_ID      = "1167947676398207"
+const DESTINATARIOS = ["573182354400", "4672519716"]
 
-// ── Notificación WhatsApp a Camilo ────────────────────────────────────────
-async function notificarCamilo(data: {
+// ── Notificación WhatsApp ─────────────────────────────────────────────────
+async function notificarEquipo(data: {
   nombre: string; documento: string; telefono: string
   programa: string; sede: string; tipoPago: string; monto: string
 }) {
   const token = process.env.WHATSAPP_TOKEN
-  if (!token) return
+  if (!token) {
+    console.error("WHATSAPP_TOKEN no configurado en indecap-web")
+    return
+  }
 
   const msg = [
     `🎓 *Nuevo comprobante registrado*`,
@@ -25,29 +28,40 @@ async function notificarCamilo(data: {
     `👉 indecap.edu.co/admin/pagos`,
   ].join("\n")
 
-  await fetch(`https://graph.facebook.com/v19.0/${PHONE_ID}/messages`, {
-    method: "POST",
-    headers: {
-      Authorization: `Bearer ${token}`,
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      messaging_product: "whatsapp",
-      to: PHONE_CAMILO,
-      type: "text",
-      text: { body: msg },
-    }),
-  }).catch(e => console.error("WA notify error:", e.message))
+  await Promise.allSettled(
+    DESTINATARIOS.map(numero =>
+      fetch(`https://graph.facebook.com/v19.0/${PHONE_ID}/messages`, {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          messaging_product: "whatsapp",
+          to: numero,
+          type: "text",
+          text: { body: msg },
+        }),
+      }).then(async r => {
+        if (!r.ok) {
+          const err = await r.json()
+          console.error(`WA error → ${numero}:`, JSON.stringify(err))
+        } else {
+          console.log(`WhatsApp enviado ✓ → ${numero}`)
+        }
+      })
+    )
+  )
 }
 
 // ── Handler principal ─────────────────────────────────────────────────────
 export async function POST(req: NextRequest) {
   try {
-    const supabase  = createAdminClient()
-    const formData  = await req.formData()
-    const g         = (k: string) => (formData.get(k) as string ?? "").trim()
+    const supabase = createAdminClient()
+    const formData = await req.formData()
+    const g        = (k: string) => (formData.get(k) as string ?? "").trim()
 
-    // ── Extraer campos del formulario ─────────────────────────────────────
+    // ── Extraer campos ────────────────────────────────────────────────────
     const nombre    = g("nombre")
     const documento = g("documento")
     const tipoDoc   = g("tipo_doc") || "CC"
@@ -62,13 +76,16 @@ export async function POST(req: NextRequest) {
     // ── Validación ────────────────────────────────────────────────────────
     if (!nombre || !documento || !telefono || !programa || !sede || !monto) {
       return NextResponse.json(
-        { error: "Faltan campos obligatorios: nombre, documento, teléfono, programa, sede y monto" },
+        { error: "Faltan campos: nombre, documento, teléfono, programa, sede y monto" },
         { status: 400 }
       )
     }
 
     if (isNaN(Number(monto)) || Number(monto) <= 0) {
-      return NextResponse.json({ error: "El monto debe ser un número mayor a 0" }, { status: 400 })
+      return NextResponse.json(
+        { error: "El monto debe ser un número mayor a 0" },
+        { status: 400 }
+      )
     }
 
     // ── 1. Subir comprobante a Supabase Storage ───────────────────────────
@@ -77,12 +94,15 @@ export async function POST(req: NextRequest) {
 
     if (file && file.size > 0) {
       if (file.size > 10 * 1024 * 1024) {
-        return NextResponse.json({ error: "El comprobante no puede pesar más de 10MB" }, { status: 400 })
+        return NextResponse.json(
+          { error: "El comprobante no puede pesar más de 10MB" },
+          { status: 400 }
+        )
       }
 
+      const buffer   = Buffer.from(await file.arrayBuffer())
       const ext      = file.name.split(".").pop()?.toLowerCase() ?? "jpg"
       const fileName = `${Date.now()}_${documento}.${ext}`
-      const buffer   = Buffer.from(await file.arrayBuffer())
 
       const { error: storageErr } = await supabase.storage
         .from("comprobantes")
@@ -90,7 +110,6 @@ export async function POST(req: NextRequest) {
 
       if (storageErr) {
         console.error("Storage error:", storageErr.message)
-        // No bloqueamos el flujo si falla el upload — guardamos sin URL
       } else {
         const { data } = supabase.storage.from("comprobantes").getPublicUrl(fileName)
         comprob_url = data.publicUrl
@@ -117,7 +136,7 @@ export async function POST(req: NextRequest) {
       .single()
 
     if (studentErr || !student) {
-      console.error("Student upsert error:", studentErr)
+      console.error("Student error:", studentErr)
       return NextResponse.json({ error: "Error guardando estudiante" }, { status: 500 })
     }
 
@@ -125,11 +144,11 @@ export async function POST(req: NextRequest) {
     const { data: enrollment, error: enrollErr } = await supabase
       .from("enrollments")
       .insert({
-        student_id:    student.id,
-        ciclo:         1,
-        valor_ciclo:   Number(monto),
+        student_id:     student.id,
+        ciclo:          1,
+        valor_ciclo:    Number(monto),
         modalidad_pago: "financiado",
-        estado:        "pendiente",
+        estado:         "pendiente",
       })
       .select("id")
       .single()
@@ -140,7 +159,7 @@ export async function POST(req: NextRequest) {
     }
 
     // ── 4. Registrar pago ─────────────────────────────────────────────────
-    const { error: payErr } = await supabase.from("payments").insert({
+    await supabase.from("payments").insert({
       enrollment_id:   enrollment.id,
       student_id:      student.id,
       monto:           Number(monto),
@@ -149,14 +168,8 @@ export async function POST(req: NextRequest) {
       notas:           [tipoPago, notas].filter(Boolean).join(" · "),
     })
 
-    if (payErr) {
-      console.error("Payment error:", payErr)
-      // No bloqueamos — el estudiante y matrícula ya fueron guardados
-    }
-
-    // ── 5. Notificar a Camilo por WhatsApp ────────────────────────────────
-    notificarCamilo({ nombre, documento, telefono, programa, sede, tipoPago, monto })
-      .catch(e => console.error("Notify error:", e.message))
+    // ── 5. Notificar al equipo por WhatsApp ───────────────────────────────
+    await notificarEquipo({ nombre, documento, telefono, programa, sede, tipoPago, monto })
 
     return NextResponse.json({
       ok:         true,
