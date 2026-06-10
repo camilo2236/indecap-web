@@ -92,6 +92,7 @@ export async function POST(req: NextRequest) {
           documento,
           tipo_documento: tipoDoc,
           telefono,
+          email: correo || null,
           programa,
           sede,
           estado: "pre_inscrito",
