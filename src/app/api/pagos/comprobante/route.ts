@@ -3,7 +3,7 @@ import { NextRequest, NextResponse } from "next/server"
 import { createAdminClient } from "@/lib/supabase/admin"
 
 const PHONE_ID      = "1167947676398207"
-const DESTINATARIOS = ["573182354400", "4672519716"]
+const DESTINATARIOS = ["573182354400", "573002339219"]
 
 // ── Notificación WhatsApp ─────────────────────────────────────────────────
 async function notificarEquipo(data: {

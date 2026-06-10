@@ -5,11 +5,11 @@
 // ─────────────────────────────────────────────────────────────────────────────
 
 export const CONTACTS = {
-  CURSOS:    "573167405680",   // Vanesa — Coordinación de Cursos Cortos
-  ENVIGADO:  "573022389760",   // Sede Envigado (Atención Principal)
+  CURSOS:    "573167405680",   // Línea única cursos cortos
+  ENVIGADO:  "573174342783",   // Sede Envigado — API
   MEDELLIN:  "573022389760",   // Sede Medellín
   CALDAS:    "573008948517",   // Sede Caldas
-  PRINCIPAL: "573022389760",   // Línea principal (Envigado)
+  PRINCIPAL: "573174342783",   // Línea principal — Envigado API
 };
 
 // ─────────────────────────────────────────────────────────────────────────────
