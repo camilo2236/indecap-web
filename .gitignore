@@ -42,3 +42,7 @@ next-env.d.ts
 
 # claude code
 .claude/
+
+src/app/bandeja/
+src/app/api/bandeja/
+src/lib/bandeja/

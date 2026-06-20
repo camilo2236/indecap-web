@@ -11,1265 +11,1016 @@ document,'script','https://connect.facebook.net/en_US/fbevents.js');
 fbq('init', '3334450846719696');
 fbq('track', 'PageView');
 </script>
-<noscript><img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=3334450846719696&ev=PageView&noscript=1"/></noscript>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=3334450846719696&ev=PageView&noscript=1"/></noscript>
 <!-- End Meta Pixel -->
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Cosmetología y Estética Integral — INDECAP</title>
-<meta name="description" content="Fórmate como Cosmetóloga profesional en INDECAP. 1.190 horas de práctica real. Medellín y Envigado.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,700&family=Inter:wght@300;400;500;600&family=Work+Sans:wght@500;600;700&display=swap" rel="stylesheet">
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Cosmetología y Estética Integral — INDECAP Medellín · Envigado · Caldas</title>
+<meta name="description" content="Técnico Laboral en Cosmetología y Estética Integral. 1.050 horas, 75% práctica real. Sedes en Medellín, Envigado y Caldas. Más de 40 años formando profesionales."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
 <style>
-:root {
-  --rose:    #312783;
-  --rose-dk: #1e1660;
-  --gold:    #E8507A;
-  --ink:     #080F14;
-  --ink2:    #0f1419;
-  --ink3:    #1c1c1c;
-  --w90:     rgba(255,255,255,0.90);
-  --w60:     rgba(255,255,255,0.60);
-  --w30:     rgba(255,255,255,0.30);
-  --w10:     rgba(255,255,255,0.10);
-  --w06:     rgba(255,255,255,0.06);
-  --w03:     rgba(255,255,255,0.03);
-  --border:  rgba(255,255,255,0.08);
-}
-
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: auto; }
-
-body {
-  font-family: 'Inter', sans-serif;
-  background: var(--ink);
-  color: var(--w90);
-  overflow-x: hidden;
-  cursor: none;
-}
-
-/* ── CURSOR ─────────────────────────────────────────────── */
-.c-dot {
-  width: 8px; height: 8px;
-  background: var(--rose);
-  border-radius: 50%;
-  position: fixed;
-  top: 0; left: 0;
-  pointer-events: none;
-  z-index: 9999;
-  transform: translate(-50%, -50%);
-  transition: transform 0.1s, width 0.3s, height 0.3s, background 0.3s;
-}
-
-.c-ring {
-  width: 36px; height: 36px;
-  border: 1px solid rgba(49,39,131,0.4);
-  border-radius: 50%;
-  position: fixed;
-  top: 0; left: 0;
-  pointer-events: none;
-  z-index: 9998;
-  transform: translate(-50%, -50%);
-  transition: transform 0.12s ease-out, width 0.3s, height 0.3s, border-color 0.3s;
-}
-
-body:has(a:hover) .c-dot, body:has(button:hover) .c-dot {
-  width: 12px; height: 12px; background: var(--gold);
-}
-body:has(a:hover) .c-ring, body:has(button:hover) .c-ring {
-  width: 52px; height: 52px; border-color: rgba(250,204,21,0.5);
-}
-
-/* ── NAV ────────────────────────────────────────────────── */
-nav {
-  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
-  display: flex; align-items: center; justify-content: space-between;
-  padding: 20px 48px;
-  background: rgba(13,13,13,0.6);
-  backdrop-filter: blur(20px) saturate(180%);
-  border-bottom: 1px solid var(--border);
-  transition: padding 0.3s;
-}
-
-.nav-logo {
-  font-family: 'Newsreader', serif;
-  font-size: 18px; font-weight: 600; letter-spacing: 0.05em;
-  color: var(--w90); text-decoration: none;
-}
-
-.nav-logo span { color: var(--rose); }
-
-.nav-links {
-  display: flex; align-items: center; gap: 28px; list-style: none;
-}
-
-.nav-links a {
-  font-size: 13px; color: var(--w60); text-decoration: none;
-  letter-spacing: 0.04em; transition: color 0.2s;
-}
-
-.nav-links a:hover { color: var(--w90); }
-
-.nav-cta {
-  padding: 10px 24px;
-  background: var(--rose);
-  color: white; border: none; border-radius: 8px;
-  font-family: 'Inter', sans-serif;
-  font-size: 13px; font-weight: 600;
-  cursor: none; text-decoration: none;
-  transition: background 0.2s, transform 0.2s;
-  display: inline-flex; align-items: center; gap: 6px;
-}
-
-.nav-cta:hover { background: var(--rose-dk); transform: translateY(-1px); }
-
-/* ── HERO ────────────────────────────────────────────────── */
-.hero {
-  min-height: 100svh;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  position: relative;
-  overflow: hidden;
-}
-
-.hero::after {
-  content: '';
-  position: absolute; inset: 0; z-index: 1;
-  background:
-    linear-gradient(to right,
-      rgba(8,15,20,0.95) 0%,
-      rgba(8,15,20,0.85) 30%,
-      rgba(8,15,20,0.55) 55%,
-      rgba(8,15,20,0.15) 80%,
-      rgba(8,15,20,0.05) 100%
-    ),
-    linear-gradient(to top,
-      rgba(8,15,20,0.6) 0%,
-      transparent 30%
-    );
-}
-
-.hero-left {
-  display: flex; flex-direction: column;
-  justify-content: center;
-  padding: 120px 56px 80px 64px;
-  position: relative; z-index: 2;
-}
-
-.hero-eyebrow {
-  display: inline-flex; align-items: center; gap: 10px;
-  margin-bottom: 32px;
-}
-
-.eyebrow-dot {
-  width: 5px; height: 5px;
-  background: var(--rose); border-radius: 50%;
-}
-
-.eyebrow-text {
-  font-family: 'Work Sans', sans-serif;
-  font-size: 11px; font-weight: 500;
-  letter-spacing: 0.2em; text-transform: uppercase;
-  color: var(--rose);
-}
-
-.hero-title {
-  font-family: 'Newsreader', serif;
-  font-size: clamp(64px, 6vw, 96px);
-  font-weight: 300;
-  line-height: 0.92;
-  margin-bottom: 24px;
-  overflow: hidden;
-}
-
-.hero-title .line {
-  display: block;
-}
-
-.hero-title .line-italic {
-  font-style: italic; color: var(--rose);
-}
-
-.hero-subtitle {
-  font-family: 'Newsreader', serif;
-  font-size: clamp(18px, 2vw, 26px);
-  font-weight: 300;
-  color: var(--w60);
-  margin-bottom: 40px;
-}
-
-.hero-stats {
-  display: flex; gap: 40px;
-  margin-bottom: 48px;
-}
-
-.hero-stat { text-align: left; }
-
-.stat-num {
-  font-family: 'Newsreader', serif;
-  font-size: 40px; font-weight: 600;
-  color: var(--gold); line-height: 1;
-  display: block;
-}
-
-.stat-label {
-  font-size: 11px; color: var(--w30);
-  text-transform: uppercase; letter-spacing: 0.12em;
-  margin-top: 6px; display: block;
-}
-
-/* ── GLASS FORM ─────────────────────────────────────────── */
-.glass-form {
-  background: rgba(255,255,255,0.05);
-  backdrop-filter: blur(24px) saturate(150%);
-  border: 1px solid var(--border);
-  border-radius: 20px;
-  padding: 28px;
-  max-width: 380px;
-
-}
-
-.glass-form h3 {
-  font-family: 'Newsreader', serif;
-  font-size: 20px; font-weight: 600;
-  color: var(--w90); margin-bottom: 4px;
-}
-
-.glass-form p {
-  font-size: 13px; color: var(--w60);
-  margin-bottom: 20px;
-}
-
-.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-
-.fi {
-  margin-bottom: 12px;
-}
-
-.fi label {
-  display: block; font-size: 10px; font-weight: 600;
-  letter-spacing: 0.12em; text-transform: uppercase;
-  color: var(--w30); margin-bottom: 6px;
-}
-
-.fi input, .fi select {
-  width: 100%; padding: 11px 14px;
-  background: rgba(255,255,255,0.06);
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  font-family: 'Inter', sans-serif;
-  font-size: 14px; color: var(--w90);
-  outline: none; appearance: none;
-  transition: border-color 0.2s, background 0.2s;
-}
-
-.fi input::placeholder { color: var(--w30); }
-.fi input:focus, .fi select:focus {
-  border-color: rgba(49,39,131,0.5);
-  background: rgba(49,39,131,0.06);
-}
-
-.fi select option { background: #1a1a1a; color: white; }
-
-.btn-submit {
-  width: 100%; padding: 14px;
-  background: var(--rose); color: white; border: none;
-  border-radius: 12px;
-  font-family: 'Inter', sans-serif;
-  font-size: 14px; font-weight: 600;
-  cursor: none; margin-top: 6px;
-  display: flex; align-items: center; justify-content: center; gap: 8px;
-  transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
-}
-
-.btn-submit:hover {
-  background: var(--rose-dk);
-  transform: translateY(-2px);
-  box-shadow: 0 8px 32px rgba(49,39,131,0.35);
-}
-
-.btn-wa {
-  width: 100%; padding: 12px;
-  background: rgba(37,211,102,0.12);
-  border: 1px solid rgba(37,211,102,0.25);
-  color: #25D366; border-radius: 12px;
-  font-family: 'Inter', sans-serif;
-  font-size: 13px; font-weight: 500;
-  cursor: none; margin-top: 8px;
-  display: flex; align-items: center; justify-content: center; gap: 8px;
-  text-decoration: none;
-  transition: background 0.2s;
-}
-
-.btn-wa:hover { background: rgba(37,211,102,0.18); }
-
-/* ── HERO RIGHT (IMAGE) ─────────────────────────────────── */
-.hero-right {
-  position: relative; z-index: 2;
-}
-
-.hero-img {
-  position: absolute; inset: 0;
-  width: 100%; height: 100%;
-  object-fit: cover; object-position: center 20%;
-  opacity: 0; z-index: 0;
-  transition: opacity 0.9s ease;
-}
-
-.hero-img.active { opacity: 1; }
-
-.hero-right::before {
-  content: '';
-  position: absolute; inset: 0; z-index: 1;
-  background: linear-gradient(to right, var(--ink) 0%, transparent 30%),
-              linear-gradient(to top, var(--ink) 0%, transparent 25%);
-}
-
-.hero-badges {
-  position: absolute; bottom: 40px; right: 32px; z-index: 3;
-  display: flex; flex-direction: column; gap: 10px;
-}
-
-.hero-badge-pill {
-  display: inline-flex; align-items: center; gap: 8px;
-  background: rgba(0,0,0,0.55);
-  backdrop-filter: blur(12px);
-  border: 1px solid var(--border);
-  border-radius: 100px;
-  padding: 8px 16px;
-  font-size: 12px; color: var(--w90);
-  transition: transform 0.2s, background 0.2s;
-}
-
-.hero-badge-pill:hover { background: rgba(49,39,131,0.2); }
-
-.badge-dot {
-  width: 6px; height: 6px;
-  background: var(--gold); border-radius: 50%;
-}
-
-/* ── TICKER ─────────────────────────────────────────────── */
-.ticker {
-  background: var(--rose);
-  padding: 13px 0; overflow: hidden;
-  white-space: nowrap; position: relative; z-index: 3;
-}
-
-.ticker-track {
-  display: inline-flex;
-  animation: ticker 30s linear infinite;
-}
-
-.ticker-item {
-  display: inline-flex; align-items: center; gap: 14px;
-  padding: 0 28px;
-  font-size: 11px; font-weight: 600;
-  letter-spacing: 0.16em; text-transform: uppercase;
-  color: rgba(255,255,255,0.9);
-}
-
-.ticker-sep {
-  width: 4px; height: 4px;
-  background: rgba(255,255,255,0.4);
-  border-radius: 50%;
-}
-
-/* ── SECTION BASE ───────────────────────────────────────── */
-.section {
-  padding: 100px 64px;
-  max-width: 1140px; margin: 0 auto;
-}
-
-.label {
-  font-family: 'Work Sans', sans-serif;
-  font-size: 11px; font-weight: 600;
-  letter-spacing: 0.2em; text-transform: uppercase;
-  color: var(--rose); margin-bottom: 16px; display: block;
-}
-
-.section-title {
-  font-family: 'Newsreader', serif;
-  font-size: clamp(40px, 4.5vw, 60px);
-  font-weight: 400; line-height: 1.05;
-  color: var(--w90); margin-bottom: 56px;
-}
-
-.section-title em { font-style: italic; color: var(--rose); }
-
-/* ── STATS BAND ─────────────────────────────────────────── */
-.stats-band {
-  background: var(--ink2);
-  border-top: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
-  padding: 56px 64px;
-}
-
-.stats-inner {
-  max-width: 1140px; margin: 0 auto;
-  display: grid; grid-template-columns: repeat(4, 1fr);
-  gap: 0;
-}
-
-.stat-block {
-  padding: 0 40px;
-  border-right: 1px solid var(--border);
-  opacity: 0; transform: translateY(16px);
-}
-
-.stat-block:first-child { padding-left: 0; }
-.stat-block:last-child { border-right: none; }
-
-.sbn {
-  font-family: 'Newsreader', serif;
-  font-size: 56px; font-weight: 600;
-  color: var(--gold); line-height: 1; display: block;
-}
-
-.sbl {
-  font-size: 12px; color: var(--w30);
-  text-transform: uppercase; letter-spacing: 0.12em;
-  margin-top: 8px; display: block;
-}
-
-/* ── TESTIMONIOS ────────────────────────────────────────── */
-.testi-grid {
-  display: grid;
-  grid-template-columns: 1.3fr 1fr 1fr;
-  gap: 16px;
-}
-
-.testi {
-  background: var(--w06);
-  border: 1px solid var(--border);
-  border-radius: 20px;
-  padding: 28px;
-  transition: background 0.3s, border-color 0.3s, transform 0.3s;
-  opacity: 0; transform: translateY(24px);
-}
-
-.testi:hover {
-  background: rgba(49,39,131,0.08);
-  border-color: rgba(49,39,131,0.25);
-  transform: translateY(-4px);
-}
-
-.testi:first-child {
-  background: var(--rose);
-  border-color: var(--rose);
-}
-
-.testi:first-child:hover { background: var(--rose-dk); }
-
-.quote {
-  font-family: 'Newsreader', serif;
-  font-size: 52px; color: var(--rose);
-  line-height: 1; margin-bottom: 10px; display: block;
-}
-
-.testi:first-child .quote { color: rgba(255,255,255,0.25); }
-
-.testi-text {
-  font-family: 'Newsreader', serif;
-  font-size: 17px; font-style: italic;
-  line-height: 1.65; color: var(--w60);
-  margin-bottom: 24px;
-}
-
-.testi:first-child .testi-text { color: rgba(255,255,255,0.9); }
-
-.testi-autor {
-  display: flex; align-items: center; gap: 10px;
-}
-
-.autor-av {
-  width: 36px; height: 36px;
-  border-radius: 50%;
-  background: rgba(255,255,255,0.12);
-  display: flex; align-items: center; justify-content: center;
-  font-size: 13px; font-weight: 600; color: white;
-  flex-shrink: 0;
-}
-
-.testi:not(:first-child) .autor-av {
-  background: rgba(49,39,131,0.15);
-  color: var(--rose);
-}
-
-.autor-name {
-  font-size: 13px; font-weight: 600; color: var(--w90); display: block;
-}
-
-.testi:first-child .autor-name { color: white; }
-
-.autor-sub {
-  font-size: 11px; color: var(--w30);
-}
-
-.testi:first-child .autor-sub { color: rgba(255,255,255,0.6); }
-
-/* ── GALLERY HORIZONTAL ─────────────────────────────────── */
-.gallery-wrap {
-  padding: 0 64px 100px;
-}
-
-.gallery-label { padding: 0 0 24px; }
-
-.gallery-scroll {
-  display: flex; gap: 14px;
-  overflow-x: auto; scroll-snap-type: x mandatory;
-  scrollbar-width: none; cursor: grab;
-  padding-bottom: 4px;
-}
-
-.gallery-scroll::-webkit-scrollbar { display: none; }
-.gallery-scroll.grabbing { cursor: grabbing; }
-
-.gal-item {
-  flex: 0 0 320px; height: 420px;
-  border-radius: 16px; overflow: hidden;
-  scroll-snap-align: start; position: relative;
-}
-
-.gal-item:first-child { flex: 0 0 480px; }
-
-.gal-item img {
-  width: 100%; height: 100%;
-  object-fit: cover; object-position: center;
-  transition: transform 0.6s ease;
-}
-
-.gal-item:hover img { transform: scale(1.04); }
-
-.gal-item::after {
-  content: '';
-  position: absolute; inset: 0;
-  background: linear-gradient(to top, rgba(0,0,0,0.6) 0%, transparent 50%);
-}
-
-.gal-tag {
-  position: absolute; bottom: 16px; left: 16px; z-index: 2;
-  background: rgba(0,0,0,0.5);
-  backdrop-filter: blur(8px);
-  border: 1px solid var(--border);
-  border-radius: 100px;
-  padding: 5px 14px;
-  font-size: 11px; color: var(--w90);
-  font-weight: 500; letter-spacing: 0.08em;
-}
-
-/* ── APRENDE ─────────────────────────────────────────────── */
-.aprende-wrap {
-  background: var(--ink2);
-  border-top: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
-}
-
-.aprende-inner {
-  max-width: 1140px; margin: 0 auto;
-  padding: 100px 64px;
-  display: grid; grid-template-columns: 1fr 1fr;
-  gap: 72px; align-items: start;
-}
-
-.skills {
-  display: flex; flex-direction: column; gap: 10px;
-  margin-top: 40px;
-}
-
-.skill {
-  display: flex; align-items: flex-start; gap: 16px;
-  padding: 16px 20px;
-  background: var(--w03);
-  border: 1px solid var(--border);
-  border-radius: 14px;
-  transition: background 0.2s, border-color 0.2s, transform 0.2s;
-  opacity: 0; transform: translateX(-16px);
-}
-
-.skill:hover {
-  background: rgba(49,39,131,0.08);
-  border-color: rgba(49,39,131,0.2);
-  transform: translateX(4px);
-}
-
-.skill-ico { font-size: 18px; flex-shrink: 0; margin-top: 2px; }
-
-.skill-txt {
-  font-size: 14px; line-height: 1.55;
-  color: var(--w60);
-}
-
-.aprende-img-wrap {
-  position: relative;
-  border-radius: 20px; overflow: hidden;
-  height: 540px;
-}
-
-.aprende-img-wrap img {
-  width: 100%; height: 100%;
-  object-fit: cover;
-}
-
-.aprende-img-wrap::before {
-  content: '';
-  position: absolute; inset: 0; z-index: 1;
-  background: linear-gradient(to bottom, transparent 50%, rgba(49,39,131,0.5) 100%);
-}
-
-.aprende-tag {
-  position: absolute; bottom: 24px; left: 24px; right: 24px; z-index: 2;
-  background: rgba(0,0,0,0.55);
-  backdrop-filter: blur(16px);
-  border: 1px solid var(--border);
-  border-radius: 16px;
-  padding: 18px 22px;
-}
-
-.aprende-tag strong {
-  display: block;
-  font-family: 'Newsreader', serif;
-  font-size: 20px; font-weight: 600;
-  color: white; margin-bottom: 4px;
-}
-
-.aprende-tag span {
-  font-size: 12px; color: var(--w60);
-}
-
-/* ── SEDES ───────────────────────────────────────────────── */
-.sedes-grid {
-  display: grid; grid-template-columns: 1fr 1fr;
-  gap: 16px; margin-top: 48px;
-}
-
-.sede-card {
-  background: var(--w06);
-  border: 1px solid var(--border);
-  border-radius: 20px; padding: 32px;
-  transition: background 0.3s, border-color 0.3s, transform 0.3s;
-
-}
-
-.sede-card:hover {
-  background: rgba(49,39,131,0.07);
-  border-color: rgba(49,39,131,0.2);
-  transform: translateY(-4px);
-}
-
-.sede-ico { font-size: 36px; margin-bottom: 20px; display: block; }
-
-.sede-name {
-  font-family: 'Newsreader', serif;
-  font-size: 28px; font-weight: 600;
-  color: var(--w90); margin-bottom: 8px;
-}
-
-.sede-addr {
-  font-size: 13px; color: var(--w30);
-  line-height: 1.6; margin-bottom: 16px;
-}
-
-.sede-pill {
-  display: inline-flex; align-items: center; gap: 6px;
-  background: rgba(49,39,131,0.1);
-  border: 1px solid rgba(49,39,131,0.2);
-  border-radius: 100px;
-  padding: 5px 14px;
-  font-size: 10px; font-weight: 700;
-  color: var(--rose); text-transform: uppercase;
-  letter-spacing: 0.1em;
-}
-
-/* ── CTA FINAL ──────────────────────────────────────────── */
-.cta-final {
-  background: var(--rose);
-  padding: 100px 64px; text-align: center;
-  position: relative; overflow: hidden;
-}
-
-.cta-final::before {
-  content: '';
-  position: absolute; top: -120px; right: -120px;
-  width: 500px; height: 500px;
-  background: rgba(255,255,255,0.04);
-  border-radius: 50%;
-}
-
-.cta-final::after {
-  content: '';
-  position: absolute; bottom: -80px; left: -60px;
-  width: 360px; height: 360px;
-  background: rgba(0,0,0,0.08);
-  border-radius: 50%;
-}
-
-.cta-inner {
-  position: relative; z-index: 1;
-  max-width: 600px; margin: 0 auto;
-}
-
-.cta-inner h2 {
-  font-family: 'Newsreader', serif;
-  font-size: clamp(44px, 5.5vw, 68px);
-  font-weight: 400; line-height: 1.05;
-  color: white; margin-bottom: 16px;
-}
-
-.cta-inner h2 em { font-style: italic; color: var(--gold); }
-
-.cta-inner p {
-  font-size: 16px; color: rgba(255,255,255,0.75);
-  line-height: 1.7; margin-bottom: 48px;
-}
-
-.cta-btns {
-  display: flex; gap: 14px;
-  justify-content: center; flex-wrap: wrap;
-}
-
-.btn-white {
-  padding: 16px 36px;
-  background: white; color: var(--rose);
-  border: none; border-radius: 12px;
-  font-family: 'Inter', sans-serif;
-  font-size: 15px; font-weight: 700;
-  cursor: none; text-decoration: none;
-  display: inline-flex; align-items: center; gap: 8px;
-  transition: transform 0.2s, box-shadow 0.2s;
-}
-
-.btn-white:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 10px 40px rgba(0,0,0,0.25);
-}
-
-.btn-outline {
-  padding: 16px 36px;
-  background: transparent; color: white;
-  border: 1.5px solid rgba(255,255,255,0.4);
-  border-radius: 12px;
-  font-family: 'Inter', sans-serif;
-  font-size: 15px; font-weight: 500;
-  cursor: none; text-decoration: none;
-  display: inline-flex; align-items: center; gap: 8px;
-  transition: border-color 0.2s, background 0.2s;
-}
-
-.btn-outline:hover {
-  border-color: white;
-  background: rgba(255,255,255,0.08);
-}
-
-/* ── STICKY MOBILE ──────────────────────────────────────── */
-.sticky-mob {
-  display: none;
-  position: fixed; bottom: 0; left: 0; right: 0; z-index: 190;
-  background: rgba(13,13,13,0.95);
-  backdrop-filter: blur(20px);
-  border-top: 1px solid var(--border);
-  padding: 12px 20px; gap: 10px;
-}
-
-
-/* ── HERO ENTRANCE ANIMATIONS ───────────────────────── */
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(24px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to   { opacity: 1; }
-}
-
-@keyframes slideInRight {
-  from { opacity: 0; transform: translateX(20px); }
-  to   { opacity: 1; transform: translateX(0); }
-}
-
-.hero-eyebrow   { animation: fadeUp 0.7s 0.2s ease both; }
-.hero-title .line:nth-child(1) { animation: fadeUp 0.8s 0.35s ease both; }
-.hero-title .line:nth-child(2) { animation: fadeUp 0.8s 0.5s  ease both; }
-.hero-title .line:nth-child(3) { animation: fadeUp 0.8s 0.65s ease both; }
-#heroSub        { animation: fadeUp 0.7s 0.75s ease both; }
-#heroStats      { animation: fadeUp 0.7s 0.9s  ease both; }
-#inscribete     { animation: fadeUp 0.8s 1.0s  ease both; }
-.hero-badge-pill:nth-child(1) { animation: slideInRight 0.6s 1.2s ease both; }
-.hero-badge-pill:nth-child(2) { animation: slideInRight 0.6s 1.35s ease both; }
-.hero-badge-pill:nth-child(3) { animation: slideInRight 0.6s 1.5s ease both; }
-
-/* ── ANIMATIONS ─────────────────────────────────────────── */
-@keyframes ticker {
-  from { transform: translateX(0); }
-  to   { transform: translateX(-50%); }
-}
-
-/* ── RESPONSIVE ─────────────────────────────────────────── */
-@media (max-width: 900px) {
-  nav { padding: 16px 24px; }
-  .nav-links { display: none; }
-  .hero { grid-template-columns: 1fr; }
-  .hero-right { height: 50vw; min-height: 240px; }
-  .hero-left { padding: 100px 24px 40px; }
-  .glass-form { max-width: 100%; }
-  .stats-inner { grid-template-columns: 1fr 1fr; gap: 32px; }
-  .stat-block { border-right: none; padding: 0; }
-  .testi-grid { grid-template-columns: 1fr; }
-  .section { padding: 72px 24px; }
-  .stats-band { padding: 56px 24px; }
-  .gallery-wrap { padding: 0 24px 72px; }
-  .aprende-inner { grid-template-columns: 1fr; padding: 72px 24px; gap: 40px; }
-  .aprende-img-wrap { height: 320px; }
-  .sedes-grid { grid-template-columns: 1fr; }
-  .cta-final { padding: 72px 24px; }
-  .sticky-mob { display: flex; }
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --navy:#1a086e;
+  --navy-dk:#0d0440;
+  --crimson:#b02d21;
+  --crimson-lt:#d63a2b;
+  --pink:#e91e8c;
+  --gold:#c9a84c;
+  --cream:#fdf8f4;
+  --gray:#f4f4f6;
+  --dark:#0a0a0f;
+  --text:#1a1c1e;
+  --muted:#6b6878;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;color:#fff;background:var(--dark);overflow-x:hidden}
+img{display:block;max-width:100%}
+a{text-decoration:none}
+
+/* ── NAV ── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:200;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 2.5rem;height:68px;
+  background:rgba(10,10,15,0.85);
+  backdrop-filter:blur(16px);
+  border-bottom:1px solid rgba(255,255,255,0.06);
+  transition:all 0.3s;
+}
+.nav-logo{
+  font-family:'Playfair Display',serif;
+  font-size:1.3rem;font-weight:700;color:#fff;
+  letter-spacing:-0.01em;
+}
+.nav-logo em{color:var(--gold);font-style:normal}
+.nav-cta{
+  display:flex;align-items:center;gap:8px;
+  background:var(--crimson);color:#fff;
+  padding:9px 20px;border-radius:6px;
+  font-size:13px;font-weight:600;
+  letter-spacing:0.03em;
+  transition:background 0.2s;
+}
+.nav-cta:hover{background:var(--crimson-lt)}
+.nav-cta svg{width:14px;height:14px}
+
+/* ── HERO ── */
+.hero{
+  position:relative;
+  min-height:100svh;
+  display:flex;align-items:center;
+  padding-top:68px;
+  overflow:hidden;
+}
+.hero-bg{
+  position:absolute;inset:0;
+  background-image:url('cosmo-egresadas.jpg');
+  background-size:cover;
+  background-position:center 20%;
+  background-repeat:no-repeat;
+}
+.hero-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(
+    110deg,
+    rgba(10,10,15,0.95) 0%,
+    rgba(26,8,110,0.85) 35%,
+    rgba(26,8,110,0.5) 60%,
+    rgba(10,10,15,0.2) 100%
+  );
+}
+.hero-inner{
+  position:relative;z-index:2;
+  width:100%;max-width:1280px;
+  margin:0 auto;
+  padding:3rem 2.5rem;
+  display:grid;
+  grid-template-columns:1fr 400px;
+  gap:3rem;
+  align-items:center;
+}
+.hero-badge{
+  display:inline-flex;align-items:center;gap:8px;
+  background:rgba(201,168,76,0.15);
+  border:1px solid rgba(201,168,76,0.35);
+  color:var(--gold);
+  padding:6px 14px;border-radius:999px;
+  font-size:11px;font-weight:600;
+  letter-spacing:0.1em;text-transform:uppercase;
+  margin-bottom:1.5rem;
+}
+.hero-badge-dot{
+  width:6px;height:6px;
+  background:var(--gold);border-radius:50%;
+  animation:blink 2s infinite;
+}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0.3}}
+.hero h1{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(3rem,5.5vw,5rem);
+  font-weight:800;
+  color:#fff;
+  line-height:1.05;
+  letter-spacing:-0.03em;
+  margin-bottom:1.25rem;
+}
+.hero h1 em{
+  color:var(--gold);
+  font-style:italic;
+  font-weight:400;
+}
+.hero-desc{
+  font-size:1.05rem;
+  color:rgba(255,255,255,0.72);
+  line-height:1.75;
+  max-width:500px;
+  margin-bottom:2rem;
+}
+.hero-stats{
+  display:flex;gap:0;
+  margin-bottom:2rem;
+}
+.hero-stat{
+  display:flex;flex-direction:column;
+  padding:12px 20px;
+  border-right:1px solid rgba(255,255,255,0.1);
+}
+.hero-stat:first-child{padding-left:0}
+.hero-stat:last-child{border-right:none}
+.hero-stat-val{
+  font-family:'Playfair Display',serif;
+  font-size:1.6rem;font-weight:700;
+  color:var(--gold);
+  line-height:1;
+}
+.hero-stat-label{
+  font-size:10px;color:rgba(255,255,255,0.5);
+  text-transform:uppercase;letter-spacing:0.07em;
+  margin-top:4px;
+}
+
+/* ── FORM ── */
+.hero-form{
+  background:rgba(255,255,255,0.04);
+  border:1px solid rgba(255,255,255,0.1);
+  border-radius:16px;
+  padding:2rem;
+  backdrop-filter:blur(20px);
+  position:relative;overflow:hidden;
+}
+.hero-form::before{
+  content:'';position:absolute;
+  top:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,var(--gold),var(--pink));
+}
+.form-title{
+  font-family:'Playfair Display',serif;
+  font-size:1.3rem;font-weight:600;
+  color:#fff;margin-bottom:4px;
+}
+.form-sub{font-size:13px;color:rgba(255,255,255,0.5);margin-bottom:1.5rem}
+.form-group{margin-bottom:12px}
+.form-group label{
+  display:block;font-size:10px;font-weight:600;
+  color:rgba(255,255,255,0.5);
+  text-transform:uppercase;letter-spacing:0.07em;
+  margin-bottom:5px;
+}
+.form-group input,.form-group select{
+  width:100%;padding:11px 14px;
+  background:rgba(255,255,255,0.06);
+  border:1px solid rgba(255,255,255,0.12);
+  border-radius:8px;
+  font-size:14px;font-family:'Inter',sans-serif;
+  color:#fff;outline:none;
+  appearance:none;-webkit-appearance:none;
+  transition:border 0.2s,background 0.2s;
+}
+.form-group input::placeholder{color:rgba(255,255,255,0.3)}
+.form-group input:focus,.form-group select:focus{
+  border-color:var(--gold);
+  background:rgba(255,255,255,0.09);
+}
+.form-group select option{color:var(--text);background:#fff}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.btn-submit{
+  width:100%;padding:13px;
+  background:linear-gradient(135deg,var(--crimson),#8b1a11);
+  color:#fff;border:none;border-radius:8px;
+  font-size:14px;font-weight:600;
+  font-family:'Inter',sans-serif;
+  cursor:pointer;letter-spacing:0.03em;
+  transition:all 0.2s;
+  display:flex;align-items:center;justify-content:center;gap:8px;
+  margin-top:4px;
+}
+.btn-submit:hover{transform:translateY(-1px);box-shadow:0 8px 24px rgba(176,45,33,0.4)}
+.form-trust{
+  text-align:center;font-size:11px;
+  color:rgba(255,255,255,0.3);margin-top:10px;
+}
+
+/* ── TRUST BAR ── */
+.trust-bar{
+  background:rgba(255,255,255,0.03);
+  border-top:1px solid rgba(255,255,255,0.06);
+  border-bottom:1px solid rgba(255,255,255,0.06);
+  padding:14px 2rem;
+}
+.trust-inner{
+  max-width:1280px;margin:0 auto;
+  display:flex;justify-content:center;
+  align-items:center;gap:2.5rem;flex-wrap:wrap;
+}
+.trust-item{
+  display:flex;align-items:center;gap:8px;
+  color:rgba(255,255,255,0.55);font-size:12.5px;font-weight:500;
+}
+.trust-icon{color:var(--gold);font-size:14px}
+
+/* ── SECTIONS ── */
+section{padding:90px 2.5rem}
+.container{max-width:1280px;margin:0 auto}
+.section-eyebrow{
+  font-size:11px;font-weight:600;color:var(--gold);
+  text-transform:uppercase;letter-spacing:0.1em;margin-bottom:10px;
+}
+.section-title{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(2rem,3.5vw,3rem);
+  font-weight:700;line-height:1.15;
+  margin-bottom:14px;
+}
+.section-title em{color:var(--gold);font-style:italic}
+.section-sub{
+  font-size:1rem;color:rgba(255,255,255,0.55);
+  line-height:1.75;max-width:580px;
+}
+.text-center{text-align:center}
+.text-center .section-sub{margin:0 auto}
+
+/* ── BENTO ── */
+.bento{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:16px;margin-top:3rem;
+}
+.bento-card{
+  background:rgba(255,255,255,0.03);
+  border:1px solid rgba(255,255,255,0.07);
+  border-radius:14px;padding:1.75rem;
+  transition:all 0.3s;
+}
+.bento-card:hover{
+  background:rgba(255,255,255,0.06);
+  border-color:rgba(201,168,76,0.2);
+  transform:translateY(-3px);
+}
+.bento-card.featured{
+  grid-column:span 2;
+  background:linear-gradient(135deg,rgba(26,8,110,0.6),rgba(10,4,64,0.8));
+  border-color:rgba(201,168,76,0.2);
+}
+.bento-icon{font-size:1.8rem;margin-bottom:1rem}
+.bento-eyebrow{
+  font-size:10px;font-weight:600;color:var(--gold);
+  text-transform:uppercase;letter-spacing:0.1em;margin-bottom:5px;
+}
+.bento-card h3{
+  font-family:'Playfair Display',serif;
+  font-size:1.15rem;font-weight:600;color:#fff;margin-bottom:8px;
+}
+.bento-card p{font-size:13.5px;color:rgba(255,255,255,0.55);line-height:1.65}
+.bento-card.featured p{max-width:480px}
+
+/* ── SPLIT ── */
+.split{
+  display:grid;grid-template-columns:1fr 1fr;
+  border-radius:20px;overflow:hidden;
+  box-shadow:0 40px 80px rgba(0,0,0,0.4);
+}
+.split-img{
+  position:relative;min-height:500px;
+  background-size:cover;background-position:center;
+}
+.split-img-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(to right,rgba(10,10,15,0.3),transparent);
+}
+.split-content{
+  background:rgba(255,255,255,0.03);
+  border:1px solid rgba(255,255,255,0.07);
+  border-left:none;
+  padding:3.5rem;
+  display:flex;flex-direction:column;justify-content:center;
+}
+.split-content .section-title{font-size:2rem}
+.split-content p{
+  font-size:15px;color:rgba(255,255,255,0.6);
+  line-height:1.8;margin-bottom:2rem;
+}
+.check-list{list-style:none;display:flex;flex-direction:column;gap:10px}
+.check-list li{
+  display:flex;align-items:center;gap:10px;
+  font-size:14px;font-weight:500;color:rgba(255,255,255,0.85);
+}
+.check-list li::before{
+  content:'✓';
+  width:22px;height:22px;
+  background:var(--gold);color:var(--dark);
+  border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-size:11px;font-weight:700;flex-shrink:0;
+}
+
+/* ── PHOTO CTA ── */
+.photo-cta{
+  position:relative;min-height:520px;
+  background-size:cover;background-position:center 30%;
+  display:flex;align-items:center;justify-content:center;
+}
+.photo-cta-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(to bottom,rgba(10,10,15,0.3),rgba(10,10,15,0.75));
+}
+.photo-cta-content{
+  position:relative;z-index:2;
+  text-align:center;padding:2rem;max-width:700px;
+}
+.photo-cta-content h2{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(2.2rem,4vw,3.5rem);
+  font-weight:700;color:#fff;
+  line-height:1.15;margin-bottom:1rem;
+}
+.photo-cta-content h2 em{color:var(--gold);font-style:italic}
+.photo-cta-content p{font-size:1.05rem;color:rgba(255,255,255,0.7)}
+.photo-cta-content a{
+  display:inline-block;margin-top:2rem;
+  background:var(--crimson);color:#fff;
+  padding:14px 36px;border-radius:8px;
+  font-weight:600;font-size:14px;letter-spacing:0.03em;
+  transition:all 0.2s;
+}
+.photo-cta-content a:hover{background:var(--crimson-lt);transform:translateY(-2px)}
+
+/* ── CAREERS ── */
+.careers-grid{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  gap:14px;margin-top:2.5rem;
+}
+.career-card{
+  background:rgba(255,255,255,0.03);
+  border:1px solid rgba(255,255,255,0.07);
+  border-radius:14px;padding:1.5rem;text-align:center;
+  transition:all 0.3s;
+}
+.career-card:hover{
+  border-color:rgba(201,168,76,0.25);
+  background:rgba(255,255,255,0.06);
+  transform:translateY(-3px);
+}
+.career-icon{font-size:2rem;margin-bottom:10px}
+.career-card h4{font-size:13.5px;font-weight:600;color:rgba(255,255,255,0.85);line-height:1.4}
+
+/* ── TESTIMONIAL ── */
+.testimonial-wrap{
+  max-width:860px;margin:2.5rem auto 0;
+  background:rgba(255,255,255,0.03);
+  border:1px solid rgba(255,255,255,0.08);
+  border-radius:20px;overflow:hidden;
+  display:grid;grid-template-columns:280px 1fr;
+}
+.t-img{position:relative;min-height:300px}
+.t-img-bg{
+  position:absolute;inset:0;
+  background-size:cover;background-position:center top;
+}
+.t-img-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(to right,transparent,rgba(10,10,15,0.5));
+}
+.t-content{
+  padding:2.5rem;
+  display:flex;flex-direction:column;justify-content:center;
+}
+.quote-mark{
+  font-family:'Playfair Display',serif;
+  font-size:5rem;color:rgba(201,168,76,0.15);
+  line-height:1;margin-bottom:-1.2rem;
+}
+.t-content blockquote{
+  font-family:'Playfair Display',serif;
+  font-size:1.1rem;font-style:italic;
+  color:rgba(255,255,255,0.85);
+  line-height:1.75;margin-bottom:1.5rem;
+}
+.t-author h4{font-size:14px;font-weight:600;color:#fff}
+.t-author p{font-size:12px;color:rgba(255,255,255,0.45);margin-top:2px}
+.stars{color:var(--gold);font-size:14px;margin-top:5px}
+
+/* ── SEDES ── */
+.sedes-tabs{
+  display:flex;margin-top:2.5rem;
+  border-radius:12px 12px 0 0;overflow:hidden;
+  border:1px solid rgba(255,255,255,0.08);
+  border-bottom:none;
+}
+.sede-tab{
+  flex:1;padding:16px 12px;border:none;
+  background:rgba(255,255,255,0.02);
+  cursor:pointer;
+  font-family:'Inter',sans-serif;
+  font-size:13px;font-weight:600;
+  color:rgba(255,255,255,0.45);
+  transition:all 0.25s;
+  border-right:1px solid rgba(255,255,255,0.08);
+  display:flex;flex-direction:column;align-items:center;gap:3px;
+}
+.sede-tab:last-child{border-right:none}
+.sede-tab.active{background:rgba(201,168,76,0.1);color:var(--gold);border-bottom:2px solid var(--gold)}
+.sede-tab .tab-city{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700}
+.sede-tab .tab-label{font-size:10px;opacity:0.6;text-transform:uppercase;letter-spacing:0.05em}
+.sede-panel{display:none}
+.sede-panel.active{
+  display:grid;grid-template-columns:1fr 1fr;
+  background:rgba(255,255,255,0.02);
+  border:1px solid rgba(255,255,255,0.08);
+  border-top:none;
+  border-radius:0 0 12px 12px;
+  overflow:hidden;
+}
+.sede-info{padding:2.5rem}
+.sede-badge{
+  display:inline-block;font-size:11px;font-weight:600;
+  padding:4px 12px;border-radius:4px;
+  text-transform:uppercase;letter-spacing:0.05em;
+  margin-bottom:1rem;color:var(--dark);
+}
+.sede-info h3{
+  font-family:'Playfair Display',serif;
+  font-size:1.6rem;font-weight:700;color:#fff;margin-bottom:1.25rem;
+}
+.sede-detail{
+  display:flex;align-items:flex-start;gap:10px;
+  margin-bottom:10px;font-size:13.5px;
+  color:rgba(255,255,255,0.55);line-height:1.5;
+}
+.sede-detail strong{
+  display:block;font-size:10px;
+  text-transform:uppercase;letter-spacing:0.05em;
+  color:rgba(255,255,255,0.35);margin-bottom:1px;
+}
+.sede-detail-icon{font-size:15px;flex-shrink:0;margin-top:1px;color:var(--gold)}
+.sede-actions{display:flex;flex-direction:column;gap:10px;margin-top:1.5rem}
+.btn-wa{
+  display:flex;align-items:center;justify-content:center;gap:8px;
+  padding:12px;background:#25d366;color:#fff;
+  border-radius:8px;font-size:13px;font-weight:600;
+  transition:all 0.2s;
+}
+.btn-wa:hover{background:#1db954;transform:translateY(-1px)}
+.btn-sede{
+  display:flex;align-items:center;justify-content:center;gap:6px;
+  padding:11px;border:1px solid rgba(255,255,255,0.15);
+  color:rgba(255,255,255,0.7);border-radius:8px;
+  font-size:13px;font-weight:600;transition:all 0.2s;
+}
+.btn-sede:hover{border-color:var(--gold);color:var(--gold)}
+.sede-map{position:relative;min-height:320px}
+.sede-map iframe{width:100%;height:100%;border:none;display:block}
+
+/* ── FINAL CTA ── */
+.final-cta{
+  background:linear-gradient(135deg,rgba(26,8,110,0.4),rgba(10,4,64,0.6));
+  border-top:1px solid rgba(255,255,255,0.06);
+  border-bottom:1px solid rgba(255,255,255,0.06);
+  padding:90px 2.5rem;
+}
+.final-cta-inner{
+  max-width:960px;margin:0 auto;
+  display:grid;grid-template-columns:1fr 400px;
+  gap:4rem;align-items:center;
+}
+.final-cta h2{
+  font-family:'Playfair Display',serif;
+  font-size:2.5rem;font-weight:700;color:#fff;
+  line-height:1.2;margin-bottom:1rem;
+}
+.final-cta h2 em{color:var(--gold);font-style:italic}
+.final-cta p{color:rgba(255,255,255,0.6);font-size:15px;line-height:1.7;margin-bottom:1.5rem}
+.trust-checks{display:flex;flex-direction:column;gap:8px}
+.trust-check{
+  display:flex;align-items:center;gap:10px;
+  color:rgba(255,255,255,0.75);font-size:13.5px;
+}
+.trust-check::before{
+  content:'✓';width:18px;height:18px;
+  background:rgba(201,168,76,0.2);
+  color:var(--gold);border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-size:10px;font-weight:700;flex-shrink:0;
+}
+
+/* ── FOOTER ── */
+footer{
+  background:rgba(0,0,0,0.4);
+  border-top:1px solid rgba(255,255,255,0.06);
+  padding:2rem 2.5rem;
+}
+.footer-inner{
+  max-width:1280px;margin:0 auto;
+  display:flex;align-items:center;
+  justify-content:space-between;flex-wrap:wrap;gap:1rem;
+}
+.footer-logo{
+  font-family:'Playfair Display',serif;
+  font-size:1.2rem;font-weight:700;color:#fff;
+}
+.footer-logo em{color:var(--gold);font-style:normal}
+.footer-links{display:flex;gap:1.5rem;flex-wrap:wrap}
+.footer-links a{font-size:12px;color:rgba(255,255,255,0.35);transition:color 0.2s}
+.footer-links a:hover{color:rgba(255,255,255,0.7)}
+.footer-copy{font-size:11px;color:rgba(255,255,255,0.2)}
+
+/* ── REVEAL ── */
+.reveal{opacity:0;transform:translateY(20px);transition:all 0.65s cubic-bezier(0.5,0,0,1)}
+.reveal.active{opacity:1;transform:translateY(0)}
+
+/* ── STICKY BOTTOM (MOBILE) ── */
+.sticky-bottom{
+  display:none;
+  position:fixed;bottom:0;left:0;right:0;z-index:150;
+  background:rgba(10,10,15,0.95);
+  backdrop-filter:blur(16px);
+  border-top:1px solid rgba(255,255,255,0.08);
+  padding:12px 1.5rem;
+  gap:10px;
+}
+.sticky-btn-inscribir{
+  flex:1;padding:13px;
+  background:var(--crimson);color:#fff;
+  border:none;border-radius:8px;
+  font-size:14px;font-weight:600;
+  font-family:'Inter',sans-serif;cursor:pointer;
+  transition:background 0.2s;
+}
+.sticky-btn-wa{
+  flex:1;padding:13px;
+  background:#25d366;color:#fff;
+  border:none;border-radius:8px;
+  font-size:14px;font-weight:600;
+  font-family:'Inter',sans-serif;cursor:pointer;
+  transition:background 0.2s;
+  display:flex;align-items:center;justify-content:center;gap:6px;
+}
+
+/* ── MOBILE ── */
+@media(max-width:900px){
+  nav{padding:0 1.25rem}
+  .hero-inner{grid-template-columns:1fr;gap:2rem;padding:2rem 1.25rem}
+  .hero h1{font-size:2.6rem}
+  .hero-stats{flex-wrap:wrap;gap:0}
+  .hero-stat{padding:10px 14px}
+  .bento{grid-template-columns:1fr}
+  .bento-card.featured{grid-column:span 1}
+  .split{grid-template-columns:1fr}
+  .split-img{min-height:280px}
+  .split-content{border-left:1px solid rgba(255,255,255,0.07);border-top:none;padding:2rem 1.5rem}
+  .careers-grid{grid-template-columns:repeat(2,1fr)}
+  .testimonial-wrap{grid-template-columns:1fr}
+  .t-img{min-height:220px}
+  .sedes-tabs{flex-direction:column;border-radius:12px 12px 0 0}
+  .sede-tab{flex-direction:row;justify-content:center;gap:8px;border-right:none;border-bottom:1px solid rgba(255,255,255,0.08)}
+  .sede-panel.active{grid-template-columns:1fr}
+  .sede-map{min-height:260px}
+  .final-cta-inner{grid-template-columns:1fr;gap:2.5rem}
+  .footer-inner{flex-direction:column;text-align:center}
+  section{padding:70px 1.25rem}
+  .sticky-bottom{display:flex}
+  .trust-inner{gap:1.25rem}
+  footer{padding-bottom:90px}
 }
 </style>
 </head>
 <body>
 
-<div class="c-dot" id="cDot"></div>
-<div class="c-ring" id="cRing"></div>
-
 <!-- NAV -->
-<nav id="mainNav">
-  <a href="https://indecap.edu.co" class="nav-logo">INDE<span>CAP</span></a>
-  <ul class="nav-links">
-    <li><a href="https://indecap.edu.co/programas">Programas</a></li>
-    <li><a href="https://indecap.edu.co/sedes">Sedes</a></li>
-    <li><a href="https://indecap.edu.co/contacto">Contacto</a></li>
-  </ul>
-  <a href="#inscribete" class="nav-cta" id="navCta">
-    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 2L11 13"/><path d="M22 2L15 22l-4-9-9-4 20-7z"/></svg>
+<nav id="navbar">
+  <div class="nav-logo">IN<em>D</em>ECAP</div>
+  <a href="#contacto" class="nav-cta">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2L11 13M22 2L15 22l-4-9-9-4 20-7z"/></svg>
     Inscribirme
   </a>
 </nav>
 
 <!-- HERO -->
-<section class="hero" id="hero">
-  <div class="hero-left">
-    <div class="hero-eyebrow" id="eyebrow">
-      <div class="eyebrow-dot"></div>
-      <span class="eyebrow-text">Escuela de Belleza · Medellín · Envigado · Caldas</span>
-    </div>
-
-    <h1 class="hero-title">
-      <span class="line">Cosmetología</span>
-      <span class="line line-italic">y Estética</span>
-      <span class="line" style="color: var(--w60); font-size: 0.65em; font-weight: 300;">Integral — INDECAP</span>
-    </h1>
-
-    <p class="hero-subtitle" id="heroSub">
-      Aprende técnicas que puedes cobrar desde que las dominas.
-    </p>
-
-    <div class="hero-stats" id="heroStats">
-      <div class="hero-stat">
-        <span class="stat-num" data-target="1190">0</span>
-        <span class="stat-label">Horas de formación</span>
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-inner">
+    <div class="reveal active">
+      <div class="hero-badge">
+        <span class="hero-badge-dot"></span>
+        Admisiones abiertas · Medellín · Envigado · Caldas
       </div>
-      <div class="hero-stat">
-        <span class="stat-num" data-target="40">0</span>
-        <span class="stat-label">Años formando</span>
-      </div>
-      <div class="hero-stat">
-        <span class="stat-num" data-target="3">0</span>
-        <span class="stat-label">Sedes</span>
-      </div>
-    </div>
-
-    <div class="glass-form" id="inscribete">
-      <h3>Solicita información</h3>
-      <p>Un asesor te contacta hoy mismo</p>
-      <div class="form-row">
-        <div class="fi">
-          <label>Nombre</label>
-          <input type="text" id="fNombre" placeholder="Tu nombre">
+      <h1>Cosmetología<br/>y <em>Estética</em><br/>Integral</h1>
+      <p class="hero-desc">
+        Aprende técnicas que puedes cobrar desde que las dominas. Egresadas trabajando en spas, clínicas y negocios propios desde el primer mes.
+      </p>
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <span class="hero-stat-val">1.050</span>
+          <span class="hero-stat-label">Horas de formación</span>
         </div>
-        <div class="fi">
-          <label>WhatsApp</label>
-          <input type="tel" id="fTel" placeholder="300 000 0000">
+        <div class="hero-stat">
+          <span class="hero-stat-val">75%</span>
+          <span class="hero-stat-label">Práctica real</span>
+        </div>
+        <div class="hero-stat">
+          <span class="hero-stat-val">40+</span>
+          <span class="hero-stat-label">Años formando</span>
+        </div>
+        <div class="hero-stat">
+          <span class="hero-stat-val">3</span>
+          <span class="hero-stat-label">Sedes</span>
         </div>
       </div>
-      <div class="fi">
-        <label>Correo electrónico</label>
-        <input type="email" id="fCorreo" placeholder="tucorreo@gmail.com">
-      </div>
-      <div class="fi">
-        <label>Sede preferida</label>
-        <select id="fSede">
-          <option value="">Selecciona una sede</option>
-          <option value="Medellín">Medellín — Calle 56 # 45-26</option>
-          <option value="Envigado">Envigado — Calle 37 Sur #43A-84</option>
-          <option value="Caldas">Caldas — Calle 130 Sur #51-65</option>
-          <option value="No sé aún">Aún no sé cuál me queda mejor</option>
-        </select>
-      </div>
-      <button class="btn-submit" onclick="enviar()">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 2L11 13"/><path d="M22 2L15 22l-4-9-9-4 20-7z"/></svg>
-        Quiero que me contacten
-      </button>
-      <a id="waBtn" href="#" class="btn-wa" style="display:none">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-        Hablar por WhatsApp ahora
-      </a>
     </div>
-  </div>
 
-  <div class="hero-right" id="heroRight">
-    <div class="hero-badges" id="heroBadges">
-      <div class="hero-badge-pill"><div class="badge-dot"></div>Práctica real desde día 1</div>
-      <div class="hero-badge-pill"><div class="badge-dot"></div>Cupos limitados julio</div>
-      <div class="hero-badge-pill"><div class="badge-dot"></div>Financiación sin intereses</div>
+    <!-- FORM -->
+    <div class="hero-form reveal active" id="contacto">
+      <div class="form-title">Solicita información gratis</div>
+      <p class="form-sub">Una asesora te contacta hoy mismo</p>
+      <form onsubmit="return handleForm(event)">
+        <div class="form-row">
+          <div class="form-group">
+            <label>Nombre</label>
+            <input type="text" placeholder="Tu nombre" required id="f-nombre"/>
+          </div>
+          <div class="form-group">
+            <label>WhatsApp</label>
+            <input type="tel" placeholder="300 000 0000" required id="f-wa"/>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Correo electrónico</label>
+          <input type="email" placeholder="tucorreo@email.com" id="f-email"/>
+        </div>
+        <div class="form-group">
+          <label>Sede preferida</label>
+          <select required id="f-sede">
+            <option value="" disabled selected>Selecciona una sede</option>
+            <option value="medellin">Medellín — Av. Oriental</option>
+            <option value="envigado">Envigado — Parque Principal</option>
+            <option value="caldas">Caldas — Parque Principal</option>
+          </select>
+        </div>
+        <button type="submit" class="btn-submit">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2L11 13M22 2L15 22l-4-9-9-4 20-7z"/></svg>
+          Quiero que me contacten
+        </button>
+        <p class="form-trust">Sin spam · Solo te contacta una asesora real</p>
+      </form>
     </div>
   </div>
-  <img src="cosmo-estudiantes-selfie.jpg" class="hero-img active" alt="Estudiantes Cosmetología INDECAP">
-  <img src="cosmo-hero.jpg"  class="hero-img" alt="Cosmetología INDECAP">
-  <img src="cosmo-hero2.jpg" class="hero-img" alt="Práctica cosmetología">
-  <img src="cosmetologia-vapor.jpg" class="hero-img" alt="Vaporizador facial">
-  <img src="cosmetologia-tratamiento.jpg" class="hero-img" alt="Tratamiento facial">
 </section>
 
-<!-- TICKER -->
-<div class="ticker">
-  <div class="ticker-track">
-    <span class="ticker-item">Cosmetología Facial<span class="ticker-sep"></span></span>
-    <span class="ticker-item">Tratamientos Corporales<span class="ticker-sep"></span></span>
-    <span class="ticker-item">Maquillaje Social<span class="ticker-sep"></span></span>
-    <span class="ticker-item">Depilación Profesional<span class="ticker-sep"></span></span>
-    <span class="ticker-item">Servicios de SPA<span class="ticker-sep"></span></span>
-    <span class="ticker-item">Pre y Post Quirúrgico<span class="ticker-sep"></span></span>
-    <span class="ticker-item">40 Años Formando<span class="ticker-sep"></span></span>
-    <span class="ticker-item">1.190 Horas de Práctica<span class="ticker-sep"></span></span>
-    <span class="ticker-item">Cosmetología Facial<span class="ticker-sep"></span></span>
-    <span class="ticker-item">Tratamientos Corporales<span class="ticker-sep"></span></span>
-    <span class="ticker-item">Maquillaje Social<span class="ticker-sep"></span></span>
-    <span class="ticker-item">Depilación Profesional<span class="ticker-sep"></span></span>
-    <span class="ticker-item">Servicios de SPA<span class="ticker-sep"></span></span>
-    <span class="ticker-item">Pre y Post Quirúrgico<span class="ticker-sep"></span></span>
-    <span class="ticker-item">40 Años Formando<span class="ticker-sep"></span></span>
-    <span class="ticker-item">1.190 Horas de Práctica<span class="ticker-sep"></span></span>
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="trust-inner">
+    <div class="trust-item"><span class="trust-icon">✦</span> 40 años de excelencia</div>
+    <div class="trust-item"><span class="trust-icon">✦</span> Certificación oficial MEN</div>
+    <div class="trust-item"><span class="trust-icon">✦</span> Miles de egresadas exitosas</div>
+    <div class="trust-item"><span class="trust-icon">✦</span> Industria en constante crecimiento</div>
   </div>
 </div>
 
-<!-- STATS BAND -->
-<div class="stats-band">
-  <div class="stats-inner">
-    <div class="stat-block" data-delay="0">
-      <span class="sbn" data-count="1190">1.190</span>
-      <span class="sbl">Horas de formación práctica</span>
+<!-- MÓDULOS -->
+<section>
+  <div class="container">
+    <div class="text-center reveal">
+      <div class="section-eyebrow">Lo que aprenderás</div>
+      <h2 class="section-title">Domina el arte de la <em>Estética Integral</em></h2>
+      <p class="section-sub">Formación 75% práctica desde el primer día. Técnicas reales, pacientes reales, resultados reales.</p>
     </div>
-    <div class="stat-block" data-delay="1">
-      <span class="sbn" data-count="40">40+</span>
-      <span class="sbl">Años formando profesionales</span>
+    <div class="bento">
+      <div class="bento-card reveal">
+        <div class="bento-icon">💆</div>
+        <div class="bento-eyebrow">Módulo core</div>
+        <h3>Estética Facial</h3>
+        <p>Limpiezas profundas, hidratación, rejuvenecimiento, control de acné y manchas. Manejo de aparatología facial avanzada.</p>
+      </div>
+      <div class="bento-card reveal">
+        <div class="bento-icon">🧖</div>
+        <div class="bento-eyebrow">Módulo core</div>
+        <h3>Estética Corporal</h3>
+        <p>Masajes reductores, moldeamiento corporal, tratamientos para celulitis y estrías. Protocolos pre y post operatorios.</p>
+      </div>
+      <div class="bento-card reveal">
+        <div class="bento-icon">🌿</div>
+        <div class="bento-eyebrow">Especialidad</div>
+        <h3>Terapias de Relajación</h3>
+        <p>Masajes relajantes, reflexología, aromaterapia y técnicas de spa. Alta demanda en centros de bienestar.</p>
+      </div>
+      <div class="bento-card reveal">
+        <div class="bento-icon">✨</div>
+        <div class="bento-eyebrow">Especialidad</div>
+        <h3>Depilación y Cuidado</h3>
+        <p>Técnicas con cera caliente y fría, cuidado post-depilatorio y protocolos de bioseguridad certificados.</p>
+      </div>
+      <div class="bento-card featured reveal">
+        <div class="bento-icon">🛡️</div>
+        <div class="bento-eyebrow">Módulo obligatorio</div>
+        <h3>Bioseguridad Aplicada</h3>
+        <p>Normativas vigentes, manejo de residuos, esterilización de equipos y protocolos de seguridad. Fundamental para la habilitación de centros estéticos y ejercicio legal de la profesión.</p>
+      </div>
     </div>
-    <div class="stat-block" data-delay="2">
-      <span class="sbn">3</span>
-      <span class="sbl">Sedes en Medellín, Envigado y Caldas</span>
+  </div>
+</section>
+
+<!-- PRÁCTICA SPLIT -->
+<section style="background:rgba(255,255,255,0.02);border-top:1px solid rgba(255,255,255,0.05);border-bottom:1px solid rgba(255,255,255,0.05)">
+  <div class="container">
+    <div class="split reveal">
+      <div class="split-img" style="background-image:url('cosmetologia-productos.jpg')">
+        <div class="split-img-overlay"></div>
+      </div>
+      <div class="split-content">
+        <div class="section-eyebrow">Práctica real desde el día 1</div>
+        <h2 class="section-title">No solo aprendes —<br/><em>ejerces</em></h2>
+        <p>El 75% de tu formación es práctica. Salidas a clínicas reales, trabajo con pacientes y dominio de aparatología profesional antes de graduarte.</p>
+        <ul class="check-list">
+          <li>Aparatología profesional real</li>
+          <li>Pacientes reales desde el primer ciclo</li>
+          <li>Salidas a clínicas y centros estéticos</li>
+          <li>Protocolo clínico desde el inicio</li>
+        </ul>
+      </div>
     </div>
-    <div class="stat-block" data-delay="3">
-      <span class="sbn">100%</span>
-      <span class="sbl">Prácticas en entorno real</span>
-    </div>
+  </div>
+</section>
+
+<!-- FOTO FULL WIDTH -->
+<div class="photo-cta" style="background-image:url('cosmetologia-tratamiento.jpg')">
+  <div class="photo-cta-overlay"></div>
+  <div class="photo-cta-content reveal">
+    <h2>Aprende haciendo.<br/><em>Cobra desde que terminas.</em></h2>
+    <p>Egresadas trabajando en spas, clínicas y negocios propios desde el primer mes.</p>
+    <a href="#contacto">Quiero inscribirme →</a>
   </div>
 </div>
 
-<!-- TESTIMONIOS -->
-<div class="section">
-  <span class="label">Historias reales</span>
-  <h2 class="section-title">Ellas ya <em>lo hicieron</em></h2>
-  <div class="testi-grid">
-    <div class="testi">
-      <span class="quote">"</span>
-      <p class="testi-text">Estuve 10 años indecisa. Hoy mi hija Sofía y yo estudiamos juntas en INDECAP. Nos certificamos las dos. Nunca es tarde cuando se hace en familia.</p>
-      <div class="testi-autor">
-        <div class="autor-av">G</div>
-        <div>
-          <span class="autor-name">Doña Gloria</span>
-          <span class="autor-sub">Estudiante con su hija Sofía</span>
+<!-- SALIDAS LABORALES -->
+<section>
+  <div class="container">
+    <div class="text-center reveal">
+      <div class="section-eyebrow">Salidas laborales</div>
+      <h2 class="section-title">Una industria que <em>te espera</em></h2>
+      <p class="section-sub">La estética es uno de los sectores que más crece en Colombia y el mundo. La demanda supera la oferta de profesionales certificados.</p>
+    </div>
+    <div class="careers-grid">
+      <div class="career-card reveal"><div class="career-icon">💅</div><h4>Centros de estética y spas</h4></div>
+      <div class="career-card reveal"><div class="career-icon">🏠</div><h4>Tu propio negocio</h4></div>
+      <div class="career-card reveal"><div class="career-icon">🏥</div><h4>Clínicas médico-estéticas</h4></div>
+      <div class="career-card reveal"><div class="career-icon">🌟</div><h4>Franquicias y cadenas de belleza</h4></div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIAL -->
+<section style="background:rgba(255,255,255,0.02);border-top:1px solid rgba(255,255,255,0.05);border-bottom:1px solid rgba(255,255,255,0.05)">
+  <div class="container">
+    <div class="text-center reveal">
+      <div class="section-eyebrow">Historias reales</div>
+      <h2 class="section-title">Historias que <em>inspiran</em></h2>
+    </div>
+    <div class="testimonial-wrap reveal">
+      <div class="t-img">
+        <div class="t-img-bg" style="background-image:url('cosmo-egresadas.jpg')"></div>
+        <div class="t-img-overlay"></div>
+      </div>
+      <div class="t-content">
+        <div class="quote-mark">"</div>
+        <blockquote>A mis 52 años, INDECAP me demostró que nunca es tarde para emprender. Hoy tengo mi propio centro de estética, genero ingresos para mi familia y hago lo que verdaderamente me apasiona.</blockquote>
+        <div class="t-author">
+          <h4>Gloria — Egresada INDECAP</h4>
+          <p>Técnica en Cosmetología y Estética Integral</p>
+          <div class="stars">★★★★★</div>
         </div>
       </div>
     </div>
-    <div class="testi">
-      <span class="quote">"</span>
-      <p class="testi-text">Vengo de Amagá. Trabajo toda la semana y ya estoy ofreciendo mis técnicas en mi pueblo — antes de graduarme.</p>
-      <div class="testi-autor">
-        <div class="autor-av">S</div>
-        <div>
-          <span class="autor-name">Stefanny</span>
-          <span class="autor-sub">Estudiante · Amagá, Antioquia</span>
-        </div>
-      </div>
-    </div>
-    <div class="testi">
-      <span class="quote">"</span>
-      <p class="testi-text">Mi tía tiene un SPA y ya me está dando clientes para practicar. INDECAP me dio la formación, mi familia el impulso.</p>
-      <div class="testi-autor">
-        <div class="autor-av">S</div>
-        <div>
-          <span class="autor-name">Sara</span>
-          <span class="autor-sub">Estudiante · Belén Altavista</span>
-        </div>
-      </div>
-    </div>
   </div>
-</div>
-
-<!-- GALLERY HORIZONTAL -->
-<div class="gallery-wrap">
-  <span class="label gallery-label">Así se aprende</span>
-  <div class="gallery-scroll" id="galleryScroll">
-    <div class="gal-item">
-      <img src="cosmo-grupo2.jpg" alt="Práctica">
-      <span class="gal-tag">Práctica Real</span>
-    </div>
-    <div class="gal-item">
-      <img src="cosmetologia-vapor.jpg" alt="Vaporizador">
-      <span class="gal-tag">Equipos Profesionales</span>
-    </div>
-    <div class="gal-item">
-      <img src="cosmetologia-productos.jpg" alt="Clases">
-      <span class="gal-tag">Clases</span>
-    </div>
-    <div class="gal-item">
-      <img src="cosmetologia-tratamiento.jpg" alt="Facial">
-      <span class="gal-tag">Facial</span>
-    </div>
-    <div class="gal-item">
-      <img src="cosmo-maquillaje.jpg" alt="Maquillaje">
-      <span class="gal-tag">Maquillaje Social</span>
-    </div>
-    <div class="gal-item">
-      <img src="cosmo-practica-facial.jpg" alt="Práctica facial">
-      <span class="gal-tag">Práctica Real</span>
-    </div>
-    <div class="gal-item">
-      <img src="cosmo-clase-estudio.jpg" alt="Clases INDECAP">
-      <span class="gal-tag">Clases</span>
-    </div>
-    <div class="gal-item">
-      <img src="cosmo-grupo-feliz.jpg" alt="Estudiantes INDECAP">
-      <span class="gal-tag">Nuestros Estudiantes</span>
-    </div>
-  </div>
-</div>
-
-<!-- APRENDE -->
-<div class="aprende-wrap">
-  <div class="aprende-inner">
-    <div>
-      <span class="label">Tu formación</span>
-      <h2 class="section-title" style="margin-bottom: 0;">Lo que <em>aprenderás</em> a cobrar</h2>
-      <div class="skills">
-        <div class="skill"><span class="skill-ico">✨</span><span class="skill-txt">Tratamientos faciales: hidratación, limpieza profunda, manejo de acné y manchas</span></div>
-        <div class="skill"><span class="skill-ico">🪒</span><span class="skill-txt">Depilación con cera, hilo y métodos definitivos básicos</span></div>
-        <div class="skill"><span class="skill-ico">💄</span><span class="skill-txt">Maquillaje social: contorno, corrección y acabado profesional</span></div>
-        <div class="skill"><span class="skill-ico">🧴</span><span class="skill-txt">Cosmetología corporal: reductores, reafirmantes y modelantes</span></div>
-        <div class="skill"><span class="skill-ico">🔬</span><span class="skill-txt">Protocolos pre y post quirúrgicos en cirugía estética</span></div>
-        <div class="skill"><span class="skill-ico">🌿</span><span class="skill-txt">SPA: aromaterapia, exfoliación, envolturas e hidroterapia</span></div>
-      </div>
-    </div>
-    <div class="aprende-img-wrap">
-      <img src="cosmo-egresadas.jpg" alt="Egresadas INDECAP">
-      <div class="aprende-tag">
-        <strong>1.190 horas de práctica real</strong>
-        <span>No solo teoría — aprendes atendiendo clientes reales desde el primer ciclo</span>
-      </div>
-    </div>
-  </div>
-</div>
+</section>
 
 <!-- SEDES -->
-<div class="section">
-  <span class="label">Dónde estudiar</span>
-  <h2 class="section-title">Tres sedes en el <em>Valle de Aburrá</em></h2>
-  <div class="sedes-grid" style="grid-template-columns: repeat(3, 1fr);">
-    <a href="https://indecap.edu.co/sedes/medellin" class="sede-card" style="text-decoration:none;display:block;">
-      <span class="sede-ico">🏙️</span>
-      <h4 class="sede-name">Sede Medellín</h4>
-      <p class="sede-addr">Cl. 56 # 45-26, Medellín<br>Tel: (604) 448 4794</p>
-      <span class="sede-pill"><span style="width:5px;height:5px;background:var(--rose);border-radius:50%;"></span>Ver sede →</span>
-    </a>
-    <a href="https://indecap.edu.co/sedes/envigado" class="sede-card" style="text-decoration:none;display:block;">
-      <span class="sede-ico">🏘️</span>
-      <h4 class="sede-name">Sede Envigado</h4>
-      <p class="sede-addr">Cl 37 Sur #43A-84, Envigado<br>Tel: (604) 448 4794</p>
-      <span class="sede-pill"><span style="width:5px;height:5px;background:var(--rose);border-radius:50%;"></span>Ver sede →</span>
-    </a>
-    <a href="https://indecap.edu.co/sedes/caldas" class="sede-card" style="text-decoration:none;display:block;">
-      <span class="sede-ico">🌄</span>
-      <h4 class="sede-name">Sede Caldas</h4>
-      <p class="sede-addr">Calle 130 Sur #51-65, Caldas<br>Tel: (604) 448 4794</p>
-      <span class="sede-pill"><span style="width:5px;height:5px;background:var(--rose);border-radius:50%;"></span>Ver sede →</span>
-    </a>
-  </div>
-</div>
+<section id="sedes">
+  <div class="container">
+    <div class="text-center reveal">
+      <div class="section-eyebrow">Dónde estamos</div>
+      <h2 class="section-title">Elige tu <em>sede</em></h2>
+      <p class="section-sub">Tres sedes estratégicamente ubicadas en el Valle de Aburrá. Elige la más cercana a ti.</p>
+    </div>
+    <div class="sedes-tabs reveal">
+      <button class="sede-tab active" onclick="cambiarSede('medellin',this)">
+        <span class="tab-city">Medellín</span>
+        <span class="tab-label">Sede principal</span>
+      </button>
+      <button class="sede-tab" onclick="cambiarSede('envigado',this)">
+        <span class="tab-city">Envigado</span>
+        <span class="tab-label">Zona sur</span>
+      </button>
+      <button class="sede-tab" onclick="cambiarSede('caldas',this)">
+        <span class="tab-city">Caldas</span>
+        <span class="tab-label">Sur del Valle</span>
+      </button>
+    </div>
 
-<!-- CTA FINAL -->
-<div class="cta-final">
-  <div class="cta-inner">
-    <h2>Tu próximo paso<br>empieza <em>hoy</em></h2>
-    <p>Los cupos son limitados. Asegura el tuyo y en menos de 24 horas una asesora real te explica todo — sin compromisos.</p>
-    <div class="cta-btns">
-      <a href="#inscribete" class="btn-white">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 2L11 13"/><path d="M22 2L15 22l-4-9-9-4 20-7z"/></svg>
-        Quiero inscribirme
-      </a>
-      <a href="https://wa.me/573022389760?text=Hola%20INDECAP%2C%20me%20interesa%20Cosmetolog%C3%ADa%20y%20Est%C3%A9tica%20Integral" class="btn-outline" target="_blank">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-        WhatsApp directo
-      </a>
+    <div id="panel-medellin" class="sede-panel active">
+      <div class="sede-info">
+        <div class="sede-badge" style="background:var(--gold)">Sede Principal</div>
+        <h3>Medellín Centro</h3>
+        <div class="sede-detail"><span class="sede-detail-icon">📍</span><div><strong>Dirección</strong>Calle 56 N° 45-26, Medellín</div></div>
+        <div class="sede-detail"><span class="sede-detail-icon">🚇</span><div><strong>Metro</strong>A 1 cuadra de la Estación Prado</div></div>
+        <div class="sede-detail"><span class="sede-detail-icon">📞</span><div><strong>Teléfono</strong>(604) 448 4794</div></div>
+        <div class="sede-detail"><span class="sede-detail-icon">✉️</span><div><strong>Correo</strong>indecap@indecap.edu.co</div></div>
+        <div class="sede-detail"><span class="sede-detail-icon">🕐</span><div><strong>Horario</strong>Lunes a viernes, 8:00 a.m. – 5:00 p.m.</div></div>
+        <div class="sede-actions">
+          <a href="https://wa.me/573022389760?text=Hola%20INDECAP%20Medellín%2C%20quiero%20información%20sobre%20Cosmetología" class="btn-wa" target="_blank">💬 WhatsApp Medellín</a>
+          <a href="https://indecap.edu.co/sedes/medellin" class="btn-sede" target="_blank">Ver sede completa →</a>
+        </div>
+      </div>
+      <div class="sede-map">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.0882055587904!2d-75.56423852428196!3d6.252108093736369!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e4428f769c8da39%3A0xdab00e96cee9b0cb!2sINDECAP!5e1!3m2!1ses!2sco!4v1774831217383!5m2!1ses!2sco" allowfullscreen loading="lazy"></iframe>
+      </div>
+    </div>
+
+    <div id="panel-envigado" class="sede-panel">
+      <div class="sede-info">
+        <div class="sede-badge" style="background:var(--crimson)">Zona Sur</div>
+        <h3>Envigado</h3>
+        <div class="sede-detail"><span class="sede-detail-icon">📍</span><div><strong>Dirección</strong>Cl 37 Sur #43A-84, Envigado</div></div>
+        <div class="sede-detail"><span class="sede-detail-icon">🚌</span><div><strong>Acceso</strong>Avenida El Poblado, conexión Metro</div></div>
+        <div class="sede-detail"><span class="sede-detail-icon">📞</span><div><strong>Teléfono</strong>(604) 448 4794 · 317 434 2783</div></div>
+        <div class="sede-detail"><span class="sede-detail-icon">✉️</span><div><strong>Correo</strong>sedeenvigado@indecap.edu.co</div></div>
+        <div class="sede-detail"><span class="sede-detail-icon">🕐</span><div><strong>Horario</strong>Lunes a viernes, 8:00 a.m. – 5:00 p.m.</div></div>
+        <div class="sede-actions">
+          <a href="https://wa.me/573174342783?text=Hola%20INDECAP%20Envigado%2C%20quiero%20información%20sobre%20Cosmetología" class="btn-wa" target="_blank">💬 WhatsApp Envigado</a>
+          <a href="https://indecap.edu.co/sedes/envigado" class="btn-sede" target="_blank">Ver sede completa →</a>
+        </div>
+      </div>
+      <div class="sede-map">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.6944440921548!2d-75.59156622428259!3d6.171651093815698!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e46824dfe6f017b%3A0x19ac0f58cf3397cb!2sINDECAP%20ENVIGADO!5e1!3m2!1ses!2sco!4v1774831242450!5m2!1ses!2sco" allowfullscreen loading="lazy"></iframe>
+      </div>
+    </div>
+
+    <div id="panel-caldas" class="sede-panel">
+      <div class="sede-info">
+        <div class="sede-badge" style="background:#166534">Sur del Valle</div>
+        <h3>Caldas</h3>
+        <div class="sede-detail"><span class="sede-detail-icon">📍</span><div><strong>Dirección</strong>Calle 130 sur N° 51-65, Caldas</div></div>
+        <div class="sede-detail"><span class="sede-detail-icon">🚌</span><div><strong>Acceso</strong>Sur del Valle de Aburrá</div></div>
+        <div class="sede-detail"><span class="sede-detail-icon">📞</span><div><strong>Teléfono</strong>(604) 448 4794 · 300 894 8517</div></div>
+        <div class="sede-detail"><span class="sede-detail-icon">✉️</span><div><strong>Correo</strong>sedecaldas@indecap.edu.co</div></div>
+        <div class="sede-detail"><span class="sede-detail-icon">🕐</span><div><strong>Horario</strong>Lunes a viernes, 8:00 a.m. – 5:00 p.m.</div></div>
+        <div class="sede-actions">
+          <a href="https://wa.me/573008948517?text=Hola%20INDECAP%20Caldas%2C%20quiero%20información%20sobre%20Cosmetología" class="btn-wa" target="_blank">💬 WhatsApp Caldas</a>
+          <a href="https://indecap.edu.co/sedes/caldas" class="btn-sede" target="_blank">Ver sede completa →</a>
+        </div>
+      </div>
+      <div class="sede-map">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3967.2917608599473!2d-75.63738873784544!3d6.091342944564197!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e46868ee0555555%3A0x66963b66dfbc06b9!2sIndecap!5e1!3m2!1ses!2sco!4v1774831314418!5m2!1ses!2sco" allowfullscreen loading="lazy"></iframe>
+      </div>
     </div>
   </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final-cta" id="contacto2">
+  <div class="final-cta-inner">
+    <div class="reveal">
+      <h2>Tu carrera en belleza<br/><em>empieza hoy</em></h2>
+      <p>Más de 40 años formando profesionales exitosas en Medellín, Envigado y Caldas. Cupos limitados cada semestre.</p>
+      <div class="trust-checks">
+        <div class="trust-check">1.050 horas · 75% práctica real</div>
+        <div class="trust-check">Certificación oficial del MEN</div>
+        <div class="trust-check">Convenios con empresas del sector</div>
+        <div class="trust-check">Cupos limitados por semestre</div>
+      </div>
+    </div>
+    <div class="hero-form reveal">
+      <div class="form-title">Asegura tu cupo</div>
+      <p class="form-sub">Una asesora te contacta hoy mismo</p>
+      <form onsubmit="return handleForm(event)">
+        <div class="form-row">
+          <div class="form-group">
+            <label>Nombre</label>
+            <input type="text" placeholder="Tu nombre" required/>
+          </div>
+          <div class="form-group">
+            <label>WhatsApp</label>
+            <input type="tel" placeholder="300 000 0000" required/>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Correo electrónico</label>
+          <input type="email" placeholder="tucorreo@email.com"/>
+        </div>
+        <div class="form-group">
+          <label>Sede</label>
+          <select required id="f-sede2">
+            <option value="" disabled selected>Selecciona una sede</option>
+            <option value="medellin">Medellín</option>
+            <option value="envigado">Envigado</option>
+            <option value="caldas">Caldas</option>
+          </select>
+        </div>
+        <button type="submit" class="btn-submit">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2L11 13M22 2L15 22l-4-9-9-4 20-7z"/></svg>
+          Quiero inscribirme
+        </button>
+        <p class="form-trust">Sin spam · Una asesora real te contacta hoy</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">IN<em>D</em>ECAP</div>
+    <div class="footer-links">
+      <a href="https://indecap.edu.co/privacy-policy" target="_blank">Política de privacidad</a>
+      <a href="https://indecap.edu.co/programas" target="_blank">Programas</a>
+      <a href="https://indecap.edu.co/contacto" target="_blank">Contacto</a>
+      <a href="https://indecap.edu.co" target="_blank">indecap.edu.co</a>
+    </div>
+    <div class="footer-copy">© 2026 Corporación Educativa INDECAP</div>
+  </div>
+</footer>
+
+<!-- STICKY BOTTOM MOBILE -->
+<div class="sticky-bottom" id="sticky">
+  <button class="sticky-btn-inscribir" onclick="document.getElementById('contacto').scrollIntoView({behavior:'smooth'})">
+    Inscribirme
+  </button>
+  <button class="sticky-btn-wa" onclick="window.open('https://wa.me/573022389760?text=Hola%20INDECAP%2C%20quiero%20información%20sobre%20Cosmetología','_blank')">
+    💬 WhatsApp
+  </button>
 </div>
 
-<!-- STICKY MOBILE -->
-<div class="sticky-mob">
-  <a href="#inscribete" class="btn-submit" style="flex:1;text-decoration:none">Inscribirme</a>
-  <a href="https://wa.me/573022389760?text=Hola%20INDECAP%2C%20me%20interesa%20Cosmetolog%C3%ADa" class="btn-wa" style="flex:1" target="_blank">WhatsApp</a>
-</div>
-
-document.addEventListener('DOMContentLoaded', function() {
-    document.querySelectorAll('.stat-block, .testi, .skill, .sede-card').forEach(el => {
-      el.style.opacity = '1';
-  }
-});
-
-</script>
 <script>
-// ── CURSOR ───────────────────────────────────────────────
-const dot = document.getElementById('cDot');
-const ring = document.getElementById('cRing');
-let mx = 0, my = 0, rx = 0, ry = 0;
-document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
-(function loop() {
-  dot.style.left = mx + 'px'; dot.style.top = my + 'px';
-  rx += (mx - rx) * 0.12; ry += (my - ry) * 0.12;
-  ring.style.left = rx + 'px'; ring.style.top = ry + 'px';
-  requestAnimationFrame(loop);
-})();
+// Scroll reveal
+document.addEventListener('DOMContentLoaded',()=>{
+  const reveals=document.querySelectorAll('.reveal');
+  const check=()=>{
+    const wh=window.innerHeight;
+    reveals.forEach(r=>{if(r.getBoundingClientRect().top<wh-60)r.classList.add('active')});
+  };
+  window.addEventListener('scroll',check,{passive:true});
+  check();
 
-// Cursor scale on hover
-document.querySelectorAll('a, button').forEach(el => {
-  el.addEventListener('mouseenter', () => {
-    dot.style.width = '12px'; dot.style.height = '12px';
-    dot.style.background = 'var(--gold)';
-    ring.style.width = '52px'; ring.style.height = '52px';
-    ring.style.borderColor = 'rgba(232,80,122,0.5)';
+  // Smooth scroll
+  document.querySelectorAll('a[href^="#"]').forEach(a=>{
+    a.addEventListener('click',e=>{
+      const t=document.querySelector(a.getAttribute('href'));
+      if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth',block:'start'})}
+    });
   });
-  el.addEventListener('mouseleave', () => {
-    dot.style.width = ''; dot.style.height = '';
-    dot.style.background = '';
-    ring.style.width = ''; ring.style.height = '';
-    ring.style.borderColor = '';
-  });
+
+  // Ocultar sticky cuando el form es visible
+  const form=document.getElementById('contacto');
+  const sticky=document.getElementById('sticky');
+  const obs=new IntersectionObserver(([e])=>{
+    if(sticky)sticky.style.display=e.isIntersecting?'none':'flex';
+  },{threshold:0.1});
+  if(form)obs.observe(form);
 });
 
-// ── HERO CAROUSEL ────────────────────────────────────────
-const imgs = document.querySelectorAll('.hero-img');
-let ci = 0;
-setInterval(() => {
-  imgs[ci].classList.remove('active');
-  ci = (ci + 1) % imgs.length;
-  imgs[ci].classList.add('active');
-}, 4500);
-
-// ── COUNTER ──────────────────────────────────────────────
-function countUp(el, target, duration) {
-  const start = performance.now();
-  const update = (now) => {
-    const progress = Math.min((now - start) / duration, 1);
-    const ease = 1 - Math.pow(1 - progress, 3);
-    el.textContent = Math.round(ease * target).toLocaleString('es-CO');
-    if (progress < 1) requestAnimationFrame(update);
-  };
-  requestAnimationFrame(update);
+// Tabs sedes
+function cambiarSede(sede,btn){
+  document.querySelectorAll('.sede-tab').forEach(t=>t.classList.remove('active'));
+  document.querySelectorAll('.sede-panel').forEach(p=>p.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('panel-'+sede).classList.add('active');
+  // Sync select
+  const s=document.getElementById('f-sede');
+  if(s)s.value=sede;
 }
 
-// ── SCROLL REVEAL ────────────────────────────────────────
-const revealObs = new IntersectionObserver((entries) => {
-  entries.forEach((e, i) => {
-    if (e.isIntersecting) {
-      const el = e.target;
-      const delay = (el.dataset.delay || 0) * 120;
-      setTimeout(() => {
-        el.style.opacity = '1';
-        el.style.transform = 'none';
-      }, delay);
-      revealObs.unobserve(el);
-
-      // Counter animation for stat blocks
-      const counter = el.querySelector('[data-count]');
-      if (counter) {
-        const target = parseInt(counter.dataset.count);
-        if (target) countUp(counter, target, 2000);
-      }
-    }
-  });
-}, { threshold: 0.15 });
-
-document.querySelectorAll('.stat-block, .testi, .skill, .sede-card').forEach(el => {
-  revealObs.observe(el);
-});
-
-// Hero stat counters (run after short delay on load)
-setTimeout(() => {
-  document.querySelectorAll('.stat-num[data-target]').forEach(el => {
-    countUp(el, parseInt(el.dataset.target), 2500);
-  });
-}, 800);
-
-// ── GALLERY DRAG ─────────────────────────────────────────
-const gs = document.getElementById('galleryScroll');
-let isDragging = false, startX, scrollL;
-gs.addEventListener('mousedown', e => { isDragging = true; startX = e.pageX - gs.offsetLeft; scrollL = gs.scrollLeft; gs.classList.add('grabbing'); });
-gs.addEventListener('mouseleave', () => { isDragging = false; gs.classList.remove('grabbing'); });
-gs.addEventListener('mouseup',    () => { isDragging = false; gs.classList.remove('grabbing'); });
-gs.addEventListener('mousemove',  e => {
-  if (!isDragging) return; e.preventDefault();
-  gs.scrollLeft = scrollL - (e.pageX - gs.offsetLeft - startX) * 1.5;
-});
-
-// ── FORM ─────────────────────────────────────────────────
-async function enviar() {
-  const nombre = document.getElementById('fNombre').value.trim();
-  const tel    = document.getElementById('fTel').value.trim();
-  const correo = document.getElementById('fCorreo').value.trim();
-  const sede   = document.getElementById('fSede').value;
-  const btn    = document.querySelector('.btn-submit');
-  if (!nombre || !tel || !sede) { alert('Por favor completa todos los campos.'); return; }
-  const sedeMap = { 'Medellín': 'Medellin', 'Envigado': 'Envigado', 'Caldas': 'Caldas', 'No sé aún': 'Envigado' };
-  btn.textContent = 'Enviando...'; btn.disabled = true;
-  try {
-    await fetch('/api/captacion', {
-      method: 'POST', headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ nombre, celular: tel, correo, programa: 'Cosmetología y Estética Integral', sede: sedeMap[sede] || 'Medellin' })
-    });
-  } catch(e) { console.warn(e); }
-  const msg = encodeURIComponent(`Hola INDECAP 👋 Me interesa Cosmetología y Estética Integral.
-
-• Nombre: ${nombre}
-• WhatsApp: ${tel}
-• Sede: ${sede}
-
-¿Me pueden dar más información?`);
-  btn.textContent = '¡Listo! Abriendo WhatsApp...'; btn.style.background = '#16a34a';
-  setTimeout(() => {
-    window.open(`https://wa.me/573022389760?text=${msg}`, '_blank');
-    // Meta Pixel — Lead event
-    if (typeof fbq !== 'undefined') {
-      fbq('track', 'Lead', {
-        content_name: 'Cosmetología y Estética Integral',
-        content_category: 'Educación Técnica',
-      });
-    }
-    const wb = document.getElementById('waBtn'); wb.href = `https://wa.me/573022389760?text=${msg}`; wb.style.display = 'flex';
-    document.getElementById('fNombre').value = '';
-    document.getElementById('fTel').value = '';
-    document.getElementById('fCorreo').value = '';
-    document.getElementById('fSede').value = '';
-    btn.textContent = 'Quiero que me contacten'; btn.style.background = ''; btn.disabled = false;
-  }, 1200);
+// Form → WhatsApp por sede
+function handleForm(e){
+  e.preventDefault();
+  const sedeEl=e.target.querySelector('select');
+  const sede=sedeEl?sedeEl.value:'medellin';
+  const nums={medellin:'573022389760',envigado:'573174342783',caldas:'573008948517'};
+  const msg=encodeURIComponent('Hola INDECAP, quiero información sobre el programa de Cosmetología y Estética Integral. ¿Me pueden orientar?');
+  // Track Lead
+  if(typeof fbq!=='undefined')fbq('track','Lead');
+  window.open('https://wa.me/'+(nums[sede]||nums.medellin)+'?text='+msg,'_blank');
+  return false;
 }
 </script>
 </body>
