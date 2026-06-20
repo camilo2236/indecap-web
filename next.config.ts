@@ -30,7 +30,7 @@ const nextConfig: NextConfig = {
           // Controla info del referrer
           { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
           // Deshabilita features innecesarias
-          { key: "Permissions-Policy", value: "camera=(), geolocation=()" },
+          { key: "Permissions-Policy", value: "camera=(), microphone=(), geolocation=()" },
           // Cross-Origin policies
           { key: "Cross-Origin-Opener-Policy", value: "same-origin" },
           { key: "Cross-Origin-Embedder-Policy", value: "unsafe-none" },
@@ -42,9 +42,8 @@ const nextConfig: NextConfig = {
               "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://fonts.googleapis.com https://cdn.tailwindcss.com https://connect.facebook.net https://www.facebook.com",
               "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
               "font-src 'self' https://fonts.gstatic.com",
-              "img-src 'self' data: blob: https://indecap.edu.co https://indecap-web.vercel.app https://*.vercel.app https://www.facebook.com https://cjjkdeqbntplofgzfgma.supabase.co",
-"media-src 'self' blob: https://cjjkdeqbntplofgzfgma.supabase.co",
-              "connect-src 'self' https://api.resend.com https://www.google-analytics.com https://vitals.vercel-insights.com https://generativelanguage.googleapis.com https://api.anthropic.com https://cjjkdeqbntplofgzfgma.supabase.co wss://cjjkdeqbntplofgzfgma.supabase.co https://www.facebook.com",
+              "img-src 'self' data: blob: https://indecap.edu.co https://indecap-web.vercel.app https://*.vercel.app https://www.facebook.com",
+              "connect-src 'self' https://api.resend.com https://www.google-analytics.com https://vitals.vercel-insights.com https://generativelanguage.googleapis.com https://api.anthropic.com https://cjjkdeqbntplofgzfgma.supabase.co https://www.facebook.com",
               "frame-src https://www.google.com https://www.youtube.com https://www.youtube-nocookie.com",
               "object-src 'none'",
               "base-uri 'self'",
