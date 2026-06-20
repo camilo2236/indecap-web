@@ -1,0 +1,946 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Auxiliar en Enfermería — INDECAP Medellín · Envigado · Caldas</title>
+<meta name="description" content="Fórmate como Auxiliar en Enfermería en INDECAP. 1.650 horas, 18 meses, 75% práctica real. Sedes en Medellín, Envigado y Caldas. Más de 40 años formando profesionales."/>
+<!-- Meta Pixel -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','3334450846719696');fbq('track','PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=3334450846719696&ev=PageView&noscript=1"/></noscript>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;0,600;0,700;0,800;1,400;1,700&family=Inter:wght@300;400;500;600&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet"/>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --navy:#1a086e;--navy-dk:#0d0440;
+  --crimson:#b02d21;--crimson-lt:#d63a2b;
+  --gold:#c9a84c;--gold-lt:#f0d68a;
+  --cream:#f5fafc;--gray:#eaeff1;
+  --dark:#171c1e;--muted:#474551;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;color:var(--dark);background:#fff;overflow-x:hidden}
+a{text-decoration:none}
+
+/* NAV */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:200;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 2rem;height:68px;
+  background:rgba(245,250,252,0.92);
+  backdrop-filter:blur(16px);
+  border-bottom:1px solid rgba(26,8,110,0.08);
+  transition:all 0.3s;
+}
+.nav-logo{font-family:'Newsreader',serif;font-size:1.4rem;font-weight:700;color:var(--navy)}
+.nav-cta{
+  background:var(--gold);color:var(--navy);
+  padding:9px 20px;border-radius:6px;
+  font-size:13px;font-weight:700;
+  font-family:'Work Sans',sans-serif;
+  letter-spacing:0.03em;transition:all 0.2s;
+}
+.nav-cta:hover{background:var(--gold-lt);transform:translateY(-1px)}
+
+/* HERO */
+.hero{
+  position:relative;min-height:100svh;
+  display:flex;align-items:center;
+  padding-top:68px;overflow:hidden;
+}
+.hero-bg{
+  position:absolute;inset:0;
+  background-image:url('enfermeria-hero.jpg');
+  background-size:cover;background-position:center 20%;
+}
+.hero-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(
+    110deg,
+    rgba(13,4,64,0.97) 0%,
+    rgba(26,8,110,0.88) 40%,
+    rgba(26,8,110,0.5) 65%,
+    rgba(13,4,64,0.15) 100%
+  );
+}
+.hero-inner{
+  position:relative;z-index:2;width:100%;max-width:1280px;
+  margin:0 auto;padding:3rem 2rem;
+  display:grid;grid-template-columns:1fr 400px;
+  gap:3rem;align-items:center;
+}
+.hero-badge{
+  display:inline-flex;align-items:center;gap:8px;
+  background:rgba(201,168,76,0.15);
+  border:1px solid rgba(201,168,76,0.4);
+  color:var(--gold);padding:6px 14px;border-radius:999px;
+  font-size:11px;font-weight:600;font-family:'Work Sans',sans-serif;
+  letter-spacing:0.1em;text-transform:uppercase;margin-bottom:1.5rem;
+}
+.hero-badge-dot{width:6px;height:6px;background:var(--gold);border-radius:50%;animation:blink 2s infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0.3}}
+.hero h1{
+  font-family:'Newsreader',serif;
+  font-size:clamp(2.8rem,5.5vw,5rem);
+  font-weight:800;color:#fff;
+  line-height:1.05;letter-spacing:-0.02em;
+  margin-bottom:1.25rem;
+}
+.hero h1 em{color:var(--gold);font-style:italic;font-weight:400}
+.hero-desc{
+  font-size:1.1rem;color:rgba(255,255,255,0.72);
+  line-height:1.75;max-width:500px;margin-bottom:2rem;
+}
+.hero-stats{display:flex;gap:0;margin-bottom:2rem}
+.hero-stat{
+  display:flex;flex-direction:column;
+  padding:12px 20px;
+  border-left:2px solid var(--gold);
+  margin-right:24px;
+}
+.hero-stat-val{
+  font-family:'Newsreader',serif;
+  font-size:1.5rem;font-weight:700;color:var(--gold);line-height:1;
+}
+.hero-stat-label{
+  font-size:10px;color:rgba(255,255,255,0.5);
+  text-transform:uppercase;letter-spacing:0.07em;
+  font-family:'Work Sans',sans-serif;margin-top:3px;
+}
+
+/* FORM */
+.hero-form{
+  background:rgba(255,255,255,0.92);
+  backdrop-filter:blur(20px);
+  border:1px solid rgba(255,255,255,0.6);
+  border-radius:20px;padding:2rem;
+  box-shadow:0 32px 80px rgba(0,0,0,0.3);
+  position:relative;overflow:hidden;
+}
+.hero-form::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:3px;
+  background:linear-gradient(90deg,var(--navy),var(--gold));
+}
+.form-title{
+  font-family:'Newsreader',serif;
+  font-size:1.3rem;font-weight:700;color:var(--navy);margin-bottom:4px;
+}
+.form-sub{font-size:13px;color:var(--muted);margin-bottom:1.25rem}
+.form-group{margin-bottom:11px}
+.form-group label{
+  display:block;font-size:10px;font-weight:600;
+  color:var(--muted);text-transform:uppercase;
+  letter-spacing:0.07em;margin-bottom:4px;
+  font-family:'Work Sans',sans-serif;
+}
+.form-group input,.form-group select{
+  width:100%;padding:10px 13px;
+  background:#f5fafc;border:1px solid rgba(71,69,81,0.2);
+  border-radius:8px;font-size:14px;font-family:'Inter',sans-serif;
+  color:var(--dark);outline:none;appearance:none;
+  transition:border 0.2s,background 0.2s;
+}
+.form-group input:focus,.form-group select:focus{
+  border-color:var(--navy);background:#fff;
+}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.btn-submit{
+  width:100%;padding:13px;
+  background:var(--crimson);color:#fff;border:none;
+  border-radius:8px;font-size:14px;font-weight:700;
+  font-family:'Work Sans',sans-serif;cursor:pointer;
+  letter-spacing:0.03em;transition:all 0.2s;
+  display:flex;align-items:center;justify-content:center;gap:8px;
+  margin-top:4px;
+}
+.btn-submit:hover{background:var(--crimson-lt);transform:translateY(-1px);box-shadow:0 8px 24px rgba(176,45,33,0.3)}
+.form-trust{text-align:center;font-size:11px;color:var(--muted);margin-top:10px}
+
+/* TRUST BAR */
+.trust-bar{background:var(--navy);padding:16px 2rem}
+.trust-inner{
+  max-width:1280px;margin:0 auto;
+  display:flex;justify-content:center;align-items:center;
+  gap:2.5rem;flex-wrap:wrap;
+}
+.trust-item{
+  display:flex;align-items:center;gap:8px;
+  color:rgba(255,255,255,0.7);font-size:12.5px;
+  font-family:'Work Sans',sans-serif;font-weight:500;
+}
+.trust-gold{color:var(--gold)}
+
+/* SECTIONS */
+section{padding:90px 2rem}
+.container{max-width:1280px;margin:0 auto}
+.section-eyebrow{
+  font-size:11px;font-weight:600;color:var(--gold);
+  text-transform:uppercase;letter-spacing:0.1em;
+  font-family:'Work Sans',sans-serif;margin-bottom:10px;
+  display:inline-block;background:rgba(201,168,76,0.1);
+  padding:4px 12px;border-radius:999px;
+}
+.section-title{
+  font-family:'Newsreader',serif;
+  font-size:clamp(2rem,3.5vw,3rem);
+  font-weight:700;line-height:1.15;color:var(--navy);margin-bottom:14px;
+}
+.section-title em{color:var(--crimson);font-style:italic}
+.section-sub{font-size:1rem;color:var(--muted);line-height:1.75;max-width:580px}
+.text-center{text-align:center}
+.text-center .section-sub{margin:0 auto}
+
+/* TRANSFORMATION SPLIT */
+.split{display:grid;grid-template-columns:1fr 1fr;border-radius:20px;overflow:hidden;box-shadow:0 30px 80px rgba(26,8,110,0.12)}
+.split-img{position:relative;min-height:520px;background-size:cover;background-position:center}
+.split-content{background:var(--cream);padding:3.5rem;display:flex;flex-direction:column;justify-content:center}
+.split-content .section-title{font-size:1.9rem}
+.split-content p{font-size:15px;color:var(--muted);line-height:1.8;margin-bottom:2rem}
+.check-list{list-style:none;display:flex;flex-direction:column;gap:14px}
+.check-list li{display:flex;align-items:flex-start;gap:12px}
+.check-list li::before{
+  content:'✓';width:22px;height:22px;min-width:22px;
+  background:var(--navy);color:#fff;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-size:11px;font-weight:700;margin-top:1px;
+}
+.check-list li strong{display:block;font-size:14px;font-weight:600;color:var(--navy)}
+.check-list li span{font-size:13px;color:var(--muted)}
+
+/* BENTO */
+.bento{display:grid;grid-template-columns:repeat(4,1fr);grid-template-rows:auto auto;gap:16px;margin-top:3rem}
+.bento-card{
+  background:#fff;border:1px solid rgba(26,8,110,0.08);
+  border-radius:16px;padding:1.75rem;transition:all 0.3s;
+}
+.bento-card:hover{box-shadow:0 12px 40px rgba(26,8,110,0.1);transform:translateY(-3px)}
+.bento-card.featured{
+  grid-column:span 2;grid-row:span 2;
+  background:linear-gradient(135deg,var(--navy),var(--navy-dk));
+  color:#fff;display:flex;flex-direction:column;justify-content:space-between;
+}
+.bento-icon{font-size:2rem;margin-bottom:1rem}
+.bento-eyebrow{
+  font-size:10px;font-weight:600;color:var(--crimson);
+  text-transform:uppercase;letter-spacing:0.1em;
+  font-family:'Work Sans',sans-serif;margin-bottom:5px;
+}
+.bento-card.featured .bento-eyebrow{color:var(--gold)}
+.bento-card h3{
+  font-family:'Newsreader',serif;
+  font-size:1.1rem;font-weight:600;color:var(--navy);margin-bottom:6px;
+}
+.bento-card.featured h3{color:#fff;font-size:1.8rem;line-height:1.2}
+.bento-card p{font-size:13px;color:var(--muted);line-height:1.6}
+.bento-card.featured p{color:rgba(255,255,255,0.65);font-size:14px;max-width:360px}
+.bento-cta{
+  display:inline-flex;align-items:center;gap:8px;margin-top:1.5rem;
+  background:rgba(255,255,255,0.1);color:#fff;
+  padding:10px 20px;border-radius:8px;font-size:13px;font-weight:600;
+  font-family:'Work Sans',sans-serif;border:1px solid rgba(255,255,255,0.2);
+  transition:all 0.2s;cursor:pointer;
+}
+.bento-cta:hover{background:rgba(255,255,255,0.18)}
+
+/* PHOTO CTA */
+.photo-cta{
+  position:relative;min-height:500px;
+  background-size:cover;background-position:center;
+  display:flex;align-items:center;justify-content:center;
+}
+.photo-cta-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(26,8,110,0.4),rgba(13,4,64,0.8))}
+.photo-cta-content{position:relative;z-index:2;text-align:center;padding:2rem;max-width:700px}
+.photo-cta-content h2{
+  font-family:'Newsreader',serif;
+  font-size:clamp(2.2rem,4.5vw,4rem);
+  font-weight:800;color:#fff;line-height:1.1;margin-bottom:1rem;
+}
+.photo-cta-content h2 em{color:var(--gold);font-style:italic}
+.photo-cta-content p{font-size:1.1rem;color:rgba(255,255,255,0.75)}
+.photo-cta-content a{
+  display:inline-block;margin-top:2rem;
+  background:var(--crimson);color:#fff;
+  padding:14px 36px;border-radius:8px;
+  font-weight:700;font-size:14px;
+  font-family:'Work Sans',sans-serif;
+  letter-spacing:0.03em;transition:all 0.2s;
+}
+.photo-cta-content a:hover{background:var(--crimson-lt);transform:translateY(-2px)}
+
+/* CAREERS */
+.careers-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:2.5rem}
+.career-card{
+  background:#fff;border:1px solid rgba(26,8,110,0.08);
+  border-radius:16px;padding:1.75rem;text-align:center;transition:all 0.3s;
+}
+.career-card:hover{border-color:var(--navy);box-shadow:0 12px 40px rgba(26,8,110,0.1);transform:translateY(-3px)}
+.career-icon{font-size:2.2rem;margin-bottom:12px}
+.career-card h4{font-size:14px;font-weight:600;color:var(--navy);line-height:1.4;margin-bottom:6px}
+.career-card p{font-size:12.5px;color:var(--muted);line-height:1.5}
+
+/* GALLERY */
+.gallery{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:2.5rem}
+.gallery-img{
+  border-radius:16px;overflow:hidden;
+  height:320px;background-size:cover;background-position:center;
+  transition:transform 0.5s;
+}
+.gallery-img:hover{transform:scale(1.02)}
+
+/* TESTIMONIAL */
+.testimonial-wrap{
+  max-width:860px;margin:2.5rem auto 0;
+  background:#fff;border-radius:24px;
+  box-shadow:0 20px 60px rgba(26,8,110,0.1);
+  overflow:hidden;display:grid;grid-template-columns:280px 1fr;
+}
+.t-img{position:relative;min-height:300px}
+.t-img-bg{position:absolute;inset:0;background-size:cover;background-position:center top}
+.t-img-overlay{position:absolute;inset:0;background:linear-gradient(to right,transparent,rgba(255,255,255,0.1))}
+.t-content{padding:2.5rem;display:flex;flex-direction:column;justify-content:center}
+.quote-mark{
+  font-family:'Newsreader',serif;font-size:5rem;
+  color:rgba(201,168,76,0.2);line-height:1;margin-bottom:-1.2rem;
+}
+.t-content blockquote{
+  font-family:'Newsreader',serif;font-size:1.15rem;
+  font-style:italic;color:var(--navy);line-height:1.75;margin-bottom:1.5rem;
+}
+.t-author h4{font-size:14px;font-weight:600;color:var(--navy)}
+.t-author p{font-size:12px;color:var(--muted);margin-top:2px}
+.stars{color:var(--gold);font-size:15px;margin-top:5px}
+
+/* SEDES */
+.sedes-pills{
+  display:flex;justify-content:center;gap:8px;
+  margin-bottom:2rem;flex-wrap:wrap;
+}
+.sede-pill{
+  padding:10px 24px;border-radius:999px;border:2px solid rgba(26,8,110,0.2);
+  background:transparent;color:var(--muted);
+  font-family:'Work Sans',sans-serif;font-size:13px;font-weight:600;
+  cursor:pointer;transition:all 0.2s;
+}
+.sede-pill.active{background:var(--navy);color:#fff;border-color:var(--navy)}
+.sede-panel-wrap{
+  background:var(--cream);border:1px solid rgba(26,8,110,0.08);
+  border-radius:20px;overflow:hidden;
+}
+.sede-panel{display:none;grid-template-columns:1fr 1fr}
+.sede-panel.active{display:grid}
+.sede-info{padding:2.5rem}
+.sede-badge{
+  display:inline-block;font-size:11px;font-weight:700;
+  padding:4px 12px;border-radius:4px;text-transform:uppercase;
+  letter-spacing:0.05em;margin-bottom:1rem;
+  font-family:'Work Sans',sans-serif;color:#fff;
+}
+.sede-info h3{
+  font-family:'Newsreader',serif;font-size:1.6rem;
+  font-weight:700;color:var(--navy);margin-bottom:1.25rem;
+}
+.sede-detail{
+  display:flex;align-items:flex-start;gap:10px;
+  margin-bottom:10px;font-size:13.5px;color:var(--muted);line-height:1.5;
+}
+.sede-detail strong{
+  display:block;font-size:10px;text-transform:uppercase;
+  letter-spacing:0.05em;color:rgba(71,69,81,0.6);margin-bottom:1px;
+  font-family:'Work Sans',sans-serif;
+}
+.sede-icon{color:var(--gold);font-size:16px;flex-shrink:0;margin-top:2px}
+.sede-actions{display:flex;flex-direction:column;gap:10px;margin-top:1.5rem}
+.btn-wa{
+  display:flex;align-items:center;justify-content:center;gap:8px;
+  padding:12px;background:#25d366;color:#fff;border-radius:8px;
+  font-size:13px;font-weight:700;font-family:'Work Sans',sans-serif;
+  transition:all 0.2s;
+}
+.btn-wa:hover{background:#1db954;transform:translateY(-1px)}
+.btn-sede-link{
+  display:flex;align-items:center;justify-content:center;gap:6px;
+  padding:11px;border:1.5px solid rgba(26,8,110,0.2);
+  color:var(--navy);border-radius:8px;font-size:13px;font-weight:600;
+  font-family:'Work Sans',sans-serif;transition:all 0.2s;
+}
+.btn-sede-link:hover{border-color:var(--navy);background:var(--navy);color:#fff}
+.sede-map{min-height:320px}
+.sede-map iframe{width:100%;height:100%;border:none;display:block}
+
+/* FINANCING */
+.financing{background:linear-gradient(135deg,rgba(201,168,76,0.08),rgba(245,250,252,1));border-top:1px solid rgba(201,168,76,0.2);border-bottom:1px solid rgba(201,168,76,0.2)}
+.fin-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:2.5rem}
+.fin-card{
+  background:#fff;border-radius:16px;padding:1.75rem;
+  display:flex;align-items:flex-start;gap:14px;
+  box-shadow:0 4px 20px rgba(26,8,110,0.06);
+}
+.fin-icon{
+  width:48px;height:48px;min-width:48px;
+  background:rgba(201,168,76,0.12);border-radius:12px;
+  display:flex;align-items:center;justify-content:center;font-size:1.5rem;
+}
+.fin-card h4{font-size:15px;font-weight:600;color:var(--navy);margin-bottom:4px}
+.fin-card p{font-size:13px;color:var(--muted);line-height:1.5}
+
+/* FINAL CTA */
+.final-cta{background:linear-gradient(135deg,var(--navy-dk),var(--navy))}
+.final-cta-inner{
+  max-width:960px;margin:0 auto;
+  display:grid;grid-template-columns:1fr 400px;
+  gap:4rem;align-items:center;
+}
+.final-cta h2{
+  font-family:'Newsreader',serif;
+  font-size:2.5rem;font-weight:800;color:#fff;line-height:1.15;margin-bottom:1rem;
+}
+.final-cta h2 em{color:var(--gold);font-style:italic}
+.final-cta p{color:rgba(255,255,255,0.6);font-size:15px;line-height:1.7;margin-bottom:1.5rem}
+.trust-checks{display:flex;flex-direction:column;gap:8px}
+.trust-check{
+  display:flex;align-items:center;gap:10px;
+  color:rgba(255,255,255,0.8);font-size:13.5px;
+}
+.trust-check::before{
+  content:'✓';width:20px;height:20px;min-width:20px;
+  background:rgba(201,168,76,0.2);color:var(--gold);
+  border-radius:50%;display:flex;align-items:center;
+  justify-content:center;font-size:11px;font-weight:700;
+}
+.final-form{
+  background:rgba(255,255,255,0.06);
+  border:1px solid rgba(255,255,255,0.12);
+  border-radius:16px;padding:1.75rem;
+}
+.final-form .form-group label{color:rgba(255,255,255,0.6)}
+.final-form .form-group input,.final-form .form-group select{
+  background:rgba(255,255,255,0.07);
+  border-color:rgba(255,255,255,0.18);color:#fff;
+}
+.final-form .form-group input::placeholder{color:rgba(255,255,255,0.35)}
+.final-form .form-group select option{color:var(--dark);background:#fff}
+.final-form .form-trust{color:rgba(255,255,255,0.35)}
+
+/* FOOTER */
+footer{background:#0d0440;padding:2rem 2rem;border-top:1px solid rgba(255,255,255,0.06)}
+.footer-inner{
+  max-width:1280px;margin:0 auto;
+  display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;
+}
+.footer-logo{font-family:'Newsreader',serif;font-size:1.3rem;font-weight:700;color:#fff}
+.footer-links{display:flex;gap:1.5rem;flex-wrap:wrap}
+.footer-links a{font-size:12px;color:rgba(255,255,255,0.35);transition:color 0.2s}
+.footer-links a:hover{color:rgba(255,255,255,0.7)}
+.footer-copy{font-size:11px;color:rgba(255,255,255,0.2)}
+
+/* MOBILE BOTTOM NAV */
+.mobile-nav{
+  display:none;position:fixed;bottom:0;left:0;right:0;z-index:150;
+  background:rgba(245,250,252,0.97);backdrop-filter:blur(16px);
+  border-top:1px solid rgba(26,8,110,0.1);
+  padding:10px 1.5rem 14px;
+  display:flex;gap:10px;
+}
+.mobile-btn-inscribir{
+  flex:1;padding:13px;background:var(--navy);color:#fff;
+  border:none;border-radius:8px;font-size:13px;font-weight:700;
+  font-family:'Work Sans',sans-serif;cursor:pointer;
+}
+.mobile-btn-wa{
+  flex:1;padding:13px;background:#25d366;color:#fff;
+  border:none;border-radius:8px;font-size:13px;font-weight:700;
+  font-family:'Work Sans',sans-serif;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;gap:6px;
+}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(20px);transition:all 0.65s cubic-bezier(0.5,0,0,1)}
+.reveal.active{opacity:1;transform:translateY(0)}
+
+/* MOBILE */
+@media(max-width:900px){
+  nav{padding:0 1.25rem}
+  .hero-inner{grid-template-columns:1fr;gap:2rem;padding:2rem 1.25rem}
+  .hero h1{font-size:2.6rem}
+  .hero-stats{flex-wrap:wrap}
+  .hero-stat{margin-right:12px;padding:8px 12px}
+  .split{grid-template-columns:1fr}
+  .split-img{min-height:280px}
+  .bento{grid-template-columns:1fr 1fr}
+  .bento-card.featured{grid-column:span 2;grid-row:span 1}
+  .careers-grid{grid-template-columns:repeat(2,1fr)}
+  .gallery{grid-template-columns:1fr}
+  .testimonial-wrap{grid-template-columns:1fr}
+  .t-img{min-height:220px}
+  .sede-panel.active{grid-template-columns:1fr}
+  .sede-map{min-height:250px}
+  .fin-cards{grid-template-columns:1fr}
+  .final-cta-inner{grid-template-columns:1fr;gap:2.5rem}
+  .footer-inner{flex-direction:column;text-align:center}
+  section{padding:70px 1.25rem}
+  .mobile-nav{display:flex}
+  footer{padding-bottom:90px}
+}
+@media(min-width:901px){.mobile-nav{display:none}}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">INDECAP</div>
+  <a href="#contacto" class="nav-cta">Inscribirme</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-inner">
+    <div class="reveal active">
+      <div class="hero-badge">
+        <span class="hero-badge-dot"></span>
+        Auxiliar en Enfermería · 3 Sedes · Antioquia
+      </div>
+      <h1>Dentro de<br/>18 meses<br/>podrías estar <em>aquí.</em></h1>
+      <p class="hero-desc">1.650 horas de formación. La teoría se olvida. La práctica te contrata.</p>
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <span class="hero-stat-val">1.650h</span>
+          <span class="hero-stat-label">Formación</span>
+        </div>
+        <div class="hero-stat">
+          <span class="hero-stat-val">18</span>
+          <span class="hero-stat-label">Meses</span>
+        </div>
+        <div class="hero-stat">
+          <span class="hero-stat-val">75%</span>
+          <span class="hero-stat-label">Práctica</span>
+        </div>
+        <div class="hero-stat">
+          <span class="hero-stat-val">3</span>
+          <span class="hero-stat-label">Sedes</span>
+        </div>
+      </div>
+    </div>
+    <div class="hero-form reveal active" id="contacto">
+      <div class="form-title">Inicia tu inscripción</div>
+      <p class="form-sub">Una asesora te contacta hoy mismo</p>
+      <form onsubmit="return handleForm(event,'f1')">
+        <div class="form-row">
+          <div class="form-group">
+            <label>Nombre</label>
+            <input type="text" placeholder="Tu nombre" required/>
+          </div>
+          <div class="form-group">
+            <label>WhatsApp</label>
+            <input type="tel" placeholder="300 000 0000" required/>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Correo electrónico</label>
+          <input type="email" placeholder="tucorreo@email.com"/>
+        </div>
+        <div class="form-group">
+          <label>Sede de interés</label>
+          <select required id="sede-f1">
+            <option value="" disabled selected>Selecciona una sede</option>
+            <option value="medellin">Medellín — Calle 56 N°45-26</option>
+            <option value="envigado">Envigado — Cl 37 Sur #43A-84</option>
+            <option value="caldas">Caldas — Calle 130 sur N°51-65</option>
+          </select>
+        </div>
+        <button type="submit" class="btn-submit">
+          Quiero que me contacten →
+        </button>
+        <p class="form-trust">Sin spam · Solo te contacta una asesora real</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="trust-inner">
+    <div class="trust-item"><span class="trust-gold">✦</span> 40 años formando talento</div>
+    <div class="trust-item"><span class="trust-gold">✦</span> Certificación oficial MEN</div>
+    <div class="trust-item"><span class="trust-gold">✦</span> Miles de egresados empleados</div>
+    <div class="trust-item"><span class="trust-gold">✦</span> Financiación directa sin banco</div>
+  </div>
+</div>
+
+<!-- TRANSFORMACIÓN -->
+<section style="background:var(--cream)">
+  <div class="container">
+    <div class="split reveal">
+      <div class="split-img" style="background-image:url('enfermeria-paciente.jpg')"></div>
+      <div class="split-content">
+        <div class="section-eyebrow">La práctica hace la diferencia</div>
+        <h2 class="section-title">No estás viendo una clase.<br/>Estás viendo cómo <em>cambia una vida.</em></h2>
+        <p>Desde los primeros meses practicas en clínicas reales, con pacientes reales. No simulaciones. No teoría vacía. Práctica que te contrata.</p>
+        <ul class="check-list">
+          <li><strong>Prácticas en clínicas reales</strong><span>Convenios con las mejores redes hospitalarias de Antioquia.</span></li>
+          <li><strong>Equipos profesionales</strong><span>Aprende con la misma tecnología que usarás en tu primer empleo.</span></li>
+          <li><strong>Docentes expertos</strong><span>Profesionales activos en el sector salud guiando tu formación.</span></li>
+          <li><strong>Inserción laboral</strong><span>Acompañamiento directo para tu vinculación al mercado de trabajo.</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BENTO PLAN DE ESTUDIOS -->
+<section style="background:#fff">
+  <div class="container">
+    <div class="text-center reveal">
+      <div class="section-eyebrow">Plan de estudios</div>
+      <h2 class="section-title">Diseñado para el <em>mundo real</em></h2>
+      <p class="section-sub">Cada módulo tiene una razón de ser: prepararte para trabajar desde el primer día que te gradúas.</p>
+    </div>
+    <div class="bento">
+      <div class="bento-card featured reveal">
+        <div>
+          <div class="bento-eyebrow">Especialidad principal</div>
+          <h3>Prácticas Hospitalarias<br/>18 meses</h3>
+          <p>Inmersión profunda en entornos clínicos reales desde los primeros semestres. Hospitales, clínicas y centros de salud de Antioquia.</p>
+        </div>
+        <a href="#contacto" class="bento-cta">Quiero inscribirme →</a>
+      </div>
+      <div class="bento-card reveal">
+        <div class="bento-icon">❤️</div>
+        <div class="bento-eyebrow">Módulo core</div>
+        <h3>Cuidado del Paciente</h3>
+        <p>Humanización y atención integral técnica con enfoque en dignidad y bienestar.</p>
+      </div>
+      <div class="bento-card reveal">
+        <div class="bento-icon">💊</div>
+        <div class="bento-eyebrow">Módulo core</div>
+        <h3>Farmacología Básica</h3>
+        <p>Administración segura de medicamentos, cálculo de dosis y protocolos.</p>
+      </div>
+      <div class="bento-card reveal">
+        <div class="bento-icon">🩺</div>
+        <div class="bento-eyebrow">Especialidad</div>
+        <h3>Procedimientos Clínicos</h3>
+        <p>Técnicas estériles, venopunción, sondas y apoyo en procedimientos.</p>
+      </div>
+      <div class="bento-card reveal">
+        <div class="bento-icon">🚑</div>
+        <div class="bento-eyebrow">Especialidad</div>
+        <h3>Urgencias y RCP</h3>
+        <p>Soporte vital básico, reanimación cardiopulmonar y respuesta inmediata.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOTO FULL WIDTH -->
+<div class="photo-cta" style="background-image:url('enfermeria-practica-2.jpg')">
+  <div class="photo-cta-overlay"></div>
+  <div class="photo-cta-content reveal">
+    <h2>Aprende hoy.<br/><em>Trabaja mañana.</em></h2>
+    <p>La teoría se olvida. Las habilidades clínicas te acompañan toda la vida.</p>
+    <a href="#contacto">Quiero inscribirme →</a>
+  </div>
+</div>
+
+<!-- SALIDAS LABORALES -->
+<section style="background:var(--navy)">
+  <div class="container">
+    <div class="text-center reveal">
+      <div class="section-eyebrow" style="color:var(--gold);background:rgba(201,168,76,0.15)">Salidas laborales</div>
+      <h2 class="section-title" style="color:#fff">El sector salud <em style="color:var(--gold)">te necesita</em></h2>
+      <p class="section-sub" style="color:rgba(255,255,255,0.6)">Nuestros egresados son altamente valorados por su sólida formación técnica y humana. La demanda crece cada año.</p>
+    </div>
+    <div class="careers-grid">
+      <div class="career-card reveal" style="background:rgba(255,255,255,0.05);border-color:rgba(255,255,255,0.1)">
+        <div class="career-icon">🏥</div>
+        <h4 style="color:#fff">Hospitales y clínicas</h4>
+        <p style="color:rgba(255,255,255,0.55)">Vinculación en redes hospitalarias de niveles 1, 2 y 3.</p>
+      </div>
+      <div class="career-card reveal" style="background:rgba(255,255,255,0.05);border-color:rgba(255,255,255,0.1)">
+        <div class="career-icon">🏛️</div>
+        <h4 style="color:#fff">Centros de salud</h4>
+        <p style="color:rgba(255,255,255,0.55)">IPS, EPS y consultorios especializados en toda Antioquia.</p>
+      </div>
+      <div class="career-card reveal" style="background:rgba(255,255,255,0.05);border-color:rgba(255,255,255,0.1)">
+        <div class="career-icon">👴</div>
+        <h4 style="color:#fff">Hogares geriátricos</h4>
+        <p style="color:rgba(255,255,255,0.55)">Cuidado integral de la población adulta mayor.</p>
+      </div>
+      <div class="career-card reveal" style="background:rgba(255,255,255,0.05);border-color:rgba(255,255,255,0.1)">
+        <div class="career-icon">🏠</div>
+        <h4 style="color:#fff">Cuidados domiciliarios</h4>
+        <p style="color:rgba(255,255,255,0.55)">Emprende con servicios de atención en el hogar.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALERÍA -->
+<section style="background:var(--cream)">
+  <div class="container">
+    <div class="text-center reveal">
+      <div class="section-eyebrow">Vida en INDECAP</div>
+      <h2 class="section-title">Estudiantes reales.<br/><em>Práctica real.</em></h2>
+    </div>
+    <div class="gallery">
+      <div class="gallery-img reveal" style="background-image:url('enfermeria-estudiantes.jpg')"></div>
+      <div class="gallery-img reveal" style="background-image:url('enfermeria-estetoscopio.jpg');background-position:center top"></div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIAL -->
+<section style="background:#fff">
+  <div class="container">
+    <div class="text-center reveal">
+      <div class="section-eyebrow">Historia real</div>
+      <h2 class="section-title">Una vida que <em>se transforma</em></h2>
+    </div>
+    <div class="testimonial-wrap reveal">
+      <div class="t-img">
+        <div class="t-img-bg" style="background-image:url('enfermeria-hero.jpg')"></div>
+        <div class="t-img-overlay"></div>
+      </div>
+      <div class="t-content">
+        <div class="quote-mark">"</div>
+        <blockquote>Entré sin saber nada de salud. A los 18 meses ya estaba trabajando en una clínica. INDECAP no solo me enseñó la técnica — me enseñó a tener propósito.</blockquote>
+        <div class="t-author">
+          <h4>Juliana — Egresada INDECAP</h4>
+          <p>Auxiliar en Enfermería · Trabaja en clínica privada</p>
+          <div class="stars">★★★★★</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SEDES -->
+<section style="background:var(--cream)" id="sedes">
+  <div class="container">
+    <div class="text-center reveal">
+      <div class="section-eyebrow">Dónde estamos</div>
+      <h2 class="section-title">Elige tu <em>sede</em></h2>
+      <p class="section-sub">Tres sedes en el Valle de Aburrá. Elige la más cercana a ti.</p>
+    </div>
+    <div class="sedes-pills reveal">
+      <button class="sede-pill active" onclick="cambiarSede('medellin',this)">Medellín</button>
+      <button class="sede-pill" onclick="cambiarSede('envigado',this)">Envigado</button>
+      <button class="sede-pill" onclick="cambiarSede('caldas',this)">Caldas</button>
+    </div>
+    <div class="sede-panel-wrap reveal">
+      <div class="sede-panel active" id="panel-medellin">
+        <div class="sede-info">
+          <div class="sede-badge" style="background:var(--navy)">Sede Principal · 40 años</div>
+          <h3>Medellín Centro</h3>
+          <div class="sede-detail"><span class="sede-icon">📍</span><div><strong>Dirección</strong>Calle 56 N° 45-26, Medellín</div></div>
+          <div class="sede-detail"><span class="sede-icon">🚇</span><div><strong>Metro</strong>A 1 cuadra de la Estación Prado</div></div>
+          <div class="sede-detail"><span class="sede-icon">📞</span><div><strong>Teléfono</strong>(604) 448 4794</div></div>
+          <div class="sede-detail"><span class="sede-icon">✉️</span><div><strong>Correo</strong>indecap@indecap.edu.co</div></div>
+          <div class="sede-detail"><span class="sede-icon">🕐</span><div><strong>Horario</strong>Lunes a viernes, 8:00 a.m. – 5:00 p.m.</div></div>
+          <div class="sede-actions">
+            <a href="https://wa.me/573022389760?text=Hola%20INDECAP%20Medellín%2C%20quiero%20información%20sobre%20Auxiliar%20en%20Enfermería" class="btn-wa" target="_blank">💬 WhatsApp Medellín</a>
+            <a href="https://indecap.edu.co/sedes/medellin" class="btn-sede-link" target="_blank">Ver sede completa →</a>
+          </div>
+        </div>
+        <div class="sede-map">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.0882055587904!2d-75.56423852428196!3d6.252108093736369!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e4428f769c8da39%3A0xdab00e96cee9b0cb!2sINDECAP!5e1!3m2!1ses!2sco!4v1774831217383!5m2!1ses!2sco" allowfullscreen loading="lazy"></iframe>
+        </div>
+      </div>
+      <div class="sede-panel" id="panel-envigado">
+        <div class="sede-info">
+          <div class="sede-badge" style="background:var(--crimson)">Zona Sur</div>
+          <h3>Envigado</h3>
+          <div class="sede-detail"><span class="sede-icon">📍</span><div><strong>Dirección</strong>Cl 37 Sur #43A-84, Envigado</div></div>
+          <div class="sede-detail"><span class="sede-icon">🚌</span><div><strong>Acceso</strong>Avenida El Poblado, conexión Metro</div></div>
+          <div class="sede-detail"><span class="sede-icon">📞</span><div><strong>Teléfono</strong>(604) 448 4794 · 317 434 2783</div></div>
+          <div class="sede-detail"><span class="sede-icon">✉️</span><div><strong>Correo</strong>sedeenvigado@indecap.edu.co</div></div>
+          <div class="sede-detail"><span class="sede-icon">🕐</span><div><strong>Horario</strong>Lunes a viernes, 8:00 a.m. – 5:00 p.m.</div></div>
+          <div class="sede-actions">
+            <a href="https://wa.me/573174342783?text=Hola%20INDECAP%20Envigado%2C%20quiero%20información%20sobre%20Auxiliar%20en%20Enfermería" class="btn-wa" target="_blank">💬 WhatsApp Envigado</a>
+            <a href="https://indecap.edu.co/sedes/envigado" class="btn-sede-link" target="_blank">Ver sede completa →</a>
+          </div>
+        </div>
+        <div class="sede-map">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.6944440921548!2d-75.59156622428259!3d6.171651093815698!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e46824dfe6f017b%3A0x19ac0f58cf3397cb!2sINDECAP%20ENVIGADO!5e1!3m2!1ses!2sco!4v1774831242450!5m2!1ses!2sco" allowfullscreen loading="lazy"></iframe>
+        </div>
+      </div>
+      <div class="sede-panel" id="panel-caldas">
+        <div class="sede-info">
+          <div class="sede-badge" style="background:#166534">Sur del Valle</div>
+          <h3>Caldas</h3>
+          <div class="sede-detail"><span class="sede-icon">📍</span><div><strong>Dirección</strong>Calle 130 sur N° 51-65, Caldas</div></div>
+          <div class="sede-detail"><span class="sede-icon">🚌</span><div><strong>Acceso</strong>Sur del Valle de Aburrá</div></div>
+          <div class="sede-detail"><span class="sede-icon">📞</span><div><strong>Teléfono</strong>(604) 448 4794 · 300 894 8517</div></div>
+          <div class="sede-detail"><span class="sede-icon">✉️</span><div><strong>Correo</strong>sedecaldas@indecap.edu.co</div></div>
+          <div class="sede-detail"><span class="sede-icon">🕐</span><div><strong>Horario</strong>Lunes a viernes, 8:00 a.m. – 5:00 p.m.</div></div>
+          <div class="sede-actions">
+            <a href="https://wa.me/573008948517?text=Hola%20INDECAP%20Caldas%2C%20quiero%20información%20sobre%20Auxiliar%20en%20Enfermería" class="btn-wa" target="_blank">💬 WhatsApp Caldas</a>
+            <a href="https://indecap.edu.co/sedes/caldas" class="btn-sede-link" target="_blank">Ver sede completa →</a>
+          </div>
+        </div>
+        <div class="sede-map">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3967.2917608599473!2d-75.63738873784544!3d6.091342944564197!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e46868ee0555555%3A0x66963b66dfbc06b9!2sIndecap!5e1!3m2!1ses!2sco!4v1774831314418!5m2!1ses!2sco" allowfullscreen loading="lazy"></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINANCIACIÓN -->
+<section class="financing">
+  <div class="container">
+    <div class="text-center reveal">
+      <div class="section-eyebrow">Financiación</div>
+      <h2 class="section-title">Educación accesible para<br/>quien quiere <em>crecer</em></h2>
+      <p class="section-sub">Invertir en tu futuro no debería ser un dolor de cabeza. Nos adaptamos a tu realidad económica.</p>
+    </div>
+    <div class="fin-cards">
+      <div class="fin-card reveal">
+        <div class="fin-icon">🏦</div>
+        <div><h4>Sin banco</h4><p>Financiación directa con INDECAP sin historial crediticio ni trámites complicados.</p></div>
+      </div>
+      <div class="fin-card reveal">
+        <div class="fin-icon">💳</div>
+        <div><h4>Cuotas flexibles</h4><p>Ajustamos tus pagos a tu realidad mensual. Sin intereses excesivos.</p></div>
+      </div>
+      <div class="fin-card reveal">
+        <div class="fin-icon">🚀</div>
+        <div><h4>Empieza ya</h4><p>Matrícula abierta con requisitos mínimos. Tu futuro no puede esperar.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final-cta" id="contacto2">
+  <div class="final-cta-inner">
+    <div class="reveal">
+      <h2>Tu futuro empieza<br/>el día que decides <em>intentarlo.</em></h2>
+      <p>Más de 40 años formando auxiliares de enfermería que hoy trabajan en las mejores clínicas de Antioquia.</p>
+      <div class="trust-checks">
+        <div class="trust-check">18 meses · 1.650 horas de práctica real</div>
+        <div class="trust-check">Certificación oficial del MEN</div>
+        <div class="trust-check">Financiación directa sin banco</div>
+        <div class="trust-check">Cupos limitados este semestre</div>
+      </div>
+    </div>
+    <div class="final-form reveal">
+      <div class="form-title" style="color:#fff">Asegura tu cupo</div>
+      <p class="form-sub">Una asesora te contacta hoy mismo</p>
+      <form onsubmit="return handleForm(event,'f2')">
+        <div class="form-row">
+          <div class="form-group">
+            <label>Nombre</label>
+            <input type="text" placeholder="Tu nombre" required/>
+          </div>
+          <div class="form-group">
+            <label>WhatsApp</label>
+            <input type="tel" placeholder="300 000 0000" required/>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Correo electrónico</label>
+          <input type="email" placeholder="tucorreo@email.com"/>
+        </div>
+        <div class="form-group">
+          <label>Sede</label>
+          <select required id="sede-f2">
+            <option value="" disabled selected>Selecciona una sede</option>
+            <option value="medellin">Medellín</option>
+            <option value="envigado">Envigado</option>
+            <option value="caldas">Caldas</option>
+          </select>
+        </div>
+        <button type="submit" class="btn-submit">Quiero inscribirme →</button>
+        <p class="form-trust">Sin spam · Una asesora real te contacta hoy</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">INDECAP</div>
+    <div class="footer-links">
+      <a href="https://indecap.edu.co/privacy-policy" target="_blank">Política de privacidad</a>
+      <a href="https://indecap.edu.co/programas" target="_blank">Programas</a>
+      <a href="https://indecap.edu.co/contacto" target="_blank">Contacto</a>
+      <a href="https://indecap.edu.co" target="_blank">indecap.edu.co</a>
+    </div>
+    <div class="footer-copy">© 2026 Corporación Educativa INDECAP</div>
+  </div>
+</footer>
+
+<!-- MOBILE BOTTOM NAV -->
+<div class="mobile-nav" id="mobile-nav">
+  <button class="mobile-btn-inscribir" onclick="document.getElementById('contacto').scrollIntoView({behavior:'smooth'})">
+    Inscribirme
+  </button>
+  <button class="mobile-btn-wa" onclick="window.open('https://wa.me/573022389760?text=Hola%20INDECAP%2C%20quiero%20información%20sobre%20Auxiliar%20en%20Enfermería','_blank')">
+    💬 WhatsApp
+  </button>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded',()=>{
+  // Scroll reveal
+  const reveals=document.querySelectorAll('.reveal');
+  const check=()=>{
+    const wh=window.innerHeight;
+    reveals.forEach(r=>{if(r.getBoundingClientRect().top<wh-60)r.classList.add('active')});
+  };
+  window.addEventListener('scroll',check,{passive:true});
+  check();
+
+  // Smooth scroll
+  document.querySelectorAll('a[href^="#"]').forEach(a=>{
+    a.addEventListener('click',e=>{
+      const t=document.querySelector(a.getAttribute('href'));
+      if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth',block:'start'})}
+    });
+  });
+
+  // Ocultar mobile nav cuando el form es visible
+  const form=document.getElementById('contacto');
+  const nav=document.getElementById('mobile-nav');
+  const obs=new IntersectionObserver(([e])=>{
+    if(nav)nav.style.display=e.isIntersecting?'none':'flex';
+  },{threshold:0.1});
+  if(form)obs.observe(form);
+});
+
+// Tabs sedes
+function cambiarSede(sede,btn){
+  document.querySelectorAll('.sede-pill').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.sede-panel').forEach(p=>p.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('panel-'+sede).classList.add('active');
+  const s1=document.getElementById('sede-f1');
+  const s2=document.getElementById('sede-f2');
+  if(s1)s1.value=sede;
+  if(s2)s2.value=sede;
+}
+
+// Form → WhatsApp por sede + track Lead
+function handleForm(e,formId){
+  e.preventDefault();
+  const sedeEl=document.getElementById('sede-'+formId);
+  const sede=sedeEl?sedeEl.value:'medellin';
+  const nums={medellin:'573022389760',envigado:'573174342783',caldas:'573008948517'};
+  const msg=encodeURIComponent('Hola INDECAP, quiero información sobre el programa de Auxiliar en Enfermería. ¿Me pueden orientar?');
+  if(typeof fbq!=='undefined')fbq('track','Lead',{content_name:'Inscripción Enfermería',content_category:'Educación'});
+  window.open('https://wa.me/'+(nums[sede]||nums.medellin)+'?text='+msg,'_blank');
+  return false;
+}
+</script>
+</body>
+</html>
