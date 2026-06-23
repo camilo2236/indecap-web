@@ -1,4 +1,5 @@
 // src/lib/secretaria.ts
+// FIX v2: CLEI asignado por orden cronológico del estudiante, no por campo nivel
 import { createAdminClient } from './supabase/admin'
 
 export interface Estudiante {
@@ -22,6 +23,7 @@ export interface Matricula {
   sede: string | null
   estado_matricula: string | null
   nivel: string | null
+  clei_real: string | null  // ← NUEVO: CLEI calculado por orden
   notas: Nota[]
 }
 
@@ -61,6 +63,22 @@ export interface EstudianteCompleto {
   pagos: ResumenPagos
 }
 
+// Ordenar períodos cronológicamente
+// Formatos: "2017", "2017-1A", "2017-2A", "2018-FUNDACION", "2022 1A", "2022-2A Antiguos", etc.
+function ordenarPeriodo(p: string): number {
+  const clean = p.replace(/\s+/g, '-').toUpperCase()
+  const year = parseInt(clean.substring(0, 4)) || 0
+  let sub = 0
+  if (clean.includes('FUNDACION')) sub = 0
+  else if (clean.includes('1A') || clean.includes('1B')) sub = 1
+  else if (clean.includes('2A') || clean.includes('2B')) sub = 2
+  else sub = 0.5 // período anual sin sufijo va entre 1A y 2A
+  return year * 10 + sub
+}
+
+// CLEI empieza en 3 para bachillerato CLEI colombiano
+const CLEI_LABELS = ['CLEI 3', 'CLEI 4', 'CLEI 5', 'CLEI 6', 'CLEI 7', 'CLEI 8']
+
 export async function getEstudiante(doc: string): Promise<EstudianteCompleto | null> {
   const sb = createAdminClient()
 
@@ -77,29 +95,40 @@ export async function getEstudiante(doc: string): Promise<EstudianteCompleto | n
     .from('matriculas_q10')
     .select('*')
     .eq('doc', doc.trim())
-    .order('periodo', { ascending: true })
 
-  // Notas
   let matriculasConNotas: Matricula[] = []
+  const periodosUnicos = new Set<string>()
+
   if (matriculas && matriculas.length > 0) {
     const codigos = matriculas.map(m => m.codigo_matricula)
     const { data: notas } = await sb
       .from('notas_q10')
       .select('*')
       .in('codigo_matricula', codigos)
-      .order('asignatura', { ascending: true })
 
-    const notasPorMatricula: Record<string, Nota[]> = {}
+    // Agrupar notas por período
+    const notasPorPeriodo: Record<string, Nota[]> = {}
     for (const nota of notas || []) {
-      if (!notasPorMatricula[nota.codigo_matricula]) {
-        notasPorMatricula[nota.codigo_matricula] = []
-      }
-      notasPorMatricula[nota.codigo_matricula].push(nota)
+      const key = nota.periodo || 'sin-periodo'
+      if (!notasPorPeriodo[key]) notasPorPeriodo[key] = []
+      notasPorPeriodo[key].push(nota)
+      if (nota.periodo) periodosUnicos.add(nota.periodo)
     }
 
-    matriculasConNotas = matriculas.map(m => ({
-      ...m,
-      notas: notasPorMatricula[m.codigo_matricula] || [],
+    // Ordenar períodos cronológicamente
+    const periodosOrdenados = Object.keys(notasPorPeriodo)
+      .sort((a, b) => ordenarPeriodo(a) - ordenarPeriodo(b))
+
+    const matriculaBase = matriculas[0]
+
+    // Asignar CLEI por orden (CLEI 3 = primero, CLEI 4 = segundo, etc.)
+    matriculasConNotas = periodosOrdenados.map((periodo, index) => ({
+      ...matriculaBase,
+      periodo,
+      clei_real: CLEI_LABELS[index] || `CLEI ${index + 3}`,
+      notas: notasPorPeriodo[periodo].sort((a, b) =>
+        (a.asignatura || '').localeCompare(b.asignatura || '')
+      ),
     }))
   }
 
@@ -122,15 +151,13 @@ export async function getEstudiante(doc: string): Promise<EstudianteCompleto | n
 
   const pagos = pagosData || []
   const total_pagado = pagos.reduce((sum, p) => sum + (p.valor_pagado || 0), 0)
-  const ultimo_pago = pagos.length > 0
-    ? pagos[pagos.length - 1].fecha_pago
-    : null
+  const ultimo_pago = pagos.length > 0 ? pagos[pagos.length - 1].fecha_pago : null
 
   return {
     estudiante,
     matriculas: matriculasConNotas,
     promedio_general,
-    total_periodos: matriculas?.length || 0,
+    total_periodos: periodosUnicos.size,
     pagos: {
       total_pagado: Math.round(total_pagado),
       total_pagos: pagos.length,
@@ -152,9 +179,7 @@ export async function buscarPorNombre(nombre: string) {
 
 export function getIniciales(nombre: string): string {
   const partes = nombre.trim().split(' ')
-  if (partes.length >= 2) {
-    return (partes[0][0] + partes[1][0]).toUpperCase()
-  }
+  if (partes.length >= 2) return (partes[0][0] + partes[1][0]).toUpperCase()
   return partes[0].substring(0, 2).toUpperCase()
 }
 
