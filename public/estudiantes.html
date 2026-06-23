@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="UTF-8">
@@ -18,6 +18,9 @@ body{-webkit-font-smoothing:antialiased;font-family:'Inter',sans-serif}
 .mo{opacity:0;pointer-events:none;transition:opacity 0.28s}.mo.open{opacity:1;pointer-events:all}
 .panel{display:none}.panel.active{display:block}
 ::-webkit-scrollbar{width:4px}::-webkit-scrollbar-thumb{background:#c8c4d3;border-radius:4px}
+.resource-card{transition:all 0.2s;cursor:pointer}
+.resource-card:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(26,8,110,0.12)}
+.search-bar:focus{outline:none;border-color:#1a086e;box-shadow:0 0 0 3px rgba(26,8,110,0.1)}
 </style>
 </head>
 <body class="bg-background text-on-surface min-h-screen relative">
@@ -55,7 +58,7 @@ body{-webkit-font-smoothing:antialiased;font-family:'Inter',sans-serif}
         </div>
         <div>
           <p class="text-xs font-medium text-on-surface" style="font-family:Work Sans,sans-serif">Progreso</p>
-          <p class="text-xs text-on-surface-variant" id="sb-txt">0 de 7 módulos</p>
+          <p class="text-xs text-on-surface-variant" id="sb-txt">0 de 8 módulos</p>
         </div>
       </div>
     </div>
@@ -88,8 +91,6 @@ body{-webkit-font-smoothing:antialiased;font-family:'Inter',sans-serif}
     <main class="flex-1 overflow-y-auto pt-16" id="main-scroll">
       <div class="panel active" id="panel-dashboard">
         <div class="max-w-5xl mx-auto px-6 py-8">
-
-          <!-- Hero -->
           <section class="mb-8 relative rounded-2xl overflow-hidden p-8 shadow-lg" style="background:linear-gradient(135deg,#0369a1,#0284c7)">
             <div class="absolute inset-0 pbg opacity-5"></div>
             <div class="relative z-10 flex items-start justify-between gap-6">
@@ -113,16 +114,15 @@ body{-webkit-font-smoothing:antialiased;font-family:'Inter',sans-serif}
               <div><span class="text-2xl font-semibold text-white" style="font-family:Newsreader,serif">40</span><p class="text-xs" style="color:rgba(255,255,255,0.5);font-family:Work Sans,sans-serif">Años INDECAP</p></div>
               <div><span class="text-2xl font-semibold text-white" style="font-family:Newsreader,serif">71.4%</span><p class="text-xs" style="color:rgba(255,255,255,0.5);font-family:Work Sans,sans-serif">Egresados empleados</p></div>
               <div><span class="text-2xl font-semibold text-white" style="font-family:Newsreader,serif">3</span><p class="text-xs" style="color:rgba(255,255,255,0.5);font-family:Work Sans,sans-serif">Sedes</p></div>
-              <div><span class="text-2xl font-semibold text-white" style="font-family:Newsreader,serif">7</span><p class="text-xs" style="color:rgba(255,255,255,0.5);font-family:Work Sans,sans-serif">Módulos</p></div>
+              <div><span class="text-2xl font-semibold text-white" style="font-family:Newsreader,serif">8</span><p class="text-xs" style="color:rgba(255,255,255,0.5);font-family:Work Sans,sans-serif">Módulos</p></div>
             </div>
           </section>
 
-          <!-- Bento -->
           <div class="grid grid-cols-1 md:grid-cols-12 gap-5">
             <div class="md:col-span-8 bg-surface-container-lowest rounded-2xl border border-outline-variant shadow-sm p-6">
               <div class="flex items-center justify-between mb-5">
                 <h3 class="text-lg font-semibold text-primary-container" style="font-family:Newsreader,serif">Módulos de inducción</h3>
-                <span class="text-xs font-semibold text-on-surface-variant bg-surface-container px-2.5 py-1 rounded-full" style="font-family:Work Sans,sans-serif" id="mod-count">0/7 completados</span>
+                <span class="text-xs font-semibold text-on-surface-variant bg-surface-container px-2.5 py-1 rounded-full" style="font-family:Work Sans,sans-serif" id="mod-count">0/8 completados</span>
               </div>
               <div class="space-y-2" id="mod-grid"></div>
             </div>
@@ -147,9 +147,9 @@ body{-webkit-font-smoothing:antialiased;font-family:'Inter',sans-serif}
                     <div class="w-9 h-9 rounded-full flex items-center justify-center flex-shrink-0" style="background:rgba(245,189,101,0.2)"><span class="material-symbols-outlined" style="font-size:20px;font-variation-settings:'FILL' 0;color:#b07f2e">payments</span></div>
                     <div><p class="text-sm font-medium text-on-surface" style="font-family:Work Sans,sans-serif">Pagos y matrículas</p><p class="text-xs text-on-surface-variant">Lo que debes saber</p></div>
                   </button>
-                  <button onclick="showPanel('practicas')" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-surface-container border border-outline-variant transition-colors text-left">
-                    <div class="w-9 h-9 rounded-full flex items-center justify-center flex-shrink-0" style="background:rgba(90,82,174,0.15)"><span class="material-symbols-outlined" style="font-size:20px;font-variation-settings:'FILL' 0;color:#5a52ae">school</span></div>
-                    <div><p class="text-sm font-medium text-on-surface" style="font-family:Work Sans,sans-serif">Prácticas y graduación</p><p class="text-xs text-on-surface-variant">Requisitos y proceso</p></div>
+                  <button onclick="showPanel('recursos')" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-surface-container border border-outline-variant transition-colors text-left" style="background:linear-gradient(135deg,rgba(26,8,110,0.04),rgba(90,82,174,0.06));border-color:rgba(26,8,110,0.2)">
+                    <div class="w-9 h-9 rounded-full flex items-center justify-center flex-shrink-0" style="background:rgba(26,8,110,0.1)"><span class="material-symbols-outlined text-primary-container" style="font-size:20px;font-variation-settings:'FILL' 1">library_books</span></div>
+                    <div><p class="text-sm font-medium text-on-surface" style="font-family:Work Sans,sans-serif">Recursos académicos</p><p class="text-xs" style="color:#1a086e;font-weight:500">CRAD · Nuevo</p></div>
                   </button>
                 </div>
               </div>
@@ -185,6 +185,7 @@ const MODULES=[
   {id:'reglamento',icon:'📋',label:'Tus derechos y deberes',dur:'20 min',desc:'Lo que puedes esperar y lo que se espera.'},
   {id:'pagos',     icon:'💳',label:'Pagos y matrículas',   dur:'15 min',desc:'Todo sobre tu inversión en INDECAP.'},
   {id:'practicas', icon:'🏥',label:'Prácticas y graduación',dur:'15 min',desc:'El paso final hacia tu certificado.'},
+  {id:'recursos',  icon:'🔬',label:'Recursos académicos',  dur:'Acceso permanente',desc:'CRAD — bases de datos científicas, IA y herramientas de investigación.'},
 ];
 
 function updateUI(){
@@ -202,23 +203,24 @@ function updateUI(){
 function renderSidebars(){
   ['sidebar-modules','mm-modules'].forEach(sid=>{
     const el=document.getElementById(sid);if(!el)return;
-    el.innerHTML=MODULES.map(m=>{const done=progress[m.id];
-      return '<button onclick="showPanel(\''+m.id+'\')" class="w-full flex items-center gap-3 px-4 py-2.5 rounded-xl text-left mb-0.5 hover:bg-surface-container transition-colors">'
+    el.innerHTML=MODULES.map(m=>{const done=progress[m.id];const isNew=m.id==='recursos';
+      return '<button onclick="showPanel(\''+m.id+'\')" class="w-full flex items-center gap-3 px-4 py-2.5 rounded-xl text-left mb-0.5 hover:bg-surface-container transition-colors"'+(isNew?' style="background:rgba(26,8,110,0.04)"':'')+' >'
         +'<span class="text-lg flex-shrink-0 w-6 text-center">'+m.icon+'</span><div class="flex-1 min-w-0">'
         +'<p class="text-sm font-medium text-on-surface truncate" style="font-family:Work Sans,sans-serif">'+m.label+'</p>'
         +'<p class="text-xs text-on-surface-variant">'+m.dur+'</p></div>'
-        +(done?'<span class="text-sm text-secondary font-bold flex-shrink-0">&#10003;</span>':'')+'</button>';
+        +(done?'<span class="text-sm text-secondary font-bold flex-shrink-0">&#10003;</span>':(isNew?'<span class="text-xs font-semibold px-1.5 py-0.5 rounded-full flex-shrink-0" style="background:rgba(26,8,110,0.1);color:#1a086e">Nuevo</span>':''))+'</button>';
     }).join('');
   });
 }
 function renderGrid(){
   const el=document.getElementById('mod-grid');if(!el)return;
-  el.innerHTML=MODULES.map(m=>{const done=progress[m.id];
-    return '<button onclick="showPanel(\''+m.id+'\')" class="w-full flex items-center gap-4 p-4 rounded-xl border hover:border-primary-container/50 hover:bg-surface-container transition-all text-left" style="border-color:'+(done?'rgba(90,82,174,0.3)':'#c8c4d3')+';background:'+(done?'rgba(90,82,174,0.04)':'#fff')+'">'
-      +'<div class="w-10 h-10 rounded-xl flex items-center justify-center text-xl flex-shrink-0" style="background:'+(done?'rgba(90,82,174,0.1)':'#ebe6ef')+'">'+m.icon+'</div>'
+  el.innerHTML=MODULES.map(m=>{const done=progress[m.id];const isNew=m.id==='recursos';
+    return '<button onclick="showPanel(\''+m.id+'\')" class="w-full flex items-center gap-4 p-4 rounded-xl border hover:border-primary-container/50 hover:bg-surface-container transition-all text-left" style="border-color:'+(done?'rgba(90,82,174,0.3)':isNew?'rgba(26,8,110,0.25)':'#c8c4d3')+';background:'+(done?'rgba(90,82,174,0.04)':isNew?'rgba(26,8,110,0.02)':'#fff')+'">'
+      +'<div class="w-10 h-10 rounded-xl flex items-center justify-center text-xl flex-shrink-0" style="background:'+(done?'rgba(90,82,174,0.1)':isNew?'rgba(26,8,110,0.08)':'#ebe6ef')+'">'+m.icon+'</div>'
       +'<div class="flex-1 min-w-0"><p class="text-sm font-semibold text-on-surface" style="font-family:Work Sans,sans-serif">'+m.label+'</p><p class="text-xs text-on-surface-variant">'+m.desc+'</p></div>'
       +'<div class="flex items-center gap-2 flex-shrink-0"><span class="text-xs text-on-surface-variant" style="font-family:Work Sans,sans-serif">'+m.dur+'</span>'
       +(done?'<span class="text-xs font-semibold px-2 py-0.5 rounded-full" style="background:rgba(90,82,174,0.1);color:#5a52ae;font-family:Work Sans,sans-serif">&#10003; Hecho</span>'
+        :isNew?'<span class="text-xs font-semibold px-2 py-0.5 rounded-full" style="background:rgba(26,8,110,0.1);color:#1a086e;font-family:Work Sans,sans-serif">Nuevo</span>'
         :'<span class="material-symbols-outlined text-on-surface-variant text-lg" style="font-variation-settings:\'FILL\' 0">chevron_right</span>')
       +'</div></button>';
   }).join('');
@@ -249,6 +251,19 @@ function ul(items){return '<ul class="space-y-2 mb-3">'+items.map(i=>'<li class=
 function dg(items){return '<div class="grid grid-cols-2 gap-3 my-3">'+items.map(i=>'<div class="rounded-xl p-3" style="background:#fafafa;border:1px solid #e5e5e5"><p class="text-xs font-semibold text-on-surface-variant uppercase mb-1" style="font-family:Work Sans,sans-serif">'+i[0]+'</p><p class="text-lg font-semibold text-primary-container" style="font-family:Newsreader,serif">'+i[1]+'</p>'+(i[2]?'<p class="text-xs text-on-surface-variant">'+i[2]+'</p>':'')+'</div>').join('')+'</div>';}
 function p(text){return '<p class="text-sm text-on-surface-variant leading-relaxed mb-3">'+text+'</p>';}
 
+// ── Tarjeta de recurso ────────────────────────────────────────────────────────
+function rcard(icon,name,desc,url,tag,color){
+  color=color||'#1a086e';
+  return '<a href="'+url+'" target="_blank" rel="noopener" class="resource-card flex items-start gap-4 p-4 rounded-xl border mb-3 block" style="border-color:rgba(26,8,110,0.15);text-decoration:none">'
+    +'<div class="w-10 h-10 rounded-xl flex items-center justify-center text-xl flex-shrink-0" style="background:rgba(26,8,110,0.07)">'+icon+'</div>'
+    +'<div class="flex-1 min-w-0">'
+    +'<div class="flex items-center gap-2 mb-1"><p class="text-sm font-semibold text-on-surface" style="font-family:Work Sans,sans-serif">'+name+'</p>'
+    +'<span class="text-xs font-semibold px-2 py-0.5 rounded-full" style="background:rgba(26,8,110,0.08);color:'+color+';font-family:Work Sans,sans-serif">'+tag+'</span></div>'
+    +'<p class="text-xs text-on-surface-variant leading-relaxed">'+desc+'</p></div>'
+    +'<span class="material-symbols-outlined text-on-surface-variant flex-shrink-0 mt-1" style="font-size:18px;font-variation-settings:\'FILL\' 0">open_in_new</span>'
+    +'</a>';
+}
+
 function getContent(id){
   const C={
     bienvenida:()=>wrap(id,
@@ -256,101 +271,121 @@ function getContent(id){
       +p('Propietaria: Claudia María Toro García · Naturaleza: Privado · Carácter Mixto · Calendario A.')
       +hl('<strong>Misión:</strong> Somos una organización educativa de carácter técnico, que brinda formación integral con estándares de excelencia y alta calidad, enfocada en el desarrollo del ser, comprometidos con la responsabilidad social empresarial y la satisfacción de los grupos de interés.')
       +hl('<strong>Visión 2030:</strong> En el 2030 INDECAP será una institución de educación superior reconocida y posicionada a nivel nacional por su cumplimiento en los estándares de calidad académica, responsabilidad social y la pertinencia de sus programas, enmarcados dentro de la formación integral y el desarrollo sostenible.')
-      +card('Certificaciones vigentes',
-        ul(['ISO 9001:2015 — Estándar internacional de gestión de calidad','NTC 5555:2011 — Norma técnica colombiana para formación para el trabajo','Licencias ETDH vigentes en las 3 sedes — Secretaría de Educación de Antioquia','Licencias de Bachillerato vigentes en las 3 sedes']))
-      +card('Tus 3 sedes — todas son tuyas',dg([
-        ['Medellín','Calle 56 #45-26','Metro Prado · 4484794 · Lic. ETDH 00372/2009'],
-        ['Envigado','Cl 37 Sur #43A-84','Parque Ppal · 4484794 · Lic. ETDH 1309/2009'],
-        ['Caldas','Cl 130 Sur #51-65','Parque ppal · 4484794 · Lic. ETDH 7470/2010'],
-        ['Jornadas','4','Mañana · Tarde · Noche · Sabatino']]))
-      +card('Lo que INDECAP ofrece además de tu programa técnico',
-        ul(['<strong>Formación para el Trabajo y Desarrollo Humano (ETDH):</strong> tu programa técnico laboral','<strong>Bachillerato semiescolarizado (CLEI 3 al 6):</strong> para quienes quieran terminar el bachillerato mientras estudian','<strong>Educación Continua:</strong> seminarios, diplomados y cursos de actualización para egresados y comunidad']))
+      +card('Certificaciones vigentes',ul(['ISO 9001:2015 — Estándar internacional de gestión de calidad','NTC 5555:2011 — Norma técnica colombiana para formación para el trabajo','Licencias ETDH vigentes en las 3 sedes — Secretaría de Educación de Antioquia','Licencias de Bachillerato vigentes en las 3 sedes']))
+      +card('Tus 3 sedes — todas son tuyas',dg([['Medellín','Calle 56 #45-26','Metro Prado · 4484794 · Lic. ETDH 00372/2009'],['Envigado','Cl 37 Sur #43A-84','Parque Ppal · 4484794 · Lic. ETDH 1309/2009'],['Caldas','Cl 130 Sur #51-65','Parque ppal · 4484794 · Lic. ETDH 7470/2010'],['Jornadas','4','Mañana · Tarde · Noche · Sabatino']]))
       +su('<strong>Tu certificado tiene respaldo real.</strong> El Certificado Técnico Laboral está avalado por la Secretaría de Educación de Antioquia. Es reconocido por hospitales, clínicas, empresas del sector productivo y entidades públicas de toda la región.')),
 
     programas:()=>{
-      const areas=[
-        {a:'Salud',p:['Auxiliar en Enfermería','Servicios Farmacéuticos','Auxiliar en Salud Oral','Auxiliar en Salud Pública','Administrativo en Salud','Atención al Adulto Mayor']},
-        {a:'Veterinaria',p:['Auxiliar en Veterinaria','Peluquería Canina']},
-        {a:'Belleza y Estética',p:['Cosmetología y Estética Integral']},
-        {a:'Administrativa',p:['Auxiliar Contable y Financiero','Gestión del Talento Humano','Marketing Digital','Seguridad y Salud en el Trabajo (SST)','Atención a la Primera Infancia']},
-        {a:'Tecnología',p:['Técnico en Sistemas','Auxiliar en Desarrollo de Software']},
-        {a:'Deportes',p:['Entrenamiento Deportivo']},
-      ];
-      return wrap(id,
-        p('Tu programa pertenece a la modalidad de Formación para el Trabajo, regulada por el Ministerio de Educación Nacional. INDECAP aplica una metodología teórico-práctica, desarrollando competencias aplicables directamente en el entorno laboral. Al completar el programa recibes un <strong class="text-on-surface">Certificado Técnico Laboral con validez legal</strong> para trabajar en Colombia.')
-        +areas.map(a=>'<div class="mb-4"><p class="text-xs font-semibold text-on-surface-variant uppercase tracking-wider mb-2" style="font-family:Work Sans,sans-serif">'+a.a+'</p><div class="flex flex-wrap gap-2">'+a.p.map(pg=>'<span class="text-xs font-medium px-3 py-1 rounded-full" style="background:rgba(26,8,110,0.08);color:#1a086e;font-family:Work Sans,sans-serif">'+pg+'</span>').join('')+'</div></div>').join('')
-        +card('Educación Continua — más allá de tu programa',
-          p('INDECAP también ofrece seminarios, diplomados y cursos de profundización para egresados y comunidad en general. Una vez termines, puedes seguir actualizándote con nosotros.')
-          +ul(['Seminarios especializados por área','Diplomados de profundización','Cursos de actualización profesional']))
-        +card('El Bachillerato semiescolarizado (CLEI)',
-          p('Si además quieres terminar el bachillerato, INDECAP ofrece el modelo CLEI (Ciclos Lectivos Especiales Integrados), orientado a jóvenes en extraedad y adultos. Los ciclos van del CLEI 3 al CLEI 6 y tienen validez igual a la educación regular.')
-          +ul(['CLEI 3: equivale a 6° y 7° de bachillerato','CLEI 4: equivale a 8° y 9° de bachillerato','CLEI 5: equivale a 10° de bachillerato','CLEI 6: equivale a 11° de bachillerato']))
-        +hl('<strong>¿Quieres cambiar de programa?</strong> Habla con coordinación académica antes de tomar cualquier decisión. Hay opciones de cambio o traslado según los requisitos de cada caso.')
-      );
+      const areas=[{a:'Salud',p:['Auxiliar en Enfermería','Servicios Farmacéuticos','Auxiliar en Salud Oral','Auxiliar en Salud Pública','Administrativo en Salud','Atención al Adulto Mayor']},{a:'Veterinaria',p:['Auxiliar en Veterinaria','Peluquería Canina']},{a:'Belleza y Estética',p:['Cosmetología y Estética Integral']},{a:'Administrativa',p:['Auxiliar Contable y Financiero','Gestión del Talento Humano','Marketing Digital','Seguridad y Salud en el Trabajo (SST)','Atención a la Primera Infancia']},{a:'Tecnología',p:['Técnico en Sistemas','Auxiliar en Desarrollo de Software']},{a:'Deportes',p:['Entrenamiento Deportivo']}];
+      return wrap(id,p('Tu programa pertenece a la modalidad de Formación para el Trabajo, regulada por el Ministerio de Educación Nacional. INDECAP aplica una metodología teórico-práctica, desarrollando competencias aplicables directamente en el entorno laboral.')+areas.map(a=>'<div class="mb-4"><p class="text-xs font-semibold text-on-surface-variant uppercase tracking-wider mb-2" style="font-family:Work Sans,sans-serif">'+a.a+'</p><div class="flex flex-wrap gap-2">'+a.p.map(pg=>'<span class="text-xs font-medium px-3 py-1 rounded-full" style="background:rgba(26,8,110,0.08);color:#1a086e;font-family:Work Sans,sans-serif">'+pg+'</span>').join('')+'</div></div>').join('')+hl('<strong>¿Quieres cambiar de programa?</strong> Habla con coordinación académica antes de tomar cualquier decisión.'));
     },
 
-    evaluacion:()=>wrap(id,
-      p('Cada semestre se evalúa por competencias. Cada competencia tiene su propia duración y se evalúa de forma independiente bajo la siguiente distribución oficial:')
-      +dg([['La institución evalúa','40%','Parcial inicial 15% · Parcial final 25%'],['Tu docente evalúa','60%','Talleres, quizzes, prácticas · Mínimo 3 notas parciales']])
-      +card('Las reglas que debes saber desde el primer día',
-        ul(['Escala numérica del 0 al 5','<strong>Nota mínima para aprobar: mayor a 3.5</strong>','<strong>Con el 25% de inasistencias pierdes la competencia</strong>, sin importar tu nota','En un módulo de 20 sesiones: con 5 faltas ya estás en el límite','En un módulo de 16 sesiones: con 4 faltas ya perdiste','Perder una competencia no significa perder el ciclo completo, pero sí afecta tu avance']))
-      +card('Tu derecho a la revisión de nota',
-        ul(['Si una nota tiene un error, tienes derecho a solicitar revisión formal','Proceso: habla primero con tu docente — la mayoría de errores se resuelven aquí','Si no se resuelve, solicita revisión formal a coordinación académica','Coordinación revisará con el docente y te dará una respuesta por escrito']))
-      +card('Sobre las inasistencias',
-        ul(['Si faltas por enfermedad o fuerza mayor, informa a tu docente el mismo día','Presenta soporte (incapacidad médica, carta de calamidad) a coordinación','El soporte no borra la inasistencia del registro, pero puede considerarse en casos límite','Siempre es mejor avisar que no avisar — el docente puede registrar "excusa" en Q10']))
-      +al('<strong>Importante:</strong> La asistencia en INDECAP no es opcional. El 25% de inasistencias aplica sin excepción. Organiza tu horario, comunica tus situaciones oportunamente y cuida ese porcentaje desde la primera semana.')),
+    evaluacion:()=>wrap(id,p('Cada semestre se evalúa por competencias bajo la siguiente distribución oficial:')+dg([['La institución evalúa','40%','Parcial inicial 15% · Parcial final 25%'],['Tu docente evalúa','60%','Talleres, quizzes, prácticas · Mínimo 3 notas parciales']])+card('Las reglas clave',ul(['Escala numérica del 0 al 5','<strong>Nota mínima para aprobar: mayor a 3.5</strong>','<strong>Con el 25% de inasistencias pierdes la competencia</strong>, sin importar tu nota','Perder una competencia no significa perder el ciclo completo']))+al('<strong>Importante:</strong> La asistencia en INDECAP no es opcional. Organiza tu horario desde la primera semana.')),
 
-    plataforma:()=>wrap(id,
-      p('Q10 es el sistema académico de INDECAP donde puedes consultar en tiempo real tu estado académico completo.')
-      +hl('<strong>La coordinación de tu sede te entregará tu usuario y contraseña en los primeros días.</strong> Si no los has recibido después de la primera semana, acércate a coordinación y solicítalos. No esperes — acceder a tus notas desde el inicio es tu derecho.')
-      +card('Qué puedes ver en Q10',
-        ul(['Tus calificaciones por competencia y por evaluación individual','Tu registro de asistencia: faltas, tardanzas y excusas','El estado general de tu proceso académico en el ciclo','Información sobre tu programa, módulos y docentes']))
-      +card('Buenas prácticas con Q10',
-        ul(['Revisa tus notas al menos una vez por semana — no esperes al cierre del ciclo','Si una nota no aparece después de 5 días hábiles de la evaluación, pregúntale al docente','Si una nota parece incorrecta, primero habla con el docente — muchos errores son de digitación','No compartas tu usuario y contraseña con nadie','Si olvidaste tu contraseña, solicita restablecimiento a coordinación — no a compañeros']))
-      +card('¿Qué hacer si el sistema marca algo incorrecto?',
-        ul(['Verifica la información con tu docente','Si hay un error confirmado, repórtalo a coordinación académica con los datos específicos: materia, fecha, nota incorrecta y nota correcta','Coordinación tiene acceso para corregir errores antes del cierre del ciclo']))
-      +al('<strong>¿Qué pasa si el plazo del ciclo ya venció?</strong> Si el ciclo cerró y tu nota no está registrada o hay un error, repórtalo a coordinación inmediatamente. Después del cierre se requiere autorización especial. No lo dejes pasar.')),
+    plataforma:()=>wrap(id,p('Q10 es el sistema académico de INDECAP donde puedes consultar en tiempo real tu estado académico completo.')+hl('<strong>La coordinación de tu sede te entregará tu usuario y contraseña en los primeros días.</strong>')+card('Qué puedes ver en Q10',ul(['Tus calificaciones por competencia','Tu registro de asistencia','El estado general de tu proceso en el ciclo','Información sobre tu programa y docentes']))+card('Buenas prácticas',ul(['Revisa tus notas al menos una vez por semana','Si una nota no aparece después de 5 días hábiles, pregúntale al docente','Si una nota parece incorrecta, primero habla con el docente']))),
 
-    reglamento:()=>wrap(id,
-      card('Tus derechos como estudiante INDECAP',
-        ul(['Recibir educación de calidad en las condiciones acordadas al momento de tu matrícula','Ser tratado con respeto por docentes, coordinadores y personal administrativo en todo momento','Conocer el sistema de evaluación de cada competencia desde el primer día de clase','Recibir retroalimentación oportuna sobre tu desempeño académico','Solicitar revisión de nota con derecho a respuesta formal si consideras que hay un error','Presentar quejas y sugerencias a través del conducto regular sin temor a represalias','Acceder a tus registros académicos en Q10 en tiempo real','Ser escuchado en situaciones personales que afecten tu proceso académico']))
-      +card('Tus deberes como estudiante INDECAP',
-        ul(['Asistir puntualmente a todas tus clases y prácticas de laboratorio','Llegar con los materiales, uniformes y equipos requeridos por tu programa','Tratar con respeto a docentes, compañeros y personal administrativo en todo momento','Mantener tu matrícula y pagos al día según los acuerdos firmados','Cuidar las instalaciones, equipos y laboratorios — cualquier daño por mal uso puede generar cobro','Reportar situaciones de riesgo o incidentes a coordinación','Comportarte conforme a los valores institucionales dentro y fuera del aula']))
-      +card('El conducto regular — siempre en este orden',
-        dg([['Paso 1','Tu docente','Notas, dudas de clase, situaciones del aula'],['Paso 2','Coordinación académica','Si el docente no resolvió'],['Paso 3','Administración','Exclusivamente para pagos y matrículas'],['Paso 4','Dirección','Casos institucionales graves']]))
-      +card('Situaciones especiales',
-        ul(['<strong>Conflicto con un compañero:</strong> reporta a coordinación, no lo resuelvas por tu cuenta','<strong>Situación personal grave:</strong> habla con coordinación, tenemos recursos de apoyo','<strong>Sentiste que te trataron mal:</strong> tienes derecho a presentar queja formal por escrito','<strong>Uso de equipos y laboratorios:</strong> si hay un equipo en mal estado al llegar, repórtalo antes de usarlo']))
-      +al('<strong>Recuerda:</strong> el conducto regular no es burocracia — es la forma de resolver situaciones de manera efectiva. Saltarte pasos generalmente retrasa la solución.')),
+    reglamento:()=>wrap(id,card('Tus derechos',ul(['Recibir educación de calidad en las condiciones acordadas','Ser tratado con respeto por docentes y personal','Conocer el sistema de evaluación desde el primer día','Solicitar revisión de nota con derecho a respuesta formal','Presentar quejas y sugerencias sin temor a represalias']))+card('Tus deberes',ul(['Asistir puntualmente a todas tus clases','Tratar con respeto a docentes y compañeros','Mantener tu matrícula y pagos al día','Cuidar las instalaciones y equipos']))+card('El conducto regular — siempre en este orden',dg([['Paso 1','Tu docente','Notas, dudas, situaciones del aula'],['Paso 2','Coordinación','Si el docente no resolvió'],['Paso 3','Administración','Exclusivamente para pagos'],['Paso 4','Dirección','Casos institucionales graves']]))),
 
-    pagos:()=>wrap(id,
-      hl('<strong>Lo más importante antes de todo: habla con nosotros antes de atrasarte.</strong> INDECAP entiende que la vida tiene imprevistos. Lo que no podemos hacer es ayudarte si no sabemos que hay un problema. Un acuerdo de pago previo es mucho más fácil de gestionar que una deuda acumulada.')
-      +card('Tu compromiso de pago',
-        ul(['Al matricularte firmaste un acuerdo de pago con fechas y montos específicos — es tu responsabilidad conocerlo','Los pagos se realizan en el área administrativa — no con docentes, no por transferencia a cuentas personales','Guarda siempre tus recibos de pago — son la prueba de tu estado financiero con la institución']))
-      +card('¿Qué pasa si no pago a tiempo?',
-        ul(['Los atrasos prolongados pueden generar bloqueo en Q10 — no puedes ver tus notas','El paz y salvo es requisito obligatorio para ir a prácticas profesionales','El paz y salvo es requisito para recibir tu Certificado Técnico Laboral','Los atrasos <strong>no afectan el trato de tu docente hacia ti en el aula</strong> — si alguien lo hace, tienes derecho a reportarlo']))
-      +card('Si no puedes pagar — qué hacer',
-        ul(['Acércate al área administrativa antes de la fecha de vencimiento','Explica tu situación con honestidad — hay opciones para quien las busca a tiempo','En muchos casos se puede gestionar un acuerdo de pago o facilidad temporal','No esperes a que la deuda se acumule — el problema crece, las opciones se reducen']))
-      +card('Costos adicionales que debes tener en cuenta',
-        ul(['<strong>Formulario de matrícula y carnet estudiantil:</strong> se paga una vez al inicio','<strong>Póliza de responsabilidad civil:</strong> según el programa (especialmente salud y veterinaria)','<strong>Uniformes y dotación:</strong> específicos para cada programa — consulta con coordinación','<strong>ARL (Administradora de Riesgos Laborales):</strong> obligatoria para ir a prácticas — trámite personal','<strong>EPS:</strong> debe estar activa para ir a prácticas','<strong>Esquema de vacunación:</strong> completo para programas de salud: hepatitis B, tétano, influenza']))
-      +al('<strong>Empieza a tramitar ARL, EPS y vacunación con anticipación.</strong> Estos procesos toman tiempo. No esperes a tener todo académico listo para empezar — hazlo en paralelo.')),
+    pagos:()=>wrap(id,hl('<strong>Lo más importante: habla con nosotros antes de atrasarte.</strong> Un acuerdo de pago previo es mucho más fácil de gestionar que una deuda acumulada.')+card('Tu compromiso de pago',ul(['Al matricularte firmaste un acuerdo con fechas y montos específicos','Los pagos se realizan en administración — no con docentes','Guarda siempre tus recibos de pago']))+card('Si no puedes pagar — qué hacer',ul(['Acércate al área administrativa antes del vencimiento','Hay opciones para quien las busca a tiempo','No esperes a que la deuda se acumule']))+al('<strong>Empieza a tramitar ARL, EPS y vacunación con anticipación.</strong> Estos procesos toman tiempo.')),
 
-    practicas:()=>wrap(id,
-      p('Las prácticas profesionales son el momento donde todo lo que aprendiste se convierte en experiencia real. Para muchos egresados de INDECAP, las prácticas son la puerta de entrada directa al empleo — porque la empresa te conoce, ve cómo trabajas, y muchas veces te contratan.')
-      +card('Requisitos para ir a prácticas — lista completa',
-        ul(['✅ <strong>Curso de Humanización y Calidad en el Servicio</strong> aprobado (obligatorio para todos los programas)','✅ Todas las competencias del programa al día','✅ <strong>Paz y salvo</strong> con la institución (sin deudas pendientes)','✅ <strong>ARL</strong> (Administradora de Riesgos Laborales) vigente — trámite personal','✅ <strong>Certificado de EPS</strong> activo','✅ <strong>Esquema de vacunación completo</strong> — especialmente para salud: hepatitis B, tétano, influenza','✅ <strong>Formato de hoja de vida</strong> diligenciado (formato institucional — coordinación te lo entrega)','✅ <strong>Fotocopia del documento de identidad</strong>']))
-      +card('Cómo se asignan las prácticas',
-        p('La coordinación académica gestiona los convenios con las entidades donde realizarás las prácticas. No debes buscar el sitio por tu cuenta — debes cumplir los requisitos y coordinación te asigna el lugar según disponibilidad y perfil del programa.')
-        +al('Empieza a preparar los documentos con anticipación. Los trámites de ARL, vacunación y paz y salvo toman tiempo. No esperes a tener todo académico listo para empezar.'))
-      +card('Tu Certificado Técnico Laboral',
-        p('Al completar todas las competencias y las prácticas, recibes tu Certificado Técnico Laboral con validez legal en Colombia.')
-        +ul(['Todas las competencias aprobadas (nota mayor a 3.5)','Prácticas profesionales completadas y evaluadas','Paz y salvo con la institución','Documentos personales en regla'])
-        +p('<strong>Los grados tienen fechas específicas por ciclo.</strong> Infórmate con coordinación con anticipación — no te quedes fuera por no conocer las fechas.'))
-      +card('Lo que viene después',
-        ul(['Acceso a cursos de actualización y educación continua','Comunidad de egresados INDECAP','Próximamente: plataforma de egresados con cursos gratuitos (RCP, Primeros Auxilios, Código Rojo)']))
-      +su('<strong>El 71.4% de los egresados de INDECAP está trabajando.</strong> Eso no es un número arbitrario — es el resultado de 40 años perfeccionando programas que el mercado laboral reconoce y valora. Cuando termines, harás parte de esa comunidad. Vale la pena llegar hasta el final.')),
+    practicas:()=>wrap(id,p('Las prácticas son el momento donde todo lo que aprendiste se convierte en experiencia real. Para muchos egresados, las prácticas son la puerta de entrada directa al empleo.')+card('Requisitos para ir a prácticas',ul(['✅ Curso de Humanización y Calidad aprobado','✅ Todas las competencias al día','✅ Paz y salvo con la institución','✅ ARL vigente','✅ EPS activo','✅ Esquema de vacunación completo','✅ Hoja de vida formato institucional']))+su('<strong>El 71.4% de los egresados de INDECAP está trabajando.</strong> Vale la pena llegar hasta el final.')),
+
+    // ── MÓDULO CRAD ────────────────────────────────────────────────────────────
+    recursos:()=>{
+      const searchBar='<div class="mb-6 relative">'
+        +'<div class="flex items-center gap-3 p-4 rounded-2xl border" style="background:rgba(26,8,110,0.03);border-color:rgba(26,8,110,0.2)">'
+        +'<span class="material-symbols-outlined text-primary-container" style="font-variation-settings:\'FILL\' 0">search</span>'
+        +'<input id="gs-query" type="text" placeholder="Buscar en Google Académico..." class="search-bar flex-1 bg-transparent text-sm text-on-surface border-none outline-none" style="font-family:Inter,sans-serif">'
+        +'<button onclick="buscarGS()" class="px-4 py-2 rounded-xl text-xs font-semibold text-white" style="background:#1a086e;border:none;cursor:pointer;font-family:Work Sans,sans-serif">Buscar</button>'
+        +'</div>'
+        +'<p class="text-xs text-on-surface-variant mt-2 ml-1">Busca directamente en Google Académico — el motor de búsqueda académica más grande del mundo.</p>'
+        +'</div>';
+
+      const motores='<div class="mb-4">'
+        +'<p class="text-xs font-semibold text-on-surface-variant uppercase tracking-wider mb-3" style="font-family:Work Sans,sans-serif">Motores de búsqueda académica</p>'
+        +rcard('🎓','Google Académico','El estándar principal. Busca artículos, tesis, libros y citas académicas en todas las disciplinas.','https://scholar.google.com','Global','#1a086e')
+        +rcard('🌎','SciELO Colombia','Biblioteca científica de América Latina. Miles de revistas técnicas y científicas en español, con especial relevancia para el contexto colombiano.','https://scielo.org/es/','Internacional','#166534')
+        +rcard('📖','Redalyc','Red de revistas científicas de América Latina y el Caribe. Contenido académico en español de alta calidad.','https://www.redalyc.org','Internacional','#166534')
+        +rcard('🌐','DOAJ — Directory of Academic Journals','Directorio internacional de revistas científicas verificadas y de alta calidad. Más de 20.000 publicaciones indexadas.','https://doaj.org','Internacional','#166534')
+        +'</div>';
+
+      const salud='<div class="mb-4">'
+        +'<p class="text-xs font-semibold text-on-surface-variant uppercase tracking-wider mb-3" style="font-family:Work Sans,sans-serif">Recursos especializados — Salud y Veterinaria</p>'
+        +rcard('🏥','PubMed Central','La base de datos de ciencias biomédicas más importante del mundo. Esencial para Enfermería, Farmacia, Salud Oral y Veterinaria.','https://pubmed.ncbi.nlm.nih.gov','Global','#0369a1')
+        +rcard('💊','LILACS — Literatura Latinoamericana en Salud','Base de datos especializada en salud para América Latina y el Caribe. Ideal para estudios en el contexto colombiano.','https://lilacs.bvsalud.org/es/','Internacional','#0369a1')
+        +rcard('📋','Biblioteca Virtual en Salud Colombia','Portal oficial del Ministerio de Salud con guías clínicas, protocolos y normativa vigente en Colombia.','https://www.minsalud.gov.co/salud/Paginas/BibliotecaDigital.aspx','Oficial Colombia','#7c3aed')
+        +'</div>';
+
+      const minedu='<div class="mb-4">'
+        +'<p class="text-xs font-semibold text-on-surface-variant uppercase tracking-wider mb-3" style="font-family:Work Sans,sans-serif">Repositorios académicos</p>'
+        +rcard('🔍','Repositorio Institucional UN','Repositorio de la Universidad Nacional con tesis, artículos y materiales académicos en todas las disciplinas.','https://repositorio.unal.edu.co','Universidad Nacional','#166534')
+        +rcard('📘','OpenStax','Libros de texto académicos desarrollados por Rice University. Contenido riguroso en ciencias, matemáticas, biología y más.','https://openstax.org','Rice University','#0369a1')
+        +rcard('🌍','Internet Archive — Biblioteca Digital','Más de 20 millones de libros, documentos y publicaciones académicas digitalizadas disponibles para lectura en línea.','https://archive.org','Digital Library','#b45309')
+        +'</div>';
+
+      const ia='<div class="mb-4">'
+        +'<p class="text-xs font-semibold text-on-surface-variant uppercase tracking-wider mb-3" style="font-family:Work Sans,sans-serif">Inteligencia Artificial para el aprendizaje</p>'
+        +rcard('🤖','Consensus','Motor de búsqueda con IA diseñado para encontrar y resumir artículos académicos. Perfecto para sustentar trabajos técnicos con evidencia científica real.','https://consensus.app','IA Académica','#7c3aed')
+        +rcard('🔭','SciSpace (Typeset.io)','Lee y entiende cualquier paper científico con ayuda de IA. Te explica los conceptos complejos en lenguaje simple.','https://typeset.io','IA Académica','#7c3aed')
+        +rcard('💬','Perplexity AI','Búsqueda inteligente con citas en tiempo real. Te da respuestas con fuentes verificables — sin alucinaciones.','https://www.perplexity.ai','IA con fuentes','#7c3aed')
+        +rcard('🧠','Claude — Asistente de estudio','Úsalo para entender conceptos difíciles, preparar exposiciones, revisar textos o practicar para exámenes. Siempre con pensamiento crítico.','https://claude.ai','IA Educativa','#7c3aed')
+        +'</div>';
+
+      const prompts='<div class="rounded-2xl border p-5 mb-4" style="background:rgba(124,58,237,0.03);border-color:rgba(124,58,237,0.2)">'
+        +'<p class="text-xs font-semibold uppercase tracking-wider mb-3" style="font-family:Work Sans,sans-serif;color:#7c3aed">Prompts sugeridos para usar IA en tu carrera</p>'
+        +'<div class="space-y-2">'
+        +['Explícame qué es [término técnico de tu programa] como si tuvieras 15 años',
+          'Resume este artículo científico en 5 puntos clave: [pegar texto]',
+          'Crea un esquema de estudio para el examen de [materia] que incluya los conceptos más importantes',
+          'Dame 10 preguntas de práctica sobre [tema] con sus respuestas',
+          'Explícame la diferencia entre [concepto A] y [concepto B] con ejemplos del contexto colombiano'].map(pr=>
+          '<div class="flex items-start gap-3 p-3 rounded-xl" style="background:rgba(124,58,237,0.05)">'
+          +'<span class="material-symbols-outlined flex-shrink-0 mt-0.5" style="font-size:16px;color:#7c3aed;font-variation-settings:\'FILL\' 1">lightbulb</span>'
+          +'<p class="text-xs text-on-surface-variant leading-relaxed">'+pr+'</p>'
+          +'</div>'
+        ).join('')
+        +'</div>'
+        +'<p class="text-xs mt-3" style="color:#7c3aed">La IA es una herramienta de aprendizaje, no un reemplazo del estudio. Úsala para entender mejor, no para copiar.</p>'
+        +'</div>';
+
+      const etica='<div class="rounded-xl p-4 mb-4" style="background:#fffbeb;border:1px solid #fde68a;border-left:3px solid #f59e0b">'
+        +'<p class="text-xs font-semibold uppercase mb-2" style="color:#92400e;font-family:Work Sans,sans-serif">Uso ético de las herramientas digitales</p>'
+        +'<ul class="space-y-1">'
+        +'<li class="text-xs leading-relaxed" style="color:#92400e">· Cita siempre tus fuentes — los artículos de bases de datos, las páginas web y las respuestas de IA que uses en trabajos</li>'
+        +'<li class="text-xs leading-relaxed" style="color:#92400e">· La IA puede cometer errores — verifica la información importante en fuentes primarias</li>'
+        +'<li class="text-xs leading-relaxed" style="color:#92400e">· Entregar trabajo generado completamente por IA como tuyo propio es deshonestidad académica</li>'
+        +'<li class="text-xs leading-relaxed" style="color:#92400e">· El objetivo es aprender — usa las herramientas para entender mejor, no para saltarte el proceso</li>'
+        +'</ul></div>';
+
+      return wrap(id,
+        '<div class="mb-4 rounded-2xl p-5" style="background:linear-gradient(135deg,rgba(26,8,110,0.06),rgba(124,58,237,0.06));border:1px solid rgba(26,8,110,0.15)">'
+        +'<div class="flex items-center gap-3 mb-2">'
+        +'<span class="text-2xl">🔬</span>'
+        +'<div><p class="text-sm font-semibold text-primary-container" style="font-family:Newsreader,serif">Centro de Recursos Académicos Digitales</p>'
+        +'<p class="text-xs text-on-surface-variant">CRAD · INDECAP · Medellín · Envigado · Caldas</p></div></div>'
+        +'<p class="text-xs text-on-surface-variant leading-relaxed">Acceso 24/7 a bases de datos científicas, herramientas de inteligencia artificial y repositorios académicos internacionales. El conocimiento disponible para todos los estudiantes INDECAP.</p>'
+        +'</div>'
+        +searchBar
+        +motores
+        +salud
+        +minedu
+        +ia
+        +prompts
+        +etica
+      );
+    },
   };
   return C[id]?C[id]():'<div class="max-w-3xl mx-auto px-6 py-8">'+back()+'<p class="text-on-surface-variant">Módulo en construcción.</p></div>';
 }
+
+function buscarGS(){
+  const q=document.getElementById('gs-query').value.trim();
+  if(!q)return;
+  window.open('https://scholar.google.com/scholar?q='+encodeURIComponent(q),'_blank');
+}
+document.addEventListener('keydown',function(e){
+  if(e.key==='Enter'&&document.getElementById('gs-query')===document.activeElement)buscarGS();
+});
 
 function openMM(){document.getElementById('mm').classList.add('open');document.getElementById('mo').classList.add('open');}
 function closeMM(){document.getElementById('mm').classList.remove('open');document.getElementById('mo').classList.remove('open');}
