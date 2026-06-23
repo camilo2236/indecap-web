@@ -256,7 +256,7 @@ export async function GET(req: NextRequest) {
   try {
     const pdfBytes = await generarPDF(data)
 
-    return new NextResponse(pdfBytes, {
+    return new NextResponse(Buffer.from(pdfBytes), {
       headers: {
         'Content-Type': 'application/pdf',
         'Content-Disposition': `attachment; filename="INDECAP_Reporte_${doc}.pdf"`,
@@ -268,3 +268,4 @@ export async function GET(req: NextRequest) {
     return NextResponse.json({ error: 'Error generando PDF' }, { status: 500 })
   }
 }
+
