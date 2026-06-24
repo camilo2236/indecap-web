@@ -1011,15 +1011,41 @@ function cambiarSede(sede,btn){
 }
 
 // Form → WhatsApp por sede
-function handleForm(e){
+async function handleForm(e){
   e.preventDefault();
-  const sedeEl=e.target.querySelector('select');
+  const form=e.target;
+  const btn=form.querySelector('button[type="submit"]');
+  const nombreEl=form.querySelector('input[type="text"]');
+  const waEl=form.querySelector('input[type="tel"]');
+  const emailEl=form.querySelector('input[type="email"]');
+  const sedeEl=form.querySelector('select');
+  const nombre=nombreEl?nombreEl.value.trim():'';
+  const celular=waEl?waEl.value.trim():'';
+  const correo=emailEl?emailEl.value.trim():'';
   const sede=sedeEl?sedeEl.value:'medellin';
+  if(btn){btn.disabled=true;btn.textContent='Enviando...';}
+  try{
+    await fetch('/api/captacion',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({
+        nombre,celular,correo,
+        programa:'Cosmetología y Estética Integral',
+        sede:sede.charAt(0).toUpperCase()+sede.slice(1)
+      })
+    });
+  }catch(err){console.error('captacion error:',err);}
+  if(typeof fbq!=='undefined'){
+    fbq('track','Lead',{
+      content_name:'Cosmetología y Estética Integral',
+      content_category:sede,
+      value:1885000,currency:'COP'
+    });
+  }
   const nums={medellin:'573022389760',envigado:'573174342783',caldas:'573008948517'};
-  const msg=encodeURIComponent('Hola INDECAP, quiero información sobre el programa de Cosmetología y Estética Integral. ¿Me pueden orientar?');
-  // Track Lead
-  if(typeof fbq!=='undefined')fbq('track','Lead');
+  const msg=encodeURIComponent('Hola INDECAP, quiero información sobre Cosmetología y Estética Integral. ¿Me pueden orientar?');
   window.open('https://wa.me/'+(nums[sede]||nums.medellin)+'?text='+msg,'_blank');
+  if(btn){btn.disabled=false;btn.innerHTML='<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2L11 13M22 2L15 22l-4-9-9-4 20-7z"/></svg> Quiero inscribirme';}
   return false;
 }
 </script>

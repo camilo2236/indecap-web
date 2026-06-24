@@ -1,7 +1,13 @@
 import { Resend } from "resend";
 import { NextRequest, NextResponse } from "next/server";
+import { createClient } from "@supabase/supabase-js";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
+
+const supabaseAdmin = createClient(
+  process.env.NEXT_PUBLIC_SUPABASE_URL!,
+  process.env.SUPABASE_SERVICE_ROLE_KEY!
+);
 
 const rateLimit = new Map<string, { count: number; reset: number }>();
 function checkRateLimit(ip: string): boolean {
@@ -40,6 +46,30 @@ function validarCorreo(email: string): boolean {
 
 const SEDES_VALIDAS = ["Medellin", "Envigado", "Caldas"];
 
+// ── Guardar en Supabase contacts ──────────────────────────────────────────────
+async function guardarContacto(s: Record<string, string>, fuente: string) {
+  try {
+    const telefono = s.celular.replace(/\D/g, "");
+    const emailFinal = s.correo || `${telefono}@web.indecap.edu.co`;
+
+    await supabaseAdmin.from("contacts").upsert({
+      nombre:           s.nombre,
+      email:            emailFinal,
+      telefono:         s.celular,
+      programa_interes: s.programa,
+      fuente:           fuente || "Landing Web",
+      estado:           "nuevo",
+      whatsapp_click:   false,
+      notas:            `Sede: ${s.sede}`,
+      created_at:       new Date().toISOString(),
+      updated_at:       new Date().toISOString(),
+    }, { onConflict: "email" });
+  } catch (err) {
+    // No fallar el endpoint si Supabase falla
+    console.error("Error guardando contacto en Supabase:", err);
+  }
+}
+
 export async function POST(req: NextRequest) {
   try {
     const contentType = req.headers.get("content-type") || "";
@@ -64,9 +94,8 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: "Cuerpo invalido" }, { status: 400 });
     }
 
-    const { nombre, celular, correo, programa, sede } = body as Record<string, unknown>;
+    const { nombre, celular, correo, programa, sede, fuente } = body as Record<string, unknown>;
 
-    // Validar campos obligatorios
     if (!nombre || !celular || !programa || !sede) {
       return NextResponse.json({ error: "Faltan campos obligatorios" }, { status: 400 });
     }
@@ -83,6 +112,7 @@ export async function POST(req: NextRequest) {
       correo:   sanitize(correo),
       programa: sanitize(programa),
       sede:     sanitize(sede),
+      fuente:   sanitize(fuente) || "Landing Web",
     };
 
     const sedeNorm = s.sede.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
@@ -91,6 +121,10 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: "Sede inválida" }, { status: 400 });
     }
 
+    // ── 1. Guardar en Supabase (no bloquea si falla) ──
+    await guardarContacto(s, s.fuente);
+
+    // ── 2. Email por Resend (igual que antes) ────────────────────────────────
     const fila = (label: string, val: string) =>
       val ? `<tr><td style="padding:6px 0;color:#6B7280;font-size:12px;width:40%">${label}</td><td style="padding:6px 0;color:#080F14;font-size:13px;font-weight:600">${val}</td></tr>` : "";
 
@@ -102,7 +136,7 @@ export async function POST(req: NextRequest) {
 <div style="max-width:560px;margin:32px auto;background:#ffffff;border-radius:16px;overflow:hidden;box-shadow:0 4px 24px rgba(0,0,0,0.08)">
   <div style="background:linear-gradient(135deg,#1a086e,#312783);padding:28px 32px">
     <p style="margin:0;font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.6)">INDECAP · Nuevo prospecto</p>
-    <h1 style="margin:8px 0 0;font-size:22px;font-weight:800;color:#ffffff">📥 Solicitud de información</h1>
+    <h1 style="margin:8px 0 0;font-size:22px;font-weight:800;color:#ffffff">Solicitud de información</h1>
   </div>
   <div style="padding:28px 32px">
     <table style="width:100%;border-collapse:collapse">
@@ -111,13 +145,17 @@ export async function POST(req: NextRequest) {
       ${fila("Correo", s.correo)}
       ${fila("Programa de interés", s.programa)}
       ${fila("Sede más cercana", s.sede)}
+      ${fila("Fuente", s.fuente)}
     </table>
     <div style="margin-top:24px;background:#f9fafb;border-radius:10px;padding:16px;border-left:4px solid #F0A500">
       <p style="margin:0;font-size:12px;color:#6B7280;font-weight:600;text-transform:uppercase;letter-spacing:0.08em">Acción recomendada</p>
       <p style="margin:6px 0 0;font-size:14px;color:#080F14;font-weight:600">Contactar en las próximas <strong>2 horas</strong> para maximizar conversión.</p>
     </div>
-    <div style="margin-top:20px;padding:14px;background:#eff6ff;border-radius:10px;border:1px solid #dbeafe">
-      <p style="margin:0;font-size:11px;color:#1e40af;font-weight:700;text-transform:uppercase;letter-spacing:0.08em">📊 Para Google Sheets</p>
+    <div style="margin-top:16px;padding:12px 16px;background:#f0fdf4;border-radius:10px;border:1px solid #bbf7d0">
+      <p style="margin:0;font-size:11px;color:#166534;font-weight:700">Guardado en Supabase CRM</p>
+    </div>
+    <div style="margin-top:16px;padding:14px;background:#eff6ff;border-radius:10px;border:1px solid #dbeafe">
+      <p style="margin:0;font-size:11px;color:#1e40af;font-weight:700;text-transform:uppercase;letter-spacing:0.08em">Para registro</p>
       <p style="margin:6px 0 0;font-size:12px;color:#1e3a8a;font-family:monospace">${s.nombre} | ${s.celular} | ${s.correo || "—"} | ${s.programa} | ${s.sede} | ${new Date().toLocaleString("es-CO", { timeZone: "America/Bogota" })}</p>
     </div>
   </div>
@@ -130,9 +168,9 @@ export async function POST(req: NextRequest) {
 
     await resend.emails.send({
       from: "INDECAP <onboarding@resend.dev>",
-to: ["camilo2236@gmail.com"],
-      subject: `📥 Nuevo prospecto: ${s.nombre} — ${s.programa}`,
-      html:    htmlEmail,
+      to: ["camilo2236@gmail.com"],
+      subject: `Nuevo prospecto: ${s.nombre} — ${s.programa}`,
+      html: htmlEmail,
     });
 
     return NextResponse.json({ ok: true });
