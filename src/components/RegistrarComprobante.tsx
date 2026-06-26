@@ -38,7 +38,7 @@ const BANCOS_MEDIOS = [
   // Consignaciones bancarias
   "Davivienda — Cuenta de Ahorros #036370192084",
   "Banco AV Villas — Cuenta Corriente #477007363",
-  "Bancolombia — Cuenta de Ahorros #34217239046",
+  "Bancolombia — Cuenta de Ahorros ",
   // Pagos digitales / QR Davivienda
   "Davivienda — QR (Terminal 000 · #914238646)",
   // Otros métodos
