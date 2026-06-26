@@ -127,7 +127,7 @@ async function notificarEmail(data: {
   try {
     await resend.emails.send({
       from:    "INDECAP Pagos <onboarding@resend.dev>",
-      to:      ["camilo2236@gmail.com"],
+      to:      ["camilo2236@gmail.com", "caro_maria123@hotmail.com"],
       subject: `🧾 Comprobante: ${data.nombre} — ${data.programa} — $${Number(data.monto).toLocaleString("es-CO")}`,
       html,
     })
