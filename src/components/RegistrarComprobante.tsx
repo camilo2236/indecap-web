@@ -34,7 +34,22 @@ const TIPOS_PAGO = [
   "Certificado de estudio",
 ];
 
-// Montos frecuentes por tipo de pago
+const BANCOS_MEDIOS = [
+  // Consignaciones bancarias
+  "Davivienda — Cuenta de Ahorros #036370192084",
+  "Banco AV Villas — Cuenta Corriente #477007363",
+  "Bancolombia — Cuenta de Ahorros #34217239046",
+  // Pagos digitales / QR Davivienda
+  "Davivienda — QR (Terminal 000 · #914238646)",
+  // Otros métodos
+  "PSE",
+  "Datáfono",
+  "Cesantías",
+  "Fondo Nacional del Ahorro",
+  "Efecty",
+  "Otro",
+];
+
 const MONTOS_RAPIDOS: Record<string, number[]> = {
   "Cuota inicial":      [500000],
   "Cuota 1":            [463200, 314700, 209100, 239900, 237480],
@@ -46,7 +61,6 @@ const MONTOS_RAPIDOS: Record<string, number[]> = {
   "Uniforme":           [149000],
 };
 
-// Ciclos por programa
 const CICLOS_POR_PROGRAMA: Record<string, number> = {
   "Auxiliar en Enfermería":          3,
   "Cosmetología y Estética Integral": 2,
@@ -62,9 +76,8 @@ const CICLOS_POR_PROGRAMA: Record<string, number> = {
   "Entrenamiento Deportivo":          2,
   "Talento Humano":                   3,
   "Auxiliar Contable":                3,
-}
+};
 
-// ── Helpers ───────────────────────────────────────────────────────────────
 const formatCOP = (val: string) => {
   const n = val.replace(/\D/g, "");
   if (!n) return "";
@@ -83,26 +96,28 @@ const montoAlerta = (m: number): string | null => {
 type Estado = "idle" | "loading" | "success" | "error";
 
 export default function RegistrarComprobante() {
-  const [nombre,    setNombre]    = useState("");
-  const [documento, setDocumento] = useState("");
-  const [tipoDoc,   setTipoDoc]   = useState("CC");
-  const [telefono,  setTelefono]  = useState("");
-  const [correo,    setCorreo]    = useState("");
-  const [ciclo,     setCiclo]     = useState("");
-  const [programa,  setPrograma]  = useState("");
-  const [sede,      setSede]      = useState("");
-  const [tipoPago,  setTipoPago]  = useState("Cuota inicial");
-  const [montoStr,  setMontoStr]  = useState("");
-  const [file,      setFile]      = useState<File | null>(null);
-  const [preview,   setPreview]   = useState<string | null>(null);
-  const [notas,     setNotas]     = useState("");
-  const [estado,    setEstado]    = useState<Estado>("idle");
-  const [errorMsg,  setErrorMsg]  = useState("");
-  const fileInputRef              = useRef<HTMLInputElement>(null);
+  const [nombre,        setNombre]        = useState("");
+  const [documento,     setDocumento]     = useState("");
+  const [tipoDoc,       setTipoDoc]       = useState("CC");
+  const [telefono,      setTelefono]      = useState("");
+  const [correo,        setCorreo]        = useState("");
+  const [ciclo,         setCiclo]         = useState("");
+  const [programa,      setPrograma]      = useState("");
+  const [sede,          setSede]          = useState("");
+  const [tipoPago,      setTipoPago]      = useState("Cuota inicial");
+  const [banco,         setBanco]         = useState("");
+  const [fechaPago,     setFechaPago]     = useState("");
+  const [montoStr,      setMontoStr]      = useState("");
+  const [file,          setFile]          = useState<File | null>(null);
+  const [preview,       setPreview]       = useState<string | null>(null);
+  const [notas,         setNotas]         = useState("");
+  const [estado,        setEstado]        = useState<Estado>("idle");
+  const [errorMsg,      setErrorMsg]      = useState("");
+  const fileInputRef                      = useRef<HTMLInputElement>(null);
 
   const montoNum      = parseMonto(montoStr);
   const totalCiclos   = programa ? (CICLOS_POR_PROGRAMA[programa] ?? 0) : 0;
-  const alerta       = montoAlerta(montoNum);
+  const alerta        = montoAlerta(montoNum);
   const montosRapidos = MONTOS_RAPIDOS[tipoPago] || [];
 
   const handleFile = (f: File | null) => {
@@ -119,9 +134,11 @@ export default function RegistrarComprobante() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!file) { setErrorMsg("Debes adjuntar el comprobante de pago"); return; }
+    if (!file)         { setErrorMsg("Debes adjuntar el comprobante de pago"); return; }
     if (montoNum <= 0) { setErrorMsg("Por favor ingresa el valor del pago"); return; }
-    if (alerta) { setErrorMsg(alerta); return; }
+    if (alerta)        { setErrorMsg(alerta); return; }
+    if (!banco)        { setErrorMsg("Selecciona el banco o medio de pago"); return; }
+    if (!fechaPago)    { setErrorMsg("Ingresa la fecha del comprobante"); return; }
 
     setEstado("loading");
     setErrorMsg("");
@@ -135,6 +152,8 @@ export default function RegistrarComprobante() {
     data.append("programa",    programa);
     data.append("sede",        sede);
     data.append("tipo_pago",   tipoPago);
+    data.append("banco",       banco);
+    data.append("fecha_pago",  fechaPago);
     data.append("ciclo",       ciclo);
     data.append("monto",       String(montoNum));
     data.append("notas",       notas);
@@ -151,7 +170,6 @@ export default function RegistrarComprobante() {
     }
   };
 
-  // ── Pantalla de éxito ────────────────────────────────────────────────────
   if (estado === "success") {
     return (
       <div className="rounded-[24px] bg-white border border-gray-100 shadow-sm p-10 text-center">
@@ -176,7 +194,6 @@ export default function RegistrarComprobante() {
     );
   }
 
-  // ── Formulario ────────────────────────────────────────────────────────────
   return (
     <div className="rounded-[28px] bg-white border border-gray-100 shadow-sm p-10">
       <h3 className="font-[family-name:var(--font-playfair)] text-2xl font-bold text-[#080F14] mb-2">
@@ -266,7 +283,7 @@ export default function RegistrarComprobante() {
           </div>
         </div>
 
-        {/* Ciclo (solo si el programa tiene ciclos) */}
+        {/* Ciclo */}
         {totalCiclos > 0 && (
           <div>
             <label className="block text-xs font-bold text-[#374151] uppercase tracking-wide mb-1.5">
@@ -306,8 +323,6 @@ export default function RegistrarComprobante() {
             <label className="block text-xs font-bold text-[#374151] uppercase tracking-wide mb-1.5">
               Valor pagado (COP) *
             </label>
-
-            {/* Montos rápidos */}
             {montosRapidos.length > 0 && (
               <div className="flex flex-wrap gap-1.5 mb-2">
                 {montosRapidos.map(m => (
@@ -323,31 +338,23 @@ export default function RegistrarComprobante() {
                 ))}
               </div>
             )}
-
             <div className="relative">
               <span className="absolute left-3 top-1/2 -translate-y-1/2 text-[#374151] font-bold text-sm pointer-events-none">$</span>
-              <input
-                required
-                value={montoStr}
+              <input required value={montoStr}
                 onChange={e => setMontoStr(formatCOP(e.target.value))}
-                placeholder="0"
-                inputMode="numeric"
+                placeholder="0" inputMode="numeric"
                 className={`w-full rounded-xl border pl-7 pr-3 py-2.5 text-sm font-semibold text-[#080F14] outline-none transition-colors ${
                   alerta
                     ? "border-orange-300 bg-orange-50 focus:border-orange-400"
                     : "border-gray-200 focus:border-[#312783]"
                 }`} />
             </div>
-
-            {/* Alerta monto sospechoso */}
             {alerta && (
               <div className="flex items-center gap-2 mt-1.5 p-2 bg-orange-50 border border-orange-200 rounded-lg">
                 <AlertCircle className="h-3.5 w-3.5 text-orange-500 flex-shrink-0" />
                 <p className="text-xs text-orange-700">{alerta}</p>
               </div>
             )}
-
-            {/* Confirmación verde del monto */}
             {montoNum > 0 && !alerta && (
               <div className="flex items-center gap-2 mt-1.5 p-2 bg-[#E1F5EE] border border-[#0F6E56]/20 rounded-lg">
                 <CheckCircle className="h-3.5 w-3.5 text-[#0F6E56] flex-shrink-0" />
@@ -359,13 +366,34 @@ export default function RegistrarComprobante() {
           </div>
         </div>
 
+        {/* ── NUEVOS: Banco + Fecha ── */}
+        <div className="grid md:grid-cols-2 gap-4">
+          <div>
+            <label className="block text-xs font-bold text-[#374151] uppercase tracking-wide mb-1.5">
+              Banco o medio de pago *
+            </label>
+            <select required value={banco} onChange={e => setBanco(e.target.value)}
+              className="w-full rounded-xl border border-gray-200 px-3 py-2.5 text-sm text-[#080F14] outline-none focus:border-[#312783]">
+              <option value="">Selecciona el medio</option>
+              {BANCOS_MEDIOS.map(b => <option key={b}>{b}</option>)}
+            </select>
+          </div>
+          <div>
+            <label className="block text-xs font-bold text-[#374151] uppercase tracking-wide mb-1.5">
+              Fecha del comprobante *
+            </label>
+            <input required type="date" value={fechaPago}
+              onChange={e => setFechaPago(e.target.value)}
+              max={new Date().toISOString().split("T")[0]}
+              className="w-full rounded-xl border border-gray-200 px-3 py-2.5 text-sm text-[#080F14] outline-none focus:border-[#312783]" />
+          </div>
+        </div>
+
         {/* Upload comprobante */}
         <div>
           <label className="block text-xs font-bold text-[#374151] uppercase tracking-wide mb-1.5">
             Foto del comprobante *
           </label>
-
-          {/* Preview de imagen */}
           {preview ? (
             <div className="relative rounded-xl overflow-hidden border-2 border-[#0F6E56] mb-2">
               <img src={preview} alt="Comprobante" className="w-full max-h-48 object-cover" />
@@ -381,7 +409,6 @@ export default function RegistrarComprobante() {
               </div>
             </div>
           ) : null}
-
           <label htmlFor="comprobante-input"
             className={`flex flex-col items-center justify-center gap-2 rounded-xl border-2 border-dashed p-8 cursor-pointer transition-colors ${
               file && !preview
