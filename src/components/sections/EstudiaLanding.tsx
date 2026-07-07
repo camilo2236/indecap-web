@@ -146,7 +146,7 @@ export function EstudiaLanding() {
             <div className="absolute inset-0 bg-gradient-to-tr from-[var(--indecap-blue)]/30 to-[#00dbe9]/10 rounded-2xl blur-3xl -rotate-6 scale-105" />
             <div className="relative rounded-2xl border border-[var(--indecap-blue)]/40 bg-white/5 backdrop-blur p-2">
               <img
-                src="/images/estudia/estudia-hero.jpg"
+                src="/images/estudia/estudia-requisitos.jpg"
                 alt="Convocatoria ESTUD-IA: Estudia gratis Auxiliar en Sistemas Informáticos con INDECAP"
                 className="w-full h-auto rounded-xl object-cover aspect-square"
               />
@@ -242,7 +242,7 @@ export function EstudiaLanding() {
                   Verifica si aplicas para esta beca del 100%. Son solo tres condiciones:
                 </p>
                 <img
-                  src="/images/estudia/estudia-requisitos.jpg"
+                  src="/images/estudia/estudia-hero.jpg"
                   alt="¿Quiénes pueden participar en ESTUD-IA? Requisitos de la convocatoria"
                   className="w-full h-auto rounded-xl object-cover aspect-square border border-white/10"
                 />
