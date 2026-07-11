@@ -46,21 +46,48 @@ function validarCorreo(email: string): boolean {
 const REQUISITOS_VALIDOS = ["Sí, cumplo todos", "No estoy seguro"];
 const PROGRAMA = "Auxiliar en Sistemas Informáticos";
 
-// ── Guardar en Supabase leads_web (no bloquea el endpoint si falla) ──────────
+// ── Guardar en Supabase leads_web ────────────────────────────────────────────
+// La tabla tiene DOS índices únicos separados (celular y correo). Un upsert simple
+// no puede arbitrar ambos, así que buscamos primero si el lead ya existe por
+// cualquiera de los dos y actualizamos; si no, insertamos. Nunca falla por duplicado.
 async function guardarLead(s: Record<string, string>) {
   try {
-    await supabaseAdmin.from("leads_web").insert({
-      nombre:        s.nombre,
-      celular:       s.whatsapp,
-      correo:        s.correo,
-      programa:      PROGRAMA,
-      sede:          "Medellin",
-      fuente:        s.fuente || "Landing ESTUD-IA",
-      estado:        "nuevo",
-      notas:         `Cumple requisitos: ${s.requisitos}`,
-      email_enviado: false,
-      created_at:    new Date().toISOString(),
-    });
+    const datos = {
+      nombre:   s.nombre,
+      celular:  s.whatsapp,
+      correo:   s.correo,
+      programa: PROGRAMA,
+      sede:     "Medellin",
+      fuente:   s.fuente || "Landing ESTUD-IA",
+      estado:   "nuevo",
+      notas:    `Cumple requisitos: ${s.requisitos}`,
+    };
+
+    // ¿Ya existe por teléfono o por correo?
+    const { data: existente, error: selErr } = await supabaseAdmin
+      .from("leads_web")
+      .select("id")
+      .or(`celular.eq.${s.whatsapp},correo.eq.${s.correo}`)
+      .limit(1)
+      .maybeSingle();
+
+    if (selErr) {
+      console.error("Error consultando lead existente:", selErr.message);
+      return;
+    }
+
+    if (existente) {
+      const { error: updErr } = await supabaseAdmin
+        .from("leads_web")
+        .update(datos)
+        .eq("id", existente.id);
+      if (updErr) console.error("Error actualizando lead ESTUD-IA:", updErr.message);
+    } else {
+      const { error: insErr } = await supabaseAdmin
+        .from("leads_web")
+        .insert(datos);
+      if (insErr) console.error("Error insertando lead ESTUD-IA:", insErr.message);
+    }
   } catch (err) {
     console.error("Error guardando lead ESTUD-IA en leads_web:", err);
   }
