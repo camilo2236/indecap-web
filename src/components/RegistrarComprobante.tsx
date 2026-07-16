@@ -88,7 +88,7 @@ const parseMonto = (val: string) =>
   parseInt(val.replace(/\./g, "").replace(/,/g, "")) || 0;
 
 const montoAlerta = (m: number): string | null => {
-  if (m > 0 && m < 50000)  return "⚠️ El valor parece muy bajo. ¿Olvidaste algunos ceros?";
+  if (m > 0 && m < 10000)  return "⚠️ El valor parece muy bajo. ¿Olvidaste algunos ceros?";
   if (m > 6000000)          return "⚠️ El valor parece muy alto. ¿Pusiste demasiados ceros?";
   return null;
 };

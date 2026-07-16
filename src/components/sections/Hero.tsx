@@ -6,18 +6,23 @@ import { CheckCircle, Loader2, Send, ArrowRight } from "lucide-react";
 declare const fbq: (...args: unknown[]) => void;
 
 const SLIDES = [
-  { src: "/images/programs/enfermeria/enfermeria-grupo-clase.jpg",     label: "Grupo de Enfermería",          escuela: "Escuela de Salud" },
-  { src: "/images/programs/cosmetologia/cosmo-grupo-feliz.jpg",        label: "Comunidad INDECAP",            escuela: "Comunidad INDECAP" },
-  { src: "/images/programs/enfermeria/enfermeria-hero.jpg",            label: "Auxiliar en Enfermería",       escuela: "Escuela de Salud" },
-  { src: "/images/programs/cosmetologia/cosmo-estudiantes-selfie.jpg", label: "Estudiantes Cosmetología",     escuela: "Escuela de Belleza" },
-  { src: "/images/programs/cosmetologia/cosmo-clase-estudio.jpg",      label: "Clases INDECAP",               escuela: "Escuela de Belleza" },
-  { src: "/images/programs/hero-bienvenidos.jpg",                      label: "Bienvenida INDECAP",           escuela: "Comunidad INDECAP" },
-  { src: "/images/programs/IMG_0166-hero.jpg",                         label: "Enfermería y Veterinaria",     escuela: "Escuela de Salud" },
-  { src: "/images/programs/IMG_0186-hero.jpg",                         label: "Auxiliar en Veterinaria",      escuela: "Escuela Veterinaria" },
-  { src: "/images/programs/veterinaria/veterinaria-hero.jpg",          label: "Auxiliar en Veterinaria",      escuela: "Escuela Veterinaria" },
-  { src: "/images/programs/salud-oral/salud-oral-hero.jpg",            label: "Auxiliar en Salud Oral",       escuela: "Escuela de Salud" },
-  { src: "/images/programs/farmacia/farmacia-hero.jpg",                label: "Servicios Farmacéuticos",      escuela: "Escuela de Salud" },
-  { src: "/images/programs/mercadeo/mercadeo-hero.jpg",                label: "Técnico en Marketing Digital", escuela: "Escuela de Administración" },
+  { src: "/images/hero/feria-flores/estudiantes-fachada-desktop.jpg",    label: "Estudiantes INDECAP",          escuela: "Comunidad INDECAP" },
+  { src: "/images/hero/feria-flores/silletero-indecap-desktop.jpg",      label: "Feria de las Flores",          escuela: "Comunidad INDECAP" },
+  { src: "/images/hero/feria-flores/estudiantes-escaleras-desktop.jpg",  label: "Estudiantes INDECAP",          escuela: "Comunidad INDECAP" },
+  { src: "/images/programs/cosmetologia/cosmo-grupo-feliz.jpg",          label: "Comunidad INDECAP",            escuela: "Comunidad INDECAP" },
+  { src: "/images/programs/enfermeria/enfermeria-hero.jpg",              label: "Auxiliar en Enfermería",       escuela: "Escuela de Salud" },
+  { src: "/images/hero/feria-flores/caminata-perros-desktop.jpg",        label: "Caminata Canina INDECAP",      escuela: "Escuela Veterinaria" },
+  { src: "/images/programs/cosmetologia/cosmo-estudiantes-selfie.jpg",   label: "Estudiantes Cosmetología",     escuela: "Escuela de Belleza" },
+  { src: "/images/programs/cosmetologia/cosmo-clase-estudio.jpg",        label: "Clases INDECAP",               escuela: "Escuela de Belleza" },
+  { src: "/images/hero/feria-flores/carros-antiguos-desktop.jpg",        label: "Desfile de Autos Clásicos",    escuela: "Comunidad INDECAP" },
+  { src: "/images/programs/hero-bienvenidos.jpg",                        label: "Bienvenida INDECAP",           escuela: "Comunidad INDECAP" },
+  { src: "/images/programs/IMG_0166-hero.jpg",                           label: "Enfermería y Veterinaria",     escuela: "Escuela de Salud" },
+  { src: "/images/programs/IMG_0186-hero.jpg",                           label: "Auxiliar en Veterinaria",      escuela: "Escuela Veterinaria" },
+  { src: "/images/hero/feria-flores/festival-trova-desktop.jpg",         label: "Festival de la Trova",         escuela: "Comunidad INDECAP" },
+  { src: "/images/programs/veterinaria/veterinaria-hero.jpg",            label: "Auxiliar en Veterinaria",      escuela: "Escuela Veterinaria" },
+  { src: "/images/programs/salud-oral/salud-oral-hero.jpg",              label: "Auxiliar en Salud Oral",       escuela: "Escuela de Salud" },
+  { src: "/images/programs/farmacia/farmacia-hero.jpg",                  label: "Servicios Farmacéuticos",      escuela: "Escuela de Salud" },
+  { src: "/images/programs/mercadeo/mercadeo-hero.jpg",                  label: "Técnico en Marketing Digital", escuela: "Escuela de Administración" },
 ];
 
 const programasTecnicos = [

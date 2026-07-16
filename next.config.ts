@@ -12,7 +12,7 @@ const nextConfig: NextConfig = {
       { protocol: "https", hostname: "indecap-web.vercel.app" },
       { protocol: "https", hostname: "**.vercel.app" },
       { protocol: "https", hostname: "i.ytimg.com" },
-      { protocol: "https", hostname: "www.facebook.com" }, // Permite imágenes o recursos remotos de Facebook si se requieren
+      { protocol: "https", hostname: "www.facebook.com" },
     ],
   },
 
@@ -21,29 +21,33 @@ const nextConfig: NextConfig = {
       {
         source: "/(.*)",
         headers: [
-          // Evita clickjacking
           { key: "X-Frame-Options", value: "SAMEORIGIN" },
-          // Evita sniffing de MIME type
           { key: "X-Content-Type-Options", value: "nosniff" },
-          // Fuerza HTTPS por 1 año
-          { key: "Strict-Transport-Security", value: "max-age=31536000; includeSubDomains" },
-          // Controla info del referrer
+          { key: "Strict-Transport-Security", value: "max-age=31536000; includeSubDomains; preload" },
           { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
-          // Deshabilita features innecesarias
           { key: "Permissions-Policy", value: "camera=(), microphone=(), geolocation=()" },
-          // Cross-Origin policies
           { key: "Cross-Origin-Opener-Policy", value: "same-origin" },
           { key: "Cross-Origin-Embedder-Policy", value: "unsafe-none" },
-          // Content Security Policy (Perfeccionado para Meta/Facebook Pixel)
           {
             key: "Content-Security-Policy",
             value: [
               "default-src 'self'",
-              "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://fonts.googleapis.com https://cdn.tailwindcss.com https://connect.facebook.net https://www.facebook.com",
+
+              // ── FIX 1: Eliminado cdn.tailwindcss.com — Tailwind debe compilarse en build
+              // ── FIX 1: unsafe-inline necesario para GTM/Meta Pixel (trade-off aceptado)
+              // ── FIX 1: unsafe-eval solo necesario si algún lib lo requiere — revisar si se puede eliminar
+              "script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://fonts.googleapis.com https://connect.facebook.net https://www.facebook.com",
+
               "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
               "font-src 'self' https://fonts.gstatic.com",
-              "img-src 'self' data: blob: https://indecap.edu.co https://indecap-web.vercel.app https://*.vercel.app https://www.facebook.com",
-              "connect-src 'self' https://api.resend.com https://www.google-analytics.com https://vitals.vercel-insights.com https://generativelanguage.googleapis.com https://api.anthropic.com https://cjjkdeqbntplofgzfgma.supabase.co https://www.facebook.com",
+
+              "img-src 'self' data: blob: https://indecap.edu.co https://indecap-web.vercel.app https://*.vercel.app https://www.facebook.com https://i.ytimg.com",
+
+              // ── FIX 2: Eliminado api.anthropic.com y generativelanguage.googleapis.com
+              // ── Esas APIs NUNCA deben llamarse desde el frontend — solo desde /api/...
+              // ── FIX 3: Supabase URL es pública por diseño — el riesgo real está en RLS
+              "connect-src 'self' https://api.resend.com https://www.google-analytics.com https://vitals.vercel-insights.com https://cjjkdeqbntplofgzfgma.supabase.co https://www.facebook.com https://www.googletagmanager.com",
+
               "frame-src https://www.google.com https://www.youtube.com https://www.youtube-nocookie.com",
               "object-src 'none'",
               "base-uri 'self'",
@@ -52,12 +56,13 @@ const nextConfig: NextConfig = {
           },
         ],
       },
-      // Headers especificos para las API routes
       {
         source: "/api/(.*)",
         headers: [
           { key: "X-Content-Type-Options", value: "nosniff" },
           { key: "Cache-Control", value: "no-store, no-cache, must-revalidate" },
+          // Rate limiting hint para Vercel Edge
+          { key: "X-Robots-Tag", value: "noindex" },
         ],
       },
     ];
