@@ -1,9 +1,9 @@
-"use client";
+﻿"use client";
 
 import { useState } from "react";
 import {
   Terminal, ArrowRight, ShieldCheck, Award, BadgeDollarSign,
-  Code2, UsersRound, Check, Send, CheckCircle2, MessageCircle,
+  Code2, UsersRound, Check, CheckCircle2, MessageCircle,
   Phone, Mail, Info, MapPin,
 } from "lucide-react";
 
@@ -12,32 +12,94 @@ declare global {
   interface Window { fbq?: (...args: unknown[]) => void; }
 }
 
-const WA_NUMBER = "573022389760"; // WhatsApp Medellín INDECAP
+const WA_NUMBER = "573229712803"; // WhatsApp Medellín INDECAP
 
 type FormState = {
+  // Paso 1 — contacto
   nombre: string;
   whatsapp: string;
   correo: string;
   requisitos: string;
   privacidad: boolean;
+  // Paso 2 — datos Sapiencia
+  primerNombre: string;
+  segundoNombre: string;
+  primerApellido: string;
+  segundoApellido: string;
+  tipoDocumento: string;
+  numeroDocumento: string;
+  departamento: string;
+  municipio: string;
+  comuna: string;
+  barrio: string;
+  direccion: string;
+  tiempoResidencia: string;
+  estrato: string;
+  regimenSalud: string;
+  nivelEducativo: string;
+  comoSeEntero: string;
 };
 
 const EMPTY: FormState = {
   nombre: "", whatsapp: "", correo: "", requisitos: "", privacidad: false,
+  primerNombre: "", segundoNombre: "", primerApellido: "", segundoApellido: "",
+  tipoDocumento: "", numeroDocumento: "",
+  departamento: "Antioquia", municipio: "Medellín", comuna: "", barrio: "",
+  direccion: "", tiempoResidencia: "", estrato: "",
+  regimenSalud: "", nivelEducativo: "", comoSeEntero: "",
 };
+
+// ── Listas oficiales del formulario de Sapiencia ──────────────────────────
+const COMUNAS = [
+  "01 - Popular", "02 - Santa Cruz", "03 - Manrique", "04 - Aranjuez",
+  "05 - Castilla", "06 - Doce de Octubre", "07 - Robledo", "08 - Villa Hermosa",
+  "09 - Buenos Aires", "10 - La Candelaria", "11 - Laureles Estadio",
+  "12 - La América", "13 - San Javier", "14 - El Poblado", "15 - Guayabal",
+  "16 - Belén", "50 - Palmitas", "60 - San Cristóbal", "70 - Altavista",
+  "80 - San Antonio de Prado", "90 - Santa Elena", "00 - Fuera de Medellín",
+];
+
+const TIPOS_DOCUMENTO = [
+  "Cédula de ciudadanía",
+  "Tarjeta de identidad",
+  "Cédula de extranjería",
+  "Permiso por Protección Temporal (PPT)",
+];
+
+const TIEMPOS_RESIDENCIA = [
+  "Menos de 1 año", "1 año", "2 años", "3 años", "4 años", "5 años o más",
+];
+
+const ESTRATOS = ["1", "2", "3", "4", "5", "6"];
+
+const REGIMENES_SALUD = [
+  "Subsidiado", "Contributivo", "Especial", "No afiliado",
+];
+
+const NIVELES_EDUCATIVOS = [
+  "9° aprobado", "10° aprobado", "11° aprobado", "Bachiller graduado",
+];
+
+const CANALES = [
+  "Redes sociales - Facebook", "Redes sociales - Instagram", "WhatsApp",
+  "Página web INDECAP", "Un amigo o familiar", "Volante o publicidad física",
+  "Otro",
+];
 
 export function EstudiaLanding() {
   const [form, setForm] = useState<FormState>(EMPTY);
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
+  const [paso, setPaso] = useState<1 | 2>(1);
   const [waUrl, setWaUrl] = useState(`https://wa.me/${WA_NUMBER}`);
 
   function update<K extends keyof FormState>(key: K, val: FormState[K]) {
     setForm((f) => ({ ...f, [key]: val }));
   }
 
-  async function handleSubmit(e: React.FormEvent) {
+  // ── Paso 1: valida contacto y guarda el lead de inmediato ──────────────
+  async function handlePaso1(e: React.FormEvent) {
     e.preventDefault();
     setError("");
 
@@ -50,6 +112,7 @@ export function EstudiaLanding() {
 
     setLoading(true);
     try {
+      // Guardamos el lead ya, para no perderlo si abandona el paso 2
       await fetch("/api/estudia", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -59,29 +122,94 @@ export function EstudiaLanding() {
           correo: form.correo,
           requisitos: form.requisitos,
           fuente: "Landing ESTUD-IA",
+          etapa: "contacto",
         }),
       });
-
-      // Evento de conversión para optimizar tus anuncios de Meta
       window.fbq?.("track", "Lead", { content_name: "ESTUD-IA Sistemas Informáticos" });
-
-      const msg =
-        `Hola INDECAP, quiero inscribirme al Técnico GRATIS de Auxiliar en Sistemas Informáticos (ESTUD-IA).%0A%0A` +
-        `Nombre: ${encodeURIComponent(form.nombre)}%0A` +
-        `WhatsApp: ${encodeURIComponent(form.whatsapp)}%0A` +
-        `Correo: ${encodeURIComponent(form.correo)}%0A` +
-        `Cumplo requisitos: ${encodeURIComponent(form.requisitos)}`;
-      const url = `https://wa.me/${WA_NUMBER}?text=${msg}`;
-      setWaUrl(url);
-      setSuccess(true);
-      window.open(url, "_blank");
     } catch {
-      // Aunque falle el guardado, dejamos continuar por WhatsApp
-      setSuccess(true);
+      // Si falla el guardado igual dejamos avanzar
     } finally {
       setLoading(false);
+      setPaso(2);
+      window.scrollTo({ top: document.getElementById("registro")?.offsetTop ?? 0, behavior: "smooth" });
     }
   }
+
+  // ── Paso 2: completa datos de Sapiencia y abre WhatsApp ────────────────
+  async function handlePaso2(e: React.FormEvent) {
+    e.preventDefault();
+    setError("");
+
+    if (!form.primerNombre.trim()) return setError("Escribe tu primer nombre.");
+    if (!form.primerApellido.trim()) return setError("Escribe tu primer apellido.");
+    if (!form.tipoDocumento) return setError("Selecciona el tipo de documento.");
+    if (!form.numeroDocumento.trim()) return setError("Escribe tu número de documento.");
+    if (!form.comuna) return setError("Selecciona tu comuna de residencia.");
+    if (!form.barrio.trim()) return setError("Escribe tu barrio o vereda.");
+    if (!form.direccion.trim()) return setError("Escribe tu dirección de residencia.");
+    if (!form.tiempoResidencia) return setError("Indica tu tiempo de residencia en Medellín.");
+    if (!form.estrato) return setError("Selecciona el estrato de tu vivienda.");
+    if (!form.regimenSalud) return setError("Selecciona tu régimen de salud.");
+    if (!form.nivelEducativo) return setError("Selecciona tu nivel educativo.");
+    if (!form.comoSeEntero) return setError("Indícanos cómo te enteraste de la convocatoria.");
+
+    setLoading(true);
+    try {
+      await fetch("/api/estudia", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          ...form,
+          privacidad: undefined,
+          fuente: "Landing ESTUD-IA",
+          etapa: "completo",
+        }),
+      });
+      window.fbq?.("track", "CompleteRegistration", { content_name: "ESTUD-IA Sistemas Informáticos" });
+    } catch {
+      // Continuamos a WhatsApp aunque falle el guardado
+    }
+
+    const nl = "%0A";
+    const nombreCompleto = [form.primerNombre, form.segundoNombre, form.primerApellido, form.segundoApellido]
+      .filter(Boolean).join(" ");
+
+    const msg =
+      `*Inscripción ESTUD-IA — Auxiliar en Sistemas Informáticos*${nl}${nl}` +
+      `*DATOS DEL ASPIRANTE*${nl}` +
+      `Nombre: ${encodeURIComponent(nombreCompleto)}${nl}` +
+      `Documento: ${encodeURIComponent(form.tipoDocumento)} ${encodeURIComponent(form.numeroDocumento)}${nl}` +
+      `WhatsApp: ${encodeURIComponent(form.whatsapp)}${nl}` +
+      `Correo: ${encodeURIComponent(form.correo)}${nl}${nl}` +
+      `*RESIDENCIA*${nl}` +
+      `${encodeURIComponent(form.municipio)}, ${encodeURIComponent(form.departamento)}${nl}` +
+      `Comuna: ${encodeURIComponent(form.comuna)}${nl}` +
+      `Barrio: ${encodeURIComponent(form.barrio)}${nl}` +
+      `Dirección: ${encodeURIComponent(form.direccion)}${nl}` +
+      `Tiempo de residencia: ${encodeURIComponent(form.tiempoResidencia)}${nl}` +
+      `Estrato: ${encodeURIComponent(form.estrato)}${nl}${nl}` +
+      `*OTROS DATOS*${nl}` +
+      `Régimen de salud: ${encodeURIComponent(form.regimenSalud)}${nl}` +
+      `Nivel educativo: ${encodeURIComponent(form.nivelEducativo)}${nl}` +
+      `Se enteró por: ${encodeURIComponent(form.comoSeEntero)}${nl}` +
+      `Cumple requisitos: ${encodeURIComponent(form.requisitos)}${nl}${nl}` +
+      `*DOCUMENTOS*${nl}` +
+      `Adjunto a continuación: documento de identidad, certificado de 9° o diploma, y cuenta de servicios públicos.`;
+
+    const url = `https://wa.me/${WA_NUMBER}?text=${msg}`;
+    setWaUrl(url);
+    setSuccess(true);
+    setLoading(false);
+    window.open(url, "_blank");
+  }
+
+  // Clases compartidas de los campos (mismo estilo del diseño original)
+  const inputCls =
+    "w-full rounded-lg border border-white/15 bg-[#050B1F] px-4 py-3 text-white outline-none focus:border-[#00dbe9] focus:ring-1 focus:ring-[#00dbe9]";
+  const selectCls =
+    "w-full appearance-none rounded-lg border border-white/15 bg-[#050B1F] px-4 py-3 text-white outline-none focus:border-[#00dbe9] focus:ring-1 focus:ring-[#00dbe9]";
+  const labelCls =
+    "block text-xs font-mono uppercase tracking-wide text-slate-400 mb-2";
 
   return (
     <main className="bg-[#050B1F] text-slate-200 min-h-screen">
@@ -193,7 +321,7 @@ export function EstudiaLanding() {
           </div>
         </section>
 
-        {/* QUÉ VAS A APRENDER */}
+        {/* QUÃ‰ VAS A APRENDER */}
         <section id="aprender" className="py-16">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
             <img
@@ -264,9 +392,9 @@ export function EstudiaLanding() {
                 <div className="mt-6 rounded-lg bg-[#050B1F]/60 border border-white/10 p-5">
                   <p className="text-xs font-mono uppercase tracking-wide text-[#00dbe9] mb-3">Documentos que necesitas (PDF, máx 10 MB)</p>
                   <ul className="space-y-2 text-sm text-slate-300">
-                    <li className="flex gap-2"><span className="text-[#00dbe9]">›</span> Documento de identidad. Si eres menor: tarjeta de identidad + cédula del tutor.</li>
-                    <li className="flex gap-2"><span className="text-[#00dbe9]">›</span> Certificado de aprobación de 9° grado o diploma de bachiller.</li>
-                    <li className="flex gap-2"><span className="text-[#00dbe9]">›</span> Cuenta de servicios públicos de Medellín.</li>
+                    <li className="flex gap-2"><span className="text-[#00dbe9]">â€º</span> Documento de identidad. Si eres menor: tarjeta de identidad + cédula del tutor.</li>
+                    <li className="flex gap-2"><span className="text-[#00dbe9]">â€º</span> Certificado de aprobación de 9° grado o diploma de bachiller.</li>
+                    <li className="flex gap-2"><span className="text-[#00dbe9]">â€º</span> Cuenta de servicios públicos de Medellín.</li>
                   </ul>
                 </div>
               </div>
@@ -342,71 +470,245 @@ export function EstudiaLanding() {
               <>
                 <div className="text-center mb-10">
                   <h2 className="text-3xl md:text-5xl font-bold text-[#2E7BFF] mb-2">Reserva tu cupo</h2>
-                  <p className="text-slate-300">Déjanos tus datos y un asesor de INDECAP te contacta hoy mismo.</p>
+                  <p className="text-slate-300">
+                    {paso === 1
+                      ? "Déjanos tus datos y un asesor de INDECAP te contacta hoy mismo."
+                      : "Completa los datos que pide Sapiencia para agilizar tu inscripción."}
+                  </p>
+
+                  {/* Indicador de pasos */}
+                  <div className="mt-8 flex items-center justify-center gap-3">
+                    <div className="flex items-center gap-2">
+                      <span className={`flex h-8 w-8 items-center justify-center rounded-full text-sm font-bold transition-colors ${paso === 1 ? "bg-[#2E7BFF] text-white" : "bg-[#25D366] text-white"}`}>
+                        {paso === 1 ? "1" : <Check size={16} />}
+                      </span>
+                      <span className={`text-xs font-mono uppercase tracking-wide ${paso === 1 ? "text-white" : "text-slate-400"}`}>Contacto</span>
+                    </div>
+                    <span className="h-px w-10 bg-white/20" />
+                    <div className="flex items-center gap-2">
+                      <span className={`flex h-8 w-8 items-center justify-center rounded-full text-sm font-bold transition-colors ${paso === 2 ? "bg-[#2E7BFF] text-white" : "bg-white/10 text-slate-500"}`}>2</span>
+                      <span className={`text-xs font-mono uppercase tracking-wide ${paso === 2 ? "text-white" : "text-slate-500"}`}>Datos Sapiencia</span>
+                    </div>
+                  </div>
                 </div>
 
-                <form onSubmit={handleSubmit} className="space-y-6" noValidate>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {/* ══════════ PASO 1 — CONTACTO ══════════ */}
+                {paso === 1 && (
+                  <form onSubmit={handlePaso1} className="space-y-6" noValidate>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                      <div>
+                        <label className={labelCls}>Nombre completo *</label>
+                        <input
+                          value={form.nombre} onChange={(e) => update("nombre", e.target.value)}
+                          placeholder="Tu nombre" type="text" className={inputCls}
+                        />
+                      </div>
+                      <div>
+                        <label className={labelCls}>WhatsApp *</label>
+                        <input
+                          value={form.whatsapp} onChange={(e) => update("whatsapp", e.target.value)}
+                          placeholder="Ej: 300 123 4567" type="tel" inputMode="tel" className={inputCls}
+                        />
+                      </div>
+                    </div>
                     <div>
-                      <label className="block text-xs font-mono uppercase tracking-wide text-slate-400 mb-2">Nombre completo *</label>
+                      <label className={labelCls}>Correo electrónico *</label>
                       <input
-                        value={form.nombre} onChange={(e) => update("nombre", e.target.value)}
-                        placeholder="Tu nombre" type="text"
-                        className="w-full rounded-lg border border-white/15 bg-[#050B1F] px-4 py-3 text-white outline-none focus:border-[#00dbe9] focus:ring-1 focus:ring-[#00dbe9]"
+                        value={form.correo} onChange={(e) => update("correo", e.target.value)}
+                        placeholder="tu@correo.com" type="email" className={inputCls}
                       />
                     </div>
                     <div>
-                      <label className="block text-xs font-mono uppercase tracking-wide text-slate-400 mb-2">WhatsApp *</label>
-                      <input
-                        value={form.whatsapp} onChange={(e) => update("whatsapp", e.target.value)}
-                        placeholder="Ej: 300 123 4567" type="tel" inputMode="tel"
-                        className="w-full rounded-lg border border-white/15 bg-[#050B1F] px-4 py-3 text-white outline-none focus:border-[#00dbe9] focus:ring-1 focus:ring-[#00dbe9]"
-                      />
+                      <label className={labelCls}>¿Cumples con los requisitos? *</label>
+                      <select
+                        value={form.requisitos} onChange={(e) => update("requisitos", e.target.value)}
+                        className={selectCls}
+                      >
+                        <option value="">Selecciona una opción</option>
+                        <option value="Sí, cumplo todos">Sí, cumplo todos los requisitos</option>
+                        <option value="No estoy seguro">No estoy seguro / me falta alguno</option>
+                      </select>
                     </div>
-                  </div>
-                  <div>
-                    <label className="block text-xs font-mono uppercase tracking-wide text-slate-400 mb-2">Correo electrónico *</label>
-                    <input
-                      value={form.correo} onChange={(e) => update("correo", e.target.value)}
-                      placeholder="tu@correo.com" type="email"
-                      className="w-full rounded-lg border border-white/15 bg-[#050B1F] px-4 py-3 text-white outline-none focus:border-[#00dbe9] focus:ring-1 focus:ring-[#00dbe9]"
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-xs font-mono uppercase tracking-wide text-slate-400 mb-2">¿Cumples con los requisitos? *</label>
-                    <select
-                      value={form.requisitos} onChange={(e) => update("requisitos", e.target.value)}
-                      className="w-full appearance-none rounded-lg border border-white/15 bg-[#050B1F] px-4 py-3 text-white outline-none focus:border-[#00dbe9] focus:ring-1 focus:ring-[#00dbe9]"
+                    <label className="flex items-start gap-3 text-sm text-slate-400">
+                      <input
+                        type="checkbox" checked={form.privacidad}
+                        onChange={(e) => update("privacidad", e.target.checked)}
+                        className="mt-1 rounded border-white/20 bg-[#050B1F] text-[#2E7BFF] focus:ring-[#2E7BFF]"
+                      />
+                      <span>
+                        Autorizo a INDECAP el tratamiento de mis datos personales conforme a la Ley 1581 de 2012 y su{" "}
+                        <a href="/privacy-policy" className="text-[#00dbe9] underline underline-offset-2">política de tratamiento de datos</a>, para ser contactado sobre este programa.
+                      </span>
+                    </label>
+
+                    {error && <p className="text-sm text-red-400">{error}</p>}
+
+                    <button
+                      type="submit" disabled={loading}
+                      className="w-full inline-flex items-center justify-center gap-2 rounded-lg bg-[#2E7BFF] py-4 text-lg font-semibold text-white transition-transform active:scale-95 hover:shadow-[0_0_28px_rgba(46,123,255,0.6)] disabled:opacity-60"
                     >
-                      <option value="">Selecciona una opción</option>
-                      <option value="Sí, cumplo todos">Sí, cumplo todos los requisitos</option>
-                      <option value="No estoy seguro">No estoy seguro / me falta alguno</option>
-                    </select>
-                  </div>
-                  <label className="flex items-start gap-3 text-sm text-slate-400">
-                    <input
-                      type="checkbox" checked={form.privacidad}
-                      onChange={(e) => update("privacidad", e.target.checked)}
-                      className="mt-1 rounded border-white/20 bg-[#050B1F] text-[#2E7BFF] focus:ring-[#2E7BFF]"
-                    />
-                    <span>
-                      Autorizo a INDECAP el tratamiento de mis datos personales conforme a la Ley 1581 de 2012 y su{" "}
-                      <a href="/privacy-policy" className="text-[#00dbe9] underline underline-offset-2">política de tratamiento de datos</a>, para ser contactado sobre este programa.
-                    </span>
-                  </label>
+                      {loading ? "Guardando..." : <>Continuar <ArrowRight size={18} /></>}
+                    </button>
+                    <p className="text-center text-xs text-slate-500">
+                      Paso 1 de 2 · Solo te tomará un minuto
+                    </p>
+                  </form>
+                )}
 
-                  {error && <p className="text-sm text-red-400">{error}</p>}
+                {/* ══════════ PASO 2 — DATOS SAPIENCIA ══════════ */}
+                {paso === 2 && (
+                  <form onSubmit={handlePaso2} className="space-y-8" noValidate>
 
-                  <button
-                    type="submit" disabled={loading}
-                    className="w-full inline-flex items-center justify-center gap-2 rounded-lg bg-[#2E7BFF] py-4 text-lg font-semibold text-white transition-transform active:scale-95 hover:shadow-[0_0_28px_rgba(46,123,255,0.6)] disabled:opacity-60"
-                  >
-                    {loading ? "Enviando..." : <>Enviar y reservar mi cupo <Send size={18} /></>}
-                  </button>
-                  <p className="text-center text-xs text-slate-500">
-                    Al enviar, se abrirá WhatsApp para confirmar tu registro con un asesor.
-                  </p>
-                </form>
+                    {/* Identificación */}
+                    <fieldset className="space-y-6">
+                      <legend className="text-sm font-semibold text-[#00dbe9] mb-4 flex items-center gap-2">
+                        <span className="h-px w-6 bg-[#00dbe9]" /> Identificación
+                      </legend>
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                          <label className={labelCls}>Primer nombre *</label>
+                          <input value={form.primerNombre} onChange={(e) => update("primerNombre", e.target.value)} type="text" className={inputCls} />
+                        </div>
+                        <div>
+                          <label className={labelCls}>Segundo nombre</label>
+                          <input value={form.segundoNombre} onChange={(e) => update("segundoNombre", e.target.value)} type="text" className={inputCls} />
+                        </div>
+                        <div>
+                          <label className={labelCls}>Primer apellido *</label>
+                          <input value={form.primerApellido} onChange={(e) => update("primerApellido", e.target.value)} type="text" className={inputCls} />
+                        </div>
+                        <div>
+                          <label className={labelCls}>Segundo apellido</label>
+                          <input value={form.segundoApellido} onChange={(e) => update("segundoApellido", e.target.value)} type="text" className={inputCls} />
+                        </div>
+                        <div>
+                          <label className={labelCls}>Tipo de documento *</label>
+                          <select value={form.tipoDocumento} onChange={(e) => update("tipoDocumento", e.target.value)} className={selectCls}>
+                            <option value="">Selecciona una opción</option>
+                            {TIPOS_DOCUMENTO.map((t) => <option key={t} value={t}>{t}</option>)}
+                          </select>
+                        </div>
+                        <div>
+                          <label className={labelCls}>Número de documento *</label>
+                          <input value={form.numeroDocumento} onChange={(e) => update("numeroDocumento", e.target.value)} type="text" inputMode="numeric" className={inputCls} />
+                        </div>
+                      </div>
+                    </fieldset>
+
+                    {/* Residencia */}
+                    <fieldset className="space-y-6">
+                      <legend className="text-sm font-semibold text-[#00dbe9] mb-4 flex items-center gap-2">
+                        <span className="h-px w-6 bg-[#00dbe9]" /> Residencia
+                      </legend>
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                          <label className={labelCls}>Departamento *</label>
+                          <input value={form.departamento} onChange={(e) => update("departamento", e.target.value)} type="text" className={inputCls} />
+                        </div>
+                        <div>
+                          <label className={labelCls}>Municipio *</label>
+                          <input value={form.municipio} onChange={(e) => update("municipio", e.target.value)} type="text" className={inputCls} />
+                        </div>
+                        <div>
+                          <label className={labelCls}>Comuna *</label>
+                          <select value={form.comuna} onChange={(e) => update("comuna", e.target.value)} className={selectCls}>
+                            <option value="">Selecciona una comuna</option>
+                            {COMUNAS.map((c) => <option key={c} value={c}>{c}</option>)}
+                          </select>
+                        </div>
+                        <div>
+                          <label className={labelCls}>Barrio o vereda *</label>
+                          <input value={form.barrio} onChange={(e) => update("barrio", e.target.value)} type="text" className={inputCls} />
+                        </div>
+                      </div>
+                      <div>
+                        <label className={labelCls}>Dirección de residencia *</label>
+                        <input value={form.direccion} onChange={(e) => update("direccion", e.target.value)} placeholder="Ej: Calle 56 # 45-26" type="text" className={inputCls} />
+                      </div>
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                          <label className={labelCls}>Tiempo de residencia en Medellín *</label>
+                          <select value={form.tiempoResidencia} onChange={(e) => update("tiempoResidencia", e.target.value)} className={selectCls}>
+                            <option value="">Selecciona una opción</option>
+                            {TIEMPOS_RESIDENCIA.map((t) => <option key={t} value={t}>{t}</option>)}
+                          </select>
+                        </div>
+                        <div>
+                          <label className={labelCls}>Estrato de la vivienda *</label>
+                          <select value={form.estrato} onChange={(e) => update("estrato", e.target.value)} className={selectCls}>
+                            <option value="">Selecciona una opción</option>
+                            {ESTRATOS.map((s) => <option key={s} value={s}>Estrato {s}</option>)}
+                          </select>
+                        </div>
+                      </div>
+                    </fieldset>
+
+                    {/* Otros datos */}
+                    <fieldset className="space-y-6">
+                      <legend className="text-sm font-semibold text-[#00dbe9] mb-4 flex items-center gap-2">
+                        <span className="h-px w-6 bg-[#00dbe9]" /> Otros datos
+                      </legend>
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                          <label className={labelCls}>Régimen de salud *</label>
+                          <select value={form.regimenSalud} onChange={(e) => update("regimenSalud", e.target.value)} className={selectCls}>
+                            <option value="">Selecciona una opción</option>
+                            {REGIMENES_SALUD.map((r) => <option key={r} value={r}>{r}</option>)}
+                          </select>
+                        </div>
+                        <div>
+                          <label className={labelCls}>Nivel educativo alcanzado *</label>
+                          <select value={form.nivelEducativo} onChange={(e) => update("nivelEducativo", e.target.value)} className={selectCls}>
+                            <option value="">Selecciona una opción</option>
+                            {NIVELES_EDUCATIVOS.map((n) => <option key={n} value={n}>{n}</option>)}
+                          </select>
+                        </div>
+                      </div>
+                      <div>
+                        <label className={labelCls}>¿Cómo te enteraste de la convocatoria? *</label>
+                        <select value={form.comoSeEntero} onChange={(e) => update("comoSeEntero", e.target.value)} className={selectCls}>
+                          <option value="">Selecciona una opción</option>
+                          {CANALES.map((c) => <option key={c} value={c}>{c}</option>)}
+                        </select>
+                      </div>
+                    </fieldset>
+
+                    {/* Aviso de documentos */}
+                    <div className="rounded-xl border border-[#00dbe9]/30 bg-[#00dbe9]/5 p-5">
+                      <p className="text-sm font-semibold text-[#00dbe9] mb-3 flex items-center gap-2">
+                        <Info size={16} /> Documentos que debes enviar por WhatsApp
+                      </p>
+                      <ul className="space-y-2 text-sm text-slate-300">
+                        <li className="flex gap-2"><Check size={16} className="text-[#25D366] shrink-0 mt-0.5" /> Documento de identidad (si eres menor: tarjeta de identidad + cédula del tutor)</li>
+                        <li className="flex gap-2"><Check size={16} className="text-[#25D366] shrink-0 mt-0.5" /> Certificado de aprobación de 9° grado o diploma de bachiller</li>
+                        <li className="flex gap-2"><Check size={16} className="text-[#25D366] shrink-0 mt-0.5" /> Cuenta de servicios públicos de Medellín (últimos 3 meses)</li>
+                      </ul>
+                      <p className="mt-4 text-xs text-slate-400">
+                        Al enviar se abrirá WhatsApp con todos tus datos ya escritos. Solo tendrás que adjuntar estos tres documentos en el chat.
+                      </p>
+                    </div>
+
+                    {error && <p className="text-sm text-red-400">{error}</p>}
+
+                    <div className="flex flex-col-reverse md:flex-row gap-4">
+                      <button
+                        type="button" onClick={() => { setPaso(1); setError(""); }}
+                        className="md:w-auto inline-flex items-center justify-center gap-2 rounded-lg border border-white/15 px-6 py-4 text-sm font-semibold text-slate-300 transition-colors hover:bg-white/5"
+                      >
+                        Volver
+                      </button>
+                      <button
+                        type="submit" disabled={loading}
+                        className="flex-1 inline-flex items-center justify-center gap-2 rounded-lg bg-[#25D366] py-4 text-lg font-semibold text-white transition-transform active:scale-95 hover:shadow-[0_0_28px_rgba(37,211,102,0.6)] disabled:opacity-60"
+                      >
+                        {loading ? "Enviando..." : <>Enviar y adjuntar documentos <MessageCircle size={18} /></>}
+                      </button>
+                    </div>
+                    <p className="text-center text-xs text-slate-500">
+                      Paso 2 de 2 · Al enviar se abrirá WhatsApp con un asesor
+                    </p>
+                  </form>
+                )}
               </>
             ) : (
               <div className="text-center py-8">
@@ -433,7 +735,7 @@ export function EstudiaLanding() {
               <MessageCircle size={28} className="text-[#25D366]" />
               <div>
                 <p className="text-xs font-mono uppercase text-slate-400">WhatsApp Medellín</p>
-                <p className="text-white">+57 302 238 9760</p>
+                <p className="text-white">+57 322 971 2803</p>
               </div>
             </a>
             <a href="tel:+576044484794" className="flex items-center gap-4 rounded-2xl border border-white/10 bg-white/5 backdrop-blur p-6 hover:-translate-y-1 transition-transform">
@@ -461,3 +763,4 @@ export function EstudiaLanding() {
     </main>
   );
 }
+
