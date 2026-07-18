@@ -46,21 +46,45 @@ function validarCorreo(email: string): boolean {
 const REQUISITOS_VALIDOS = ["Sí, cumplo todos", "No estoy seguro"];
 const PROGRAMA = "Auxiliar en Sistemas Informáticos";
 
-// ── Guardar en Supabase leads_web ────────────────────────────────────────────
+// Campos adicionales que pide Sapiencia (opcionales en el paso 1)
+const CAMPOS_SAPIENCIA = [
+  "primerNombre", "segundoNombre", "primerApellido", "segundoApellido",
+  "tipoDocumento", "numeroDocumento", "departamento", "municipio",
+  "comuna", "barrio", "direccion", "tiempoResidencia", "estrato",
+  "regimenSalud", "nivelEducativo", "comoSeEntero",
+] as const;
+
+// ── Guardar en Supabase leads_web ───────────────────────────────────────────
 // La tabla tiene DOS índices únicos separados (celular y correo). Un upsert simple
 // no puede arbitrar ambos, así que buscamos primero si el lead ya existe por
 // cualquiera de los dos y actualizamos; si no, insertamos. Nunca falla por duplicado.
 async function guardarLead(s: Record<string, string>) {
   try {
+    // Notas legibles con los datos de Sapiencia que ya tengamos
+    const detalles = [
+      s.tipoDocumento && `Documento: ${s.tipoDocumento} ${s.numeroDocumento}`,
+      s.comuna && `Comuna: ${s.comuna}`,
+      s.barrio && `Barrio: ${s.barrio}`,
+      s.direccion && `Direccion: ${s.direccion}`,
+      s.tiempoResidencia && `Residencia: ${s.tiempoResidencia}`,
+      s.estrato && `Estrato: ${s.estrato}`,
+      s.regimenSalud && `Regimen: ${s.regimenSalud}`,
+      s.nivelEducativo && `Nivel educativo: ${s.nivelEducativo}`,
+      s.comoSeEntero && `Se entero por: ${s.comoSeEntero}`,
+    ].filter(Boolean).join(" | ");
+
+    const nombreCompleto = [s.primerNombre, s.segundoNombre, s.primerApellido, s.segundoApellido]
+      .filter(Boolean).join(" ") || s.nombre;
+
     const datos = {
-      nombre:   s.nombre,
+      nombre:   nombreCompleto,
       celular:  s.whatsapp,
       correo:   s.correo,
       programa: PROGRAMA,
       sede:     "Medellin",
       fuente:   s.fuente || "Landing ESTUD-IA",
-      estado:   "nuevo",
-      notas:    `Cumple requisitos: ${s.requisitos}`,
+      estado:   s.etapa === "completo" ? "datos_completos" : "nuevo",
+      notas:    `Cumple requisitos: ${s.requisitos}${detalles ? " | " + detalles : ""}`,
     };
 
     // ¿Ya existe por teléfono o por correo?
@@ -117,7 +141,8 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: "Cuerpo invalido" }, { status: 400 });
     }
 
-    const { nombre, whatsapp, correo, requisitos, fuente } = body as Record<string, unknown>;
+    const b = body as Record<string, unknown>;
+    const { nombre, whatsapp, correo, requisitos, fuente, etapa } = b;
 
     if (!nombre || !whatsapp || !correo || !requisitos) {
       return NextResponse.json({ error: "Faltan campos obligatorios" }, { status: 400 });
@@ -132,13 +157,19 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: "Valor de requisitos inválido" }, { status: 400 });
     }
 
-    const s = {
+    const s: Record<string, string> = {
       nombre:     sanitize(nombre),
       whatsapp:   sanitize(whatsapp),
       correo:     sanitize(correo),
       requisitos: sanitize(requisitos),
       fuente:     sanitize(fuente) || "Landing ESTUD-IA",
+      etapa:      sanitize(etapa) || "contacto",
     };
+
+    // Añadimos los campos de Sapiencia que vengan (paso 2)
+    for (const campo of CAMPOS_SAPIENCIA) {
+      s[campo] = sanitize(b[campo]);
+    }
 
     // 1. Guardar en Supabase (leads_web)
     await guardarLead(s);
@@ -147,9 +178,16 @@ export async function POST(req: NextRequest) {
     const fila = (label: string, val: string) =>
       val ? `<tr><td style="padding:6px 0;color:#6B7280;font-size:12px;width:40%">${label}</td><td style="padding:6px 0;color:#080F14;font-size:13px;font-weight:600">${val}</td></tr>` : "";
 
+    const nombreCompleto = [s.primerNombre, s.segundoNombre, s.primerApellido, s.segundoApellido]
+      .filter(Boolean).join(" ") || s.nombre;
+
     const cumpleBadge = s.requisitos === "Sí, cumplo todos"
       ? `<span style="color:#166534;font-weight:700">✓ Cumple requisitos</span>`
       : `<span style="color:#b45309;font-weight:700">⚠ Por verificar requisitos</span>`;
+
+    const etapaBadge = s.etapa === "completo"
+      ? `<span style="color:#166534;font-weight:700">✓ Datos completos para Sapiencia</span>`
+      : `<span style="color:#b45309;font-weight:700">◐ Solo datos de contacto (paso 1)</span>`;
 
     const htmlEmail = `
 <!DOCTYPE html>
@@ -163,14 +201,24 @@ export async function POST(req: NextRequest) {
   </div>
   <div style="padding:28px 32px">
     <table style="width:100%;border-collapse:collapse">
-      ${fila("Nombre", s.nombre)}
+      ${fila("Nombre", nombreCompleto)}
+      ${fila("Documento", s.tipoDocumento ? `${s.tipoDocumento} ${s.numeroDocumento}` : "")}
       ${fila("WhatsApp", s.whatsapp)}
       ${fila("Correo", s.correo)}
       ${fila("Requisitos", s.requisitos)}
+      ${fila("Comuna", s.comuna)}
+      ${fila("Barrio", s.barrio)}
+      ${fila("Dirección", s.direccion)}
+      ${fila("Tiempo residencia", s.tiempoResidencia)}
+      ${fila("Estrato", s.estrato)}
+      ${fila("Régimen de salud", s.regimenSalud)}
+      ${fila("Nivel educativo", s.nivelEducativo)}
+      ${fila("Se enteró por", s.comoSeEntero)}
       ${fila("Fuente", s.fuente)}
     </table>
     <div style="margin-top:20px;padding:12px 16px;background:#f9fafb;border-radius:10px;border-left:4px solid #F0A500">
       <p style="margin:0;font-size:13px">${cumpleBadge}</p>
+      <p style="margin:6px 0 0;font-size:13px">${etapaBadge}</p>
     </div>
     <div style="margin-top:16px;background:#f9fafb;border-radius:10px;padding:16px;border-left:4px solid #312783">
       <p style="margin:0;font-size:12px;color:#6B7280;font-weight:600;text-transform:uppercase;letter-spacing:0.08em">Acción recomendada</p>
@@ -181,7 +229,7 @@ export async function POST(req: NextRequest) {
     </div>
     <div style="margin-top:16px;padding:14px;background:#eff6ff;border-radius:10px;border:1px solid #dbeafe">
       <p style="margin:0;font-size:11px;color:#1e40af;font-weight:700;text-transform:uppercase;letter-spacing:0.08em">Para registro</p>
-      <p style="margin:6px 0 0;font-size:12px;color:#1e3a8a;font-family:monospace">${s.nombre} | ${s.whatsapp} | ${s.correo} | ${s.requisitos} | ${new Date().toLocaleString("es-CO", { timeZone: "America/Bogota" })}</p>
+      <p style="margin:6px 0 0;font-size:12px;color:#1e3a8a;font-family:monospace">${nombreCompleto} | ${s.whatsapp} | ${s.correo} | ${s.requisitos} | ${new Date().toLocaleString("es-CO", { timeZone: "America/Bogota" })}</p>
     </div>
   </div>
   <div style="padding:16px 32px;border-top:1px solid #f3f4f6;background:#fafafa">
@@ -196,7 +244,9 @@ export async function POST(req: NextRequest) {
       // Cuando verifiques indecap.edu.co en Resend, cambia a: "INDECAP <notificaciones@indecap.edu.co>"
       from: "INDECAP <onboarding@resend.dev>",
       to: ["camilo2236@gmail.com"],
-      subject: `Nuevo inscrito ESTUD-IA: ${s.nombre}`,
+      subject: s.etapa === "completo"
+        ? `ESTUD-IA datos completos: ${nombreCompleto}`
+        : `Nuevo inscrito ESTUD-IA: ${s.nombre}`,
       html: htmlEmail,
     });
 
