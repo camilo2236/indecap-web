@@ -5,6 +5,8 @@ import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
 import { ScrollReveal } from "@/components/ScrollReveal";
+import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const newsreader = Newsreader({
   variable: "--font-playfair",
@@ -99,6 +101,8 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <Footer />
         <WhatsAppButton />
         <ScrollReveal />
+        <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );
