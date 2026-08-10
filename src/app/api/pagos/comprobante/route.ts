@@ -5,7 +5,7 @@ import { Resend } from "resend"
 
 const resend      = new Resend(process.env.RESEND_API_KEY)
 const PHONE_ID    = "1167947676398207"
-const DESTINATARIOS = ["573182354400", "573002339219"]
+const DESTINATARIOS = ["573002339219", "573182354400"]  // Carolina + Camilo
 
 // ── Notificación WhatsApp ─────────────────────────────────────────────────────
 async function notificarEquipo(data: {
@@ -16,19 +16,17 @@ async function notificarEquipo(data: {
   const token = process.env.WHATSAPP_TOKEN
   if (!token) { console.error("WHATSAPP_TOKEN no configurado"); return }
 
-  const msg = [
-    `🧾 *Nuevo comprobante registrado*`,
-    ``,
-    `👤 ${data.nombre}`,
-    `📄 Doc: ${data.documento}`,
-    `📱 ${data.telefono}`,
-    `🎓 ${data.programa} · ${data.sede}`,
-    `💰 ${data.tipoPago}: $${Number(data.monto).toLocaleString("es-CO")} COP`,
-    `🏦 ${data.banco}`,
-    `📅 Fecha comprobante: ${data.fechaPago}`,
-    ``,
-    `👉 indecap.edu.co/admin/pagos`,
-  ].join("\n")
+  // Envío por PLANTILLA (funciona aunque pasen 24h sin contacto del destinatario).
+  // Plantilla: nuevo_comprobante_indecap · 6 variables en orden.
+  const montoFmt = `$${Number(data.monto).toLocaleString("es-CO")} COP`
+  const variables = [
+    data.nombre || "Sin nombre",            // {{1}}
+    data.documento || "Sin documento",      // {{2}}
+    `${data.programa} · ${data.sede}`,      // {{3}}
+    `${data.tipoPago}: ${montoFmt}`,        // {{4}}
+    data.banco || "No especificado",        // {{5}}
+    data.fechaPago || "No especificada",    // {{6}}
+  ]
 
   await Promise.allSettled(
     DESTINATARIOS.map(numero =>
@@ -41,15 +39,24 @@ async function notificarEquipo(data: {
         body: JSON.stringify({
           messaging_product: "whatsapp",
           to: numero,
-          type: "text",
-          text: { body: msg },
+          type: "template",
+          template: {
+            name: "nuevo_comprobante_indecap",
+            language: { code: "es_CO" },
+            components: [
+              {
+                type: "body",
+                parameters: variables.map(v => ({ type: "text", text: String(v) })),
+              },
+            ],
+          },
         }),
       }).then(async r => {
         if (!r.ok) {
           const err = await r.json()
-          console.error(`WA error → ${numero}:`, JSON.stringify(err))
+          console.error(`WA error -> ${numero}:`, JSON.stringify(err))
         } else {
-          console.log(`WhatsApp enviado ✓ → ${numero}`)
+          console.log(`WhatsApp (plantilla) enviado OK -> ${numero}`)
         }
       })
     )
@@ -127,7 +134,7 @@ async function notificarEmail(data: {
   try {
     await resend.emails.send({
       from:    "INDECAP Pagos <onboarding@resend.dev>",
-      to:      ["camilo2236@gmail.com", "caro_maria123@hotmail.com"],
+      to:      ["camilo2236@gmail.com", "carolinabohorquez@indecap.edu.co"],
       subject: `🧾 Comprobante: ${data.nombre} — ${data.programa} — $${Number(data.monto).toLocaleString("es-CO")}`,
       html,
     })
