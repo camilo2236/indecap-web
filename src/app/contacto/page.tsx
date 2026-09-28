@@ -10,7 +10,7 @@ const sedes = [
   {
     id: "medellin", ciudad: "Medellín", tagline: "Sede Principal",
     address: "Cl. 56 # 45-26, entre Calle El Palo y Carrera Bolivia",
-    phone: "(604) 448 4794", whatsapp: "573022389760",
+    phone: "(604) 448 4794", whatsapp: "573008948517",
     email: "indecap@indecap.edu.co",
     mapUrl: "https://maps.app.goo.gl/tT3eoj5Yc3KQp17YA",
     image: "/images/sedes/medellin.jpg",
@@ -154,13 +154,13 @@ export default function ContactoPage() {
               <div className="space-y-3">
                 {[
                   {
-                    href: "https://wa.me/573022389760?text=Hola%20INDECAP%20Medell%C3%ADn%2C%20quiero%20informaci%C3%B3n%20sobre%20sus%20programas.%20%C2%BFMe%20pueden%20orientar%3F",
-                    label: "WhatsApp Medellín", value: "+57 302 238 9760",
+                    href: "https://wa.me/573008948517?text=Hola%20INDECAP%20Medell%C3%ADn%2C%20quiero%20informaci%C3%B3n%20sobre%20sus%20programas.%20%C2%BFMe%20pueden%20orientar%3F",
+                    label: "WhatsApp Medellín", value: "+57 300 894 8517",
                     icon: <MessageCircle size={20} className="text-green-600" />, bg: "bg-green-100",
                   },
                   {
                     href: "https://wa.me/573174342783?text=Hola%20INDECAP%20Envigado%2C%20quiero%20informaci%C3%B3n%20sobre%20sus%20programas.%20%C2%BFMe%20pueden%20orientar%3F",
-                    label: "WhatsApp Envigado", value: "+57 302 238 9760",
+                    label: "WhatsApp Envigado", value: "+57 300 894 8517",
                     icon: <MessageCircle size={20} className="text-green-600" />, bg: "bg-green-100",
                   },
                   {

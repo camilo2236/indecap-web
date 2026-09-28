@@ -249,7 +249,7 @@ export default function EducacionContinuaPage() {
             <p className="text-white/55 text-lg">Un asesor INDECAP te orienta sin costo ni compromiso.</p>
           </div>
           <a
-            href="https://api.whatsapp.com/send?phone=573022389760"
+            href="https://api.whatsapp.com/send?phone=573008948517"
             target="_blank"
             rel="noopener noreferrer"
             className="shrink-0 inline-flex items-center gap-3 px-10 py-4 rounded-full font-black text-base hover:scale-105 transition-transform shadow-xl"

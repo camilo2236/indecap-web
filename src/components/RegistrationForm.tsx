@@ -86,7 +86,7 @@ export function RegistrationForm({ className }: RegistrationFormProps) {
         `Sede: ${sedeName}\n` +
         `Tel: ${data.telefono}`
       );
-      window.open(`https://api.whatsapp.com/send?phone=573022389760&text=${waText}`, "_blank");
+      window.open(`https://api.whatsapp.com/send?phone=573008948517&text=${waText}`, "_blank");
 
       setStatus("success");
       reset();

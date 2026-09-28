@@ -49,7 +49,7 @@ export default function ContablePage() {
         "Práctica profesional en empresas del Valle de Aburrá manejando contabilidad real bajo supervisión",
       ]}
       mercadoTexto="No te vamos a enseñar contabilidad en el tablero para que luego no sepas usar un software. Aquí aprendes con las herramientas y los procesos que las empresas de Antioquia usan de verdad. Cuando llegas a tu práctica, ya sabes registrar, conciliar y liquidar."
-      waNum="573022389760"
+      waNum="573008948517"
       waText="Hola INDECAP, estoy interesado en Auxiliar Contable. Mi nombre es "
       sedes={[
         { icon: "🏙️", name: "Sede Medellín", address: "Cl. 56 # 45-26, Medellín", tag: "Tel: (604) 448 4794" },

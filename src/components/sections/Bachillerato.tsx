@@ -42,7 +42,7 @@ export function Bachillerato() {
               &#x1F4CD; Disponible en Sede Caldas — Calle 130 sur # 51-65
             </div>
             <a
-              href="https://api.whatsapp.com/send?phone=+573022389760&text=Hola%20INDECAP%20estoy%20interesado%20en%20el%20Bachillerato%20Semi%20Escolarizado%2C%20mi%20nombre%20es%20"
+              href="https://api.whatsapp.com/send?phone=+573008948517&text=Hola%20INDECAP%20estoy%20interesado%20en%20el%20Bachillerato%20Semi%20Escolarizado%2C%20mi%20nombre%20es%20"
               target="_blank"
               rel="noopener noreferrer"
               className={buttonVariants({

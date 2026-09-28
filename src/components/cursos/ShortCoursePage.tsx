@@ -88,7 +88,7 @@ export function ShortCoursePage({ course }: Props) {
     );
   }
 
-  const whatsappUrl = `https://wa.me/573022389760?text=${encodeURIComponent(course.ctaMessage)}`;
+  const whatsappUrl = `https://wa.me/573008948517?text=${encodeURIComponent(course.ctaMessage)}`;
   const campoLaboral = CAMPO_LABORAL[course.slug] || [];
 
   return (

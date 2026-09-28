@@ -87,7 +87,7 @@ export default function CursosPage() {
             <p className="text-zinc-400">Abrimos nuevos grupos cada mes en todas nuestras sedes.</p>
           </div>
           <a 
-            href="https://wa.me/573022389760?text=Hola INDECAP, me gustaría preguntar por un curso que no veo en la lista"
+            href="https://wa.me/573008948517?text=Hola INDECAP, me gustaría preguntar por un curso que no veo en la lista"
             className="px-8 py-4 bg-white text-black font-bold rounded-2xl hover:bg-zinc-200 transition-colors"
           >
             Consultar otros cursos

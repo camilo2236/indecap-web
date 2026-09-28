@@ -50,7 +50,7 @@ export default function VeterinariaPage() {
         "Práctica profesional en clínicas veterinarias, peluquerías caninas o centros de bienestar animal",
       ]}
       mercadoTexto="Nuestros estudiantes practican con animales reales, en clínicas reales, y salen preparados para trabajar — o para montar su propio servicio de cuidado y acicalamiento con los conocimientos que el mercado exige."
-      waNum="573022389760"
+      waNum="573008948517"
       waText="Hola INDECAP, estoy interesado en Veterinaria. Mi nombre es "
       sedes={[
         { icon: "🏙️", name: "Sede Medellín", address: "Cl. 56 # 45-26, Medellín", tag: "Tel: (604) 448 4794" },

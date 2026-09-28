@@ -242,7 +242,7 @@ export async function POST(req: NextRequest) {
                       <p style="margin:0;color:#0F6E56;font-size:14px;font-weight:700;">Este curso no tiene costo de matricula</p>
                     </div>`}
                     <p style="margin:0 0 20px;color:#6B7280;font-size:13px;line-height:1.6;">Un asesor INDECAP te contactara pronto para confirmar tu cupo.</p>
-                    <a href="https://wa.me/573022389760"
+                    <a href="https://wa.me/573008948517"
                       style="display:inline-block;background:#25D366;color:#fff;font-size:14px;font-weight:700;padding:14px 32px;border-radius:99px;text-decoration:none;">
                       Escribir por WhatsApp
                     </a>

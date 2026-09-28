@@ -50,7 +50,7 @@ export default function SistemasPage() {
         "Práctica profesional en empresas del Valle de Aburrá brindando soporte técnico y gestionando sistemas",
       ]}
       mercadoTexto="Nuestros egresados salen con las bases para dar soporte, mantener equipos y gestionar redes — y con la mentalidad de seguir aprendiendo, porque en tecnología el que se queda quieto se queda atrás."
-      waNum="573022389760"
+      waNum="573008948517"
       waText="Hola INDECAP, estoy interesado en Técnico en Sistemas. Mi nombre es "
       sedes={[
         { icon: "🏙️", name: "Sede Medellín", address: "Cl. 56 # 45-26, Medellín", tag: "Tel: (604) 448 4794" },

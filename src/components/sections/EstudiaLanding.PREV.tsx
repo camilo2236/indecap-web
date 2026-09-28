@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { useState } from "react";
 import {
@@ -433,7 +433,7 @@ export function EstudiaLanding() {
               <MessageCircle size={28} className="text-[#25D366]" />
               <div>
                 <p className="text-xs font-mono uppercase text-slate-400">WhatsApp MedellÃ­n</p>
-                <p className="text-white">+57 302 238 9760</p>
+                <p className="text-white">+57 300 894 8517</p>
               </div>
             </a>
             <a href="tel:+576044484794" className="flex items-center gap-4 rounded-2xl border border-white/10 bg-white/5 backdrop-blur p-6 hover:-translate-y-1 transition-transform">

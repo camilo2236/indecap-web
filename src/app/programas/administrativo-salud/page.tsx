@@ -47,7 +47,7 @@ export default function AdministrativoSaludPage() {
         "Práctica profesional en clínicas, hospitales, EPS o IPS gestionando procesos administrativos reales",
       ]}
       mercadoTexto="El sistema de salud colombiano es uno de los sectores que más empleo genera en Antioquia. Los profesionales que conocen tanto el componente humano como el administrativo son los más valorados — y eso es exactamente lo que formamos."
-      waNum="573022389760"
+      waNum="573008948517"
       waText="Hola INDECAP, estoy interesado en Administrativo en Salud. Mi nombre es "
       sedes={[
         { icon: "🏙️", name: "Sede Medellín", address: "Cl. 56 # 45-26, Medellín", tag: "Tel: (604) 448 4794" },
