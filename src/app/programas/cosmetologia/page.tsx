@@ -58,7 +58,7 @@ export default function CosmetologiaPage() {
         "Práctica profesional en centros de estética, spa o salones atendiendo clientes reales",
       ]}
       mercadoTexto="La estética en Medellín es un sector que no para de crecer. Nuestras egresadas y egresados salen con formación técnica real, con horas de práctica en clientes, y con la capacidad de trabajar en un spa o montar su propio negocio con los estándares que exige el mercado."
-      waNum="573008948517"
+      waNum="573022389760"
       waText="Hola INDECAP, estoy interesado en Cosmetología. Mi nombre es "
       sedes={[
         { icon: "🏙️", name: "Sede Medellín", address: "Cl. 56 # 45-26, Medellín", tag: "Tel: (604) 448 4794" },

@@ -186,7 +186,7 @@ export default function RegistrarComprobante() {
         <p className="text-[#312783] font-semibold text-sm">
           {nombre} — {programa}
         </p>
-        <a href="https://wa.me/573008948517"
+        <a href="https://wa.me/573022389760"
           className="inline-flex items-center gap-2 mt-6 rounded-full bg-[#25D366] px-6 py-2.5 text-sm font-bold text-white">
           💬 Escribirnos por WhatsApp
         </a>

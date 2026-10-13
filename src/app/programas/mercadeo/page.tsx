@@ -52,7 +52,7 @@ export default function MercadeoPage() {
         "Práctica profesional en empresas o agencias digitales del Valle de Aburrá — ejecutando campañas reales, gestionando redes y analizando resultados con supervisión profesional",
       ]}
       mercadoTexto="Medellín es la ciudad colombiana que más ha crecido en ecosistema digital en los últimos 5 años. Startups, pymes, grandes empresas y agencias necesitan personas que sepan moverse en el mundo digital con criterio. No solo publicar en redes — sino construir audiencias, convertir seguidores en clientes y medir cada resultado. Eso es exactamente lo que aprenderás aquí."
-      waNum="573008948517"
+      waNum="573022389760"
       waText="Hola INDECAP, estoy interesado en el programa de Marketing Digital. Mi nombre es "
       sedes={[
         { icon: "🏙️", name: "Sede Medellín",  address: "Cl. 56 # 45-26, Medellín",        tag: "Tel: (604) 448 4794" },

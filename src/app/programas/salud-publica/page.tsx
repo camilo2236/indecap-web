@@ -53,7 +53,7 @@ export default function SaludPublicaPage() {
         "Práctica profesional en hospitales, IPS, secretarías de salud o programas de prevención con comunidades reales de Antioquia",
       ]}
       mercadoTexto="Antioquia necesita técnicos que trabajen desde la comunidad. Nuestros egresados entran al mercado laboral con práctica real desde el primer ciclo — en vacunación, promoción y prevención en las instituciones que más lo necesitan."
-      waNum="573008948517"
+      waNum="573022389760"
       waText="Hola INDECAP, estoy interesado en Salud Pública. Mi nombre es "
       sedes={[
         { icon: "🏙️", name: "Sede Medellín", address: "Cl. 56 # 45-26, Medellín", tag: "Tel: (604) 448 4794" },

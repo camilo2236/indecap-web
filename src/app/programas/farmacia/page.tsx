@@ -52,7 +52,7 @@ export default function FarmaciaPage() {
         "Práctica profesional en droguerías, farmacias hospitalarias o servicios farmacéuticos en entorno laboral real",
       ]}
       mercadoTexto="Las droguerías y farmacias del Valle de Aburrá buscan personal que sepa trabajar desde el primer día. No que sepa repetir teoría, sino que sepa dispensar, asesorar y manejar inventarios con responsabilidad. Eso es exactamente lo que formamos."
-      waNum="573008948517"
+      waNum="573022389760"
       waText="Hola INDECAP, estoy interesado en Servicios Farmacéuticos. Mi nombre es "
       sedes={[
         { icon: "🏙️", name: "Sede Medellín", address: "Cl. 56 # 45-26, Medellín", tag: "Tel: (604) 448 4794" },

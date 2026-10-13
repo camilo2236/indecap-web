@@ -27,7 +27,7 @@ export const programs: Program[] = [
     badge: "Escuela de Salud",
     horas: "1.650h",
     escuela: "Escuela de Salud",
-    whatsappUrl: "https://wa.me/573008948517?text=Hola%20INDECAP%2C%20estoy%20interesado%20en%20Auxiliar%20en%20Enfermer%C3%ADa.%20%C2%BFMe%20pueden%20orientar%3F",
+    whatsappUrl: "https://wa.me/573022389760?text=Hola%20INDECAP%2C%20estoy%20interesado%20en%20Auxiliar%20en%20Enfermer%C3%ADa.%20%C2%BFMe%20pueden%20orientar%3F",
     pageUrl: "/programas/enfermeria",
   },
   {
@@ -41,7 +41,7 @@ export const programs: Program[] = [
     badge: "Escuela de Salud",
     horas: "1.650h",
     escuela: "Escuela de Salud",
-    whatsappUrl: "https://wa.me/573008948517?text=Hola%20INDECAP%2C%20estoy%20interesado%20en%20Servicios%20Farmac%C3%A9uticos.%20%C2%BFMe%20pueden%20orientar%3F",
+    whatsappUrl: "https://wa.me/573022389760?text=Hola%20INDECAP%2C%20estoy%20interesado%20en%20Servicios%20Farmac%C3%A9uticos.%20%C2%BFMe%20pueden%20orientar%3F",
     pageUrl: "/programas/farmacia",
   },
   {
@@ -55,7 +55,7 @@ export const programs: Program[] = [
     badge: "Escuela de Salud",
     horas: "1.650h",
     escuela: "Escuela de Salud",
-    whatsappUrl: "https://wa.me/573008948517?text=Hola%20INDECAP%2C%20estoy%20interesado%20en%20Auxiliar%20en%20Salud%20Oral.%20%C2%BFMe%20pueden%20orientar%3F",
+    whatsappUrl: "https://wa.me/573022389760?text=Hola%20INDECAP%2C%20estoy%20interesado%20en%20Auxiliar%20en%20Salud%20Oral.%20%C2%BFMe%20pueden%20orientar%3F",
     pageUrl: "/programas/salud-oral",
   },
   {
@@ -69,7 +69,7 @@ export const programs: Program[] = [
     badge: "Escuela de Salud",
     horas: "1.650h",
     escuela: "Escuela de Salud",
-    whatsappUrl: "https://wa.me/573008948517?text=Hola%20INDECAP%2C%20estoy%20interesado%20en%20Auxiliar%20en%20Salud%20P%C3%BAblica.%20%C2%BFMe%20pueden%20orientar%3F",
+    whatsappUrl: "https://wa.me/573022389760?text=Hola%20INDECAP%2C%20estoy%20interesado%20en%20Auxiliar%20en%20Salud%20P%C3%BAblica.%20%C2%BFMe%20pueden%20orientar%3F",
     pageUrl: "/programas/salud-publica",
   },
   {
@@ -83,7 +83,7 @@ export const programs: Program[] = [
     badge: "Escuela de Salud",
     horas: "1.650h",
     escuela: "Escuela de Salud",
-    whatsappUrl: "https://wa.me/573008948517?text=Hola%20INDECAP%2C%20estoy%20interesado%20en%20Administrativo%20en%20Salud.%20%C2%BFMe%20pueden%20orientar%3F",
+    whatsappUrl: "https://wa.me/573022389760?text=Hola%20INDECAP%2C%20estoy%20interesado%20en%20Administrativo%20en%20Salud.%20%C2%BFMe%20pueden%20orientar%3F",
     pageUrl: "/programas/administrativo-salud",
   },
   {
@@ -97,7 +97,7 @@ export const programs: Program[] = [
     badge: "Escuela de Salud",
     horas: "700h",
     escuela: "Escuela de Salud",
-    whatsappUrl: "https://wa.me/573008948517?text=Hola%20INDECAP%2C%20estoy%20interesado%20en%20Atenci%C3%B3n%20al%20Adulto%20Mayor.%20%C2%BFMe%20pueden%20orientar%3F",
+    whatsappUrl: "https://wa.me/573022389760?text=Hola%20INDECAP%2C%20estoy%20interesado%20en%20Atenci%C3%B3n%20al%20Adulto%20Mayor.%20%C2%BFMe%20pueden%20orientar%3F",
     pageUrl: "/programas/adulto-mayor",
   },
 
@@ -113,7 +113,7 @@ export const programs: Program[] = [
     badge: "Escuela de Belleza",
     horas: "1.190h",
     escuela: "Escuela de Belleza",
-    whatsappUrl: "https://wa.me/573008948517?text=Hola%20INDECAP%2C%20estoy%20interesado%20en%20Cosmetolog%C3%ADa%20y%20Est%C3%A9tica.%20%C2%BFMe%20pueden%20orientar%3F",
+    whatsappUrl: "https://wa.me/573022389760?text=Hola%20INDECAP%2C%20estoy%20interesado%20en%20Cosmetolog%C3%ADa%20y%20Est%C3%A9tica.%20%C2%BFMe%20pueden%20orientar%3F",
     pageUrl: "/programas/cosmetologia",
   },
 
@@ -129,7 +129,7 @@ export const programs: Program[] = [
     badge: "Escuela Veterinaria",
     horas: "1.200h",
     escuela: "Escuela Veterinaria",
-    whatsappUrl: "https://wa.me/573008948517?text=Hola%20INDECAP%2C%20estoy%20interesado%20en%20Auxiliar%20en%20Veterinaria.%20%C2%BFMe%20pueden%20orientar%3F",
+    whatsappUrl: "https://wa.me/573022389760?text=Hola%20INDECAP%2C%20estoy%20interesado%20en%20Auxiliar%20en%20Veterinaria.%20%C2%BFMe%20pueden%20orientar%3F",
     pageUrl: "/programas/veterinaria",
   },
   {
@@ -143,7 +143,7 @@ export const programs: Program[] = [
     badge: "Escuela Veterinaria",
     horas: "1.000h",
     escuela: "Escuela Veterinaria",
-    whatsappUrl: "https://wa.me/573008948517?text=Hola%20INDECAP%2C%20estoy%20interesado%20en%20Peluquer%C3%ADa%20Canina.%20%C2%BFMe%20pueden%20orientar%3F",
+    whatsappUrl: "https://wa.me/573022389760?text=Hola%20INDECAP%2C%20estoy%20interesado%20en%20Peluquer%C3%ADa%20Canina.%20%C2%BFMe%20pueden%20orientar%3F",
     pageUrl: "/programas/peluqueria-canina",
   },
 
@@ -159,7 +159,7 @@ export const programs: Program[] = [
     badge: "Escuela de Administración",
     horas: "1.000h",
     escuela: "Escuela de Administración",
-    whatsappUrl: "https://wa.me/573008948517?text=Hola%20INDECAP%2C%20estoy%20interesado%20en%20Talento%20Humano.%20%C2%BFMe%20pueden%20orientar%3F",
+    whatsappUrl: "https://wa.me/573022389760?text=Hola%20INDECAP%2C%20estoy%20interesado%20en%20Talento%20Humano.%20%C2%BFMe%20pueden%20orientar%3F",
     pageUrl: "/programas/talento-humano",
   },
   {
@@ -173,7 +173,7 @@ export const programs: Program[] = [
     badge: "Escuela de Administración",
     horas: "1.000h",
     escuela: "Escuela de Administración",
-    whatsappUrl: "https://wa.me/573008948517?text=Hola%20INDECAP%2C%20estoy%20interesado%20en%20Auxiliar%20Contable.%20%C2%BFMe%20pueden%20orientar%3F",
+    whatsappUrl: "https://wa.me/573022389760?text=Hola%20INDECAP%2C%20estoy%20interesado%20en%20Auxiliar%20Contable.%20%C2%BFMe%20pueden%20orientar%3F",
     pageUrl: "/programas/contable",
   },
   {
@@ -187,7 +187,7 @@ export const programs: Program[] = [
     badge: "Escuela de Administración",
     horas: "1.000h",
     escuela: "Escuela de Administración",
-    whatsappUrl: "https://wa.me/573008948517?text=Hola%20INDECAP%2C%20estoy%20interesado%20en%20Marketing%20Digital.%20%C2%BFMe%20pueden%20orientar%3F",
+    whatsappUrl: "https://wa.me/573022389760?text=Hola%20INDECAP%2C%20estoy%20interesado%20en%20Marketing%20Digital.%20%C2%BFMe%20pueden%20orientar%3F",
     pageUrl: "/programas/mercadeo",
   },
 
@@ -203,7 +203,7 @@ export const programs: Program[] = [
     badge: "Escuela de Seguridad",
     horas: "1.000h",
     escuela: "Escuela de Seguridad",
-    whatsappUrl: "https://wa.me/573008948517?text=Hola%20INDECAP%2C%20estoy%20interesado%20en%20Seguridad%20y%20Salud%20en%20el%20Trabajo.%20%C2%BFMe%20pueden%20orientar%3F",
+    whatsappUrl: "https://wa.me/573022389760?text=Hola%20INDECAP%2C%20estoy%20interesado%20en%20Seguridad%20y%20Salud%20en%20el%20Trabajo.%20%C2%BFMe%20pueden%20orientar%3F",
     pageUrl: "/programas/sst",
   },
 
@@ -219,7 +219,7 @@ export const programs: Program[] = [
     badge: "Escuela de Deporte",
     horas: "1.000h",
     escuela: "Escuela de Deporte",
-    whatsappUrl: "https://wa.me/573008948517?text=Hola%20INDECAP%2C%20estoy%20interesado%20en%20Entrenamiento%20Deportivo.%20%C2%BFMe%20pueden%20orientar%3F",
+    whatsappUrl: "https://wa.me/573022389760?text=Hola%20INDECAP%2C%20estoy%20interesado%20en%20Entrenamiento%20Deportivo.%20%C2%BFMe%20pueden%20orientar%3F",
     pageUrl: "/programas/entrenamiento-deportivo",
   },
 
@@ -235,7 +235,7 @@ export const programs: Program[] = [
     badge: "Escuela de Sistemas",
     horas: "1.000h",
     escuela: "Escuela de Sistemas",
-    whatsappUrl: "https://wa.me/573008948517?text=Hola%20INDECAP%2C%20estoy%20interesado%20en%20T%C3%A9cnico%20en%20Sistemas.%20%C2%BFMe%20pueden%20orientar%3F",
+    whatsappUrl: "https://wa.me/573022389760?text=Hola%20INDECAP%2C%20estoy%20interesado%20en%20T%C3%A9cnico%20en%20Sistemas.%20%C2%BFMe%20pueden%20orientar%3F",
     pageUrl: "/programas/sistemas",
   },
   {
@@ -249,7 +249,7 @@ export const programs: Program[] = [
     badge: "Escuela de Sistemas",
     horas: "700h",
     escuela: "Escuela de Sistemas",
-    whatsappUrl: "https://wa.me/573008948517?text=Hola%20INDECAP%2C%20estoy%20interesado%20en%20Desarrollo%20de%20Software.%20%C2%BFMe%20pueden%20orientar%3F",
+    whatsappUrl: "https://wa.me/573022389760?text=Hola%20INDECAP%2C%20estoy%20interesado%20en%20Desarrollo%20de%20Software.%20%C2%BFMe%20pueden%20orientar%3F",
     pageUrl: "/programas/software",
   },
 
@@ -265,7 +265,7 @@ export const programs: Program[] = [
     badge: "Escuela Administrativa",
     horas: "80h",
     escuela: "Escuela Administrativa",
-    whatsappUrl: "https://wa.me/573008948517?text=Hola%20INDECAP%2C%20estoy%20interesado%20en%20Excel%20%2B%20IA.%20%C2%BFMe%20pueden%20orientar%3F",
+    whatsappUrl: "https://wa.me/573022389760?text=Hola%20INDECAP%2C%20estoy%20interesado%20en%20Excel%20%2B%20IA.%20%C2%BFMe%20pueden%20orientar%3F",
     pageUrl: "/programas/excel-ia",
   },
 ];

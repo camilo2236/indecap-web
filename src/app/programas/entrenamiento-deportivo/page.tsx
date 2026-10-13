@@ -47,7 +47,7 @@ export default function EntrenamientoDeportivoPage() {
         "Práctica formativa en entorno real: gimnasios, centros deportivos o programas de actividad física supervisada",
       ]}
       mercadoTexto="El sector fitness en Antioquia crece cada año. Medellín tiene cientos de gimnasios y centros deportivos que necesitan instructores formados con criterio técnico. Nuestros egresados salen listos para trabajar — o para empezar su propio negocio de entrenamiento."
-      waNum="573008948517"
+      waNum="573022389760"
       waText="Hola INDECAP, estoy interesado en Entrenamiento Deportivo. Mi nombre es "
       sedes={[
         { icon: "🏙️", name: "Sede Medellín", address: "Cl. 56 # 45-26, Medellín", tag: "Tel: (604) 448 4794" },

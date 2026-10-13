@@ -408,7 +408,7 @@ export default function AdmisionPage() {
             </p>
 
             <a
-              href={`https://wa.me/573008948517?text=${encodeURIComponent(`Hola INDECAP, soy ${form.nombres} ${form.apellidos} y acabo de enviar mi solicitud de admisión para ${form.programa} en la sede ${form.sede}`)}`}
+              href={`https://wa.me/573022389760?text=${encodeURIComponent(`Hola INDECAP, soy ${form.nombres} ${form.apellidos} y acabo de enviar mi solicitud de admisión para ${form.programa} en la sede ${form.sede}`)}`}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 rounded-full bg-[#25D366] px-8 py-3.5 text-sm font-bold text-white hover:opacity-90 transition-all"

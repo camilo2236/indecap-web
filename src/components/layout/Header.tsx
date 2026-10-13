@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
@@ -272,7 +272,7 @@ export function Header() {
                   Formulario de admisión
                 </a>
                 <a
-                  href="https://wa.me/573008948517?text=Hola%20INDECAP%2C%20quiero%20informaci%C3%B3n%20sobre%20sus%20programas"
+                  href="https://wa.me/573022389760?text=Hola%20INDECAP%2C%20quiero%20informaci%C3%B3n%20sobre%20sus%20programas"
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={() => setOpen(false)}

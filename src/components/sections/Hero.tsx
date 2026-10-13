@@ -354,7 +354,7 @@ export function Hero() {
 
                 <div className="mt-4 pt-4 border-t border-[#eaeff1] flex items-center justify-center gap-2">
                   <a
-                    href="https://wa.me/573008948517?text=Hola%20INDECAP%2C%20quiero%20informaci%C3%B3n%20sobre%20sus%20programas"
+                    href="https://wa.me/573022389760?text=Hola%20INDECAP%2C%20quiero%20informaci%C3%B3n%20sobre%20sus%20programas"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center gap-2 text-sm font-semibold text-[#25D366] hover:underline"

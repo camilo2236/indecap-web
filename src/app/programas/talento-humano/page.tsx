@@ -47,7 +47,7 @@ export default function TalentoHumanoPage() {
         "Práctica profesional en el área de recursos humanos de empresas del Valle de Aburrá gestionando procesos reales",
       ]}
       mercadoTexto="Gestionar personas no se aprende solo en un salón de clase. Se aprende entendiendo cómo funcionan las empresas de verdad — con nóminas reales, con procesos de selección reales, con la legislación que aplica en Colombia."
-      waNum="573008948517"
+      waNum="573022389760"
       waText="Hola INDECAP, estoy interesado en Talento Humano. Mi nombre es "
       sedes={[
         { icon: "🏙️", name: "Sede Medellín", address: "Cl. 56 # 45-26, Medellín", tag: "Tel: (604) 448 4794" },

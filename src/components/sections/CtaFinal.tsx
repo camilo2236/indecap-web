@@ -31,7 +31,7 @@ export function CtaFinal() {
           </p>
           <div className="mt-8 flex flex-wrap justify-center gap-4">
             <a
-              href="https://wa.me/573008948517?text=Hola%20INDECAP%2C%20quiero%20inscribirme.%20Mi%20nombre%20es%20"
+              href="https://wa.me/573022389760?text=Hola%20INDECAP%2C%20quiero%20inscribirme.%20Mi%20nombre%20es%20"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 rounded-full bg-[#F0A500] px-8 py-4 font-[family-name:var(--font-dm-sans)] text-sm font-bold text-[#080F14] transition-all duration-250 hover:scale-105 hover:shadow-[0_8px_24px_rgba(240,165,0,0.35)]"

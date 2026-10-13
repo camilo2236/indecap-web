@@ -53,7 +53,7 @@ export default function PrimeraInfanciaPage() {
         "Práctica profesional en hogares infantiles, jardines, CDI o instituciones de salud pediátrica, aplicando de forma real todas las competencias del programa",
       ]}
       mercadoTexto="Colombia tiene más de 5 millones de niños menores de 6 años. El Estado, a través del ICBF y los municipios, financia miles de cupos de atención que requieren profesionales certificados. En Antioquia, la demanda de técnicos en primera infancia supera la oferta — formarte hoy es entrar a un mercado laboral con empleo garantizado."
-      waNum="573008948517"
+      waNum="573022389760"
       waText="Hola INDECAP, estoy interesado en Atención a la Primera Infancia. Mi nombre es "
       sedes={[
         { icon: "🏙️", name: "Sede Medellín",  address: "Cl. 56 # 45-26, Medellín",      tag: "Tel: (604) 448 4794" },

@@ -40,7 +40,7 @@ export default function ExcelIAPage() {
       pensum1={["Introducción a la IA aplicada a Excel","Prompts efectivos para tareas de Excel","Fórmulas avanzadas con asistencia de IA","Tablas dinámicas aceleradas con IA","Limpieza y transformación de datos","Dashboards profesionales","Automatización sin macros usando IA","Análisis y presentación de resultados"]}
       pensum2={["Proyecto final: caso real de tu trabajo","Presentación de resultados","Certificación INDECAP"]}
       mercadoTexto="El 90% de las empresas usan Excel. Los profesionales que combinan Excel con IA son los más productivos y los mejor pagados del mercado laboral actual. Este curso te pone 3 años adelante de tu competencia."
-      waNum="573008948517"
+      waNum="573022389760"
       waText="Hola INDECAP, estoy interesado en Excel + IA. Mi nombre es "
       sedes={[
         { icon: "🏙️", name: "Sede Medellín", address: "Cl. 56 # 45-26, Medellín", tag: "Tel: (604) 448 4794" },

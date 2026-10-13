@@ -30,7 +30,7 @@ export const courses: Course[] = [
     sedes: "Medellín · Envigado · Caldas",
     escuela: "Escuela de Salud",
     tipo: "curso",
-    whatsappUrl: "https://api.whatsapp.com/send?phone=+573008948517&text=Hola%20INDECAP%20estoy%20interesado%20en%20el%20curso%20de%20RCP%2C%20mi%20nombre%20es%20",
+    whatsappUrl: "https://api.whatsapp.com/send?phone=+573022389760&text=Hola%20INDECAP%20estoy%20interesado%20en%20el%20curso%20de%20RCP%2C%20mi%20nombre%20es%20",
   },
   {
     id: "inyectologia",
@@ -44,7 +44,7 @@ export const courses: Course[] = [
     sedes: "Medellín · Envigado · Caldas",
     escuela: "Escuela de Salud",
     tipo: "curso",
-    whatsappUrl: "https://api.whatsapp.com/send?phone=+573008948517&text=Hola%20INDECAP%20estoy%20interesado%20en%20Inyectolog%C3%ADa%2C%20mi%20nombre%20es%20",
+    whatsappUrl: "https://api.whatsapp.com/send?phone=+573022389760&text=Hola%20INDECAP%20estoy%20interesado%20en%20Inyectolog%C3%ADa%2C%20mi%20nombre%20es%20",
   },
   {
     id: "vacunacion",
@@ -58,7 +58,7 @@ export const courses: Course[] = [
     sedes: "Medellín · Envigado · Caldas",
     escuela: "Escuela de Salud",
     tipo: "curso",
-    whatsappUrl: "https://api.whatsapp.com/send?phone=+573008948517&text=Hola%20INDECAP%20estoy%20interesado%20en%20el%20curso%20de%20Vacunaci%C3%B3n%2C%20mi%20nombre%20es%20",
+    whatsappUrl: "https://api.whatsapp.com/send?phone=+573022389760&text=Hola%20INDECAP%20estoy%20interesado%20en%20el%20curso%20de%20Vacunaci%C3%B3n%2C%20mi%20nombre%20es%20",
   },
   {
     id: "toma-muestras",
@@ -72,7 +72,7 @@ export const courses: Course[] = [
     sedes: "Medellín · Envigado · Caldas",
     escuela: "Escuela de Salud",
     tipo: "curso",
-    whatsappUrl: "https://api.whatsapp.com/send?phone=+573008948517&text=Hola%20INDECAP%20estoy%20interesado%20en%20Toma%20de%20Muestras%2C%20mi%20nombre%20es%20",
+    whatsappUrl: "https://api.whatsapp.com/send?phone=+573022389760&text=Hola%20INDECAP%20estoy%20interesado%20en%20Toma%20de%20Muestras%2C%20mi%20nombre%20es%20",
   },
   {
     id: "primeros-auxilios",
@@ -86,7 +86,7 @@ export const courses: Course[] = [
     sedes: "Medellín · Envigado · Caldas",
     escuela: "Escuela de Salud",
     tipo: "curso",
-    whatsappUrl: "https://api.whatsapp.com/send?phone=+573008948517&text=Hola%20INDECAP%20estoy%20interesado%20en%20Primeros%20Auxilios%2C%20mi%20nombre%20es%20",
+    whatsappUrl: "https://api.whatsapp.com/send?phone=+573022389760&text=Hola%20INDECAP%20estoy%20interesado%20en%20Primeros%20Auxilios%2C%20mi%20nombre%20es%20",
   },
   {
     id: "codigo-fucsia",
@@ -99,7 +99,7 @@ export const courses: Course[] = [
     sedes: "Medellín · Envigado · Caldas",
     escuela: "Escuela de Salud",
     tipo: "curso",
-    whatsappUrl: "https://api.whatsapp.com/send?phone=+573008948517&text=Hola%20INDECAP%20estoy%20interesado%20en%20C%C3%B3digo%20Fucsia%2C%20mi%20nombre%20es%20",
+    whatsappUrl: "https://api.whatsapp.com/send?phone=+573022389760&text=Hola%20INDECAP%20estoy%20interesado%20en%20C%C3%B3digo%20Fucsia%2C%20mi%20nombre%20es%20",
   },
   {
     id: "calidad-humanizacion",
@@ -112,7 +112,7 @@ export const courses: Course[] = [
     escuela: "Escuela de Salud",
     tipo: "paquete",
     badge: "Paquete especial — consulta disponibilidad",
-    whatsappUrl: "https://api.whatsapp.com/send?phone=+573008948517&text=Hola%20INDECAP%20estoy%20interesado%20en%20el%20paquete%20Calidad%20y%20Humanizaci%C3%B3n%2C%20mi%20nombre%20es%20",
+    whatsappUrl: "https://api.whatsapp.com/send?phone=+573022389760&text=Hola%20INDECAP%20estoy%20interesado%20en%20el%20paquete%20Calidad%20y%20Humanizaci%C3%B3n%2C%20mi%20nombre%20es%20",
   },
 
   // ── ESCUELA DE SISTEMAS ───────────────────────────────────────
@@ -128,7 +128,7 @@ export const courses: Course[] = [
     escuela: "Escuela de Sistemas",
     tipo: "curso",
     badge: "Paquete 3 niveles con descuento",
-    whatsappUrl: "https://api.whatsapp.com/send?phone=+573008948517&text=Hola%20INDECAP%20estoy%20interesado%20en%20Excel%2C%20mi%20nombre%20es%20",
+    whatsappUrl: "https://api.whatsapp.com/send?phone=+573022389760&text=Hola%20INDECAP%20estoy%20interesado%20en%20Excel%2C%20mi%20nombre%20es%20",
   },
   {
     id: "word",
@@ -140,7 +140,7 @@ export const courses: Course[] = [
     sedes: "Medellín · Envigado · Caldas",
     escuela: "Escuela de Sistemas",
     tipo: "curso",
-    whatsappUrl: "https://api.whatsapp.com/send?phone=+573008948517&text=Hola%20INDECAP%20estoy%20interesado%20en%20Word%2C%20mi%20nombre%20es%20",
+    whatsappUrl: "https://api.whatsapp.com/send?phone=+573022389760&text=Hola%20INDECAP%20estoy%20interesado%20en%20Word%2C%20mi%20nombre%20es%20",
   },
 
   // ── ESCUELA VETERINARIA ───────────────────────────────────────
@@ -156,7 +156,7 @@ export const courses: Course[] = [
     escuela: "Escuela Veterinaria",
     tipo: "diplomado",
     badge: "Financiación directa disponible",
-    whatsappUrl: "https://api.whatsapp.com/send?phone=+573008948517&text=Hola%20INDECAP%20estoy%20interesado%20en%20el%20Diplomado%20de%20Peluquer%C3%ADa%20Canina%2C%20mi%20nombre%20es%20",
+    whatsappUrl: "https://api.whatsapp.com/send?phone=+573022389760&text=Hola%20INDECAP%20estoy%20interesado%20en%20el%20Diplomado%20de%20Peluquer%C3%ADa%20Canina%2C%20mi%20nombre%20es%20",
   },
 
 ];

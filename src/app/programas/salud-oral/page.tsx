@@ -52,7 +52,7 @@ export default function SaludOralPage() {
         "Práctica profesional en consultorios odontológicos, clínicas dentales o IPS con pacientes reales",
       ]}
       mercadoTexto="Los odontólogos del Valle de Aburrá saben que un auxiliar bien formado hace la diferencia entre un consultorio que funciona y uno que no. Nuestros egresados llegan al consultorio sabiendo preparar el puesto, asistir al profesional y tratar al paciente con calidez — porque así aprendieron, practicando."
-      waNum="573008948517"
+      waNum="573022389760"
       waText="Hola INDECAP, estoy interesado en Salud Oral. Mi nombre es "
       sedes={[
         { icon: "🏙️", name: "Sede Medellín", address: "Cl. 56 # 45-26, Medellín", tag: "Tel: (604) 448 4794" },

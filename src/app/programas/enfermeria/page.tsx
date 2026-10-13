@@ -57,7 +57,7 @@ export default function EnfermeriaPage() {
         "Práctica profesional en clínicas, hospitales o centros de salud con pacientes reales bajo supervisión",
       ]}
       mercadoTexto="Nuestros egresados de enfermería ya están en los hospitales y clínicas de Medellín. No es una promesa: es una realidad de 40 años. Las instituciones de salud de Antioquia conocen la formación de INDECAP porque han visto trabajar a nuestros egresados. Esa confianza no se construye con publicidad — se construye con resultados."
-      waNum="573008948517"
+      waNum="573022389760"
       waText="Hola INDECAP, estoy interesado en el Técnico en Enfermería. Mi nombre es "
       sedes={[
         { icon: "🏙️", name: "Sede Medellín", address: "Cl. 56 # 45-26, Medellín", tag: "Tel: (604) 448 4794" },
