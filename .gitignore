@@ -46,3 +46,6 @@ next-env.d.ts
 src/app/bandeja/
 src/app/api/bandeja/
 src/lib/bandeja/
+
+# Exportaciones con datos personales
+*.csv
