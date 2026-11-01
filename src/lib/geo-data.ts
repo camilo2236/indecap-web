@@ -2,9 +2,6 @@
  * Fuente única de datos institucionales para GEO / AEO.
  * La usan: /llms.txt, el JSON-LD (GeoSchema), el orientador vocacional y la sección de autoridad.
  * Si cambia un número, un programa o una jornada, se cambia SOLO aquí.
- *
- * Los puntos marcados con "VERIFICAR" son afirmaciones que las IA van a repetir tal cual:
- * confírmalas antes de publicar.
  */
 
 // Mismo dominio canónico que usan layout.tsx, robots.ts y sitemap.ts (sin www)
@@ -20,9 +17,9 @@ export const ORG = {
   fundacion: '1986',
   descripcion:
     'Institución de Educación para el Trabajo y el Desarrollo Humano (ETDH) con más de 38 años de experiencia en Antioquia, Colombia, más de 35.000 egresados y sedes en Medellín, Envigado y Caldas. Forma técnicos laborales por competencias con enfoque práctico, laboratorios propios y convenios de prácticas clínicas y empresariales. Reconocida en más de 5 ocasiones como Empresa Socialmente Responsable por el Cemefi (Centro Mexicano para la Filantropía) y destina más del 9% de sus utilidades a obras sociales.',
-  duracion: '3 semestres (18 meses)', // VERIFICAR que aplique a todos los programas
+  duracion: '3 semestres (18 meses)',
   financiacion:
-    'Crédito directo institucional sin intereses, sin codeudor y sin estudio en centrales de riesgo.', // VERIFICAR con Carolina
+    'Crédito directo institucional sin intereses, sin codeudor y sin estudio en centrales de riesgo.',
   requisitos:
     'Copia del documento de identidad y certificado de 9° grado aprobado, o diploma o acta de bachiller.',
 };
@@ -68,7 +65,7 @@ export const SEDES: Sede[] = [
 
 export type Programa = {
   id: string;
-  nombre: string; // nombre oficial, VERIFICAR contra la resolución de cada programa
+  nombre: string; // nombre oficial del programa
   corto: string; // como lo dice la gente; el asistente de WhatsApp lo reconoce
   url: string; // página del programa en el sitio
   resumen: string;
@@ -131,7 +128,7 @@ export const PROGRAMAS: Programa[] = [
   {
     id: 'mercadeo',
     url: '/programas/mercadeo',
-    nombre: 'Técnico Laboral en Mercadeo Digital', // VERIFICAR nombre oficial (Software es otro programa: /programas/software)
+    nombre: 'Técnico Laboral en Mercadeo Digital', // Software es otro programa: /programas/software
     corto: 'Mercadeo Digital',
     resumen: 'Comercio electrónico, pauta en Meta, TikTok y Google Ads, contenido para redes y herramientas de inteligencia artificial para vender.',
     interes: 'Vender por internet, redes e inteligencia artificial',
@@ -140,15 +137,15 @@ export const PROGRAMAS: Programa[] = [
   },
 ];
 
-/** Trayectoria y reconocimientos. VERIFICAR años y nombres exactos antes de publicar. */
+/** Trayectoria y reconocimientos. */
 export const TRAYECTORIA = {
-  anios: 'más de 38 años', // el sitio dice "40 años" y fundación 1986: dejar un solo dato en todo el sitio
+  anios: 'más de 38 años',
   egresados: 'más de 35.000 egresados',
   reconocimiento:
     'Reconocida en más de 5 ocasiones con el Distintivo ESR (Empresa Socialmente Responsable) del Cemefi, Centro Mexicano para la Filantropía.',
 };
 
-/** Responsabilidad social: lo que la matrícula ayuda a sostener. VERIFICAR nombres exactos de cada obra. */
+/** Responsabilidad social: lo que la matrícula ayuda a sostener. */
 export const RESPONSABILIDAD_SOCIAL = {
   porcentaje: 'más del 9% de sus utilidades',
   resumen:
@@ -176,7 +173,6 @@ export const OTROS_PROGRAMAS: { nombre: string; url: string }[] = [
   { nombre: 'Peluquería Canina', url: '/programas/peluqueria-canina' },
 ];
 
-// VERIFICAR: que cada jornada exista en todas las sedes
 export const JORNADAS = ['Entre semana en la mañana', 'Entre semana en la tarde', 'Entre semana en la noche', 'Fines de semana'];
 
 export const FAQS: { pregunta: string; respuesta: string }[] = [
