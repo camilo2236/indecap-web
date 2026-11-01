@@ -5,6 +5,8 @@
  */
 
 // Mismo dominio canónico que usan layout.tsx, robots.ts y sitemap.ts (sin www)
+import { locations } from '@/data/locations';
+
 export const SITE_URL = 'https://indecap.edu.co';
 
 export const ORG = {
@@ -14,6 +16,7 @@ export const ORG = {
   telefono: '+576044484794',
   email: 'indecap@indecap.edu.co',
   logo: '/images/logo.png',
+  imagen: '/images/og-image.jpg',
   fundacion: '1986',
   descripcion:
     'Institución de Educación para el Trabajo y el Desarrollo Humano (ETDH) con más de 38 años de experiencia en Antioquia, Colombia, más de 35.000 egresados y sedes en Medellín, Envigado y Caldas. Forma técnicos laborales por competencias con enfoque práctico, laboratorios propios y convenios de prácticas clínicas y empresariales. Reconocida en más de 5 ocasiones como Empresa Socialmente Responsable por el Cemefi (Centro Mexicano para la Filantropía) y destina más del 9% de sus utilidades a obras sociales.',
@@ -31,6 +34,8 @@ export type Sede = {
   nombre: string;
   ciudad: string;
   zona: string; // texto corto para el botón del orientador
+  direccion: string;
+  referencia: string;
   cobertura: string;
   whatsapp: string; // solo dígitos, con 57
 };
@@ -41,8 +46,10 @@ export const SEDES: Sede[] = [
     nombre: 'Sede Medellín (Centro / Prado)',
     ciudad: 'Medellín',
     zona: 'Medellín, Bello y el norte',
+    direccion: 'Calle 56 # 45-26',
+    referencia: 'Entre la calle El Palo y la carrera Bolivia, muy cerca de la estación Prado del Metro y a una cuadra de la Avenida Oriental.',
     cobertura:
-      'Cerca de la estación Prado del Metro de Medellín. Atiende Medellín, Bello, Copacabana, Girardota y Barbosa.',
+      'Atiende Medellín, Bello, Copacabana, Girardota y Barbosa.',
     whatsapp: '573022389760',
   },
   {
@@ -50,6 +57,8 @@ export const SEDES: Sede[] = [
     nombre: 'Sede Envigado',
     ciudad: 'Envigado',
     zona: 'Envigado, Itagüí y Sabaneta',
+    direccion: 'Calle 37 Sur # 43A-84',
+    referencia: 'Cerca del parque principal de Envigado.',
     cobertura: 'Atiende el sur del Valle de Aburrá: Envigado, Itagüí, Sabaneta y La Estrella.',
     whatsapp: '573174342783',
   },
@@ -58,10 +67,17 @@ export const SEDES: Sede[] = [
     nombre: 'Sede Caldas',
     ciudad: 'Caldas',
     zona: 'Caldas, La Estrella y el Suroeste',
+    direccion: 'Calle 130 Sur # 51-65',
+    referencia: 'Cerca del parque principal de Caldas. La sede tiene 10 aulas en cuatro niveles.',
     cobertura: 'Atiende Caldas, La Estrella, Amagá, Angelópolis y el Suroeste antioqueño.',
     whatsapp: '573008948517',
   },
 ];
+
+/** Licencia de funcionamiento de cada sede, tomada de src/data/locations.ts (no se duplica aquí). */
+export function resolucionSede(id: SedeId): string | undefined {
+  return locations.find((l) => l.id === id)?.resolution;
+}
 
 export type Programa = {
   id: string;

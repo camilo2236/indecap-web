@@ -1,4 +1,4 @@
-import { FAQS, JORNADAS, ORG, OTROS_PROGRAMAS, PROGRAMAS, RESPONSABILIDAD_SOCIAL, SEDES, SITE_URL, TRAYECTORIA } from '@/lib/geo-data';
+import { resolucionSede, FAQS, JORNADAS, ORG, OTROS_PROGRAMAS, PROGRAMAS, RESPONSABILIDAD_SOCIAL, SEDES, SITE_URL, TRAYECTORIA } from '@/lib/geo-data';
 
 // Se genera una sola vez en el build: es un archivo estático servido en /llms.txt
 export const dynamic = 'force-static';
@@ -37,7 +37,7 @@ ${RESPONSABILIDAD_SOCIAL.obras.map((o) => `- ${o}`).join('\n')}
 ## Sedes y WhatsApp de admisiones
 ${SEDES.map(
   (s, i) =>
-    `${i + 1}. **[${s.nombre}](${SITE_URL}/sedes/${s.id}):** ${s.cobertura} WhatsApp: [${tel(s.whatsapp)}](https://wa.me/${s.whatsapp})`,
+    `${i + 1}. **[${s.nombre}](${SITE_URL}/sedes/${s.id}):** ${s.direccion}, ${s.ciudad}. ${s.referencia} ${s.cobertura}${resolucionSede(s.id) ? ` Licencia de funcionamiento: ${resolucionSede(s.id)}.` : ''} WhatsApp: [${tel(s.whatsapp)}](https://wa.me/${s.whatsapp})`,
 ).join('\n')}
 
 ## Programas técnicos laborales más solicitados

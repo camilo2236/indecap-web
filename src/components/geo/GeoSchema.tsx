@@ -1,4 +1,4 @@
-import { ORG, PROGRAMAS, SEDES, SITE_URL, TRAYECTORIA } from '@/lib/geo-data';
+import { resolucionSede, ORG, PROGRAMAS, SEDES, SITE_URL, TRAYECTORIA } from '@/lib/geo-data';
 
 const ORG_ID = `${SITE_URL}/#organization`;
 
@@ -17,9 +17,17 @@ export default function GeoSchema() {
         alternateName: ORG.otrosNombres,
         url: SITE_URL,
         logo: `${SITE_URL}${ORG.logo}`,
+        image: `${SITE_URL}${ORG.imagen}`,
         foundingDate: ORG.fundacion,
         telephone: ORG.telefono,
         email: ORG.email,
+        address: {
+          '@type': 'PostalAddress',
+          streetAddress: SEDES.find((s) => s.id === 'envigado')!.direccion,
+          addressLocality: 'Envigado',
+          addressRegion: 'Antioquia',
+          addressCountry: 'CO',
+        },
         description: ORG.descripcion,
         award: [TRAYECTORIA.reconocimiento],
         knowsAbout: ['Educación para el Trabajo y el Desarrollo Humano', 'Técnicos laborales en salud', 'Enfermería', 'Veterinaria', 'Cosmetología', 'Servicios farmacéuticos', 'Salud oral', 'Responsabilidad social'],
@@ -30,10 +38,12 @@ export default function GeoSchema() {
           '@id': `${SITE_URL}/#sede-${s.id}`,
           name: `${ORG.nombreCorto} ${s.nombre}`,
           url: `${SITE_URL}/sedes/${s.id}`,
+          image: `${SITE_URL}${ORG.imagen}`,
           telephone: `+${s.whatsapp}`,
-          description: s.cobertura,
+          description: `${s.referencia} ${s.cobertura}${resolucionSede(s.id) ? ` Licencia de funcionamiento: ${resolucionSede(s.id)}.` : ''}`,
           address: {
             '@type': 'PostalAddress',
+            streetAddress: s.direccion,
             addressLocality: s.ciudad,
             addressRegion: 'Antioquia',
             addressCountry: 'CO',
