@@ -7,17 +7,23 @@ import { News } from "@/components/sections/News";
 import { About } from "@/components/sections/About";
 import { CtaFinal } from "@/components/sections/CtaFinal";
 import { Bachillerato } from "@/components/sections/Bachillerato";
+import VocationalFunnel from "@/components/geo/VocationalFunnel";
+import GeoAuthoritySection from "@/components/geo/GeoAuthoritySection";
 
 export default function Home() {
   return (
     <main>
       <Hero />
       <Programs />
+      <div className="px-4">
+        <VocationalFunnel />
+      </div>
       <Testimonios />
       <Courses />
       <Partners />
       <News />
       <About />
+      <GeoAuthoritySection />
       <CtaFinal />
       <Bachillerato />
     </main>

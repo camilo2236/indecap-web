@@ -1,4 +1,4 @@
-﻿import type { Metadata } from "next";
+import type { Metadata } from "next";
 import { Newsreader, Inter } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/layout/Header";
@@ -7,6 +7,7 @@ import { WhatsAppButton } from "@/components/WhatsAppButton";
 import { ScrollReveal } from "@/components/ScrollReveal";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import GeoSchema from "@/components/geo/GeoSchema";
 
 const newsreader = Newsreader({
   variable: "--font-playfair",
@@ -51,28 +52,8 @@ export const metadata: Metadata = {
   robots: { index: true, follow: true },
 };
 
-const schemaOrg = {
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "EducationalOrganization",
-      "@id": `${BASE_URL}/#organization`,
-      "name": "Corporación Educativa INDECAP",
-      "url": BASE_URL,
-      "logo": `${BASE_URL}/images/logo.png`,
-      "foundingDate": "1986",
-      "telephone": "+576044484794",
-      "email": "indecap@indecap.edu.co",
-    },
-    {
-      "@type": "WebSite",
-      "@id": `${BASE_URL}/#website`,
-      "url": BASE_URL,
-      "name": "INDECAP — Instituto de Ciencias Aplicadas",
-      "inLanguage": "es-CO",
-    },
-  ],
-};
+// El schema de organización ahora sale de <GeoSchema /> (src/components/geo/GeoSchema.tsx),
+// con los mismos datos que había aquí más sedes y programas.
 
 const metaPixelScript = `!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init','3334450846719696');fbq('track','PageView');`;
 
@@ -80,10 +61,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html lang="es">
       <head>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaOrg) }}
-        />
+        <GeoSchema />
         <script dangerouslySetInnerHTML={{ __html: metaPixelScript }} />
         <noscript>
           <img
