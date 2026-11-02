@@ -4,7 +4,7 @@ import { MapPin, Phone, Mail, MessageCircle, ArrowRight, Clock, Building2, Gradu
 
 export const metadata: Metadata = {
   title: "Sede Caldas | INDECAP – Cerca al Parque Principal de Caldas",
-  description: "INDECAP Sede Caldas. Calle 130 sur N° 51-65. 10 aulas, laboratorio de química y física, biblioteca. 420+ egresados. Programas técnicos y bachillerato.",
+  description: "INDECAP Sede Caldas. Calle 130 sur N° 51-65. 10 aulas, laboratorio de química y física, biblioteca. 420+ egresados. Enfermería, Cosmetología, Farmacia, Veterinaria y más técnicos laborales, y bachillerato.",
   openGraph: {
     images: [{ url: "https://indecap.edu.co/images/sedes/og-sede-caldas.jpg", width: 1200, height: 630 }],
   },
@@ -29,7 +29,7 @@ export default function SedesCaldasPage() {
             Sede<br /><em className="italic" style={{ color: "#ffb21d" }}>Caldas</em>
           </h1>
           <p className="text-white/70 text-xl max-w-2xl leading-relaxed">
-            más de 10 años transformando vidas en el sur del Valle de Aburrá. Convenios con INPROQUIN, FRIKO, COMFAMA y más de 5000 egresados que hoy son líderes de su comunidad.
+            Más de 10 años transformando vidas en el sur del Valle de Aburrá. Convenios con INPROQUIN, FRIKO, COMFAMA y más de 5000 egresados que hoy son líderes de su comunidad.
           </p>
         </div>
       </section>
@@ -124,15 +124,20 @@ export default function SedesCaldasPage() {
               <h3 className="font-[family-name:var(--font-playfair)] text-3xl font-black text-[#1a086e] mb-6 tracking-tight">Qué puedes estudiar aquí</h3>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 {[
-                  "Auxiliar en Enfermería", "Servicios Farmacéuticos", "Auxiliar en Salud Oral",
-                  "Auxiliar en Veterinaria", "Peluquería y Estética Canina",
-                  "Auxiliar Contable", "Auxiliar en Salud Pública",
-                  "Bachillerato Privado para Adultos",
+                  { nombre: "Auxiliar en Enfermería", href: "/programas/enfermeria" },
+                  { nombre: "Cosmetología y Estética Integral", href: "/programas/cosmetologia" },
+                  { nombre: "Servicios Farmacéuticos", href: "/programas/farmacia" },
+                  { nombre: "Auxiliar en Salud Oral", href: "/programas/salud-oral" },
+                  { nombre: "Auxiliar en Veterinaria", href: "/programas/veterinaria" },
+                  { nombre: "Peluquería y Estética Canina", href: "/programas/peluqueria-canina" },
+                  { nombre: "Auxiliar Contable", href: "/programas/contable" },
+                  { nombre: "Auxiliar en Salud Pública", href: "/programas/salud-publica" },
+                  { nombre: "Bachillerato Privado para Adultos", href: "/programas" },
                 ].map((prog) => (
-                  <div key={prog} className="flex items-center gap-3 bg-white px-5 py-4 rounded-xl border border-[#c8c4d3]/20 shadow-sm">
+                  <a key={prog.nombre} href={prog.href} className="flex items-center gap-3 bg-white px-5 py-4 rounded-xl border border-[#c8c4d3]/20 shadow-sm hover:border-[#ffb21d] transition-colors">
                     <span className="w-2 h-2 rounded-full shrink-0" style={{ backgroundColor: "#ffb21d" }} />
-                    <span className="text-sm font-semibold text-[#171c1e]">{prog}</span>
-                  </div>
+                    <span className="text-sm font-semibold text-[#171c1e]">{prog.nombre}</span>
+                  </a>
                 ))}
               </div>
               <a href="/programas" className="inline-flex items-center gap-2 mt-6 font-bold text-sm text-[#1a086e] hover:gap-4 transition-all">
@@ -187,7 +192,7 @@ export default function SedesCaldasPage() {
               </div>
               <div className="space-y-3">
                 <a
-                  href="https://wa.me/573008948517?text=Hola%20INDECAP%20Caldas%2C%20quiero%20informacion%20sobre%20los%20programas%20disponibles%20en%20la%20sede%20de%20Caldas."
+                  href="https://wa.me/573008948517?text=Hola%20INDECAP%20Caldas%2C%20quiero%20informaci%C3%B3n%20sobre%20los%20programas%20disponibles%20en%20la%20sede%20de%20Caldas."
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center justify-center gap-3 w-full py-4 rounded-xl font-black text-white bg-[#25D366] hover:scale-105 transition-transform"
@@ -226,16 +231,16 @@ export default function SedesCaldasPage() {
             <h2 className="font-[family-name:var(--font-playfair)] text-5xl font-black text-white mb-4 tracking-tight">
               Estudia en <em className="italic">Caldas</em>
             </h2>
-            <p className="text-white/70 text-xl mb-10 max-w-xl mx-auto">Se parte de los mas 5000 egresados que transformaron su vida estudiando en INDECAP Caldas.</p>
+            <p className="text-white/70 text-xl mb-10 max-w-xl mx-auto">Sé parte de los más de 5000 egresados que transformaron su vida estudiando en INDECAP Caldas.</p>
             <div className="flex flex-col md:flex-row gap-4 justify-center">
               <a
                 href="/admision"
                 className="flex items-center justify-center gap-3 px-10 py-5 rounded-full font-black text-lg hover:scale-105 transition-transform shadow-xl bg-[#ffb21d] text-[#281800]"
               >
-                Formulario de admision <ArrowRight size={18} />
+                Formulario de admisión <ArrowRight size={18} />
               </a>
               <a
-                href="https://wa.me/573008948517?text=Hola%20INDECAP%20Caldas%2C%20quiero%20informacion%20sobre%20los%20programas%20disponibles%20en%20la%20sede%20de%20Caldas."
+                href="https://wa.me/573008948517?text=Hola%20INDECAP%20Caldas%2C%20quiero%20informaci%C3%B3n%20sobre%20los%20programas%20disponibles%20en%20la%20sede%20de%20Caldas."
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center justify-center gap-3 px-10 py-5 rounded-full font-black text-lg border-2 border-white text-white hover:bg-white/10 transition-colors"
