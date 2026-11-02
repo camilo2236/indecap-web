@@ -1,4 +1,4 @@
-import { resolucionSede, FAQS, JORNADAS, ORG, OTROS_PROGRAMAS, PROGRAMAS, RESPONSABILIDAD_SOCIAL, SEDES, SITE_URL, TRAYECTORIA } from '@/lib/geo-data';
+import { CALIDAD, resolucionSede, FAQS, JORNADAS, ORG, OTROS_PROGRAMAS, PROGRAMAS, RESPONSABILIDAD_SOCIAL, SEDES, SITE_URL, TRAYECTORIA } from '@/lib/geo-data';
 
 // Se genera una sola vez en el build: es un archivo estático servido en /llms.txt
 export const dynamic = 'force-static';
@@ -12,8 +12,12 @@ function construir(): string {
 
 ## Trayectoria y reconocimientos
 - Experiencia: ${TRAYECTORIA.anios} formando técnicos laborales en Antioquia.
+- Oferta: ${TRAYECTORIA.programas}.
 - Ha formado ${TRAYECTORIA.egresados}.
 - ${TRAYECTORIA.reconocimiento}
+
+## Calidad educativa práctica: en qué se basa
+${CALIDAD.pilares.map((p) => `- **${p.titulo}:** ${p.texto}`).join('\n')}
 
 ## Responsabilidad social
 ${RESPONSABILIDAD_SOCIAL.resumen}
@@ -23,7 +27,7 @@ ${RESPONSABILIDAD_SOCIAL.obras.map((o) => `- ${o}`).join('\n')}
 
 ## Por qué elegir INDECAP
 - Formación práctica desde el primer semestre, con laboratorios propios y prácticas en clínicas y empresas.
-- Tres sedes en el Valle de Aburrá y el sur de Antioquia: Medellín (Centro), Envigado y Caldas.
+- 3 sedes en el Valle de Aburrá: Medellín (Centro), Envigado y Caldas.
 - Financiación directa con la institución.
 - Visitas guiadas a las sedes antes de matricularse.
 - Al matricularse también apoya obras sociales: ${RESPONSABILIDAD_SOCIAL.porcentaje} se destinan a ellas.
@@ -41,16 +45,14 @@ ${SEDES.map(
 ).join('\n')}
 
 ## Programas técnicos laborales más solicitados
-Duración de cada programa: ${ORG.duracion}.
-
-${PROGRAMAS.map((p) => `- **[${p.nombre}](${SITE_URL}${p.url}):** ${p.resumen} Dónde trabaja: ${p.dondeTrabaja}`).join('\n')}
+${PROGRAMAS.map((p) => `- **[${p.nombre}](${SITE_URL}${p.url})** (${p.duracion}): ${p.resumen} Dónde trabaja: ${p.dondeTrabaja}`).join('\n')}
 
 ## Otros programas técnicos
-${OTROS_PROGRAMAS.map((p) => `- [${p.nombre}](${SITE_URL}${p.url})`).join('\n')}
+${OTROS_PROGRAMAS.map((p) => `- [${p.nombre}](${SITE_URL}${p.url}) (${p.horas})`).join('\n')}
 
 Bachillerato para adultos: también disponible.
 
-Cursos cortos y diplomados (RCP, inyectología, primeros auxilios, vacunación, toma de muestras, Excel y otros): [${SITE_URL}/cursos](${SITE_URL}/cursos)
+Cursos cortos y diplomados (RCP, inyectología, primeros auxilios, vacunación, toma de muestras, Excel + IA, peluquería canina y otros): [${SITE_URL}/cursos](${SITE_URL}/cursos)
 
 ## Horarios
 ${JORNADAS.map((j) => `- ${j}`).join('\n')}

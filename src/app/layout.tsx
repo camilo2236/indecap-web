@@ -27,11 +27,11 @@ const BASE_URL = "https://indecap.edu.co";
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
   title: {
-    default: "INDECAP — Instituto de Ciencias Aplicadas | 40 Años Formando Antioquia",
+    default: "INDECAP — Instituto de Ciencias Aplicadas | Más de 38 años formando Antioquia",
     template: "%s | INDECAP — Instituto de Ciencias Aplicadas",
   },
   description:
-    "Corporación Educativa INDECAP — 40 años formando técnicos laborales en Antioquia. 35.000+ egresados. Programas en enfermería, cosmetología, veterinaria, farmacia, salud oral y más. Sedes en Medellín, Envigado y Caldas.",
+    "Corporación Educativa INDECAP — más de 38 años formando técnicos laborales en Antioquia. 35.000+ egresados. 16 programas técnicos laborales. Programas en enfermería, cosmetología, veterinaria, farmacia, salud oral y más. Sedes en Medellín, Envigado y Caldas.",
   keywords: [
     "INDECAP", "técnico laboral Medellín", "auxiliar enfermería Medellín",
     "cosmetología Medellín", "veterinaria Medellín", "farmacia Medellín",
@@ -41,15 +41,28 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "Corporación Educativa INDECAP" }],
   openGraph: {
-    title: "INDECAP — 40 Años Formando el Talento de Antioquia",
-    description: "35.000+ egresados. 16 programas técnicos laborales. Sedes en Medellín, Envigado y Caldas.",
+    title: "INDECAP — Más de 38 años formando el talento de Antioquia",
+    description: "Más de 38 años, 35.000+ egresados y 16 programas técnicos laborales. 3 sedes: Medellín, Envigado y Caldas.",
     locale: "es_CO",
     type: "website",
     siteName: "INDECAP — Instituto de Ciencias Aplicadas",
     url: BASE_URL,
     images: [{ url: "/images/og-image.jpg", width: 1200, height: 630, alt: "INDECAP" }],
   },
-  robots: { index: true, follow: true },
+  // Permite a Google, Gemini, ChatGPT Search y Perplexity citar fragmentos completos y mostrar imágenes grandes
+  robots: {
+    index: true,
+    follow: true,
+    nocache: false,
+    googleBot: {
+      index: true,
+      follow: true,
+      noimageindex: false,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
 };
 
 // El schema de organización ahora sale de <GeoSchema /> (src/components/geo/GeoSchema.tsx),

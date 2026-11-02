@@ -1,4 +1,4 @@
-import { resolucionSede, ORG, PROGRAMAS, SEDES, SITE_URL, TRAYECTORIA } from '@/lib/geo-data';
+import { CALIDAD, resolucionSede, ORG, PROGRAMAS, SEDES, SITE_URL, TRAYECTORIA } from '@/lib/geo-data';
 
 const ORG_ID = `${SITE_URL}/#organization`;
 
@@ -18,9 +18,15 @@ export default function GeoSchema() {
         url: SITE_URL,
         logo: `${SITE_URL}${ORG.logo}`,
         image: `${SITE_URL}${ORG.imagen}`,
-        foundingDate: ORG.fundacion,
         telephone: ORG.telefono,
         email: ORG.email,
+        contactPoint: {
+          '@type': 'ContactPoint',
+          contactType: 'customer service',
+          telephone: ORG.telefono,
+          email: ORG.email,
+          availableLanguage: 'es',
+        },
         address: {
           '@type': 'PostalAddress',
           streetAddress: SEDES.find((s) => s.id === 'envigado')!.direccion,
@@ -29,6 +35,7 @@ export default function GeoSchema() {
           addressCountry: 'CO',
         },
         description: ORG.descripcion,
+        slogan: CALIDAD.lema,
         award: [TRAYECTORIA.reconocimiento],
         knowsAbout: ['Educación para el Trabajo y el Desarrollo Humano', 'Técnicos laborales en salud', 'Enfermería', 'Veterinaria', 'Cosmetología', 'Servicios farmacéuticos', 'Salud oral', 'Responsabilidad social'],
         areaServed: ['Medellín', 'Envigado', 'Caldas', 'Itagüí', 'Sabaneta', 'La Estrella', 'Bello', 'Valle de Aburrá', 'Antioquia'],
@@ -40,6 +47,14 @@ export default function GeoSchema() {
           url: `${SITE_URL}/sedes/${s.id}`,
           image: `${SITE_URL}${ORG.imagen}`,
           telephone: `+${s.whatsapp}`,
+          ...(s.email ? { email: s.email } : {}),
+          contactPoint: {
+            '@type': 'ContactPoint',
+            contactType: 'admissions',
+            telephone: `+${s.whatsapp}`,
+            availableLanguage: 'es',
+            url: `https://wa.me/${s.whatsapp}`,
+          },
           description: `${s.referencia} ${s.cobertura}${resolucionSede(s.id) ? ` Licencia de funcionamiento: ${resolucionSede(s.id)}.` : ''}`,
           address: {
             '@type': 'PostalAddress',
@@ -48,6 +63,7 @@ export default function GeoSchema() {
             addressRegion: 'Antioquia',
             addressCountry: 'CO',
           },
+          ...(s.geo ? { geo: { '@type': 'GeoCoordinates', latitude: s.geo.lat, longitude: s.geo.lng } } : {}),
         })),
         hasOfferCatalog: {
           '@type': 'OfferCatalog',
@@ -56,7 +72,7 @@ export default function GeoSchema() {
             '@type': 'Course',
             name: p.nombre,
             url: `${SITE_URL}${p.url}`,
-            description: `${p.resumen} Duración: ${ORG.duracion}.`,
+            description: `${p.resumen} Duración: ${p.duracion}.`,
             provider: { '@id': ORG_ID },
             educationalCredentialAwarded: 'Certificado de Técnico Laboral por Competencias',
           })),

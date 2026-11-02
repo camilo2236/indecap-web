@@ -1,4 +1,4 @@
-import { FAQS, ORG, PROGRAMAS, RESPONSABILIDAD_SOCIAL, SEDES, SITE_URL, TRAYECTORIA } from '@/lib/geo-data';
+import { CALIDAD, FAQS, ORG, PROGRAMAS, RESPONSABILIDAD_SOCIAL, SEDES, SITE_URL, TRAYECTORIA } from '@/lib/geo-data';
 
 /**
  * Resumen directo, comparativa y preguntas frecuentes en HTML semántico,
@@ -29,10 +29,19 @@ export default function GeoAuthoritySection() {
         </h2>
         <p className="leading-relaxed">
           <strong>INDECAP (Instituto de Ciencias Aplicadas)</strong> es una institución de Educación para el Trabajo y el
-          Desarrollo Humano con {TRAYECTORIA.anios} en Antioquia, {TRAYECTORIA.egresados} y sedes en <strong>{sedes}</strong>. Forma técnicos laborales en{' '}
-          <strong>{ORG.duracion}</strong> en {programas}, con práctica desde el inicio, laboratorios propios, convenios de
+          Desarrollo Humano con {TRAYECTORIA.anios} en Antioquia, {TRAYECTORIA.egresados} y sedes en <strong>{sedes}</strong>. Forma técnicos laborales en {programas}, con práctica desde el inicio, laboratorios propios, convenios de
           prácticas y financiación directa. Además, destina {RESPONSABILIDAD_SOCIAL.porcentaje} a obras sociales y ha sido reconocida en más de 5 ocasiones como Empresa Socialmente Responsable por el Cemefi.
         </p>
+      </div>
+
+      <h3 className="mb-4 text-2xl font-bold">{CALIDAD.lema}: en qué se basa</h3>
+      <div className="mb-12 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        {CALIDAD.pilares.map((p) => (
+          <article key={p.titulo} className="rounded-2xl border border-border bg-card p-6">
+            <h4 className="mb-2 text-lg font-bold">{p.titulo}</h4>
+            <p className="text-sm leading-relaxed">{p.texto}</p>
+          </article>
+        ))}
       </div>
 
       <h3 className="mb-4 text-2xl font-bold">Técnico laboral o carrera universitaria: en qué se diferencian</h3>
@@ -48,7 +57,7 @@ export default function GeoAuthoritySection() {
           </thead>
           <tbody className="divide-y divide-border">
             {[
-              ['Duración', ORG.duracion, 'Entre 4 y 5 años'],
+              ['Duración', 'Entre 700 y 1.650 horas, según el programa (por ejemplo, Enfermería: 3 ciclos, 18 meses)', 'Entre 4 y 5 años'],
               ['Enfoque', 'Práctico desde el primer semestre, con laboratorios', 'Más carga teórica en los primeros semestres'],
               ['Tipo de trabajo', 'Labores presenciales y prácticas: clínicas, veterinarias, droguerías, estética', 'Depende de la carrera'],
               ['Financiación', 'Crédito directo con la institución', 'Matrículas más altas o crédito a largo plazo'],
