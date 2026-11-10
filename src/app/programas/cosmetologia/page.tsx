@@ -64,7 +64,7 @@ export default function CosmetologiaPage() {
         { icon: "🏙️", name: "Sede Medellín", address: "Cl. 56 # 45-26, Medellín", tag: "Tel: (604) 448 4794" },
         { icon: "🏘️", name: "Sede Envigado", address: "Cl 37 Sur #43A-84, Envigado", tag: "Tel: (604) 448 4794" },
       ]}
-      ctaDesc="El sector de la belleza y el bienestar en Antioquia crece cada año. Fórmate con quienes llevan 40 años formando estilistas que trabajan."
+      ctaDesc="El sector de la belleza y el bienestar en Antioquia crece cada año. Fórmate con quienes llevan más de 38 años formando estilistas que trabajan."
       programaId="cosmetologia"
     />
   );

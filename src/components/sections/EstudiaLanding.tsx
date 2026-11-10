@@ -283,7 +283,7 @@ export function EstudiaLanding() {
                   <Terminal size={20} />
                 </div>
                 <div>
-                  <p className="text-white text-sm font-semibold">40 años</p>
+                  <p className="text-white text-sm font-semibold">38+ años</p>
                   <p className="text-[#00dbe9] text-xs">+35.000 egresados</p>
                 </div>
               </div>

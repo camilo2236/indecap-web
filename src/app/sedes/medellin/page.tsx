@@ -24,13 +24,13 @@ export default function SedesMedellinPage() {
             <span className="inline-block px-5 py-2 rounded-full text-xs font-bold uppercase tracking-widest" style={{ backgroundColor: "#ffb21d", color: "#281800" }}>
               ✦ Sede Principal
             </span>
-            <span className="text-white/50 text-sm">40 años en el corazón de Medellín</span>
+            <span className="text-white/50 text-sm">Más de 38 años en el corazón de Medellín</span>
           </div>
           <h1 className="font-[family-name:var(--font-playfair)] text-6xl md:text-8xl font-black text-white leading-[0.9] tracking-tight mb-6">
             Sede<br /><em className="italic" style={{ color: "#ffb21d" }}>Medellín</em>
           </h1>
           <p className="text-white/70 text-xl max-w-2xl leading-relaxed">
-            El corazón académico de INDECAP. A una cuadra del Metro Prado, en el centro de Medellín, formando técnicos que mueven a Antioquia desde 1986.
+            El corazón académico de INDECAP. A una cuadra del Metro Prado, en el centro de Medellín, formando técnicos que mueven a Antioquia hace más de 38 años.
           </p>
         </div>
       </section>
@@ -68,7 +68,7 @@ export default function SedesMedellinPage() {
             <div>
               <span className="text-xs font-bold uppercase tracking-widest block mb-3 text-[#805600]">La sede</span>
               <h2 className="font-[family-name:var(--font-playfair)] text-4xl font-black text-[#1a086e] mb-6 tracking-tight">
-                40 años en el <em className="italic">centro de Medellín</em>
+                Más de 38 años en el <em className="italic">centro de Medellín</em>
               </h2>
               <p className="text-[#474551] text-lg leading-relaxed mb-4">
                 La Sede Medellín está ubicada en la Calle 56 N° 45-26, entre la Calle El Palo y la Carrera Bolivia — a una cuadra del Metro Prado y de la Avenida Oriental. Su ubicación central la convierte en la sede más accesible de INDECAP, con múltiples rutas de transporte público que llegan directamente.

@@ -169,7 +169,7 @@ export function Hero() {
                 <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#F0A500] opacity-75" />
                 <span className="relative inline-flex h-2 w-2 rounded-full bg-[#F0A500]" />
               </span>
-              Inscripciones abiertas 2026
+              Inscripciones abiertas 2027
             </div>
             <h1 className="font-[family-name:var(--font-playfair)] font-black text-white leading-[0.88] tracking-tight mb-8"
               style={{ fontSize: "clamp(3rem, 6vw, 5.5rem)" }}>
@@ -177,7 +177,7 @@ export function Hero() {
               <em className="italic" style={{ color: "#FFD166" }}>empieza aquí</em>
             </h1>
             <p className="text-white/65 text-lg leading-relaxed max-w-md mb-10 font-light">
-              40 años formando técnicos en Antioquia. Más de 35.000 egresados trabajando hoy en las mejores empresas de la región.
+              Más de 38 años formando técnicos en Antioquia. Más de 35.000 egresados trabajando hoy en las mejores empresas de la región.
             </p>
             <ul className="flex flex-col gap-3 mb-10">
               {[
@@ -194,8 +194,8 @@ export function Hero() {
             <div className="flex gap-8 pt-8 border-t border-white/10">
               {[
                 { num: "35.000+", label: "Egresados" },
-                { num: "40", label: "Años" },
-                { num: "17", label: "Programas" },
+                { num: "38+", label: "Años" },
+                { num: "16", label: "Programas" },
                 { num: "3", label: "Sedes" },
               ].map((s) => (
                 <div key={s.label}>
@@ -227,7 +227,7 @@ export function Hero() {
                   <h2 className="font-[family-name:var(--font-playfair)] text-2xl font-black text-[#1a086e] mb-1">
                     Solicita información gratis
                   </h2>
-                  <p className="text-sm text-[#787583]">Te contactamos en menos de 24 horas</p>
+                  <p className="text-sm text-[#787583]">Un asesor te escribe por WhatsApp</p>
                 </div>
 
                 <form onSubmit={handleSubmit} className="space-y-3">

@@ -115,7 +115,7 @@ if (typeof window !== "undefined") {
         <div className="text-center mb-8">
           <div className="inline-flex items-center gap-2 rounded-full px-4 py-1.5 mb-5 text-xs font-bold" style={{ background: "rgba(245,189,101,0.15)", color: "#f5bd65", border: "1px solid rgba(245,189,101,0.3)" }}>
             <span className="w-1.5 h-1.5 rounded-full bg-[#f5bd65] animate-pulse"></span>
-            Inscripciones abiertas 2026
+            Inscripciones abiertas 2027
           </div>
           <h1 className="text-3xl font-black text-white mb-3 leading-tight" style={{ fontFamily: "Newsreader, serif", letterSpacing: "-0.02em" }}>
             Solicita información<br /><em>gratis y sin compromiso</em>

@@ -26,7 +26,7 @@ const differentiators = [
     icon: Users,
     title: "35.000+ egresados",
     description:
-      "Más de 40 años de reconocimiento en la industria laboral de Antioquia. Nuestros egresados ya están en las mejores empresas.",
+      "Más de 38 años de reconocimiento en la industria laboral de Antioquia. Nuestros egresados ya están en las mejores empresas.",
     color: "#F0A500",
   },
 ];
@@ -41,7 +41,7 @@ export function Partners() {
             Lo que nos hace diferentes
           </h2>
           <p className="mt-3 font-[family-name:var(--font-dm-sans)] font-light text-[#6B7280]">
-            40 años perfeccionando un modelo educativo que realmente funciona.
+            Más de 38 años perfeccionando un modelo educativo que realmente funciona.
           </p>
         </div>
 

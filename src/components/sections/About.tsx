@@ -2,8 +2,8 @@ import { GraduationCap, MapPin, Award, CalendarDays } from "lucide-react";
 
 const stats = [
   { icon: GraduationCap, value: "35.000+", label: "Egresados" },
-  { icon: CalendarDays, value: "40", label: "Años de experiencia" },
-  { icon: MapPin, value: "6", label: "Sedes en Antioquia" },
+  { icon: CalendarDays, value: "38+", label: "Años de experiencia" },
+  { icon: MapPin, value: "3", label: "Sedes en Antioquia" },
   { icon: Award, value: "16", label: "Programas técnicos" },
 ];
 
@@ -23,7 +23,7 @@ export function About() {
               Sobre Nosotros
             </div>
             <h2 className="font-[family-name:var(--font-playfair)] text-[clamp(1.8rem,2.6vw,2.5rem)] font-bold !text-white">
-              Una institución que transforma vidas desde 1986
+              Una institución que transforma vidas hace más de 38 años
             </h2>
             <p className="mt-5 font-[family-name:var(--font-dm-sans)] text-base font-light leading-relaxed text-white/70">
               Corporación Educativa INDECAP — Instituto de Ciencias Aplicadas es
@@ -33,8 +33,7 @@ export function About() {
             </p>
             <p className="mt-4 font-[family-name:var(--font-dm-sans)] text-base font-light leading-relaxed text-white/70">
               Nuestra misión es transformar vidas a través de la educación accesible
-              y de calidad en Antioquia. Contamos con sedes en Medellín, Envigado,
-              Caldas, Segovia, Amalfi y Betulia.
+              y de calidad en Antioquia. Contamos con sedes en Medellín, Envigado y Caldas.
             </p>
             <div className="mt-6 rounded-[12px] border-l-[3px] border-[#F0A500] bg-white/5 px-5 py-4">
               <p className="font-[family-name:var(--font-dm-sans)] text-sm italic text-white/80">

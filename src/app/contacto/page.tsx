@@ -160,7 +160,7 @@ export default function ContactoPage() {
                   },
                   {
                     href: "https://wa.me/573174342783?text=Hola%20INDECAP%20Envigado%2C%20quiero%20informaci%C3%B3n%20sobre%20sus%20programas.%20%C2%BFMe%20pueden%20orientar%3F",
-                    label: "WhatsApp Envigado", value: "+57 302 238 9760",
+                    label: "WhatsApp Envigado", value: "+57 317 434 2783",
                     icon: <MessageCircle size={20} className="text-green-600" />, bg: "bg-green-100",
                   },
                   {

@@ -88,7 +88,7 @@ export function Inscripcion() {
           <div>
             <div className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-xs font-bold uppercase tracking-widest text-white/80 backdrop-blur-md mb-6">
               <span className="h-2 w-2 rounded-full bg-[#F0A500] animate-pulse" />
-              Inscripciones abiertas 2026
+              Inscripciones abiertas 2027
             </div>
             <h2 className="font-[family-name:var(--font-playfair)] text-[clamp(2rem,4vw,3.5rem)] font-black text-white leading-tight mb-6">
               Tu futuro<br />

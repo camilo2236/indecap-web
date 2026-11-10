@@ -56,7 +56,7 @@ export default function EnfermeriaPage() {
       pensum3={[
         "Práctica profesional en clínicas, hospitales o centros de salud con pacientes reales bajo supervisión",
       ]}
-      mercadoTexto="Nuestros egresados de enfermería ya están en los hospitales y clínicas de Medellín. No es una promesa: es una realidad de 40 años. Las instituciones de salud de Antioquia conocen la formación de INDECAP porque han visto trabajar a nuestros egresados. Esa confianza no se construye con publicidad — se construye con resultados."
+      mercadoTexto="Nuestros egresados de enfermería ya están en los hospitales y clínicas de Medellín. No es una promesa: es una realidad de más de 38 años. Las instituciones de salud de Antioquia conocen la formación de INDECAP porque han visto trabajar a nuestros egresados. Esa confianza no se construye con publicidad — se construye con resultados."
       waNum="573022389760"
       waText="Hola INDECAP, estoy interesado en el Técnico en Enfermería. Mi nombre es "
       sedes={[
