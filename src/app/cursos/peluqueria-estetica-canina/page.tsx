@@ -1,7 +1,7 @@
-import { ShortCoursePage } from "@/components/cursos/ShortCoursePage";
-import { getShortCourseBySlug } from "@/data/shortCourses";
+import { permanentRedirect } from "next/navigation";
 
+// Esta página tenía el mismo contenido que /cursos/peluqueria-canina.
+// Se deja una sola dirección oficial para que Google no las vea como duplicadas.
 export default function Page() {
-  const course = getShortCourseBySlug("peluqueria-estetica-canina");
-  return <ShortCoursePage course={course} />;
+  permanentRedirect("/cursos/peluqueria-canina");
 }

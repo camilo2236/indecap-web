@@ -3,8 +3,10 @@ import { MetadataRoute } from "next";
 // Usar siempre el dominio canónico para el sitemap
 const BASE_URL = "https://indecap.edu.co";
 
-// Rutas privadas (las mismas que ya estaban bloqueadas)
-const DISALLOW = ["/api/", "/admin", "/login", "/plataforma", "/secretaria", "/comprobantes", "/pagos"];
+// Zonas privadas que Google no necesita leer.
+// /login, /pagos y /comprobantes ya NO se bloquean aquí: llevan la orden "noindex"
+// en la página, y Google necesita poder leerla para sacarlas de los resultados.
+const DISALLOW = ["/api/", "/admin", "/plataforma", "/secretaria", "/academia", "/profesores", "/estudiantes"];
 
 // Buscadores y asistentes de IA permitidos explícitamente, con las mismas reglas
 const BOTS_IA = [

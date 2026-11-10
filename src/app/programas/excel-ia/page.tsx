@@ -1,9 +1,12 @@
 import { ProgramPage } from "@/components/ProgramPage";
+import { pageMeta } from "@/lib/seo";
 
-export const metadata = {
-  title: "Excel + Inteligencia Artificial | INDECAP 2026",
-  description: "Aprende Excel 3x más rápido con IA. Tablas dinámicas, automatización y análisis de datos usando Claude. INDECAP 2026.",
-};
+export const metadata = pageMeta({
+  path: "/programas/excel-ia",
+  title: "Excel + Inteligencia Artificial · Curso práctico",
+  description:
+    "Aprende Excel 3 veces más rápido con inteligencia artificial: tablas dinámicas, automatización y análisis de datos. Curso práctico de INDECAP en Medellín, Envigado y Caldas.",
+});
 
 export default function ExcelIAPage() {
   return (

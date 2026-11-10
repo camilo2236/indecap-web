@@ -100,7 +100,7 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: "Cuerpo invalido" }, { status: 400 });
     }
 
-    const { nombres, apellidos, correo, celular, programa, sede } = body as Record<string, unknown>;
+    const { nombres, apellidos, correo, celular, programa, sede, origen } = body as Record<string, unknown>;
 
     // Validar campos obligatorios
     if (!nombres || !apellidos || !celular || !sede) {
@@ -122,6 +122,7 @@ export async function POST(req: NextRequest) {
     const sCorreo    = sanitize(correo);
     const sPrograma  = sanitize(programa);
     const sSede      = sanitize(sede);
+    const sOrigen    = sanitize(origen);
 
     // Validar valores contra listas blancas (ignorar mayusculas/tildes)
     const sedeNorm = sSede.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
@@ -154,6 +155,7 @@ export async function POST(req: NextRequest) {
                     ${sCorreo ? `<tr><td style="padding:12px 0;border-bottom:1px solid #F3F4F6;"><span style="color:#6B7280;font-size:12px;font-weight:600;text-transform:uppercase;">Correo</span><br><span style="color:#080F14;font-size:16px;font-weight:600;">${sCorreo}</span></td></tr>` : ""}
                     ${sPrograma ? `<tr><td style="padding:12px 0;border-bottom:1px solid #F3F4F6;"><span style="color:#6B7280;font-size:12px;font-weight:600;text-transform:uppercase;">Programa</span><br><span style="color:#080F14;font-size:16px;font-weight:600;">${sPrograma}</span></td></tr>` : ""}
                     <tr><td style="padding:12px 0;"><span style="color:#6B7280;font-size:12px;font-weight:600;text-transform:uppercase;">Sede</span><br><span style="color:#080F14;font-size:16px;font-weight:600;">${sSede}</span></td></tr>
+                    ${sOrigen ? `<tr><td style="padding:12px 0;border-top:1px solid #F3F4F6;"><span style="color:#6B7280;font-size:12px;font-weight:600;text-transform:uppercase;">Origen de la visita</span><br><span style="color:#080F14;font-size:14px;">${sOrigen}</span></td></tr>` : ""}
                   </table>
                   <div style="margin-top:28px;text-align:center;">
                     <a href="https://wa.me/57${sCelular.replace(/\D/g, "")}" style="display:inline-block;background:#25D366;color:#fff;font-size:14px;font-weight:700;padding:14px 32px;border-radius:99px;text-decoration:none;">Responder por WhatsApp</a>

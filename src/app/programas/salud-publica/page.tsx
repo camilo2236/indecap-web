@@ -1,9 +1,12 @@
 import { ProgramPage } from "@/components/ProgramPage";
+import { pageMeta } from "@/lib/seo";
 
-export const metadata = {
-  title: "Auxiliar en Salud Pública | INDECAP – Medellín, Caldas",
-  description: "Técnico Laboral en Auxiliar en Salud Pública en INDECAP. 1.650 horas. Trabaja en programas de promoción y prevención, vacunación y salud comunitaria en Antioquia.",
-};
+export const metadata = pageMeta({
+  path: "/programas/salud-publica",
+  title: "Auxiliar en Salud Pública · Medellín y Caldas",
+  description:
+    "Técnico Laboral en Auxiliar en Salud Pública en INDECAP. 1.650 horas. Trabaja en programas de promoción y prevención, vacunación y salud comunitaria en Antioquia.",
+});
 
 export default function SaludPublicaPage() {
   return (

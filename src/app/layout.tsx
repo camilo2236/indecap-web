@@ -8,6 +8,8 @@ import { ScrollReveal } from "@/components/ScrollReveal";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import GeoSchema from "@/components/geo/GeoSchema";
+import { Tracking } from "@/components/tracking/Tracking";
+import { Pixels } from "@/components/tracking/Pixels";
 
 const newsreader = Newsreader({
   variable: "--font-playfair",
@@ -28,7 +30,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
   title: {
     default: "INDECAP — Instituto de Ciencias Aplicadas | Más de 38 años formando Antioquia",
-    template: "%s | INDECAP — Instituto de Ciencias Aplicadas",
+    template: "%s | INDECAP",
   },
   description:
     "Corporación Educativa INDECAP — más de 38 años formando técnicos laborales en Antioquia. 35.000+ egresados. 16 programas técnicos laborales. Programas en enfermería, cosmetología, veterinaria, farmacia, salud oral y más. Sedes en Medellín, Envigado y Caldas.",
@@ -92,6 +94,8 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <Footer />
         <WhatsAppButton />
         <ScrollReveal />
+        <Tracking />
+        <Pixels />
         <Analytics />
         <SpeedInsights />
       </body>

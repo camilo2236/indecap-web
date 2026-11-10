@@ -1,9 +1,12 @@
 import { ProgramPage } from "@/components/ProgramPage";
+import { pageMeta } from "@/lib/seo";
 
-export const metadata = {
-  title: "Auxiliar en Enfermería | INDECAP – Medellín, Envigado, Caldas",
-  description: "Certifícate como Auxiliar en Enfermería en INDECAP. 1.650 horas de formación clínica y práctica real en hospitales y clínicas del Valle de Aburrá. Sedes en Medellín, Envigado y Caldas.",
-};
+export const metadata = pageMeta({
+  path: "/programas/enfermeria",
+  title: "Auxiliar de Enfermería en Medellín, Envigado y Caldas",
+  description:
+    "Estudia Auxiliar de Enfermería en INDECAP: 3 ciclos (18 meses) y 1.650 horas con laboratorio de simulación y prácticas en clínicas y hospitales. Sedes en Medellín, Envigado y Caldas. Inscripciones 2027.",
+});
 
 export default function EnfermeriaPage() {
   return (

@@ -1,9 +1,12 @@
 import { ProgramPage } from "@/components/ProgramPage";
+import { pageMeta } from "@/lib/seo";
 
-export const metadata = {
-  title: "Técnico en Sistemas | INDECAP – Medellín, Envigado",
-  description: "Técnico Laboral en Sistemas en INDECAP. 1.000 horas. Soporte técnico, redes, mantenimiento de equipos y bases de datos. Trabaja en empresas del Valle de Aburrá desde el primer día.",
-};
+export const metadata = pageMeta({
+  path: "/programas/sistemas",
+  title: "Técnico en Sistemas · Medellín y Envigado",
+  description:
+    "Técnico Laboral en Sistemas en INDECAP. 1.000 horas. Soporte técnico, redes, mantenimiento de equipos y bases de datos. Trabaja en empresas del Valle de Aburrá desde el primer día.",
+});
 
 export default function SistemasPage() {
   return (

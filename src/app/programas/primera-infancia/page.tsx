@@ -1,10 +1,12 @@
 import { ProgramPage } from "@/components/ProgramPage";
+import { pageMeta } from "@/lib/seo";
 
-export const metadata = {
-  title: "Atención a la Primera Infancia | INDECAP – Medellín, Envigado, Caldas",
+export const metadata = pageMeta({
+  path: "/programas/primera-infancia",
+  title: "Atención a la Primera Infancia · Medellín, Envigado y Caldas",
   description:
     "Técnico Laboral en Atención a la Primera Infancia en INDECAP. 1.000 horas. Fórmate para cuidar, estimular y acompañar el desarrollo integral de niños de 0 a 6 años en el Valle de Aburrá.",
-};
+});
 
 export default function PrimeraInfanciaPage() {
   return (

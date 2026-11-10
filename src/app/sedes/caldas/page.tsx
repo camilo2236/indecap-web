@@ -3,7 +3,8 @@ import Image from "next/image";
 import { MapPin, Phone, Mail, MessageCircle, ArrowRight, Clock, Building2, GraduationCap, Users } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Sede Caldas | INDECAP – Cerca al Parque Principal de Caldas",
+  alternates: { canonical: "/sedes/caldas" },
+  title: "Sede Caldas – Cerca al Parque Principal de Caldas",
   description: "INDECAP Sede Caldas. Calle 130 sur N° 51-65. 10 aulas, laboratorio de química y física, biblioteca. 420+ egresados. Enfermería, Cosmetología, Farmacia, Veterinaria y más técnicos laborales, y bachillerato.",
   openGraph: {
     images: [{ url: "https://indecap.edu.co/images/sedes/og-sede-caldas.jpg", width: 1200, height: 630 }],
@@ -129,7 +130,7 @@ export default function SedesCaldasPage() {
                   { nombre: "Servicios Farmacéuticos", href: "/programas/farmacia" },
                   { nombre: "Auxiliar en Salud Oral", href: "/programas/salud-oral" },
                   { nombre: "Auxiliar en Veterinaria", href: "/programas/veterinaria" },
-                  { nombre: "Peluquería y Estética Canina", href: "/programas/peluqueria-canina" },
+                  { nombre: "Peluquería y Estética Canina", href: "/cursos/peluqueria-canina" },
                   { nombre: "Auxiliar Contable", href: "/programas/contable" },
                   { nombre: "Auxiliar en Salud Pública", href: "/programas/salud-publica" },
                   { nombre: "Bachillerato Privado para Adultos", href: "/programas" },

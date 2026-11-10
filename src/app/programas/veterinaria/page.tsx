@@ -1,9 +1,12 @@
 import { ProgramPage } from "@/components/ProgramPage";
+import { pageMeta } from "@/lib/seo";
 
-export const metadata = {
-  title: "Auxiliar en Veterinaria | INDECAP – Medellín, Envigado, Caldas",
-  description: "Técnico en Auxiliar en Veterinaria en INDECAP. Trabaja en clínicas veterinarias, peluquerías caninas y centros de bienestar animal del Valle de Aburrá.",
-};
+export const metadata = pageMeta({
+  path: "/programas/veterinaria",
+  title: "Auxiliar en Veterinaria en Medellín, Envigado y Caldas",
+  description:
+    "Técnico laboral en Auxiliar en Veterinaria y Cuidado de Mascotas: 2 ciclos y 1.200 horas de práctica con instrumental veterinario. Sedes en Medellín, Envigado y Caldas. Inscripciones 2027.",
+});
 
 export default function VeterinariaPage() {
   return (

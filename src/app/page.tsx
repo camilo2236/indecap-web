@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { Hero } from "@/components/sections/Hero";
 import { Programs } from "@/components/sections/Programs";
 import { Testimonios } from "@/components/sections/Testimonios";
@@ -9,6 +10,11 @@ import { CtaFinal } from "@/components/sections/CtaFinal";
 import { Bachillerato } from "@/components/sections/Bachillerato";
 import VocationalFunnel from "@/components/geo/VocationalFunnel";
 import GeoAuthoritySection from "@/components/geo/GeoAuthoritySection";
+
+// Dirección oficial del inicio (el layout no la define para no heredarla a otras páginas)
+export const metadata: Metadata = {
+  alternates: { canonical: "/" },
+};
 
 export default function Home() {
   return (

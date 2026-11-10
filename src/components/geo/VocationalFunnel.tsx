@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { JORNADAS, PROGRAMAS, SEDES, urlWhatsApp, type Programa, type Sede } from '@/lib/geo-data';
+import { track } from '@/lib/track';
 
 type Rastreo = { fbq?: (...args: unknown[]) => void; gtag?: (...args: unknown[]) => void };
 
@@ -33,7 +34,7 @@ export default function VocationalFunnel() {
   const registrarClic = () => {
     // Si el sitio tiene el Pixel de Meta o Google Analytics, queda registrado como contacto
     const w = window as unknown as Rastreo;
-    w.fbq?.('track', 'Contact', { content_name: programa?.corto, content_category: sede?.ciudad });
+    track('Contact', { content_name: programa?.corto, content_category: sede?.ciudad });
     w.gtag?.('event', 'orientador_whatsapp', { programa: programa?.id, sede: sede?.id });
   };
 
@@ -129,6 +130,7 @@ export default function VocationalFunnel() {
               target="_blank"
               rel="noopener noreferrer"
               onClick={registrarClic}
+              data-no-track
               className="block w-full rounded-xl bg-[#25D366] px-5 py-4 text-center text-sm font-bold text-white transition hover:brightness-110"
             >
               Pedir información y agendar visita por WhatsApp

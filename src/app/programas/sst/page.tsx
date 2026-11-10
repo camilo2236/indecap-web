@@ -1,6 +1,12 @@
 // SST — src/app/programas/sst/page.tsx
 import { ProgramPage } from "@/components/ProgramPage";
-export const metadata = { title: "Seguridad y Salud en el Trabajo | INDECAP – Envigado", description: "Técnico Laboral en SST en INDECAP. 1.000 horas. Aprende a implementar el SG-SST según la normativa colombiana. Toda empresa lo necesita — tú puedes ofrecerlo." };
+import { pageMeta } from "@/lib/seo";
+export const metadata = pageMeta({
+  path: "/programas/sst",
+  title: "Seguridad y Salud en el Trabajo (SST) · Técnico en Envigado",
+  description:
+    "Técnico Laboral en SST en INDECAP. 1.000 horas. Aprende a implementar el SG-SST según la normativa colombiana. Toda empresa lo necesita — tú puedes ofrecerlo.",
+});
 export default function SSTPage() {
   return (
     <ProgramPage

@@ -1,23 +1,26 @@
 import { ProgramPage } from "@/components/ProgramPage";
+import { pageMeta } from "@/lib/seo";
 
-export const metadata = {
-  title: "Técnico en Marketing Digital | INDECAP – Medellín, Envigado, Caldas",
-  description: "Técnico Laboral en Marketing Digital en INDECAP. 1.000 horas. Aprende redes sociales, SEO, publicidad digital, e-commerce y estrategias de contenido para empresas del Valle de Aburrá.",
-};
+export const metadata = pageMeta({
+  path: "/programas/mercadeo",
+  title: "Técnico en Mercadeo Digital (Marketing Digital) en Medellín",
+  description:
+    "Técnico laboral en Mercadeo Digital: 2 ciclos (12 meses) y 1.000 horas. Redes sociales, contenido, pauta en Meta, TikTok y Google Ads e inteligencia artificial para vender. Inscripciones 2027.",
+});
 
 export default function MercadeoPage() {
   return (
     <ProgramPage
-      titulo="Técnico en Marketing Digital"
+      titulo="Técnico en Mercadeo Digital"
       subtitulo="Técnico en"
-      emWord="Marketing Digital"
+      emWord="Mercadeo Digital"
       accent="#8A2A6B"
       escuela="Escuela de Administración"
       horas="1.000"
       semestres="2"
       sedesNum="3"
       fotoSrc="/images/programs/mercadeo/mercadeo-hero.jpg"
-      fotoAlt="Estudiante de Marketing Digital INDECAP"
+      fotoAlt="Estudiante de Mercadeo Digital INDECAP"
       descripcion="Las marcas viven en internet. Las empresas del Valle de Aburrá necesitan personas que sepan crear contenido, gestionar redes sociales, correr campañas digitales y analizar resultados. En 18 meses te formamos como el perfil más buscado en el mercado laboral digital de Medellín — con herramientas reales, campañas reales y métricas reales desde el primer semestre."
       capacidades={[
         "Crear y gestionar estrategias de contenido para redes sociales con criterio de marca y audiencia",
@@ -53,7 +56,7 @@ export default function MercadeoPage() {
       ]}
       mercadoTexto="Medellín es la ciudad colombiana que más ha crecido en ecosistema digital en los últimos 5 años. Startups, pymes, grandes empresas y agencias necesitan personas que sepan moverse en el mundo digital con criterio. No solo publicar en redes — sino construir audiencias, convertir seguidores en clientes y medir cada resultado. Eso es exactamente lo que aprenderás aquí."
       waNum="573022389760"
-      waText="Hola INDECAP, estoy interesado en el programa de Marketing Digital. Mi nombre es "
+      waText="Hola INDECAP, estoy interesado en el programa de Mercadeo Digital. Mi nombre es "
       sedes={[
         { icon: "🏙️", name: "Sede Medellín",  address: "Cl. 56 # 45-26, Medellín",        tag: "Tel: (604) 448 4794" },
         { icon: "🏘️", name: "Sede Envigado",  address: "Cl 37 Sur #43A-84, Envigado",     tag: "Tel: (604) 448 4794" },

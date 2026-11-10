@@ -1,5 +1,6 @@
-import { redirect } from "next/navigation";
+import { permanentRedirect } from "next/navigation";
 
+// Peluquería canina es un diplomado: su página oficial está en /cursos.
 export default function Page() {
-  redirect("/cursos/peluqueria-estetica-canina");
+  permanentRedirect("/cursos/peluqueria-canina");
 }

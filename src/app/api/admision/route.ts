@@ -84,7 +84,7 @@ export async function POST(req: NextRequest) {
       nombreMadre, telefonoMadre, ocupacionMadre,
       nombrePadre, telefonoPadre, ocupacionPadre,
       nombreAcudiente, telefonoAcudiente, ocupacionAcudiente,
-      programa, sede, horario, ultimoGrado, comoSeEntero, esCurso,
+      programa, sede, horario, ultimoGrado, comoSeEntero, esCurso, origen,
     } = body as Record<string, unknown>;
 
     // Validar campos obligatorios
@@ -183,6 +183,7 @@ export async function POST(req: NextRequest) {
                     ${fila("Horario", s.horario)}
                     ${fila("Ultimo grado", s.ultimoGrado)}
                     ${fila("Como se entero", s.comoSeEntero)}
+                    ${fila("Origen de la visita", sanitize(origen))}
                     ${fila("Valor matricula", valorMatricula)}
                   </table>
                   <div style="text-align:center;margin-bottom:28px;">

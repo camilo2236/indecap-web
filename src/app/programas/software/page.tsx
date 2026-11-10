@@ -1,9 +1,12 @@
 import { ProgramPage } from "@/components/ProgramPage";
+import { pageMeta } from "@/lib/seo";
 
-export const metadata = {
-  title: "Auxiliar en Desarrollo de Software | INDECAP – Envigado",
-  description: "Técnico Laboral en Auxiliar en Desarrollo de Software en INDECAP. 700 horas. Aprende a programar, desarrollar aplicaciones y trabajar con inteligencia artificial. Sede Envigado.",
-};
+export const metadata = pageMeta({
+  path: "/programas/software",
+  title: "Auxiliar en Desarrollo de Software · Envigado",
+  description:
+    "Técnico Laboral en Auxiliar en Desarrollo de Software en INDECAP. 700 horas. Aprende a programar, desarrollar aplicaciones y trabajar con inteligencia artificial. Sede Envigado.",
+});
 
 export default function SoftwarePage() {
   return (

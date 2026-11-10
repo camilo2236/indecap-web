@@ -144,7 +144,7 @@ export const programs: Program[] = [
     horas: "1.000h",
     escuela: "Escuela Veterinaria",
     whatsappUrl: "https://wa.me/573022389760?text=Hola%20INDECAP%2C%20estoy%20interesado%20en%20Peluquer%C3%ADa%20Canina.%20%C2%BFMe%20pueden%20orientar%3F",
-    pageUrl: "/programas/peluqueria-canina",
+    pageUrl: "/cursos/peluqueria-canina",
   },
 
   // ── ESCUELA DE ADMINISTRACIÓN ─────────────────────────

@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { CheckCircle, Loader2, Send } from "lucide-react";
+import { track, getOrigen } from "@/lib/track";
 
 const programas = [
   "Auxiliar en Enfermería",
@@ -52,11 +53,12 @@ export function Inscripcion() {
       const res = await fetch("/api/inscripcion", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(form),
+        body: JSON.stringify({ ...form, origen: getOrigen() }),
       });
 
       if (res.ok) {
         setEstado("success");
+        track("Lead", { content_name: form.programa, content_category: form.sede });
         setForm({ nombres: "", apellidos: "", correo: "", celular: "", programa: "", sede: "" });
       } else {
         setEstado("error");

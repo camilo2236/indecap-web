@@ -1,9 +1,12 @@
 import { ProgramPage } from "@/components/ProgramPage";
+import { pageMeta } from "@/lib/seo";
 
-export const metadata = {
-  title: "Atención Integral al Adulto Mayor | INDECAP – Envigado",
-  description: "Técnico Laboral en Atención al Adulto Mayor en INDECAP. 700 horas. Formación práctica en cuidado geriátrico, atención domiciliaria y centros de bienestar.",
-};
+export const metadata = pageMeta({
+  path: "/programas/adulto-mayor",
+  title: "Atención Integral al Adulto Mayor · Técnico en Envigado",
+  description:
+    "Técnico Laboral en Atención al Adulto Mayor en INDECAP. 700 horas. Formación práctica en cuidado geriátrico, atención domiciliaria y centros de bienestar.",
+});
 
 export default function AdultoMayorPage() {
   return (

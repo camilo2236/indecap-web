@@ -1,9 +1,12 @@
 import { ProgramPage } from "@/components/ProgramPage";
+import { pageMeta } from "@/lib/seo";
 
-export const metadata = {
-  title: "Servicios Farmacéuticos | INDECAP – Medellín, Envigado, Caldas",
-  description: "Técnico Laboral en Servicios Farmacéuticos en INDECAP. 1.650 horas. Trabaja en droguerías, farmacias hospitalarias y servicios farmacéuticos del Valle de Aburrá.",
-};
+export const metadata = pageMeta({
+  path: "/programas/farmacia",
+  title: "Técnico en Servicios Farmacéuticos · Medellín, Envigado y Caldas",
+  description:
+    "Estudia Servicios Farmacéuticos en INDECAP: 3 ciclos y 1.650 horas de práctica en droguería, dispensación de medicamentos y farmacia hospitalaria. Sedes en Medellín, Envigado y Caldas. Inscripciones 2027.",
+});
 
 export default function FarmaciaPage() {
   return (

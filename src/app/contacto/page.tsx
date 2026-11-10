@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { useState } from "react";
 import { MapPin, Phone, Mail, MessageCircle, ArrowRight, ChevronDown } from "lucide-react";
 import { Loader2, CheckCircle } from "lucide-react";
-declare const fbq: (...args: unknown[]) => void;
+import { track, getOrigen } from "@/lib/track";
 
 const sedes = [
   {
@@ -62,13 +62,11 @@ export default function ContactoPage() {
       const res = await fetch("/api/captacion", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ nombre: form.nombre, correo: form.correo, celular: form.telefono, programa: form.programa, sede: "Medellín" }),
+        body: JSON.stringify({ nombre: form.nombre, correo: form.correo, celular: form.telefono, programa: form.programa, sede: "Medellín", origen: getOrigen() }),
       });
       if (res.ok) {
   setEstado("success");
-  if (typeof window !== "undefined") {
-  fbq("track", "Lead", { content_name: "Contacto", content_category: "Web" });
-}
+  track("Lead", { content_name: "Contacto", content_category: "Web" });
 } else {
   setEstado("error");
 }

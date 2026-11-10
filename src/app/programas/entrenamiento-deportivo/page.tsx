@@ -1,9 +1,12 @@
 import { ProgramPage } from "@/components/ProgramPage";
+import { pageMeta } from "@/lib/seo";
 
-export const metadata = {
-  title: "Entrenamiento Deportivo | INDECAP – Medellín, Envigado",
-  description: "Técnico Laboral en Entrenamiento Deportivo en INDECAP. 1.000 horas. Fórmate como instructor de gimnasio, entrenador personal o emprendedor en el sector fitness.",
-};
+export const metadata = pageMeta({
+  path: "/programas/entrenamiento-deportivo",
+  title: "Entrenamiento Deportivo · Técnico en Medellín y Envigado",
+  description:
+    "Técnico Laboral en Entrenamiento Deportivo en INDECAP. 1.000 horas. Fórmate como instructor de gimnasio, entrenador personal o emprendedor en el sector fitness.",
+});
 
 export default function EntrenamientoDeportivoPage() {
   return (

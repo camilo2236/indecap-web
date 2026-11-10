@@ -4,11 +4,18 @@ import Image from 'next/image';
 import { MessageCircle, CheckCircle, ArrowRight, Clock, MapPin, ChevronDown } from "lucide-react";
 import { WhatsAppSelector } from './WhatsAppSelector';
 import { MiniTestimonio } from './MiniTestimonio';
+import { usePathname } from 'next/navigation';
+import { ORG } from '@/lib/geo-data';
+
+const SITE_URL = 'https://indecap.edu.co';
+
+// Une una lista en español: "Medellín, Envigado y Caldas"
+const unir = (xs: string[]) => (xs.length <= 1 ? xs.join('') : `${xs.slice(0, -1).join(', ')} y ${xs[xs.length - 1]}`);
 
 export function ProgramPage({
   titulo, subtitulo, emWord, accent, escuela,
   fotoAlt, fotoSrc, fotos, fotoPosition, descripcion, capacidades, salidas, ctaDesc,
-  waNum, waText, sedes, programaId, semestres, mercadoTexto,
+  waNum, waText, sedes, programaId, semestres, horas, mercadoTexto,
   pensum1, pensum2, pensum3,
 }: any) {
 
@@ -39,6 +46,76 @@ export function ProgramPage({
   }, [imagenes.length]);
 
   const handleOpenSelector = (e: React.MouseEvent) => { e.preventDefault(); setIsSelectorOpen(true); };
+
+  // ── Preguntas frecuentes y datos estructurados (Google y asistentes de IA) ──
+  const pathname = usePathname() || '';
+  const nombre: string = String(titulo || '').replace(/^Técnico Laboral (en )?/, '').replace(/^Técnico en /, '');
+  const ciudades: string[] = (sedes || []).map((sd: any) => String(sd.name).replace(/^Sede /, ''));
+  const horasNum = Number(String(horas || '0').replace(/\./g, ''));
+  const conFaq = horasNum >= 700 && ciudades.length > 0;
+  const faqs: { q: string; a: string }[] = conFaq
+    ? [
+        {
+          q: `¿Dónde puedo estudiar ${nombre}?`,
+          a: `En INDECAP puedes estudiar ${nombre} en ${unir((sedes || []).map((sd: any) => `${String(sd.name).replace(/^Sede /, 'la sede ')} (${sd.address})`))}. Es presencial y con práctica desde el primer semestre.`,
+        },
+        {
+          q: `¿Cuánto dura el técnico en ${nombre}?`,
+          a: `El programa tiene ${semestres || 2} ciclos y ${horas} horas de formación entre teoría y práctica en ambientes propios de cada programa.`,
+        },
+        ...(salidas?.length
+          ? [{
+              q: `¿Dónde puedo trabajar al graduarme?`,
+              a: `Como ${nombre} puedes trabajar en ${unir(salidas.map((x: any) => String(x.name).toLowerCase()))}.`,
+            }]
+          : []),
+        { q: '¿Qué requisitos necesito para inscribirme?', a: ORG.requisitos },
+        { q: '¿Hay financiación?', a: `Sí. ${ORG.financiacion}` },
+        {
+          q: '¿Qué certificado recibo?',
+          a: 'Al aprobar el programa recibes tu certificado de Técnico Laboral por Competencias, de un programa con registro aprobado por la Secretaría de Educación.',
+        },
+        {
+          q: '¿Cuándo empiezan las clases?',
+          a: 'Las inscripciones para 2027 están abiertas. Escríbenos por WhatsApp y te confirmamos la fecha de inicio y los horarios del grupo en tu sede.',
+        },
+      ]
+    : [];
+
+  const url = `${SITE_URL}${pathname}`;
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          { '@type': 'ListItem', position: 1, name: 'Inicio', item: SITE_URL },
+          { '@type': 'ListItem', position: 2, name: 'Programas', item: `${SITE_URL}/programas` },
+          { '@type': 'ListItem', position: 3, name: nombre, item: url },
+        ],
+      },
+      {
+        '@type': 'Course',
+        name: nombre,
+        description: descripcion,
+        url,
+        inLanguage: 'es-CO',
+        provider: { '@type': 'EducationalOrganization', name: 'Corporación Educativa INDECAP', url: SITE_URL },
+        ...(conFaq ? { educationalCredentialAwarded: 'Técnico Laboral por Competencias' } : {}),
+        hasCourseInstance: (sedes || []).map((sd: any) => ({
+          '@type': 'CourseInstance',
+          courseMode: 'onsite',
+          location: { '@type': 'Place', name: `INDECAP ${sd.name}`, address: sd.address },
+        })),
+      },
+      ...(faqs.length
+        ? [{
+            '@type': 'FAQPage',
+            mainEntity: faqs.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
+          }]
+        : []),
+    ],
+  };
 
   const ciclos = [
     pensum1 && { label: "Ciclo 1 — Fundamentos", items: pensum1 },
@@ -294,6 +371,37 @@ export function ProgramPage({
           </div>
         </section>
       )}
+
+      {/* ── PREGUNTAS FRECUENTES ─────────────────────────────────── */}
+      {faqs.length > 0 && (
+        <section className="py-20 bg-[#eff4f6]">
+          <div className="max-w-4xl mx-auto px-8">
+            <div className="mb-10">
+              <span className="text-xs font-bold uppercase tracking-widest block mb-3" style={{ color: "#805600" }}>Resolvemos tus dudas</span>
+              <h2 className="font-[family-name:var(--font-playfair)] text-4xl md:text-5xl font-black tracking-tight" style={{ color: accent }}>
+                Preguntas frecuentes sobre <em className="italic">{nombre}</em>
+              </h2>
+              <p className="text-[#474551] text-lg mt-3">Estudia {nombre} en {unir(ciudades)}.</p>
+            </div>
+            <div className="space-y-3">
+              {faqs.map((f, i) => (
+                <details key={i} className="group bg-white rounded-2xl border border-[#c8c4d3]/30 shadow-sm open:shadow-md">
+                  <summary className="flex cursor-pointer list-none items-center justify-between gap-4 p-5 font-black text-sm md:text-base" style={{ color: accent }}>
+                    <span>{f.q}</span>
+                    <ChevronDown size={18} className="shrink-0 transition-transform duration-300 group-open:rotate-180" aria-hidden="true" />
+                  </summary>
+                  <p className="px-5 pb-5 text-sm md:text-base leading-relaxed text-[#474551]">{f.a}</p>
+                </details>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, '\\u003c') }}
+      />
 
       {/* ── CTA FINAL ───────────────────────────────────────────── */}
       <section className="py-20 px-8 max-w-7xl mx-auto">

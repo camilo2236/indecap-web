@@ -1,9 +1,12 @@
 import { ProgramPage } from "@/components/ProgramPage";
+import { pageMeta } from "@/lib/seo";
 
-export const metadata = {
-  title: "Talento Humano | INDECAP – Medellín, Envigado, Caldas",
-  description: "Técnico Laboral en Talento Humano en INDECAP. 1.000 horas. Aprende a gestionar personal, nómina y procesos de selección en empresas del Valle de Aburrá.",
-};
+export const metadata = pageMeta({
+  path: "/programas/talento-humano",
+  title: "Asistente en Talento Humano · Medellín, Envigado y Caldas",
+  description:
+    "Técnico Laboral en Talento Humano en INDECAP. 1.000 horas. Aprende a gestionar personal, nómina y procesos de selección en empresas del Valle de Aburrá.",
+});
 
 export default function TalentoHumanoPage() {
   return (

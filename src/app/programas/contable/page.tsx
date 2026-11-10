@@ -1,9 +1,12 @@
 import { ProgramPage } from "@/components/ProgramPage";
+import { pageMeta } from "@/lib/seo";
 
-export const metadata = {
-  title: "Auxiliar Contable | INDECAP – Medellín, Envigado, Caldas",
-  description: "Técnico Laboral en Auxiliar Contable en INDECAP. 1.000 horas. Aprende contabilidad real con software, NIIF y procesos empresariales del Valle de Aburrá.",
-};
+export const metadata = pageMeta({
+  path: "/programas/contable",
+  title: "Técnico Auxiliar Contable en Medellín, Envigado y Caldas",
+  description:
+    "Estudia Auxiliar Contable en INDECAP: 2 ciclos y 1.000 horas de contabilidad práctica con software, NIIF y procesos empresariales. Sedes en Medellín, Envigado y Caldas. Inscripciones 2027.",
+});
 
 export default function ContablePage() {
   return (

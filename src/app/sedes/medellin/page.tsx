@@ -3,7 +3,8 @@ import Image from "next/image";
 import { MapPin, Phone, Mail, MessageCircle, ArrowRight, Train, Clock, Building2, Users, GraduationCap } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Sede Medellín | INDECAP – Calle 56 cerca al Metro Prado",
+  alternates: { canonical: "/sedes/medellin" },
+  title: "Sede Medellín – Calle 56 cerca al Metro Prado",
   description: "INDECAP Sede Medellín. Calle 56 N° 45-26, a una cuadra del Metro Prado. 1.500 m², 5 pisos, 20 aulas. Programas técnicos y bachillerato semipresencial.",
   openGraph: {
     images: [{ url: "https://indecap.edu.co/images/sedes/og-sede-medellin.jpg", width: 1200, height: 630 }],

@@ -1,7 +1,8 @@
 import { CourseCard } from "@/components/CourseCard";
 
 export const metadata = {
-  title: "Cursos Cortos y Diplomados | INDECAP",
+  alternates: { canonical: "/cursos" },
+  title: "Cursos cortos y diplomados certificados",
   description: "Potencia tu perfil profesional con nuestros cursos cortos de certificación rápida en Medellín, Envigado y Caldas.",
 };
 

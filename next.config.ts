@@ -34,19 +34,19 @@ const nextConfig: NextConfig = {
               "default-src 'self'",
 
               // Eliminado cdn.tailwindcss.com: Tailwind debe compilarse en build
-              // unsafe-inline necesario para GTM/Meta Pixel (trade-off aceptado)
+              // unsafe-inline necesario para GTM/Meta Pixel/TikTok Pixel (trade-off aceptado)
               // unsafe-eval solo necesario si alguna librería lo requiere; revisar si se puede eliminar
-              "script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://fonts.googleapis.com https://connect.facebook.net https://www.facebook.com",
+              "script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://fonts.googleapis.com https://connect.facebook.net https://www.facebook.com https://analytics.tiktok.com https://googleads.g.doubleclick.net",
 
               "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
               "font-src 'self' https://fonts.gstatic.com",
 
-              "img-src 'self' data: blob: https://indecap.edu.co https://indecap-web.vercel.app https://*.vercel.app https://www.facebook.com https://i.ytimg.com",
+              "img-src 'self' data: blob: https://indecap.edu.co https://indecap-web.vercel.app https://*.vercel.app https://www.facebook.com https://i.ytimg.com https://analytics.tiktok.com https://www.googletagmanager.com https://*.google-analytics.com https://www.google.com https://googleads.g.doubleclick.net",
 
               // Eliminados api.anthropic.com y generativelanguage.googleapis.com
               // Esas APIs NUNCA deben llamarse desde el frontend, solo desde /api/...
               // La URL de Supabase es pública por diseño: el riesgo real está en RLS
-              "connect-src 'self' https://api.resend.com https://www.google-analytics.com https://vitals.vercel-insights.com https://cjjkdeqbntplofgzfgma.supabase.co https://www.facebook.com https://www.googletagmanager.com",
+              "connect-src 'self' https://api.resend.com https://www.google-analytics.com https://vitals.vercel-insights.com https://cjjkdeqbntplofgzfgma.supabase.co https://www.facebook.com https://www.googletagmanager.com https://analytics.tiktok.com https://*.google-analytics.com https://analytics.google.com https://www.google.com https://googleads.g.doubleclick.net https://stats.g.doubleclick.net",
 
               "frame-src https://www.google.com https://www.youtube.com https://www.youtube-nocookie.com",
               "object-src 'none'",
@@ -162,8 +162,8 @@ const nextConfig: NextConfig = {
       { source: "/cursos-y-diplomados/word-basico-y-avanzado/", destination: "/cursos/word", permanent: true },
       { source: "/cursos-y-diplomados/primeros-auxilios", destination: "/cursos/primeros-auxilios", permanent: true },
       { source: "/cursos-y-diplomados/primeros-auxilios/", destination: "/cursos/primeros-auxilios", permanent: true },
-      { source: "/cursos-y-diplomados/peluqueria-y-estetica-canina", destination: "/cursos/peluqueria-estetica-canina", permanent: true },
-      { source: "/cursos-y-diplomados/peluqueria-y-estetica-canina/", destination: "/cursos/peluqueria-estetica-canina", permanent: true },
+      { source: "/cursos-y-diplomados/peluqueria-y-estetica-canina", destination: "/cursos/peluqueria-canina", permanent: true },
+      { source: "/cursos-y-diplomados/peluqueria-y-estetica-canina/", destination: "/cursos/peluqueria-canina", permanent: true },
       { source: "/cursos-y-diplomados/calidad-en-los-servicios", destination: "/cursos/calidad-humanizacion", permanent: true },
       { source: "/cursos-y-diplomados/calidad-en-los-servicios/", destination: "/cursos/calidad-humanizacion", permanent: true },
       { source: "/cursos-y-diplomados/humanizacion-en-los-servicios", destination: "/cursos/calidad-humanizacion", permanent: true },

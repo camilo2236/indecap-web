@@ -1,9 +1,12 @@
 import { ProgramPage } from "@/components/ProgramPage";
+import { pageMeta } from "@/lib/seo";
 
-export const metadata = {
-  title: "Auxiliar en Salud Oral | INDECAP – Medellín, Envigado, Caldas",
-  description: "Técnico Laboral en Auxiliar en Salud Oral en INDECAP. 1.650 horas de formación práctica. Trabaja en consultorios odontológicos, clínicas y centros de salud del Valle de Aburrá.",
-};
+export const metadata = pageMeta({
+  path: "/programas/salud-oral",
+  title: "Auxiliar en Salud Oral (auxiliar de odontología) en Medellín",
+  description:
+    "Estudia Auxiliar en Salud Oral, el técnico para trabajar como auxiliar de odontología: 1.650 horas de práctica en unidad odontológica. Sedes en Medellín, Envigado y Caldas. Inscripciones 2027.",
+});
 
 export default function SaludOralPage() {
   return (

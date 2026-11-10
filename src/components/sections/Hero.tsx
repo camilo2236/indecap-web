@@ -3,7 +3,7 @@
 import { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
 import { CheckCircle, Loader2, Send, ArrowRight } from "lucide-react";
-declare const fbq: (...args: unknown[]) => void;
+import { track, getOrigen } from "@/lib/track";
 
 // Orden del slider: las fotos MÁS NUEVAS van arriba y las MÁS ANTIGUAS abajo.
 // Para rotar: agrega la foto nueva al inicio de "NUEVAS" y borra la última de "ANTIGUAS".
@@ -94,16 +94,12 @@ export function Hero() {
       const res = await fetch("/api/inscripcion", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(form),
+        body: JSON.stringify({ ...form, origen: getOrigen() }),
       });
       if (res.ok) {
         setEstado("success");
         // El Pixel puede no existir (bloqueadores de anuncios): no debe romper el envío
-        try {
-          if (typeof fbq === "function") {
-            fbq("track", "Lead", { content_name: form.programa, content_category: form.sede });
-          }
-        } catch { /* ignorar errores del Pixel */ }
+        track("Lead", { content_name: form.programa, content_category: form.sede });
         setForm({ nombres: "", apellidos: "", celular: "", correo: "", programa: "", sede: "" });
       } else {
         setEstado("error");

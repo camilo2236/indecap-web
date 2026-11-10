@@ -12,10 +12,12 @@ interface Props {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { id } = await params;
   const noticia = getNoticiaById(id);
-  if (!noticia) return { title: "Noticia no encontrada | INDECAP" };
+  if (!noticia) return { title: "Noticia no encontrada", robots: { index: false } };
   return {
-    title: `${noticia.titulo} | INDECAP`,
+    // Si el título ya dice INDECAP, no se repite la marca al final
+    title: noticia.titulo.includes("INDECAP") ? { absolute: noticia.titulo } : noticia.titulo,
     description: noticia.resumen,
+    alternates: { canonical: `/noticias/${id}` },
     openGraph: {
       title: noticia.titulo,
       description: noticia.resumen,

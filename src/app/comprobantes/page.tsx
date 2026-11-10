@@ -1,9 +1,12 @@
 import RegistrarComprobante from "@/components/RegistrarComprobante";
 import { FileCheck } from "lucide-react";
 
+import { NOINDEX } from "@/lib/seo";
+
 export const metadata = {
-  title: "Registrar comprobante de pago — INDECAP",
+  title: "Registrar comprobante de pago",
   description: "Adjunta tu comprobante de pago y nuestro equipo lo verificará en menos de 24 horas.",
+  ...NOINDEX,
 };
 
 export default function ComprobantesPage() {

@@ -2,6 +2,10 @@
 import { createClient } from '@/lib/supabase/server'
 import { createAdminClient } from '@/lib/supabase/admin'
 import { redirect } from 'next/navigation'
+import type { Metadata } from 'next'
+import { NOINDEX } from '@/lib/seo'
+
+export const metadata: Metadata = NOINDEX
 
 export default async function SecretariaLayout({
   children,

@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { CheckCircle, ChevronRight, ChevronLeft, Loader2, User, Users, GraduationCap, CreditCard } from "lucide-react";
+import { track, getOrigen } from "@/lib/track";
 import type { Metadata } from "next";
 
 const programasTecnicos = [
@@ -99,10 +100,11 @@ export default function AdmisionPage() {
       const res = await fetch("/api/admision", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...form, esCurso: tipoBeca === "curso" }),
+        body: JSON.stringify({ ...form, esCurso: tipoBeca === "curso", origen: getOrigen() }),
       });
       if (res.ok) {
         setEstado("success");
+        track("Lead", { content_name: String((form as Record<string, unknown>).programa ?? "Admisión"), content_category: "Solicitud de admisión" });
         setPaso(3);
       } else {
         setEstado("error");

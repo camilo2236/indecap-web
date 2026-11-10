@@ -2,11 +2,14 @@
 // COSMETOLOGÍA – src/app/programas/cosmetologia/page.tsx
 // ─────────────────────────────────────────────────────────────
 import { ProgramPage } from "@/components/ProgramPage";
+import { pageMeta } from "@/lib/seo";
 
-export const metadata = {
-  title: "Cosmetología y Estética Integral | INDECAP – Medellín, Envigado",
-  description: "Técnico en Cosmetología y Estética Integral en INDECAP. 1.190 horas de formación práctica. Tratamientos faciales, corporales, maquillaje y SPA. Medellín y Envigado.",
-};
+export const metadata = pageMeta({
+  path: "/programas/cosmetologia",
+  title: "Estudia Cosmetología en Medellín, Envigado y Caldas",
+  description:
+    "Técnico laboral en Cosmetología y Estética Integral: 2 ciclos y 1.190 horas de práctica en cabina con aparatología. Fórmate como cosmetóloga en Medellín, Envigado o Caldas. Inscripciones 2027.",
+});
 
 export default function CosmetologiaPage() {
   return (
@@ -63,6 +66,7 @@ export default function CosmetologiaPage() {
       sedes={[
         { icon: "🏙️", name: "Sede Medellín", address: "Cl. 56 # 45-26, Medellín", tag: "Tel: (604) 448 4794" },
         { icon: "🏘️", name: "Sede Envigado", address: "Cl 37 Sur #43A-84, Envigado", tag: "Tel: (604) 448 4794" },
+        { icon: "🌿", name: "Sede Caldas", address: "Calle 130 sur # 51-65, Caldas", tag: "Tel: (604) 448 4794" },
       ]}
       ctaDesc="El sector de la belleza y el bienestar en Antioquia crece cada año. Fórmate con quienes llevan más de 38 años formando estilistas que trabajan."
       programaId="cosmetologia"

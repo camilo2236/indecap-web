@@ -1,9 +1,12 @@
 import { ProgramPage } from "@/components/ProgramPage";
+import { pageMeta } from "@/lib/seo";
 
-export const metadata = {
-  title: "Administrativo en Salud | INDECAP – Medellín, Envigado, Caldas",
-  description: "Técnico Laboral Administrativo en Salud en INDECAP. 1.000 horas. Trabaja en la gestión administrativa de clínicas, hospitales, EPS e IPS del Valle de Aburrá.",
-};
+export const metadata = pageMeta({
+  path: "/programas/administrativo-salud",
+  title: "Auxiliar Administrativo en Salud en Medellín, Envigado y Caldas",
+  description:
+    "Técnico laboral Administrativo en Salud: 2 ciclos y 1.000 horas para trabajar en la gestión administrativa de clínicas, hospitales, EPS e IPS. Sedes en Medellín, Envigado y Caldas. Inscripciones 2027.",
+});
 
 export default function AdministrativoSaludPage() {
   return (

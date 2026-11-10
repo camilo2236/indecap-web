@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Política de Privacidad | INDECAP",
+  alternates: { canonical: "/privacy-policy" },
+  title: "Política de Privacidad",
   description: "Política de privacidad y aviso de tratamiento de datos personales de la Corporación Educativa INDECAP — Instituto de Ciencias Aplicadas.",
 };
 

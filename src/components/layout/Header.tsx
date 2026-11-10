@@ -50,7 +50,7 @@ const cursos = [
   { label: "Toma de Muestras de Laboratorio",     href: "/cursos/toma-muestras",              categoria: "Salud" },
   { label: "Código Fucsia",                       href: "/cursos/codigo-fucsia",              categoria: "Salud" },
   { label: "Calidad y Humanización",              href: "/cursos/calidad-humanizacion",       categoria: "Salud" },
-  { label: "Peluquería y Estética Canina",        href: "/cursos/peluqueria-estetica-canina", categoria: "Mascotas" },
+  { label: "Peluquería y Estética Canina",        href: "/cursos/peluqueria-canina", categoria: "Mascotas" },
   { label: "Excel Básico, Intermedio y Avanzado", href: "/cursos/excel",                      categoria: "Tecnología" },
   { label: "Word Básico y Avanzado",              href: "/cursos/word",                       categoria: "Tecnología" },
 ];
