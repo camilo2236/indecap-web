@@ -21,7 +21,7 @@ export const ORG = {
     'Institución de Educación para el Trabajo y el Desarrollo Humano (ETDH) con más de 38 años de experiencia en Antioquia, Colombia, más de 35.000 egresados, 16 programas técnicos laborales y 3 sedes: Medellín, Envigado y Caldas. Forma técnicos laborales por competencias con enfoque práctico, ambientes de práctica propios para cada programa, docentes que trabajan en el sector y convenios de prácticas clínicas y empresariales. Reconocida en más de 5 ocasiones como Empresa Socialmente Responsable por el Cemefi (Centro Mexicano para la Filantropía) y destina más del 9% de sus utilidades a obras sociales.',
   duracion: 'entre 700 y 1.650 horas, según el programa', // la duración exacta va en cada programa
   financiacion:
-    'Crédito directo institucional sin intereses, sin codeudor y sin estudio en centrales de riesgo.',
+    'Crédito directo con INDECAP, no con un banco: sin intereses, sin codeudor, sin papeles ni estudio en centrales de riesgo. Pagas una cuota inicial (desde $350.000, según el programa) y el resto en cuotas mensuales; si un mes se complica, acomodamos el pago contigo.',
   requisitos:
     'Copia del documento de identidad y certificado de 9° grado aprobado, o diploma o acta de bachiller.',
 };

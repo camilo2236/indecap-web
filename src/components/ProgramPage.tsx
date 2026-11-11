@@ -1,11 +1,12 @@
 "use client";
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
-import { MessageCircle, CheckCircle, ArrowRight, Clock, MapPin, ChevronDown } from "lucide-react";
+import { MessageCircle, CheckCircle, ArrowRight, Clock, MapPin, ChevronDown, Wallet, CalendarDays } from "lucide-react";
 import { WhatsAppSelector } from './WhatsAppSelector';
 import { MiniTestimonio } from './MiniTestimonio';
 import { usePathname } from 'next/navigation';
 import { ORG } from '@/lib/geo-data';
+import { programs } from '@/data/programs';
 
 const SITE_URL = 'https://indecap.edu.co';
 
@@ -81,6 +82,10 @@ export function ProgramPage({
         },
       ]
     : [];
+
+  // Enlace a "Agenda tu visita" con el programa ya escogido
+  const nombreEnLista = programs.find((p) => p.id === programaId)?.name;
+  const agendaHref = `/agenda-tu-visita${nombreEnLista ? `?programa=${encodeURIComponent(nombreEnLista)}` : ''}`;
 
   const url = `${SITE_URL}${pathname}`;
   const jsonLd = {
@@ -230,6 +235,47 @@ export function ProgramPage({
           ))}
         </div>
       </section>
+
+      {/* ── FINANCIACIÓN DIRECTA ─────────────────────────────────── */}
+      {conFaq && (
+        <section className="max-w-7xl mx-auto px-8 mt-10 mb-6">
+          <div className="rounded-2xl p-7 md:p-10 text-white relative overflow-hidden" style={{ background: `linear-gradient(135deg, ${accent} 0%, #312783 100%)` }}>
+            <div className="flex flex-col lg:flex-row lg:items-center gap-8">
+              <div className="flex-1">
+                <div className="flex items-center gap-3 mb-3">
+                  <Wallet size={22} style={{ color: "#ffb21d" }} aria-hidden="true" />
+                  <span className="text-xs font-bold uppercase tracking-widest" style={{ color: "#ffb21d" }}>Financiación directa con INDECAP</span>
+                </div>
+                <h2 className="font-[family-name:var(--font-playfair)] text-3xl md:text-4xl font-black tracking-tight mb-5 text-white">
+                  Empiezas con la cuota inicial. <em className="italic">Del resto nos encargamos.</em>
+                </h2>
+                <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-3 text-white/90">
+                  {[
+                    'Sin bancos: el crédito es con INDECAP',
+                    'Sin codeudor y sin papeles',
+                    'Sin estudio en centrales de riesgo',
+                    'Cuota inicial desde $350.000 y el resto mes a mes',
+                    'Si un mes se complica, acomodamos el pago contigo',
+                  ].map((t) => (
+                    <li key={t} className="flex items-start gap-2 text-sm md:text-base">
+                      <CheckCircle size={18} className="shrink-0 mt-0.5" style={{ color: "#ffb21d" }} aria-hidden="true" />
+                      <span>{t}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div className="flex flex-col gap-3 lg:w-72 shrink-0">
+                <a href="#" onClick={handleOpenSelector} className="inline-flex items-center justify-center gap-2 rounded-xl bg-[#25D366] px-6 py-4 font-black text-white">
+                  <MessageCircle size={20} aria-hidden="true" /> Pregunta por tu cuota
+                </a>
+                <a href={agendaHref} className="inline-flex items-center justify-center gap-2 rounded-xl bg-white px-6 py-4 font-black" style={{ color: accent }}>
+                  <CalendarDays size={20} aria-hidden="true" /> Agenda tu visita
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* ── CAMPO LABORAL ───────────────────────────────────────── */}
       <section className="py-20 px-8 max-w-7xl mx-auto">

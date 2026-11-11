@@ -16,6 +16,7 @@ const general = [
   { path: "/cursos", priority: 0.8, freq: "weekly" as const },
   { path: "/educacion-continua", priority: 0.7, freq: "monthly" as const },
   { path: "/admision", priority: 0.9, freq: "weekly" as const },
+  { path: "/agenda-tu-visita", priority: 0.9, freq: "weekly" as const },
   { path: "/inscripcion", priority: 0.6, freq: "monthly" as const },
   { path: "/contacto", priority: 0.8, freq: "monthly" as const },
   { path: "/noticias", priority: 0.6, freq: "weekly" as const },

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import { MapPin, Phone, Mail, MessageCircle, ArrowRight, Clock, Building2, GraduationCap, Users } from "lucide-react";
+import { MapPin, Phone, Mail, MessageCircle, ArrowRight, Clock, Building2, GraduationCap, Users, CalendarDays } from "lucide-react";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/sedes/envigado" },
@@ -178,6 +178,10 @@ export default function SedesEnvigadoPage() {
                   className="flex items-center justify-center gap-3 w-full py-4 rounded-xl font-black text-white bg-[#25D366] hover:scale-105 transition-transform"
                 >
                   <MessageCircle size={18} /> WhatsApp: 317 434 2783
+                </a>
+                <a href="/agenda-tu-visita?sede=envigado"
+                  className="flex items-center justify-center gap-2 w-full py-4 rounded-xl font-black text-white bg-[#1a086e] hover:scale-105 transition-transform">
+                  <CalendarDays size={18} /> Agenda tu visita
                 </a>
                 <a
                   href="https://maps.app.goo.gl/3YL91ZWChN7YyRad6"

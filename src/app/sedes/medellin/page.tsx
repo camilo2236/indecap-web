@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import { MapPin, Phone, Mail, MessageCircle, ArrowRight, Train, Clock, Building2, Users, GraduationCap } from "lucide-react";
+import { MapPin, Phone, Mail, MessageCircle, ArrowRight, Train, Clock, Building2, Users, GraduationCap, CalendarDays } from "lucide-react";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/sedes/medellin" },
@@ -197,6 +197,10 @@ export default function SedesMedellinPage() {
                   target="_blank" rel="noopener noreferrer"
                   className="flex items-center justify-center gap-3 w-full py-4 rounded-xl font-black text-white bg-[#25D366] hover:scale-105 transition-transform">
                   <MessageCircle size={18} /> WhatsApp: 302 238 9760
+                </a>
+                <a href="/agenda-tu-visita?sede=medellin"
+                  className="flex items-center justify-center gap-2 w-full py-4 rounded-xl font-black text-white bg-[#1a086e] hover:scale-105 transition-transform">
+                  <CalendarDays size={18} /> Agenda tu visita
                 </a>
                 <a href="https://maps.app.goo.gl/tT3eoj5Yc3KQp17YA"
                   target="_blank" rel="noopener noreferrer"

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import { MapPin, Phone, Mail, MessageCircle, ArrowRight, Clock, Building2, GraduationCap, Users } from "lucide-react";
+import { MapPin, Phone, Mail, MessageCircle, ArrowRight, Clock, Building2, GraduationCap, Users, CalendarDays } from "lucide-react";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/sedes/caldas" },
@@ -199,6 +199,10 @@ export default function SedesCaldasPage() {
                   className="flex items-center justify-center gap-3 w-full py-4 rounded-xl font-black text-white bg-[#25D366] hover:scale-105 transition-transform"
                 >
                   <MessageCircle size={18} /> WhatsApp: 300 894 8517
+                </a>
+                <a href="/agenda-tu-visita?sede=caldas"
+                  className="flex items-center justify-center gap-2 w-full py-4 rounded-xl font-black text-white bg-[#1a086e] hover:scale-105 transition-transform">
+                  <CalendarDays size={18} /> Agenda tu visita
                 </a>
                 <a
                   href="https://maps.app.goo.gl/sYLr8MKC3mvRpvgF8"
