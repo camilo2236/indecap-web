@@ -59,7 +59,7 @@ export default function SistemasPage() {
         { icon: "🏙️", name: "Sede Medellín", address: "Cl. 56 # 45-26, Medellín", tag: "Tel: (604) 448 4794" },
         { icon: "🏘️", name: "Sede Envigado", address: "Cl 37 Sur #43A-84, Envigado", tag: "Tel: (604) 448 4794" },
       ]}
-      ctaDesc="Toda empresa necesita soporte técnico. Fórmate en 18 meses y entra al mercado laboral con habilidades que se usan desde el primer día."
+      ctaDesc="Toda empresa necesita soporte técnico. Fórmate en 12 meses y entra al mercado laboral con habilidades que se usan desde el primer día."
       programaId="sistemas"
     />
   );

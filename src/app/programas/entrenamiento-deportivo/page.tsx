@@ -56,7 +56,7 @@ export default function EntrenamientoDeportivoPage() {
         { icon: "🏙️", name: "Sede Medellín", address: "Cl. 56 # 45-26, Medellín", tag: "Tel: (604) 448 4794" },
         { icon: "🏘️", name: "Sede Envigado", address: "Cl 37 Sur #43A-84, Envigado", tag: "Tel: (604) 448 4794" },
       ]}
-      ctaDesc="Convierte tu pasión en una carrera. Fórmate en 18 meses y empieza a trabajar en el sector que más te gusta."
+      ctaDesc="Convierte tu pasión en una carrera. Fórmate en 12 meses y empieza a trabajar en el sector que más te gusta."
       programaId="entrenamiento-deportivo"
     />
   );

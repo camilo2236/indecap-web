@@ -12,7 +12,7 @@ const differentiators = [
     icon: Award,
     title: "Avalados oficialmente",
     description:
-      "Todos nuestros programas cuentan con resolución de la Secretaría de Educación. Tu título tiene validez nacional.",
+      "Todos nuestros programas cuentan con resolución de la Secretaría de Educación. Tu certificado de Técnico Laboral por Competencias tiene validez en todo el país.",
     color: "#312783",
   },
   {

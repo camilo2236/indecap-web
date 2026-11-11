@@ -21,7 +21,7 @@ export default function ContablePage() {
       sedesNum="3"
       fotoSrc="/images/programs/contable/contable-hero.jpg"
       fotoAlt="Estudiante de Contabilidad INDECAP"
-      descripcion="El auxiliar contable es uno de los perfiles más demandados en las pymes del Valle de Aburrá — que son la mayoría del tejido empresarial de Antioquia. Toda empresa que facture necesita a alguien que maneje sus cuentas. Puedes ser tú en 18 meses."
+      descripcion="El auxiliar contable es uno de los perfiles más demandados en las pymes del Valle de Aburrá — que son la mayoría del tejido empresarial de Antioquia. Toda empresa que facture necesita a alguien que maneje sus cuentas. Puedes ser tú en 12 meses."
       capacidades={[
         "Registrar operaciones contables en libros y software según las NIIF",
         "Elaborar y organizar soportes contables: facturas, recibos de caja, comprobantes de egreso",

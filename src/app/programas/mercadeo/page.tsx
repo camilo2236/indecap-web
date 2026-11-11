@@ -21,7 +21,7 @@ export default function MercadeoPage() {
       sedesNum="3"
       fotoSrc="/images/programs/mercadeo/mercadeo-hero.jpg"
       fotoAlt="Estudiante de Mercadeo Digital INDECAP"
-      descripcion="Las marcas viven en internet. Las empresas del Valle de Aburrá necesitan personas que sepan crear contenido, gestionar redes sociales, correr campañas digitales y analizar resultados. En 18 meses te formamos como el perfil más buscado en el mercado laboral digital de Medellín — con herramientas reales, campañas reales y métricas reales desde el primer semestre."
+      descripcion="Las marcas viven en internet. Las empresas del Valle de Aburrá necesitan personas que sepan crear contenido, gestionar redes sociales, correr campañas digitales y analizar resultados. En 12 meses te formamos como el perfil más buscado en el mercado laboral digital de Medellín — con herramientas reales, campañas reales y métricas reales desde el primer semestre."
       capacidades={[
         "Crear y gestionar estrategias de contenido para redes sociales con criterio de marca y audiencia",
         "Configurar y optimizar campañas de publicidad digital en Meta Ads y Google Ads",
@@ -62,7 +62,7 @@ export default function MercadeoPage() {
         { icon: "🏘️", name: "Sede Envigado",  address: "Cl 37 Sur #43A-84, Envigado",     tag: "Tel: (604) 448 4794" },
         { icon: "🌿", name: "Sede Caldas",     address: "Calle 130 sur # 51-65, Caldas",   tag: "Tel: (604) 448 4794" },
       ]}
-      ctaDesc="El marketing digital es la habilidad más demandada en Colombia. Fórmate en 18 meses y empieza a trabajar en el sector que más crece."
+      ctaDesc="El marketing digital es la habilidad más demandada en Colombia. Fórmate en 12 meses y empieza a trabajar en el sector que más crece."
       programaId="mercadeo"
     />
   );

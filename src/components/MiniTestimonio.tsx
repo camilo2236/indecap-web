@@ -8,7 +8,9 @@ interface Props {
 
 export function MiniTestimonio({ programaId, accent }: Props) {
   const testimonio = testimoniosPorPrograma[programaId];
-  if (!testimonio) return null;
+  // Solo testimonios de egresados identificables: una cita atribuida a
+  // "Egresado/a ..." sin nombre no es verificable y no se publica.
+  if (!testimonio || /^egresad/i.test(testimonio.nombre.trim())) return null;
 
   return (
     <div>

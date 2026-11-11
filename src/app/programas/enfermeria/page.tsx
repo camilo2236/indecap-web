@@ -27,7 +27,7 @@ export default function EnfermeriaPage() {
   "/images/programs/enfermeria/enfermeria-estudiantes.jpg",
 ]}
       fotoAlt="Estudiante de Enfermería INDECAP"
-      descripcion="Quieres trabajar cuidando personas. No en abstracto — en las clínicas, hospitales y centros de salud de Medellín y el Valle de Aburrá que llevan años recibiendo egresados de INDECAP. Auxiliar en enfermería es uno de los perfiles con mayor demanda en Antioquia. Puedes estar trabajando en 24 meses con un título reconocido."
+      descripcion="Quieres trabajar cuidando personas. No en abstracto — en las clínicas, hospitales y centros de salud de Medellín y el Valle de Aburrá que llevan años recibiendo egresados de INDECAP. Auxiliar en enfermería es uno de los perfiles con mayor demanda en Antioquia. Puedes estar trabajando en 18 meses, con tu certificado de Técnico Laboral por Competencias."
       capacidades={[
         "Tomar signos vitales, preparar pacientes y asistir al equipo médico en procedimientos clínicos",
         "Administrar medicamentos por las vías autorizadas siguiendo protocolos de seguridad del paciente",

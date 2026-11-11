@@ -62,7 +62,7 @@ export default function PrimeraInfanciaPage() {
         { icon: "🏘️", name: "Sede Envigado",  address: "Cl 37 Sur #43A-84, Envigado",    tag: "Tel: (604) 448 4794" },
         { icon: "🌿", name: "Sede Caldas",    address: "Calle 130 sur # 51-65, Caldas",  tag: "Tel: (604) 448 4794" },
       ]}
-      ctaDesc="El desarrollo de la primera infancia es una de las carreras con más propósito y proyección en Colombia. Fórmate en 18 meses y empieza a transformar vidas desde el primer día."
+      ctaDesc="El desarrollo de la primera infancia es una de las carreras con más propósito y proyección en Colombia. Fórmate en 12 meses y empieza a transformar vidas desde el primer día."
       programaId="primera-infancia"
     />
   );

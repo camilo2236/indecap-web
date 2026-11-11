@@ -20,7 +20,7 @@ export default function SSTPage() {
       sedesNum="1"
       fotoSrc="/images/programs/sst/sst-hero.jpg"
       fotoAlt="Estudiante de SST INDECAP"
-      descripcion="Desde la resolución 0312 de 2019, todas las empresas en Colombia deben implementar un Sistema de Gestión de Seguridad y Salud en el Trabajo. No es opcional. Eso significa que la demanda de personas capacitadas en este tema es constante — y tú puedes ser una de ellas en 18 meses."
+      descripcion="Desde la resolución 0312 de 2019, todas las empresas en Colombia deben implementar un Sistema de Gestión de Seguridad y Salud en el Trabajo. No es opcional. Eso significa que la demanda de personas capacitadas en este tema es constante — y tú puedes ser una de ellas en 12 meses."
       capacidades={[
         "Identificar peligros y evaluar riesgos laborales en diferentes entornos de trabajo",
         "Apoyar la implementación y mantenimiento del SG-SST según la normativa colombiana vigente",

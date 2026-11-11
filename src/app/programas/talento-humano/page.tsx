@@ -57,7 +57,7 @@ export default function TalentoHumanoPage() {
         { icon: "🏘️", name: "Sede Envigado", address: "Cl 37 Sur #43A-84, Envigado", tag: "Tel: (604) 448 4794" },
         { icon: "🌿", name: "Sede Caldas", address: "Calle 130 sur # 51-65, Caldas", tag: "Tel: (604) 448 4794" },
       ]}
-      ctaDesc="Toda empresa necesita quien gestione su gente. Fórmate en 18 meses y entra al mercado laboral desde el primer día."
+      ctaDesc="Toda empresa necesita quien gestione su gente. Fórmate en 12 meses y entra al mercado laboral desde el primer día."
       programaId="talento-humano"
     />
   );

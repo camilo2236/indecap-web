@@ -57,7 +57,7 @@ export default function AdministrativoSaludPage() {
         { icon: "🏘️", name: "Sede Envigado", address: "Cl 37 Sur #43A-84, Envigado", tag: "Tel: (604) 448 4794" },
         { icon: "🌿", name: "Sede Caldas", address: "Calle 130 sur # 51-65, Caldas", tag: "Tel: (604) 448 4794" },
       ]}
-      ctaDesc="El sector salud necesita personas que sepan gestionar. Fórmate en 18 meses para uno de los mercados laborales más estables de Colombia."
+      ctaDesc="El sector salud necesita personas que sepan gestionar. Fórmate en 12 meses para uno de los mercados laborales más estables de Colombia."
       programaId="administrativo-salud"
     />
   );

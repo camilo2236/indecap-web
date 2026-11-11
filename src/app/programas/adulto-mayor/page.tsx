@@ -57,7 +57,7 @@ export default function AdultoMayorPage() {
       sedes={[
         { icon: "🏘️", name: "Sede Envigado", address: "Cl 37 Sur #43A-84, Envigado", tag: "Tel: (604) 448 4794" },
       ]}
-      ctaDesc="Una labor con impacto real en la vida de las personas. Fórmate en 18 meses para una de las carreras con más proyección social en Colombia."
+      ctaDesc="Una labor con impacto real en la vida de las personas. Fórmate en 12 meses para una de las carreras con más proyección social en Colombia."
       programaId="adulto-mayor"
     />
   );
