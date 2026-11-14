@@ -133,70 +133,83 @@ export function ProgramPage({
   return (
     <main className="min-h-screen bg-[#f5fafc] text-[#171c1e]">
 
-      {/* ── HERO con carousel ─────────────────────────────────── */}
-      <section className="relative min-h-[700px] flex items-center overflow-hidden">
-        <div className="absolute inset-0 z-0">
+      {/* ── HERO: texto + foto completa ──────────────────────────
+          La foto va en su propio marco 16:9 y nunca queda debajo del texto.
+          Se muestra entera (object-contain) sobre una copia desenfocada de sí
+          misma, así cualquier foto horizontal se ve completa en celular y en
+          computador, sin recortar caras. */}
+      <section
+        className="relative overflow-hidden pt-20 md:pt-28 pb-12 md:pb-20"
+        style={{ background: `linear-gradient(160deg, ${accent} 0%, ${accent} 55%, #1a086e 140%)` }}
+      >
+        <div className="relative z-10 max-w-7xl mx-auto md:px-8 grid md:grid-cols-[1fr_1.15fr] md:gap-12 lg:gap-16 items-center">
 
-          {/* Foto activa con fade */}
-          {imagenes.map((src, i) => (
-            <Image
-              key={src}
-              src={src}
-              alt={fotoAlt}
-              fill
-              className="object-cover transition-opacity duration-500"
-              style={{
-                objectPosition: fotoPosition || "center 30%",
-                opacity: i === fotoActiva && fadeIn ? 1 : 0,
-              }}
-              loading={i === 0 ? "eager" : "lazy"}
-              fetchPriority={i === 0 ? "high" : "auto"}
-              sizes="100vw"
-            />
-          ))}
-
-          {/* Gradiente de color del programa */}
-          <div
-            className="absolute inset-0"
-            style={{
-              background: `linear-gradient(105deg, ${accent}cc 0%, ${accent}88 45%, ${accent}22 75%, transparent 100%)`,
-            }}
-          />
-          <div className="absolute inset-0 bg-black/20" />
-
-          {/* Indicadores de foto — solo si hay más de 1 */}
-          {imagenes.length > 1 && (
-            <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex gap-2">
-              {imagenes.map((_, i) => (
-                <button
-                  key={i}
-                  onClick={() => { setFadeIn(false); setTimeout(() => { setFotoActiva(i); setFadeIn(true); }, 400); }}
-                  aria-label={`Ver foto ${i + 1}`}
-                  className="rounded-full transition-all duration-300"
-                  style={{
-                    width: i === fotoActiva ? "24px" : "8px",
-                    height: "8px",
-                    backgroundColor: i === fotoActiva ? "#ffb21d" : "rgba(255,255,255,0.5)",
-                  }}
-                />
+          {/* Foto: arriba en celular, a la derecha en computador */}
+          <div className="md:order-2">
+            <div className="relative aspect-video w-full overflow-hidden md:rounded-3xl md:shadow-2xl md:ring-1 md:ring-white/15 bg-black/20">
+              {imagenes.map((src, i) => (
+                <div
+                  key={src}
+                  className="absolute inset-0 transition-opacity duration-500"
+                  style={{ opacity: i === fotoActiva && fadeIn ? 1 : 0 }}
+                  aria-hidden={i === fotoActiva ? undefined : true}
+                >
+                  {/* Relleno desenfocado: solo se nota si la foto no es 16:9 */}
+                  <Image
+                    src={src}
+                    alt=""
+                    fill
+                    sizes="(min-width: 768px) 55vw, 100vw"
+                    className="object-cover scale-110 blur-2xl opacity-70"
+                    loading={i === 0 ? "eager" : "lazy"}
+                  />
+                  <Image
+                    src={src}
+                    alt={fotoAlt}
+                    fill
+                    sizes="(min-width: 768px) 55vw, 100vw"
+                    className="object-contain"
+                    style={fotoPosition ? { objectPosition: fotoPosition } : undefined}
+                    loading={i === 0 ? "eager" : "lazy"}
+                    fetchPriority={i === 0 ? "high" : "auto"}
+                  />
+                </div>
               ))}
-            </div>
-          )}
-        </div>
 
-        <div className="relative z-10 max-w-7xl mx-auto px-8 w-full pt-32 pb-16">
-          <div className="max-w-xl">
+              {/* Indicadores de foto — solo si hay más de 1 */}
+              {imagenes.length > 1 && (
+                <div className="absolute bottom-3 left-1/2 -translate-x-1/2 z-20 flex gap-2 rounded-full bg-black/25 backdrop-blur-sm px-2.5 py-1.5">
+                  {imagenes.map((_, i) => (
+                    <button
+                      key={i}
+                      onClick={() => { setFadeIn(false); setTimeout(() => { setFotoActiva(i); setFadeIn(true); }, 400); }}
+                      aria-label={`Ver foto ${i + 1}`}
+                      className="rounded-full transition-all duration-300"
+                      style={{
+                        width: i === fotoActiva ? "22px" : "8px",
+                        height: "8px",
+                        backgroundColor: i === fotoActiva ? "#ffb21d" : "rgba(255,255,255,0.6)",
+                      }}
+                    />
+                  ))}
+                </div>
+              )}
+            </div>
+          </div>
+
+          {/* Texto */}
+          <div className="md:order-1 px-5 md:px-0 pt-7 md:pt-0">
             <span
               className="inline-block px-5 py-2 mb-6 rounded-full text-xs font-bold uppercase tracking-widest"
               style={{ backgroundColor: "#ffb21d", color: "#281800" }}
             >
               ✦ {escuela}
             </span>
-            <h1 className="font-[family-name:var(--font-playfair)] text-6xl md:text-7xl font-black text-white mb-5 leading-[0.95] tracking-tight">
+            <h1 className="font-[family-name:var(--font-playfair)] text-[2.6rem] sm:text-6xl md:text-5xl lg:text-6xl font-black text-white mb-5 leading-[0.95] tracking-tight">
               {subtitulo}<br />
               <em className="italic" style={{ color: "#ffb21d" }}>{emWord}</em>
             </h1>
-            <p className="text-lg text-white/85 mb-8 leading-relaxed line-clamp-3 md:line-clamp-none">{descripcion}</p>
+            <p className="text-lg text-white/85 mb-8 leading-relaxed line-clamp-3 lg:line-clamp-none">{descripcion}</p>
             <div className="flex flex-wrap gap-2 mb-10">
               {salidas.slice(0, 4).map((s: any, i: number) => (
                 <span

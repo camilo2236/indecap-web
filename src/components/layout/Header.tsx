@@ -130,7 +130,7 @@ export function Header() {
         {/* Logo */}
         <div className="flex items-center gap-4">
           {isProgram && (
-            <a href="/#programas" className="flex items-center gap-1 rounded-full border border-[#E4F1F6] bg-white px-3 py-1.5 text-xs font-semibold text-[#374151] transition-all hover:border-[#312783] hover:text-[#312783]">
+            <a href="/#programas" className="hidden sm:flex items-center gap-1 rounded-full border border-[#E4F1F6] bg-white px-3 py-1.5 text-xs font-semibold text-[#374151] transition-all hover:border-[#312783] hover:text-[#312783]">
               <ChevronLeft className="h-3.5 w-3.5" />
               Programas
             </a>
@@ -224,7 +224,7 @@ export function Header() {
 
         {/* Móvil: Info gratis + hamburger */}
         <div className="flex items-center gap-2 lg:hidden">
-          <a href="/admision" className="flex items-center gap-1.5 rounded-full bg-[#F0A500] px-4 py-2 text-xs font-black text-[#080F14] shadow-[0_2px_12px_rgba(240,165,0,0.35)]">
+          <a href="/admision" className="flex items-center gap-1.5 whitespace-nowrap rounded-full bg-[#F0A500] px-4 py-2 text-xs font-black text-[#080F14] shadow-[0_2px_12px_rgba(240,165,0,0.35)]">
             <MessageCircle className="h-3.5 w-3.5" />
             Info gratis
           </a>
