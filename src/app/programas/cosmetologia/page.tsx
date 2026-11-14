@@ -6,6 +6,7 @@ import { pageMeta } from "@/lib/seo";
 
 export const metadata = pageMeta({
   path: "/programas/cosmetologia",
+  image: "/images/programs/cosmetologia/cosmetologia-masaje-espalda.jpg",
   title: "Estudia Cosmetología en Medellín, Envigado y Caldas",
   description:
     "Técnico laboral en Cosmetología y Estética Integral: 2 ciclos y 1.190 horas de práctica en cabina con aparatología. Fórmate como cosmetóloga en Medellín, Envigado o Caldas. Inscripciones 2027.",
@@ -23,11 +24,11 @@ export default function CosmetologiaPage() {
       semestres="2"
       sedesNum="2"
       fotos={[
-        "/images/programs/cosmetologia/cosmo-hero2.jpg",
-        "/images/programs/cosmetologia/cosmo-hero.jpg",
-        "/images/programs/cosmetologia/cosmo-grupo2.jpg",
-        "/images/programs/cosmetologia/cosmetologia-vapor.jpg",
-        "/images/programs/cosmetologia/cosmo-egresadas.jpg",
+        "/images/programs/cosmetologia/cosmetologia-masaje-espalda.jpg",
+        "/images/programs/cosmetologia/cosmetologia-mascarilla-facial.jpg",
+        "/images/programs/cosmetologia/cosmetologia-masaje-abdomen.jpg",
+        "/images/programs/cosmetologia/cosmetologia-practica-docente.jpg",
+        "/images/programs/cosmetologia/cosmetologia-clase-envigado.jpg",
       ]}
       fotoAlt="Estudiantes de Cosmetología INDECAP"
       descripcion="La estética en Medellín es un sector que no para de crecer. Aprendes técnicas que puedes cobrar desde que las dominas — en un spa, en un centro estético, o con tus propios clientes. Nuestras egresadas y egresados salen con horas reales de práctica en clientes y con la capacidad de trabajar o emprender con los estándares que exige el mercado."

@@ -3,6 +3,7 @@ import { pageMeta } from "@/lib/seo";
 
 export const metadata = pageMeta({
   path: "/programas/salud-oral",
+  image: "/images/programs/salud-oral/salud-oral-practica-unidad.jpg",
   title: "Auxiliar en Salud Oral (auxiliar de odontología) en Medellín",
   description:
     "Estudia Auxiliar en Salud Oral, el técnico para trabajar como auxiliar de odontología: 1.650 horas de práctica en unidad odontológica. Sedes en Medellín, Envigado y Caldas. Inscripciones 2027.",
@@ -19,7 +20,12 @@ export default function SaludOralPage() {
       horas="1.650"
       semestres="3"
       sedesNum="3"
-      fotoSrc="/images/programs/salud-oral/salud-oral-hero2.jpg"
+      fotos={[
+        "/images/programs/salud-oral/salud-oral-practica-unidad.jpg",
+        "/images/programs/salud-oral/salud-oral-paciente-consultorio.jpg",
+        "/images/programs/salud-oral/salud-oral-clase-autoclave.jpg",
+        "/images/programs/salud-oral/salud-oral-hero.jpg",
+      ]}
       fotoAlt="Estudiante de Salud Oral INDECAP"
       descripcion="En Medellín y el Valle de Aburrá hay cientos de consultorios odontológicos privados, clínicas dentales y centros de salud que necesitan auxiliares competentes todos los días. Este programa te forma para trabajar al lado del odontólogo, asistiendo procedimientos y cuidando pacientes con criterio técnico y calidez."
       capacidades={[

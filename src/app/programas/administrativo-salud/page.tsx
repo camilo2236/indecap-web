@@ -3,6 +3,7 @@ import { pageMeta } from "@/lib/seo";
 
 export const metadata = pageMeta({
   path: "/programas/administrativo-salud",
+  image: "/images/programs/administrativo-salud/administrativo-autorizaciones-equipo.jpg",
   title: "Auxiliar Administrativo en Salud en Medellín, Envigado y Caldas",
   description:
     "Técnico laboral Administrativo en Salud: 2 ciclos y 1.000 horas para trabajar en la gestión administrativa de clínicas, hospitales, EPS e IPS. Sedes en Medellín, Envigado y Caldas. Inscripciones 2027.",
@@ -19,7 +20,12 @@ export default function AdministrativoSaludPage() {
       horas="1.000"
       semestres="2"
       sedesNum="3"
-      fotoSrc="/images/programs/administrativo-salud/administrativo-hero2.jpg"
+      fotos={[
+        "/images/programs/administrativo-salud/administrativo-autorizaciones-equipo.jpg",
+        "/images/programs/administrativo-salud/administrativo-atencion-usuario.jpg",
+        "/images/programs/administrativo-salud/administrativo-medicina-prepagada.jpg",
+        "/images/programs/administrativo-salud/administrativo-autorizaciones.jpg",
+      ]}
       fotoAlt="Estudiante Administrativo en Salud INDECAP"
       descripcion="El sector salud en Colombia no es solo médicos y enfermeras. Detrás de cada clínica, hospital y EPS hay un equipo administrativo que hace que todo funcione. Este programa te forma para ser parte esencial de ese equipo — con conocimiento del sector salud y habilidades administrativas reales."
       capacidades={[

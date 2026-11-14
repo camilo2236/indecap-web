@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
@@ -136,7 +136,7 @@ export function Header() {
             </a>
           )}
           <a href="/" className="flex items-center gap-2">
-            <Image src="/images/logo.png" alt="INDECAP" width={160} height={56} className="h-14 w-auto" priority />
+            <Image src="/images/logo.png" alt="INDECAP" width={160} height={56} className="h-14 w-auto" style={{ width: "auto" }} priority />
           </a>
           <a href="/login" className="hidden sm:flex items-center gap-1.5 rounded-full border border-[#1a086e]/20 bg-[#1a086e]/5 px-3 py-1.5 text-xs font-black text-[#1a086e] transition-all hover:bg-[#1a086e] hover:text-white">
             INDECAP Virtual
@@ -251,6 +251,7 @@ export function Header() {
                 width={120}
                 height={42}
                 className="h-10 w-auto brightness-0 invert"
+                style={{ width: "auto" }}
               />
               <button
                 onClick={() => setOpen(false)}

@@ -3,6 +3,7 @@ import { pageMeta } from "@/lib/seo";
 
 export const metadata = pageMeta({
   path: "/programas/enfermeria",
+  image: "/images/programs/enfermeria/enfermeria-signos-vitales.jpg",
   title: "Auxiliar de Enfermería en Medellín, Envigado y Caldas",
   description:
     "Estudia Auxiliar de Enfermería en INDECAP: 3 ciclos (18 meses) y 1.650 horas con laboratorio de simulación y prácticas en clínicas y hospitales. Sedes en Medellín, Envigado y Caldas. Inscripciones 2027.",
@@ -20,12 +21,11 @@ export default function EnfermeriaPage() {
       semestres="3"
       sedesNum="3"
       fotos={[
-  "/images/programs/enfermeria/enfermeria-hero2.jpg",
-  "/images/programs/enfermeria/enfermeria-hero.jpg",
-  "/images/programs/enfermeria/enfermeria-practica.jpg",
-  "/images/programs/enfermeria/enfermeria-clase.jpg",
-  "/images/programs/enfermeria/enfermeria-estudiantes.jpg",
-]}
+        "/images/programs/enfermeria/enfermeria-signos-vitales.jpg",
+        "/images/programs/enfermeria/enfermeria-toma-muestra.jpg",
+        "/images/programs/enfermeria/enfermeria-simulacion-maniqui.jpg",
+        "/images/programs/enfermeria/enfermeria-clase-teorica.jpg",
+      ]}
       fotoAlt="Estudiante de Enfermería INDECAP"
       descripcion="Quieres trabajar cuidando personas. No en abstracto — en las clínicas, hospitales y centros de salud de Medellín y el Valle de Aburrá que llevan años recibiendo egresados de INDECAP. Auxiliar en enfermería es uno de los perfiles con mayor demanda en Antioquia. Puedes estar trabajando en 18 meses, con tu certificado de Técnico Laboral por Competencias."
       capacidades={[

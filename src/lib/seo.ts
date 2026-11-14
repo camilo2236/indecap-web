@@ -20,9 +20,13 @@ type PageMetaInput = {
 };
 
 export function pageMeta({ path, title, description, image, esSeccion }: PageMetaInput): Metadata {
-  const img = image ?? OG_DEFAULT;
+  // Imagen al compartir el enlace (WhatsApp, Facebook…): la foto propia de la página,
+  // pasada por el optimizador de imágenes de Next para que llegue a 1200 px de ancho y
+  // liviana. WhatsApp no muestra la miniatura si la imagen pesa más de unos 300 KB, y
+  // varias fotos originales pesan más de 1 MB.
+  const img = image ? `/_next/image?url=${encodeURIComponent(image)}&w=1200&q=75` : OG_DEFAULT;
   const images = image
-    ? [{ url: img, alt: title }]
+    ? [{ url: img, width: 1200, alt: title }]
     : [{ url: img, width: 1200, height: 630, alt: title }];
 
   return {

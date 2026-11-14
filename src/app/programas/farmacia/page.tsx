@@ -3,6 +3,7 @@ import { pageMeta } from "@/lib/seo";
 
 export const metadata = pageMeta({
   path: "/programas/farmacia",
+  image: "/images/programs/farmacia/farmacia-mostrador.jpg",
   title: "Técnico en Servicios Farmacéuticos · Medellín, Envigado y Caldas",
   description:
     "Estudia Servicios Farmacéuticos en INDECAP: 3 ciclos y 1.650 horas de práctica en droguería, dispensación de medicamentos y farmacia hospitalaria. Sedes en Medellín, Envigado y Caldas. Inscripciones 2027.",
@@ -19,7 +20,12 @@ export default function FarmaciaPage() {
       horas="1.650"
       semestres="3"
       sedesNum="3"
-      fotoSrc="/images/programs/farmacia/farmacia-hero2.jpg"
+      fotos={[
+        "/images/programs/farmacia/farmacia-mostrador.jpg",
+        "/images/programs/farmacia/farmacia-inventario.jpg",
+        "/images/programs/farmacia/farmacia-retrato.jpg",
+        "/images/programs/farmacia/farmacia-dispensacion.jpg",
+      ]}
       fotoAlt="Estudiante de Servicios Farmacéuticos INDECAP"
       descripcion="En Antioquia hay más de 3.000 droguerías y farmacias, y todas necesitan personal capacitado para dispensar medicamentos de forma segura. Este programa te forma para trabajar desde el primer día en el sector farmacéutico con conocimiento real de la normativa colombiana vigente."
       capacidades={[

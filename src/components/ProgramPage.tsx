@@ -146,10 +146,11 @@ export function ProgramPage({
               fill
               className="object-cover transition-opacity duration-500"
               style={{
-                objectPosition: fotoPosition || "center",
+                objectPosition: fotoPosition || "center 30%",
                 opacity: i === fotoActiva && fadeIn ? 1 : 0,
               }}
-              priority={i === 0}
+              loading={i === 0 ? "eager" : "lazy"}
+              fetchPriority={i === 0 ? "high" : "auto"}
               sizes="100vw"
             />
           ))}
