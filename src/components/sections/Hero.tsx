@@ -112,8 +112,8 @@ export function Hero() {
   return (
     <section id="inicio" className="relative min-h-screen flex overflow-hidden bg-[#080F14]">
 
-      {/* FONDO */}
-      <div className="absolute inset-0">
+      {/* FONDO (solo computador: en celular la foto va completa arriba del texto) */}
+      <div className="absolute inset-0 hidden lg:block">
         {SLIDES.map((slide, i) => (
           <div
             key={slide.src}
@@ -155,11 +155,42 @@ export function Hero() {
       </div>
 
       {/* CONTENIDO */}
-      <div className="relative z-10 w-full container mx-auto px-6 lg:px-12 pt-28 pb-16 lg:pt-32 lg:pb-20 flex items-center">
+      <div className="relative z-10 w-full container mx-auto px-6 lg:px-12 pt-20 pb-16 lg:pt-32 lg:pb-20 flex items-center">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center w-full">
 
           {/* IZQUIERDA */}
           <div>
+            {/* Foto en celular: completa, sin texto encima */}
+            <div className="lg:hidden -mx-6 mb-8 relative aspect-video overflow-hidden bg-black/30">
+              {SLIDES.map((slide, i) => (
+                <div
+                  key={slide.src}
+                  className="absolute inset-0 transition-opacity duration-1000"
+                  style={{ opacity: i === current ? 1 : 0 }}
+                  aria-hidden={i === current ? undefined : true}
+                >
+                  <Image
+                    src={slide.src}
+                    alt={slide.label}
+                    fill
+                    className="object-cover"
+                    sizes="100vw"
+                    loading={i === 0 ? "eager" : "lazy"}
+                    fetchPriority={i === 0 ? "high" : "auto"}
+                  />
+                </div>
+              ))}
+              <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5 rounded-full bg-black/30 backdrop-blur-sm px-2.5 py-1.5">
+                {SLIDES.map((_, i) => (
+                  <button
+                    key={i}
+                    onClick={() => goTo(i)}
+                    aria-label={`Ver foto ${i + 1}`}
+                    className={`h-1.5 rounded-full transition-all duration-300 ${i === current ? "w-6 bg-[#F0A500]" : "w-1.5 bg-white/60"}`}
+                  />
+                ))}
+              </div>
+            </div>
             <div className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/8 px-4 py-2 text-xs font-semibold tracking-wide text-white/80 backdrop-blur-md mb-8">
               <span className="relative flex h-2 w-2">
                 <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#F0A500] opacity-75" />
@@ -187,7 +218,7 @@ export function Hero() {
                 </li>
               ))}
             </ul>
-            <div className="flex gap-8 pt-8 border-t border-white/10">
+            <div className="grid grid-cols-4 gap-3 sm:flex sm:gap-8 pt-8 border-t border-white/10">
               {[
                 { num: "35.000+", label: "Egresados" },
                 { num: "38+", label: "Años" },
