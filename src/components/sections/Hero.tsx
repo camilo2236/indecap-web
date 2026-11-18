@@ -11,12 +11,12 @@ import { track, getOrigen } from "@/lib/track";
 const SLIDES = [
   // ── NUEVAS (octubre 2026) ──────────────────────────────────────────────────────────
   { src: "/images/hero/sedes/indecap-sede-medellin-1600.webp",                           label: "Sede Medellín",                    escuela: "Comunidad INDECAP" },
-  { src: "/images/programs/enfermeria/indecap-programa-enfermeria-1600.webp",            label: "Auxiliar en Enfermería",           escuela: "Escuela de Salud" },
-  { src: "/images/programs/cosmetologia/indecap-programa-cosmetologia-clase-1536.webp",  label: "Cosmetología y Estética Integral", escuela: "Escuela de Belleza" },
+  { src: "/images/programs/enfermeria/enfermeria-signos-vitales.jpg",            label: "Auxiliar en Enfermería",           escuela: "Escuela de Salud" },
+  { src: "/images/programs/cosmetologia/cosmetologia-masaje-espalda.jpg",  label: "Cosmetología y Estética Integral", escuela: "Escuela de Belleza" },
   { src: "/images/hero/sedes/indecap-sede-envigado-1600.webp",                           label: "Sede Envigado",                    escuela: "Comunidad INDECAP" },
-  { src: "/images/programs/veterinaria/indecap-programa-veterinaria-1600.webp",          label: "Auxiliar en Veterinaria",          escuela: "Escuela Veterinaria" },
-  { src: "/images/programs/farmacia/indecap-programa-servicios-farmaceuticos-1600.webp", label: "Servicios Farmacéuticos",          escuela: "Escuela de Salud" },
-  { src: "/images/programs/salud-oral/indecap-programa-salud-oral-1600.webp",            label: "Auxiliar en Salud Oral",           escuela: "Escuela de Salud" },
+  { src: "/images/programs/veterinaria/veterinaria-revision-golden.jpg",          label: "Auxiliar en Veterinaria",          escuela: "Escuela Veterinaria" },
+  { src: "/images/programs/farmacia/farmacia-mostrador.jpg", label: "Servicios Farmacéuticos",          escuela: "Escuela de Salud" },
+  { src: "/images/programs/salud-oral/salud-oral-practica-unidad.jpg",            label: "Auxiliar en Salud Oral",           escuela: "Escuela de Salud" },
 
   // ── ANTIGUAS (las próximas en reemplazar, de abajo hacia arriba) ──────────────────
   { src: "/images/hero/feria-flores/estudiantes-fachada-desktop.jpg",                    label: "Estudiantes INDECAP",              escuela: "Comunidad INDECAP" },
