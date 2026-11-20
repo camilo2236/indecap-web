@@ -43,7 +43,7 @@ const faqs = [
 const programas = [
   "Auxiliar en Enfermería", "Cosmetología y Estética Integral", "Auxiliar en Veterinaria",
   "Administrativo en Salud", "Servicios Farmacéuticos", "Auxiliar en Salud Oral",
-  "Salud Pública", "Atención al Adulto Mayor", "Talento Humano",
+  "Salud Pública", "Atención al Adulto Mayor", "Recurso Humano",
   "Auxiliar Contable", "Auxiliar en Mercadeo", "SST", "Entrenamiento Deportivo",
   "Sistemas e Informática", "Excel + IA", "Curso / Diplomado",
 ];

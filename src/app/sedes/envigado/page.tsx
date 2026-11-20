@@ -109,7 +109,7 @@ export default function SedesEnvigadoPage() {
                 {[
                   "Auxiliar en Enfermería", "Servicios Farmacéuticos", "Auxiliar en Salud Oral",
                   "Auxiliar en Veterinaria", "Cosmetología y Estética Integral",
-                  "Auxiliar Contable", "Talento Humano", "Técnico en Sistemas",
+                  "Auxiliar Contable", "Recurso Humano", "Técnico en Sistemas Informáticos",
                   "Bachillerato Privado para Adultos",
                 ].map((prog) => (
                   <div key={prog} className="flex items-center gap-3 bg-white px-5 py-4 rounded-xl border border-[#c8c4d3]/20 shadow-sm">

@@ -154,8 +154,8 @@ export const PROGRAMAS: Programa[] = [
     id: 'mercadeo',
     url: '/programas/mercadeo',
     duracion: '2 ciclos (12 meses) · 1.000 horas',
-    nombre: 'Técnico Laboral en Mercadeo Digital', // Software es otro programa: /programas/software
-    corto: 'Mercadeo Digital',
+    nombre: 'Técnico Laboral en Mercadeo', // Software es otro programa: /programas/software
+    corto: 'Mercadeo',
     resumen: 'Comercio electrónico, pauta en Meta, TikTok y Google Ads, contenido para redes y herramientas de inteligencia artificial para vender.',
     interes: 'Vender por internet, redes e inteligencia artificial',
     porQue: 'Las empresas venden cada vez más por redes y por internet, y necesitan quien maneje pauta, contenido y herramientas de IA.',
@@ -224,9 +224,9 @@ export const OTROS_PROGRAMAS: { nombre: string; horas: string; url: string }[] =
   { nombre: 'Atención a la Primera Infancia', horas: '1.000 h', url: '/programas/primera-infancia' },
   { nombre: 'Seguridad y Salud en el Trabajo', horas: '1.000 h', url: '/programas/sst' },
   { nombre: 'Entrenamiento Deportivo', horas: '1.000 h', url: '/programas/entrenamiento-deportivo' },
-  { nombre: 'Asistente en Talento Humano', horas: '1.000 h', url: '/programas/talento-humano' },
+  { nombre: 'Recurso Humano', horas: '1.000 h', url: '/programas/talento-humano' },
   { nombre: 'Auxiliar Contable', horas: '1.000 h', url: '/programas/contable' },
-  { nombre: 'Auxiliar en Sistemas', horas: '1.000 h', url: '/programas/sistemas' },
+  { nombre: 'Técnico en Sistemas Informáticos', horas: '1.000 h', url: '/programas/sistemas' },
   { nombre: 'Auxiliar en Desarrollo de Software', horas: '700 h', url: '/programas/software' },
 ];
 
@@ -235,7 +235,7 @@ export const JORNADAS = ['Entre semana en la mañana', 'Entre semana en la tarde
 export const FAQS: { pregunta: string; respuesta: string }[] = [
   {
     pregunta: '¿Dónde estudiar un técnico laboral en Medellín, Envigado o Caldas?',
-    respuesta: `INDECAP (Instituto de Ciencias Aplicadas) tiene sedes en Medellín (Centro, cerca de la estación Prado del Metro), Envigado y Caldas. Ofrece técnicos laborales en Enfermería, Salud Oral, Veterinaria, Servicios Farmacéuticos, Cosmetología, Mercadeo Digital y más, con una duración de ${ORG.duracion}, horarios entre semana o fines de semana y financiación directa.`,
+    respuesta: `INDECAP (Instituto de Ciencias Aplicadas) tiene sedes en Medellín (Centro, cerca de la estación Prado del Metro), Envigado y Caldas. Ofrece técnicos laborales en Enfermería, Salud Oral, Veterinaria, Servicios Farmacéuticos, Cosmetología, Mercadeo y más, con una duración de ${ORG.duracion}, horarios entre semana o fines de semana y financiación directa.`,
   },
   {
     pregunta: '¿Cuánto dura un técnico laboral en INDECAP?',

@@ -11,7 +11,7 @@ const featured = [
   { name: "Auxiliar en Veterinaria",        hours: "1.200h", img: "/images/programs/veterinaria/veterinaria-hero.jpg",    slug: "veterinaria" },
   { name: "Auxiliar en Salud Oral",         hours: "1.650h", img: "/images/programs/salud-oral/salud-oral-hero.jpg",      slug: "salud-oral" },
   { name: "Servicios Farmacéuticos",        hours: "1.650h", img: "/images/programs/farmacia/farmacia-hero.jpg",          slug: "farmacia" },
-  { name: "Técnico en Marketing Digital",   hours: "1.000h", img: "/images/programs/mercadeo/mercadeo-hero.jpg",          slug: "mercadeo" },
+  { name: "Técnico en Mercadeo",   hours: "1.000h", img: "/images/programs/mercadeo/mercadeo-hero.jpg",          slug: "mercadeo" },
 ];
 
 const escuelas = [
@@ -33,7 +33,7 @@ const escuelas = [
   {
     name: "Escuela de Administración", dot: "#7F77DD", color: "#534AB7", bg: "#EEEDFE", short: "Administrativa",
     programs: [
-      { name: "Talento Humano",                     hours: "1.000h", img: "/images/programs/talento-humano/talento-humano-hero.jpg",        slug: "talento-humano" },
+      { name: "Recurso Humano",                     hours: "1.000h", img: "/images/programs/talento-humano/talento-humano-hero.jpg",        slug: "talento-humano" },
       { name: "Auxiliar Contable",                  hours: "1.000h", img: "/images/programs/contable/contable-hero.jpg",                    slug: "contable" },
       { name: "Seguridad y Salud en el Trabajo",    hours: "1.000h", img: "/images/programs/sst/sst-hero.jpg",                              slug: "sst" },
     ],

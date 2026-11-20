@@ -150,7 +150,7 @@ export const programs: Program[] = [
   // ── ESCUELA DE ADMINISTRACIÓN ─────────────────────────
   {
     id: "talento-humano",
-    name: "Asistente en Talento Humano",
+    name: "Recurso Humano",
     description: "Gestión de nómina, selección de personal, bienestar laboral y procesos de recursos humanos en empresas.",
     icon: "👥",
     image: "/images/programs/talento-humano/talento-humano-hero.jpg",
@@ -178,7 +178,7 @@ export const programs: Program[] = [
   },
   {
     id: "mercadeo",
-    name: "Técnico en Marketing Digital",
+    name: "Técnico en Mercadeo",
     description: "Redes sociales, publicidad digital, SEO, e-commerce y analítica. Fórmate para el perfil más buscado en el mercado laboral digital de Medellín.",
     icon: "📱",
     image: "/images/programs/mercadeo/mercadeo-hero.jpg",
@@ -226,7 +226,7 @@ export const programs: Program[] = [
   // ── ESCUELA DE SISTEMAS ───────────────────────────────
   {
     id: "sistemas",
-    name: "Técnico en Sistemas",
+    name: "Técnico en Sistemas Informáticos",
     description: "Soporte técnico, mantenimiento de equipos, redes básicas y administración de sistemas informáticos.",
     icon: "🖥️",
     image: "/images/programs/sistemas/sistemas-hero.jpg",

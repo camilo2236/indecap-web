@@ -13,12 +13,12 @@ const programas = [
   "Auxiliar en Salud Oral",
   "Salud Pública",
   "Atención al Adulto Mayor",
-  "Talento Humano",
+  "Recurso Humano",
   "Contabilidad y Finanzas",
-  "Mercadeo y Ventas",
+  "Mercadeo",
   "SST - Seguridad y Salud en el Trabajo",
   "Entrenamiento Deportivo",
-  "Sistemas e Informática",
+  "Sistemas Informáticos",
   "Excel + IA",
   "Peluquería Canina",
   "Otro / No sé aún",
@@ -30,7 +30,6 @@ const sedes = ["Medellín", "Envigado", "Caldas"];
 // El formulario solo deja elegir las sedes donde el programa sí está.
 const SEDES_POR_PROGRAMA: Record<string, string[]> = {
   "Cosmetología y Estética Integral": ["Envigado", "Caldas"],
-  "Mercadeo y Ventas": ["Envigado", "Caldas"],
   "Salud Pública": ["Caldas"],
   "Entrenamiento Deportivo": ["Envigado"],
 };

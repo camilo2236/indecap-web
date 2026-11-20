@@ -3,17 +3,17 @@ import { pageMeta } from "@/lib/seo";
 
 export const metadata = pageMeta({
   path: "/programas/sistemas",
-  title: "Técnico en Sistemas · Medellín y Envigado",
+  title: "Técnico en Sistemas Informáticos · Medellín y Envigado",
   description:
-    "Técnico Laboral en Sistemas en INDECAP. 1.000 horas. Soporte técnico, redes, mantenimiento de equipos y bases de datos. Trabaja en empresas del Valle de Aburrá desde el primer día.",
+    "Técnico Laboral en Sistemas Informáticos en INDECAP. 1.000 horas. Soporte técnico, redes, mantenimiento de equipos y bases de datos. Trabaja en empresas del Valle de Aburrá desde el primer día.",
 });
 
 export default function SistemasPage() {
   return (
     <ProgramPage
-      titulo="Técnico en Sistemas"
+      titulo="Técnico en Sistemas Informáticos"
       subtitulo="Técnico en"
-      emWord="Sistemas"
+      emWord="Sistemas Informáticos"
       accent="#1a086e"
       escuela="Escuela de Sistemas"
       horas="1.000"
@@ -54,7 +54,7 @@ export default function SistemasPage() {
       ]}
       mercadoTexto="Nuestros egresados salen con las bases para dar soporte, mantener equipos y gestionar redes — y con la mentalidad de seguir aprendiendo, porque en tecnología el que se queda quieto se queda atrás."
       waNum="573022389760"
-      waText="Hola INDECAP, estoy interesado en Técnico en Sistemas. Mi nombre es "
+      waText="Hola INDECAP, estoy interesado en Técnico en Sistemas Informáticos. Mi nombre es "
       sedes={[
         { icon: "🏙️", name: "Sede Medellín", address: "Cl. 56 # 45-26, Medellín", tag: "Tel: (604) 448 4794" },
         { icon: "🏘️", name: "Sede Envigado", address: "Cl 37 Sur #43A-84, Envigado", tag: "Tel: (604) 448 4794" },
