@@ -3,7 +3,7 @@ import { pageMeta } from "@/lib/seo";
 
 export const metadata = pageMeta({
   path: "/programas/mercadeo",
-  title: "Técnico en Mercadeo Digital (Marketing Digital) en Medellín",
+  title: "Técnico en Mercadeo Digital (Marketing Digital) en Envigado y Caldas",
   description:
     "Técnico laboral en Mercadeo Digital: 2 ciclos (12 meses) y 1.000 horas. Redes sociales, contenido, pauta en Meta, TikTok y Google Ads e inteligencia artificial para vender. Inscripciones 2027.",
 });
@@ -18,7 +18,7 @@ export default function MercadeoPage() {
       escuela="Escuela de Administración"
       horas="1.000"
       semestres="2"
-      sedesNum="3"
+      sedesNum="2"
       fotoSrc="/images/programs/mercadeo/mercadeo-hero.jpg"
       fotoAlt="Estudiante de Mercadeo Digital INDECAP"
       descripcion="Las marcas viven en internet. Las empresas del Valle de Aburrá necesitan personas que sepan crear contenido, gestionar redes sociales, correr campañas digitales y analizar resultados. En 12 meses te formamos como el perfil más buscado en el mercado laboral digital de Medellín — con herramientas reales, campañas reales y métricas reales desde el primer semestre."
@@ -58,7 +58,6 @@ export default function MercadeoPage() {
       waNum="573022389760"
       waText="Hola INDECAP, estoy interesado en el programa de Mercadeo Digital. Mi nombre es "
       sedes={[
-        { icon: "🏙️", name: "Sede Medellín",  address: "Cl. 56 # 45-26, Medellín",        tag: "Tel: (604) 448 4794" },
         { icon: "🏘️", name: "Sede Envigado",  address: "Cl 37 Sur #43A-84, Envigado",     tag: "Tel: (604) 448 4794" },
         { icon: "🌿", name: "Sede Caldas",     address: "Calle 130 sur # 51-65, Caldas",   tag: "Tel: (604) 448 4794" },
       ]}

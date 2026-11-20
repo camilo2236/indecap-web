@@ -26,6 +26,16 @@ const programas = [
 
 const sedes = ["Medellín", "Envigado", "Caldas"];
 
+// Programas que no se dictan en todas las sedes (nov. 2026: retirados de Medellín).
+// El formulario solo deja elegir las sedes donde el programa sí está.
+const SEDES_POR_PROGRAMA: Record<string, string[]> = {
+  "Cosmetología y Estética Integral": ["Envigado", "Caldas"],
+  "Mercadeo y Ventas": ["Envigado", "Caldas"],
+  "Salud Pública": ["Caldas"],
+  "Entrenamiento Deportivo": ["Envigado"],
+};
+const sedesDe = (programa: string) => SEDES_POR_PROGRAMA[programa] ?? sedes;
+
 type Estado = "idle" | "loading" | "success" | "error";
 
 export function Inscripcion() {
@@ -42,7 +52,13 @@ export function Inscripcion() {
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
   ) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+    if (name === "programa") {
+      // Si la sede elegida no ofrece el programa nuevo, se limpia
+      setForm({ ...form, programa: value, sede: sedesDe(value).includes(form.sede) ? form.sede : "" });
+      return;
+    }
+    setForm({ ...form, [name]: value });
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -205,7 +221,7 @@ export function Inscripcion() {
                   className="w-full rounded-xl border border-white/15 bg-[#0d1520] px-4 py-3 text-sm text-white/80 backdrop-blur-sm focus:border-[#FFD166]/50 focus:outline-none focus:ring-1 focus:ring-[#FFD166]/30 transition-all appearance-none"
                 >
                   <option value="" disabled>Sede más cercana *</option>
-                  {sedes.map((s) => (
+                  {sedesDe(form.programa).map((s) => (
                     <option key={s} value={s}>{s}</option>
                   ))}
                 </select>

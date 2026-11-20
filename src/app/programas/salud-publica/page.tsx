@@ -3,7 +3,7 @@ import { pageMeta } from "@/lib/seo";
 
 export const metadata = pageMeta({
   path: "/programas/salud-publica",
-  title: "Auxiliar en Salud Pública · Medellín y Caldas",
+  title: "Auxiliar en Salud Pública · Caldas",
   description:
     "Técnico Laboral en Auxiliar en Salud Pública en INDECAP. 1.650 horas. Trabaja en programas de promoción y prevención, vacunación y salud comunitaria en Antioquia.",
 });
@@ -18,7 +18,7 @@ export default function SaludPublicaPage() {
       escuela="Escuela de Salud"
       horas="1.650"
       semestres="3"
-      sedesNum="2"
+      sedesNum="1"
       fotoSrc="/images/programs/salud-publica/salud-publica-hero.jpg"
       fotoAlt="Estudiantes de Salud Pública INDECAP en práctica comunitaria"
       descripcion="La salud empieza en el barrio, en la escuela, en la familia — mucho antes de llegar a un hospital. Si te interesa trabajar con comunidades, liderar campañas de prevención y ser parte de los programas que evitan que la gente se enferme, este es tu camino. Nuestros egresados trabajan en EPS, secretarías de salud y programas comunitarios en todo Antioquia."
@@ -59,7 +59,6 @@ export default function SaludPublicaPage() {
       waNum="573022389760"
       waText="Hola INDECAP, estoy interesado en Salud Pública. Mi nombre es "
       sedes={[
-        { icon: "🏙️", name: "Sede Medellín", address: "Cl. 56 # 45-26, Medellín", tag: "Tel: (604) 448 4794" },
         { icon: "🌿", name: "Sede Caldas", address: "Calle 130 sur # 51-65, Caldas", tag: "Tel: (604) 448 4794" },
       ]}
       ctaDesc="Antioquia necesita profesionales que trabajen desde la comunidad. Asegura tu cupo hoy."

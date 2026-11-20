@@ -3,7 +3,7 @@ import { pageMeta } from "@/lib/seo";
 
 export const metadata = pageMeta({
   path: "/programas/primera-infancia",
-  title: "Atención a la Primera Infancia · Medellín, Envigado y Caldas",
+  title: "Atención a la Primera Infancia · Envigado y Caldas",
   description:
     "Técnico Laboral en Atención a la Primera Infancia en INDECAP. 1.000 horas. Fórmate para cuidar, estimular y acompañar el desarrollo integral de niños de 0 a 6 años en el Valle de Aburrá.",
 });
@@ -18,7 +18,7 @@ export default function PrimeraInfanciaPage() {
       escuela="Escuela de Salud"
       horas="1.000"
       semestres="2"
-      sedesNum="3"
+      sedesNum="2"
       fotoSrc="/images/primera-infancia/hero.jpg"
       fotoAlt="Profesional INDECAP cuidando un bebé"
       descripcion="Los primeros 6 años de vida son los más importantes en el desarrollo de un ser humano. Este programa te forma para ser el profesional que acompaña esa etapa con técnica, amor y propósito — desde la estimulación temprana hasta la orientación a familias. Una carrera con alta demanda laboral y enorme impacto social."
@@ -58,7 +58,6 @@ export default function PrimeraInfanciaPage() {
       waNum="573022389760"
       waText="Hola INDECAP, estoy interesado en Atención a la Primera Infancia. Mi nombre es "
       sedes={[
-        { icon: "🏙️", name: "Sede Medellín",  address: "Cl. 56 # 45-26, Medellín",      tag: "Tel: (604) 448 4794" },
         { icon: "🏘️", name: "Sede Envigado",  address: "Cl 37 Sur #43A-84, Envigado",    tag: "Tel: (604) 448 4794" },
         { icon: "🌿", name: "Sede Caldas",    address: "Calle 130 sur # 51-65, Caldas",  tag: "Tel: (604) 448 4794" },
       ]}

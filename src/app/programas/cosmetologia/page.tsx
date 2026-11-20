@@ -7,9 +7,9 @@ import { pageMeta } from "@/lib/seo";
 export const metadata = pageMeta({
   path: "/programas/cosmetologia",
   image: "/images/programs/cosmetologia/cosmetologia-masaje-espalda.jpg",
-  title: "Estudia Cosmetología en Medellín, Envigado y Caldas",
+  title: "Estudia Cosmetología en Envigado y Caldas",
   description:
-    "Técnico laboral en Cosmetología y Estética Integral: 2 ciclos y 1.190 horas de práctica en cabina con aparatología. Fórmate como cosmetóloga en Medellín, Envigado o Caldas. Inscripciones 2027.",
+    "Técnico laboral en Cosmetología y Estética Integral: 2 ciclos y 1.190 horas de práctica en cabina con aparatología. Fórmate como cosmetóloga en Envigado o Caldas. Inscripciones 2027.",
 });
 
 export default function CosmetologiaPage() {
@@ -65,7 +65,6 @@ export default function CosmetologiaPage() {
       waNum="573022389760"
       waText="Hola INDECAP, estoy interesado en Cosmetología. Mi nombre es "
       sedes={[
-        { icon: "🏙️", name: "Sede Medellín", address: "Cl. 56 # 45-26, Medellín", tag: "Tel: (604) 448 4794" },
         { icon: "🏘️", name: "Sede Envigado", address: "Cl 37 Sur #43A-84, Envigado", tag: "Tel: (604) 448 4794" },
         { icon: "🌿", name: "Sede Caldas", address: "Calle 130 sur # 51-65, Caldas", tag: "Tel: (604) 448 4794" },
       ]}

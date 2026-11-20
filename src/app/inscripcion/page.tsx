@@ -38,6 +38,16 @@ const cursos = [
 
 const sedes = ["Medellín", "Envigado", "Caldas"];
 
+// Programas que no se dictan en todas las sedes (nov. 2026: retirados de Medellín).
+// El formulario solo deja elegir las sedes donde el programa sí está.
+const SEDES_POR_PROGRAMA: Record<string, string[]> = {
+  "Cosmetología y Estética Integral": ["Envigado", "Caldas"],
+  "Mercadeo y Ventas": ["Envigado", "Caldas"],
+  "Salud Pública": ["Caldas"],
+  "Entrenamiento Deportivo": ["Envigado"],
+};
+const sedesDe = (programa: string) => SEDES_POR_PROGRAMA[programa] ?? sedes;
+
 const horarios = [
   "Lunes a viernes — Mañana (7:00 a.m. – 12:00 m.)",
   "Lunes a viernes — Tarde (1:00 p.m. – 6:00 p.m.)",
@@ -294,7 +304,7 @@ export default function AdmisionPage() {
             <div className="grid gap-5">
               <div>
                 <label className={labelClass}>Programa al que aspira *</label>
-                <select value={form.programa} onChange={e => set("programa", e.target.value)} className={selectClass} required>
+                <select value={form.programa} onChange={e => { const p = e.target.value; setForm(f => ({ ...f, programa: p, sede: sedesDe(p).includes(f.sede) ? f.sede : "" })); }} className={selectClass} required>
                   <option value="" disabled>Selecciona un programa</option>
                   <optgroup label="Programas Técnicos">
                     {programasTecnicos.map(p => <option key={p} value={p}>{p}</option>)}
@@ -309,7 +319,7 @@ export default function AdmisionPage() {
                   <label className={labelClass}>Sede *</label>
                   <select value={form.sede} onChange={e => set("sede", e.target.value)} className={selectClass} required>
                     <option value="" disabled>Selecciona una sede</option>
-                    {sedes.map(s => <option key={s} value={s}>{s}</option>)}
+                    {sedesDe(form.programa).map(s => <option key={s} value={s}>{s}</option>)}
                   </select>
                 </div>
                 <div>

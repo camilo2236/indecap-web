@@ -109,8 +109,8 @@ export default function SedesMedellinPage() {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 {[
                   "Auxiliar en Enfermería", "Servicios Farmacéuticos", "Auxiliar en Salud Oral",
-                  "Auxiliar en Veterinaria", "Cosmetología y Estética Integral", "Técnico en Sistemas",
-                  "Auxiliar Contable", "Talento Humano", "Auxiliar en Mercadeo",
+                  "Auxiliar en Veterinaria", "Técnico en Sistemas",
+                  "Auxiliar Contable", "Talento Humano",
                   "Bachillerato Semipresencial para Adultos",
                 ].map((prog) => (
                   <div key={prog} className="flex items-center gap-3 bg-white px-5 py-4 rounded-xl border border-[#c8c4d3]/20 shadow-sm">

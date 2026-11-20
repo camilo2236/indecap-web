@@ -3,7 +3,7 @@ import { pageMeta } from "@/lib/seo";
 
 export const metadata = pageMeta({
   path: "/programas/entrenamiento-deportivo",
-  title: "Entrenamiento Deportivo · Técnico en Medellín y Envigado",
+  title: "Entrenamiento Deportivo · Técnico en Envigado",
   description:
     "Técnico Laboral en Entrenamiento Deportivo en INDECAP. 1.000 horas. Fórmate como instructor de gimnasio, entrenador personal o emprendedor en el sector fitness.",
 });
@@ -18,7 +18,7 @@ export default function EntrenamientoDeportivoPage() {
       escuela="Escuela de Deportes"
       horas="1.000"
       semestres="2"
-      sedesNum="2"
+      sedesNum="1"
       fotoSrc="/images/programs/entrenamiento-deportivo.jpg"
       fotoAlt="Estudiante de Entrenamiento Deportivo INDECAP"
       descripcion="Convierte tu pasión por el deporte en una carrera. Aprende a diseñar, orientar y ejecutar rutinas de entrenamiento físico para salud, rendimiento y estética. No solo entrenas — aprendes a convertir el entrenamiento en una profesión con criterio técnico y enfoque real."
@@ -53,7 +53,6 @@ export default function EntrenamientoDeportivoPage() {
       waNum="573022389760"
       waText="Hola INDECAP, estoy interesado en Entrenamiento Deportivo. Mi nombre es "
       sedes={[
-        { icon: "🏙️", name: "Sede Medellín", address: "Cl. 56 # 45-26, Medellín", tag: "Tel: (604) 448 4794" },
         { icon: "🏘️", name: "Sede Envigado", address: "Cl 37 Sur #43A-84, Envigado", tag: "Tel: (604) 448 4794" },
       ]}
       ctaDesc="Convierte tu pasión en una carrera. Fórmate en 12 meses y empieza a trabajar en el sector que más te gusta."
