@@ -32,7 +32,7 @@ export const programs: Program[] = [
   },
   {
     id: "farmaceuticos",
-    name: "Servicios Farmacéuticos",
+    name: "Auxiliar en Servicios Farmacéuticos",
     description: "Dispensación, almacenamiento y manejo de medicamentos en farmacias, droguerías e IPS.",
     icon: "💊",
     image: "/images/programs/farmacia/farmacia-hero2.jpg",
@@ -41,7 +41,7 @@ export const programs: Program[] = [
     badge: "Escuela de Salud",
     horas: "1.650h",
     escuela: "Escuela de Salud",
-    whatsappUrl: "https://wa.me/573022389760?text=Hola%20INDECAP%2C%20estoy%20interesado%20en%20Servicios%20Farmac%C3%A9uticos.%20%C2%BFMe%20pueden%20orientar%3F",
+    whatsappUrl: "https://wa.me/573022389760?text=Hola%20INDECAP%2C%20estoy%20interesado%20en%20Auxiliar%20en%20Servicios%20Farmac%C3%A9uticos.%20%C2%BFMe%20pueden%20orientar%3F",
     pageUrl: "/programas/farmacia",
   },
   {
@@ -74,7 +74,7 @@ export const programs: Program[] = [
   },
   {
     id: "administrativo-salud",
-    name: "Administrativo en Salud",
+    name: "Auxiliar Administrativo en Salud",
     description: "Gestión administrativa en clínicas, hospitales, EPS e IPS. Facturación, atención al usuario y procesos del sector salud.",
     icon: "📋",
     image: "/images/programs/administrativo-salud/administrativo-hero2.jpg",
@@ -113,7 +113,7 @@ export const programs: Program[] = [
     badge: "Escuela de Belleza",
     horas: "1.190h",
     escuela: "Escuela de Belleza",
-    whatsappUrl: "https://wa.me/573022389760?text=Hola%20INDECAP%2C%20estoy%20interesado%20en%20Cosmetolog%C3%ADa%20y%20Est%C3%A9tica.%20%C2%BFMe%20pueden%20orientar%3F",
+    whatsappUrl: "https://wa.me/573022389760?text=Hola%20INDECAP%2C%20estoy%20interesado%20en%20Cosmetolog%C3%ADa%20y%20Est%C3%A9tica%20Integral.%20%C2%BFMe%20pueden%20orientar%3F",
     pageUrl: "/programas/cosmetologia",
   },
 
@@ -150,7 +150,7 @@ export const programs: Program[] = [
   // ── ESCUELA DE ADMINISTRACIÓN ─────────────────────────
   {
     id: "talento-humano",
-    name: "Recurso Humano",
+    name: "Auxiliar en Recurso Humano",
     description: "Gestión de nómina, selección de personal, bienestar laboral y procesos de recursos humanos en empresas.",
     icon: "👥",
     image: "/images/programs/talento-humano/talento-humano-hero.jpg",
@@ -178,7 +178,7 @@ export const programs: Program[] = [
   },
   {
     id: "mercadeo",
-    name: "Técnico en Mercadeo",
+    name: "Auxiliar en Mercadeo",
     description: "Redes sociales, publicidad digital, SEO, e-commerce y analítica. Fórmate para el perfil más buscado en el mercado laboral digital de Medellín.",
     icon: "📱",
     image: "/images/programs/mercadeo/mercadeo-hero.jpg",
@@ -187,14 +187,14 @@ export const programs: Program[] = [
     badge: "Escuela de Administración",
     horas: "1.000h",
     escuela: "Escuela de Administración",
-    whatsappUrl: "https://wa.me/573022389760?text=Hola%20INDECAP%2C%20estoy%20interesado%20en%20Marketing%20Digital.%20%C2%BFMe%20pueden%20orientar%3F",
+    whatsappUrl: "https://wa.me/573022389760?text=Hola%20INDECAP%2C%20estoy%20interesado%20en%20Auxiliar%20en%20Mercadeo.%20%C2%BFMe%20pueden%20orientar%3F",
     pageUrl: "/programas/mercadeo",
   },
 
   // ── ESCUELA DE SEGURIDAD ──────────────────────────────
   {
     id: "sst",
-    name: "Seguridad y Salud en el Trabajo",
+    name: "Auxiliar en Seguridad y Salud en el Trabajo",
     description: "Identificación de riesgos, prevención de accidentes, normas COPASST y gestión del sistema de SST en empresas.",
     icon: "🦺",
     image: "/images/programs/sst/sst-hero.jpg",
@@ -226,7 +226,7 @@ export const programs: Program[] = [
   // ── ESCUELA DE SISTEMAS ───────────────────────────────
   {
     id: "sistemas",
-    name: "Técnico en Sistemas Informáticos",
+    name: "Auxiliar en Sistemas Informáticos",
     description: "Soporte técnico, mantenimiento de equipos, redes básicas y administración de sistemas informáticos.",
     icon: "🖥️",
     image: "/images/programs/sistemas/sistemas-hero.jpg",
@@ -235,7 +235,7 @@ export const programs: Program[] = [
     badge: "Escuela de Sistemas",
     horas: "1.000h",
     escuela: "Escuela de Sistemas",
-    whatsappUrl: "https://wa.me/573022389760?text=Hola%20INDECAP%2C%20estoy%20interesado%20en%20T%C3%A9cnico%20en%20Sistemas.%20%C2%BFMe%20pueden%20orientar%3F",
+    whatsappUrl: "https://wa.me/573022389760?text=Hola%20INDECAP%2C%20estoy%20interesado%20en%20Auxiliar%20en%20Sistemas%20Inform%C3%A1ticos.%20%C2%BFMe%20pueden%20orientar%3F",
     pageUrl: "/programas/sistemas",
   },
   {

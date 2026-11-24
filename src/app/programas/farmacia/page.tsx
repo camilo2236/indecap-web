@@ -4,16 +4,16 @@ import { pageMeta } from "@/lib/seo";
 export const metadata = pageMeta({
   path: "/programas/farmacia",
   image: "/images/programs/farmacia/farmacia-mostrador.jpg",
-  title: "Técnico en Servicios Farmacéuticos · Medellín, Envigado y Caldas",
+  title: "Auxiliar en Servicios Farmacéuticos · Medellín, Envigado y Caldas",
   description:
-    "Estudia Servicios Farmacéuticos en INDECAP: 3 ciclos y 1.650 horas de práctica en droguería, dispensación de medicamentos y farmacia hospitalaria. Sedes en Medellín, Envigado y Caldas. Inscripciones 2027.",
+    "Estudia Auxiliar en Servicios Farmacéuticos en INDECAP: 3 ciclos y 1.650 horas de práctica en droguería, dispensación de medicamentos y farmacia hospitalaria. Sedes en Medellín, Envigado y Caldas. Inscripciones 2027.",
 });
 
 export default function FarmaciaPage() {
   return (
     <ProgramPage
-      titulo="Servicios Farmacéuticos"
-      subtitulo="Servicios"
+      titulo="Auxiliar en Servicios Farmacéuticos"
+      subtitulo="Auxiliar en Servicios"
       emWord="Farmacéuticos"
       accent="#1A3A6B"
       escuela="Escuela de Salud"
@@ -26,7 +26,7 @@ export default function FarmaciaPage() {
         "/images/programs/farmacia/farmacia-retrato.jpg",
         "/images/programs/farmacia/farmacia-dispensacion.jpg",
       ]}
-      fotoAlt="Estudiante de Servicios Farmacéuticos INDECAP"
+      fotoAlt="Estudiante de Auxiliar en Servicios Farmacéuticos INDECAP"
       descripcion="En Antioquia hay más de 3.000 droguerías y farmacias, y todas necesitan personal capacitado para dispensar medicamentos de forma segura. Este programa te forma para trabajar desde el primer día en el sector farmacéutico con conocimiento real de la normativa colombiana vigente."
       capacidades={[
         "Dispensar medicamentos e insumos médicos siguiendo la normativa colombiana vigente (Decreto 780 de 2016)",
@@ -62,7 +62,7 @@ export default function FarmaciaPage() {
       ]}
       mercadoTexto="Las droguerías y farmacias del Valle de Aburrá buscan personal que sepa trabajar desde el primer día. No que sepa repetir teoría, sino que sepa dispensar, asesorar y manejar inventarios con responsabilidad. Eso es exactamente lo que formamos."
       waNum="573022389760"
-      waText="Hola INDECAP, estoy interesado en Servicios Farmacéuticos. Mi nombre es "
+      waText="Hola INDECAP, estoy interesado en Auxiliar en Servicios Farmacéuticos. Mi nombre es "
       sedes={[
         { icon: "🏙️", name: "Sede Medellín", address: "Cl. 56 # 45-26, Medellín", tag: "Tel: (604) 448 4794" },
         { icon: "🏘️", name: "Sede Envigado", address: "Cl 37 Sur #43A-84, Envigado", tag: "Tel: (604) 448 4794" },

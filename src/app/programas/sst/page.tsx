@@ -3,15 +3,15 @@ import { ProgramPage } from "@/components/ProgramPage";
 import { pageMeta } from "@/lib/seo";
 export const metadata = pageMeta({
   path: "/programas/sst",
-  title: "Seguridad y Salud en el Trabajo (SST) · Técnico en Envigado",
+  title: "Auxiliar en Seguridad y Salud en el Trabajo (SST) · Envigado",
   description:
-    "Técnico Laboral en SST en INDECAP. 1.000 horas. Aprende a implementar el SG-SST según la normativa colombiana. Toda empresa lo necesita — tú puedes ofrecerlo.",
+    "Técnico Laboral como Auxiliar en Seguridad y Salud en el Trabajo (SST) en INDECAP. 1.000 horas. Aprende a implementar el SG-SST según la normativa colombiana. Toda empresa lo necesita — tú puedes ofrecerlo.",
 });
 export default function SSTPage() {
   return (
     <ProgramPage
-      titulo="Técnico Laboral en Seguridad y Salud en el Trabajo"
-      subtitulo="Seguridad y"
+      titulo="Auxiliar en Seguridad y Salud en el Trabajo"
+      subtitulo="Auxiliar en Seguridad y"
       emWord="Salud en el Trabajo"
       accent="#B45309"
       escuela="Escuela Administrativa"
@@ -19,7 +19,7 @@ export default function SSTPage() {
       semestres="2"
       sedesNum="1"
       fotoSrc="/images/programs/sst/sst-hero.jpg"
-      fotoAlt="Estudiante de SST INDECAP"
+      fotoAlt="Estudiante de Auxiliar en Seguridad y Salud en el Trabajo INDECAP"
       descripcion="Desde la resolución 0312 de 2019, todas las empresas en Colombia deben implementar un Sistema de Gestión de Seguridad y Salud en el Trabajo. No es opcional. Eso significa que la demanda de personas capacitadas en este tema es constante — y tú puedes ser una de ellas en 12 meses."
       capacidades={[
         "Identificar peligros y evaluar riesgos laborales en diferentes entornos de trabajo",
@@ -50,7 +50,7 @@ export default function SSTPage() {
       ]}
       mercadoTexto="La seguridad laboral no es un tema de moda — es una obligación legal. Las empresas de Antioquia necesitan personas que sepan hacerlo, no que repitan normas de memoria. Nuestros egresados llegan a las empresas listos para inspeccionar, documentar y capacitar desde el primer día."
       waNum="573167405680"
-      waText="Hola INDECAP, estoy interesado en Seguridad y Salud en el Trabajo. Mi nombre es "
+      waText="Hola INDECAP, estoy interesado en Auxiliar en Seguridad y Salud en el Trabajo. Mi nombre es "
       sedes={[
         { icon: "🏘️", name: "Sede Envigado", address: "Cl 37 Sur #43A-84, Envigado", tag: "Tel: (604) 448 4794" },
       ]}

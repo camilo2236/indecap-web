@@ -3,16 +3,16 @@ import { pageMeta } from "@/lib/seo";
 
 export const metadata = pageMeta({
   path: "/programas/talento-humano",
-  title: "Recurso Humano · Medellín, Envigado y Caldas",
+  title: "Auxiliar en Recurso Humano · Medellín, Envigado y Caldas",
   description:
-    "Técnico Laboral en Recurso Humano en INDECAP. 1.000 horas. Aprende a gestionar personal, nómina y procesos de selección en empresas del Valle de Aburrá.",
+    "Técnico Laboral como Auxiliar en Recurso Humano en INDECAP. 1.000 horas. Aprende a gestionar personal, nómina y procesos de selección en empresas del Valle de Aburrá.",
 });
 
 export default function TalentoHumanoPage() {
   return (
     <ProgramPage
-      titulo="Recurso Humano"
-      subtitulo="Gestión de"
+      titulo="Auxiliar en Recurso Humano"
+      subtitulo="Auxiliar en"
       emWord="Recurso Humano"
       accent="#1a086e"
       escuela="Escuela Administrativa"
@@ -20,7 +20,7 @@ export default function TalentoHumanoPage() {
       semestres="2"
       sedesNum="3"
       fotoSrc="/images/programs/talento-humano/talento-humano-hero.jpg"
-      fotoAlt="Estudiante de Recurso Humano INDECAP"
+      fotoAlt="Estudiante de Auxiliar en Recurso Humano INDECAP"
       descripcion="Toda empresa con más de un puñado de trabajadores necesita a alguien que gestione su talento humano. Es un perfil que combina lo administrativo con lo relacional, y que tiene espacio en empresas de todos los tamaños — desde pymes hasta grandes corporaciones del Valle de Aburrá."
       capacidades={[
         "Apoyar procesos de reclutamiento y selección: publicación de vacantes, filtro de hojas de vida, coordinación de entrevistas",
@@ -51,7 +51,7 @@ export default function TalentoHumanoPage() {
       ]}
       mercadoTexto="Gestionar personas no se aprende solo en un salón de clase. Se aprende entendiendo cómo funcionan las empresas de verdad — con nóminas reales, con procesos de selección reales, con la legislación que aplica en Colombia."
       waNum="573022389760"
-      waText="Hola INDECAP, estoy interesado en Recurso Humano. Mi nombre es "
+      waText="Hola INDECAP, estoy interesado en Auxiliar en Recurso Humano. Mi nombre es "
       sedes={[
         { icon: "🏙️", name: "Sede Medellín", address: "Cl. 56 # 45-26, Medellín", tag: "Tel: (604) 448 4794" },
         { icon: "🏘️", name: "Sede Envigado", address: "Cl 37 Sur #43A-84, Envigado", tag: "Tel: (604) 448 4794" },

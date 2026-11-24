@@ -132,7 +132,7 @@ export const PROGRAMAS: Programa[] = [
     id: 'farmacia',
     url: '/programas/farmacia',
     duracion: '3 ciclos · 1.650 horas',
-    nombre: 'Técnico Laboral en Servicios Farmacéuticos',
+    nombre: 'Técnico Laboral como Auxiliar en Servicios Farmacéuticos',
     corto: 'Servicios Farmacéuticos',
     resumen: 'Práctica en droguería: dispensación de medicamentos, gestión de droguerías, farmacia hospitalaria y normativa vigente.',
     interes: 'Atender droguerías y manejar medicamentos',
@@ -154,7 +154,7 @@ export const PROGRAMAS: Programa[] = [
     id: 'mercadeo',
     url: '/programas/mercadeo',
     duracion: '2 ciclos (12 meses) · 1.000 horas',
-    nombre: 'Técnico Laboral en Mercadeo', // Software es otro programa: /programas/software
+    nombre: 'Técnico Laboral como Auxiliar en Mercadeo', // Software es otro programa: /programas/software
     corto: 'Mercadeo',
     resumen: 'Comercio electrónico, pauta en Meta, TikTok y Google Ads, contenido para redes y herramientas de inteligencia artificial para vender.',
     interes: 'Vender por internet, redes e inteligencia artificial',
@@ -222,11 +222,11 @@ export const OTROS_PROGRAMAS: { nombre: string; horas: string; url: string }[] =
   { nombre: 'Auxiliar en Salud Pública', horas: '1.650 h', url: '/programas/salud-publica' },
   { nombre: 'Atención Integral al Adulto Mayor', horas: '700 h', url: '/programas/adulto-mayor' },
   { nombre: 'Atención a la Primera Infancia', horas: '1.000 h', url: '/programas/primera-infancia' },
-  { nombre: 'Seguridad y Salud en el Trabajo', horas: '1.000 h', url: '/programas/sst' },
+  { nombre: 'Auxiliar en Seguridad y Salud en el Trabajo', horas: '1.000 h', url: '/programas/sst' },
   { nombre: 'Entrenamiento Deportivo', horas: '1.000 h', url: '/programas/entrenamiento-deportivo' },
-  { nombre: 'Recurso Humano', horas: '1.000 h', url: '/programas/talento-humano' },
+  { nombre: 'Auxiliar en Recurso Humano', horas: '1.000 h', url: '/programas/talento-humano' },
   { nombre: 'Auxiliar Contable', horas: '1.000 h', url: '/programas/contable' },
-  { nombre: 'Técnico en Sistemas Informáticos', horas: '1.000 h', url: '/programas/sistemas' },
+  { nombre: 'Auxiliar en Sistemas Informáticos', horas: '1.000 h', url: '/programas/sistemas' },
   { nombre: 'Auxiliar en Desarrollo de Software', horas: '700 h', url: '/programas/software' },
 ];
 
@@ -269,7 +269,7 @@ export const FAQS: { pregunta: string; respuesta: string }[] = [
   },
   {
     pregunta: '¿Qué técnicos en salud hay en INDECAP?',
-    respuesta: 'Auxiliar en Enfermería, Auxiliar en Salud Oral, Servicios Farmacéuticos y Auxiliar en Veterinaria y Cuidado de Mascotas.',
+    respuesta: 'Auxiliar en Enfermería, Auxiliar en Salud Oral, Auxiliar en Servicios Farmacéuticos y Auxiliar en Veterinaria y Cuidado de Mascotas.',
   },
 ];
 

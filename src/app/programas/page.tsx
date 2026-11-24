@@ -7,11 +7,11 @@ import { ArrowUpRight } from "lucide-react";
 
 const featured = [
   { name: "Auxiliar en Enfermería",        hours: "1.650h", img: "/images/programs/enfermeria/enfermeria-hero.jpg",      slug: "enfermeria",   main: true },
-  { name: "Cosmetología y Estética",        hours: "1.190h", img: "/images/programs/cosmetologia/cosmetologia-hero.jpg",  slug: "cosmetologia" },
+  { name: "Cosmetología y Estética Integral",        hours: "1.190h", img: "/images/programs/cosmetologia/cosmetologia-hero.jpg",  slug: "cosmetologia" },
   { name: "Auxiliar en Veterinaria",        hours: "1.200h", img: "/images/programs/veterinaria/veterinaria-hero.jpg",    slug: "veterinaria" },
   { name: "Auxiliar en Salud Oral",         hours: "1.650h", img: "/images/programs/salud-oral/salud-oral-hero.jpg",      slug: "salud-oral" },
-  { name: "Servicios Farmacéuticos",        hours: "1.650h", img: "/images/programs/farmacia/farmacia-hero.jpg",          slug: "farmacia" },
-  { name: "Técnico en Mercadeo",   hours: "1.000h", img: "/images/programs/mercadeo/mercadeo-hero.jpg",          slug: "mercadeo" },
+  { name: "Auxiliar en Servicios Farmacéuticos",        hours: "1.650h", img: "/images/programs/farmacia/farmacia-hero.jpg",          slug: "farmacia" },
+  { name: "Auxiliar en Mercadeo",   hours: "1.000h", img: "/images/programs/mercadeo/mercadeo-hero.jpg",          slug: "mercadeo" },
 ];
 
 const escuelas = [
@@ -19,7 +19,7 @@ const escuelas = [
     name: "Escuela de Salud", dot: "#378ADD", color: "#185FA5", bg: "#E6F1FB", short: "Salud",
     programs: [
       { name: "Auxiliar en Salud Pública",          hours: "1.650h", img: "/images/programs/salud-publica/salud-publica-hero.jpg",          slug: "salud-publica" },
-      { name: "Administrativo en Salud",            hours: "1.650h", img: "/images/programs/administrativo-salud/administrativo-hero2.jpg",  slug: "administrativo-salud" },
+      { name: "Auxiliar Administrativo en Salud",            hours: "1.650h", img: "/images/programs/administrativo-salud/administrativo-hero2.jpg",  slug: "administrativo-salud" },
       { name: "Atención al Adulto Mayor",           hours: "700h",   img: "/images/programs/adulto-mayor/adulto-mayor-hero.jpg",             slug: "adulto-mayor" },
       { name: "Atención a la Primera Infancia", hours: "1.000h", img: "/images/primera-infancia/hero.jpg", slug: "primera-infancia" },
     ],
@@ -33,15 +33,15 @@ const escuelas = [
   {
     name: "Escuela de Administración", dot: "#7F77DD", color: "#534AB7", bg: "#EEEDFE", short: "Administrativa",
     programs: [
-      { name: "Recurso Humano",                     hours: "1.000h", img: "/images/programs/talento-humano/talento-humano-hero.jpg",        slug: "talento-humano" },
+      { name: "Auxiliar en Recurso Humano",                     hours: "1.000h", img: "/images/programs/talento-humano/talento-humano-hero.jpg",        slug: "talento-humano" },
       { name: "Auxiliar Contable",                  hours: "1.000h", img: "/images/programs/contable/contable-hero.jpg",                    slug: "contable" },
-      { name: "Seguridad y Salud en el Trabajo",    hours: "1.000h", img: "/images/programs/sst/sst-hero.jpg",                              slug: "sst" },
+      { name: "Auxiliar en Seguridad y Salud en el Trabajo",    hours: "1.000h", img: "/images/programs/sst/sst-hero.jpg",                              slug: "sst" },
     ],
   },
   {
     name: "Escuela de Tecnología", dot: "#378ADD", color: "#185FA5", bg: "#E6F1FB", short: "Tecnología",
     programs: [
-      { name: "Técnico en Sistemas",                hours: "1.000h", img: "/images/programs/sistemas/sistemas-hero.jpg",                    slug: "sistemas" },
+      { name: "Auxiliar en Sistemas Informáticos",                hours: "1.000h", img: "/images/programs/sistemas/sistemas-hero.jpg",                    slug: "sistemas" },
       { name: "Auxiliar en Desarrollo de Software", hours: "700h",   img: "/images/programs/software/software-hero.jpg",                    slug: "software" },
     ],
   },

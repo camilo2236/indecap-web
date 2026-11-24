@@ -42,10 +42,10 @@ const faqs = [
 
 const programas = [
   "Auxiliar en Enfermería", "Cosmetología y Estética Integral", "Auxiliar en Veterinaria",
-  "Administrativo en Salud", "Servicios Farmacéuticos", "Auxiliar en Salud Oral",
-  "Salud Pública", "Atención al Adulto Mayor", "Recurso Humano",
-  "Auxiliar Contable", "Auxiliar en Mercadeo", "SST", "Entrenamiento Deportivo",
-  "Sistemas e Informática", "Excel + IA", "Curso / Diplomado",
+  "Auxiliar Administrativo en Salud", "Auxiliar en Servicios Farmacéuticos", "Auxiliar en Salud Oral",
+  "Salud Pública", "Atención al Adulto Mayor", "Auxiliar en Recurso Humano",
+  "Auxiliar Contable", "Auxiliar en Mercadeo", "Auxiliar en Seguridad y Salud en el Trabajo", "Entrenamiento Deportivo",
+  "Auxiliar en Sistemas Informáticos", "Excel + IA", "Curso / Diplomado",
 ];
 
 type Estado = "idle" | "loading" | "success" | "error";

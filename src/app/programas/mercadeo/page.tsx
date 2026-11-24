@@ -3,16 +3,16 @@ import { pageMeta } from "@/lib/seo";
 
 export const metadata = pageMeta({
   path: "/programas/mercadeo",
-  title: "Técnico en Mercadeo · Medellín, Envigado y Caldas",
+  title: "Auxiliar en Mercadeo · Medellín, Envigado y Caldas",
   description:
-    "Técnico laboral en Mercadeo: 2 ciclos (12 meses) y 1.000 horas. Redes sociales, contenido, pauta en Meta, TikTok y Google Ads e inteligencia artificial para vender. Inscripciones 2027.",
+    "Técnico laboral como Auxiliar en Mercadeo: 2 ciclos (12 meses) y 1.000 horas. Redes sociales, contenido, pauta en Meta, TikTok y Google Ads e inteligencia artificial para vender. Inscripciones 2027.",
 });
 
 export default function MercadeoPage() {
   return (
     <ProgramPage
-      titulo="Técnico en Mercadeo"
-      subtitulo="Técnico en"
+      titulo="Auxiliar en Mercadeo"
+      subtitulo="Auxiliar en"
       emWord="Mercadeo"
       accent="#8A2A6B"
       escuela="Escuela de Administración"
@@ -20,7 +20,7 @@ export default function MercadeoPage() {
       semestres="2"
       sedesNum="3"
       fotoSrc="/images/programs/mercadeo/mercadeo-hero.jpg"
-      fotoAlt="Estudiante de Mercadeo INDECAP"
+      fotoAlt="Estudiante de Auxiliar en Mercadeo INDECAP"
       descripcion="Las marcas viven en internet. Las empresas del Valle de Aburrá necesitan personas que sepan crear contenido, gestionar redes sociales, correr campañas digitales y analizar resultados. En 12 meses te formamos como el perfil más buscado en el mercado laboral digital de Medellín — con herramientas reales, campañas reales y métricas reales desde el primer semestre."
       capacidades={[
         "Crear y gestionar estrategias de contenido para redes sociales con criterio de marca y audiencia",
@@ -56,7 +56,7 @@ export default function MercadeoPage() {
       ]}
       mercadoTexto="Medellín es la ciudad colombiana que más ha crecido en ecosistema digital en los últimos 5 años. Startups, pymes, grandes empresas y agencias necesitan personas que sepan moverse en el mundo digital con criterio. No solo publicar en redes — sino construir audiencias, convertir seguidores en clientes y medir cada resultado. Eso es exactamente lo que aprenderás aquí."
       waNum="573022389760"
-      waText="Hola INDECAP, estoy interesado en el programa de Mercadeo. Mi nombre es "
+      waText="Hola INDECAP, estoy interesado en el programa de Auxiliar en Mercadeo. Mi nombre es "
       sedes={[
         { icon: "🏙️", name: "Sede Medellín",  address: "Cl. 56 # 45-26, Medellín",        tag: "Tel: (604) 448 4794" },
         { icon: "🏘️", name: "Sede Envigado",  address: "Cl 37 Sur #43A-84, Envigado",     tag: "Tel: (604) 448 4794" },

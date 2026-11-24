@@ -6,15 +6,15 @@ export const metadata = pageMeta({
   image: "/images/programs/administrativo-salud/administrativo-autorizaciones-equipo.jpg",
   title: "Auxiliar Administrativo en Salud en Medellín, Envigado y Caldas",
   description:
-    "Técnico laboral Administrativo en Salud: 2 ciclos y 1.000 horas para trabajar en la gestión administrativa de clínicas, hospitales, EPS e IPS. Sedes en Medellín, Envigado y Caldas. Inscripciones 2027.",
+    "Técnico laboral como Auxiliar Administrativo en Salud: 2 ciclos y 1.000 horas para trabajar en la gestión administrativa de clínicas, hospitales, EPS e IPS. Sedes en Medellín, Envigado y Caldas. Inscripciones 2027.",
 });
 
 export default function AdministrativoSaludPage() {
   return (
     <ProgramPage
-      titulo="Administrativo en Salud"
-      subtitulo="Administrativo en"
-      emWord="Salud"
+      titulo="Auxiliar Administrativo en Salud"
+      subtitulo="Auxiliar Administrativo"
+      emWord="en Salud"
       accent="#312783"
       escuela="Escuela de Salud"
       horas="1.000"
@@ -26,7 +26,7 @@ export default function AdministrativoSaludPage() {
         "/images/programs/administrativo-salud/administrativo-medicina-prepagada.jpg",
         "/images/programs/administrativo-salud/administrativo-autorizaciones.jpg",
       ]}
-      fotoAlt="Estudiante Administrativo en Salud INDECAP"
+      fotoAlt="Estudiante de Auxiliar Administrativo en Salud INDECAP"
       descripcion="El sector salud en Colombia no es solo médicos y enfermeras. Detrás de cada clínica, hospital y EPS hay un equipo administrativo que hace que todo funcione. Este programa te forma para ser parte esencial de ese equipo — con conocimiento del sector salud y habilidades administrativas reales."
       capacidades={[
         "Gestionar documentación clínica y administrativa en instituciones de salud",
@@ -57,7 +57,7 @@ export default function AdministrativoSaludPage() {
       ]}
       mercadoTexto="El sistema de salud colombiano es uno de los sectores que más empleo genera en Antioquia. Los profesionales que conocen tanto el componente humano como el administrativo son los más valorados — y eso es exactamente lo que formamos."
       waNum="573022389760"
-      waText="Hola INDECAP, estoy interesado en Administrativo en Salud. Mi nombre es "
+      waText="Hola INDECAP, estoy interesado en Auxiliar Administrativo en Salud. Mi nombre es "
       sedes={[
         { icon: "🏙️", name: "Sede Medellín", address: "Cl. 56 # 45-26, Medellín", tag: "Tel: (604) 448 4794" },
         { icon: "🏘️", name: "Sede Envigado", address: "Cl 37 Sur #43A-84, Envigado", tag: "Tel: (604) 448 4794" },

@@ -127,7 +127,7 @@ export default function SedesCaldasPage() {
                 {[
                   { nombre: "Auxiliar en Enfermería", href: "/programas/enfermeria" },
                   { nombre: "Cosmetología y Estética Integral", href: "/programas/cosmetologia" },
-                  { nombre: "Servicios Farmacéuticos", href: "/programas/farmacia" },
+                  { nombre: "Auxiliar en Servicios Farmacéuticos", href: "/programas/farmacia" },
                   { nombre: "Auxiliar en Salud Oral", href: "/programas/salud-oral" },
                   { nombre: "Auxiliar en Veterinaria", href: "/programas/veterinaria" },
                   { nombre: "Peluquería y Estética Canina", href: "/cursos/peluqueria-canina" },

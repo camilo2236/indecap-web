@@ -108,9 +108,9 @@ export default function SedesMedellinPage() {
               <h3 className="font-[family-name:var(--font-playfair)] text-3xl font-black text-[#1a086e] mb-6 tracking-tight">¿Qué puedes estudiar aquí?</h3>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 {[
-                  "Auxiliar en Enfermería", "Servicios Farmacéuticos", "Auxiliar en Salud Oral",
-                  "Auxiliar en Veterinaria", "Técnico en Sistemas Informáticos",
-                  "Auxiliar Contable", "Recurso Humano", "Mercadeo",
+                  "Auxiliar en Enfermería", "Auxiliar en Servicios Farmacéuticos", "Auxiliar en Salud Oral",
+                  "Auxiliar en Veterinaria", "Auxiliar en Sistemas Informáticos",
+                  "Auxiliar Contable", "Auxiliar en Recurso Humano", "Auxiliar en Mercadeo",
                   "Bachillerato Semipresencial para Adultos",
                 ].map((prog) => (
                   <div key={prog} className="flex items-center gap-3 bg-white px-5 py-4 rounded-xl border border-[#c8c4d3]/20 shadow-sm">
