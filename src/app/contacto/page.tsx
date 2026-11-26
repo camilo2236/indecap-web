@@ -5,6 +5,7 @@ import { useState } from "react";
 import { MapPin, Phone, Mail, MessageCircle, ArrowRight, ChevronDown } from "lucide-react";
 import { Loader2, CheckCircle } from "lucide-react";
 import { track, getOrigen } from "@/lib/track";
+import { AutorizacionDatos } from "@/components/AutorizacionDatos";
 
 const sedes = [
   {
@@ -34,9 +35,9 @@ const sedes = [
 ];
 
 const faqs = [
-  { q: "¿Cuáles son los requisitos de admisión?", a: "Necesitas tu documento de identidad, diploma de bachiller (o estar cursando el último grado) y el formulario de inscripción. Para cursos cortos no se requiere diploma." },
+  { q: "¿Cuáles son los requisitos de admisión?", a: "Necesitas tu documento de identidad, el certificado de 9° grado aprobado (o diploma o acta de bachiller) y el formulario de inscripción. Para cursos cortos no se requiere certificado de estudios." },
   { q: "¿Ofrecen planes de financiamiento?", a: "Sí, contamos con financiación directa con INDECAP. Puedes pagar tu matrícula en cuotas sin intermediarios bancarios." },
-  { q: "¿Los programas están avalados oficialmente?", a: "Sí, todos nuestros programas técnicos están avalados por la Secretaría de Educación de Antioquia mediante resolución oficial." },
+  { q: "¿Los programas están avalados oficialmente?", a: "Sí. Nuestros programas técnicos laborales cuentan con registro de la Secretaría de Educación de la entidad territorial donde se ofrecen. Al aprobarlos recibes el certificado de Técnico Laboral por Competencias." },
   { q: "¿Puedo cambiar de sede durante el programa?", a: "Sí, puedes solicitar el traslado de sede siempre que haya disponibilidad en el programa y horario que necesitas." },
 ];
 
@@ -54,6 +55,7 @@ export default function ContactoPage() {
   const [form, setForm] = useState({ nombre: "", correo: "", telefono: "", programa: "", mensaje: "" });
   const [estado, setEstado] = useState<Estado>("idle");
   const [faqAbierta, setFaqAbierta] = useState<number | null>(null);
+  const [autoriza, setAutoriza] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -62,7 +64,7 @@ export default function ContactoPage() {
       const res = await fetch("/api/captacion", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ nombre: form.nombre, correo: form.correo, celular: form.telefono, programa: form.programa, sede: "Medellín", origen: getOrigen() }),
+        body: JSON.stringify({ nombre: form.nombre, correo: form.correo, celular: form.telefono, programa: form.programa, sede: "Medellín", autorizaDatos: autoriza, origen: getOrigen() }),
       });
       if (res.ok) {
   setEstado("success");
@@ -136,8 +138,9 @@ export default function ContactoPage() {
                     <label htmlFor="mensaje" className="block text-xs font-bold uppercase tracking-widest text-[#787583] mb-2">Mensaje</label>
                     <textarea id="mensaje" value={form.mensaje} onChange={e => setForm({ ...form, mensaje: e.target.value })} placeholder="¿En qué podemos ayudarte?" rows={4} className="w-full bg-[#eff4f6] rounded-xl p-4 text-[#171c1e] placeholder:text-[#787583] resize-none outline-none focus:ring-2 focus:ring-[#1a086e]/20" />
                   </div>
+                  <AutorizacionDatos checked={autoriza} onChange={setAutoriza} />
                   {estado === "error" && <p className="text-red-500 text-sm text-center">Hubo un error. Por favor intenta de nuevo.</p>}
-                  <button type="submit" disabled={estado === "loading"} className="w-full py-4 rounded-xl font-black uppercase tracking-widest text-sm text-white hover:opacity-90 transition-all shadow-xl disabled:opacity-60 flex items-center justify-center gap-2" style={{ background: "linear-gradient(135deg, #1a086e 0%, #312783 100%)" }}>
+                  <button type="submit" disabled={estado === "loading" || !autoriza} className="w-full py-4 rounded-xl font-black uppercase tracking-widest text-sm text-white hover:opacity-90 transition-all shadow-xl disabled:opacity-60 flex items-center justify-center gap-2" style={{ background: "linear-gradient(135deg, #1a086e 0%, #312783 100%)" }}>
                     {estado === "loading" ? <><Loader2 size={16} className="animate-spin" /> Enviando...</> : "Enviar Mensaje"}
                   </button>
                 </form>

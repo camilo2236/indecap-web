@@ -5,7 +5,7 @@ export const INTENSIDAD: Record<string, string> = {
   "inyectologia": "20 horas",
   "vacunacion": "20 horas",
   "toma-muestras": "20 horas",
-  "primeros-auxilios": "40 horas",
+  "primeros-auxilios": "20 horas",
   "codigo-fucsia": "20 horas",
   "calidad-humanizacion": "20 horas por curso",
   "excel": "20 horas por nivel",

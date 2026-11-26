@@ -33,6 +33,7 @@ const cursos = [
   "Primeros Auxilios",
   "Código Fucsia",
   "Diplomado en Peluquería y Estética Canina",
+  "Diplomado Excel + Inteligencia Artificial",
   "Excel Básico, Intermedio y Avanzado",
   "Word Básico y Avanzado",
 ];
@@ -111,7 +112,7 @@ export default function AdmisionPage() {
       const res = await fetch("/api/admision", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...form, esCurso: tipoBeca === "curso", origen: getOrigen() }),
+        body: JSON.stringify({ ...form, esCurso: tipoBeca === "curso", autorizaDatos: autoriza, origen: getOrigen() }),
       });
       if (res.ok) {
         setEstado("success");

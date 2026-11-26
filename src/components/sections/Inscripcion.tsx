@@ -70,7 +70,7 @@ export function Inscripcion() {
       const res = await fetch("/api/inscripcion", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...form, origen: getOrigen() }),
+        body: JSON.stringify({ ...form, autorizaDatos: autoriza, origen: getOrigen() }),
       });
 
       if (res.ok) {

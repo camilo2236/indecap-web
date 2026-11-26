@@ -12,7 +12,7 @@ const differentiators = [
     icon: Award,
     title: "Avalados oficialmente",
     description:
-      "Todos nuestros programas cuentan con resolución de la Secretaría de Educación. Tu certificado de Técnico Laboral por Competencias tiene validez en todo el país.",
+      "Nuestros programas técnicos laborales cuentan con registro de la Secretaría de Educación. Al aprobarlos recibes el certificado de Técnico Laboral por Competencias.",
     color: "#312783",
   },
   {

@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { CheckCircle, Loader2, Phone, Mail, MapPin, BookOpen, ArrowRight, GraduationCap } from "lucide-react";
 import { track, getOrigen } from "@/lib/track";
+import { AutorizacionDatos } from "@/components/AutorizacionDatos";
 const programasTecnicos = [
   "Auxiliar en Enfermería",
   "Cosmetología y Estética Integral",
@@ -41,6 +42,7 @@ export default function AdmisionPage() {
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState("");
+  const [autoriza, setAutoriza] = useState(false);
 
   const programas = tipo === "tecnico" ? programasTecnicos : cursosCortos;
 
@@ -58,7 +60,7 @@ export default function AdmisionPage() {
       const res = await fetch("/api/captacion", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...form, origen: getOrigen() }),
+        body: JSON.stringify({ ...form, autorizaDatos: autoriza, origen: getOrigen() }),
       });
       const data = await res.json();
       if (!res.ok) throw new Error(data.error || "Error al enviar");
@@ -223,10 +225,12 @@ export default function AdmisionPage() {
               </p>
             )}
 
+            <AutorizacionDatos checked={autoriza} onChange={setAutoriza} />
+
             {/* Submit */}
             <button
               type="submit"
-              disabled={loading}
+              disabled={loading || !autoriza}
               className="w-full flex items-center justify-center gap-2 py-4 rounded-2xl font-black text-[#080F14] text-sm transition-all hover:opacity-90 disabled:opacity-60 shadow-lg"
               style={{ background: "#F0A500", boxShadow: "0 4px 20px rgba(240,165,0,0.4)" }}
             >
@@ -236,10 +240,6 @@ export default function AdmisionPage() {
                 <><ArrowRight className="h-4 w-4" /> Quiero información gratis</>
               )}
             </button>
-
-            <p className="text-center text-xs text-[#9CA3AF]">
-              Tus datos son confidenciales. Solo te contactamos para orientarte.
-            </p>
           </form>
 
           {/* WhatsApp alternativo */}

@@ -312,7 +312,7 @@ export function ShortCoursePage({ course }: Props) {
               {[
                 { num: "1", title: "Profesionales de la salud", desc: "Estudiantes y trabajadores del sector que buscan actualizar o fortalecer su perfil." },
                 { num: "2", title: "Brigadistas y líderes", desc: "Responsables de la seguridad y respuesta ante emergencias en empresas e instituciones." },
-                { num: "3", title: "Comunidad en general", desc: "Cualquier persona interesada en adquirir habilidades prácticas para mejorar su perfil." },
+                { num: "3", title: "Quien ya trabaja en el área", desc: "Personas con experiencia o formación previa que quieren complementar, actualizar o profundizar sus conocimientos." },
               ].map((item) => (
                 <div key={item.num} className="flex gap-6">
                   <div className="flex-shrink-0 w-12 h-12 rounded-full flex items-center justify-center font-[family-name:var(--font-playfair)] text-xl font-black bg-[#ffb21d] text-[#281800]">

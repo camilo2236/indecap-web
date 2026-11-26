@@ -12,9 +12,9 @@ export interface NoticiaIndecap {
 export const noticiasIndecap: NoticiaIndecap[] = [
   {
     id: "inscripciones-2026",
-    titulo: "Inscripciones abiertas para el primer semestre 2026",
+    titulo: "Inscripciones abiertas para 2027",
     resumen: "INDECAP abre sus puertas para el primer semestre de 2026. Más de 15 programas técnicos laborales disponibles en las sedes de Medellín, Envigado y Caldas.",
-    contenido: "La Corporación Educativa INDECAP anuncia la apertura de inscripciones para el primer semestre de 2026. Con más de 38 años de experiencia formando técnicos laborales en Antioquia, INDECAP ofrece programas en salud, administración, sistemas, belleza y deporte. Los interesados pueden diligenciar el formulario de admisión en línea o acercarse a cualquiera de nuestras sedes.",
+    contenido: "La Corporación Educativa INDECAP anuncia la apertura de inscripciones para 2027. Con más de 38 años de experiencia formando técnicos laborales en Antioquia, INDECAP ofrece programas en salud, administración, sistemas, belleza y deporte. Los interesados pueden diligenciar el formulario de admisión en línea o acercarse a cualquiera de nuestras sedes.",
     fecha: "2026-01-15",
     categoria: "indecap",
     destacada: true,

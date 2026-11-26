@@ -149,7 +149,7 @@ export const courses: Course[] = [
     id: "peluqueria-canina",
     image: "/images/cursos/peluqueria-canina.jpg",
     name: "Diplomado en Peluquería y Estética Canina",
-    description: "Fórmate como groomer profesional en 45 días intensivos. Baño, corte, estética y cuidado animal con mascotas reales desde el primer día. Financiación directa con INDECAP.",
+    description: "Complementa y perfecciona tus técnicas de baño, corte y estética canina en 45 días intensivos, con mascotas reales desde el primer día. Financiación directa con INDECAP.",
     duration: "120 horas",
     horario: "L–V 8:00am–12:30pm · Sábados 8:00am–5:00pm",
     sedes: "Medellín · Caldas",

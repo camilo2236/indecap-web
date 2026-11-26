@@ -298,7 +298,7 @@ export function EstudiaLanding() {
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
-              { icon: Award, title: "Certificación oficial", desc: "Título como Técnico Laboral, respaldado por INDECAP, institución certificada por ICONTEC." },
+              { icon: Award, title: "Certificado oficial", desc: "Certificado de Técnico Laboral por Competencias, de un programa con registro de la Secretaría de Educación." },
               { icon: BadgeDollarSign, title: "Beca 100%", desc: "Estudias totalmente gratis gracias al convenio con la Alcaldía de Medellín y Sapiencia." },
               { icon: Code2, title: "Empleo en TI", desc: "Habilidades digitales entre las más demandadas de la industria 4.0 en Medellín.", highlight: true },
               { icon: UsersRound, title: "Acompañamiento", desc: "Un asesor de INDECAP te guía en la inscripción, la matrícula y todo el proceso." },
@@ -537,7 +537,7 @@ export function EstudiaLanding() {
                       />
                       <span>
                         Autorizo a INDECAP el tratamiento de mis datos personales conforme a la Ley 1581 de 2012 y su{" "}
-                        <a href="/privacy-policy" className="text-[#00dbe9] underline underline-offset-2">política de tratamiento de datos</a>, para ser contactado sobre este programa.
+                        <a href="/privacy-policy" className="text-[#00dbe9] underline underline-offset-2">política de tratamiento de datos</a>, para ser contactado sobre este programa. Si eres menor de edad, autoriza tu padre, madre o acudiente.
                       </span>
                     </label>
 

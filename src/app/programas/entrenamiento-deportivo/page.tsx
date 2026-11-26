@@ -21,7 +21,7 @@ export default function EntrenamientoDeportivoPage() {
       sedesNum="1"
       fotoSrc="/images/programs/entrenamiento-deportivo.jpg"
       fotoAlt="Estudiante de Entrenamiento Deportivo INDECAP"
-      descripcion="Convierte tu pasión por el deporte en una carrera. Aprende a diseñar, orientar y ejecutar rutinas de entrenamiento físico para salud, rendimiento y estética. No solo entrenas — aprendes a convertir el entrenamiento en una profesión con criterio técnico y enfoque real."
+      descripcion="Convierte tu pasión por el deporte en tu profesión. Aprende a diseñar, orientar y ejecutar rutinas de entrenamiento físico para salud, rendimiento y estética. No solo entrenas — aprendes a convertir el entrenamiento en una profesión con criterio técnico y enfoque real."
       capacidades={[
         "Evaluar la condición física inicial de los clientes y establecer objetivos alcanzables",
         "Diseñar rutinas de entrenamiento personalizadas según objetivos (salud, rendimiento o estética)",
@@ -55,7 +55,7 @@ export default function EntrenamientoDeportivoPage() {
       sedes={[
         { icon: "🏘️", name: "Sede Envigado", address: "Cl 37 Sur #43A-84, Envigado", tag: "Tel: (604) 448 4794" },
       ]}
-      ctaDesc="Convierte tu pasión en una carrera. Fórmate en 12 meses y empieza a trabajar en el sector que más te gusta."
+      ctaDesc="Convierte tu pasión en tu profesión. Fórmate en 12 meses y empieza a trabajar en el sector que más te gusta."
       programaId="entrenamiento-deportivo"
     />
   );

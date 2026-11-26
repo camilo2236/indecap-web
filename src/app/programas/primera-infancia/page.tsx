@@ -21,7 +21,7 @@ export default function PrimeraInfanciaPage() {
       sedesNum="2"
       fotoSrc="/images/primera-infancia/hero.jpg"
       fotoAlt="Profesional INDECAP cuidando un bebé"
-      descripcion="Los primeros 6 años de vida son los más importantes en el desarrollo de un ser humano. Este programa te forma para ser el profesional que acompaña esa etapa con técnica, amor y propósito — desde la estimulación temprana hasta la orientación a familias. Una carrera con alta demanda laboral y enorme impacto social."
+      descripcion="Los primeros 6 años de vida son los más importantes en el desarrollo de un ser humano. Este programa te forma para ser el profesional que acompaña esa etapa con técnica, amor y propósito — desde la estimulación temprana hasta la orientación a familias. Una profesión con alta demanda laboral y enorme impacto social."
       capacidades={[
         "Aplicar técnicas de estimulación temprana para potenciar el desarrollo cognitivo y motor",
         "Brindar cuidado integral al niño en aspectos de higiene, nutrición y salud",
@@ -54,14 +54,14 @@ export default function PrimeraInfanciaPage() {
       pensum2={[
         "Práctica profesional en hogares infantiles, jardines, CDI o instituciones de salud pediátrica, aplicando de forma real todas las competencias del programa",
       ]}
-      mercadoTexto="Colombia tiene más de 5 millones de niños menores de 6 años. El Estado, a través del ICBF y los municipios, financia miles de cupos de atención que requieren profesionales certificados. En Antioquia, la demanda de técnicos en primera infancia supera la oferta — formarte hoy es entrar a un mercado laboral con empleo garantizado."
+      mercadoTexto="Colombia tiene más de 5 millones de niños menores de 6 años. El Estado, a través del ICBF y los municipios, financia miles de cupos de atención que requieren profesionales certificados. En Antioquia, la demanda de técnicos en primera infancia supera la oferta — formarte hoy es entrar a un mercado laboral con alta demanda."
       waNum="573022389760"
       waText="Hola INDECAP, estoy interesado en Atención a la Primera Infancia. Mi nombre es "
       sedes={[
         { icon: "🏘️", name: "Sede Envigado",  address: "Cl 37 Sur #43A-84, Envigado",    tag: "Tel: (604) 448 4794" },
         { icon: "🌿", name: "Sede Caldas",    address: "Calle 130 sur # 51-65, Caldas",  tag: "Tel: (604) 448 4794" },
       ]}
-      ctaDesc="El desarrollo de la primera infancia es una de las carreras con más propósito y proyección en Colombia. Fórmate en 12 meses y empieza a transformar vidas desde el primer día."
+      ctaDesc="El desarrollo de la primera infancia es una de las profesiones con más propósito y proyección en Colombia. Fórmate en 12 meses y empieza a transformar vidas desde el primer día."
       programaId="primera-infancia"
     />
   );

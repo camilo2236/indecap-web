@@ -84,7 +84,7 @@ export async function POST(req: NextRequest) {
       nombreMadre, telefonoMadre, ocupacionMadre,
       nombrePadre, telefonoPadre, ocupacionPadre,
       nombreAcudiente, telefonoAcudiente, ocupacionAcudiente,
-      programa, sede, horario, ultimoGrado, comoSeEntero, esCurso, origen,
+      programa, sede, horario, ultimoGrado, comoSeEntero, esCurso, origen, autorizaDatos,
     } = body as Record<string, unknown>;
 
     // Validar campos obligatorios
@@ -136,6 +136,7 @@ export async function POST(req: NextRequest) {
     }
 
     const valorMatricula = esCurso ? "Sin costo" : "$50.000 COP";
+    const autorizacion = autorizaDatos === true ? `Sí — ${new Date().toLocaleString("es-CO", { timeZone: "America/Bogota" })}` : "No registrada";
 
     const fila = (label: string, val: string) =>
       val ? `<tr><td style="padding:6px 0;color:#6B7280;font-size:12px;width:40%;">${label}</td><td style="padding:6px 0;color:#080F14;font-size:13px;font-weight:600;">${val}</td></tr>` : "";
@@ -184,6 +185,7 @@ export async function POST(req: NextRequest) {
                     ${fila("Ultimo grado", s.ultimoGrado)}
                     ${fila("Como se entero", s.comoSeEntero)}
                     ${fila("Origen de la visita", sanitize(origen))}
+                    ${fila("Autorización de datos", autorizacion)}
                     ${fila("Valor matricula", valorMatricula)}
                   </table>
                   <div style="text-align:center;margin-bottom:28px;">

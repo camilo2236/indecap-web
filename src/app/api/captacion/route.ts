@@ -60,7 +60,7 @@ async function guardarContacto(s: Record<string, string>, fuente: string) {
       fuente:           fuente || "Landing Web",
       estado:           "nuevo",
       whatsapp_click:   false,
-      notas:            s.origen ? `Sede: ${s.sede} · Origen: ${s.origen}` : `Sede: ${s.sede}`,
+      notas:            `Sede: ${s.sede}${s.origen ? ` · Origen: ${s.origen}` : ""} · Autorización de datos: ${s.autoriza}`,
       created_at:       new Date().toISOString(),
       updated_at:       new Date().toISOString(),
     }, { onConflict: "email" });
@@ -94,7 +94,7 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: "Cuerpo invalido" }, { status: 400 });
     }
 
-    const { nombre, celular, correo, programa, sede, fuente, origen } = body as Record<string, unknown>;
+    const { nombre, celular, correo, programa, sede, fuente, origen, autorizaDatos } = body as Record<string, unknown>;
 
     if (!nombre || !celular || !programa || !sede) {
       return NextResponse.json({ error: "Faltan campos obligatorios" }, { status: 400 });
@@ -114,6 +114,7 @@ export async function POST(req: NextRequest) {
       sede:     sanitize(sede),
       fuente:   sanitize(fuente) || "Landing Web",
       origen:   sanitize(origen),
+      autoriza: autorizaDatos === true ? `Sí — ${new Date().toLocaleString("es-CO", { timeZone: "America/Bogota" })}` : "No registrada",
     };
 
     const sedeNorm = s.sede.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
@@ -148,6 +149,7 @@ export async function POST(req: NextRequest) {
       ${fila("Sede más cercana", s.sede)}
       ${fila("Fuente", s.fuente)}
       ${fila("Origen de la visita", s.origen)}
+      ${fila("Autorización de datos", s.autoriza)}
     </table>
     <div style="margin-top:24px;background:#f9fafb;border-radius:10px;padding:16px;border-left:4px solid #F0A500">
       <p style="margin:0;font-size:12px;color:#6B7280;font-weight:600;text-transform:uppercase;letter-spacing:0.08em">Acción recomendada</p>

@@ -4,6 +4,7 @@ import { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
 import { CheckCircle, Loader2, Send, ArrowRight } from "lucide-react";
 import { track, getOrigen } from "@/lib/track";
+import { AutorizacionDatos } from "@/components/AutorizacionDatos";
 
 // Orden del slider: las fotos MÁS NUEVAS van arriba y las MÁS ANTIGUAS abajo.
 // Para rotar: agrega la foto nueva al inicio de "NUEVAS" y borra la última de "ANTIGUAS".
@@ -38,7 +39,6 @@ const programasTecnicos = [
   "Entrenamiento Deportivo",
   "Auxiliar en Sistemas Informáticos",
   "Auxiliar en Desarrollo de Software",
-  "Peluquería y Estética Canina",
   "Otro / No sé aún",
 ];
 
@@ -66,6 +66,7 @@ export function Hero() {
   const [form, setForm] = useState({ nombres: "", apellidos: "", celular: "", correo: "", programa: "", sede: "" });
   const [estado, setEstado] = useState<Estado>("idle");
   const [tab, setTab] = useState<Tab>("tecnicos");
+  const [autoriza, setAutoriza] = useState(false);
 
   const goTo = useCallback((i: number) => {
     if (transitioning) return;
@@ -94,7 +95,7 @@ export function Hero() {
       const res = await fetch("/api/inscripcion", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...form, origen: getOrigen() }),
+        body: JSON.stringify({ ...form, autorizaDatos: autoriza, origen: getOrigen() }),
       });
       if (res.ok) {
         setEstado("success");
@@ -200,7 +201,7 @@ export function Hero() {
             </div>
             <h1 className="font-[family-name:var(--font-playfair)] font-black text-white leading-[0.88] tracking-tight mb-8"
               style={{ fontSize: "clamp(3rem, 6vw, 5.5rem)" }}>
-              Tu carrera<br />técnica<br />
+              Tu formación<br />técnica<br />
               <em className="italic" style={{ color: "#FFD166" }}>empieza aquí</em>
             </h1>
             <p className="text-white/65 text-lg leading-relaxed max-w-md mb-10 font-light">
@@ -362,8 +363,10 @@ export function Hero() {
                     <p className="text-red-500 text-xs text-center">Hubo un error. Por favor intenta de nuevo.</p>
                   )}
 
+                  <AutorizacionDatos checked={autoriza} onChange={setAutoriza} />
+
                   <button
-                    type="submit" disabled={estado === "loading"}
+                    type="submit" disabled={estado === "loading" || !autoriza}
                     className="flex w-full items-center justify-center gap-2 rounded-xl py-4 text-sm font-black uppercase tracking-wider text-white transition-all hover:opacity-90 disabled:opacity-60"
                     style={{ background: "linear-gradient(135deg, #1a086e 0%, #312783 100%)" }}
                   >
@@ -374,9 +377,6 @@ export function Hero() {
                     )}
                   </button>
 
-                  <p className="text-center text-[10px] text-[#aab0b8]">
-                    Tus datos son confidenciales. Solo te contactamos para orientarte.
-                  </p>
                 </form>
 
                 <div className="mt-4 pt-4 border-t border-[#eaeff1] flex items-center justify-center gap-2">

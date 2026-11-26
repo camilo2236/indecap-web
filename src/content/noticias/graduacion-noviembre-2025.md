@@ -11,7 +11,7 @@ destacada: true
 
 Con gran emocion y orgullo, la Corporacion Educativa INDECAP celebro su ceremonia de grado del mes de noviembre de 2025, un evento que reunio a cerca de 300 nuevos egresados junto a sus familias, docentes y directivos de la institucion.
 
-En esta ceremonia se entregaron titulos de Tecnico Laboral en programas como Auxiliar en Enfermeria, Auxiliar en Salud Oral, Auxiliar Administrativo en Salud, y tambien diplomas de Bachiller Academico para quienes culminaron su proceso de formacion en el programa de Bachillerato para Adultos.
+En esta ceremonia se entregaron certificados de Tecnico Laboral en programas como Auxiliar en Enfermeria, Auxiliar en Salud Oral, Auxiliar Administrativo en Salud, y tambien diplomas de Bachiller Academico para quienes culminaron su proceso de formacion en el programa de Bachillerato para Adultos.
 
 Cada egresado representa el esfuerzo de meses o anos de formacion practica y teorica, avalada por la Secretaria de Educacion de Antioquia. INDECAP los forma no solo con conocimientos tecnicos sino tambien con valores humanos que marcan la diferencia en el mundo laboral.
 
