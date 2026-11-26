@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { CheckCircle, Loader2, Send } from "lucide-react";
 import { track, getOrigen } from "@/lib/track";
+import { AutorizacionDatos } from "@/components/AutorizacionDatos";
 
 const programas = [
   "Auxiliar en Enfermería",
@@ -47,6 +48,7 @@ export function Inscripcion() {
     sede: "",
   });
   const [estado, setEstado] = useState<Estado>("idle");
+  const [autoriza, setAutoriza] = useState(false);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
@@ -231,9 +233,11 @@ export function Inscripcion() {
                   </p>
                 )}
 
+                <AutorizacionDatos checked={autoriza} onChange={setAutoriza} oscuro />
+
                 <button
                   type="submit"
-                  disabled={estado === "loading"}
+                  disabled={estado === "loading" || !autoriza}
                   className="flex w-full items-center justify-center gap-2 rounded-xl bg-[#F0A500] py-4 text-sm font-black uppercase tracking-wide text-[#080F14] transition-all hover:bg-[#FFD166] hover:shadow-[0_8px_24px_rgba(240,165,0,0.35)] disabled:opacity-60"
                 >
                   {estado === "loading" ? (

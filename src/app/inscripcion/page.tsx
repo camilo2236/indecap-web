@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { CheckCircle, ChevronRight, ChevronLeft, Loader2, User, Users, GraduationCap, CreditCard } from "lucide-react";
 import { track, getOrigen } from "@/lib/track";
+import { AutorizacionDatos } from "@/components/AutorizacionDatos";
 import type { Metadata } from "next";
 
 const programasTecnicos = [
@@ -87,6 +88,7 @@ const pasos = [
 export default function AdmisionPage() {
   const [paso, setPaso] = useState(0);
   const [estado, setEstado] = useState<Estado>("idle");
+  const [autoriza, setAutoriza] = useState(false);
   const [tipoBeca, setTipoBeca] = useState<"tecnico" | "curso">("tecnico");
 
   const [form, setForm] = useState({
@@ -349,13 +351,17 @@ export default function AdmisionPage() {
               <p className="mt-4 text-red-500 text-sm text-center">Hubo un error. Por favor intenta de nuevo.</p>
             )}
 
+            <div className="mt-6">
+              <AutorizacionDatos checked={autoriza} onChange={setAutoriza} menores />
+            </div>
+
             <div className="mt-8 flex justify-between">
               <button onClick={() => setPaso(1)} className="flex items-center gap-2 rounded-full border border-gray-200 px-6 py-3 text-sm font-semibold text-gray-600 hover:bg-gray-50 transition-all">
                 <ChevronLeft className="h-4 w-4" /> Atrás
               </button>
               <button
                 onClick={handleSubmit}
-                disabled={!form.programa || !form.sede || estado === "loading"}
+                disabled={!form.programa || !form.sede || !autoriza || estado === "loading"}
                 className="flex items-center gap-2 rounded-full bg-[#F0A500] px-8 py-3.5 text-sm font-black text-[#080F14] hover:bg-[#FFD166] transition-all disabled:opacity-40 disabled:cursor-not-allowed"
               >
                 {estado === "loading" ? (
