@@ -6,38 +6,38 @@ import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 
 const featured = [
-  { name: "Diplomado en Peluqueria y Estetica Canina", hours: "120h · 45 dias", img: "/images/cursos/peluqueria-canina.jpg", slug: "peluqueria-canina", main: true },
-  { name: "Calidad y Humanizacion en los Servicios",   hours: "20h certificadas", img: "/images/cursos/calidad-humanizacion.jpg", slug: "calidad-humanizacion" },
-  { name: "RCP — Reanimacion Cardiopulmonar",          hours: "20h certificadas", img: "/images/cursos/rcp.jpg", slug: "rcp" },
-  { name: "Inyectologia",                               hours: "20h certificadas", img: "/images/cursos/inyectologia.jpg", slug: "inyectologia" },
-  { name: "Excel Basico, Intermedio y Avanzado",        hours: "20h por nivel", img: "/images/cursos/excel.jpg", slug: "excel" },
-  { name: "Primeros Auxilios",                          hours: "20h certificadas", img: "/images/cursos/primeros-auxilios.jpg", slug: "primeros-auxilios" },
+  { name: "Diplomado en Peluqueria y Estetica Canina", hours: "120 horas", img: "/images/cursos/peluqueria-canina.jpg", slug: "peluqueria-canina", main: true },
+  { name: "Calidad y Humanizacion en los Servicios",   hours: "20 horas por curso", img: "/images/cursos/calidad-humanizacion.jpg", slug: "calidad-humanizacion" },
+  { name: "RCP — Reanimacion Cardiopulmonar",          hours: "20 horas", img: "/images/cursos/rcp.jpg", slug: "rcp" },
+  { name: "Inyectologia",                               hours: "20 horas", img: "/images/cursos/inyectologia.jpg", slug: "inyectologia" },
+  { name: "Excel Basico, Intermedio y Avanzado",        hours: "20 horas por nivel", img: "/images/cursos/excel.jpg", slug: "excel" },
+  { name: "Primeros Auxilios",                          hours: "40 horas", img: "/images/cursos/primeros-auxilios.jpg", slug: "primeros-auxilios" },
 ];
 
 const categorias = [
   {
     name: "Escuela de Salud", dot: "#378ADD", color: "#185FA5", bg: "#E6F1FB", short: "Salud",
     cursos: [
-      { name: "RCP — Reanimacion Cardiopulmonar",           hours: "20h", tipo: "Curso", img: "/images/cursos/rcp.jpg",               slug: "rcp" },
-      { name: "Inyectologia",                               hours: "20h", tipo: "Curso", img: "/images/cursos/inyectologia.jpg",       slug: "inyectologia" },
-      { name: "Vacunacion",                                 hours: "20h", tipo: "Curso", img: "/images/cursos/vacunacion.jpg",         slug: "vacunacion" },
-      { name: "Toma de Muestras de Laboratorio",            hours: "20h", tipo: "Curso", img: "/images/cursos/toma-muestras.jpg",     slug: "toma-muestras" },
-      { name: "Primeros Auxilios",                          hours: "20h", tipo: "Curso", img: "/images/cursos/primeros-auxilios.jpg", slug: "primeros-auxilios" },
-      { name: "Codigo Fucsia",                              hours: "20h", tipo: "Curso", img: "/images/cursos/codigo-fucsia.jpg",     slug: "codigo-fucsia" },
-      { name: "Calidad y Humanizacion en los Servicios",   hours: "20h", tipo: "Paquete", img: "/images/cursos/calidad-humanizacion.jpg", slug: "calidad-humanizacion" },
+      { name: "RCP — Reanimacion Cardiopulmonar",           hours: "20 horas", tipo: "Curso", img: "/images/cursos/rcp.jpg",               slug: "rcp" },
+      { name: "Inyectologia",                               hours: "20 horas", tipo: "Curso", img: "/images/cursos/inyectologia.jpg",       slug: "inyectologia" },
+      { name: "Vacunacion",                                 hours: "20 horas", tipo: "Curso", img: "/images/cursos/vacunacion.jpg",         slug: "vacunacion" },
+      { name: "Toma de Muestras de Laboratorio",            hours: "20 horas", tipo: "Curso", img: "/images/cursos/toma-muestras.jpg",     slug: "toma-muestras" },
+      { name: "Primeros Auxilios",                          hours: "40 horas", tipo: "Curso", img: "/images/cursos/primeros-auxilios.jpg", slug: "primeros-auxilios" },
+      { name: "Codigo Fucsia",                              hours: "20 horas", tipo: "Curso", img: "/images/cursos/codigo-fucsia.jpg",     slug: "codigo-fucsia" },
+      { name: "Calidad y Humanizacion en los Servicios",   hours: "20 horas por curso", tipo: "Paquete", img: "/images/cursos/calidad-humanizacion.jpg", slug: "calidad-humanizacion" },
     ],
   },
   {
     name: "Escuela Veterinaria", dot: "#639922", color: "#3B6D11", bg: "#EAF3DE", short: "Veterinaria",
     cursos: [
-      { name: "Diplomado en Peluqueria y Estetica Canina", hours: "120h", tipo: "Diplomado", img: "/images/cursos/peluqueria-canina.jpg", slug: "peluqueria-canina" },
+      { name: "Diplomado en Peluqueria y Estetica Canina", hours: "120 horas", tipo: "Diplomado", img: "/images/cursos/peluqueria-canina.jpg", slug: "peluqueria-canina" },
     ],
   },
   {
     name: "Escuela de Tecnologia", dot: "#7F77DD", color: "#534AB7", bg: "#EEEDFE", short: "Tecnologia",
     cursos: [
-      { name: "Excel Basico, Intermedio y Avanzado", hours: "20h por nivel", tipo: "Curso", img: "/images/cursos/excel.jpg", slug: "excel" },
-      { name: "Word Basico y Avanzado",              hours: "20h",           tipo: "Curso", img: "/images/cursos/word.jpg",  slug: "word" },
+      { name: "Excel Basico, Intermedio y Avanzado", hours: "20 horas por nivel", tipo: "Curso", img: "/images/cursos/excel.jpg", slug: "excel" },
+      { name: "Word Basico y Avanzado",              hours: "20 horas",           tipo: "Curso", img: "/images/cursos/word.jpg",  slug: "word" },
     ],
   },
 ];
@@ -79,10 +79,6 @@ export default function EducacionContinuaPage() {
               <div className="text-right">
                 <div className="font-[family-name:var(--font-playfair)] text-3xl font-black text-[#1a086e]">10+</div>
                 <div className="text-xs text-[#787583] uppercase tracking-wider mt-0.5">Cursos</div>
-              </div>
-              <div className="text-right">
-                <div className="font-[family-name:var(--font-playfair)] text-3xl font-black text-[#1a086e]">20h</div>
-                <div className="text-xs text-[#787583] uppercase tracking-wider mt-0.5">Certificacion</div>
               </div>
               <div className="text-right">
                 <div className="font-[family-name:var(--font-playfair)] text-3xl font-black text-[#1a086e]">3</div>

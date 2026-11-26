@@ -2,14 +2,14 @@ import { CourseCard } from "@/components/CourseCard";
 
 export const metadata = {
   alternates: { canonical: "/cursos" },
-  title: "Cursos cortos y diplomados certificados",
-  description: "Potencia tu perfil profesional con nuestros cursos cortos de certificación rápida en Medellín, Envigado y Caldas.",
+  title: "Cursos cortos y diplomados · Educación continua",
+  description: "Potencia tu perfil profesional con nuestros cursos cortos de educación continua en Medellín, Envigado y Caldas.",
 };
 
 const cursos = [
   {
     titulo: "Inyectología y Administración de Medicamentos",
-    duracion: "20 Horas",
+    duracion: "20 horas",
     categoria: "Salud",
     color: "#e11d48", // Rojo
     descripcion: "Aprende técnicas seguras de punción, vías de administración y protocolos de bioseguridad clínica.",
@@ -17,15 +17,15 @@ const cursos = [
   },
   {
     titulo: "RCP y Soporte Vital Básico",
-    duracion: "8 Horas",
+    duracion: "20 horas",
     categoria: "Urgencias",
     color: "#2563eb", // Azul
-    descripcion: "Certificación vital para personal de salud y brigadistas. Reanimación cardio-pulmonar y uso de DEA.",
+    descripcion: "Formación esencial para personal de salud y brigadistas. Reanimación cardio-pulmonar y uso de DEA.",
     slug: "rcp"
   },
   {
     titulo: "Toma de Muestras de Laboratorio",
-    duracion: "40 Horas",
+    duracion: "20 horas",
     categoria: "Salud",
     color: "#0891b2", // Cian
     descripcion: "Domina la técnica de venopunción, manejo de tubos y protocolos de laboratorio clínico.",
@@ -33,7 +33,7 @@ const cursos = [
   },
   {
     titulo: "Primeros Auxilios",
-    duracion: "16 Horas",
+    duracion: "40 horas",
     categoria: "Urgencias",
     color: "#16a34a", // Verde
     descripcion: "Atención inicial de emergencias, vendajes, inmovilización y traslado de pacientes.",
@@ -41,15 +41,15 @@ const cursos = [
   },
   {
     titulo: "Vacunación PAI",
-    duracion: "80 Horas",
+    duracion: "20 horas",
     categoria: "Salud",
     color: "#7c3aed", // Morado
-    descripcion: "Especialización en el Programa Ampliado de Inmunizaciones y manejo de cadena de frío.",
+    descripcion: "Formación en el Programa Ampliado de Inmunizaciones y manejo de cadena de frío.",
     slug: "vacunacion"
   },
   {
     titulo: "Código Fucsia",
-    duracion: "40 Horas",
+    duracion: "20 horas",
     categoria: "Normatividad",
     color: "#db2777", // Rosa
     descripcion: "Protocolo de atención integral a víctimas de violencia sexual. Obligatorio para sector salud.",
@@ -67,7 +67,7 @@ export default function CursosPage() {
             Cursos Cortos y <span className="text-zinc-500">Diplomados</span>
           </h1>
           <p className="text-zinc-400 text-lg">
-            Programas intensivos diseñados para actualizar tus conocimientos y obtener certificaciones válidas para el mercado laboral en tiempo récord.
+            Programas intensivos diseñados para actualizar tus conocimientos y fortalecer tu perfil laboral en poco tiempo. Se otorga constancia de asistencia.
           </p>
         </div>
 

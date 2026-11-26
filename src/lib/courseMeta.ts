@@ -1,4 +1,5 @@
 // src/lib/courseMeta.ts
+import { textoIntensidad } from "@/data/intensidad";
 // Metadatos de los cursos cortos y diplomados, armados con los datos de shortCourses.
 
 import type { Metadata } from "next";
@@ -11,7 +12,7 @@ export function courseMeta(slug: string, title: string): Metadata {
   const sedes = c.info.find((i) => i.label === "Sedes")?.value.replace(/ · | \/ /g, ", ");
   const description = [
     c.subtitle,
-    `${c.certification} · ${c.duration} · ${c.modality}.`,
+    `Intensidad horaria: ${textoIntensidad(c.slug) ?? c.duration} · Constancia de asistencia · ${c.modality}.`,
     sedes ? `Sedes: ${sedes}.` : "INDECAP Medellín, Envigado y Caldas.",
   ].join(" ");
   return pageMeta({

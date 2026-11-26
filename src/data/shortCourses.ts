@@ -25,7 +25,7 @@ export const shortCourses: ShortCourse[] = [
     description:
       "Aprende a reconocer una emergencia, aplicar compresiones, ventilaciones, desobstrucción de vía aérea y uso del DEA. Es una formación intensiva diseñada para fortalecer tu respuesta en situaciones críticas.",
     duration: "1 día intensivo",
-    certification: "20 horas certificadas",
+    certification: "20 horas",
     validity: "2 años",
     schedule: "8:00 a.m. a 4:00 p.m.",
     modality: "Presencial",
@@ -42,7 +42,7 @@ export const shortCourses: ShortCourse[] = [
     ],
     info: [
       { label: "Horario", value: "8:00 a.m. a 4:00 p.m." },
-      { label: "Certificación", value: "20 horas certificadas, entrega el mismo día" },
+      { label: "Se otorga", value: "Constancia de asistencia, entrega el mismo día" },
       { label: "Modalidad", value: "Presencial" },
       { label: "Validez", value: "2 años" }
     ],
@@ -57,13 +57,13 @@ export const shortCourses: ShortCourse[] = [
     description:
       "Formación práctica para fortalecer tus competencias en aplicación de inyecciones intramusculares, subcutáneas e intravenosas, con enfoque en bioseguridad y correcto manejo del procedimiento.",
     duration: "1 día intensivo",
-    certification: "20 horas certificadas",
+    certification: "20 horas",
     validity: "2 años",
     schedule: "8:00 a.m. a 4:00 p.m.",
     modality: "Presencial",
     benefits: [
       "Formación práctica desde el primer momento",
-      "Certificación el mismo día",
+      "Constancia de asistencia el mismo día",
       "Fortalece tu perfil en el sector salud"
     ],
     learn: [
@@ -74,7 +74,7 @@ export const shortCourses: ShortCourse[] = [
     ],
     info: [
       { label: "Horario", value: "8:00 a.m. a 4:00 p.m." },
-      { label: "Certificación", value: "20 horas certificadas, entrega el mismo día" },
+      { label: "Se otorga", value: "Constancia de asistencia, entrega el mismo día" },
       { label: "Modalidad", value: "Presencial" },
       { label: "Validez", value: "2 años" }
     ],
@@ -89,14 +89,14 @@ export const shortCourses: ShortCourse[] = [
     description:
       "Una formación intensiva para adquirir herramientas clave en atención inmediata ante lesiones o emergencias médicas repentinas. Ideal para quienes buscan responder con rapidez y criterio.",
     duration: "1 día intensivo",
-    certification: "20 horas certificadas",
+    certification: "20 horas",
     validity: "2 años",
     schedule: "8:00 a.m. a 4:00 p.m.",
     modality: "Presencial",
     benefits: [
       "Capacitación útil para la vida diaria y el entorno laboral",
       "Aprendizaje práctico y directo",
-      "Certificación de rápida obtención"
+      "Constancia de asistencia al finalizar"
     ],
     learn: [
       "Atención inicial en emergencias",
@@ -106,7 +106,7 @@ export const shortCourses: ShortCourse[] = [
     ],
     info: [
       { label: "Horario", value: "8:00 a.m. a 4:00 p.m." },
-      { label: "Certificación", value: "20 horas certificadas, entrega el mismo día" },
+      { label: "Se otorga", value: "Constancia de asistencia, entrega el mismo día" },
       { label: "Modalidad", value: "Presencial" },
       { label: "Validez", value: "2 años" }
     ],
@@ -121,7 +121,7 @@ export const shortCourses: ShortCourse[] = [
     description:
       "Dirigido a profesionales y personal de salud, seguridad y atención comunitaria que necesiten fortalecer sus competencias en el manejo integral de casos de violencia de género y violencia sexual.",
     duration: "1 día intensivo",
-    certification: "20 horas certificadas",
+    certification: "20 horas",
     validity: "2 años",
     schedule: "8:00 a.m. a 4:00 p.m.",
     modality: "Presencial",
@@ -138,7 +138,7 @@ export const shortCourses: ShortCourse[] = [
     ],
     info: [
       { label: "Horario", value: "8:00 a.m. a 4:00 p.m." },
-      { label: "Certificación", value: "20 horas certificadas, entrega al finalizar" },
+      { label: "Se otorga", value: "Constancia de asistencia, entrega al finalizar" },
       { label: "Modalidad", value: "Presencial" },
       { label: "Dirigido a", value: "Salud, seguridad y atención comunitaria" }
     ],
@@ -149,17 +149,17 @@ export const shortCourses: ShortCourse[] = [
     image: "/images/cursos/vacunacion.jpg",
     title: "Curso de Vacunación",
     subtitle:
-      "Fortalece tus competencias en administración segura de vacunas con una formación práctica y certificada.",
+      "Fortalece tus competencias en administración segura de vacunas con una formación práctica.",
     description:
       "Este curso está diseñado para brindarte bases sólidas en administración de vacunas, cadena de frío y protocolos fundamentales del proceso. Formación intensiva y presencial con enfoque aplicado.",
     duration: "1 día intensivo",
-    certification: "20 horas certificadas",
+    certification: "20 horas",
     validity: "2 años",
     schedule: "8:00 a.m. a 4:00 p.m.",
     modality: "Presencial",
     benefits: [
       "Formación práctica en una sola jornada",
-      "Certificación el mismo día",
+      "Constancia de asistencia el mismo día",
       "Conocimiento útil para fortalecer tu perfil profesional"
     ],
     learn: [
@@ -170,7 +170,7 @@ export const shortCourses: ShortCourse[] = [
     ],
     info: [
       { label: "Horario", value: "8:00 a.m. a 4:00 p.m." },
-      { label: "Certificación", value: "20 horas certificadas, entrega el mismo día" },
+      { label: "Se otorga", value: "Constancia de asistencia, entrega el mismo día" },
       { label: "Modalidad", value: "Presencial" },
       { label: "Validez", value: "2 años" }
     ],
@@ -185,13 +185,13 @@ export const shortCourses: ShortCourse[] = [
     description:
       "Formación práctica para quienes desean adquirir habilidades en toma de muestras con enfoque aplicado. Ideal para fortalecer competencias y ampliar oportunidades en el área de apoyo clínico y laboratorio.",
     duration: "1 día intensivo",
-    certification: "20 horas certificadas",
+    certification: "20 horas",
     validity: "2 años",
     schedule: "8:00 a.m. a 4:00 p.m.",
     modality: "Presencial",
     benefits: [
       "Capacitación intensiva y aplicada",
-      "Entrega de certificación el mismo día",
+      "Entrega de la constancia de asistencia el mismo día",
       "Formación útil para contextos clínicos y de laboratorio"
     ],
     learn: [
@@ -202,7 +202,7 @@ export const shortCourses: ShortCourse[] = [
     ],
     info: [
       { label: "Horario", value: "8:00 a.m. a 4:00 p.m." },
-      { label: "Certificación", value: "20 horas certificadas, entrega el mismo día" },
+      { label: "Se otorga", value: "Constancia de asistencia, entrega el mismo día" },
       { label: "Modalidad", value: "Presencial" },
       { label: "Validez", value: "2 años" }
     ],
@@ -218,7 +218,7 @@ export const shortCourses: ShortCourse[] = [
       "Una propuesta formativa pensada para quienes quieren desarrollar habilidades reales en el cuidado estético de mascotas y fortalecer su perfil en un sector con alta proyección.",
     duration: "45 días",
     certification: "120 horas",
-    validity: "Certificación de diplomado",
+    validity: "Constancia de asistencia",
     schedule: "Lunes a viernes de 8:00 a.m. a 12:30 p.m. o sábados según conformación de grupo",
     modality: "Presencial",
     benefits: [
@@ -248,7 +248,7 @@ export const shortCourses: ShortCourse[] = [
     description: "Una propuesta formativa pensada para quienes quieren desarrollar habilidades reales en el cuidado estético de mascotas y fortalecer su perfil en un sector con alta proyección. Disponible en Medellín y Caldas con financiación directa INDECAP.",
     duration: "45 días",
     certification: "120 horas",
-    validity: "Certificación de diplomado",
+    validity: "Constancia de asistencia",
     schedule: "Lunes a viernes de 8:00 a.m. a 12:30 p.m. o sábados según conformación de grupo",
     modality: "Presencial",
     benefits: [
@@ -275,15 +275,15 @@ export const shortCourses: ShortCourse[] = [
     image: "/images/cursos/calidad-humanizacion.jpg",
     title: "Calidad + Humanización en los Servicios",
     subtitle: "Paquete especial de dos cursos complementarios para fortalecer la calidad del servicio y la humanización en entornos de salud.",
-    description: "Un paquete formativo diseñado para profesionales y estudiantes del sector salud que quieren mejorar la calidad de su atención y desarrollar habilidades de humanización en el trato con pacientes y familias. Dos cursos certificados por el precio de uno.",
+    description: "Un paquete formativo diseñado para profesionales y estudiantes del sector salud que quieren mejorar la calidad de su atención y desarrollar habilidades de humanización en el trato con pacientes y familias. Dos cursos por el precio de uno.",
     duration: "2 jornadas intensivas",
-    certification: "20 horas certificadas por curso",
+    certification: "20 horas por curso",
     validity: "2 años",
     schedule: "8:00 a.m. – 4:00 p.m.",
     modality: "Presencial",
     benefits: [
       "Paquete especial con dos cursos complementarios",
-      "Certificación el mismo día",
+      "Constancia de asistencia el mismo día",
       "Ideal para personal del sector salud"
     ],
     learn: [
@@ -307,14 +307,14 @@ export const shortCourses: ShortCourse[] = [
     subtitle: "Domina Excel en 3 niveles progresivos. Desde fundamentos hasta tablas dinámicas, macros y análisis de datos.",
     description: "Programa progresivo en tres niveles que te llevará desde los conceptos básicos hasta el manejo avanzado de Excel. Aprende a crear informes profesionales, automatizar tareas con macros y analizar datos con tablas dinámicas. Disponible presencial y virtual.",
     duration: "4 clases por nivel",
-    certification: "20 horas certificadas por nivel",
+    certification: "20 horas por nivel",
     validity: "2 años",
     schedule: "Sábados 8am–12pm · Sábados 1pm–4pm · Semana 6pm–10pm virtual",
     modality: "Presencial y Virtual",
     benefits: [
       "Paquete 3 niveles con descuento especial",
       "Disponible presencial y en modalidad virtual",
-      "Certificación por cada nivel completado"
+      "Constancia de asistencia por cada nivel"
     ],
     learn: [
       "Fórmulas y funciones esenciales",
@@ -337,12 +337,12 @@ export const shortCourses: ShortCourse[] = [
     subtitle: "Crea y edita documentos profesionales desde cero. Estilos, tablas, combinación de correspondencia e informes formales.",
     description: "Aprende a usar Microsoft Word de forma profesional. Desde la creación de documentos básicos hasta el manejo de estilos, tablas, índices automáticos y combinación de correspondencia para informes y cartas empresariales.",
     duration: "1 jornada intensiva",
-    certification: "20 horas certificadas",
+    certification: "20 horas",
     validity: "2 años",
     schedule: "8:00 a.m. – 4:00 p.m.",
     modality: "Presencial",
     benefits: [
-      "Certificación el mismo día",
+      "Constancia de asistencia el mismo día",
       "Aplicación inmediata en entorno laboral",
       "Fortalece tu perfil profesional"
     ],

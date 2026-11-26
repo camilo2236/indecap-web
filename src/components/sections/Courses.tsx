@@ -220,7 +220,7 @@ export function Courses() {
             <h3 className="font-[family-name:var(--font-playfair)] text-2xl md:text-3xl font-black text-white italic mb-1">
               Asegura tu cupo hoy
             </h3>
-            <p className="text-white/55 text-sm">Solo el 50% del valor para reservar. Certificacion inmediata.</p>
+            <p className="text-white/55 text-sm">Solo el 50% del valor para reservar. Constancia de asistencia al finalizar.</p>
           </div>
           <Link
             href="/educacion-continua"

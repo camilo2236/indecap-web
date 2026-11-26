@@ -1,27 +1,28 @@
 import Link from "next/link";
 import type { ShortCourse } from "@/data/shortCourses";
 import { ArrowRight, Clock, MapPin, Award } from "lucide-react";
+import { textoIntensidad } from "@/data/intensidad";
 
 type Props = { course?: ShortCourse };
 
 const CAMPO_LABORAL: Record<string, { icon: string; name: string; desc: string }[]> = {
   rcp: [
     { icon: "🏥", name: "Hospitales y Clínicas", desc: "Personal de apoyo en brigadas de emergencia y urgencias" },
-    { icon: "🏢", name: "Empresas y Colegios", desc: "Brigadistas internos certificados exigidos por ley" },
+    { icon: "🏢", name: "Empresas y Colegios", desc: "Brigadistas internos que exige la ley" },
     { icon: "🚑", name: "Cruz Roja y Defensa Civil", desc: "Voluntarios y auxiliares en atención prehospitalaria" },
-    { icon: "🏋️", name: "Gimnasios y Centros Deportivos", desc: "Personal de seguridad con certificación en RCP" },
+    { icon: "🏋️", name: "Gimnasios y Centros Deportivos", desc: "Personal de seguridad formado en RCP" },
   ],
   inyectologia: [
     { icon: "🏥", name: "Consultorios y Clínicas", desc: "Apoyo en procedimientos de administración de medicamentos" },
     { icon: "💊", name: "Droguerías", desc: "Servicios de inyectología para clientes con fórmula médica" },
     { icon: "🏠", name: "Atención Domiciliaria", desc: "Administración de medicamentos a pacientes en casa" },
-    { icon: "🤝", name: "Servicio Independiente", desc: "Oferta de servicios propios con certificación INDECAP" },
+    { icon: "📚", name: "Actualización Profesional", desc: "Refuerzo para auxiliares y estudiantes del área de la salud" },
   ],
   vacunacion: [
     { icon: "💉", name: "Centros de Vacunación", desc: "IPS, EPS y programas de vacunación masiva" },
     { icon: "🏥", name: "Hospitales y Clínicas", desc: "Apoyo en jornadas de inmunización" },
     { icon: "🏛️", name: "Secretarías de Salud", desc: "Campañas municipales y departamentales" },
-    { icon: "🤝", name: "Servicio Independiente", desc: "Vacunación domiciliaria certificada" },
+    { icon: "📚", name: "Actualización Profesional", desc: "Refuerzo para auxiliares y estudiantes del área de la salud" },
   ],
   "toma-muestras": [
     { icon: "🧪", name: "Laboratorios Clínicos", desc: "Toma y procesamiento de muestras en laboratorios del Valle de Aburrá" },
@@ -30,7 +31,7 @@ const CAMPO_LABORAL: Record<string, { icon: string; name: string; desc: string }
     { icon: "🏠", name: "Servicio Domiciliario", desc: "Toma de muestras a domicilio para laboratorios" },
   ],
   "primeros-auxilios": [
-    { icon: "🏢", name: "Empresas", desc: "Brigadistas certificados — exigido por el SG-SST" },
+    { icon: "🏢", name: "Empresas", desc: "Brigadistas de emergencia que exige el SG-SST" },
     { icon: "🏫", name: "Colegios e Instituciones", desc: "Personal de atención a emergencias en entornos educativos" },
     { icon: "🏋️", name: "Centros Deportivos", desc: "Asistencia en eventos y actividades físicas" },
     { icon: "🚑", name: "Organizaciones de Emergencia", desc: "Cruz Roja, Defensa Civil, bomberos voluntarios" },
@@ -90,6 +91,8 @@ export function ShortCoursePage({ course }: Props) {
 
   const whatsappUrl = `https://wa.me/573022389760?text=${encodeURIComponent(course.ctaMessage)}`;
   const campoLaboral = CAMPO_LABORAL[course.slug] || [];
+  const intensidad = textoIntensidad(course.slug);
+  const sujeto = course.slug.startsWith("peluqueria") ? "Este diplomado" : course.slug === "calidad-humanizacion" ? "Este paquete de cursos" : "Este curso";
 
   return (
     <main className="min-h-screen bg-[#f5fafc] text-[#171c1e]">
@@ -137,9 +140,9 @@ export function ShortCoursePage({ course }: Props) {
       <section className="max-w-7xl mx-auto px-8 -mt-6 relative z-20 mb-20">
         <div className="bg-white grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-[#c8c4d3]/20 rounded-2xl shadow-xl border border-[#c8c4d3]/20">
           {[
-            { icon: Clock,  label: "Duración",       value: course.duration },
+            { icon: Clock,  label: "Intensidad horaria", value: intensidad ?? course.duration },
             { icon: MapPin, label: "Modalidad",      value: course.modality },
-            { icon: Award,  label: "Certificación",  value: course.certification },
+            { icon: Award,  label: "Se otorga",      value: "Constancia de asistencia" },
           ].map(({ icon: Icon, label, value }) => (
             <div key={label} className="p-7 flex items-center gap-5">
               <div className="w-11 h-11 rounded-full bg-[#1a086e10] flex items-center justify-center">
@@ -154,6 +157,29 @@ export function ShortCoursePage({ course }: Props) {
         </div>
       </section>
 
+      {/* ── AVISO LEGAL: educación informal (Decreto 1075 de 2015, art. 2.6.6.8) ── */}
+      <section className="max-w-3xl mx-auto px-8 mb-20">
+        <div className="bg-white rounded-2xl border border-[#c8c4d3]/40 shadow-sm text-center">
+          <div className="px-8 pt-8 pb-6">
+            <p className="text-xs uppercase tracking-widest text-[#787583] mb-2">Educación continua</p>
+            <h2 className="font-[family-name:var(--font-playfair)] text-2xl md:text-3xl font-black text-[#1a086e]">{course.title}</h2>
+          </div>
+          <div className="border-t border-[#c8c4d3]/40 px-8 py-6 space-y-2">
+            {intensidad && (
+              <p className="flex items-center justify-center gap-2 font-bold text-[#171c1e]">
+                <Clock size={18} color="#1a086e" /> Intensidad horaria: {intensidad}
+              </p>
+            )}
+            <p className="text-[#474551]">Se otorga constancia de asistencia.</p>
+          </div>
+          <div className="border-t border-[#c8c4d3]/40 px-8 py-6">
+            <p className="text-sm text-[#474551] leading-relaxed">
+              {sujeto} corresponde a educación informal y no conduce a título alguno ni a certificado de aptitud ocupacional, de conformidad con el artículo 2.6.6.8 del Decreto 1075 de 2015.
+            </p>
+          </div>
+        </div>
+      </section>
+
       {/* ── CAMPO LABORAL — igual que programas técnicos ─────── */}
       {campoLaboral.length > 0 && (
         <section className="py-20 px-8 max-w-7xl mx-auto">
@@ -162,7 +188,7 @@ export function ShortCoursePage({ course }: Props) {
             <h2 className="font-[family-name:var(--font-playfair)] text-5xl font-black tracking-tight text-[#1a086e]">
               Campo Laboral
             </h2>
-            <p className="text-[#474551] text-lg mt-3 max-w-xl">Este certificado abre puertas concretas en el mercado laboral de Antioquia.</p>
+            <p className="text-[#474551] text-lg mt-3 max-w-xl">Lo que aprendes aquí te sirve en estos campos del mercado laboral de Antioquia.</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -284,9 +310,9 @@ export function ShortCoursePage({ course }: Props) {
             </h2>
             <div className="space-y-8">
               {[
-                { num: "1", title: "Profesionales de la salud", desc: "Estudiantes y trabajadores del sector que requieren certificación o actualización en su perfil." },
+                { num: "1", title: "Profesionales de la salud", desc: "Estudiantes y trabajadores del sector que buscan actualizar o fortalecer su perfil." },
                 { num: "2", title: "Brigadistas y líderes", desc: "Responsables de la seguridad y respuesta ante emergencias en empresas e instituciones." },
-                { num: "3", title: "Comunidad en general", desc: "Cualquier persona interesada en adquirir habilidades prácticas y certificadas para mejorar su perfil." },
+                { num: "3", title: "Comunidad en general", desc: "Cualquier persona interesada en adquirir habilidades prácticas para mejorar su perfil." },
               ].map((item) => (
                 <div key={item.num} className="flex gap-6">
                   <div className="flex-shrink-0 w-12 h-12 rounded-full flex items-center justify-center font-[family-name:var(--font-playfair)] text-xl font-black bg-[#ffb21d] text-[#281800]">
